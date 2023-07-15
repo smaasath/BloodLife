@@ -30,6 +30,7 @@ function bigtosmal() {
 
     var div = document.getElementById("col1");
     div.style.display = "block";
+    div.style.width = "80px";
 
     var col2element = document.getElementById("col10");
 

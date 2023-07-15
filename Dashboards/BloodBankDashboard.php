@@ -100,7 +100,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     </div>
                     <div class="p-2">
                         <a href="#">
-                            <img src="../Images/Logo.png" alt="Home" class="img-fluid">
+                            <img src="../Images/LogoSmall.png" alt="Home" class="img-fluid">
                         </a>
                     </div>
                     <hr class="dashboardhr">
