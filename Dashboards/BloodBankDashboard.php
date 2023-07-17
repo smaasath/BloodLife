@@ -24,7 +24,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     </head>
-    <body >
+    <body>
         <div class="container-fluid">
             <div class="row flex-wrap flex-row-reverse">
                 <!-- large Side bar start-->
@@ -37,39 +37,94 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                 border: none;"><i class="fa-solid fa-arrow-right-to-bracket fa-flip-horizontal fa-lg" style="color: #ffffff;"></i></button>
 
                         <a href="#">
-                            <img src="../Images/logo.png" alt="Home"  class="w-75 m-5 mb-1 mt-1">
+                            <img src="../Images/logo.jpg" alt="Home"  class="w-50 m-5 mb-1 mt-4 rounded-5 logimage">
                         </a>
                     </div>
                     <hr class="dashboardhr">
-                    <div class="nav nav-pills flex-column mb-auto">
-                        <li class="nav-item">
-                            <a href="#" onclick="dashborad()" class="nav-link navbarcolor"  aria-current="page">
-                                <i class="fa-solid fa-gauge fa-xl icondash"></i>
-                                Dashboard
-                            </a>
-                        </li>
+                    <div class="nav nav-pills flex-column mb-1">
                         <li>
-
-                            <a href="#" onclick="Course()" class="nav-link navbarcolor" >
-                                <i class="fa-solid fa-graduation-cap fa-xl icondash"></i>
-                                Courses
+                            
+                            <a href="#" onclick="Hrequest()" class="nav-link navbarcolor"  aria-current="page">
+                               
+                                        <i class="fa-solid fa-square-h fa-xl icondash"></i>
+                                   
+                                        Hospital Request
+                                  
                             </a>
 
                         </li>
+
                         <li>
-                            <a href="#" onclick="webiner()" class="nav-link navbarcolor" >
-                                <i class="fa-solid fa-video fa-xl icondash"></i>
-                                Webinars
+                            <a href="#" onclick="Brequest()" class="nav-link navbarcolor"  aria-current="page">
+                                
+                                        <i class="fa-sharp fa-solid fa-city fa-xl icondash"></i>
+                                    
+                                        Bank Request
+                                   
                             </a>
+
                         </li>
+
                         <li>
-                            <a href="#" onclick="profile()" class="nav-link navbarcolor" >
-                                <i class="fa-solid fa-user fa-xl icondash"></i>
-                                Profile
+                            <a href="#" onclick="Stockmanage()" class="nav-link navbarcolor"  aria-current="page">
+                                
+                                        <i class="fa-solid fa-warehouse fa-xl icondash"></i>
+                                   
+                                        Blood Stock
+                                  
                             </a>
+
                         </li>
-                        <br>
-                        <br>
+
+                        <li>
+                            <a href="#" onclick="stockalert()" class="nav-link navbarcolor"  aria-current="page">
+                               
+                                        <i class="fa-solid fa-triangle-exclamation fa-xl icondash"></i>
+                                    
+                                        Stock Alert
+                                   
+                            </a>
+
+                        </li>
+
+                        <li>
+                            <a href="#" onclick="campaign()" class="nav-link navbarcolor"  aria-current="page">
+                               
+                                        <i class="fa-sharp fa-solid fa-house-chimney-medical fa-xl icondash"></i>
+                                   
+                                        Campaign
+                                    
+                            </a>
+
+                        </li>
+
+
+                        <li>
+                            <a href="#" onclick="donor()" class="nav-link navbarcolor"  aria-current="page">
+                                
+                                        <i class="fa-solid fa-hospital-user fa-xl icondash"></i>
+                                   
+                                        Donor
+                                   
+                            </a>
+
+                        </li>
+
+                        <li>
+                            <a href="#" onclick="profile()" class="nav-link navbarcolor"  aria-current="page">
+                                
+                                        <i class="fa-solid fa-user fa-xl icondash"></i>
+                                    
+                                        Profile
+                                   
+                            </a>
+
+                        </li>
+
+
+
+
+
 
                     </div>
 
@@ -100,26 +155,43 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     </div>
                     <div class="p-2">
                         <a href="#">
-                            <img src="../Images/LogoSmall.png" alt="Home" class="img-fluid">
+                            <img src="../Images/LogoSmall.png" alt="Home" class="img-fluid w-100 rounded-3 logimage">
                         </a>
                     </div>
                     <hr class="dashboardhr">
                     <!-- dashboard icon start -->
+
                     <div style="margin-left: -9px;">
-                        <i  href="" onclick="dashborad()" class="fa-solid fa-gauge fa-xl icondash nav-link navbarcolorafter"></i>
+
+                        <i  href="" onclick="Hrequest()" class="fa-solid fa-square-h fa-xl icondash nav-link navbarcolorafter"></i>
                     </div>
                     <!-- dashboard icon end -->
                     <div style="margin-left: -9px;">
-                        <i onclick="Course()" href="" class="fa-solid fa-graduation-cap fa-xl icondash nav-link navbarcolorafter"></i>
+
+                        <i onclick="Brequest()" href="" class="fa-sharp fa-solid fa-city fa-xl icondash nav-link navbarcolorafter"></i>
                     </div>
 
                     <div style="margin-left: -9px;">
-                        <i  href="" onclick="webiner()" class="fa-solid fa-video fa-xl icondash nav-link navbarcolorafter"></i>
+                        <i  href="" onclick="Stockmanage()" class="fa-solid fa-warehouse fa-xl icondash nav-link navbarcolorafter"></i>
+                    </div>
+
+                    <div style="margin-left: -9px;">
+                        <i href="" onclick="stockalert()" class="fa-solid fa-triangle-exclamation fa-xl icondash nav-link navbarcolorafter"></i>
+                    </div>
+
+                    <div style="margin-left: -9px;">
+                        <i href="" onclick="campaign()" class="fa-sharp fa-solid fa-house-chimney-medical fa-xl icondash nav-link navbarcolorafter"></i>
+                    </div>
+
+                    <div style="margin-left: -9px;">
+                        <i href="" onclick="donor()" class="fa-solid fa-hospital-user  fa-xl icondash nav-link navbarcolorafter"></i>
                     </div>
 
                     <div style="margin-left: -9px;">
                         <i href="" onclick="profile()" class="fa-solid fa-user fa-xl icondash nav-link navbarcolorafter"></i>
                     </div>
+
+
                     <br><br>
 
 
@@ -146,7 +218,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <!--  body-->
                 <div id="col10"class="col-10 col10edit">
 
-
+                     <?php include '../DashboardFiles/BloodBankFiles/BloodBankHospitalRequest.php'; ?>
 
 
                 </div>
@@ -162,7 +234,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
     </div>
     <?php
-    // put your code here
+// put your code here
     ?>
 
 
@@ -171,6 +243,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../JS/BloodBank.js"></script>
     <script src="../JS/DashboardJS.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>

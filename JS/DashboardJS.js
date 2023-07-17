@@ -30,11 +30,11 @@ function bigtosmal() {
 
     var div = document.getElementById("col1");
     div.style.display = "block";
-    div.style.width = "80px";
+    
 
     var col2element = document.getElementById("col10");
 
-    var newClassNamecol2 = "col-11 content container p-4 col11edit";
+    var newClassNamecol2 = "col-11 content p-0 m-0 container col11edit";
     col2element.className = newClassNamecol2;
 
     var div1 = document.getElementById("smalltobig");
@@ -52,7 +52,7 @@ function smalltobig() {
     div.style.display = "none";
 
     var col2element = document.getElementById("col10");
-    var newClassNamecol2 = "col-10 container p-4 content col10edit";
+    var newClassNamecol2 = "col-10 container p-0 m-0 content col10edit";
     col2element.className = newClassNamecol2;
 
  
@@ -62,7 +62,7 @@ function handleWindowWidth() {
     var windowWidth = window.innerWidth;
 
     // Code to execute based on the window width
-if (windowWidth < 1336) {
+if (windowWidth < 1456) {
 
 
         var div = document.getElementById("col2");
@@ -73,7 +73,7 @@ if (windowWidth < 1336) {
 
 
         var col2element = document.getElementById("col10");
-        var newClassNamecol2 = "col-11 container p-4 content col11edit";
+        var newClassNamecol2 = "col-11 container p-0 m-0 content col11edit";
         col2element.className = newClassNamecol2;
 
         var div1 = document.getElementById("smalltobig");
@@ -89,7 +89,7 @@ if (windowWidth < 1336) {
         div.style.display = "none";
 
         var col2element = document.getElementById("col10");
-        var newClassNamecol2 = "col-10 container p-4 content col10edit";
+        var newClassNamecol2 = "col-10 container p-0 m-0 content col10edit";
         col2element.className = newClassNamecol2;
 
      
@@ -112,13 +112,5 @@ runFunctionOnResize();
 window.addEventListener('resize', runFunctionOnResize);
 
 
-function dashborad() {
-    const xhttp = new XMLHttpRequest();
-    xhttp.onload = function () {
-        document.getElementById("col10").innerHTML = this.responseText;
-    };
-    xhttp.open("GET", "../DashboardFiles/StudentFirstpageDashboard.php", true);
-    xhttp.send();
-    
-}
+
 
