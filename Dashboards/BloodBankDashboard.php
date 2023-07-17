@@ -155,7 +155,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     </div>
                     <div class="p-2">
                         <a href="#">
-                            <img src="../Images/LogoSmall.png" alt="Home" class="img-fluid w-100 rounded-3 logimage">
+                            <img src="../Images/LogoSmall.png" alt="Home" class="img-fluid rounded-3 logimage" style="width: 50%;">
                         </a>
                     </div>
                     <hr class="dashboardhr">

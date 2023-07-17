@@ -31,6 +31,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         </div>
                         <div class="col-6 mt-2 	d-none d-xl-block">
                             <b>Jaffna Blood Bank</b>
+                            <a href="AdminProfile.php"></a>
                             <p style="font-size: 10px;">Blood Bank</p>
                         </div>
                     </div>
@@ -43,7 +44,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <!-- nav bar end -->
         
         <!-- body start -->
-        <h1>BL Hos Req</h1>
+        <h1>Admin Hospital</h1>
 
 
 
