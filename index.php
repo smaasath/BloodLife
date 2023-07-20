@@ -12,6 +12,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Project/PHP/PHPProject.php to edi
         <?php
        echo 'ss';
        hhh
+       jnn
         ?>
     </body>
 </html>
