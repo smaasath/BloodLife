@@ -48,31 +48,31 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             <div class="row">
                 <div class ="card col-5 mt-2  " >
                     <div class="row">
-                        <div class=" card1 col-3 mt-2">
+                        <div class=" card col-3">
                             <p>hiii</p>
                         </div>
-                        <div class=" card1 col-3 mt-2">
+                        <div class=" card col-3">
                           <p>hiii</p>  
                         </div>
-                        <div class=" card1 col-3 mt-2">
+                        <div class=" card col-3">
                           <p>hiii</p>  
                         </div>
-                        <div class=" card1 col-3 mt-2">
+                        <div class=" card col-3">
                           <p>hiii</p>  
                         </div>
                     </div>
                     
                     <div class="row">
-                        <div class=" card1 col-3 mt-2">
+                        <div class=" card col-3">
                             <p>hiii</p>
                         </div>
-                        <div class=" card1 col-3 mt-2">
+                        <div class=" card col-3">
                             <p>hiii</p>
                         </div>
-                        <div class=" card1 col-3 mt-2">
+                        <div class=" card col-3">
                            <p>hiii</p> 
                         </div>
-                        <div class=" card1 col-3 mt-2">
+                        <div class=" card col-3">
                            <p>hiii</p> 
                         </div>
                     </div>
