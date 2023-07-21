@@ -6,7 +6,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 <html>
     <head>
         <meta charset="UTF-8">
-
+        <link rel="stylesheet" href="../CSS/Table.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
@@ -43,36 +43,36 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <hr class="dashboardhr">
                     <div class="nav nav-pills flex-column mb-1">
                         <li>
-                            
+
                             <a href="#" onclick="AHospital()" class="nav-link navbarcolor"  aria-current="page">
-                               
-                                        <i class="fa-solid fa-square-h fa-xl icondash"></i>
-                                   
-                                        Hospital
-                                  
+
+                                <i class="fa-solid fa-square-h fa-xl icondash"></i>
+
+                                Hospital
+
                             </a>
 
                         </li>
 
                         <li>
                             <a href="#" onclick="ABank()" class="nav-link navbarcolor"  aria-current="page">
-                                
-                                        <i class="fa-sharp fa-solid fa-city fa-xl icondash"></i>
-                                    
-                                       Blood Bank 
-                                   
+
+                                <i class="fa-sharp fa-solid fa-city fa-xl icondash"></i>
+
+                                Blood Bank 
+
                             </a>
 
                         </li>
 
-                        
+
                         <li>
                             <a href="#" onclick="Aprofile()" class="nav-link navbarcolor"  aria-current="page">
-                                
-                                        <i class="fa-solid fa-user fa-xl icondash"></i>
-                                    
-                                        Profile
-                                   
+
+                                <i class="fa-solid fa-user fa-xl icondash"></i>
+
+                                Profile
+
                             </a>
 
                         </li>
@@ -159,7 +159,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <!--  body-->
                 <div id="col10"class="col-10 col10edit">
 
-                     <?php include '../DashboardFiles/AdminFiles/AdminHospital.php'; ?>
+                    <?php include '../DashboardFiles/AdminFiles/AdminHospital.php'; ?>
 
 
                 </div>
