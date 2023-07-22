@@ -9,14 +9,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <title></title>
     </head>
     <body>
-        
+
         <!-- nav bar start -->
         <div class="sticky-top bg-white shadownav" style="height: 50px;">
             <div class="row m-0 d-flex">
                 <div class="col-8">
-                   
+
                 </div>
-                
+
 
                 <div class="col-4">
                     <div class="row align-items-center">
@@ -41,9 +41,85 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             </div>
         </div>
         <!-- nav bar end -->
-        
+
         <!-- body start -->
         <h1>BL Stock</h1>
+        <div class="container">
+            <div class="row">
+                <div class ="card col-5 p-4 m-1" >
+                    <div class="row">
+                        <div class="col-3 p-0 m-0">
+                            <div class="container p-2" >
+                                <div class=" bg-dark">
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                </div> 
+                            </div>
+                        </div>
+                        <div class="col-3 p-0 m-0">
+                            <div class="container p-2" >
+                                <div class=" bg-dark">
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                </div> 
+                            </div>
+                        </div>
+                        <div class="col-3 p-0 m-0">
+                            <div class="container p-2" >
+                                <div class=" bg-dark">
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                </div> 
+                            </div>
+                        </div>
+                        <div class="col-3 p-0 m-0">
+                            <div class="container p-2" >
+                                <div class=" bg-dark">
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-3">
+                            <p>hiii</p>
+                        </div>
+                        <div class="col-3">
+                            <p>hiii</p>
+                        </div>
+                        <div class="col-3">
+                            <p>hiii</p> 
+                        </div>
+                        <div class="col-3">
+                            <p>hiii</p> 
+                        </div>
+                    </div>
+
+                </div>
+                <div class ="card col-3 m-1 " >
+
+
+                </div>
+                <div class ="card col m-1 " >
+
+
+                </div>
+            </div>
+        </div>
 
 
 
