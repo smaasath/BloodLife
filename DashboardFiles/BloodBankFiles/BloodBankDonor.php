@@ -45,8 +45,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <!-- body start -->
        <!-- <h1>BL Donor</h1> -->
 
- <div class="container">
-            <img src="https://mseducationacademy.in/storage/2023/06/world-blood-donor-day1.jpg" alt="Blood" width="100%" height="200">
+ <div class="">
+            <img src="../../Images/logo.jpg" alt="Blood" class="">
 
  
 
