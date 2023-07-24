@@ -43,7 +43,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <!-- nav bar end -->
 
         <!-- body start -->
-        <h1>BL Stock</h1>
+        <h1>BloodBank Stock</h1>
         <div class="container">
             <div class="row">
                 <div class ="card1 col-6 p-3 m-1" >
@@ -51,7 +51,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <div class="col-3 p-0 m-0">
                             <div class="container p-3" >
                                 <div class="stockcon">
-                                    
+                                    <h4 class="blood">A+</h4>
                                     <br>
                                     <br>
                                     <br>
@@ -63,6 +63,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <div class="col-3 p-0 m-0">
                             <div class="container p-3" >
                                 <div class="stockcon">
+                                    <h4 class="blood">A-</h4>
                                     <br>
                                     <br>
                                     <br>
@@ -74,6 +75,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <div class="col-3 p-0 m-0">
                             <div class="container p-3" >
                                 <div class="stockcon">
+                                    <h4 class="blood">B+</h4>
                                     <br>
                                     <br>
                                     <br>
@@ -85,6 +87,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <div class=" col-3 p-0 m-0">
                             <div class="container p-3" >
                                 <div class="stockcon">
+                                    <h4 class="blood">B-</h4>
                                     <br>
                                     <br>
                                     <br>
@@ -98,6 +101,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <div class=" col-3 p-0 m-0">
                             <div class="container p-3" >
                                 <div class="stockcon">
+                                    <h4 class="blood">AB+</h4>
                                     <br>
                                     <br>
                                     <br>
@@ -109,6 +113,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <div class="col-3 p-0 m-0">
                             <div class="container p-3" >
                                 <div class="stockcon">
+                                    <h4 class="blood">AB-</h4>
                                     <br>
                                     <br>
                                     <br>
@@ -120,6 +125,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <div class="col-3 p-0 m-0">
                             <div class="container p-3" >
                                 <div class="stockcon">
+                                    <h4 class="blood">O+</h4>
                                     <br>
                                     <br>
                                     <br>
@@ -131,6 +137,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <div class="col-3 p-0 m-0">
                             <div class="container p-3" >
                                 <div class="stockcon">
+                                    <h4 class="blood">O-</h4>
                                     <br>
                                     <br>
                                     <br>
@@ -142,8 +149,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     </div>
                 </div>
 
-                <div class ="card1 col-2 m-1 " >
+                <div class ="card1 col-2 m-1 " >           
+                    <div class="input-group rounded p-3">
+                        <input type="search" class="form-control rounded" placeholder="Search BloodBank" aria-label="Search" aria-describedby="search-addon" >
+                    </div>
+                    <div class="container bg-white m-0 p-0" style=" height: 300px; overflow: scroll;">
 
+                    </div>
 
                 </div>
                 <div class ="card1 col m-1 " >
@@ -153,8 +165,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
             </div>
         </div>
-        <-<!-- table -->
- <div class="p-5">
+        <!-- table -->
+        <div class="p-5">
 
 
             <div class="rounded-top-4 p-0 border border-dark-subtle">
@@ -229,35 +241,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <th class="col-2 bgcol p-2">Status</th>
                         <th class="col-1 bgcol p-2">View</th>
                         <th class="col-1 bgcol p-2">Edit</th>
-                        
+
 
                     </tr>
 
                     <tr>
                         <td class="col-1">B001</td>
-                        <td class="col-2">B+</td>
-                        <td class="col-2">2000-01-20</td>
-                        <td class="col-2">Jaffna</td>
-                        <td class="col-1">1L</td>
-                        <td class="col-2">Given</td>
-                        <td class="col-1"><button type="button" class="btn btn-info" onclick="openBloodbankDetails()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-secondary" onclick="Editbloodbank()">Edit</button></td>
-                    </tr>
-
-                    <tr>
-                        <td class="col-1">B001</td>
-                        <td class="col-2">B+</td>
-                        <td class="col-2">2000-01-20</td>
-                        <td class="col-2">Jaffna</td>
-                        <td class="col-1">1L</td>
-                        <td class="col-2">Given</td>
-                        <td class="col-1"><button type="button" class="btn btn-info" onclick="openBloodbankDetails()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-secondary" onclick="Editbloodbank()">Edit</button></td>
-                    </tr>
-
-                   <tr>
-                        <td class="col-1">B001</td>
-                        <td class="col-2">B+</td>
+                        <td class="col-2 ">B+</td>
                         <td class="col-2">2000-01-20</td>
                         <td class="col-2">Jaffna</td>
                         <td class="col-1">1L</td>
@@ -277,18 +267,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <td class="col-1"><button type="button" class="btn btn-secondary" onclick="Editbloodbank()">Edit</button></td>
                     </tr>
 
-                   <tr>
-                        <td class="col-1">B001</td>
-                        <td class="col-2">B+</td>
-                        <td class="col-2">2000-01-20</td>
-                        <td class="col-2">Jaffna</td>
-                        <td class="col-1">1L</td>
-                        <td class="col-2">Given</td>
-                        <td class="col-1"><button type="button" class="btn btn-info" onclick="openBloodbankDetails()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-secondary" onclick="Editbloodbank()">Edit</button></td>
-                    </tr>
-
-                   <tr>
+                    <tr>
                         <td class="col-1">B001</td>
                         <td class="col-2">B+</td>
                         <td class="col-2">2000-01-20</td>
@@ -321,7 +300,40 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <td class="col-1"><button type="button" class="btn btn-secondary" onclick="Editbloodbank()">Edit</button></td>
                     </tr>
 
-                   <tr>
+                    <tr>
+                        <td class="col-1">B001</td>
+                        <td class="col-2">B+</td>
+                        <td class="col-2">2000-01-20</td>
+                        <td class="col-2">Jaffna</td>
+                        <td class="col-1">1L</td>
+                        <td class="col-2">Given</td>
+                        <td class="col-1"><button type="button" class="btn btn-info" onclick="openBloodbankDetails()">View</button></td>
+                        <td class="col-1"><button type="button" class="btn btn-secondary" onclick="Editbloodbank()">Edit</button></td>
+                    </tr>
+
+                    <tr>
+                        <td class="col-1">B001</td>
+                        <td class="col-2">B+</td>
+                        <td class="col-2">2000-01-20</td>
+                        <td class="col-2">Jaffna</td>
+                        <td class="col-1">1L</td>
+                        <td class="col-2">Given</td>
+                        <td class="col-1"><button type="button" class="btn btn-info" onclick="openBloodbankDetails()">View</button></td>
+                        <td class="col-1"><button type="button" class="btn btn-secondary" onclick="Editbloodbank()">Edit</button></td>
+                    </tr>
+
+                    <tr>
+                        <td class="col-1">B001</td>
+                        <td class="col-2">B+</td>
+                        <td class="col-2">2000-01-20</td>
+                        <td class="col-2">Jaffna</td>
+                        <td class="col-1">1L</td>
+                        <td class="col-2">Given</td>
+                        <td class="col-1"><button type="button" class="btn btn-info" onclick="openBloodbankDetails()">View</button></td>
+                        <td class="col-1"><button type="button" class="btn btn-secondary" onclick="Editbloodbank()">Edit</button></td>
+                    </tr>
+
+                    <tr>
                         <td class="col-1">B001</td>
                         <td class="col-2">B+</td>
                         <td class="col-2">2000-01-20</td>
@@ -340,13 +352,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             </div>
             <br>
             <!-- Table Head -->
-          
+
         </div>
 
 
 
-            <?php
-            // put your code here
-            ?>
+        <?php
+        // put your code hereg
+        ?>
     </body>
 </html>

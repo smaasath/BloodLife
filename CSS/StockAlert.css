@@ -1,0 +1,51 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
+*/
+/* 
+    Created on : Jul 24, 2023, 8:26:35 PM
+    Author     : Saalu
+*/
+
+.card2{
+     display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    border: 2px solid rgba(255, 255, 255, .25);
+    background-color: white !important;
+    box-shadow: rgba(149, 157, 165, 0.2)  5px 5px 8px 24px;
+    
+}
+.alertcon{
+      background-color: #FF6666;
+    border-radius: 10px;
+    -webkit-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+    margin: 5px;
+}
+.card3{
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, .25);
+    background-color: white !important;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    height:120px;
+}
+.m-2{
+    margin: 1rem!important;
+}
+.col-5{
+    flex:auto !important;
+}
+.btn-info{
+    background-color: #FF9F9F!important;
+    border-color: black;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.btn-info:hover{
+     background-color: wheat!important;
+     border-color: black;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
