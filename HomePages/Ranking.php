@@ -6,14 +6,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 <html lang="en">
 <head>
     <title>BloodLife</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="ranking.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
     <!-- Bootstrap-->
     <link rel="stylesheet" href="bootstrap.min.css">
 
     <!--footer file link css-->
-    <link rel="stylesheet" href="footerstyle.css">
+    <link rel="stylesheet" href="footer.css">
 </head>
 <body>
     <div class="main_nav">
