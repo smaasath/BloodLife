@@ -30,8 +30,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             <i class="fa-solid fa-user fa-xl"></i>
                         </div>
                         <div class="col-6 mt-2 	d-none d-xl-block">
-                            <b>Jaffna Blood Bank</b>
-                            <p style="font-size: 10px;">Blood Bank</p>
+                            <b>General Hospital</b>
+                            <p style="font-size: 10px;">Hospital</p>
                         </div>
                     </div>
 
@@ -51,7 +51,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <div class="col-3 p-0 m-0">
                             <div class="container p-3" >
                                 <div class="stockcon">
-                                    <h4>A+</h4>
+                                    <h4 class="blood1">A+</h4>
                                     <br>
                                     <br>
                                     <br>
@@ -63,7 +63,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <div class="col-3 p-0 m-0">
                             <div class="container p-3" >
                                 <div class="stockcon">
-                                    <h4>A-</h4>
+                                    <h4 class="blood1">A-</h4>
                                     <br>
                                     <br>
                                     <br>
@@ -75,7 +75,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <div class="col-3 p-0 m-0">
                             <div class="container p-3" >
                                 <div class="stockcon">
-                                    <h4>B+</h4>
+                                    <h4 class="blood1">B+</h4>
                                     <br>
                                     <br>
                                     <br>
@@ -87,7 +87,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <div class=" col-3 p-0 m-0">
                             <div class="container p-3" >
                                 <div class="stockcon">
-                                    <h4>B-</h4>
+                                    <h4 class="blood1">B-</h4>
                                     <br>
                                     <br>
                                     <br>
@@ -101,7 +101,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <div class=" col-3 p-0 m-0">
                             <div class="container p-3" >
                                 <div class="stockcon">
-                                    <h4>AB+</h4>
+                                    <h4 class="blood1">AB+</h4>
                                     <br>
                                     <br>
                                     <br>
@@ -113,7 +113,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <div class="col-3 p-0 m-0">
                             <div class="container p-3" >
                                 <div class="stockcon">
-                                    <h4>AB-</h4>
+                                    <h4 class="blood1">AB-</h4>
                                     <br>
                                     <br>
                                     <br>
@@ -125,7 +125,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <div class="col-3 p-0 m-0">
                             <div class="container p-3" >
                                 <div class="stockcon">
-                                    <h4>O+</h4>
+                                    <h4 class="blood1">O+</h4>
                                     <br>
                                     <br>
                                     <br>
@@ -137,7 +137,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <div class="col-3 p-0 m-0">
                             <div class="container p-3" >
                                 <div class="stockcon">
-                                    <h4>O-</h4>
+                                    <h4 class="blood1">O-</h4>
                                     <br>
                                     <br>
                                     <br>
@@ -237,8 +237,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <th class="col-2 bgcol p-2">ExpiryDate</th>
                         <th class="col-2 bgcol p-2">Location</th>
                         <th class="col-2 bgcol p-2">Quantity</th>
-                        <th class="col-2 bgcol p-2">Status</th>
-                        <th class="col-1 bgcol p-2">Action</th>
+                        <th class="col-1 bgcol p-2">Status</th>
+                        <th class="col-2 bgcol p-2">Action</th>
                        
 
 
@@ -246,7 +246,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                     <tr>
                         <td class="col-1">B001</td>
-                        <td class="col-2 ">    B+</td>
+                        <td class="col-2 "> B+</td>
                         <td class="col-2">2000-01-20</td>
                         <td class="col-2">Jaffna</td>
                         <td class="col-2">1L</td>

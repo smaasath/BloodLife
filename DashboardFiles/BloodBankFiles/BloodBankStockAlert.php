@@ -52,7 +52,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <div class="col-3 p-0 m-0">
                             <div class="container p-3" >
                                 <div class="alertcon">
-                                    <h4>A+</h4>
+                                    <h4 class="quantity">A+</h4>
                                     <br>
                                     <br>
                                     <br>
@@ -64,7 +64,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <div class="col-3 p-0 m-0">
                             <div class="container p-3" >
                                 <div class="alertcon">
-                                    <h4>A-</h4>
+                                    <h4 class="quantity">A-</h4>
                                     <br>
                                     <br>
                                     <br>
@@ -76,7 +76,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <div class="col-3 p-0 m-0">
                             <div class="container p-3" >
                                 <div class="alertcon">
-                                    <h4>B+</h4>
+                                    <h4 class="quantity">B+</h4>
                                     <br>
                                     <br>
                                     <br>
@@ -88,7 +88,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <div class=" col-3 p-0 m-0">
                             <div class="container p-3" >
                                 <div class="alertcon">
-                                    <h4>B-</h4>
+                                    <h4 class="quantity">B-</h4>
                                     <br>
                                     <br>
                                     <br>
@@ -102,7 +102,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <div class=" col-3 p-0 m-0">
                             <div class="container p-3" >
                                 <div class="alertcon">
-                                    <h4>AB+</h4>
+                                    <h4 class="quantity">AB+</h4>
                                     <br>
                                     <br>
                                     <br>
@@ -114,7 +114,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <div class="col-3 p-0 m-0">
                             <div class="container p-3" >
                                 <div class="alertcon">
-                                    <h4>AB-</h4>
+                                    <h4 class="quantity">AB-</h4>
                                     <br>
                                     <br>
                                     <br>
@@ -126,7 +126,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <div class="col-3 p-0 m-0">
                             <div class="container p-3" >
                                 <div class="alertcon">
-                                    <h4>O+</h4>
+                                    <h4 class="quantity">O+</h4>
                                     <br>
                                     <br>
                                     <br>
@@ -138,7 +138,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <div class="col-3 p-0 m-0">
                             <div class="container p-3" >
                                 <div class="alertcon">
-                                    <h4>O-</h4>
+                                    <h4 class="quantity">O-</h4>
                                     <br>
                                     <br>
                                     <br>

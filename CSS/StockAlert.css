@@ -49,3 +49,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
      border-color: black;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
+.quantity{
+    text-align: center;
+    font-size: 30px;
+}

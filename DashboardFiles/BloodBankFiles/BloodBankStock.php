@@ -153,7 +153,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <div class="input-group rounded p-3">
                         <input type="search" class="form-control rounded" placeholder="Search BloodBank" aria-label="Search" aria-describedby="search-addon" >
                     </div>
-                    <div class="container bg-white m-0 p-0" style=" height: 300px; overflow: scroll;">
+                    <div class="container bg-white m-0 p-0" style=" height: 350px; overflow: scroll;">
 
                     </div>
 
@@ -211,154 +211,180 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     </div>
 
                     <div class="col-2" >
-                        <button type="button" class="btn btn-primary bgcol" onclick="Add()">Add+</button>
+                        <button type="button" class="btn btn-primary bgcol" onclick="Add()" data-bs-toggle="modal" data-bs-target="#exampleModal" >Add+</button>
+                        
+                        
+
+
                     </div>
                 </div>
-
-
-
-
-
-
-
-
-
             </div>
-            <!-- Table body -->
-            <div class="container bg-white m-0 p-0" style=" max-height: 373px; overflow: scroll;">
-                <table class="table table-hover p-0">
-
-                    <!-- Table row -->
 
 
-                    <tr class="sticky-top">
-
-                        <th class="col-1 bgcol p-2">BloodID</th>
-                        <th class="col-2 bgcol p-2">BloodGroup</th>
-                        <th class="col-2 bgcol p-2">ExpiryDate</th>
-                        <th class="col-2 bgcol p-2">Location</th>
-                        <th class="col-1 bgcol p-2">Quantity</th>
-                        <th class="col-2 bgcol p-2">Status</th>
-                        <th class="col-1 bgcol p-2">View</th>
-                        <th class="col-1 bgcol p-2">Edit</th>
 
 
-                    </tr>
-
-                    <tr>
-                        <td class="col-1">B001</td>
-                        <td class="col-2 ">B+</td>
-                        <td class="col-2">2000-01-20</td>
-                        <td class="col-2">Jaffna</td>
-                        <td class="col-1">1L</td>
-                        <td class="col-2">Given</td>
-                        <td class="col-1"><button type="button" class="btn btn-info" onclick="openBloodbankDetails()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-secondary" onclick="Editbloodbank()">Edit</button></td>
-                    </tr>
-
-                    <tr>
-                        <td class="col-1">B001</td>
-                        <td class="col-2">B+</td>
-                        <td class="col-2">2000-01-20</td>
-                        <td class="col-2">Jaffna</td>
-                        <td class="col-1">1L</td>
-                        <td class="col-2">Given</td>
-                        <td class="col-1"><button type="button" class="btn btn-info" onclick="openBloodbankDetails()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-secondary" onclick="Editbloodbank()">Edit</button></td>
-                    </tr>
-
-                    <tr>
-                        <td class="col-1">B001</td>
-                        <td class="col-2">B+</td>
-                        <td class="col-2">2000-01-20</td>
-                        <td class="col-2">Jaffna</td>
-                        <td class="col-1">1L</td>
-                        <td class="col-2">Given</td>
-                        <td class="col-1"><button type="button" class="btn btn-info" onclick="openBloodbankDetails()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-secondary" onclick="Editbloodbank()">Edit</button></td>
-                    </tr>
-
-                    <tr>
-                        <td class="col-1">B001</td>
-                        <td class="col-2">B+</td>
-                        <td class="col-2">2000-01-20</td>
-                        <td class="col-2">Jaffna</td>
-                        <td class="col-1">1L</td>
-                        <td class="col-2">Given</td>
-                        <td class="col-1"><button type="button" class="btn btn-info" onclick="openBloodbankDetails()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-secondary" onclick="Editbloodbank()">Edit</button></td>
-                    </tr>
-
-                    <tr>
-                        <td class="col-1">B001</td>
-                        <td class="col-2">B+</td>
-                        <td class="col-2">2000-01-20</td>
-                        <td class="col-2">Jaffna</td>
-                        <td class="col-1">1L</td>
-                        <td class="col-2">Given</td>
-                        <td class="col-1"><button type="button" class="btn btn-info" onclick="openBloodbankDetails()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-secondary" onclick="Editbloodbank()">Edit</button></td>
-                    </tr>
-
-                    <tr>
-                        <td class="col-1">B001</td>
-                        <td class="col-2">B+</td>
-                        <td class="col-2">2000-01-20</td>
-                        <td class="col-2">Jaffna</td>
-                        <td class="col-1">1L</td>
-                        <td class="col-2">Given</td>
-                        <td class="col-1"><button type="button" class="btn btn-info" onclick="openBloodbankDetails()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-secondary" onclick="Editbloodbank()">Edit</button></td>
-                    </tr>
-
-                    <tr>
-                        <td class="col-1">B001</td>
-                        <td class="col-2">B+</td>
-                        <td class="col-2">2000-01-20</td>
-                        <td class="col-2">Jaffna</td>
-                        <td class="col-1">1L</td>
-                        <td class="col-2">Given</td>
-                        <td class="col-1"><button type="button" class="btn btn-info" onclick="openBloodbankDetails()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-secondary" onclick="Editbloodbank()">Edit</button></td>
-                    </tr>
-
-                    <tr>
-                        <td class="col-1">B001</td>
-                        <td class="col-2">B+</td>
-                        <td class="col-2">2000-01-20</td>
-                        <td class="col-2">Jaffna</td>
-                        <td class="col-1">1L</td>
-                        <td class="col-2">Given</td>
-                        <td class="col-1"><button type="button" class="btn btn-info" onclick="openBloodbankDetails()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-secondary" onclick="Editbloodbank()">Edit</button></td>
-                    </tr>
-
-                    <tr>
-                        <td class="col-1">B001</td>
-                        <td class="col-2">B+</td>
-                        <td class="col-2">2000-01-20</td>
-                        <td class="col-2">Jaffna</td>
-                        <td class="col-1">1L</td>
-                        <td class="col-2">Given</td>
-                        <td class="col-1"><button type="button" class="btn btn-info" onclick="openBloodbankDetails()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-secondary" onclick="Editbloodbank()">Edit</button></td>
-                    </tr>
 
 
-                    <!-- Table row -->
 
-                </table> 
 
-            </div>
-            <br>
-            <!-- Table Head -->
 
         </div>
+        <!-- Table body -->
+        <div class="container bg-white m-0 p-0" style=" max-height: 373px; overflow: scroll;">
+            <table class="table table-hover p-0">
+
+                <!-- Table row -->
+
+
+                <tr class="sticky-top ">
+
+                    <th class="col-1 bgcol p-2">BloodID</th>
+                    <th class="col-2 bgcol p-2">BloodGroup</th>
+                    <th class="col-2 bgcol p-2">ExpiryDate</th>
+                    <th class="col-2 bgcol p-2">Location</th>
+                    <th class="col-1 bgcol p-2">Quantity</th>
+                    <th class="col-1 bgcol p-2">Status</th>
+                    <th class="col-1 bgcol p-2">View</th>
+                    <th class="col-2 bgcol p-2">Edit</th>
+
+
+                </tr>
+
+                <tr>
+                    <td class="col-1 ">B001</td>
+                    <td class="col-2 ">B+</td>
+                    <td class="col-2">2000-01-20</td>
+                    <td class="col-2">Jaffna</td>
+                    <td class="col-1">1L</td>
+                    <td class="col-2">Given</td>
+                    <td class="col-1"><button type="button" class="btn btn-info" onclick="openBloodbankDetails()">View</button></td>
+                    <td class="col-1"><button type="button" class="btn btn-secondary" onclick="Editbloodbank()">Edit</button></td>
+                </tr>
+                <
+
+                <tr>
+                    <td class="col-1">B001</td>
+                    <td class="col-2">B+</td>
+                    <td class="col-2">2000-01-20</td>
+                    <td class="col-2">Jaffna</td>
+                    <td class="col-1">1L</td>
+                    <td class="col-2">Given</td>
+                    <td class="col-1"><button type="button" class="btn btn-info" onclick="openBloodbankDetails()">View</button></td>
+                    <td class="col-1"><button type="button" class="btn btn-secondary" onclick="Editbloodbank()">Edit</button></td>
+                </tr>
+
+                <tr>
+                    <td class="col-1">B001</td>
+                    <td class="col-2">B+</td>
+                    <td class="col-2">2000-01-20</td>
+                    <td class="col-2">Jaffna</td>
+                    <td class="col-1">1L</td>
+                    <td class="col-2">Given</td>
+                    <td class="col-1"><button type="button" class="btn btn-info" onclick="openBloodbankDetails()">View</button></td>
+                    <td class="col-1"><button type="button" class="btn btn-secondary" onclick="Editbloodbank()">Edit</button></td>
+                </tr>
+
+                <tr>
+                    <td class="col-1">B001</td>
+                    <td class="col-2">B+</td>
+                    <td class="col-2">2000-01-20</td>
+                    <td class="col-2">Jaffna</td>
+                    <td class="col-1">1L</td>
+                    <td class="col-2">Given</td>
+                    <td class="col-1"><button type="button" class="btn btn-info" onclick="openBloodbankDetails()">View</button></td>
+                    <td class="col-1"><button type="button" class="btn btn-secondary" onclick="Editbloodbank()">Edit</button></td>
+                </tr>
+
+                <tr>
+                    <td class="col-1">B001</td>
+                    <td class="col-2">B+</td>
+                    <td class="col-2">2000-01-20</td>
+                    <td class="col-2">Jaffna</td>
+                    <td class="col-1">1L</td>
+                    <td class="col-2">Given</td>
+                    <td class="col-1"><button type="button" class="btn btn-info" onclick="openBloodbankDetails()">View</button></td>
+                    <td class="col-1"><button type="button" class="btn btn-secondary" onclick="Editbloodbank()">Edit</button></td>
+                </tr>
+
+                <tr>
+                    <td class="col-1">B001</td>
+                    <td class="col-2">B+</td>
+                    <td class="col-2">2000-01-20</td>
+                    <td class="col-2">Jaffna</td>
+                    <td class="col-1">1L</td>
+                    <td class="col-2">Given</td>
+                    <td class="col-1"><button type="button" class="btn btn-info" onclick="openBloodbankDetails()">View</button></td>
+                    <td class="col-1"><button type="button" class="btn btn-secondary" onclick="Editbloodbank()">Edit</button></td>
+                </tr>
+
+                <tr>
+                    <td class="col-1">B001</td>
+                    <td class="col-2">B+</td>
+                    <td class="col-2">2000-01-20</td>
+                    <td class="col-2">Jaffna</td>
+                    <td class="col-1">1L</td>
+                    <td class="col-2">Given</td>
+                    <td class="col-1"><button type="button" class="btn btn-info" onclick="openBloodbankDetails()">View</button></td>
+                    <td class="col-1"><button type="button" class="btn btn-secondary" onclick="Editbloodbank()">Edit</button></td>
+                </tr>
+
+                <tr>
+                    <td class="col-1">B001</td>
+                    <td class="col-2">B+</td>
+                    <td class="col-2">2000-01-20</td>
+                    <td class="col-2">Jaffna</td>
+                    <td class="col-1">1L</td>
+                    <td class="col-2">Given</td>
+                    <td class="col-1"><button type="button" class="btn btn-info" onclick="openBloodbankDetails()">View</button></td>
+                    <td class="col-1"><button type="button" class="btn btn-secondary" onclick="Editbloodbank()">Edit</button></td>
+                </tr>
+
+                <tr>
+                    <td class="col-1">B001</td>
+                    <td class="col-2">B+</td>
+                    <td class="col-2">2000-01-20</td>
+                    <td class="col-2">Jaffna</td>
+                    <td class="col-1">1L</td>
+                    <td class="col-2">Given</td>
+                    <td class="col-1"><button type="button" class="btn btn-info" onclick="openBloodbankDetails()">View</button></td>
+                    <td class="col-1"><button type="button" class="btn btn-secondary" onclick="Editbloodbank()">Edit</button></td>
+                </tr>
+
+
+                <!-- Table row -->
+
+            </table> 
+
+        </div>
+        <br>
+        <!-- Table Head -->
+
+    </div>
 
 
 
-        <?php
-        // put your code hereg
-        ?>
-    </body>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <?php
+    // put your code hereg
+    ?>
+</body>
 </html>
