@@ -49,6 +49,10 @@
    font-size: 30px;
    
 }
+.blood1{
+   text-align:center; 
+   font-size: 30px;
+}
  .table tr td{
     text-align: center;
 }   
@@ -65,4 +69,10 @@
 .btn-secondary{
     border-color: black;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    
+}
+
+table tr th{
+   text-align: center; 
+  
 }
