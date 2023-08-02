@@ -125,7 +125,7 @@ ul li a:hover{
     text-align: center;
     font-family: arial;
     color: white;
-    background-image: url("Background.jpeg");
+    background-image: url("/Images/Background.jpeg");
     background-repeat: no-repeat;
     background-size: cover;
   }
