@@ -6,9 +6,78 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="../../CSS/Table.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <title></title>
+        <style>
+            body {
+            font-family: Arial, Helvetica, sans-serif;
+            align: center;
+            display: flex;
+            felx:50%;
+            
+            }
+            
+            form {
+            border: 3px solid #f1f1f1;
+            width: 50%;
+            padding-left:25px;
+            padding-right:25px;
+            position: relative;
+            left: 25%;
+            
+            }
+
+            input[type=text], input[type=password] {
+              width: 100%;
+              padding: 12px 20px;
+              margin: 8px 0;
+              display: inline-block;
+              border: 1px solid #ccc;
+              box-sizing: border-box;
+            }
+
+            button {
+              background-color: #04AA6D;
+              color: white;
+              padding: 14px 20px;
+              margin: 8px 0;
+              border: none;
+              cursor: pointer;
+              width: 100%;
+            }
+
+            button:hover {
+              opacity: 0.8;
+            }
+
+            .imgcontainer {
+              text-align: center;
+              margin: 24px 0 12px 0;
+            }
+
+            img.avatar {
+              width: 30%;
+              border-radius: 50%;
+            }
+
+            .container {
+              padding: 16px;
+            }
+
+            span.psw {
+              float: right;
+              padding-top: 16px;
+            }
+
+            span.cpsw {
+              float: right;
+              padding-top: 16px;
+            }
+
+            </style>  
+            
     </head>
     <body>
 
@@ -45,6 +114,36 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         </div>
         <!-- nav bar end -->
         
+        <center> <h2>Super Profile Manage Page</h2> </center>
+
+        <form action="" method="post">
+          <div class="imgcontainer">
+            <img src="../Images/profilepic.png" alt="Avatar" class="avatar">
+          </div>
+
+          <div class="container">
+            <label for="uname"><b>Username</b></label><br>
+            <input type="text" placeholder="Enter Username" name="uname" required><br>
+
+            <label for="psw"><b>Password</b></label><br>
+            <input type="password" placeholder="Enter Password" name="psw" required><br>
+
+            <label for="cpsw"><b>Change Password</b></label><br>
+            <input type="password" placeholder="change your password" name="cpsw" required><br>
+
+            <label>
+              <input type="checkbox" checked="checked" name="remember">Show password
+            </label>
+
+            <button type="submit">Login</button>
+
+          </div>
+
+
+          </div>
+        </form>
+
+
 
         <!-- Table -->
 
