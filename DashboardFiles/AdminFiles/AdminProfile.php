@@ -39,7 +39,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             }
 
             button {
-              background-color: #04AA6D;
+              background-color: #0096FF;
               color: white;
               padding: 14px 20px;
               margin: 8px 0;
