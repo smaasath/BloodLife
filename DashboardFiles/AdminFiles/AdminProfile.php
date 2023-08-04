@@ -127,8 +127,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             
 
 
-            <label for="cpsw"><b> Change Password</b></label><br>
-            <input type="password" placeholder="Enter Password" name="cpsw" id="typepass" required><br>
+           <!--  <label for="cpsw"><b> Change Password</b></label><br>
+            <input type="password" placeholder="Enter Password" name="cpsw" id="typepass" required><br> -->
 
             
              <input type="checkbox" onclick="Toggle()">
@@ -149,13 +149,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <script>
         // Change the type of input to password or text
         function Toggle() {
-            let temp = document.getElementById("typepass");
+            let x = document.getElementById("typepass");
              
-            if (temp.type === "password") {
-                temp.type = "text";
+            if (x.type === "password") {
+                x.type = "text";
             }
             else {
-                temp.type = "password";
+                x.type = "password";
             }
         }
         </script>
