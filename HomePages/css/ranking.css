@@ -157,15 +157,18 @@ ul li a:hover{
 .btn{
     width: 80px;
     height: 40px;
-    background: Black;
-    border: 25px solid black;
+    background: red;
+    border: 2px solid white;
     margin-top: 13px;
-    color: black;
+    color: #fff;
     font-size: 15px;
     border-bottom-right-radius: 5px;
-    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
     transition: 0.2s ease;
     cursor: pointer;
+    float:left;
+    
+    
 }
 .btn:hover{
     color: white;
