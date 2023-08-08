@@ -54,8 +54,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <div class="row align-items-center">
                     <div class="col-3">           
                         <div class="input-group rounded p-3">
-                            <input type="search" class="form-control rounded" placeholder="Search ID" aria-label="Search" aria-describedby="search-addon" >
-
+                            <input type="search" class="form-control rounded" placeholder="Search ID" aria-label="Search" aria-describedby="search-addon"  >
+                             
 
 
                         </div>
@@ -63,7 +63,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     
                     <div class="col-3">           
                         <div class="input-group rounded p-3">
-                            <input type="search" class="form-control rounded" placeholder="Search Name" aria-label="Search" aria-describedby="search-addon" >
+                            <input type="search" class="form-control rounded" placeholder=" Name" aria-label="Search" aria-describedby="search-addon" >
 
 
 
@@ -71,8 +71,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     </div>
                     
                     
-                    <div class="col-3"> 
-                        <select class="form-select" aria-label="Default select example">
+                    <div class="col-2"> 
+                        <select class="form-select" aria-label="Default select example" >
                             <option selected>District</option>
                             <option value="1">Jaffna</option>
                             <option value="2">Badulla</option>

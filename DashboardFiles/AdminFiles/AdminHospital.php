@@ -71,7 +71,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     </div>
                     
                     
-                    <div class="col-3"> 
+                    <div class="col-2"> 
                         <select class="form-select" aria-label="Default select example">
                             <option selected>District</option>
                             <option value="1">Jaffna</option>
