@@ -1,3 +1,13 @@
+
+<?php
+session_start();
+
+if (isset($_GET['page'])) {
+    $_SESSION['selectedLink'] = $_GET['page'];
+}
+?>
+
+
 <!DOCTYPE html>
 <!--
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -30,7 +40,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             <div class="row flex-wrap flex-row-reverse">
                 <!-- large Side bar start-->
 
-                <div id="col2" class="col-2 colordashbord fixed-top">
+                <div id="col2" class="col-2 colordashbord fixed-top" style=" z-index: 10000 !important;">
 
                     <hr class="dashboardhr">
                     <div class="nav nav-pills flex-column mb-auto logoutheight" >
@@ -45,7 +55,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <div class="nav nav-pills flex-column mb-1">
                         <li>
                             
-                            <a href="#" onclick="HHrequest()" class="nav-link navbarcolor"  aria-current="page">
+                            <a href="HospitalDashboard.php?page=hospital" class="nav-link navbarcolor <?php echo ($_SESSION['selectedLink'] ?? '') === 'hospital' ? 'active' : ''; ?><?php echo ($_SESSION['selectedLink'] ?? '') === '' ? 'active' : ''; ?>"  aria-current="page">
                                
                                         <i class="fa-solid fa-square-h fa-xl icondash"></i>
                                    
@@ -58,7 +68,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         
 
                         <li>
-                            <a href="#" onclick="SStockmanage()" class="nav-link navbarcolor"  aria-current="page">
+                            <a href="HospitalDashboard.php?page=stock" class="nav-link navbarcolor <?php echo ($_SESSION['selectedLink'] ?? '') === 'stock' ? 'active' : ''; ?>"  aria-current="page">
                                 
                                         <i class="fa-solid fa-warehouse fa-xl icondash"></i>
                                    
@@ -73,7 +83,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         
 
                         <li>
-                            <a href="#" onclick="pprofile()" class="nav-link navbarcolor"  aria-current="page">
+                            <a href="HospitalDashboard.php?page=profile" class="nav-link navbarcolor <?php echo ($_SESSION['selectedLink'] ?? '') === 'profile' ? 'active' : ''; ?>"  aria-current="page">
                                 
                                         <i class="fa-solid fa-user fa-xl icondash"></i>
                                     
@@ -107,7 +117,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <!--  large Side bar end-->
 
                 <!--  small Side bar start-->
-                <div id="col1" class="col-1 flex-column colordashbord fixed-top">
+                <div id="col1" class="col-1 flex-column colordashbord fixed-top" style=" z-index: 100 !important;">
 
                     <hr class="dashboardhr">
 
@@ -125,16 +135,16 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                     <div style="margin-left: -9px;">
 
-                        <i  href="" onclick="HHrequest()" class="fa-solid fa-square-h fa-xl icondash nav-link navbarcolorafter"></i>
+                        <i  href="HospitalDashboard.php?page=hospital" class="fa-solid fa-square-h fa-xl icondash nav-link navbarcolorafter <?php echo ($_SESSION['selectedLink'] ?? '') === 'hospital' ? 'active' : ''; ?><?php echo ($_SESSION['selectedLink'] ?? '') === '' ? 'active' : ''; ?>"></i>
                     </div>
                     <!-- dashboard icon end -->
                    
                     <div style="margin-left: -9px;">
-                        <i  href="" onclick="SStockmanage()" class="fa-solid fa-warehouse fa-xl icondash nav-link navbarcolorafter"></i>
+                        <i  href="HospitalDashboard.php?page=stock" class="fa-solid fa-warehouse fa-xl icondash nav-link navbarcolorafter <?php echo ($_SESSION['selectedLink'] ?? '') === 'stock' ? 'active' : ''; ?>"></i>
                     </div>
 
                     <div style="margin-left: -9px;">
-                        <i href="" onclick="pprofile()" class="fa-solid fa-user fa-xl icondash nav-link navbarcolorafter"></i>
+                        <i href="HospitalDashboard.php?page=profile" class="fa-solid fa-user fa-xl icondash nav-link navbarcolorafter <?php echo ($_SESSION['selectedLink'] ?? '') === 'profile' ? 'active' : ''; ?>"></i>
                     </div>
 
 
@@ -163,8 +173,27 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                 <!--  body-->
                 <div id="col10"class="col-10 col10edit">
+                    
+                    
 
-                     <?php include '../DashboardFiles/HospitalFiles/HospitalRequest.php'; ?>
+                     <?php
+                      if (isset($_SESSION['selectedLink'])) {
+                        if($_SESSION['selectedLink']=="hospital"){
+                             include '../DashboardFiles/HospitalFiles/HospitalRequest.php';
+                        }elseif ($_SESSION['selectedLink']=="stock") {
+                             include '../DashboardFiles/HospitalFiles/HospitalBloodStock.php';
+                        } else {
+                             include '../DashboardFiles/HospitalFiles/HospitalProfile.php';
+                        }
+    
+
+                    } else {
+                         include '../DashboardFiles/HospitalFiles/HospitalRequest.php';
+                    }
+                     
+                     
+                     
+                     ?>
 
 
                 </div>

@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if (isset($_GET['page'])) {
+    $_SESSION['selectedLink'] = $_GET['page'];
+}
+?>
+
+
 <!DOCTYPE html>
 <!--
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -29,7 +38,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             <div class="row flex-wrap flex-row-reverse">
                 <!-- large Side bar start-->
 
-                <div id="col2" class="col-2 colordashbord fixed-top">
+                <div id="col2" class="col-2 colordashbord fixed-top" style=" z-index: 10000 !important;">
 
                     <hr class="dashboardhr">
                     <div class="nav nav-pills flex-column mb-auto logoutheight" >
@@ -44,7 +53,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <div class="nav nav-pills flex-column mb-1">
                         <li>
 
-                            <a href="#" onclick="AHospital()" class="nav-link navbarcolor"  aria-current="page">
+                            <a href="AdminDashboard.php?page=adminHospital"  class="nav-link navbarcolor <?php echo ($_SESSION['selectedLink'] ?? '') === 'adminHospital' ? 'active' : ''; ?><?php echo ($_SESSION['selectedLink'] ?? '') === '' ? 'active' : ''; ?>"  aria-current="page">
 
                                 <i class="fa-solid fa-square-h fa-xl icondash"></i>
 
@@ -55,7 +64,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         </li>
 
                         <li>
-                            <a href="#" onclick="ABank()" class="nav-link navbarcolor"  aria-current="page">
+                            <a href="AdminDashboard.php?page=adminBank"  class="nav-link navbarcolor <?php echo ($_SESSION['selectedLink'] ?? '') === 'adminBank' ? 'active' : ''; ?>"  aria-current="page">
 
                                 <i class="fa-sharp fa-solid fa-city fa-xl icondash"></i>
 
@@ -67,7 +76,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
                         <li>
-                            <a href="#" onclick="Aprofile()" class="nav-link navbarcolor"  aria-current="page">
+                            <a href="AdminDashboard.php?page=adminProfile"  class="nav-link navbarcolor <?php echo ($_SESSION['selectedLink'] ?? '') === 'adminProfile' ? 'active' : ''; ?>"  aria-current="page">
 
                                 <i class="fa-solid fa-user fa-xl icondash"></i>
 
@@ -101,7 +110,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <!--  large Side bar end-->
 
                 <!--  small Side bar start-->
-                <div id="col1" class="col-1 flex-column colordashbord fixed-top">
+                <div id="col1" class="col-1 flex-column colordashbord fixed-top" style=" z-index: 100!important;">
 
                     <hr class="dashboardhr">
 
@@ -119,17 +128,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                     <div style="margin-left: -9px;">
 
-                        <i  href="" onclick="AHospital()" class="fa-solid fa-square-h fa-xl icondash nav-link navbarcolorafter"></i>
+                        <i  href="AdminDashboard.php?page=adminHospital"  class="fa-solid fa-square-h fa-xl icondash nav-link navbarcolorafter <?php echo ($_SESSION['selectedLink'] ?? '') === 'adminHospital' ? 'active' : ''; ?><?php echo ($_SESSION['selectedLink'] ?? '') === '' ? 'active' : ''; ?>"></i>
                     </div>
                     <!-- dashboard icon end -->
                     <div style="margin-left: -9px;">
 
-                        <i onclick="ABank()" href="" class="fa-sharp fa-solid fa-city fa-xl icondash nav-link navbarcolorafter"></i>
+                        <i  href="AdminDashboard.php?page=adminBank" class="fa-sharp fa-solid fa-city fa-xl icondash nav-link navbarcolorafter <?php echo ($_SESSION['selectedLink'] ?? '') === 'adminBank' ? 'active' : ''; ?>"></i>
                     </div>
 
 
                     <div style="margin-left: -9px;">
-                        <i href="" onclick="Aprofile()" class="fa-solid fa-user fa-xl icondash nav-link navbarcolorafter"></i>
+                        <i href="AdminDashboard.php?page=adminProfile" class="fa-solid fa-user fa-xl icondash nav-link navbarcolorafter <?php echo ($_SESSION['selectedLink'] ?? '') === 'adminProfile' ? 'active' : ''; ?>"></i>
                     </div>
 
 
@@ -159,7 +168,21 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <!--  body-->
                 <div id="col10"class="col-10 col10edit">
 
-                    <?php include '../DashboardFiles/AdminFiles/AdminHospital.php'; ?>
+                    <?php
+                    if (isset($_SESSION['selectedLink'])) {
+                        if($_SESSION['selectedLink']=="adminHospital"){
+                            include '../DashboardFiles/AdminFiles/AdminHospital.php';
+                        }elseif ($_SESSION['selectedLink']=="adminBank") {
+                            include '../DashboardFiles/AdminFiles/AdminBloodBank.php';
+                        } else {
+                            include '../DashboardFiles/AdminFiles/AdminProfile.php';
+                        }
+    
+
+                    } else {
+                        include '../DashboardFiles/AdminFiles/AdminHospital.php';
+                    }
+                    ?>
 
 
                 </div>
