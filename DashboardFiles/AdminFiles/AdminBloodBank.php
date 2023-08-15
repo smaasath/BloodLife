@@ -63,7 +63,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     
                     <div class="col-3">           
                         <div class="input-group rounded p-3">
-                            <input type="search" class="form-control rounded" placeholder=" Name" aria-label="Search" aria-describedby="search-addon" >
+                            <input type="search" class="form-control rounded" placeholder="Search Name" aria-label="Search" aria-describedby="search-addon" >
 
 
 
