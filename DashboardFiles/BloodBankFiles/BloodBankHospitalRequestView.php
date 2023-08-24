@@ -43,9 +43,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <!-- nav bar end -->
         
         <!-- body start -->
-        <h1>BL Req</h1>
-
- <a href="BloodBankDashboard.php?page=bbrv" style="text-decoration: none;"><button> click</button></a>
+        <h1>BL Hos Req 2</h1>
+       
+        <a href="BloodBankDashboard.php?page=bbhra" style="text-decoration: none;"><button> click</button></a>
 
 
         <?php

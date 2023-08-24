@@ -55,7 +55,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <div class="nav nav-pills flex-column mb-1">
                         <li>
 
-                            <a href="BloodBankDashboard.php?page=bloodBankHospital" class="nav-link navbarcolor <?php echo ($_SESSION['selectedLink'] ?? '') === 'bloodBankHospital' ? 'active' : ''; ?><?php echo ($_SESSION['selectedLink'] ?? '') === '' ? 'active' : ''; ?>"  aria-current="page">
+                            <a href="BloodBankDashboard.php?page=bloodBankHospital" class="nav-link navbarcolor <?php echo ($_SESSION['selectedLink'] ?? '') === 'bloodBankHospital' ? 'active' : ''; ?><?php echo ($_SESSION['selectedLink'] ?? '') === '' ? 'active' : ''; ?><?php echo ($_SESSION['selectedLink'] ?? '') === 'bbhrv' ? 'active' : ''; ?><?php echo ($_SESSION['selectedLink'] ?? '') === 'bbhra' ? 'active' : ''; ?>"  aria-current="page">
 
                                 <i class="fa-solid fa-square-h fa-xl icondash"></i>
 
@@ -66,7 +66,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         </li>
 
                         <li>
-                            <a href="BloodBankDashboard.php?page=bankrequest" class="nav-link navbarcolor <?php echo ($_SESSION['selectedLink'] ?? '') === 'bankrequest' ? 'active' : ''; ?>"  aria-current="page">
+                            <a href="BloodBankDashboard.php?page=bankrequest" class="nav-link navbarcolor <?php echo ($_SESSION['selectedLink'] ?? '') === 'bankrequest' ? 'active' : ''; ?><?php echo ($_SESSION['selectedLink'] ?? '') === 'bbrv' ? 'active' : ''; ?><?php echo ($_SESSION['selectedLink'] ?? '') === 'bbre' ? 'active' : ''; ?>"  aria-current="page">
 
                                 <i class="fa-sharp fa-solid fa-city fa-xl icondash"></i>
 
@@ -174,12 +174,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                     <div style="margin-left: -9px;">
 
-                        <i href="BloodBankDashboard.php?page=bloodBankHospital" class="fa-solid fa-square-h fa-xl icondash nav-link navbarcolorafter <?php echo ($_SESSION['selectedLink'] ?? '') === 'bloodBankHospital' ? 'active' : ''; ?><?php echo ($_SESSION['selectedLink'] ?? '') === '' ? 'active' : ''; ?>"></i>
+                        <i href="BloodBankDashboard.php?page=bloodBankHospital" class="fa-solid fa-square-h fa-xl icondash nav-link navbarcolorafter <?php echo ($_SESSION['selectedLink'] ?? '') === 'bloodBankHospital' ? 'active' : ''; ?><?php echo ($_SESSION['selectedLink'] ?? '') === '' ? 'active' : ''; ?><?php echo ($_SESSION['selectedLink'] ?? '') === 'bbhrv' ? 'active' : ''; ?><?php echo ($_SESSION['selectedLink'] ?? '') === 'bbhra' ? 'active' : ''; ?>"></i>
                     </div>
                     <!-- dashboard icon end -->
                     <div style="margin-left: -9px;">
 
-                        <i href="BloodBankDashboard.php?page=bankrequest" class="fa-sharp fa-solid fa-city fa-xl icondash nav-link navbarcolorafter <?php echo ($_SESSION['selectedLink'] ?? '') === 'bankrequest' ? 'active' : ''; ?>"></i>
+                        <i href="BloodBankDashboard.php?page=bankrequest" class="fa-sharp fa-solid fa-city fa-xl icondash nav-link navbarcolorafter <?php echo ($_SESSION['selectedLink'] ?? '') === 'bankrequest' ? 'active' : ''; ?><?php echo ($_SESSION['selectedLink'] ?? '') === 'bbrv' ? 'active' : ''; ?>"></i>
                     </div>
 
                     <div style="margin-left: -9px;">
@@ -241,8 +241,16 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             include '../DashboardFiles/BloodBankFiles/BloodBankStockAlert.php';
                         } elseif ($_SESSION['selectedLink'] == "campaign") {
                             include '../DashboardFiles/BloodBankFiles/BloodBankCampaign.php';
-                        }elseif ($_SESSION['selectedLink'] == "donor") {
+                        } elseif ($_SESSION['selectedLink'] == "donor") {
                             include '../DashboardFiles/BloodBankFiles/BloodBankDonor.php';
+                        } elseif ($_SESSION['selectedLink'] == "bbhrv") {
+                            include '../DashboardFiles/BloodBankFiles/BloodBankHospitalRequestView.php';
+                        } elseif ($_SESSION['selectedLink'] == "bbhra") {
+                            include '../DashboardFiles/BloodBankFiles/BloodBankHospitalRequestAccept.php';
+                        }elseif ($_SESSION['selectedLink'] == "bbrv") {
+                            include '../DashboardFiles/BloodBankFiles/BloodBankRequestView.php';
+                        }elseif ($_SESSION['selectedLink'] == "bbre") {
+                            include '../DashboardFiles/BloodBankFiles/BloodBankRequestEdit.php';
                         } else {
                             include '../DashboardFiles/BloodBankFiles/BloodBankProfile.php';
                         }

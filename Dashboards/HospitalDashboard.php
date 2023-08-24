@@ -55,7 +55,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <div class="nav nav-pills flex-column mb-1">
                         <li>
                             
-                            <a href="HospitalDashboard.php?page=hospital" class="nav-link navbarcolor <?php echo ($_SESSION['selectedLink'] ?? '') === 'hospital' ? 'active' : ''; ?><?php echo ($_SESSION['selectedLink'] ?? '') === '' ? 'active' : ''; ?>"  aria-current="page">
+                            <a href="HospitalDashboard.php?page=hospital" class="nav-link navbarcolor <?php echo ($_SESSION['selectedLink'] ?? '') === 'hospital' ? 'active' : ''; ?><?php echo ($_SESSION['selectedLink'] ?? '') === '' ? 'active' : ''; ?><?php echo ($_SESSION['selectedLink'] ?? '') === 'hospitalreqview' ? 'active' : ''; ?><?php echo ($_SESSION['selectedLink'] ?? '') === 'hospitalreqedit' ? 'active' : ''; ?>"  aria-current="page">
                                
                                         <i class="fa-solid fa-square-h fa-xl icondash"></i>
                                    
@@ -135,7 +135,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                     <div style="margin-left: -9px;">
 
-                        <i  href="HospitalDashboard.php?page=hospital" class="fa-solid fa-square-h fa-xl icondash nav-link navbarcolorafter <?php echo ($_SESSION['selectedLink'] ?? '') === 'hospital' ? 'active' : ''; ?><?php echo ($_SESSION['selectedLink'] ?? '') === '' ? 'active' : ''; ?>"></i>
+                        <i  href="HospitalDashboard.php?page=hospital" class="fa-solid fa-square-h fa-xl icondash nav-link navbarcolorafter <?php echo ($_SESSION['selectedLink'] ?? '') === 'hospital' ? 'active' : ''; ?><?php echo ($_SESSION['selectedLink'] ?? '') === '' ? 'active' : ''; ?><?php echo ($_SESSION['selectedLink'] ?? '') === 'hospitalreqview' ? 'active' : ''; ?><?php echo ($_SESSION['selectedLink'] ?? '') === 'hospitalreqedit' ? 'active' : ''; ?>"></i>
                     </div>
                     <!-- dashboard icon end -->
                    
@@ -182,6 +182,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                              include '../DashboardFiles/HospitalFiles/HospitalRequest.php';
                         }elseif ($_SESSION['selectedLink']=="stock") {
                              include '../DashboardFiles/HospitalFiles/HospitalBloodStock.php';
+                        }elseif ($_SESSION['selectedLink']=="hospitalreqview") {
+                             include '../DashboardFiles/HospitalFiles/HospitalRequestView.php';
+                        }elseif ($_SESSION['selectedLink']=="hospitalreqedit") {
+                             include '../DashboardFiles/HospitalFiles/HospitalRequestEdit.php';
                         } else {
                              include '../DashboardFiles/HospitalFiles/HospitalProfile.php';
                         }
