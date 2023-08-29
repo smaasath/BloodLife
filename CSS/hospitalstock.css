@@ -8,7 +8,7 @@
     background-color: white !important;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     height: 300px;
-    
+    padding-top: 50px;
 }
 .p-3 {
     padding: 1.5rem!important;
@@ -128,4 +128,11 @@ textarea {
 table tr th{
    text-align: center; 
   
+}
+select .district{
+    margin-top: 10px;
+}
+
+.cadddd{
+    margin-top: 50px;
 }

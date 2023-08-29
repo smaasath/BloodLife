@@ -7,6 +7,7 @@
     border: 1px solid rgba(255, 255, 255, .25);
     background-color: white !important;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    padding-top: 50px;
 
 
 }
@@ -74,5 +75,4 @@
 
 table tr th{
    text-align: center; 
-  
 }

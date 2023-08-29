@@ -54,9 +54,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                     <h4 class="blood1">A+</h4>
                                     <br>
                                     <br>
-                                    <br>
-                                    <br>
-                                    <br>
+
                                 </div> 
                             </div>
                         </div>
@@ -66,9 +64,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                     <h4 class="blood1">A-</h4>
                                     <br>
                                     <br>
-                                    <br>
-                                    <br>
-                                    <br>
+
                                 </div> 
                             </div>
                         </div>
@@ -78,9 +74,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                     <h4 class="blood1">B+</h4>
                                     <br>
                                     <br>
-                                    <br>
-                                    <br>
-                                    <br>
+
                                 </div> 
                             </div>
                         </div>
@@ -90,9 +84,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                     <h4 class="blood1">B-</h4>
                                     <br>
                                     <br>
-                                    <br>
-                                    <br>
-                                    <br>
+
                                 </div> 
                             </div>
                         </div>
@@ -104,9 +96,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                     <h4 class="blood1">AB+</h4>
                                     <br>
                                     <br>
-                                    <br>
-                                    <br>
-                                    <br>
+
                                 </div> 
                             </div>
                         </div>
@@ -116,9 +106,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                     <h4 class="blood1">AB-</h4>
                                     <br>
                                     <br>
-                                    <br>
-                                    <br>
-                                    <br>
+
                                 </div> 
                             </div>
                         </div>
@@ -128,9 +116,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                     <h4 class="blood1">O+</h4>
                                     <br>
                                     <br>
-                                    <br>
-                                    <br>
-                                    <br>
+
                                 </div> 
                             </div>
                         </div>
@@ -140,22 +126,49 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                     <h4 class="blood1">O-</h4>
                                     <br>
                                     <br>
-                                    <br>
-                                    <br>
-                                    <br>
+
                                 </div> 
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class ="card1 col-2 m-1 " >           
-                    <div class="input-group rounded p-3">
-                        <input type="search" class="form-control rounded" placeholder="Search BloodBank" aria-label="Search" aria-describedby="search-addon" >
-                    </div>
-                    <div class="container bg-white m-0 p-0" style=" height: 300px; overflow: scroll;">
+                <div class ="card1 col-2 m-1 " >   
 
-                    </div>
+                    <select  class="district" id="district" onchange="functionTest(this.value)">
+                         <option>Select District</option>
+                        <?php
+                        require '../classes/district.php';
+
+                        use classes\district;
+
+                        
+
+                        $dataArray = district::getAllDistrict(); // Retrieve district data using the "getAllDistrict()" method
+                        
+                        foreach ($dataArray as $district){
+                            
+                           ?>
+                       
+                        <option  value="<?php echo $district['district']; ?>"><?php echo $district['district']; ?></option>
+                         <?php
+                        }
+                        ?>
+                    </select>
+
+                    <br>
+                    <br>
+                    <select  class="division" id="divisionDropDown" onchange="getBloodBank(this.value)">
+                       <option>Select Division</option> 
+
+                    </select>
+                    <br>
+                    <br>
+                    <select  class="bloodbank" id="bloodbankDropDown" >
+                        <option>Select Blood Bank</option>
+
+                    </select>
+
 
                 </div>
                 <div class ="card1 col m-1 " >
@@ -211,7 +224,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         </select>
                     </div>
 
-                    
+
                 </div>
 
 
@@ -232,12 +245,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <th class="col-2 bgcol p-2">Quantity</th>
                         <th class="col-1 bgcol p-2">Status</th>
                         <th class="col-2 bgcol p-2">Action</th>
-                       
+
 
 
                     </tr>
 
-                   
+
 
                     <tr>
                         <td class="col-1">B001</td>
@@ -247,10 +260,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <td class="col-2">1L</td>
                         <td class="col-2">Given</td>
                         <td class="col-1"><button type="button" class="btn btn-info" onclick="openBloodbankDetails()" data-bs-toggle="modal" data-bs-target="#viewModal">View</button></td>
-                       
+
                     </tr>
 
-                    
+
 
 
                     <!-- Table row -->
@@ -263,7 +276,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
         </div>
         <-<!--view -->
-         <div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="view" aria-hidden="true">
+        <div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="view" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -276,7 +289,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             <input type="text" class="form-control" id="BloodID" name="BloodID"><br>
                             <label for="BloodGroup">BloodGroup:</label>
                             <input type="text" class="form-control" id="BloodGroup" name="BloodGroup"><br>
-                             <label for="Location">Location:</label>
+                            <label for="Location">Location:</label>
                             <input type="text" class="form-control" id="Location" name="Location"><br>
                             <label for="Quantity">Quantity:</label>
                             <input type="text" class="form-control" id="Quantity" name="Quantity"><br>
@@ -290,15 +303,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             <input type="text" class="form-control" id="BloodbankID" name="BloodbankID"><br>
                             <label for="Address">Address:</label>
                             <input type="text" class="form-control" id="Address" name="Address"><br>
-                             <label for="Contact No">Contact No:</label>
+                            <label for="Contact No">Contact No:</label>
                             <input type="text" class="form-control" id="Contact No" name="Contact No"><br>
-                             <label for="Email">Email:</label>
+                            <label for="Email">Email:</label>
                             <input type="text" class="form-control" id="Email" name="Email"><br>
                         </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
-                        
+
 
                     </div>
                 </div>
@@ -306,7 +319,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         </div>
 
         <?php
-        // put your code here
+// put your code here
         ?>
     </body>
 </html>
