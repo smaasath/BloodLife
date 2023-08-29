@@ -215,13 +215,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </div>
 
 
-
-
-
-
-
-
-
             </div>
             <!-- Table body -->
             <div class="container bg-white m-0 p-0" style=" max-height: 373px; overflow: scroll;">
@@ -244,16 +237,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                     </tr>
 
-                    <tr>
-                        <td class="col-1">B001</td>
-                        <td class="col-2 "> B+</td>
-                        <td class="col-2">2000-01-20</td>
-                        <td class="col-2">Jaffna</td>
-                        <td class="col-2">1L</td>
-                        <td class="col-2">Given</td>
-                        <td class="col-1"><button type="button" class="btn btn-info" onclick="openBloodbankDetails()">View</button></td>
-                        
-                    </tr>
+                   
 
                     <tr>
                         <td class="col-1">B001</td>
@@ -262,86 +246,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <td class="col-2">Jaffna</td>
                         <td class="col-2">1L</td>
                         <td class="col-2">Given</td>
-                        <td class="col-1"><button type="button" class="btn btn-info" onclick="openBloodbankDetails()">View</button></td>
+                        <td class="col-1"><button type="button" class="btn btn-info" onclick="openBloodbankDetails()" data-bs-toggle="modal" data-bs-target="#viewModal">View</button></td>
                        
                     </tr>
 
-                    <tr>
-                        <td class="col-1">B001</td>
-                        <td class="col-2">B+</td>
-                        <td class="col-2">2000-01-20</td>
-                        <td class="col-2">Jaffna</td>
-                        <td class="col-2">1L</td>
-                        <td class="col-2">Given</td>
-                        <td class="col-1"><button type="button" class="btn btn-info" onclick="openBloodbankDetails()">View</button></td>
-                       
-                    </tr>
-
-                    <tr>
-                        <td class="col-1">B001</td>
-                        <td class="col-2">B+</td>
-                        <td class="col-2">2000-01-20</td>
-                        <td class="col-2">Jaffna</td>
-                        <td class="col-2">1L</td>
-                        <td class="col-2">Given</td>
-                        <td class="col-1"><button type="button" class="btn btn-info" onclick="openBloodbankDetails()">View</button></td>
-                        
-                    </tr>
-
-                    <tr>
-                        <td class="col-1">B001</td>
-                        <td class="col-2">B+</td>
-                        <td class="col-2">2000-01-20</td>
-                        <td class="col-2">Jaffna</td>
-                        <td class="col-2">1L</td>
-                        <td class="col-2">Given</td>
-                        <td class="col-1"><button type="button" class="btn btn-info" onclick="openBloodbankDetails()">View</button></td>
-                        
-                    </tr>
-
-                    <tr>
-                        <td class="col-1">B001</td>
-                        <td class="col-2">B+</td>
-                        <td class="col-2">2000-01-20</td>
-                        <td class="col-2">Jaffna</td>
-                        <td class="col-2">1L</td>
-                        <td class="col-2">Given</td>
-                        <td class="col-1"><button type="button" class="btn btn-info" onclick="openBloodbankDetails()">View</button></td>
-                       
-                    </tr>
-
-                    <tr>
-                        <td class="col-1">B001</td>
-                        <td class="col-2">B+</td>
-                        <td class="col-2">2000-01-20</td>
-                        <td class="col-2">Jaffna</td>
-                        <td class="col-2">1L</td>
-                        <td class="col-2">Given</td>
-                        <td class="col-1"><button type="button" class="btn btn-info" onclick="openBloodbankDetails()">View</button></td>
-                        
-                    </tr>
-
-                    <tr>
-                        <td class="col-1">B001</td>
-                        <td class="col-2">B+</td>
-                        <td class="col-2">2000-01-20</td>
-                        <td class="col-2">Jaffna</td>
-                        <td class="col-2">1L</td>
-                        <td class="col-2">Given</td>
-                        <td class="col-1"><button type="button" class="btn btn-info" onclick="openBloodbankDetails()">View</button></td>
-                        
-                    </tr>
-
-                    <tr>
-                        <td class="col-1">B001</td>
-                        <td class="col-2">B+</td>
-                        <td class="col-2">2000-01-20</td>
-                        <td class="col-2">Jaffna</td>
-                        <td class="col-2">1L</td>
-                        <td class="col-2 ">Given</td>
-                        <td class="col-1"><button type="button" class="btn btn-info" onclick="openBloodbankDetails()">View</button></td>
-                        
-                    </tr>
+                    
 
 
                     <!-- Table row -->
@@ -352,6 +261,48 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             <br>
             <!-- Table Head -->
 
+        </div>
+        <-<!--view -->
+         <div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="view" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="view">VIEW DETAILS</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <label for="BloodID">BloodID:</label>
+                            <input type="text" class="form-control" id="BloodID" name="BloodID"><br>
+                            <label for="BloodGroup">BloodGroup:</label>
+                            <input type="text" class="form-control" id="BloodGroup" name="BloodGroup"><br>
+                             <label for="Location">Location:</label>
+                            <input type="text" class="form-control" id="Location" name="Location"><br>
+                            <label for="Quantity">Quantity:</label>
+                            <input type="text" class="form-control" id="Quantity" name="Quantity"><br>
+                            <label for="Status">Status:</label>
+                            <input type="text" class="form-control" id="Status" name="Status"><br>
+                            <label for="ExpiryDate">ExpiryDate:</label>
+                            <input type="text" class="form-control" id="ExpiryDate" name="ExpiryDate"><br>
+                            <label for="Bloodbank">Bloodbank:</label>
+                            <input type="text" class="form-control" id="Bloodbank" name="Bloodbank"><br>
+                            <label for="BloodbankID">BloodbankID:</label>
+                            <input type="text" class="form-control" id="BloodbankID" name="BloodbankID"><br>
+                            <label for="Address">Address:</label>
+                            <input type="text" class="form-control" id="Address" name="Address"><br>
+                             <label for="Contact No">Contact No:</label>
+                            <input type="text" class="form-control" id="Contact No" name="Contact No"><br>
+                             <label for="Email">Email:</label>
+                            <input type="text" class="form-control" id="Email" name="Email"><br>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+                        
+
+                    </div>
+                </div>
+            </div>
         </div>
 
         <?php

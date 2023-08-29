@@ -151,9 +151,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                 <div class ="card1 col-2 m-1 " >           
                     <div class="input-group rounded p-3">
-                        <input type="search" class="form-control rounded" placeholder="Search BloodBank" aria-label="Search" aria-describedby="search-addon" >
+                       
                     </div>
-                    <div class="container bg-white m-0 p-0" style=" height: 350px; overflow: scroll;">
+                    <div class="container bg-white m-0 p-0">
 
                     </div>
 
@@ -212,8 +212,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                     <div class="col-2" >
                         <button type="button" class="btn btn-primary bgcol" onclick="Add()" data-bs-toggle="modal" data-bs-target="#exampleModal" >Add+</button>
-                        
-                        
+
+
 
 
                     </div>
@@ -228,163 +228,166 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
 
-        </div>
-        <!-- Table body -->
-        <div class="container bg-white m-0 p-0" style=" max-height: 373px; overflow: scroll;">
-            <table class="table table-hover p-0">
-
-                <!-- Table row -->
 
 
-                <tr class="sticky-top ">
+            <!-- Table body -->
+            <div class="container bg-white m-0 p-0" style=" max-height: 373px; overflow: scroll;">
+                <table class="table table-hover p-0">
 
-                    <th class="col-1 bgcol p-2">BloodID</th>
-                    <th class="col-2 bgcol p-2">BloodGroup</th>
-                    <th class="col-2 bgcol p-2">ExpiryDate</th>
-                    <th class="col-2 bgcol p-2">Location</th>
-                    <th class="col-1 bgcol p-2">Quantity</th>
-                    <th class="col-1 bgcol p-2">Status</th>
-                    <th class="col-1 bgcol p-2">View</th>
-                    <th class="col-2 bgcol p-2">Edit</th>
+                    <!-- Table row -->
 
 
-                </tr>
+                    <tr class="sticky-top ">
 
-                <tr>
-                    <td class="col-1 ">B001</td>
-                    <td class="col-2 ">B+</td>
-                    <td class="col-2">2000-01-20</td>
-                    <td class="col-2">Jaffna</td>
-                    <td class="col-1">1L</td>
-                    <td class="col-2">Given</td>
-                    <td class="col-1"><button type="button" class="btn btn-info" onclick="openBloodbankDetails()">View</button></td>
-                    <td class="col-1"><button type="button" class="btn btn-secondary" onclick="Editbloodbank()">Edit</button></td>
-                </tr>
-                <
-
-                <tr>
-                    <td class="col-1">B001</td>
-                    <td class="col-2">B+</td>
-                    <td class="col-2">2000-01-20</td>
-                    <td class="col-2">Jaffna</td>
-                    <td class="col-1">1L</td>
-                    <td class="col-2">Given</td>
-                    <td class="col-1"><button type="button" class="btn btn-info" onclick="openBloodbankDetails()">View</button></td>
-                    <td class="col-1"><button type="button" class="btn btn-secondary" onclick="Editbloodbank()">Edit</button></td>
-                </tr>
-
-                <tr>
-                    <td class="col-1">B001</td>
-                    <td class="col-2">B+</td>
-                    <td class="col-2">2000-01-20</td>
-                    <td class="col-2">Jaffna</td>
-                    <td class="col-1">1L</td>
-                    <td class="col-2">Given</td>
-                    <td class="col-1"><button type="button" class="btn btn-info" onclick="openBloodbankDetails()">View</button></td>
-                    <td class="col-1"><button type="button" class="btn btn-secondary" onclick="Editbloodbank()">Edit</button></td>
-                </tr>
-
-                <tr>
-                    <td class="col-1">B001</td>
-                    <td class="col-2">B+</td>
-                    <td class="col-2">2000-01-20</td>
-                    <td class="col-2">Jaffna</td>
-                    <td class="col-1">1L</td>
-                    <td class="col-2">Given</td>
-                    <td class="col-1"><button type="button" class="btn btn-info" onclick="openBloodbankDetails()">View</button></td>
-                    <td class="col-1"><button type="button" class="btn btn-secondary" onclick="Editbloodbank()">Edit</button></td>
-                </tr>
-
-                <tr>
-                    <td class="col-1">B001</td>
-                    <td class="col-2">B+</td>
-                    <td class="col-2">2000-01-20</td>
-                    <td class="col-2">Jaffna</td>
-                    <td class="col-1">1L</td>
-                    <td class="col-2">Given</td>
-                    <td class="col-1"><button type="button" class="btn btn-info" onclick="openBloodbankDetails()">View</button></td>
-                    <td class="col-1"><button type="button" class="btn btn-secondary" onclick="Editbloodbank()">Edit</button></td>
-                </tr>
-
-                <tr>
-                    <td class="col-1">B001</td>
-                    <td class="col-2">B+</td>
-                    <td class="col-2">2000-01-20</td>
-                    <td class="col-2">Jaffna</td>
-                    <td class="col-1">1L</td>
-                    <td class="col-2">Given</td>
-                    <td class="col-1"><button type="button" class="btn btn-info" onclick="openBloodbankDetails()">View</button></td>
-                    <td class="col-1"><button type="button" class="btn btn-secondary" onclick="Editbloodbank()">Edit</button></td>
-                </tr>
-
-                <tr>
-                    <td class="col-1">B001</td>
-                    <td class="col-2">B+</td>
-                    <td class="col-2">2000-01-20</td>
-                    <td class="col-2">Jaffna</td>
-                    <td class="col-1">1L</td>
-                    <td class="col-2">Given</td>
-                    <td class="col-1"><button type="button" class="btn btn-info" onclick="openBloodbankDetails()">View</button></td>
-                    <td class="col-1"><button type="button" class="btn btn-secondary" onclick="Editbloodbank()">Edit</button></td>
-                </tr>
-
-                <tr>
-                    <td class="col-1">B001</td>
-                    <td class="col-2">B+</td>
-                    <td class="col-2">2000-01-20</td>
-                    <td class="col-2">Jaffna</td>
-                    <td class="col-1">1L</td>
-                    <td class="col-2">Given</td>
-                    <td class="col-1"><button type="button" class="btn btn-info" onclick="openBloodbankDetails()">View</button></td>
-                    <td class="col-1"><button type="button" class="btn btn-secondary" onclick="Editbloodbank()">Edit</button></td>
-                </tr>
-
-                <tr>
-                    <td class="col-1">B001</td>
-                    <td class="col-2">B+</td>
-                    <td class="col-2">2000-01-20</td>
-                    <td class="col-2">Jaffna</td>
-                    <td class="col-1">1L</td>
-                    <td class="col-2">Given</td>
-                    <td class="col-1"><button type="button" class="btn btn-info" onclick="openBloodbankDetails()">View</button></td>
-                    <td class="col-1"><button type="button" class="btn btn-secondary" onclick="Editbloodbank()">Edit</button></td>
-                </tr>
+                        <th class="col-1 bgcol p-2">BloodID</th>
+                        <th class="col-2 bgcol p-2">BloodGroup</th>
+                        <th class="col-2 bgcol p-2">ExpiryDate</th>
+                        <th class="col-2 bgcol p-2">Location</th>
+                        <th class="col-1 bgcol p-2">Quantity</th>
+                        <th class="col-1 bgcol p-2">Status</th>
+                        <th class="col-1 bgcol p-2">View</th>
+                        <th class="col-2 bgcol p-2">Edit</th>
 
 
-                <!-- Table row -->
+                    </tr>
 
-            </table> 
+                    <tr>
+                        <td class="col-1 ">B001</td>
+                        <td class="col-2 ">B+</td>
+                        <td class="col-2">2000-01-20</td>
+                        <td class="col-2">Jaffna</td>
+                        <td class="col-1">1L</td>
+                        <td class="col-2">Given</td>
+                        <td class="col-1"><button type="button" class="btn btn-info" onclick="openBloodbankDetails()"data-bs-toggle="modal" data-bs-target="#viewModal" >View</button></td>
+                        <td class="col-1"><button type="button" class="btn btn-secondary" onclick="Editbloodbank()" data-bs-toggle="modal" data-bs-target="#editModal" >Edit</button></td>
+                    </tr>
+
+
+                   
+
+
+
+
+                    <!-- Table row -->
+
+                </table> 
+
+            </div>
+            <br>
+            <!-- Table Head -->
 
         </div>
-        <br>
-        <!-- Table Head -->
-
-    </div>
 
 
 
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
+        <!-- Add details -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">ADD DETAILS</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <label for="BloodID">BloodID:</label>
+                            <input type="text" class="form-control" id="BloodID" name="BloodID"><br>
+                            <label for="BloodGroup">BloodGroup:</label>
+                            <input type="text" class="form-control" id="BloodGroup" name="BloodGroup"><br>
+                            <label for="Quantity">Quantity:</label>
+                            <input type="text" class="form-control" id="Quantity" name="Quantity"><br>
+                            <label for="ExpiryDate">ExpiryDate:</label>
+                            <input type="text" class="form-control" id="ExpiryDate" name="ExpiryDate"><br>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">Save</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 
-    <?php
-    // put your code hereg
-    ?>
-</body>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VIEW -->
+        
+        <div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="view" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="view">VIEW DETAILS</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <label for="BloodID">BloodID:</label>
+                            <input type="text" class="form-control" id="BloodID" name="BloodID"><br>
+                            <label for="BloodGroup">BloodGroup:</label>
+                            <input type="text" class="form-control" id="BloodGroup" name="BloodGroup"><br>
+                            <label for="Status">Status:</label>
+                            <input type="text" class="form-control" id="Status" name="Status"><br>
+                            <label for="Quantity">Quantity:</label>
+                            <input type="text" class="form-control" id="Quantity" name="Quantity"><br>
+                            <label for="ExpiryDate">ExpiryDate:</label>
+                            <input type="text" class="form-control" id="ExpiryDate" name="ExpiryDate"><br>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+                        
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <!-- edit -->
+        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="edit" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="edit">VIEW DETAILS</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <label for="BloodID">BloodID:</label>
+                            <input type="text" class="form-control" id="BloodID" name="BloodID"><br>
+                            <label for="BloodGroup">BloodGroup:</label>
+                            <input type="text" class="form-control" id="BloodGroup" name="BloodGroup"><br>
+                             <label for="Location">Location:</label>
+                            <input type="text" class="form-control" id="Location" name="Location"><br>
+                            <label for="Quantity">Quantity:</label>
+                            <input type="text" class="form-control" id="Quantity" name="Quantity"><br>
+                            <label for="Status">Status:</label>
+                            <input type="text" class="form-control" id="Status" name="Status"><br>
+                            <label for="ExpiryDate">ExpiryDate:</label>
+                            <input type="text" class="form-control" id="ExpiryDate" name="ExpiryDate"><br>
+                            <label for="Bloodbank">Bloodbank:</label>
+                            <input type="text" class="form-control" id="Bloodbank" name="Bloodbank"><br>
+                            <label for="BloodbankID">BloodbankID:</label>
+                            <input type="text" class="form-control" id="BloodbankID" name="BloodbankID"><br>
+                            <label for="Address">Address:</label>
+                            <input type="text" class="form-control" id="Address" name="Address"><br>
+                             <label for="Contact No">Contact No:</label>
+                            <input type="text" class="form-control" id="Contact No" name="Contact No"><br>
+                             <label for="Email">Email:</label>
+                            <input type="text" class="form-control" id="Email" name="Email"><br>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">Save</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <?php
+        // put your code hereg
+        ?>
+    </body>
 </html>
