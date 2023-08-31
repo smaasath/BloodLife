@@ -16,7 +16,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <title></title>
        
         
-        <link rel="stylesheet" href="../../CSS/BloodBankRequest.css">
+       
        
              <link rel="stylesheet" href="../CSS/BloodBankHSRequest.css">
     </head>
@@ -105,18 +105,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <label for="available-quantity">Available Quantity</label>
                     <input type="number" id="available-quantity" disabled>
                 </div>
-                <div class="buttons">
-                    <button class="button">Accept</button>
-                    <button class="button">Publish</button>
-                </div>
+                
             </div>
         </div>
+        <div class="buttons">
+            <button class="btn btn-primary" style="background-color: green !important;border: none">Accept</button>
+                    <button class="btn btn-primary" style="background-color: blue !important;border: none">Publish</button>
+                </div>
 
 <div class="container-03">
-            <div style="margin-left:50px;margin-right: 50px">
-            <div class ="card1 col-5 p-3 m-1" >
+   <div style="margin-left:20px; margin-right: 20px">
+            <div class ="card1 col p-3 m-1" >
                 <div class="row">
-                    <div class="col-3 p-0 m-0">
+                    <div class="col-6 p-0 m-0">
                         <div class="container p-3" >
                             <div class="stockcon">
                                 <h4 class="blood">A+</h4>
@@ -126,7 +127,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             </div> 
                         </div>
                     </div>
-                    <div class="col-3 p-0 m-0">
+                    <div class="col-6 p-0 m-0">
                         <div class="container p-3" >
                             <div class="stockcon">
                                 <h4 class="blood">A-</h4>
@@ -139,7 +140,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
      
                 </div>
                 <div class="row">
-                    <div class=" col-3 p-0 m-0">
+                    <div class=" col-6 p-0 m-0">
                         <div class="container p-3" >
                             <div class="stockcon">
                                 <h4 class="blood">AB+</h4>
@@ -149,7 +150,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             </div> 
                         </div>
                     </div>
-                    <div class="col-3 p-0 m-0">
+                    <div class="col-6 p-0 m-0">
                         <div class="container p-3" >
                             <div class="stockcon">
                                 <h4 class="blood">AB-</h4>
@@ -163,10 +164,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </div>
             </div>
             </div>
-        </div>
+</div>
+       
 
 
- <a href="HospitalDashboard.php?page=hospitalreqview" style="text-decoration: none;"><button> click</button></a>
+ <a href="BloodBankDashboard.php?page=hospitalreqview" style="text-decoration: none;"><button> click</button></a>
         <?php
         // put your code here
         ?>

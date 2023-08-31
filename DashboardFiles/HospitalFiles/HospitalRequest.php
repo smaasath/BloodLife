@@ -1,17 +1,11 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to edit this template
--->
 <html>
     <head>
         <meta charset="UTF-8">
         <title> Hospital Request</title>
+        
+
         <link rel="stylesheet" href="../../CSS/HospitalHSRequest.css">
-
-        <link rel="stylesheet" href="../../CSS/BloodBankRequest.css">
-
-        <link rel="stylesheet" href="../../CSS/BloodBankHSRequest.css">
     </head>
     <body>
 
@@ -50,7 +44,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <!-- Hospital Request start -->
 
         <div class="container-01">
-            <div style="margin-left:50px;margin-right: 50px">
+            <div style="margin-left:20px;margin-right: 20px">
                 <div class="form-container">
                     <form>
 
