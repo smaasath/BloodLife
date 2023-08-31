@@ -44,7 +44,40 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         
         <!-- body start -->
         <h1>Hospital Request view</h1>
-         <a href="HospitalDashboard.php?page=hospitalreqedit" style="text-decoration: none;"><button> click</button></a>
+
+  <div class="form-container">
+    <h1>Form Details</h1>
+    <div class="form-fields">
+      <div class="field">
+        <label>Blood Group:</label>
+        <span>O+</span>
+      </div>
+      <div class="field">
+        <label>Date:</label>
+        <span>August 25, 2023</span>
+      </div>
+      <div class="field">
+        <label>Blood Quantity:</label>
+        <span>250 ml</span>
+      </div>
+      <div class="field">
+        <label>Status:</label>
+        <span>Available</span>
+      </div>
+      <div class="field">
+        <label>Location:</label>
+        <span>Sample Location</span>
+      </div>
+      <div class="field">
+        <label>District:</label>
+        <span>Sample District</span>
+      </div>
+    </div>
+    <button class="edit-button"><a href="HospitalDashboard.php?page=hospitalreqedit" style="text-decoration: none;"> Edit</a></button>
+  </div>
+
+
+         
         <?php
         // put your code here
         ?>

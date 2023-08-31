@@ -43,6 +43,39 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         
         <!-- body start -->
         <h1>Hospital Request Edit</h1>
+      
+  <div class="form-container">
+    <h1>Edit Form</h1>
+    <form>
+      <div class="field">
+        <label for="bloodGroup">Blood Group:</label>
+        <input type="text" id="bloodGroup" name="bloodGroup" value="O+">
+      </div>
+      <div class="field">
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" value="2023-08-25">
+      </div>
+      <div class="field">
+        <label for="bloodQuantity">Blood Quantity:</label>
+        <input type="text" id="bloodQuantity" name="bloodQuantity" value="250 ml">
+      </div>
+      <div class="field">
+        <label for="status">Status:</label>
+        <input type="text" id="status" name="status" value="Available">
+      </div>
+      <div class="field">
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="location" value="Sample Location">
+      </div>
+      <div class="field">
+        <label for="district">District:</label>
+        <input type="text" id="district" name="district" value="Sample District">
+      </div>
+      <button class="edit-button">Publish Request</button>
+    </form>
+  </div>
+
+
         <?php
         // put your code here
         ?>
