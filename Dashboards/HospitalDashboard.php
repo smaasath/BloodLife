@@ -38,6 +38,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         
         <link rel="stylesheet" href="../CSS/hospitalstock.css">
         
+        
+        <link rel="stylesheet" href="../CSS/HospitalRequestView.css">
+        <link rel="stylesheet" href="../CSS/HospitalRequestEdit.css">
+       
+        
     </head>
     <body>
         <div class="container-fluid">
