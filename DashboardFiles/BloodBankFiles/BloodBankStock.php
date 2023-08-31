@@ -111,6 +111,8 @@ $con = $dbcon->getConnection();
                             <div class="container p-3" >
                                 <div class="stockcon">
                                     <h4 class="blood">AB+</h4>
+                                   
+                                    
                                     <br>
                                     <br>
 

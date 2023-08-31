@@ -7,6 +7,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     <head>
         <meta charset="UTF-8">
         <title></title>
+        
     </head>
     <body>
 
@@ -50,8 +51,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <div class="row">
                         <div class="col-3 p-0 m-0">
                             <div class="container p-3" >
-                                <div class="stockcon">
+                                <div class="stockcon" style="height: 80px;background-color: white">
                                     <h4 class="blood1">A+</h4>
+                                    <div style="display: flex;flex-direction: row">
+                                        <img src="../Images/blood-bag.png" height="30px" width="30px" style="margin-left: 10px"/>
+                                         <h5 style="padding-left: 10px">10L</h5>
+                                    </div>
+                                   
                                     <br>
                                     <br>
 
@@ -60,8 +66,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         </div>
                         <div class="col-3 p-0 m-0">
                             <div class="container p-3" >
-                                <div class="stockcon">
+                                <div class="stockcon" style="height: 80px;background-color: white">
                                     <h4 class="blood1">A-</h4>
+                                    <div style="display: flex;flex-direction: row">
+                                        <img src="../Images/blood-bag.png" height="30px" width="30px" style="margin-left: 10px"/>
+                                         <h5 style="padding-left: 10px">10L</h5>
+                                    </div>
+                                   
                                     <br>
                                     <br>
 
@@ -70,30 +81,44 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         </div>
                         <div class="col-3 p-0 m-0">
                             <div class="container p-3" >
-                                <div class="stockcon">
+                                <div class="stockcon" style="height: 80px;background-color: white">
                                     <h4 class="blood1">B+</h4>
+                                    <div style="display: flex;flex-direction: row">
+                                        <img src="../Images/blood-bag.png" height="30px" width="30px" style="margin-left: 10px"/>
+                                         <h5 style="padding-left: 10px">10L</h5>
+                                    </div>
+                                   
                                     <br>
                                     <br>
 
                                 </div> 
                             </div>
                         </div>
-                        <div class=" col-3 p-0 m-0">
+                       <div class="col-3 p-0 m-0">
                             <div class="container p-3" >
-                                <div class="stockcon">
+                                <div class="stockcon" style="height: 80px;background-color: white">
                                     <h4 class="blood1">B-</h4>
+                                    <div style="display: flex;flex-direction: row">
+                                        <img src="../Images/blood-bag.png" height="30px" width="30px" style="margin-left: 10px"/>
+                                         <h5 style="padding-left: 10px">10L</h5>
+                                    </div>
+                                   
                                     <br>
                                     <br>
 
                                 </div> 
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class=" col-3 p-0 m-0">
+                    
+                        <div class="col-3 p-0 m-0">
                             <div class="container p-3" >
-                                <div class="stockcon">
+                                <div class="stockcon" style="height: 80px;background-color: white">
                                     <h4 class="blood1">AB+</h4>
+                                    <div style="display: flex;flex-direction: row">
+                                        <img src="../Images/blood-bag.png" height="30px" width="30px" style="margin-left: 10px"/>
+                                         <h5 style="padding-left: 10px">10L</h5>
+                                    </div>
+                                   
                                     <br>
                                     <br>
 
@@ -102,8 +127,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         </div>
                         <div class="col-3 p-0 m-0">
                             <div class="container p-3" >
-                                <div class="stockcon">
+                                <div class="stockcon" style="height: 80px;background-color: white">
                                     <h4 class="blood1">AB-</h4>
+                                    <div style="display: flex;flex-direction: row">
+                                        <img src="../Images/blood-bag.png" height="30px" width="30px" style="margin-left: 10px"/>
+                                         <h5 style="padding-left: 10px">10L</h5>
+                                    </div>
+                                   
                                     <br>
                                     <br>
 
@@ -112,18 +142,28 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         </div>
                         <div class="col-3 p-0 m-0">
                             <div class="container p-3" >
-                                <div class="stockcon">
+                                <div class="stockcon" style="height: 80px;background-color: white">
                                     <h4 class="blood1">O+</h4>
+                                    <div style="display: flex;flex-direction: row">
+                                        <img src="../Images/blood-bag.png" height="30px" width="30px" style="margin-left: 10px"/>
+                                         <h5 style="padding-left: 10px">10L</h5>
+                                    </div>
+                                   
                                     <br>
                                     <br>
 
                                 </div> 
                             </div>
                         </div>
-                        <div class="col-3 p-0 m-0">
+                       <div class="col-3 p-0 m-0">
                             <div class="container p-3" >
-                                <div class="stockcon">
+                                <div class="stockcon" style="height: 80px;background-color: white">
                                     <h4 class="blood1">O-</h4>
+                                    <div style="display: flex;flex-direction: row">
+                                        <img src="../Images/blood-bag.png" height="30px" width="30px" style="margin-left: 10px"/>
+                                         <h5 style="padding-left: 10px">10L</h5>
+                                    </div>
+                                   
                                     <br>
                                     <br>
 
@@ -132,6 +172,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         </div>
                     </div>
                 </div>
+            
 
                 <div class ="card1 col-2 m-1 " >   
 
@@ -164,7 +205,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     </select>
                     <br>
                     <br>
-                    <select  class="bloodbank" id="bloodbankDropDown" >
+                    <select  class="bloodbank" id="bloodbankDropDown" onchange="getBloodBankDetails(this.value)">
                         <option>Select Blood Bank</option>
 
                     </select>
@@ -172,7 +213,16 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                 </div>
                 <div class ="card1 col m-1 " >
-
+                 
+                    <form>
+                        <div id="bbank">
+                        <label for="bloodBankId" id='hj'>bloodBankId:   </label>
+                         <label for="BloodID">BloodID:</label>
+                         <label for="BloodID">BloodID:</label>
+                         <label for="BloodID">BloodID:</label>
+                         <label for="BloodID">BloodID:</label>
+                        </div>
+                    </form>
 
                 </div>
 
