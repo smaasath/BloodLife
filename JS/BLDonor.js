@@ -4,8 +4,9 @@
  */
 
 
-function DonorView(){
+
+function EditCamp(){
     
-    $('#DonorView').modal('show'); 
+    $('#CampaignEdit').modal('show'); 
         
 }

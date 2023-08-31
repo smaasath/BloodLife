@@ -1,0 +1,138 @@
+
+.card1{
+
+    display: flex;
+    flex-direction: column;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, .25);
+    background-color: white !important;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    height: 300px;
+    padding-top: 50px;
+}
+.p-3 {
+    padding: 1.5rem!important;
+}
+
+
+.stockcon1{
+    background-color: #FF6666;
+    border-radius: 10px;
+    -webkit-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+    height: 100px;
+    margin-top:  -18px;
+}
+
+.stockcon1:hover{
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+    background-color: #F31559 !important;
+    height: 100px;
+}
+p.size{
+    margin-top: 25px;
+    text-align: right;
+}
+
+
+
+.form-control{
+    font-size: 0.70rem;
+    
+}
+form {
+  display: grid;
+  grid-gap: 5px;
+}
+
+.form-group {
+  display: grid;
+}
+
+label {
+  font-weight: bold;
+}
+input,
+textarea {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+
+
+.btn-primary{
+    background-color: #FF6666 !important;
+    border-color: black;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.btn-primary:hover {
+    background-color: red!important;
+    border-color: black;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.btn-primary:active{
+    color:#000000;
+}
+
+.blood1{
+   text-align:center; 
+   font-size: 30px;
+}
+ .table tr td{
+    text-align: center;
+}   
+.btn-info{
+    background-color: #FF9F9F!important;
+    border-color: black;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.btn-info:hover{
+     background-color: wheat!important;
+     border-color: black;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.btn-secondary{
+    border-color: black;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    
+}
+.btn-primary1{
+    background-color: #FF6666 !important;
+    border-color: black;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.btn-primary1:hover {
+    background-color: red!important;
+    border-color: black;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.btn-secondary{
+    border-color: black;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    
+}
+.form-group {
+    display:unset!important;
+    
+}
+.btn-secondary2{
+    border-color: black;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background-color: #ccc;
+}
+table tr th{
+   text-align: center; 
+  
+}
+select .district{
+    margin-top: 10px;
+}
+
+.cadddd{
+    margin-top: 50px;
+}

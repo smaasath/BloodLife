@@ -89,13 +89,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             <option value="3">Mannar</option>
                         </select>
                     </div>
-                    <div class="col-2"> 
-                        <button type="button" class="btn btn-primary bgcol" onclick="AddDonor()" data-bs-toggle="modal" data-bs-target="#AddCampaign">
+                    <div class="col-4"> 
+                        <button type="button" class="btn btn-primary bgcol"  data-bs-toggle="modal" data-bs-target="#exampleModal">
                             Add Donor</button>
                     </div>
-                    <div class="col-2" >
-                        <button type="button" class="btn btn-success">Save</button>
-                    </div>
+                    
 
                 </div>
 
@@ -132,24 +130,24 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <td class="col-1">06/07/2023</td>
                         <td class="col-1"><button type="button" class="btn btn-dark" onclick="DonorEdit()" data-bs-toggle="modal" data-bs-target="#DonorEdit">
                                 Edit</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-info" onclick="DonorView()" data-bs-toggle="modal" data-bs-target="#DonorView">
-                                View</button></td>
+                        <td class="col-1"><button type="button" class="btn btn-dark" onclick="EditCamp()">Edit</button></td>
 
                     </tr>
 
 
 
 <!-----------------------------AddDonorDtails------------------------------------------------------------------------------->
-                    <div class="modal fade" id="AddCampaign">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="AddCampaign">Blood Donor Details</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-
-                                    <form>
+              <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          
+    <form>
                                         <label for="fname">First Name:</label>
                                         <input type="text" id="fname" name="fname"><br><br>
                                         <label for="lname">Last Date:</label>
@@ -174,22 +172,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                         <input type="email" id="email" name="email"><br><br>
 
                                     </form>
-                                </div>
-
-
-                                <div class="modal-footer">
-
-
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Back</button>
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">
-                                        Save
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
                     <!--AddDonorDetails---------------------------------------------------------->
 
+
+ 
+                           
 
 
 
@@ -233,9 +228,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                     </form>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Delete</button>
+                                           <button type="button" class="btn btn-secondary">delete</button>
                                     <button type="button" class="btn btn-primary" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#OrganizerEdit">Back</button>
-                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Save</button>
+                                      <button type="button" class="btn btn-secondary" >Save</button>
                                 </div>
                             </div>
                         </div>
@@ -243,59 +238,109 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <!--Camp Edit-->
 
 
-                    <!-- --------------------------------------Campaign View------------------------------------------------------------------------ -->
-                    <!--CampDetailsView-->
-                    <!-- 1st pop-up -->
-
-                    <div class="modal fade" id="DonorView" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="Save">view</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    ...
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal7">
-                                        Organizer Details
-                                    </button>
-
-                                </div>
-                            </div>
+                    <!-- --------------------------------------Campaign Edit------------------------------------------------------------------------ -->
+            <!-----------1st pop-up------------------------Campaign Details---------------->
+            <div class="modal fade" id="CampaignEdit">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Campaign Details</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                    </div>  -->
-                    <!--CampDetailsView-->
-
-
-
-                    <!--OrganizerDetailsview-->
-                    <!-- Modal -->
-
-                    <div class="modal fade" id="exampleModal7" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModal7">Modal title</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    ...
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="Save()">Back</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
-                                </div>
-                            </div>
+                        <div class="modal-body">
+                              <form action="/action_page.php">
+                                  <label for="fname">CampaignID:</label>
+                        <input type="text" id="fname" name="fname" value=""><br><br>
+                        <label for="fname">Campaign Name:</label>
+                        <input type="text" id="fname" name="fname" value=""><br><br>
+                        <label for="lname">Start Date:</label>
+                         <input type="date" id="birthday" name="birthday"><br><br>
+                        <label for="lname">End Date:</label>
+                        <input type="date" id="birthday" name="birthday"><br><br>
+                        <label for="lname">Address:</label>
+                        <input type="text" id="lname" name="lname" value=""><br><br>
+                        <label for="lname">District:</label>
+                        <select name="District" id="Dis">
+                            <option value="volvo">Jaffna</option>
+                            <option value="saab">Mannar</option>
+                            <option value="opel">Badulla</option>
+                            <option value="audi">Anuradapura</option>
+                        </select><br><br>
+                                       
+                        <label for="lname">Ds Division:</label>
+                        <input type="text" id="lname" name="lname" value=""><br><br>
+                        <label for="lname">Contact No:</label>
+                        <input type="text" id="lname" name="lname" value=""><br><br>
+                        <label for="lname">Email:</label>
+                        <input type="text" id="lname" name="lname" value=""><br><br>
+                        <label for="fname">OrganizerID:</label>
+                        <input type="text" id="fname" name="fname" value=""><br><br>
+                        <label for="fname">BloodBankID:</label>
+                        <input type="text" id="fname" name="fname" value=""><br><br>
+                        <label for="fname">Status:</label>
+                                  <select name="District" id="Dis">
+                            <option value="volvo">Available</option>
+                            <option value="saab">NotAvailable</option>
+                            
+                        </select><br><br>
+                      </form>   
+                                     
                         </div>
-                    </div>  
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#OrganizerEdit">Organizer Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Camp Edit-->
 
 
 
+            <!--OrganizerEdit-->
+           
+            <div class="modal fade" id="OrganizerEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModal2">Organizer Details</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                             <form action="/action_page.php">
+                        <label for="fname">Name:</label>
+                        <input type="text" id="fname" name="fname" value=""><br><br>
+                        <label for="lname">Address:</label>
+                   <input type="text" id="fname" name="fname" value=""><br><br>
+                        <label for="lname">District:</label>
+                        <select name="District" id="Dis">
+                                            <option value="volvo">Jaffna</option>
+                                            <option value="saab">Mannar</option>
+                                            <option value="opel">Badulla</option>
+                                            <option value="audi">Anuradapura</option>
+                                        </select><br><br>
+                        <label for="lname">Contact No:</label>
+                        <input type="text" id="lname" name="lname" value=""><br><br>
+                        <label for="lname">Email:</label>
+                                 <input type="text" id="fname" name="fname" value=""><br><br>
 
-                    <!--------------------------------------------------------------------------------------------------------------->
+                        <label for="fname">Age:</label>
+                        <input type="text" id="fname" name="fname" value=""><br><br>
+                        <label for="lname">NIC:</label>
+                             <input type="text" id="fname" name="fname" value=""><br><br>
+                            
+                                </form>     
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary">Delete</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="EditCamp()">Back</button>
+                            <button type="button" class="btn btn-primary">Save </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+     <!--OrganizerEdit-->
+
 
 
 

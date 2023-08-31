@@ -45,7 +45,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <!-- body start -->
         <h1>BL Req</h1>
 
-
+ <a href="BloodBankDashboard.php?page=bbrv" style="text-decoration: none;"><button> click</button></a>
 
 
         <?php
