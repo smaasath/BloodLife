@@ -9,8 +9,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <title></title>
     </head>
     <body>
-        
-        <!-- nav bar start -->
+               <!-- nav bar start -->
         <div class="sticky-top bg-white shadownav" style="height: 50px;">
             <div class="row m-0 d-flex">
                 <div class="col-8">
@@ -42,12 +41,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         </div>
         <!-- nav bar end -->
         
-        <!-- body start -->
-        <h1>BL Req</h1>
-
- <a href="BloodBankDashboard.php?page=bbrv" style="text-decoration: none;"><button> click</button></a>
-
-
+        
+        <h1>BL req Edit</h1>
         <?php
         // put your code here
         ?>

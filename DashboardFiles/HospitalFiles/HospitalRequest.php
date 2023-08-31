@@ -46,7 +46,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <h1>Hospital Request</h1>
 
 
-
+ <a href="HospitalDashboard.php?page=hospitalreqview" style="text-decoration: none;"><button> click</button></a>
 
         <?php
         // put your code here
