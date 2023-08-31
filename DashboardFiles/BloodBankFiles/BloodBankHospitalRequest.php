@@ -1,3 +1,10 @@
+<?php 
+
+$userId = 1;
+
+?>
+
+
 <!DOCTYPE html>
 <!--
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -7,6 +14,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     <head>
         <meta charset="UTF-8">
         <title></title>
+       
+        
+        <link rel="stylesheet" href="../../CSS/BloodBankRequest.css">
+       
+             <link rel="stylesheet" href="../CSS/BloodBankHSRequest.css">
     </head>
     <body>
 
@@ -44,7 +56,16 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
         <!-- body start -->
         <h1>BL Hos Req</h1>
-
+        <a href="BloodBankDashboard.php?page=bbhrv" style="text-decoration: none;"><div class="row">
+        <div class="col-md-4 col-xl-3">
+            <div class="card bg-c-blue order-card">
+                
+                <div class="card-block">
+                 <div class="postcard__bar m-0"></div>    
+                </div>
+                
+            </div>
+        </div></div></a>
 
         <div class="container-05">
           
@@ -91,183 +112,61 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             </div>
         </div>
 
-        <div class="container-02">
-            <div class="p-5">
+<div class="container-03">
+            <div style="margin-left:50px;margin-right: 50px">
+            <div class ="card1 col-5 p-3 m-1" >
+                <div class="row">
+                    <div class="col-3 p-0 m-0">
+                        <div class="container p-3" >
+                            <div class="stockcon">
+                                <h4 class="blood">A+</h4>
+                                <br>
+                                <br>
 
-
-                <div class="rounded-top-4 p-0 border border-dark-subtle">
-                    <div class="row align-items-center">
-                        <div class="col-3">           
-                            <div class="input-group rounded p-3">
-                                <input type="search" class="form-control rounded" placeholder="HospitalID" aria-label="Search" aria-describedby="search-addon" >
-
-
-
-                            </div>
+                            </div> 
                         </div>
-                        <div class="col-2"> 
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>Status</option>
-                                <option value="1">Normal</option>
-                                <option value="2">Urgent</option>
-                                <option value="3">Very Urgent</option>
-                            </select>
-                        </div>
-                        <div class="col-2"> 
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>Quantity</option>
-                                <option value="1">10L</option>
-                                <option value="2">5L</option>
-                                <option value="3">20L</option>
-                            </select>
-                        </div>
-
-                        <div class="col-2"> 
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>Blood Type</option>
-                                <option value="1">A+</option>
-                                <option value="2">A-</option>
-                                <option value="3">B+</option>
-                                <option value="3">B-</option>
-                                <option value="3">O+</option>
-                                <option value="3">O-</option>
-                                <option value="3">AB+</option>
-                                <option value="3">AB-</option>
-                            </select>
-                        </div>
-
-
-
-
                     </div>
-                    <!-- Table body -->
-                    <div class="container bg-white m-0 p-0" style=" max-height: 373px; overflow: scroll;">
-                        <table class="table table-hover p-0">
+                    <div class="col-3 p-0 m-0">
+                        <div class="container p-3" >
+                            <div class="stockcon">
+                                <h4 class="blood">A-</h4>
+                                <br>
+                                <br>
 
-                            <!-- Table row -->
-
-
-                            <tr class="sticky-top">
-
-                                <th class="col-1 bgcol p-2">HospitalID</th>
-                                <th class="col-2 bgcol p-2">Status</th>
-                                <th class="col-3 bgcol p-2">Location</th>
-                                <th class="col-2 bgcol p-2">BloodGroup</th>                      
-                                <th class="col-3 bgcol p-2">Date</th>
-                                <th class="col-2 bgcol p-2">Quantity</th>
-                                <th class="col-1 bgcol p-2">View</th>
-
-
-                            </tr>
-
-                            <tr>
-                                <td class="col-1">HR001</td>                      
-                                <td class="col-2">Urgent</td>                      
-                                <td class="col-3">Jaffna</td>
-                                <td class="col-2">A+</td>
-                                <td class="col-3">03-07-2023</td>
-                                <td class="col-2">2L</td>
-                                <td class="col-1"><button type="button" class="btn btn-info" onclick="openStudentDetails()">View</button></td>
-
-                            </tr>
-
-                            <tr>
-                                <td class="col-1">HR001</td>                      
-                                <td class="col-2">Urgent</td>                      
-                                <td class="col-3">Jaffna</td>
-                                <td class="col-2">A+</td>
-                                <td class="col-3">03-07-2023</td>
-                                <td class="col-2">2L</td>
-                                <td class="col-1"><button type="button" class="btn btn-info" onclick="openStudentDetails()">View</button></td>
-                            </tr>
-
-                            <tr>
-                                <td class="col-1">HR001</td>                      
-                                <td class="col-2">Urgent</td>                      
-                                <td class="col-3">Jaffna</td>
-                                <td class="col-2">A+</td>
-                                <td class="col-3">03-07-2023</td>
-                                <td class="col-2">2L</td>
-                                <td class="col-1"><button type="button" class="btn btn-info" onclick="openStudentDetails()">View</button></td>
-                            </tr>
-
-                            <tr>
-                                <td class="col-1">HR001</td>                      
-                                <td class="col-2">Urgent</td>                      
-                                <td class="col-3">Jaffna</td>
-                                <td class="col-2">A+</td>
-                                <td class="col-3">03-07-2023</td>
-                                <td class="col-2">2L</td>
-                                <td class="col-1"><button type="button" class="btn btn-info" onclick="openStudentDetails()">View</button></td>
-                            </tr>
-
-                            <tr>
-                                <td class="col-1">HR001</td>                      
-                                <td class="col-2">Urgent</td>                      
-                                <td class="col-3">Jaffna</td>
-                                <td class="col-2">A+</td>
-                                <td class="col-3">03-07-2023</td>
-                                <td class="col-2">2L</td>
-                                <td class="col-1"><button type="button" class="btn btn-info" onclick="openStudentDetails()">View</button></td>
-                            </tr>
-
-                            <tr>
-                                <td class="col-1">HR001</td>                      
-                                <td class="col-2">Urgent</td>                      
-                                <td class="col-3">Jaffna</td>
-                                <td class="col-2">A+</td>
-                                <td class="col-3">03-07-2023</td>
-                                <td class="col-2">2L</td>
-                                <td class="col-1"><button type="button" class="btn btn-info" onclick="openStudentDetails()">View</button></td>
-                            </tr>
-
-                            <tr>
-                                <td class="col-1">HR001</td>                      
-                                <td class="col-2">Urgent</td>                      
-                                <td class="col-3">Jaffna</td>
-                                <td class="col-2">A+</td>
-                                <td class="col-3">03-07-2023</td>
-                                <td class="col-2">2L</td>
-                                <td class="col-1"><button type="button" class="btn btn-info" onclick="openStudentDetails()">View</button></td>
-                            </tr>
-
-                            <tr>
-                                <td class="col-1">HR001</td>                      
-                                <td class="col-2">Urgent</td>                      
-                                <td class="col-3">Jaffna</td>
-                                <td class="col-2">A+</td>
-                                <td class="col-3">03-07-2023</td>
-                                <td class="col-2">2L</td>
-                                <td class="col-1"><button type="button" class="btn btn-info" onclick="openStudentDetails()">View</button></td>
-                            </tr>
-
-                            <tr>
-                                <td class="col-1">HR001</td>                      
-                                <td class="col-2">Urgent</td>                      
-                                <td class="col-3">Jaffna</td>
-                                <td class="col-2">A+</td>
-                                <td class="col-3">03-07-2023</td>
-                                <td class="col-2">2L</td>
-                                <td class="col-1"><button type="button" class="btn btn-info" onclick="openStudentDetails()">View</button></td>
-                            </tr>
-
-
-                            <!-- Table row -->
-
-                        </table> 
-
+                            </div> 
+                        </div>
                     </div>
-                    <br>
-                    <!-- Table Head -->
+     
+                </div>
+                <div class="row">
+                    <div class=" col-3 p-0 m-0">
+                        <div class="container p-3" >
+                            <div class="stockcon">
+                                <h4 class="blood">AB+</h4>
+                                <br>
+                                <br>
 
+                            </div> 
+                        </div>
+                    </div>
+                    <div class="col-3 p-0 m-0">
+                        <div class="container p-3" >
+                            <div class="stockcon">
+                                <h4 class="blood">AB-</h4>
+                                <br>
+                                <br>
+
+                            </div> 
+                        </div>
+                    </div>
+                   
                 </div>
             </div>
+            </div>
         </div>
-        <!-- Table -->
 
 
-
-
+ <a href="HospitalDashboard.php?page=hospitalreqview" style="text-decoration: none;"><button> click</button></a>
         <?php
         // put your code here
         ?>

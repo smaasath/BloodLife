@@ -1,19 +1,78 @@
 
-.card{
- width: 540px;
-height: 450px;
-flex-shrink: 0;
-border-radius: 20px;
-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-padding: 150px 10px;
-margin: 5px;
-}
 .card1{
- width: 540px;
-height: 450px;
-flex-shrink: 0;
-border-radius: 20px;
-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-padding: 150px 10px;
-margin: 5px;
+
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, .25);
+    background-color: white !important;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    padding-top: 50px;
+
+
+}
+
+.stockcon{
+    background-color: #FF6666;
+    border-radius: 10px;
+    -webkit-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+}
+
+.stockcon:hover{
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.24);
+    background-color: #F31559 !important;
+}
+
+.form-control{
+    font-size: 0.70rem;
+    
+}
+
+.btn-primary{
+    background-color: #FF6666 !important;
+    border-color: black;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.btn-primary:hover {
+    background-color: red!important;
+    border-color: black;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.btn-primary:active{
+    color:#000000;
+}
+.blood{
+   text-align:center; 
+   font-size: 30px;
+   
+}
+.blood1{
+   text-align:center; 
+   font-size: 30px;
+}
+ .table tr td{
+    text-align: center;
+}   
+.btn-info{
+    background-color: #FF9F9F!important;
+    border-color: black;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.btn-info:hover{
+     background-color: wheat!important;
+     border-color: black;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.btn-secondary{
+    border-color: black;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    
+}
+
+table tr th{
+   text-align: center; 
 }

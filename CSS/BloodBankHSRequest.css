@@ -7,16 +7,7 @@
     margin-bottom: 20px;
   }
 
-   .container-05 {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    border: 2px solid black;
-    padding: 20px;
-    background-color: white;
-    width: 500px;
-    box-sizing: border-box;
-  }
+  
 
   .left-column {
     flex: 1;
@@ -52,6 +43,7 @@
   .buttons {
     display: flex;
     gap: 10px;
+     justify-content: flex-end;
   }
 
   .button {

@@ -11,13 +11,13 @@
     position: absolute;
     top: 200px;
     left: 300px;
-    width: 400px;
+    width: 100px;
     height: 300px;
     background-color: #f2f2f2;
     display: flex;
     align-items: center;
     justify-content: center;
-    
+    padding: 10px ;
 }
 
 .form-container {
@@ -25,7 +25,8 @@
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    width: 400px;
+    
+  
     
 }
 
@@ -58,9 +59,10 @@ select {
 }
 
 .button-row {
-    display: flex;
-    justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
 }
+
 
 button {
     padding: 8px 15px;
@@ -94,3 +96,35 @@ button {
     margin-top: 20px; 
 }
 
+.card1{
+
+    display: flex;
+    flex-direction: column;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, .25);
+    background-color: white !important;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    height: 350px;
+    padding: 20px;
+    margin: 20px;
+}
+.p-3 {
+    padding: 1.5rem!important;
+}
+.stockcon1{
+    background-color: #FF6666;
+    border-radius: 10px;
+    -webkit-transition: all .2s ease;
+    -o-transition: all .2s ease;
+    transition: all .2s ease;
+    height: 100px;
+    margin-top:  -18px;
+}
+
+.stockcon1:hover{
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+    background-color: #F31559 !important;
+    height: 100px;
+}
