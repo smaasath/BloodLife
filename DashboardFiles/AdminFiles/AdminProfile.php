@@ -127,7 +127,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             
 
 
-           <label for="cpsw"><b> Change Password</b></label><br>
+           <label for="psw"><b> Change Password</b></label><br>
             <input type="password" placeholder="Enter Password" name="cpsw" id="typepass" required><br> 
 
             
