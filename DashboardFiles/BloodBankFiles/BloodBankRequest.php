@@ -7,6 +7,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     <head>
         <meta charset="UTF-8">
         <title></title>
+           <link rel="stylesheet" href="../../CSS/BloodBankRequest.css">
+             <link rel="stylesheet" href="../CSS/BloodBankHSRequest.css">
     </head>
     <body>
         
@@ -46,6 +48,60 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <h1>BL Req</h1>
 
  <a href="BloodBankDashboard.php?page=bbrv" style="text-decoration: none;"><button> click</button></a>
+
+
+
+  <div class="cotainer-03">
+        <div class="cotainer-04">
+            <div class="row">
+                <div class="card1 col-6 p-4 m-1">
+                    <div class="row">
+                        <div class="col-3 p-0 m-0"> 
+                            <div class=" container p-3">
+                                <div class="request"> 
+                                    <p>12345</p>
+                                    <p>A+</p>
+                                    <p>City General Hospital</p>   
+                                    <p>10 units</p>
+                                    <p>2023-08-22</p>
+                                    <p>Available</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3 p-0 m-0"> 
+                            <div class=" container p-3">
+                                <div class="request"> 
+                                    <p>12345</p>
+                                    <p>A+</p>
+                                    <p>City General Hospital</p>   
+                                    <p>10 units</p>
+                                    <p>2023-08-22</p>
+                                    <p>Available</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3 p-0 m-0"> 
+                            <div class=" container p-3">
+                                <div class="request"> 
+                                    <p>12345</p>
+                                    <p>A+</p>
+                                    <p>City General Hospital</p>   
+                                    <p>10 units</p>
+                                    <p>2023-08-22</p>
+                                    <p>Available</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+
+
+            
+
+
 
 
         <?php
