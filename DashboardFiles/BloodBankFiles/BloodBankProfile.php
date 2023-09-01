@@ -23,7 +23,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                 <div class="col-4">
                     <div class="row align-items-center">
-                        
+                        <div class="col-2 mb-2">
+
+                        </div>
+                        <div class="col-2 mb-2">
+
+                        </div>
+                        <div class="col-2 mb-2">
+
+                        </div>
                         <div class="col-6 mt-2 	d-none d-xl-block">
                             <b>Jaffna Blood Bank</b>
                             <p style="font-size: 10px;">Blood Bank</p>
@@ -57,7 +65,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         
         
         <!-- body start -->
-        <h1>  </h1>
+    <center><h1> BL PROFILE </h1></center>
 
 
 

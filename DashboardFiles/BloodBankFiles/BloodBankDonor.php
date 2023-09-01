@@ -20,7 +20,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                 <div class="col-4">
                     <div class="row align-items-center">
-                        
+                        <div class="col-2 mb-2">
+
+                        </div>
+                        <div class="col-2 mb-2">
+
+                        </div>
+                        <div class="col-2 mb-2">
+
+                        </div>
                         <div class="col-6 mt-2 	d-none d-xl-block">
                             <b>Jaffna Blood Bank</b>
                             <p style="font-size: 10px;">Blood Bank</p>
@@ -35,7 +43,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <!-- nav bar end -->
 
         <!-- body start -->
-        <!-- <h1>BL Donor</h1> -->
+         <h1> BL Donor </h1>
 
         <div class="container">
             <img src="https://mseducationacademy.in/storage/2023/06/world-blood-donor-day1.jpg" alt="Blood" width="100%" height="200">
@@ -125,6 +133,20 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <td class="col-1"><button type="button" class="btn btn-success" onclick="EditCamp()">View</button></td>
 
                     </tr>
+                    
+                      <tr>
+                        <td class="col-1">D001</td>
+                        <td class="col-2">Nelax</td>
+                        <td class="col-1">O+</td>
+                        <td class="col-1">Jaffna</td>
+                        <td class="col-2">0755701765</td>
+                        <td class="col-1">available</td>
+                        <td class="col-1">06/07/2023</td>
+                        <td class="col-1"><button type="button" class="btn btn-danger" onclick="DonorEdit()" data-bs-toggle="modal" data-bs-target="#DonorEdit">
+                                Edit</button></td>
+                        <td class="col-1"><button type="button" class="btn btn-success" onclick="EditCamp()">View</button></td>
+
+                    </tr>
 
 
 
@@ -134,7 +156,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Donor Details</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -288,41 +310,71 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Campaign Details</h1>
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Donor Edit Details</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                  <div class="modal-body">
 
-                                <div class="row align-items-center pb-3">
+                                 <div class="row align-items-center pb-3">
                                     <div class="col-3">
-                                        <h6>Campaign Name</h6>
+                                        <h6>First Name</h6>
                                     </div>
                                     <div class="col-9">
                                         <input type="text"  name="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                                     </div>
                                 </div>
-                                <div class="row align-items-center pb-3">
+                           <div class="row align-items-center pb-3">
                                     <div class="col-3">
-                                        <h6>start Date</h6>
+                                        <h6>Last Name</h6>
                                     </div>
                                     <div class="col-9">
-                                        <input type="date"  name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                        <input type="text"  name="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    </div>
+                                </div>
+          <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                        <h6>Blood Group</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <select class="form-control form-control-lg">
+                                            <option selected>Select your Blood Group</option>
+                                            <option value="1">A+</option>
+                                            <option value="2"> </option>
+                                            <option value="3"> </option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="row align-items-center pb-3">
                                     <div class="col-3">
-                                        <h6>End Date</h6>
+                                        <h6>Disease</h6>
                                     </div>
                                     <div class="col-9">
-                                        <input type="date"  name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                        <input type="text"  name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                                     </div>
                                 </div>
+                                
                                 <div class="row align-items-center pb-3">
                                     <div class="col-3">
-                                        <h6>Address</h6>
+                                        <h6>Age</h6>
                                     </div>
                                     <div class="col-9">
                                         <input type="text "  name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    </div>
+                                </div>
+          <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                        <h6>Phone No</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="text"  name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    </div>
+                                </div>
+          <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                        <h6>NIC</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="text"  name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                                     </div>
                                 </div>
                                 <div class="row align-items-center pb-3">
@@ -351,17 +403,37 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                         </select>
                                     </div>
                                 </div>
+                                
                                 <div class="row align-items-center pb-3">
                                     <div class="col-3">
-                                        <h6>Contact No</h6>
+                                        <h6>No Of Donation</h6>
                                     </div>
                                     <div class="col-9">
                                         <input type="text"  name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                                     </div>
                                 </div>
-                                <div class="row align-items-center pb-3">
+                            
+        <div class="row align-items-center pb-3">
                                     <div class="col-3">
-                                        <h6>Email</h6>
+                                        <h6>coin Value</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="text"  name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    </div>
+                                </div>
+                            
+      <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                        <h6>Donation Last Date</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="date"  name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    </div>
+                                </div>
+                            
+    <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                        <h6>availability</h6>
                                     </div>
                                     <div class="col-9">
                                         <input type="text"  name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
@@ -388,90 +460,107 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Campaign Details</h1>
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Donor View Details</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                              <div class="col-lg-8">
-        <div class="card mb-4">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">HospitalID</p>
-              </div>
-              <div class="col-sm-4">
-                <p class="text-muted mb-0">HS001</p>
-              </div>
+              <div class="modal fade" id="ChampView" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="Save">View</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <hr>
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Hospital Name</p>
-              </div>
-              <div class="col-sm-4">
-                <p class="text-muted mb-0">Jaffna Central Hospital</p>
-              </div>
+            <div class="modal-body">
+                    
+                
+                
+                
+                 
+                         <form action="/action_page.php">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card mb-4">
+                                    <div class="card-body">
+                                        <div class="row mb-3">
+                                            <div class="col-sm-4">
+                                                <strong>Hospital ID:</strong>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <p class="text-muted mb-0">HS001</p>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-sm-4">
+                                                <strong>Hospital Name:</strong>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <p class="text-muted mb-0">Jaffna Central Hospital</p>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-sm-4">
+                                                <strong>Address:</strong>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <p class="text-muted mb-0">Hospital Road, Jaffna</p>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-sm-4">
+                                                <strong>District:</strong>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <p class="text-muted mb-0">Jaffna</p>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-sm-4">
+                                                <strong>Phone No:</strong>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <p class="text-muted mb-0">077 1028754</p>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-sm-4">
+                                                <strong>Mobile:</strong>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <p class="text-muted mb-0">(098) 765-4321</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <strong>Email:</strong>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <p class="text-muted mb-0">CentralHospitalJaffna@gmail.com</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <hr>
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Address</p>
-              </div>
-              <div class="col-sm-4">
-                <p class="text-muted mb-0">Hospital Road,Jaffna</p>
-              </div>
-            </div>
-            <hr>
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">District</p>
-              </div>
-              <div class="col-sm-4">
-                <p class="text-muted mb-0">Jaffna</p>
-              </div>
-            </div>
-            <hr>
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Phone No</p>
-              </div>
-              <div class="col-sm-4">
-                <p class="text-muted mb-0">077 1028754</p>
-              </div>
-            </div>
-            <hr>
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Mobile</p>
-              </div>
-              <div class="col-sm-4">
-                <p class="text-muted mb-0">(098) 765-4321</p>
-              </div>
-            </div>
-            <hr>
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Email</p>
-              </div>
-              <div class="col-sm-4">
-                <p class="text-muted mb-0">CentralHospitalJaffna@gmail.com</p>
-              </div>
-            </div>
-          
             
-            
-            
-             
 
-            
-          
-
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal7">
+                    Organizer Details
+                </button>
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal8">
+                    Donor Details
+                </button>
+            </div>
+        </div>
     </div>
 </div>
-            
-          
-         
-        </div>
+
                                      
                         </div>
                         <div class="modal-footer">
@@ -497,9 +586,77 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <div class="modal-body">
                             
                        
-                              
-                                    
+                         <form action="/action_page.php">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card mb-4">
+                                    <div class="card-body">
+                                        <div class="row mb-3">
+                                            <div class="col-sm-4">
+                                                <strong>Hospital ID:</strong>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <p class="text-muted mb-0">HS001</p>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-sm-4">
+                                                <strong>Hospital Name:</strong>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <p class="text-muted mb-0">Jaffna Central Hospital</p>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-sm-4">
+                                                <strong>Address:</strong>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <p class="text-muted mb-0">Hospital Road, Jaffna</p>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-sm-4">
+                                                <strong>District:</strong>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <p class="text-muted mb-0">Jaffna</p>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-sm-4">
+                                                <strong>Phone No:</strong>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <p class="text-muted mb-0">077 1028754</p>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-sm-4">
+                                                <strong>Mobile:</strong>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <p class="text-muted mb-0">(098) 765-4321</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <strong>Email:</strong>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <p class="text-muted mb-0">CentralHospitalJaffna@gmail.com</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                    </div>
+                </form>
+            </div>
+                                    
+                        
                         <div class="modal-footer">
                             <button type="button"  class="btn btn-info">Delete</button>
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="EditCamp()">Back</button>
