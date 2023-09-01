@@ -22,13 +22,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <div class="col-4">
                     <div class="row align-items-center">
                         <div class="col-2 mb-2">
-                            <i class="fa-solid fa-bell fa-xl"></i>
+                            
                         </div>
                         <div class="col-2 mb-2">
-                            <i class="fa-solid fa-gear fa-xl"></i>
+                           
                         </div>
                         <div class="col-2 mb-2">
-                            <i class="fa-solid fa-user fa-xl"></i>
+                           
                         </div>
                         <div class="col-6 mt-2 	d-none d-xl-block">
                             <b>General Hospital</b>
@@ -44,7 +44,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <!-- nav bar end -->
 
         <!-- body start -->
-        <h1>Hospital Blood Stock</h1>
+    <center><h1>Hospital Blood Stock</h1></center>
         <div class="container">
             <div class="row">
                 <div class ="card1 col-6 p-3 m-1" >
@@ -56,8 +56,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                     <div style="display: flex;flex-direction: row">
                                         <img src="../Images/blood-bag.png" height="30px" width="30px" style="margin-left: 10px"/>
                                          <h5 style="padding-left: 10px">10L</h5>
-                                    </div>
-                                   
+                                    </div>                                   
                                     <br>
                                     <br>
 
@@ -71,8 +70,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                     <div style="display: flex;flex-direction: row">
                                         <img src="../Images/blood-bag.png" height="30px" width="30px" style="margin-left: 10px"/>
                                          <h5 style="padding-left: 10px">10L</h5>
-                                    </div>
-                                   
+                                    </div>                                  
                                     <br>
                                     <br>
 
@@ -86,8 +84,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                     <div style="display: flex;flex-direction: row">
                                         <img src="../Images/blood-bag.png" height="30px" width="30px" style="margin-left: 10px"/>
                                          <h5 style="padding-left: 10px">10L</h5>
-                                    </div>
-                                   
+                                    </div>                                   
                                     <br>
                                     <br>
 
@@ -101,8 +98,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                     <div style="display: flex;flex-direction: row">
                                         <img src="../Images/blood-bag.png" height="30px" width="30px" style="margin-left: 10px"/>
                                          <h5 style="padding-left: 10px">10L</h5>
-                                    </div>
-                                   
+                                    </div>                                   
                                     <br>
                                     <br>
 
@@ -117,8 +113,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                     <div style="display: flex;flex-direction: row">
                                         <img src="../Images/blood-bag.png" height="30px" width="30px" style="margin-left: 10px"/>
                                          <h5 style="padding-left: 10px">10L</h5>
-                                    </div>
-                                   
+                                    </div>                                  
                                     <br>
                                     <br>
 
@@ -132,8 +127,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                     <div style="display: flex;flex-direction: row">
                                         <img src="../Images/blood-bag.png" height="30px" width="30px" style="margin-left: 10px"/>
                                          <h5 style="padding-left: 10px">10L</h5>
-                                    </div>
-                                   
+                                    </div>                                   
                                     <br>
                                     <br>
 
@@ -147,8 +141,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                     <div style="display: flex;flex-direction: row">
                                         <img src="../Images/blood-bag.png" height="30px" width="30px" style="margin-left: 10px"/>
                                          <h5 style="padding-left: 10px">10L</h5>
-                                    </div>
-                                   
+                                    </div>                                   
                                     <br>
                                     <br>
 
@@ -162,8 +155,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                     <div style="display: flex;flex-direction: row">
                                         <img src="../Images/blood-bag.png" height="30px" width="30px" style="margin-left: 10px"/>
                                          <h5 style="padding-left: 10px">10L</h5>
-                                    </div>
-                                   
+                                    </div>                                  
                                     <br>
                                     <br>
 
@@ -215,13 +207,27 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <div class ="card1 col m-1 " >
                  
                     <form>
-                        <div id="bbank">
-                        <label for="bloodBankId" id='hj'>bloodBankId:   </label>
+                        <?php
+                        require '../classes/bloodBank.php';
+
+                        use classes\bloodBank;
+
+                        
+                        $dataArray = bloodBank::showbloodbankdetails($blID); // Retrieve district data using the "getAllDistrict()" method
+                      
+//                        foreach ($dataArray as $blood){
+                            
+                           ?>
+<!--                        <div id="bbank">
+                            <label for="bloodBankId"  >bloodBankId:</label>
                          <label for="BloodID">BloodID:</label>
                          <label for="BloodID">BloodID:</label>
                          <label for="BloodID">BloodID:</label>
                          <label for="BloodID">BloodID:</label>
-                        </div>
+                        </div>-->
+                        //<?php
+//                        }
+//                        ?>
                     </form>
 
                 </div>
@@ -243,14 +249,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                         </div>
                     </div>
-                    <div class="col-3"> 
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>BloodID</option>
-                            <option value="1">B001</option>
-                            <option value="2">B002</option>
-                            <option value="3">B003</option>
-                        </select>
-                    </div>
+                    
 
                     <div class="col-2"> 
                         <select class="form-select" aria-label="Default select example">
@@ -265,14 +264,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             <option value="2">O-</option>
                         </select>
                     </div>
-                    <div class="col-2"> 
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Location</option>
-                            <option value="1">Jaffna</option>
-                            <option value="2">Colombo</option>
-                            <option value="3">Vavuniya</option>
-                        </select>
-                    </div>
+                   
 
 
                 </div>
@@ -335,28 +327,50 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     </div>
                     <div class="modal-body">
                         <form>
-                            <label for="BloodID">BloodID:</label>
-                            <input type="text" class="form-control" id="BloodID" name="BloodID"><br>
+                            <div class="stocky">
+                            <label for="BloodID">BloodID:</label>                          
+                            B001
+                            </div>
+                            <div class="stocky">
                             <label for="BloodGroup">BloodGroup:</label>
-                            <input type="text" class="form-control" id="BloodGroup" name="BloodGroup"><br>
+                            <span>O+</span>
+                            </div>
+                            <div class="stocky">
                             <label for="Location">Location:</label>
-                            <input type="text" class="form-control" id="Location" name="Location"><br>
+                            <span>JAFFNA</span>
+                            </div>
+                            <div class="stocky">
                             <label for="Quantity">Quantity:</label>
-                            <input type="text" class="form-control" id="Quantity" name="Quantity"><br>
+                            <span>2L</span>
+                            </div>
+                            <div class="stocky">
                             <label for="Status">Status:</label>
-                            <input type="text" class="form-control" id="Status" name="Status"><br>
+                            <span>Available</span>
+                            </div>
+                            <div class="stocky">
                             <label for="ExpiryDate">ExpiryDate:</label>
-                            <input type="text" class="form-control" id="ExpiryDate" name="ExpiryDate"><br>
+                            <span>2023-10-02</span>
+                            </div>
+                            <div class="stocky">
                             <label for="Bloodbank">Bloodbank:</label>
-                            <input type="text" class="form-control" id="Bloodbank" name="Bloodbank"><br>
+                           <span>Venus</span>
+                           </div>
+                           <div class="stocky">
                             <label for="BloodbankID">BloodbankID:</label>
-                            <input type="text" class="form-control" id="BloodbankID" name="BloodbankID"><br>
+                            <span>BB001</span>
+                            </div>
+                            <div class="stocky">
                             <label for="Address">Address:</label>
-                            <input type="text" class="form-control" id="Address" name="Address"><br>
+                            <span>100,JAFFNA</span>
+                            </div>
+                            <div class="stocky">
                             <label for="Contact No">Contact No:</label>
-                            <input type="text" class="form-control" id="Contact No" name="Contact No"><br>
+                            <span>0214578965</span>
+                            </div>
+                            <div class="stocky">
                             <label for="Email">Email:</label>
-                            <input type="text" class="form-control" id="Email" name="Email"><br>
+                           <span>SAALU@gmail</span>
+                           </div>
                         </form>
                     </div>
                     <div class="modal-footer">

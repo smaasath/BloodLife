@@ -115,10 +115,12 @@ window.addEventListener('resize', runFunctionOnResize);
 function functionTest(value){
     
     
-     $.ajax({url: "../classes/districtconnect.php",
+     $.ajax({url: "../classes/district.php",
         method: 'post',
         data: {district: value},
         success: function (result) {
+            console.log("success");
+            console.log(value);
             $("#divisionDropDown").html(result);
             
         }});
@@ -127,11 +129,11 @@ function functionTest(value){
 function getBloodBank(value){
     console.log(value);
     
-     $.ajax({url: "../classes/districtconnect.php",
+     $.ajax({url: "../classes/district.php",
         method: 'post',
         data: {division: value},
         success: function (result) {
-            console.log("Success");
+            console.log("Success nnn");
             $("#bloodbankDropDown").html(result);
             
         }});

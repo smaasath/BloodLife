@@ -81,9 +81,6 @@ class bloodBank {
             $row = $stmt->fetch();
 
             if ($row) {
-               
-               
-                
                $newBloodBank = new bloodBank($row['bloodBankId'], $row['bloodBankName'], $row['Address'], $row['ContactNo'], $row['districtId']);
                return $newBloodBank;
             } else {

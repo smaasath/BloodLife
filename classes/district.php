@@ -118,8 +118,20 @@ WHERE district.division= ?";
             echo "Error: " . $e->getMessage();
         }
     }
+    
+    
 
 }
 
 
+if (isset($_POST["district"])) {
+        $district = $_POST["district"];
+        district::getAllDivision($district);
+    }
+    
+ if (isset($_POST["division"])) {
+        $bank = $_POST["division"];
+        district::getAllBloodBank($bank);
+        
+    }
 
