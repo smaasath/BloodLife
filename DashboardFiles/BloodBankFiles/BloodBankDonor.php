@@ -20,15 +20,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                 <div class="col-4">
                     <div class="row align-items-center">
-                        <div class="col-2 mb-2">
-                            <i class="fa-solid fa-bell fa-xl"></i>
-                        </div>
-                        <div class="col-2 mb-2">
-                            <i class="fa-solid fa-gear fa-xl"></i>
-                        </div>
-                        <div class="col-2 mb-2">
-                            <i class="fa-solid fa-user fa-xl"></i>
-                        </div>
+                        
                         <div class="col-6 mt-2 	d-none d-xl-block">
                             <b>Jaffna Blood Bank</b>
                             <p style="font-size: 10px;">Blood Bank</p>
@@ -128,9 +120,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <td class="col-2">0755701765</td>
                         <td class="col-1">available</td>
                         <td class="col-1">06/07/2023</td>
-                        <td class="col-1"><button type="button" class="btn btn-dark" onclick="DonorEdit()" data-bs-toggle="modal" data-bs-target="#DonorEdit">
+                        <td class="col-1"><button type="button" class="btn btn-danger" onclick="DonorEdit()" data-bs-toggle="modal" data-bs-target="#DonorEdit">
                                 Edit</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-dark" onclick="EditCamp()">Edit</button></td>
+                        <td class="col-1"><button type="button" class="btn btn-success" onclick="EditCamp()">View</button></td>
 
                     </tr>
 
@@ -146,33 +138,132 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-          
-    <form>
-                                        <label for="fname">First Name:</label>
-                                        <input type="text" id="fname" name="fname"><br><br>
-                                        <label for="lname">Last Date:</label>
-                                        <input type="date" id="birthday" name="birthday"><br><br>
-                                        <label for="email">Blood Group:</label>
-                                        <<input type="date" id="birthday" name="birthday"><br><br>
-                                        <label for="email">DateOfbirth:</label>
-                                        <input type="email" id="email" name="email"><br><br>
-                                        <label for="email">age:</label>
-                                        <input type="email" id="email" name="email"><br><br>
-                                        <label for="email">age:</label>
-                                        <input type="email" id="email" name="email"><br><br>
-                                        <select name="District" id="Dis">
-                                            <option value="volvo">Jaffna</option>
-                                            <option value="saab">Mannar</option>
-                                            <option value="opel">Badulla</option>
-                                            <option value="audi">Anuradapura</option>
-                                        </select><br><br>
-                                        <label for="email">Ds Division:</label>
-                                        <input type="email" id="email" name="email"><br><br>
-                                        <label for="email">Email:</label>
-                                        <input type="email" id="email" name="email"><br><br>
 
-                                    </form>
-      </div>
+                                <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                        <h6>First Name</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="text"  name="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    </div>
+                                </div>
+                           <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                        <h6>Last Name</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="text"  name="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    </div>
+                                </div>
+          <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                        <h6>Blood Group</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <select class="form-control form-control-lg">
+                                            <option selected>Select your Blood Group</option>
+                                            <option value="1">A+</option>
+                                            <option value="2"> </option>
+                                            <option value="3"> </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                        <h6>Date Of Birth</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="date"  name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                        <h6>Age</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="text "  name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    </div>
+                                </div>
+          <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                        <h6>Phone No</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="text"  name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    </div>
+                                </div>
+          <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                        <h6>Address</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="text"  name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    </div>
+                                </div>
+                                <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                        <h6>District</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <select class="form-control form-control-lg">
+                                            <option selected>Select your District</option>
+                                            <option value="1">Mannar</option>
+                                            <option value="2"> </option>
+                                            <option value="3"> </option>
+                                        </select>
+                                    </div>
+                                </div>
+                               <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                        <h6>DS Division</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <select class="form-control form-control-lg">
+                                            <option selected>Select your District</option>
+                                            <option value="1"> </option>
+                                            <option value="2"> </option>
+                                            <option value="3"> </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                        <h6>Email</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="text"  name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    </div>
+                                </div>
+                            
+        <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                        <h6>Disease</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="text"  name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    </div>
+                                </div>
+                            
+      <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                        <h6>Donation Last Date</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="date"  name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    </div>
+                                </div>
+                            
+    <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                        <h6>Habits</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="text"  name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    </div>
+                                </div>
+                            </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Save changes</button>
@@ -200,36 +291,89 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                     <h1 class="modal-title fs-5" id="exampleModalLabel">Campaign Details</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                                <div class="modal-body">
-                                     <form>
-                                        <label for="fname">First Name:</label>
-                                        <input type="text" id="fname" name="fname"><br><br>
-                                        <label for="lname">Last Date:</label>
-                                        <input type="date" id="birthday" name="birthday"><br><br>
-                                        <label for="email">Blood Group:</label>
-                                        <<input type="date" id="birthday" name="birthday"><br><br>
-                                        <label for="email">DateOfbirth:</label>
-                                        <input type="email" id="email" name="email"><br><br>
-                                        <label for="email">age:</label>
-                                        <input type="email" id="email" name="email"><br><br>
-                                        <label for="email">age:</label>
-                                        <input type="email" id="email" name="email"><br><br>
-                                        <select name="District" id="Dis">
-                                            <option value="volvo">Jaffna</option>
-                                            <option value="saab">Mannar</option>
-                                            <option value="opel">Badulla</option>
-                                            <option value="audi">Anuradapura</option>
-                                        </select><br><br>
-                                        <label for="email">Ds Division:</label>
-                                        <input type="email" id="email" name="email"><br><br>
-                                        <label for="email">Email:</label>
-                                        <input type="email" id="email" name="email"><br><br>
+                                 <div class="modal-body">
 
-                                    </form>
+                                <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                        <h6>Campaign Name</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="text"  name="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    </div>
                                 </div>
+                                <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                        <h6>start Date</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="date"  name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    </div>
+                                </div>
+                                <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                        <h6>End Date</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="date"  name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    </div>
+                                </div>
+                                <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                        <h6>Address</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="text "  name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    </div>
+                                </div>
+                                <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                        <h6>District</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <select class="form-control form-control-lg">
+                                            <option selected>Select your District</option>
+                                            <option value="1">Mannar</option>
+                                            <option value="2"> </option>
+                                            <option value="3"> </option>
+                                        </select>
+                                    </div>
+                                </div>
+                               <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                        <h6>DS Division</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <select class="form-control form-control-lg">
+                                            <option selected>Select your District</option>
+                                            <option value="1"> </option>
+                                            <option value="2"> </option>
+                                            <option value="3"> </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                        <h6>Contact No</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="text"  name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    </div>
+                                </div>
+                                <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                        <h6>Email</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="text"  name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    </div>
+                                </div>
+                                      </div>
+                                
+                             
+                            
                                 <div class="modal-footer">
                                            <button type="button" class="btn btn-secondary">delete</button>
-                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#OrganizerEdit">Back</button>
+                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Back</button>
                                       <button type="button" class="btn btn-secondary" >Save</button>
                                 </div>
                             </div>
@@ -238,7 +382,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <!--Camp Edit-->
 
 
-                    <!-- --------------------------------------Campaign Edit------------------------------------------------------------------------ -->
+                    <!-- --------------------------------------Donor View----------------------------------------------------------------------- -->
             <!-----------1st pop-up------------------------Campaign Details---------------->
             <div class="modal fade" id="CampaignEdit">
                 <div class="modal-dialog">
@@ -248,42 +392,86 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                              <form action="/action_page.php">
-                                  <label for="fname">CampaignID:</label>
-                        <input type="text" id="fname" name="fname" value=""><br><br>
-                        <label for="fname">Campaign Name:</label>
-                        <input type="text" id="fname" name="fname" value=""><br><br>
-                        <label for="lname">Start Date:</label>
-                         <input type="date" id="birthday" name="birthday"><br><br>
-                        <label for="lname">End Date:</label>
-                        <input type="date" id="birthday" name="birthday"><br><br>
-                        <label for="lname">Address:</label>
-                        <input type="text" id="lname" name="lname" value=""><br><br>
-                        <label for="lname">District:</label>
-                        <select name="District" id="Dis">
-                            <option value="volvo">Jaffna</option>
-                            <option value="saab">Mannar</option>
-                            <option value="opel">Badulla</option>
-                            <option value="audi">Anuradapura</option>
-                        </select><br><br>
-                                       
-                        <label for="lname">Ds Division:</label>
-                        <input type="text" id="lname" name="lname" value=""><br><br>
-                        <label for="lname">Contact No:</label>
-                        <input type="text" id="lname" name="lname" value=""><br><br>
-                        <label for="lname">Email:</label>
-                        <input type="text" id="lname" name="lname" value=""><br><br>
-                        <label for="fname">OrganizerID:</label>
-                        <input type="text" id="fname" name="fname" value=""><br><br>
-                        <label for="fname">BloodBankID:</label>
-                        <input type="text" id="fname" name="fname" value=""><br><br>
-                        <label for="fname">Status:</label>
-                                  <select name="District" id="Dis">
-                            <option value="volvo">Available</option>
-                            <option value="saab">NotAvailable</option>
-                            
-                        </select><br><br>
-                      </form>   
+                              <div class="col-lg-8">
+        <div class="card mb-4">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">HospitalID</p>
+              </div>
+              <div class="col-sm-4">
+                <p class="text-muted mb-0">HS001</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Hospital Name</p>
+              </div>
+              <div class="col-sm-4">
+                <p class="text-muted mb-0">Jaffna Central Hospital</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Address</p>
+              </div>
+              <div class="col-sm-4">
+                <p class="text-muted mb-0">Hospital Road,Jaffna</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">District</p>
+              </div>
+              <div class="col-sm-4">
+                <p class="text-muted mb-0">Jaffna</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Phone No</p>
+              </div>
+              <div class="col-sm-4">
+                <p class="text-muted mb-0">077 1028754</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Mobile</p>
+              </div>
+              <div class="col-sm-4">
+                <p class="text-muted mb-0">(098) 765-4321</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Email</p>
+              </div>
+              <div class="col-sm-4">
+                <p class="text-muted mb-0">CentralHospitalJaffna@gmail.com</p>
+              </div>
+            </div>
+          
+            
+            
+            
+             
+
+            
+          
+
+    </div>
+</div>
+            
+          
+         
+        </div>
                                      
                         </div>
                         <div class="modal-footer">
@@ -307,32 +495,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                             <form action="/action_page.php">
-                        <label for="fname">Name:</label>
-                        <input type="text" id="fname" name="fname" value=""><br><br>
-                        <label for="lname">Address:</label>
-                   <input type="text" id="fname" name="fname" value=""><br><br>
-                        <label for="lname">District:</label>
-                        <select name="District" id="Dis">
-                                            <option value="volvo">Jaffna</option>
-                                            <option value="saab">Mannar</option>
-                                            <option value="opel">Badulla</option>
-                                            <option value="audi">Anuradapura</option>
-                                        </select><br><br>
-                        <label for="lname">Contact No:</label>
-                        <input type="text" id="lname" name="lname" value=""><br><br>
-                        <label for="lname">Email:</label>
-                                 <input type="text" id="fname" name="fname" value=""><br><br>
-
-                        <label for="fname">Age:</label>
-                        <input type="text" id="fname" name="fname" value=""><br><br>
-                        <label for="lname">NIC:</label>
-                             <input type="text" id="fname" name="fname" value=""><br><br>
                             
-                                </form>     
+                       
+                              
+                                    
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-primary">Delete</button>
+                            <button type="button"  class="btn btn-info">Delete</button>
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="EditCamp()">Back</button>
                             <button type="button" class="btn btn-primary">Save </button>
                         </div>

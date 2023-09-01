@@ -6,6 +6,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 <html>
     <head>
         <meta charset="UTF-8">
+        
+        
+        
         <title></title>
     </head>
     <body>
@@ -34,18 +37,37 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         </div>
         <!-- nav bar end -->
         
+        
+        
+         <div class="container">
+            <img src="https://ichef.bbci.co.uk/news/624/cpsprodpb/59D8/production/_91400032_blooddonationspl027788188.jpg" alt="Blood" width="100%" height="200">
+
+
+
+           
+
+        </div>
+        <br><br>
+        
+        
+        
+        
+        
+        
+        
+        
         <!-- body start -->
-        <h1>BL profile</h1>
+        <h1>  </h1>
 
 
 
         
-        <div class="col-lg-8">
+        <div class="col-lg-8" style="margin-left:150px;width: 500px">
         <div class="card mb-4">
           <div class="card-body">
             <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">HospitalID</p>
+              <div class="col-sm-4">
+                  <p class="mb-0"><span class="fw-bold">HospitalID</span></p>
               </div>
               <div class="col-sm-4">
                 <p class="text-muted mb-0">HS001</p>
@@ -53,61 +75,61 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             </div>
             <hr>
             <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Hospital Name</p>
-              </div>
               <div class="col-sm-4">
+                <p class="mb-0"><span class="fw-bold">Hospital Name</span></p>
+              </div>
+              <div class="col-sm-7">
                 <p class="text-muted mb-0">Jaffna Central Hospital</p>
               </div>
             </div>
             <hr>
             <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Address</p>
-              </div>
               <div class="col-sm-4">
+                <p class="mb-0"><span class="fw-bold">Address</span></p>
+              </div>
+              <div class="col-sm-7">
                 <p class="text-muted mb-0">Hospital Road,Jaffna</p>
               </div>
             </div>
             <hr>
             <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">District</p>
-              </div>
               <div class="col-sm-4">
+                <p class="mb-0"><span class="fw-bold">District</span></p>
+              </div>
+              <div class="col-sm-7">
                 <p class="text-muted mb-0">Jaffna</p>
               </div>
             </div>
             <hr>
             <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Phone No</p>
-              </div>
               <div class="col-sm-4">
+                <p class="mb-0"><span class="fw-bold">Phone No</span></p>
+              </div>
+              <div class="col-sm-7">
                 <p class="text-muted mb-0">077 1028754</p>
               </div>
             </div>
             <hr>
             <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Mobile</p>
-              </div>
               <div class="col-sm-4">
+                <p class="mb-0"><span class="fw-bold">Mobile</span></p>
+              </div>
+              <div class="col-sm-7">
                 <p class="text-muted mb-0">(098) 765-4321</p>
               </div>
             </div>
             <hr>
             <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Email</p>
-              </div>
               <div class="col-sm-4">
+                <p class="mb-0"><span class="fw-bold">Email</span></p>
+              </div>
+              <div class="col-sm-7">
                 <p class="text-muted mb-0">CentralHospitalJaffna@gmail.com</p>
               </div>
             </div>
             <hr><!-- comment -->
             <div class="text-end">
-            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>
              </div>
             
             
@@ -121,8 +143,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             
           
           </div>
-        </div>
-
+       
             
           
             
@@ -131,34 +152,89 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Hospital Details</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
           
        <form action="/action_page.php">
-                        <label for="fname">HospitalID:</label>
-                        <input type="text" id="fname" name="fname" value=""><br><br>
-                        <label for="lname">Hospital Name:</label>
-                           <input type="text" id="fname" name="fname" value=""><br><br>
-                        <label for="lname">Address:</label>
-                         <input type="text" id="fname" name="fname" value=""><br><br>
-                        <label for="lname">District:</label>
-                       <select name="District" id="Dis">
-                                            <option value="volvo">Jaffna</option>
-                                            <option value="saab">Mannar</option>
-                                            <option value="opel">Badulla</option>
-                                            <option value="audi">Anuradapura</option>
-                                        </select><br><br>
-                        <label for="lname">Phone No:</label>
-                        <input type="text" id="lname" name="lname" value=""><br><br>
-                                       
+           
+           
+            <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                        <h6>HospitalID</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="text"  name="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    </div>
+                                </div>
+                                <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                        <h6>Hospital Name</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="text"  name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    </div>
+                                </div>
+                                <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                        <h6>Address</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="date"  name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    </div>
+                                </div>
+            <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                        <h6>District</h6>
+                                    </div>
+                                <div class="col-9">
+                                        <select class="form-control form-control-lg">
+                                            <option selected>Select your District</option>
+                                            <option value="1">Mannar</option>
+                                            <option value="2"> </option>
+                                            <option value="3"> </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                    <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                        <h6>HospitalID</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="text"  name="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    </div>
+                                </div>
+            <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                        <h6>Phone No</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="text"  name="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    </div>
+                                </div>
+            <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                        <h6>Mobile No</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="text"  name="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    </div>
+                                </div>
+            <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                        <h6>Email</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="text"  name="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    </div>
+                                </div>
+                                    
+                                    
+                                    
+                                    
                         
-                        <label for="lname">Mobile:</label>
-                        <input type="text" id="lname" name="lname" value=""><br><br>
-                        <label for="lname">Email:</label>
-                        <input type="text" id="lname" name="lname" value=""><br><br>
-                        
+                       
                       </form> 
       </div>
       <div class="modal-footer">
