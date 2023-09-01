@@ -1,3 +1,4 @@
+
 /*
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
@@ -34,7 +35,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
     height:120px;
 }
 .m-2{
-    margin: 1rem!important;
+    margin: 2rem!important;
 }
 .col-5{
     flex:auto !important;
@@ -52,4 +53,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
 .quantity{
     text-align: center;
     font-size: 30px;
+}
+.card2.p-3{
+    padding: 0.75rem!important;
+}
+.p-0 {
+    padding: 0.25rem!important;
 }
