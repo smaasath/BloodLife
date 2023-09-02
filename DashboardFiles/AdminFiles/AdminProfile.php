@@ -89,13 +89,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <div class="col-4">
                     <div class="row align-items-center">
                         <div class="col-2 mb-2">
-                            <i class="fa-solid fa-bell fa-xl"></i>
                         </div>
                         <div class="col-2 mb-2">
-                            <i class="fa-solid fa-gear fa-xl"></i>
                         </div>
                         <div class="col-2 mb-2">
-                            <i class="fa-solid fa-user fa-xl"></i>
                         </div>
                         <div class="col-6 mt-2 	d-none d-xl-block">
                             <b>Jaffna Blood Bank</b>

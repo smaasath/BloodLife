@@ -21,13 +21,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <div class="col-4">
                     <div class="row align-items-center">
                         <div class="col-2 mb-2">
-                            <i class="fa-solid fa-bell fa-xl"></i>
                         </div>
                         <div class="col-2 mb-2">
-                            <i class="fa-solid fa-gear fa-xl"></i>
                         </div>
                         <div class="col-2 mb-2">
-                            <i class="fa-solid fa-user fa-xl"></i>
                         </div>
                         <div class="col-6 mt-2 	d-none d-xl-block">
                             <b>Jaffna Blood Bank</b>
@@ -44,7 +41,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <!-- nav bar end -->
 
         <!-- body start -->
-        <h1>Admin Hospital</h1>
+    <center><h1>Admin Hospital - Management</h1></center>
         <!-- Table -->
 
         <div class="p-5">
@@ -80,18 +77,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         </select>
                     </div>
 
-                    <div class="col-2"> 
-                        <button type="button" class="btn btn-primary bgcol" onclick="AddHospital()">Add Hospital</button>
+                    <div class="col-3" > 
+                        <button type="button" class="btn btn-primary bgcol" data-bs-toggle="modal" data-bs-target="#AddHospital" onclick="AddHospital()" style="float: right;">Add Hospital</button>
                     </div>
 
-                    <div class="col-2" >
-                        <button type="button" class="btn btn-success">Save</button>
-                    </div>
                 </div>
 
             </div>
             <!-- Table body -->
-            <div class="container bg-white m-0 p-0" style=" max-height: 373px; overflow: scroll;">
+            <div class="container bg-white m-0 p-0" style=" max-height: 500px; overflow: scroll;">
                 <table class="table table-hover p-0">
 
                     <!-- Table row -->
@@ -117,17 +111,109 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <td class="col-2"> Hospital St, Jaffna</td>
                         <td class="col-3">Jaffna</td>
                         <td class="col-3">Jaffna</td>
-                        <td class="col-3">0212223348/td>
+                        <td class="col-3">0212223348</td>
+                        <td class="col-3">info@thjaffna.lk</td>
+                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#openHospitalDetails" onclick="Popup()">View</button></td>
+                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editHospitalDetails" onclick="Popup()">Edit</button></td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="col-1">H_ID001</td>
+                        <td class="col-3"> Teaching Hospital-Jaffna</td>
+                        <td class="col-2"> Hospital St, Jaffna</td>
+                        <td class="col-3">Jaffna</td>
+                        <td class="col-3">Jaffna</td>
+                        <td class="col-3">0212223348</td>
+                        <td class="col-3">info@thjaffna.lk</td>
+                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#openHospitalDetails" onclick="Popup()">View</button></td>
+                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editHospitalDetails" onclick="Popup()">Edit</button></td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="col-1">H_ID001</td>
+                        <td class="col-3"> Teaching Hospital-Jaffna</td>
+                        <td class="col-2"> Hospital St, Jaffna</td>
+                        <td class="col-3">Jaffna</td>
+                        <td class="col-3">Jaffna</td>
+                        <td class="col-3">0212223348</td>
+                        <td class="col-3">info@thjaffna.lk</td>
+                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#openHospitalDetails" onclick="Popup()">View</button></td>
+                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editHospitalDetails" onclick="Popup()">Edit</button></td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="col-1">H_ID001</td>
+                        <td class="col-3"> Teaching Hospital-Jaffna</td>
+                        <td class="col-2"> Hospital St, Jaffna</td>
+                        <td class="col-3">Jaffna</td>
+                        <td class="col-3">Jaffna</td>
+                        <td class="col-3">0212223348</td>
+                        <td class="col-3">info@thjaffna.lk</td>
+                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#openHospitalDetails" onclick="Popup()">View</button></td>
+                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editHospitalDetails" onclick="Popup()">Edit</button></td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="col-1">H_ID001</td>
+                        <td class="col-3"> Teaching Hospital-Jaffna</td>
+                        <td class="col-2"> Hospital St, Jaffna</td>
+                        <td class="col-3">Jaffna</td>
+                        <td class="col-3">Jaffna</td>
+                        <td class="col-3">0212223348</td>
+                        <td class="col-3">info@thjaffna.lk</td>
+                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#openHospitalDetails" onclick="Popup()">View</button></td>
+                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editHospitalDetails" onclick="Popup()">Edit</button></td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="col-1">H_ID001</td>
+                        <td class="col-3"> Teaching Hospital-Jaffna</td>
+                        <td class="col-2"> Hospital St, Jaffna</td>
+                        <td class="col-3">Jaffna</td>
+                        <td class="col-3">Jaffna</td>
+                        <td class="col-3">0212223348</td>
+                        <td class="col-3">info@thjaffna.lk</td>
+                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#openHospitalDetails" onclick="Popup()">View</button></td>
+                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editHospitalDetails" onclick="Popup()">Edit</button></td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="col-1">H_ID001</td>
+                        <td class="col-3"> Teaching Hospital-Jaffna</td>
+                        <td class="col-2"> Hospital St, Jaffna</td>
+                        <td class="col-3">Jaffna</td>
+                        <td class="col-3">Jaffna</td>
+                        <td class="col-3">0212223348</td>
+                        <td class="col-3">info@thjaffna.lk</td>
+                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#openHospitalDetails" onclick="Popup()">View</button></td>
+                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editHospitalDetails" onclick="Popup()">Edit</button></td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="col-1">H_ID001</td>
+                        <td class="col-3"> Teaching Hospital-Jaffna</td>
+                        <td class="col-2"> Hospital St, Jaffna</td>
+                        <td class="col-3">Jaffna</td>
+                        <td class="col-3">Jaffna</td>
+                        <td class="col-3">0212223348</td>
+                        <td class="col-3">info@thjaffna.lk</td>
+                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#openHospitalDetails" onclick="Popup()">View</button></td>
+                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editHospitalDetails" onclick="Popup()">Edit</button></td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="col-1">H_ID001</td>
+                        <td class="col-3"> Teaching Hospital-Jaffna</td>
+                        <td class="col-2"> Hospital St, Jaffna</td>
+                        <td class="col-3">Jaffna</td>
+                        <td class="col-3">Jaffna</td>
+                        <td class="col-3">0212223348</td>
                         <td class="col-3">info@thjaffna.lk</td>
                         <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#openHospitalDetails" onclick="Popup()">View</button></td>
                         <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editHospitalDetails" onclick="Popup()">Edit</button></td>
                     </tr>
 
-
-
-
                 </table> 
-
             </div>
             <br>
 
@@ -135,7 +221,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         </div>
 
 
-        <!-- Modal -->
+        <!-- Modal edit Hospital Details-->
         <div class="modal fade" id="editHospitalDetails" tabindex="-1" aria-labelledby="editHospitalDetailsLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -187,7 +273,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-primary">Save</button>
                             <button type="button" class="btn btn-danger">Don't Save </button>
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">cancel</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"  >cancel</button>
 
                         </div>
                     </div>
@@ -208,13 +294,50 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-primary">No</button>
                             <button type="button" class="btn btn-danger">Yes</button>
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">cancel</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-bs-dismiss="modal">cancel</button>
                         </div>
                     </div>
                 </div>
             </div>
+            
+               <!-- Modal Add Hospital -->
+        <div class="modal fade" id="AddHospital" tabindex="-1" aria-labelledby="addHospitalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="addHospitalLabel">Add Hospital </h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>--------------------------------------------------</p>
+                        <form action="">
+                           
+                            <label for="HosName">Hospital Name:</label>
+                            <input type="text" id="HosName" name="HosName" required><br><br>
+                            <label for="Adrs">Address&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
+                            <input type="text" id="Adrs" name="Adrs" required><br><br>
+                            <label for="Dst">District&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
+                            <input type="text" id="Dst" name="Dst" required><br><br>
+                            <label for="Divi">DS Division&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
+                            <input type="text" id="Divi" name="Divi" required><br><br>
+                            <label for="Cnct">Contact No&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
+                            <input type="tel" id="Cnct" name="Cnct" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required><br><br>
+                            <label for="email">Email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
+                            <input type="email" id="email" name="email" required><br><br>  
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#savePopup" onclick="Popup()">Save </button>
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletePopup"onclick="Popup()">Delete</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Cancel</button>
 
-            <!-- Modal -->
+
+
+                            </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal open Hospital Details -->
             <div class="modal fade" id="openHospitalDetails" tabindex="-1" aria-labelledby="openHospitalDetailsLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">

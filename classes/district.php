@@ -119,6 +119,59 @@ WHERE district.division= ?";
         }
     }
 
+    public static function addBloodBank($division, $bloodBankName) {
+        try {
+            $dbcon = new DbConnector();
+            $con = $dbcon->getConnection();
+
+            $query = "INSERT INTO bloodbank (division, bloodBankName) VALUES (?, ?)";
+            $stmt = $con->prepare($query);
+            $stmt->bindValue(1, $division);
+            $stmt->bindValue(2, $bloodBankName);
+            $stmt->execute();
+
+            return true;
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            return false;
+        }
+    }
+
+    public static function deleteBloodBank($bloodBankId) {
+        try {
+            $dbcon = new DbConnector();
+            $con = $dbcon->getConnection();
+
+            $query = "DELETE FROM bloodbank WHERE bloodBankId = ?";
+            $stmt = $con->prepare($query);
+            $stmt->bindValue(1, $bloodBankId);
+            $stmt->execute();
+
+            return true;
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            return false;
+        }
+    }
+
+    public static function updateBloodBank($bloodBankId, $newBloodBankName) {
+        try {
+            $dbcon = new DbConnector();
+            $con = $dbcon->getConnection();
+
+            $query = "UPDATE bloodbank SET bloodBankName = ? WHERE bloodBankId = ?";
+            $stmt = $con->prepare($query);
+            $stmt->bindValue(1, $newBloodBankName);
+            $stmt->bindValue(2, $bloodBankId);
+            $stmt->execute();
+
+            return true;
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            return false;
+        }
+    }
+
 }
 
 if (isset($_POST["district"])) {
@@ -130,3 +183,11 @@ if (isset($_POST["division"])) {
     district::getAllBloodBank($division);
 }
 
+if (isset($_POST["district"])) {
+    $district = $_POST["district"];
+    district::getAllDivision($district);
+}
+if (isset($_POST["division"])) {
+    $division = $_POST["division"];
+    district::getAllBloodBank($division);
+}
