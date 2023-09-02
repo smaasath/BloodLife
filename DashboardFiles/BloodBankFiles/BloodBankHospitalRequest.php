@@ -114,59 +114,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <button class="btn btn-primary" style="background-color: blue !important;border: none">Publish</button>
                 </div>
 
-<div class="container-03">
-   <div style="margin-left:20px; margin-right: 20px">
-            <div class ="card1 col p-3 m-1" >
-                <div class="row">
-                    <div class="col-6 p-0 m-0">
-                        <div class="container p-3" >
-                            <div class="stockcon">
-                                <h4 class="blood">A+</h4>
-                                <br>
-                                <br>
 
-                            </div> 
-                        </div>
-                    </div>
-                    <div class="col-6 p-0 m-0">
-                        <div class="container p-3" >
-                            <div class="stockcon">
-                                <h4 class="blood">A-</h4>
-                                <br>
-                                <br>
-
-                            </div> 
-                        </div>
-                    </div>
-     
-                </div>
-                <div class="row">
-                    <div class=" col-6 p-0 m-0">
-                        <div class="container p-3" >
-                            <div class="stockcon">
-                                <h4 class="blood">AB+</h4>
-                                <br>
-                                <br>
-
-                            </div> 
-                        </div>
-                    </div>
-                    <div class="col-6 p-0 m-0">
-                        <div class="container p-3" >
-                            <div class="stockcon">
-                                <h4 class="blood">AB-</h4>
-                                <br>
-                                <br>
-
-                            </div> 
-                        </div>
-                    </div>
-                   
-                </div>
-            </div>
-            </div>
-</div>
-       
 
 
  <a href="BloodBankDashboard.php?page=hospitalreqview" style="text-decoration: none;"><button> click</button></a>

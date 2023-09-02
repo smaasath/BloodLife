@@ -3,7 +3,6 @@
     color: red;
 }
 
-
 .card1{
 
     display: flex;
@@ -15,10 +14,9 @@
      padding-top: 50px;
     
 }
-.p-3 {
+.cont45 {
     padding: 1.5rem!important;
 }
-
 
 .stockcon{
     background-color: white;
@@ -45,43 +43,21 @@ p.size{
 
 
 
-.form-control{
-    font-size: 0.70rem;
-    
-}
-form {
-  display: grid;
-  grid-gap: 5px;
-}
 
-.form-group {
-  display: grid;
-}
-
-label {
-  font-weight: bold;
-}
-input,
-textarea {
-  width: 100%;
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-}
-
-
-
-.btn-primary{
+.okbtn{
     background-color: #FF6666 !important;
     border-color: black;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: 60px;
+    border: 1px solid rgba(255, 255, 255, .25);
+     border-radius: 20px;
 }
-.btn-primary:hover {
+.okbtn:hover {
     background-color: red!important;
-    border-color: black;
+   
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
-.btn-primary:active{
+.okbtn:active{
     color:#000000;
 }
 
@@ -89,48 +65,22 @@ textarea {
    text-align:center; 
    font-size: 30px;
 }
- .table tr td{
-    text-align: center;
-}   
-.btn-info{
+
+.viewbtn{
     background-color: #FF9F9F!important;
     border-color: black;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: 60px;
+    border: 1px solid rgba(255, 255, 255, .25);
+     border-radius: 20px;
 }
-.btn-info:hover{
+.viewbtn:hover{
      background-color: wheat!important;
-     border-color: black;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}
-.btn-secondary{
-    border-color: black;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     
-}
-.btn-primary1{
-    background-color: #FF6666 !important;
-    border-color: black;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
-.btn-primary1:hover {
-    background-color: red!important;
-    border-color: black;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}
-.btn-secondary{
-    border-color: black;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    
-}
-.form-group {
-    display:unset!important;
-    
-}
-.btn-secondary2{
-    border-color: black;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    background-color: #ccc;
-}
+
+
 table tr th{
    text-align: center; 
   
@@ -148,3 +98,9 @@ select .district{
     
 }
 
+.detail{
+    display: flex;
+  
+  align-items: center;
+  margin-bottom: 10px;
+}

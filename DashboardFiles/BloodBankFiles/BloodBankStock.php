@@ -61,7 +61,7 @@ $con = $dbcon->getConnection();
                 <div class ="card1 col-6 p-3 m-1" >
                     <div class="row">
                         <div class="col-3 p-0 m-0">
-                            <div class="container p-3" >
+                            <div class="container p-3 cont45" >
                                 <div class="stockcon" style="height: 80px;background-color: white">
                                     <h4 class="blood">A+</h4>
                                     <div style="display: flex;flex-direction: row">
@@ -75,7 +75,7 @@ $con = $dbcon->getConnection();
                             </div>
                         </div>
                         <div class="col-3 p-0 m-0">
-                            <div class="container p-3" >
+                            <div class="container p-3 cont45" >
                                 <div class="stockcon" style="height: 80px;background-color: white">
                                     <h4 class="blood">A-</h4>
                                     <div style="display: flex;flex-direction: row">
@@ -89,7 +89,7 @@ $con = $dbcon->getConnection();
                             </div>
                         </div>
                         <div class="col-3 p-0 m-0">
-                            <div class="container p-3" >
+                            <div class="container p-3 cont45" >
                                 <div class="stockcon" style="height: 80px;background-color: white">
                                     <h4 class="blood">B+</h4>
                                     <div style="display: flex;flex-direction: row">
@@ -103,7 +103,7 @@ $con = $dbcon->getConnection();
                             </div>
                         </div>
                         <div class=" col-3 p-0 m-0">
-                            <div class="container p-3" >
+                            <div class="container p-3 cont45" >
                                 <div class="stockcon" style="height: 80px;background-color: white">
                                     <h4 class="blood">B-</h4>
                                     <div style="display: flex;flex-direction: row">
@@ -119,7 +119,7 @@ $con = $dbcon->getConnection();
                     </div>
                     <div class="row">
                         <div class=" col-3 p-0 m-0">
-                            <div class="container p-3" >
+                            <div class="container p-3 cont45" >
                                 <div class="stockcon" style="height: 80px;background-color: white">
                                     <h4 class="blood">AB+</h4>
                                    <div style="display: flex;flex-direction: row">
@@ -134,7 +134,7 @@ $con = $dbcon->getConnection();
                             </div>
                         </div>
                         <div class="col-3 p-0 m-0">
-                            <div class="container p-3"  >
+                            <div class="container p-3 cont45"  >
                                 <div class="stockcon" style="height: 80px;background-color: white">
                                     <h4 class="blood">AB-</h4>
                                     <div style="display: flex;flex-direction: row">
@@ -148,7 +148,7 @@ $con = $dbcon->getConnection();
                             </div>
                         </div>
                         <div class="col-3 p-0 m-0">
-                            <div class="container p-3" >
+                            <div class="container p-3 cont45" >
                                 <div class="stockcon" style="height: 80px;background-color: white">
                                     <h4 class="blood">O+</h4>
                                     <div style="display: flex;flex-direction: row">
@@ -162,7 +162,7 @@ $con = $dbcon->getConnection();
                             </div>
                         </div>
                         <div class="col-3 p-0 m-0">
-                            <div class="container p-3" >
+                            <div class="container p-3 cont45" >
                                 <div class="stockcon" style="height: 80px;background-color: white">
                                     <h4 class="blood">O-</h4>
                                     <div style="display: flex;flex-direction: row">
@@ -179,19 +179,19 @@ $con = $dbcon->getConnection();
                 </div>
 
                 <div class ="card1 col-2 m-1 " >           
-                     <select  class="district" id="district">
+                     <select  class="district" id="district"style="border-radius: 5px; height: 30px">
                         <option value="jaffna">jaffna</option>
                         
                     </select>
                     <br>
                     <br>
-                     <select  class="division" id="division">
+                     <select  class="division" id="division"style="border-radius: 5px; height: 30px">
                         <option value="jaffna">Nallur</option>
                         
                     </select>
                     <br>
                     <br>
-                    <select  class="bloodbank" id="bloodbank">
+                    <select  class="bloodbank" id="bloodbank"style="border-radius: 5px; height: 30px">
                         <option value="jaffna">jaffna blood bank</option>
                         
                     </select>
@@ -236,7 +236,7 @@ $con = $dbcon->getConnection();
                     
 
                     <div class="col-2" >
-                        <button type="button" class="btn btn-primary bgcol" style="margin-left: 400px" onclick="Add()" data-bs-toggle="modal" data-bs-target="#exampleModal" >Add+</button>
+                        <button type="button" class="addbtn" style="margin-left: 400px" onclick="Add()" data-bs-toggle="modal" data-bs-target="#exampleModal" >Add+</button>
 
 
 
@@ -283,8 +283,8 @@ $con = $dbcon->getConnection();
                         <td class="col-2">Jaffna</td>
                         <td class="col-1">1L</td>
                         <td class="col-2">Given</td>
-                        <td class="col-1"><button type="button" class="btn btn-info" onclick="openBloodbankDetails()"data-bs-toggle="modal" data-bs-target="#viewModal" >View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-secondary" onclick="Editbloodbank()" data-bs-toggle="modal" data-bs-target="#editModal" >Edit</button></td>
+                        <td class="col-1"><button type="button" class="bbviewbtn" onclick="openBloodbankDetails()"data-bs-toggle="modal" data-bs-target="#viewModal" >View</button></td>
+                        <td class="col-1"><button type="button" class="editbtn" onclick="Editbloodbank()" data-bs-toggle="modal" data-bs-target="#editModal" >Edit</button></td>
                     </tr>
 
 
@@ -327,8 +327,8 @@ $con = $dbcon->getConnection();
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Save</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="savebtn">Save</button>
+                        <button type="button" class="editbtn" data-bs-dismiss="modal">Close</button>
 
                     </div>
                 </div>
@@ -369,7 +369,7 @@ $con = $dbcon->getConnection();
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+                        <button type="button" class="savebtn" data-bs-dismiss="modal">OK</button>
 
 
                     </div>
@@ -413,8 +413,8 @@ $con = $dbcon->getConnection();
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Save</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="savebtn">Save</button>
+                        <button type="button" class="editbtn" data-bs-dismiss="modal">Cancel</button>
 
                     </div>
                 </div>

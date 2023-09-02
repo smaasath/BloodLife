@@ -10,7 +10,7 @@
 
 
 }
-.p-3 {
+.cont45 {
     padding: 1.5rem!important;
 }
 
@@ -36,22 +36,22 @@
 .stockcon h4{
     color: red;
 }
-.form-control{
-    font-size: 0.70rem;
-    
-}
 
-.btn-primary{
+
+.addbtn{
     background-color: #FF6666 !important;
-    border-color: black;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: 60px;
+    border: 1px solid rgba(255, 255, 255, .25);
+     border-radius: 20px;
+
 }
-.btn-primary:hover {
+.addbtn:hover {
     background-color: red!important;
     border-color: black;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
-.btn-primary:active{
+.addbtn:active{
     color:#000000;
 }
 .blood{
@@ -66,20 +66,26 @@
  .table tr td{
     text-align: center;
 }   
-.btn-info{
+.bbviewbtn{
     background-color: #FF9F9F!important;
-    border-color: black;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: 60px;
+    border: 1px solid rgba(255, 255, 255, .25);
+     border-radius: 20px;
+
 }
-.btn-info:hover{
+.bbviewbtn:hover{
      background-color: wheat!important;
      border-color: black;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
-.btn-secondary{
+.editbtn{
     border-color: black;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    
+    width: 60px;
+    border: 1px solid rgba(255, 255, 255, .25);
+     border-radius: 20px;
+
 }
 
 table tr th{
@@ -93,4 +99,12 @@ table tr th{
   margin-bottom: 10px;
     
     
+}
+.savebtn{
+     background-color: #FF6666 !important;
+    
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: 60px;
+    border: 1px solid rgba(255, 255, 255, .25);
+     border-radius: 20px;
 }
