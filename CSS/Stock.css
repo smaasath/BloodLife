@@ -76,3 +76,18 @@
 table tr th{
    text-align: center; 
 }
+
+.card4{
+
+    display: flex;
+    flex-direction: column;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, .25);
+    background-color: white !important;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    height: 800px !important;
+    padding: 20px;
+/*    margin: 60px auto;*/
+    margin-left: 250px;
+    width :350px;
+}

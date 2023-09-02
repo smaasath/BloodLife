@@ -35,6 +35,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
         <link rel="stylesheet" href="../CSS/Stock.css">
         <link rel="stylesheet" href="../CSS/StockAlert.css">
+      
     </head>
     <body>
         <div class="container-fluid">
@@ -247,12 +248,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         } elseif ($_SESSION['selectedLink'] == "bbhrv") {
                             include '../DashboardFiles/BloodBankFiles/BloodBankHospitalRequestView.php';
                         } elseif ($_SESSION['selectedLink'] == "bbhra") {
-                            include '../DashboardFiles/BloodBankFiles/BloodBankHospitalRequestAccept.php';
+                            include '../DashboardFiles/BloodBankFiles/AddBloodRequest.php';
                         }elseif ($_SESSION['selectedLink'] == "bbrv") {
                             include '../DashboardFiles/BloodBankFiles/BloodBankRequestView.php';
                         }elseif ($_SESSION['selectedLink'] == "bbre") {
                             include '../DashboardFiles/BloodBankFiles/BloodBankRequestEdit.php';
-                        } else {
+                        }elseif ($_SESSION['selectedLink'] == "bbraa") {
+                            include '../DashboardFiles/BloodBankFiles/BloodBankHosReqAccept.php';
+                        }else {
                             include '../DashboardFiles/BloodBankFiles/BloodBankProfile.php';
                         }
                     } else {
