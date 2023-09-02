@@ -30,13 +30,13 @@ $con = $dbcon->getConnection();
                 <div class="col-4">
                     <div class="row align-items-center">
                         <div class="col-2 mb-2">
-                            <i class="fa-solid fa-bell fa-xl"></i>
+                           
                         </div>
                         <div class="col-2 mb-2">
-                            <i class="fa-solid fa-gear fa-xl"></i>
+                           
                         </div>
                         <div class="col-2 mb-2">
-                            <i class="fa-solid fa-user fa-xl"></i>
+                            
                         </div>
                         <div class="col-6 mt-2 	d-none d-xl-block">
                             <b>Jaffna Blood Bank</b>
@@ -52,23 +52,22 @@ $con = $dbcon->getConnection();
         <!-- nav bar end -->
 
         <!-- body start -->
-        <h1>BloodBank Stock
-            <?php
-            if ($con) {
-                echo 'success';
-            } else {
-                echo 'not';
-            }
-            ?>
-        </h1>
+    <center><h1>BloodBank Stock  </h1></center> 
+           
+          
+      
         <div class="container">
             <div class="row">
                 <div class ="card1 col-6 p-3 m-1" >
                     <div class="row">
                         <div class="col-3 p-0 m-0">
                             <div class="container p-3" >
-                                <div class="stockcon">
+                                <div class="stockcon" style="height: 80px;background-color: white">
                                     <h4 class="blood">A+</h4>
+                                    <div style="display: flex;flex-direction: row">
+                                        <img src="../Images/blood-bag.png" height="30px" width="30px" style="margin-left: 10px"/>
+                                         <h5 style="padding-left: 10px">10L</h5>
+                                    </div>
                                     <br>
                                     <br>
 
@@ -77,8 +76,12 @@ $con = $dbcon->getConnection();
                         </div>
                         <div class="col-3 p-0 m-0">
                             <div class="container p-3" >
-                                <div class="stockcon">
+                                <div class="stockcon" style="height: 80px;background-color: white">
                                     <h4 class="blood">A-</h4>
+                                    <div style="display: flex;flex-direction: row">
+                                        <img src="../Images/blood-bag.png" height="30px" width="30px" style="margin-left: 10px"/>
+                                         <h5 style="padding-left: 10px">10L</h5>
+                                    </div>
                                     <br>
                                     <br>
 
@@ -87,8 +90,12 @@ $con = $dbcon->getConnection();
                         </div>
                         <div class="col-3 p-0 m-0">
                             <div class="container p-3" >
-                                <div class="stockcon">
+                                <div class="stockcon" style="height: 80px;background-color: white">
                                     <h4 class="blood">B+</h4>
+                                    <div style="display: flex;flex-direction: row">
+                                        <img src="../Images/blood-bag.png" height="30px" width="30px" style="margin-left: 10px"/>
+                                         <h5 style="padding-left: 10px">10L</h5>
+                                    </div>
                                     <br>
                                     <br>
 
@@ -97,8 +104,12 @@ $con = $dbcon->getConnection();
                         </div>
                         <div class=" col-3 p-0 m-0">
                             <div class="container p-3" >
-                                <div class="stockcon">
+                                <div class="stockcon" style="height: 80px;background-color: white">
                                     <h4 class="blood">B-</h4>
+                                    <div style="display: flex;flex-direction: row">
+                                        <img src="../Images/blood-bag.png" height="30px" width="30px" style="margin-left: 10px"/>
+                                         <h5 style="padding-left: 10px">10L</h5>
+                                    </div>
                                     <br>
                                     <br>
 
@@ -109,8 +120,13 @@ $con = $dbcon->getConnection();
                     <div class="row">
                         <div class=" col-3 p-0 m-0">
                             <div class="container p-3" >
-                                <div class="stockcon">
+                                <div class="stockcon" style="height: 80px;background-color: white">
                                     <h4 class="blood">AB+</h4>
+                                   <div style="display: flex;flex-direction: row">
+                                        <img src="../Images/blood-bag.png" height="30px" width="30px" style="margin-left: 10px"/>
+                                         <h5 style="padding-left: 10px">10L</h5>
+                                    </div>
+                                    
                                     <br>
                                     <br>
 
@@ -118,9 +134,13 @@ $con = $dbcon->getConnection();
                             </div>
                         </div>
                         <div class="col-3 p-0 m-0">
-                            <div class="container p-3" >
-                                <div class="stockcon">
+                            <div class="container p-3"  >
+                                <div class="stockcon" style="height: 80px;background-color: white">
                                     <h4 class="blood">AB-</h4>
+                                    <div style="display: flex;flex-direction: row">
+                                        <img src="../Images/blood-bag.png" height="30px" width="30px" style="margin-left: 10px"/>
+                                         <h5 style="padding-left: 10px">10L</h5>
+                                    </div>
                                     <br>
                                     <br>
 
@@ -129,8 +149,12 @@ $con = $dbcon->getConnection();
                         </div>
                         <div class="col-3 p-0 m-0">
                             <div class="container p-3" >
-                                <div class="stockcon">
+                                <div class="stockcon" style="height: 80px;background-color: white">
                                     <h4 class="blood">O+</h4>
+                                    <div style="display: flex;flex-direction: row">
+                                        <img src="../Images/blood-bag.png" height="30px" width="30px" style="margin-left: 10px"/>
+                                         <h5 style="padding-left: 10px">10L</h5>
+                                    </div>
                                     <br>
                                     <br>
 
@@ -139,8 +163,12 @@ $con = $dbcon->getConnection();
                         </div>
                         <div class="col-3 p-0 m-0">
                             <div class="container p-3" >
-                                <div class="stockcon">
+                                <div class="stockcon" style="height: 80px;background-color: white">
                                     <h4 class="blood">O-</h4>
+                                    <div style="display: flex;flex-direction: row">
+                                        <img src="../Images/blood-bag.png" height="30px" width="30px" style="margin-left: 10px"/>
+                                         <h5 style="padding-left: 10px">10L</h5>
+                                    </div>
                                     <br>
                                     <br>
 
@@ -190,14 +218,7 @@ $con = $dbcon->getConnection();
 
                         </div>
                     </div>
-                    <div class="col-3"> 
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>BloodID</option>
-                            <option value="1">B001</option>
-                            <option value="2">B002</option>
-                            <option value="3">B003</option>
-                        </select>
-                    </div>
+                   
 
                     <div class="col-2"> 
                         <select class="form-select" aria-label="Default select example">
@@ -212,17 +233,10 @@ $con = $dbcon->getConnection();
                             <option value="2">O-</option>
                         </select>
                     </div>
-                    <div class="col-2"> 
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Location</option>
-                            <option value="1">Jaffna</option>
-                            <option value="2">Colombo</option>
-                            <option value="3">Vavuniya</option>
-                        </select>
-                    </div>
+                    
 
                     <div class="col-2" >
-                        <button type="button" class="btn btn-primary bgcol" onclick="Add()" data-bs-toggle="modal" data-bs-target="#exampleModal" >Add+</button>
+                        <button type="button" class="btn btn-primary bgcol" style="margin-left: 400px" onclick="Add()" data-bs-toggle="modal" data-bs-target="#exampleModal" >Add+</button>
 
 
 
@@ -332,16 +346,26 @@ $con = $dbcon->getConnection();
                     </div>
                     <div class="modal-body">
                         <form>
-                            <label for="BloodID">BloodID:</label>
-                            <input type="text" class="form-control" id="BloodID" name="BloodID"><br>
-                            <label for="BloodGroup">BloodGroup:</label>
-                            <input type="text" class="form-control" id="BloodGroup" name="BloodGroup"><br>
-                            <label for="Status">Status:</label>
-                            <input type="text" class="form-control" id="Status" name="Status"><br>
-                            <label for="Quantity">Quantity:</label>
-                            <input type="text" class="form-control" id="Quantity" name="Quantity"><br>
-                            <label for="ExpiryDate">ExpiryDate:</label>
-                            <input type="text" class="form-control" id="ExpiryDate" name="ExpiryDate"><br>
+                            <div class="stocky-1">
+                                <label for="BloodID">BloodID:</label><br>                          
+                            B001
+                            </div>
+                           <div class="stocky-1">
+                            <label for="BloodGroup">BloodGroup:</label><br>
+                            <span>O+</span>
+                            </div>
+                            <div class="stocky-1">
+                            <label for="Status">Status:</label><br>
+                            <span>Available</span>
+                            </div>
+                           <div class="stocky-1">
+                            <label for="Quantity">Quantity:</label><br>
+                            <span>2L</span>
+                            </div>
+                           <div class="stocky-1">
+                            <label for="ExpiryDate">ExpiryDate:</label><br>
+                            <span>2023-10-02</span>
+                            </div>
                         </form>
                     </div>
                     <div class="modal-footer">
@@ -359,33 +383,33 @@ $con = $dbcon->getConnection();
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="edit">VIEW DETAILS</h1>
+                        <h1 class="modal-title fs-5" id="edit">EDIT DETAILS</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <form>
                             <label for="BloodID">BloodID:</label>
-                            <input type="text" class="form-control" id="BloodID" name="BloodID"><br>
+                            <input type="text" class="form-control" id="BloodID" name="BloodID">
                             <label for="BloodGroup">BloodGroup:</label>
-                            <input type="text" class="form-control" id="BloodGroup" name="BloodGroup"><br>
+                            <input type="text" class="form-control" id="BloodGroup" name="BloodGroup">
                             <label for="Location">Location:</label>
-                            <input type="text" class="form-control" id="Location" name="Location"><br>
+                            <input type="text" class="form-control" id="Location" name="Location">
                             <label for="Quantity">Quantity:</label>
-                            <input type="text" class="form-control" id="Quantity" name="Quantity"><br>
+                            <input type="text" class="form-control" id="Quantity" name="Quantity">
                             <label for="Status">Status:</label>
-                            <input type="text" class="form-control" id="Status" name="Status"><br>
+                            <input type="text" class="form-control" id="Status" name="Status">
                             <label for="ExpiryDate">ExpiryDate:</label>
-                            <input type="text" class="form-control" id="ExpiryDate" name="ExpiryDate"><br>
+                            <input type="text" class="form-control" id="ExpiryDate" name="ExpiryDate">
                             <label for="Bloodbank">Bloodbank:</label>
-                            <input type="text" class="form-control" id="Bloodbank" name="Bloodbank"><br>
+                            <input type="text" class="form-control" id="Bloodbank" name="Bloodbank">
                             <label for="BloodbankID">BloodbankID:</label>
-                            <input type="text" class="form-control" id="BloodbankID" name="BloodbankID"><br>
+                            <input type="text" class="form-control" id="BloodbankID" name="BloodbankID">
                             <label for="Address">Address:</label>
-                            <input type="text" class="form-control" id="Address" name="Address"><br>
+                            <input type="text" class="form-control" id="Address" name="Address">
                             <label for="Contact No">Contact No:</label>
-                            <input type="text" class="form-control" id="Contact No" name="Contact No"><br>
+                            <input type="text" class="form-control" id="Contact No" name="Contact No">
                             <label for="Email">Email:</label>
-                            <input type="text" class="form-control" id="Email" name="Email"><br>
+                            <input type="text" class="form-control" id="Email" name="Email">
                         </form>
                     </div>
                     <div class="modal-footer">

@@ -21,13 +21,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <div class="col-4">
                     <div class="row align-items-center">
                         <div class="col-2 mb-2">
-                            <i class="fa-solid fa-bell fa-xl"></i>
+                            
                         </div>
                         <div class="col-2 mb-2">
-                            <i class="fa-solid fa-gear fa-xl"></i>
+                            
                         </div>
                         <div class="col-2 mb-2">
-                            <i class="fa-solid fa-user fa-xl"></i>
+                            
                         </div>
                         <div class="col-6 mt-2 	d-none d-xl-block">
                             <b>Jaffna Blood Bank</b>
@@ -43,126 +43,39 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <!-- nav bar end -->
 
         <!-- body start -->
-        <h1>BL Stock Alert</h1>
+    <center><h1>BL Stock Alert</h1></center>
 
         <div class="container">
-            <div class="row">
-                <div class ="card2 p-3 m-1" >
-                    <div class="row">
-                        <div class="col-3 p-0 m-0">
-                            <div class="container p-3" >
-                                <div class="alertcon">
-                                    <h4 class="quantity">A+</h4>
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <br>
-                                </div> 
-                            </div>
-                        </div>
-                        <div class="col-3 p-0 m-0">
-                            <div class="container p-3" >
-                                <div class="alertcon">
-                                    <h4 class="quantity">A-</h4>
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <br>
-                                </div> 
-                            </div>
-                        </div>
-                        <div class="col-3 p-0 m-0">
-                            <div class="container p-3" >
-                                <div class="alertcon">
-                                    <h4 class="quantity">B+</h4>
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <br>
-                                </div> 
-                            </div>
-                        </div>
-                        <div class=" col-3 p-0 m-0">
-                            <div class="container p-3" >
-                                <div class="alertcon">
-                                    <h4 class="quantity">B-</h4>
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <br>
-                                </div> 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class=" col-3 p-0 m-0">
-                            <div class="container p-3" >
-                                <div class="alertcon">
-                                    <h4 class="quantity">AB+</h4>
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <br>
-                                </div> 
-                            </div>
-                        </div>
-                        <div class="col-3 p-0 m-0">
-                            <div class="container p-3" >
-                                <div class="alertcon">
-                                    <h4 class="quantity">AB-</h4>
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <br>
-                                </div> 
-                            </div>
-                        </div>
-                        <div class="col-3 p-0 m-0">
-                            <div class="container p-3" >
-                                <div class="alertcon">
-                                    <h4 class="quantity">O+</h4>
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <br>
-                                </div> 
-                            </div>
-                        </div>
-                        <div class="col-3 p-0 m-0">
-                            <div class="container p-3" >
-                                <div class="alertcon">
-                                    <h4 class="quantity">O-</h4>
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <br>
-                                </div> 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
             <div class="row">
-                <div class=" card3 col-5 p-2 m-2">
-
+                <div class="col-5 p-2 m-2 alert alert-warning" style="height: 150px;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; ">
+                    <div style="display: flex;flex-direction: row">
+                        <img src="../Images/warning.png" height="50px" width="50px" style="margin-center: 10px"/>
+                        <h5 style="padding-left: 10px">Stock Alert <br><br>Expiry date is 10-01-2023</h5>
+                        
+                    </div>
+                    <button type="button" class="btn btn-primary bgcol"   onclick="Take action()" style="width: 130px;height: 40px; float: right" >Take action</button>
                 </div>
-                <div class=" card3 col-5 p-2 m-2">
-
+                <div class=" col-5 p-2 m-2 alert alert-danger" style="height: 150px;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;" >
+                    <div style="display: flex;flex-direction: row">
+                        <img src="../Images/warning.png" height="50px" width="50px" style="margin-center: 10px"/><br>
+                        <h5 style="padding-left: 10px">Stock Alert <br><br>Expiry date is 10-01-2023</h5>
+                    </div>
+                     <button type="button" class="btn btn-primary bgcol"   onclick="Take action()" style="width: 130px;height: 40px; float: right" >Take action</button>
                 </div>
-                <div class=" card3 col-5 p-2 m-2">
-
+                <div class=" col-5 p-2 m-2 alert alert-danger" style="height: 150px;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;" >
+                    <div style="display: flex;flex-direction: row">
+                        <img src="../Images/warning.png" height="50px" width="50px" style="margin-center: 10px"/><br>
+                        <h5 style="padding-left: 10px">Stock Alert <br><br>Expiry date is 10-01-2023</h5>
+                    </div>
+                     <button type="button" class="btn btn-primary bgcol"   onclick="Take action()" style="width: 130px;height: 40px; float: right" >Take action</button>
                 </div>
-                <div class=" card3 col-5 p-2 m-2">
-
+                <div class="col-5 p-2 m-2 alert alert-warning" style="height: 150px;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
+                    <div style="display: flex;flex-direction: row">
+                        <img src="../Images/warning.png" height="50px" width="50px" style="margin-center: 10px"/><br>
+                        <h5 style="padding-left: 10px">Stock Alert <br><br>Expiry date is 10-01-2023</h5>
+                    </div>
+                     <button type="button" class="btn btn-primary bgcol"   onclick="Take action()" style="width: 130px;height: 40px; float: right" >Take action</button>
                 </div>
 
             </div>
