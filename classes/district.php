@@ -65,7 +65,6 @@ class district {
 
     public static function getAllDivision($districtfromdrop) {
 
-
         try {
             $dbcon = new DbConnector();
             $con = $dbcon->getConnection();
@@ -96,7 +95,7 @@ class district {
             $dbcon = new DbConnector();
             $con = $dbcon->getConnection();
 
-            $query = "SELECT district.districtId, bloodbank.bloodBankName
+            $query = "SELECT district.districtId, bloodbank.bloodBankName, bloodbank.bloodBankId
 FROM district
 INNER JOIN bloodbank ON district.districtId = bloodbank.districtId
 WHERE district.division= ?";
@@ -112,21 +111,17 @@ WHERE district.division= ?";
             }
 
             foreach ($dataArray as $bloodbank) {
-                echo ' <option value=' . $bloodbank["bloodBankName"] . '>' . $bloodbank["bloodBankName"] . '</option>';
+                echo ' <option value=' . $bloodbank["bloodBankId"] . '>' . $bloodbank["bloodBankName"] . '</option>';
             }
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
     }
+    
+    
 
 }
 
-if (isset($_POST["district"])) {
-    $district = $_POST["district"];
-    district::getAllDivision($district);
-}
-if (isset($_POST["division"])) {
-    $division = $_POST["division"];
-    district::getAllBloodBank($division);
-}
+
+
 

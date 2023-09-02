@@ -9,34 +9,16 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <title></title>
     </head>
     <body>
-        <?php
-        require 'district.php';
+        <?Php
         
 
-        use classes\district;
+use classes\district;
+use classes\DbConnector;
 
-         // Initialize an empty array to store the data
-       
-        $dataArray = district::getAllDistrict(); // Retrieve district data using the "getAllDistrict()" method
-        print_r($dataArray); // Display the contents of the array using "print_r"
-        
-        
-        ?>
-        <h1> <?php print_r($dataArray); // Display the contents of the array using "print_r" ?></h1>
-        
-        <?php
-        require 'district.php';
-        
 
-        use classes\district;
-
-         // Initialize an empty array to store the data
-       
-        $dataArray = Division::getAllDivision(); // Retrieve district data using the "getAllDistrict()" method
-        print_r($dataArray); // Display the contents of the array using "print_r"
-        
-        
-        ?>
-        <h1> <?php print_r($dataArray); // Display the contents of the array using "print_r" ?></h1>
+if (isset($_POST["district"])) {
+            echo 'kkk';
+    }
+  ?>      
     </body>
 </html>
