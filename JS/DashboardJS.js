@@ -115,10 +115,11 @@ window.addEventListener('resize', runFunctionOnResize);
 function functionTest(value){
     
     
-     $.ajax({url: "../classes/district.php",
+     $.ajax({url: "../services/locationService.php",
         method: 'post',
         data: {district: value},
         success: function (result) {
+            
             $("#divisionDropDown").html(result);
             
         }});
@@ -127,11 +128,25 @@ function functionTest(value){
 function getBloodBank(value){
     console.log(value);
     
-     $.ajax({url: "../classes/district.php",
+     $.ajax({url: "../services/locationService.php",
         method: 'post',
         data: {division: value},
         success: function (result) {
+            
             $("#bloodbankDropDown").html(result);
+            
+        }});
+}
+
+function getBloodBankDetails(value){
+    console.log(value);
+    
+     $.ajax({url: "../services/bloodbankservices.php",
+        method: 'post',
+        data: {bloodBank: value},
+        success: function (result) {
+            console.log("Success");
+            $("#bloodbankdetails").html(result);
             
         }});
 }
