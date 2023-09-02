@@ -6,7 +6,11 @@
  */
 
 namespace classes;
+require 'DbConnector.php';
 
+use PDO;
+use PDOException;
+use classes\DbConnector;
 /**
  * Description of bloodBank
  *
@@ -28,6 +32,7 @@ class bloodBank {
         $this->ContactNo = $ContactNo;
         $this->districtId = $districtId;
     }
+
     public function setBloodBankId($bloodBankId): void {
         $this->bloodBankId = $bloodBankId;
     }
@@ -48,7 +53,7 @@ class bloodBank {
         $this->districtId = $districtId;
     }
 
-        public function getBloodBankId() {
+    public function getBloodBankId() {
         return $this->bloodBankId;
     }
 
@@ -80,12 +85,15 @@ class bloodBank {
             $stmt->execute();
             $row = $stmt->fetch();
 
-            if ($row) {
-               $newBloodBank = new bloodBank($row['bloodBankId'], $row['bloodBankName'], $row['Address'], $row['ContactNo'], $row['districtId']);
-               return $newBloodBank;
-            } else {
-                echo "No results found.";
-            }
+           if($row){
+               
+               echo $row["bloodBankName"];
+               
+               echo $row["Address"];
+               echo $row["ContactNo"];
+               echo $row["districtId "];
+               
+           }
         } catch (Exception $exc) {
             echo $exc->getTraceAsString();
         }
