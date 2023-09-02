@@ -1,4 +1,9 @@
 
+.stockcon h4{
+    color: red;
+}
+
+
 .card1{
 
     display: flex;
@@ -7,30 +12,31 @@
     border: 1px solid rgba(255, 255, 255, .25);
     background-color: white !important;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    height: 300px;
-    padding-top: 50px;
+     padding-top: 50px;
+    
 }
 .p-3 {
     padding: 1.5rem!important;
 }
 
 
-.stockcon1{
-    background-color: #FF6666;
+.stockcon{
+    background-color: white;
     border-radius: 10px;
     -webkit-transition: all .5s ease;
     -o-transition: all .5s ease;
     transition: all .5s ease;
     height: 100px;
     margin-top:  -18px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-.stockcon1:hover{
+.stockcon:hover{
     -webkit-transform: scale(1.1);
     -ms-transform: scale(1.1);
     transform: scale(1.1);
-    background-color: #F31559 !important;
     height: 100px;
+    cursor: pointer;
 }
 p.size{
     margin-top: 25px;
@@ -133,6 +139,12 @@ select .district{
     margin-top: 10px;
 }
 
-.cadddd{
-    margin-top: 50px;
+.stocky{
+   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+    
+    
 }
+
