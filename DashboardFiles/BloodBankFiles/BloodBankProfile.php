@@ -48,14 +48,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         
         
          <div class="container">
-            <img src="https://ichef.bbci.co.uk/news/624/cpsprodpb/59D8/production/_91400032_blooddonationspl027788188.jpg" alt="Blood" width="100%" height="200">
+            <img src="https://ichef.bbci.co.uk/news/624/cpsprodpb/59D8/production/_91400032_blooddonationspl027788188.jpg" alt="Blood" width="100%" height="150">
 
 
 
            
 
         </div>
-        <br><br>
+        <br>
         
         
         
@@ -65,9 +65,21 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         
         
         <!-- body start -->
-    <center><h1> BL PROFILE </h1></center>
+    <center><h2> BloodBank Profile </h2></center>
+   
 
+    <center><div class="col-3 text-center" > 
+          
+    <select class="form-select text-danger" aria-label="Default select example"> <!-- Add the 'text-danger' class to change color to red -->
+        <option selected><center>BloodBankId</center></option>
+        <option value="1">BB001</option>
+        <option value="2">BB003</option>
+        <option value="3">BB004</option>
+    </select>
+</div>
+        </center> 
 
+    <br>
 
         
         <div class="col-lg-8" style="margin-left:150px;width: 500px">
@@ -75,19 +87,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
           <div class="card-body">
             <div class="row">
               <div class="col-sm-4">
-                  <p class="mb-0"><span class="fw-bold">HospitalID</span></p>
+                  <p class="mb-0"><span class="fw-bold">BloodBankID</span></p>
               </div>
               <div class="col-sm-4">
-                <p class="text-muted mb-0">HS001</p>
+                <p class="text-muted mb-0">BB001</p>
               </div>
             </div>
             <hr>
             <div class="row">
               <div class="col-sm-4">
-                <p class="mb-0"><span class="fw-bold">Hospital Name</span></p>
+                <p class="mb-0"><span class="fw-bold">Bloodbank Name</span></p>
               </div>
               <div class="col-sm-7">
-                <p class="text-muted mb-0">Jaffna Central Hospital</p>
+                <p class="text-muted mb-0">Jaffna Central BloodBank</p>
               </div>
             </div>
             <hr>
@@ -170,7 +182,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
            
             <div class="row align-items-center pb-3">
                                     <div class="col-3">
-                                        <h6>HospitalID</h6>
+                                        <h6>BlooBankID</h6>
                                     </div>
                                     <div class="col-9">
                                         <input type="text"  name="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
@@ -178,7 +190,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                 </div>
                                 <div class="row align-items-center pb-3">
                                     <div class="col-3">
-                                        <h6>Hospital Name</h6>
+                                        <h6>BloodBank Name</h6>
                                     </div>
                                     <div class="col-9">
                                         <input type="text"  name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
