@@ -78,7 +78,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     </div>
 
                     <div class="col-3" > 
-                        <button type="button" class="btn btn-primary bgcol" data-bs-toggle="modal" data-bs-target="#AddHospital" onclick="AddHospital()" style="float: right;">Add Hospital</button>
+                    <button type="button" class="btn btn-primary bgcol" onclick="AddHospital()" >Add Hospital </button>     
                     </div>
 
                 </div>
@@ -113,105 +113,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <td class="col-3">Jaffna</td>
                         <td class="col-3">0212223348</td>
                         <td class="col-3">info@thjaffna.lk</td>
-                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#openHospitalDetails" onclick="Popup()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editHospitalDetails" onclick="Popup()">Edit</button></td>
+                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="OpenHospitalDetails()">View</button></td>
+                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="EditHospitalDetails()">Edit</button></td>
                     </tr>
                     
-                    <tr>
-                        <td class="col-1">H_ID001</td>
-                        <td class="col-3"> Teaching Hospital-Jaffna</td>
-                        <td class="col-2"> Hospital St, Jaffna</td>
-                        <td class="col-3">Jaffna</td>
-                        <td class="col-3">Jaffna</td>
-                        <td class="col-3">0212223348</td>
-                        <td class="col-3">info@thjaffna.lk</td>
-                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#openHospitalDetails" onclick="Popup()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editHospitalDetails" onclick="Popup()">Edit</button></td>
-                    </tr>
                     
-                    <tr>
-                        <td class="col-1">H_ID001</td>
-                        <td class="col-3"> Teaching Hospital-Jaffna</td>
-                        <td class="col-2"> Hospital St, Jaffna</td>
-                        <td class="col-3">Jaffna</td>
-                        <td class="col-3">Jaffna</td>
-                        <td class="col-3">0212223348</td>
-                        <td class="col-3">info@thjaffna.lk</td>
-                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#openHospitalDetails" onclick="Popup()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editHospitalDetails" onclick="Popup()">Edit</button></td>
-                    </tr>
                     
-                    <tr>
-                        <td class="col-1">H_ID001</td>
-                        <td class="col-3"> Teaching Hospital-Jaffna</td>
-                        <td class="col-2"> Hospital St, Jaffna</td>
-                        <td class="col-3">Jaffna</td>
-                        <td class="col-3">Jaffna</td>
-                        <td class="col-3">0212223348</td>
-                        <td class="col-3">info@thjaffna.lk</td>
-                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#openHospitalDetails" onclick="Popup()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editHospitalDetails" onclick="Popup()">Edit</button></td>
-                    </tr>
                     
-                    <tr>
-                        <td class="col-1">H_ID001</td>
-                        <td class="col-3"> Teaching Hospital-Jaffna</td>
-                        <td class="col-2"> Hospital St, Jaffna</td>
-                        <td class="col-3">Jaffna</td>
-                        <td class="col-3">Jaffna</td>
-                        <td class="col-3">0212223348</td>
-                        <td class="col-3">info@thjaffna.lk</td>
-                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#openHospitalDetails" onclick="Popup()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editHospitalDetails" onclick="Popup()">Edit</button></td>
-                    </tr>
                     
-                    <tr>
-                        <td class="col-1">H_ID001</td>
-                        <td class="col-3"> Teaching Hospital-Jaffna</td>
-                        <td class="col-2"> Hospital St, Jaffna</td>
-                        <td class="col-3">Jaffna</td>
-                        <td class="col-3">Jaffna</td>
-                        <td class="col-3">0212223348</td>
-                        <td class="col-3">info@thjaffna.lk</td>
-                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#openHospitalDetails" onclick="Popup()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editHospitalDetails" onclick="Popup()">Edit</button></td>
-                    </tr>
-                    
-                    <tr>
-                        <td class="col-1">H_ID001</td>
-                        <td class="col-3"> Teaching Hospital-Jaffna</td>
-                        <td class="col-2"> Hospital St, Jaffna</td>
-                        <td class="col-3">Jaffna</td>
-                        <td class="col-3">Jaffna</td>
-                        <td class="col-3">0212223348</td>
-                        <td class="col-3">info@thjaffna.lk</td>
-                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#openHospitalDetails" onclick="Popup()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editHospitalDetails" onclick="Popup()">Edit</button></td>
-                    </tr>
-                    
-                    <tr>
-                        <td class="col-1">H_ID001</td>
-                        <td class="col-3"> Teaching Hospital-Jaffna</td>
-                        <td class="col-2"> Hospital St, Jaffna</td>
-                        <td class="col-3">Jaffna</td>
-                        <td class="col-3">Jaffna</td>
-                        <td class="col-3">0212223348</td>
-                        <td class="col-3">info@thjaffna.lk</td>
-                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#openHospitalDetails" onclick="Popup()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editHospitalDetails" onclick="Popup()">Edit</button></td>
-                    </tr>
-                    
-                    <tr>
-                        <td class="col-1">H_ID001</td>
-                        <td class="col-3"> Teaching Hospital-Jaffna</td>
-                        <td class="col-2"> Hospital St, Jaffna</td>
-                        <td class="col-3">Jaffna</td>
-                        <td class="col-3">Jaffna</td>
-                        <td class="col-3">0212223348</td>
-                        <td class="col-3">info@thjaffna.lk</td>
-                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#openHospitalDetails" onclick="Popup()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editHospitalDetails" onclick="Popup()">Edit</button></td>
-                    </tr>
+                 
 
                 </table> 
             </div>
@@ -219,9 +129,295 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
         </div>
+        
+        <!--edit Hospital Details-->
+<!-- Modal -->
+<div class="modal fade" id="editHospitalDetails">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="editHospitalDetails">Add Hospital</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>--------------------------------------------------</p>
+                <form action="">
+                    <label for="BbId">Blood bank ID &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
+                    <input type="text" id="BbId" name="BbId" required><br><br>
+                    <label for="BbName">Blood Bank Name:</label>
+                    <input type="text" id="BbName" name="BbName" required><br><br>
+                    <label for="Adrs">Address&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
+                    <input type="text" id="Adrs" name="Adrs" required><br><br>
+                    <label for="Dst">District&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
+                    <input type="text" id="Dst" name="Dst" required><br><br>
+                    <label for="Divi">DS Division&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
+                    <input type="text" id="Divi" name="Divi" required><br><br>
+                    <label for="Cnct">Contact No&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
+                    <input type="tel" id="Cnct" name="Cnct" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required><br><br>
+                    <label for="email">Email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
+                    <input type="email" id="email" name="email" required><br><br>
+                </form>
 
 
-        <!-- Modal edit Hospital Details-->
+            </div>
+            <div class="modal-footer">
+
+
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#savePopup3">Save </button>
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletePopup3">Delete</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Save Popup edit Hospital-->
+<!-- Modal -->
+<div class="modal fade" id="savePopup3" tabindex="-1" aria-labelledby="savePopup3Label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="savePopup3Label1"></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+
+                <h1>Do you want to save the changes?</h1>
+
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-primary">Save </button>
+                <button type="button" class="btn btn-danger">Don't Save </button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="EditHospitalDetails()">cancel</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!--Delete Popup editbloodbank-->
+<!-- Modal -->
+<div class="modal fade" id="deletePopup3" tabindex="-1" aria-labelledby="deletePopup3Label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="deletePopup3Label1"></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-body">
+
+                    <h1>Do you want to delete the changes?</h1>
+
+                </div>
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-primary">No </button>
+                    <button type="button" class="btn btn-danger">Yes </button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="EditHospitalDetails()">cancel</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<!--add Hospital-->
+<!-- Modal -->
+<div class="modal fade" id="addHospital">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="addHospital">Add Hospital </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+               <p>--------------------------------------------------</p>
+                        <form action="">
+                           
+                            <label for="HosName">Hospital Name:</label>
+                            <input type="text" id="HosName" name="HosName" required><br><br>
+                            <label for="Adrs">Address&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
+                            <input type="text" id="Adrs" name="Adrs" required><br><br>
+                            <label for="Dst">District&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
+                            <input type="text" id="Dst" name="Dst" required><br><br>
+                            <label for="Divi">DS Division&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
+                            <input type="text" id="Divi" name="Divi" required><br><br>
+                            <label for="Cnct">Contact No&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
+                            <input type="tel" id="Cnct" name="Cnct" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required><br><br>
+                            <label for="email">Email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
+                            <input type="email" id="email" name="email" required><br><br>  
+                        </form> 
+            </div>
+
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#savePopup1">Save </button>
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletePopup1">Delete</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!--Save Popup AddHospital-->
+<!-- Modal -->
+<div class="modal fade" id="savePopup1" tabindex="-1" aria-labelledby="savePopup1Label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="savePopup1Label1"></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+
+                <h1>Do you want to save the changes?</h1>
+
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-primary">Save </button>
+                <button type="button" class="btn btn-danger">Don't Save </button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="AddHospital()">cancel</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!--Delete Popup AddHospital-->
+<!-- Modal -->
+<div class="modal fade" id="deletePopup1" tabindex="-1" aria-labelledby="deletePopup1Label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="deletePopup1Label1"></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+
+                <h1>Do you want to delete the changes?</h1>
+
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-primary">No </button>
+                <button type="button" class="btn btn-danger">Yes </button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="AddHospital()">cancel</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- Modal View Hospital Details-->
+<!-- Modal -->
+<div class="modal fade" id="openHospitalDetails">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="openHospitalDetails">View Hospial Details</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <p>--------------------------------------------------</p>
+                            <p>Hospital ID   : H_ID0040</p>
+                            <p>Hospital Name : Teaching Hospital - Jaffna</p>
+                            <p>Address       : Hospital St,Jaffna,40000</p>
+                            <p>District      : Jaffna </p>
+                            <p>DS Division   : Jaffna</p>
+                            <p>Contact No    : 0212223348</p>
+                            <p>Email         : info@thjaffna.lk</p>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#savePopup2">Save </button>
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletePopup2">Delete</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!--Save Popup view Hospital-->
+<!-- Modal -->
+<div class="modal fade" id="savePopup2" tabindex="-1" aria-labelledby="savePopup2Label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="savePopup2Label1"></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+
+                <h1>Do you want to save the changes?</h1>
+
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-primary">No </button>
+                <button type="button" class="btn btn-danger">Yes </button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="OpenHospitalDetails()">Cancel</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!--Delete Popup view Hospital
+<!-- Modal -->
+<div class="modal fade" id="deletePopup2" tabindex="-1" aria-labelledby="deletePopup2Label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="deletePopup2Label1"></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+
+                <h1>Do you want to delete the changes?</h1>
+
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-primary">No </button>
+                <button type="button" class="btn btn-danger">Yes </button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="OpenHospitalDetails()">cancel</button>
+                
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+
+<!--         Modal edit Hospital Details
         <div class="modal fade" id="editHospitalDetails" tabindex="-1" aria-labelledby="editHospitalDetailsLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -248,8 +444,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             <input type="email" id="email" name="email" required><br><br>  
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#savePopup" onclick="Popup()">Save </button>
-                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletePopup"onclick="Popup()">Delete</button>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#savePopup" onclick="savePopup()">Save </button>
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletePopup"onclick="deletePopup()">Delete</button>
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Cancel</button>
 
 
@@ -259,7 +455,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </div>
             </div>
 
-            <!-- Modal save -->
+             Modal save 
             <div class="modal fade" id="savePopup" tabindex="-1" aria-labelledby="savePopupLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -280,7 +476,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </div>
             </div>
 
-            <!-- Modal delete -->
+             Modal delete 
             <div class="modal fade" id="deletePopup" tabindex="-1" aria-labelledby="deletePopupLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -300,7 +496,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </div>
             </div>
             
-               <!-- Modal Add Hospital -->
+                Modal Add Hospital 
         <div class="modal fade" id="AddHospital" tabindex="-1" aria-labelledby="addHospitalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -326,8 +522,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             <input type="email" id="email" name="email" required><br><br>  
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#savePopup" onclick="Popup()">Save </button>
-                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletePopup"onclick="Popup()">Delete</button>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#savePopup" onclick="savePopup()">Save </button>
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletePopup"onclick="deletePopup()">Delete</button>
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Cancel</button>
 
 
@@ -337,7 +533,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </div>
             </div>
 
-            <!-- Modal open Hospital Details -->
+             Modal open Hospital Details 
             <div class="modal fade" id="openHospitalDetails" tabindex="-1" aria-labelledby="openHospitalDetailsLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -357,8 +553,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             <p>Email         : info@thjaffna.lk</p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#savePopup" onclick="Popup()">Save </button>
-                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletePopup"onclick="Popup()">Delete</button>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#savePopup" onclick="savePopup()">Save </button>
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletePopup"onclick="deletePopup()">Delete</button>
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Cancel</button>
 
 
@@ -366,7 +562,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>-->
 
 
 
