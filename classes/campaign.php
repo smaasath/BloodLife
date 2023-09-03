@@ -136,11 +136,13 @@ class campaign {
         $pstmt->bindValue(3, $startDate);
         $pstmt->bindValue(4, $endDate);
         $pstmt->bindValue(5, $review);
+
         $pstmt->bindValue(6,  $status);
         $pstmt->bindValue(7, $districtId);
         $pstmt->bindValue(8, $organizerId);
         $pstmt->bindValue(9, $bloodBankId);
         
+
 
         $pstmt->execute();
 

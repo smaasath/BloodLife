@@ -1,3 +1,9 @@
+<?php $userId = 1; 
+
+ require_once '../classes/hospitalrequestclass.php';
+ use classes\hospitalrequestclass;
+
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -51,33 +57,58 @@
         <!-- Hospital Request start -->
 
         <div class="container">
+            <?php 
 
-            <div class="row bg-white m-3 pt-0  align-items-center justify-content-center rounded-5">
+if (isset($_GET['addreq']) && $_GET['addreq'] === 'Success') {
+    echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Success!</strong> Indicates a successful or positive action.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>';
+} else {
+    // Handle other cases here or leave it empty.
+}
+
+?>
+            <div class="mt-5 m-4 mb-2" style="color:gray;"> <h5>Create Request</h5></div>
+
+            <div class="row bg-white m-3 pt-0  align-items-center justify-content-center rounded-5" style="height: 600px;">
+               
                 <div class="col-lg-6">
                     <div class="form-container">
 
 
-                        <form>
+                        <form action="../services/addrequest.php" method="POST">
                             <h2 class="container-title">Create Request</h2>
                             <label for="bloodGroup">Blood Group:</label>
-                            <input type="text" id="bloodGroup" name="bloodGroup" required>
-                            <label for="date">Date:</label>
-                            <input type="date" id="date" name="date" required>
-                            <label for="bloodQuantity">Blood Quantity:</label>
-                            <input type="number" id="bloodQuantity" name="bloodQuantity" required>
+                            <select class="form-control form-control-lg" name="bloodGroup" required>
+                                                <option selected>Select your Blood Group</option>
+                                                <option value="A+">A+</option>
+                                                <option value="A-"> A-</option>
+                                                <option value="B+"> B+</option>
+                                                <option value="B-"> B-</option>
+                                                <option value="O+"> O+</option>
+                                                <option value="O-"> O-</option>
+                                                <option value="AB+"> AB+</option>
+                                                <option value="AB-"> AB-</option>
+
+                                            </select>
+                           
+                            <label for="bloodQuantity">Blood Quantity (ml):</label>
+                            <input type="number"  name="bloodQuantity" required>
                             <label for="status">Status:</label>
-                            <select id="status" name="status" required>
-                                <option value="pending">Pending</option>
-                                <option value="completed">Completed</option>
-                                <option value="cancelled">Cancelled</option>
+                            <select class="form-control form-control-lg" name="requestStatus" required>
+                                <option value="Normal">Normal</option>
+                                <option value="Emergency">Emergency</option>
+                                <option value="Urgent">Urgent</option>
+                                <option value="Completed">Completed</option>
                             </select>
-                            <label for="location">Location:</label>
-                            <input type="text" id="location" name="location" required>
-                            <label for="district">District:</label>
-                            <input type="text" id="district" name="district" required><br>
+                            <br>
+              
+                            <br>
+                            <input type="hidden" name="userID" value="<?php echo $userId; ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                             <div class="text-end">
-                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Send Request</button>
-                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Cancel Request</button>
+                                <button type="submit" class="btn btn-danger" >Send Request</button>
+                                <button type="button" class="btn btn-danger">Cancel Request</button>
                             </div>
                         </form>
 
@@ -85,32 +116,56 @@
                 </div>
 
                 <div class="col-6 align-items-center justify-content-center">
-                    <img src="../Images/hospitalreq.png"/>
+                    <img class="d-none d-xl-block" src="../Images/hospitalreq.png"/>
                 </div>
             </div>
 
-
-            <div class="row bg-white m-3 pt-0 align-items-center p-3 justify-content-start rounded-3 d-flex">
-                <a href="../Dashboards/HospitalDashboard.php?page=hospitalreqview"style="text-decoration: none;">
-                <div class="bg-white p-3  m-3" style="width: 270px; height: 150px; box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;">
-                    <div class="row">
-                        <div class="col">
-                            <p class="m-b-0"  style="margin-top: 5px"><strong>BR001</strong><span class="f-right"><strong style="margin-left: 100px">A+</strong></span></p>
+<div class="mt-5 m-4 mb-2" style="color:gray;"> <h5>Request</h5></div>
+            <div class="row bg-white m-3 pt-0 align-items-center p-3 justify-content-start rounded-3 d-flex" >
+                 <?php 
+         
+                
+                $requestArray = hospitalrequestclass::getAllRequest();
+                
+                                foreach ($requestArray as $datAarray){
+                
+                
+                
+                ?>
+                <div class="col">
+               
+                    <div class="bg-white p-3  m-3" style="width: 270px; height: 170px; box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; background: <?php echo hospitalrequestclass::getHospitalStatusGradient($datAarray["requestStatus"]) ; ?>;">
+                        <a href="../Dashboards/HospitalDashboard.php?page=hospitalreqview"style="text-decoration: none;">
+                        <div class="row">
+                            <div class="col">
+                                <p class="m-b-0 text-white"  style="margin-top: 5px"><strong><?php echo $datAarray["hospitalRequestID"]; ?></strong><span class="f-right"><strong style="margin-left: 100px" <?php echo $datAarray["bloodGroup"]; ?>>A+</strong></span></p>
+                            </div>
                         </div>
+                        <div class="row align-items-center justify-content-center text-white">
+                            <div class="col">
+                               <?php echo $datAarray["bloodQuantity"]; ?>
+                                
+                            </div>  
+                            <div class="col">
+                                <img class="w-50" src="../Images/icons8-blood-100.png"/>
+                            </div>
+                        </div>                        
+
+                        <div class="row">
+                            <div class="col">
+                                <p class="m-b-0 text-white " ><?php echo $datAarray["createdDate"]; ?><span class="f-right" style="margin-left:30px;font-weight: bold"><?php echo $datAarray["requestStatus"]; ?></span></p> 
+                            </div>       
+                        </div>
+                             </a>
                     </div>
-                    <div class="row">
-                        <div class="col">
-                            500ml
-                        </div>       
-                    </div>                        
-                  
-                    <div class="row">
-                        <div class="col">
-                            <p class="m-b-0 ">2023-09-15 <span class="f-right" style="margin-left:30px;font-weight: bold">Completed</span></p> 
-                        </div>       
-                    </div>
+                    
+                               
+                    
+                    
+                      
                 </div>
-                </a>
+                 <?php } ?>
+          
 
             </div>
 

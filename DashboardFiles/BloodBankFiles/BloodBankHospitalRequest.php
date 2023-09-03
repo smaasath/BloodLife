@@ -1,5 +1,8 @@
 <?php
 $userId = 1;
+
+ require_once '../classes/hospitalrequestclass.php';
+ use classes\hospitalrequestclass;
 ?>
 
 
@@ -63,18 +66,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             
                   <div class="row bg-white m-3 pt-0 align-items-center p-3 justify-content-start rounded-3 d-flex">
                       <a href="../Dashboards/BloodBankDashboard.php?page=bbhrv"style="text-decoration: none;">
-                <div class="bg-white p-3  m-3" style="width: 270px; height: 200px; box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;">
+                <div class="bg-white p-3  m-3" style="width: 270px; height: 200px; box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; background: <?php echo hospitalrequestclass::getHospitalStatusGradient("Emergency") ; ?>; ">
                     <div class="row">
                         <div class="col">
-                            <p class="m-b-0"  style="margin-top: 5px"><strong>BR001</strong><span class="f-right"><strong style="margin-left: 100px">A+</strong></span></p>
+                            <p class="m-b-0 text-white"  style="margin-top: 5px"><strong>BR001</strong><span class="f-right"><strong style="margin-left: 100px">A+</strong></span></p>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row text-white" >
                         <div class="col">
                             Hospital XYZ
                         </div>
                     </div><br>
-                    <div class="row">
+                    <div class="row text-white">
                         <div class="col">
                             500ml
                         </div>       
@@ -82,7 +85,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                   
                     <div class="row">
                         <div class="col">
-                            <p class="m-b-0 ">2023-09-15 <span class="f-right" style="margin-left:30px;font-weight: bold">Completed</span></p> 
+                            <p class="m-b-0 text-white">2023-09-15 <span class="f-right" style="margin-left:30px;font-weight: bold">Completed</span></p> 
                         </div>       
                     </div>
                 </div>

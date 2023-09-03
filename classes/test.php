@@ -10,16 +10,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     </head>
     <body>
         <?Php
-        
-
-require'./Donor.php';
-use classes\Donor;
-
-Donor::SendMail();
 
 
-
-
-  ?>      
     </body>
 </html>
