@@ -135,7 +135,7 @@ class campaign {
         $pstmt->bindValue(3, $startDate);
         $pstmt->bindValue(4, $endDate);
         $pstmt->bindValue(5, $review);
-        $pstmt->bindValue(6,  );
+       
         $pstmt->bindValue(7, $coinValue);
         $pstmt->bindValue(8, $donationLastDate);
         $pstmt->bindValue(9, $availability);

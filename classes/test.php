@@ -10,15 +10,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     </head>
     <body>
         <?Php
-        
 
-use classes\district;
-use classes\DbConnector;
+      require '../classes/hospitalrequestclass.php';
+      use classes\hospitalrequestclass;
+      $array = hospitalrequestclass::getAllRequest();
+              print_r($array);
+       
 
-
-if (isset($_POST["district"])) {
-            echo 'kkk';
-    }
-  ?>      
+       
+        ?>      
     </body>
 </html>
