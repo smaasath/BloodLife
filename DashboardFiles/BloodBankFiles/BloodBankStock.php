@@ -178,31 +178,69 @@ $con = $dbcon->getConnection();
                     </div>
                 </div>
 
-                <div class ="card1 col-2 m-1 " >           
-                     <select  class="district" id="district"style="border-radius: 5px; height: 30px">
-                        <option value="jaffna">jaffna</option>
-                        
-                    </select>
-                    <br>
-                    <br>
-                     <select  class="division" id="division"style="border-radius: 5px; height: 30px">
-                        <option value="jaffna">Nallur</option>
-                        
-                    </select>
-                    <br>
-                    <br>
-                    <select  class="bloodbank" id="bloodbank"style="border-radius: 5px; height: 30px">
-                        <option value="jaffna">jaffna blood bank</option>
-                        
-                    </select>
+                 <div class ="card1 col-2 m-1 " >   
 
-                </div>
-                <div class ="card1 col m-1 " >
+                <select  class="district" id="district" onchange="functionTest(this.value)" style="border-radius: 5px; height: 30px">
+                    <option>Select District</option>
+                    <?php
+                    require '../classes/district.php';
 
+                    use classes\district;
 
-                </div>
+$dataArray = district::getAllDistrict(); // Retrieve district data using the "getAllDistrict()" method
+
+                    foreach ($dataArray as $district) {
+                        ?>
+
+                        <option  value="<?php echo $district['district']; ?>"><?php echo $district['district']; ?></option>
+                        <?php
+                    }
+                    ?>
+                </select>
+
+                <br>
+                <br>
+                <select  class="division" id="divisionDropDown" onchange="getBloodBank(this.value)" style="border-radius: 5px; height: 30px">
+                    <option>Select Division</option> 
+
+                </select>
+                <br>
+                <br>
+                <select  class="bloodbank" id="bloodbankDropDown" onchange="getBloodBankDetails(this.value)" style="border-radius: 5px; height: 30px">
+                    <option>Select Blood Bank</option>
+
+                </select>
+
 
             </div>
+            <div class ="card1 col m-1 " id ="bloodbankdetails">
+                <table class="detail">
+                    <tr>
+                        <td><label for="BloodbankID">BloodbankID:</label></td>
+                        <td><span>1</span></td>
+                    </tr>
+                    <tr>
+                        <td><label for="Bloodbank Name">Bloodbank Name:</label></td>
+                        <td><span>Rolexy</span></td>
+                    </tr>
+                    <tr>
+                        <td><label for="Address">Address:</label></td>
+                        <td><span>100, Jaffna</span></td>
+                    </tr>
+                    <tr>
+                        <td><label for="Contact No">Contact No:</label></td>
+                        <td><span>021456780</span></td>
+                    </tr>
+                    <tr>
+                        <td><label for="DistrictID">DistrictID:</label></td>
+                        <td><span>20</span></td>
+                    </tr>
+                </table>
+
+
+            </div>
+
+        </div>
         </div>
         <!-- table -->
         <div class="p-5">
