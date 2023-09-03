@@ -13,5 +13,8 @@ use classes\bloodBank;
  if (isset($_POST["bloodBank"])) {
      $bloodBankId = $_POST["bloodBank"];
      bloodBank::showbloodbankdetails($bloodBankId );
+    
     }
+  
+
 ?>

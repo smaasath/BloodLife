@@ -94,29 +94,29 @@ class Bloodtable {
         $this->Location = $Location;
     }
 
-    public static function showbloodbankdetails($blID) {
+    public static function getAllbloodpackets($bloodBankId) {
         try {
             $dbcon = new DbConnector();
             $con = $dbcon->getConnection();
             $query = "SELECT * FROM `bloodtable` WHERE bloodBankId=?";
 
             $stmt = $con->prepare($query);
-            $stmt->bindValue(1, $blID);
+            $stmt->bindValue(1, $bloodBankId); // Make sure $blID is defined.
             $stmt->execute();
-            $row = $stmt->fetch();
 
-            if ($row) {
-                echo $row["bloodId"] . "<br>";
-                echo $row["bloodGroup"] . "<br>";
-                echo $row["expiryDate"] . "<br>";
-                echo $row["Location"] . "<br>";
-                echo $row["quantity"] . "<br>";
-                echo $row["status"] . "<br>";
-            } else {
+            $dataArray = array();
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $dataArray[] = $row;
+              
+            }
+
+            if (empty($dataArray)) {
                 echo "No results found.";
             }
+
+            return $dataArray;
         } catch (PDOException $exc) {
-            echo $exc->getTraceAsString();
+            echo $exc->getMessage();
         }
     }
 

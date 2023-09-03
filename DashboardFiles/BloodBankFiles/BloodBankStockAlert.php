@@ -43,7 +43,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <!-- nav bar end -->
 
         <!-- body start -->
-    <center><h1>BL Stock Alert</h1></center>
+    <center><h1>Bloodbank Stock Alert</h1></center>
 
         <div class="container">
 

@@ -304,22 +304,21 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
 
                         <th class="col-1 bgcol p-2">BloodID</th>
                         <th class="col-2 bgcol p-2">BloodGroup</th>
-                        <th class="col-2 bgcol p-2">ExpiryDate</th>
-                        <th class="col-2 bgcol p-2">Location</th>
-                        <th class="col-1 bgcol p-2">Quantity</th>
+                        <th class="col-2 bgcol p-2">ExpiryDate</th>                     
+                        <th class="col-1 bgcol p-2">Quantity(ml)</th>
                         <th class="col-1 bgcol p-2">Status</th>
                         <th class="col-1 bgcol p-2">View</th>
-                        <th class="col-2 bgcol p-2">Edit</th>
+                        <th class="col bgcol p-2">Edit</th>
 
 
                     </tr>
 
-                    <tr>
+                    <tr id="bloodpackets">
                         <td class="col-1 ">B001</td>
                         <td class="col-2 ">B+</td>
                         <td class="col-2">2000-01-20</td>
                         <td class="col-2">Jaffna</td>
-                        <td class="col-1">1L</td>
+                        <td class="col-1">100</td>
                         <td class="col-2">Given</td>
                         <td class="col-1"><button type="button" class="bbviewbtn" onclick="openBloodbankDetails()"data-bs-toggle="modal" data-bs-target="#viewModal" >View</button></td>
                         <td class="col-1"><button type="button" class="editbtn" onclick="Editbloodbank()" data-bs-toggle="modal" data-bs-target="#editModal" >Edit</button></td>
@@ -432,7 +431,7 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
                             <input type="text" class="form-control" id="BloodGroup" name="BloodGroup">
                             <label for="Location">Location:</label>
                             <input type="text" class="form-control" id="Location" name="Location">
-                            <label for="Quantity">Quantity:</label>
+                            <label for="Quantity">Quantity(ml):</label>
                             <input type="text" class="form-control" id="Quantity" name="Quantity">
                             <label for="Status">Status:</label>
                             <input type="text" class="form-control" id="Status" name="Status">

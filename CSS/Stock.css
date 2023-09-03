@@ -106,3 +106,9 @@ table tr th{
     border: 1px solid rgba(255, 255, 255, .25);
      border-radius: 20px;
 }
+.detail{
+    display: flex;
+  
+  align-items: center;
+  margin-bottom: 10px;
+}

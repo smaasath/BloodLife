@@ -138,9 +138,19 @@ function getBloodBank(value){
         }});
 }
 
+function getBloodPackets(value){
+    $.ajax({url: "../services/bloodtableservices.php",
+        method: 'post',
+        data: {getbbdetails: value},
+        success: function (result) {
+        $("#bloodpackets").html(result);
+            
+        }});
+}
+
 function getBloodBankDetails(value){
     console.log(value);
-    
+     getBloodPackets(value);
      $.ajax({url: "../services/bloodbankservices.php",
         method: 'post',
         data: {bloodBank: value},

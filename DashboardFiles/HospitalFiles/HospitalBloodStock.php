@@ -32,6 +32,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         </div>
                         <div class="col-6 mt-2 	d-none d-xl-block">
                             <b>General Hospital</b>
+                           
                             <p style="font-size: 10px;">Hospital</p>
                         </div>
                     </div>
@@ -279,13 +280,12 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
 
                 <tr class="sticky-top">
 
-                    <th class="col-1 bgcol p-2">BloodID</th>
+                    <th class="col-2 bgcol p-2">BloodID</th>
                     <th class="col-2 bgcol p-2">BloodGroup</th>
-                    <th class="col-2 bgcol p-2">ExpiryDate</th>
-                    <th class="col-2 bgcol p-2">Location</th>
-                    <th class="col-2 bgcol p-2">Quantity</th>
-                    <th class="col-1 bgcol p-2">Status</th>
-                    <th class="col-2 bgcol p-2">Action</th>
+                    <th class="col-2 bgcol p-2">ExpiryDate</th>                    
+                    <th class="col-2 bgcol p-2">Quantity(ml)</th>
+                    <th class="col-2 bgcol p-2">Status</th>
+                    <th class="col bgcol p-2">Action</th>
 
 
 
@@ -293,14 +293,12 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
 
 
 
-                <tr>
-                    <td class="col-1" style="text-align: center">B001</td>
-                    <td class="col-2" style="text-align: center">B+</td>
-                    <td class="col-2" style="text-align: center">2000-01-20</td>
-                    <td class="col-2" style="text-align: center">Jaffna</td>
-                    <td class="col-2" style="text-align: center">1L</td>
-                    <td class="col-2" style="text-align: center">Given</td>
-                    <td class="col-1"><button type="button" class="viewbtn" onclick="openBloodbankDetails()" data-bs-toggle="modal" data-bs-target="#viewModal">View</button></td>
+                <tr id="bloodpackets">
+                 
+                    
+    
+   
+
 
                 </tr>
 
@@ -339,7 +337,7 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
                             <span>JAFFNA</span>
                         </div>
                         <div class="stocky">
-                            <label for="Quantity">Quantity:</label>
+                            <label for="Quantity">Quantity(ml):</label>
                             <span>2L</span>
                         </div>
                         <div class="stocky">
