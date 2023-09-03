@@ -325,7 +325,7 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
 
                     <div class="modal-footer">
                         
-                        <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#savePopup1">Save </button>
+                        <button type="submit" class="btn btn-primary" >Save </button>
                         <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletePopup1">Delete</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
 
