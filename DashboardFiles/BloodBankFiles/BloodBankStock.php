@@ -30,13 +30,13 @@ $con = $dbcon->getConnection();
                 <div class="col-4">
                     <div class="row align-items-center">
                         <div class="col-2 mb-2">
-                           
+
                         </div>
                         <div class="col-2 mb-2">
-                           
+
                         </div>
                         <div class="col-2 mb-2">
-                            
+
                         </div>
                         <div class="col-6 mt-2 	d-none d-xl-block">
                             <b>Jaffna Blood Bank</b>
@@ -53,132 +53,132 @@ $con = $dbcon->getConnection();
 
         <!-- body start -->
     <center><h1>BloodBank Stock  </h1></center> 
-           
-          
-      
-        <div class="container">
-            <div class="row">
-                <div class ="card1 col-6 p-3 m-1" >
-                    <div class="row">
-                        <div class="col-3 p-0 m-0">
-                            <div class="container p-3 cont45" >
-                                <div class="stockcon" style="height: 80px;background-color: white">
-                                    <h4 class="blood">A+</h4>
-                                    <div style="display: flex;flex-direction: row">
-                                        <img src="../Images/blood-bag.png" height="30px" width="30px" style="margin-left: 10px"/>
-                                         <h5 style="padding-left: 10px">10L</h5>
-                                    </div>
-                                    <br>
-                                    <br>
 
-                                </div> 
-                            </div>
-                        </div>
-                        <div class="col-3 p-0 m-0">
-                            <div class="container p-3 cont45" >
-                                <div class="stockcon" style="height: 80px;background-color: white">
-                                    <h4 class="blood">A-</h4>
-                                    <div style="display: flex;flex-direction: row">
-                                        <img src="../Images/blood-bag.png" height="30px" width="30px" style="margin-left: 10px"/>
-                                         <h5 style="padding-left: 10px">10L</h5>
-                                    </div>
-                                    <br>
-                                    <br>
 
-                                </div> 
-                            </div>
-                        </div>
-                        <div class="col-3 p-0 m-0">
-                            <div class="container p-3 cont45" >
-                                <div class="stockcon" style="height: 80px;background-color: white">
-                                    <h4 class="blood">B+</h4>
-                                    <div style="display: flex;flex-direction: row">
-                                        <img src="../Images/blood-bag.png" height="30px" width="30px" style="margin-left: 10px"/>
-                                         <h5 style="padding-left: 10px">10L</h5>
-                                    </div>
-                                    <br>
-                                    <br>
 
-                                </div> 
-                            </div>
-                        </div>
-                        <div class=" col-3 p-0 m-0">
-                            <div class="container p-3 cont45" >
-                                <div class="stockcon" style="height: 80px;background-color: white">
-                                    <h4 class="blood">B-</h4>
-                                    <div style="display: flex;flex-direction: row">
-                                        <img src="../Images/blood-bag.png" height="30px" width="30px" style="margin-left: 10px"/>
-                                         <h5 style="padding-left: 10px">10L</h5>
-                                    </div>
-                                    <br>
-                                    <br>
+    <div class="container">
+        <div class="row">
+            <div class ="card1 col-6 p-3 m-1" >
+                <div class="row">
+                    <div class="col-3 p-0 m-0">
+                        <div class="container p-3 cont45" >
+                            <div class="stockcon" style="height: 80px;background-color: white">
+                                <h4 class="blood">A+</h4>
+                                <div style="display: flex;flex-direction: row">
+                                    <img src="../Images/blood-bag.png" height="30px" width="30px" style="margin-left: 10px"/>
+                                    <h5 style="padding-left: 10px">10L</h5>
+                                </div>
+                                <br>
+                                <br>
 
-                                </div> 
-                            </div>
+                            </div> 
                         </div>
                     </div>
-                    <div class="row">
-                        <div class=" col-3 p-0 m-0">
-                            <div class="container p-3 cont45" >
-                                <div class="stockcon" style="height: 80px;background-color: white">
-                                    <h4 class="blood">AB+</h4>
-                                   <div style="display: flex;flex-direction: row">
-                                        <img src="../Images/blood-bag.png" height="30px" width="30px" style="margin-left: 10px"/>
-                                         <h5 style="padding-left: 10px">10L</h5>
-                                    </div>
-                                    
-                                    <br>
-                                    <br>
+                    <div class="col-3 p-0 m-0">
+                        <div class="container p-3 cont45" >
+                            <div class="stockcon" style="height: 80px;background-color: white">
+                                <h4 class="blood">A-</h4>
+                                <div style="display: flex;flex-direction: row">
+                                    <img src="../Images/blood-bag.png" height="30px" width="30px" style="margin-left: 10px"/>
+                                    <h5 style="padding-left: 10px">10L</h5>
+                                </div>
+                                <br>
+                                <br>
 
-                                </div> 
-                            </div>
+                            </div> 
                         </div>
-                        <div class="col-3 p-0 m-0">
-                            <div class="container p-3 cont45"  >
-                                <div class="stockcon" style="height: 80px;background-color: white">
-                                    <h4 class="blood">AB-</h4>
-                                    <div style="display: flex;flex-direction: row">
-                                        <img src="../Images/blood-bag.png" height="30px" width="30px" style="margin-left: 10px"/>
-                                         <h5 style="padding-left: 10px">10L</h5>
-                                    </div>
-                                    <br>
-                                    <br>
+                    </div>
+                    <div class="col-3 p-0 m-0">
+                        <div class="container p-3 cont45" >
+                            <div class="stockcon" style="height: 80px;background-color: white">
+                                <h4 class="blood">B+</h4>
+                                <div style="display: flex;flex-direction: row">
+                                    <img src="../Images/blood-bag.png" height="30px" width="30px" style="margin-left: 10px"/>
+                                    <h5 style="padding-left: 10px">10L</h5>
+                                </div>
+                                <br>
+                                <br>
 
-                                </div> 
-                            </div>
+                            </div> 
                         </div>
-                        <div class="col-3 p-0 m-0">
-                            <div class="container p-3 cont45" >
-                                <div class="stockcon" style="height: 80px;background-color: white">
-                                    <h4 class="blood">O+</h4>
-                                    <div style="display: flex;flex-direction: row">
-                                        <img src="../Images/blood-bag.png" height="30px" width="30px" style="margin-left: 10px"/>
-                                         <h5 style="padding-left: 10px">10L</h5>
-                                    </div>
-                                    <br>
-                                    <br>
+                    </div>
+                    <div class=" col-3 p-0 m-0">
+                        <div class="container p-3 cont45" >
+                            <div class="stockcon" style="height: 80px;background-color: white">
+                                <h4 class="blood">B-</h4>
+                                <div style="display: flex;flex-direction: row">
+                                    <img src="../Images/blood-bag.png" height="30px" width="30px" style="margin-left: 10px"/>
+                                    <h5 style="padding-left: 10px">10L</h5>
+                                </div>
+                                <br>
+                                <br>
 
-                                </div> 
-                            </div>
-                        </div>
-                        <div class="col-3 p-0 m-0">
-                            <div class="container p-3 cont45" >
-                                <div class="stockcon" style="height: 80px;background-color: white">
-                                    <h4 class="blood">O-</h4>
-                                    <div style="display: flex;flex-direction: row">
-                                        <img src="../Images/blood-bag.png" height="30px" width="30px" style="margin-left: 10px"/>
-                                         <h5 style="padding-left: 10px">10L</h5>
-                                    </div>
-                                    <br>
-                                    <br>
-
-                                </div> 
-                            </div>
+                            </div> 
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class=" col-3 p-0 m-0">
+                        <div class="container p-3 cont45" >
+                            <div class="stockcon" style="height: 80px;background-color: white">
+                                <h4 class="blood">AB+</h4>
+                                <div style="display: flex;flex-direction: row">
+                                    <img src="../Images/blood-bag.png" height="30px" width="30px" style="margin-left: 10px"/>
+                                    <h5 style="padding-left: 10px">10L</h5>
+                                </div>
 
-                 <div class ="card1 col-2 m-1 " >   
+                                <br>
+                                <br>
+
+                            </div> 
+                        </div>
+                    </div>
+                    <div class="col-3 p-0 m-0">
+                        <div class="container p-3 cont45"  >
+                            <div class="stockcon" style="height: 80px;background-color: white">
+                                <h4 class="blood">AB-</h4>
+                                <div style="display: flex;flex-direction: row">
+                                    <img src="../Images/blood-bag.png" height="30px" width="30px" style="margin-left: 10px"/>
+                                    <h5 style="padding-left: 10px">10L</h5>
+                                </div>
+                                <br>
+                                <br>
+
+                            </div> 
+                        </div>
+                    </div>
+                    <div class="col-3 p-0 m-0">
+                        <div class="container p-3 cont45" >
+                            <div class="stockcon" style="height: 80px;background-color: white">
+                                <h4 class="blood">O+</h4>
+                                <div style="display: flex;flex-direction: row">
+                                    <img src="../Images/blood-bag.png" height="30px" width="30px" style="margin-left: 10px"/>
+                                    <h5 style="padding-left: 10px">10L</h5>
+                                </div>
+                                <br>
+                                <br>
+
+                            </div> 
+                        </div>
+                    </div>
+                    <div class="col-3 p-0 m-0">
+                        <div class="container p-3 cont45" >
+                            <div class="stockcon" style="height: 80px;background-color: white">
+                                <h4 class="blood">O-</h4>
+                                <div style="display: flex;flex-direction: row">
+                                    <img src="../Images/blood-bag.png" height="30px" width="30px" style="margin-left: 10px"/>
+                                    <h5 style="padding-left: 10px">10L</h5>
+                                </div>
+                                <br>
+                                <br>
+
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class ="card1 col-2 m-1 " >   
 
                 <select  class="district" id="district" onchange="functionTest(this.value)" style="border-radius: 5px; height: 30px">
                     <option>Select District</option>
@@ -241,7 +241,7 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
             </div>
 
         </div>
-        </div>
+
         <!-- table -->
         <div class="p-5">
 
@@ -256,7 +256,7 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
 
                         </div>
                     </div>
-                   
+
 
                     <div class="col-2"> 
                         <select class="form-select" aria-label="Default select example">
@@ -271,7 +271,7 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
                             <option value="2">O-</option>
                         </select>
                     </div>
-                    
+
 
                     <div class="col-2" >
                         <button type="button" class="addbtn" style="margin-left: 400px" onclick="Add()" data-bs-toggle="modal" data-bs-target="#exampleModal" >Add+</button>
@@ -306,22 +306,16 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
                         <th class="col-2 bgcol p-2">BloodGroup</th>
                         <th class="col-2 bgcol p-2">ExpiryDate</th>                     
                         <th class="col-1 bgcol p-2">Quantity(ml)</th>
-                        <th class="col-1 bgcol p-2">Status</th>
-                        <th class="col-1 bgcol p-2">View</th>
+                        <th class="col-2 bgcol p-2">Status</th>
+                        <th class="col-2 bgcol p-2">View</th>
                         <th class="col bgcol p-2">Edit</th>
 
 
                     </tr>
 
                     <tr id="bloodpackets">
-                        <td class="col-1 ">B001</td>
-                        <td class="col-2 ">B+</td>
-                        <td class="col-2">2000-01-20</td>
-                        <td class="col-2">Jaffna</td>
-                        <td class="col-1">100</td>
-                        <td class="col-2">Given</td>
-                        <td class="col-1"><button type="button" class="bbviewbtn" onclick="openBloodbankDetails()"data-bs-toggle="modal" data-bs-target="#viewModal" >View</button></td>
-                        <td class="col-1"><button type="button" class="editbtn" onclick="Editbloodbank()" data-bs-toggle="modal" data-bs-target="#editModal" >Edit</button></td>
+
+<!--                        <td class="col-1"><button type="button" class="editbtn" onclick="Editbloodbank()" data-bs-toggle="modal" data-bs-target="#editModal" >Edit</button></td>-->
                     </tr>
 
 
@@ -340,126 +334,152 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
 
         </div>
 
+    </div>
 
 
+    <!-- Add details -->
 
-        <!-- Add details -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <form action="../services/addbloodpacket.php" method="POST">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="exampleModalLabel">ADD DETAILS</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form>
-                            <label for="BloodID">BloodID:</label>
-                            <input type="text" class="form-control" id="BloodID" name="BloodID"><br>
-                            <label for="BloodGroup">BloodGroup:</label>
-                            <input type="text" class="form-control" id="BloodGroup" name="BloodGroup"><br>
-                            <label for="Quantity">Quantity:</label>
-                            <input type="text" class="form-control" id="Quantity" name="Quantity"><br>
-                            <label for="ExpiryDate">ExpiryDate:</label>
-                            <input type="text" class="form-control" id="ExpiryDate" name="ExpiryDate"><br>
-                        </form>
+                        <div class="form-group">
+                            <label for="bloodGroup">Blood Group:</label>
+                            <select  name="bloodGroup" class="form-control" required>
+                                <option value="">Select Blood Group</option>
+                                <option value="A+">A+</option>
+                                <option value="B+">B+</option>
+                                <option value="O+">O+</option>
+                                <option value="AB+">AB+</option>
+                                <option value="A-">A-</option>
+                                <option value="B-">B-</option>
+                                <option value="AB-">AB-</option>
+                                <option value="O-">O-</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="quantity">Quantity(ml):</label>
+                            <input type="number"  name="quantity" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="expiryDate">Expiry Date:</label>
+                            <input type="date"  name="expiryDate" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="status">Status:</label>
+                            <select  name="status" class="form-control" required>
+                                <option value="">Select Status</option>
+                                <option value="Available">Available</option>
+                                <option value="Given">Given</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="savebtn">Save</button>
+                        <button type="submit" class="savebtn">Save</button>
                         <button type="button" class="editbtn" data-bs-dismiss="modal">Close</button>
 
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
+    </div>
 
-        <!-- VIEW -->
+    <!-- VIEW -->
 
-        <div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="view" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="view">VIEW DETAILS</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="stocky-1">
-                                <label for="BloodID">BloodID:</label><br>                          
+    <div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="view" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="view">VIEW DETAILS</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="stocky-1">
+                            <label for="BloodID">BloodID:</label><br>                          
                             B001
-                            </div>
-                           <div class="stocky-1">
+                        </div>
+                        <div class="stocky-1">
                             <label for="BloodGroup">BloodGroup:</label><br>
                             <span>O+</span>
-                            </div>
-                            <div class="stocky-1">
+                        </div>
+                        <div class="stocky-1">
                             <label for="Status">Status:</label><br>
                             <span>Available</span>
-                            </div>
-                           <div class="stocky-1">
+                        </div>
+                        <div class="stocky-1">
                             <label for="Quantity">Quantity:</label><br>
                             <span>2L</span>
-                            </div>
-                           <div class="stocky-1">
+                        </div>
+                        <div class="stocky-1">
                             <label for="ExpiryDate">ExpiryDate:</label><br>
                             <span>2023-10-02</span>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="savebtn" data-bs-dismiss="modal">OK</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="savebtn" data-bs-dismiss="modal">OK</button>
 
 
-                    </div>
                 </div>
             </div>
         </div>
+    </div>
 
 
-        <!-- edit -->
-        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="edit" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="edit">EDIT DETAILS</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <label for="BloodID">BloodID:</label>
-                            <input type="text" class="form-control" id="BloodID" name="BloodID">
-                            <label for="BloodGroup">BloodGroup:</label>
-                            <input type="text" class="form-control" id="BloodGroup" name="BloodGroup">
-                            <label for="Location">Location:</label>
-                            <input type="text" class="form-control" id="Location" name="Location">
-                            <label for="Quantity">Quantity(ml):</label>
-                            <input type="text" class="form-control" id="Quantity" name="Quantity">
-                            <label for="Status">Status:</label>
-                            <input type="text" class="form-control" id="Status" name="Status">
-                            <label for="ExpiryDate">ExpiryDate:</label>
-                            <input type="text" class="form-control" id="ExpiryDate" name="ExpiryDate">
-                            <label for="Bloodbank">Bloodbank:</label>
-                            <input type="text" class="form-control" id="Bloodbank" name="Bloodbank">
-                            <label for="BloodbankID">BloodbankID:</label>
-                            <input type="text" class="form-control" id="BloodbankID" name="BloodbankID">
-                            <label for="Address">Address:</label>
-                            <input type="text" class="form-control" id="Address" name="Address">
-                            <label for="Contact No">Contact No:</label>
-                            <input type="text" class="form-control" id="Contact No" name="Contact No">
-                            <label for="Email">Email:</label>
-                            <input type="text" class="form-control" id="Email" name="Email">
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="savebtn">Save</button>
-                        <button type="button" class="editbtn" data-bs-dismiss="modal">Cancel</button>
+    <!-- edit -->
+    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="edit" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="edit">EDIT DETAILS</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <label for="BloodID">BloodID:</label>
+                        <input type="text" class="form-control" id="BloodID" name="BloodID">
+                        <label for="BloodGroup">BloodGroup:</label>
+                        <input type="text" class="form-control" id="BloodGroup" name="BloodGroup">
+                        <label for="Location">Location:</label>
+                        <input type="text" class="form-control" id="Location" name="Location">
+                        <label for="Quantity">Quantity(ml):</label>
+                        <input type="text" class="form-control" id="Quantity" name="Quantity">
+                        <label for="Status">Status:</label>
+                        <input type="text" class="form-control" id="Status" name="Status">
+                        <label for="ExpiryDate">ExpiryDate:</label>
+                        <input type="text" class="form-control" id="ExpiryDate" name="ExpiryDate">
+                        <label for="Bloodbank">Bloodbank:</label>
+                        <input type="text" class="form-control" id="Bloodbank" name="Bloodbank">
+                        <label for="BloodbankID">BloodbankID:</label>
+                        <input type="text" class="form-control" id="BloodbankID" name="BloodbankID">
+                        <label for="Address">Address:</label>
+                        <input type="text" class="form-control" id="Address" name="Address">
+                        <label for="Contact No">Contact No:</label>
+                        <input type="text" class="form-control" id="Contact No" name="Contact No">
+                        <label for="Email">Email:</label>
+                        <input type="text" class="form-control" id="Email" name="Email">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="savebtn">Save</button>
+                    <button type="button" class="editbtn" data-bs-dismiss="modal">Cancel</button>
 
-                    </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <?php
-        // put your code hereg
-        ?>
-    </body>
+    <?php
+    // put your code hereg
+    ?>
+</body>
 </html>

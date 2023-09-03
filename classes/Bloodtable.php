@@ -120,4 +120,28 @@ class Bloodtable {
         }
     }
 
+    public static function addbloodpacket( $bloodGroup, $quantity, $expiryDate, $status) {
+        try {
+             $dbcon = new DbConnector();
+            $con = $dbcon->getConnection();
+            
+            $query ="INSERT INTO 'bloodtable'(bloodId, bloodGroup,quantity,expiryDate,status) VALUES(null, ?, ?, ?, ?);";
+            $pstmt =$con->prepare($query);
+           
+            $pstmt->bindValue(1, $bloodGroup);
+            $pstmt->bindValue(2, $quantity);
+            $pstmt->bindValue(3, $expiryDate);
+            $pstmt->bindValue(4, $status);
+            
+            $pstmt->execute();
+            if($pstmt->rowCount()>0){
+                echo 'success';
+                
+            }else{
+                echo'error';
+            }
+        } catch (PDOException $exc) {
+            echo $exc->getMessage();
+        }
+        }
 }
