@@ -184,6 +184,7 @@ class Donor {
                 echo 'Success.';
                 $DonorId = $con->lastInsertId();
                 User::AddUser($UserName, $password, $email, 5, null, $DonorId, null);
+                self::SendMail($UserName, $password, $email, $name);
             } else {
                 echo 'Error';
             }
@@ -192,7 +193,7 @@ class Donor {
         }
     }
 
-    public static function SendMail() {
+    public static function SendMail($UserName, $password, $email,$name) {
         // Create an instance; passing `true` enables exceptions
 
         require '../mail/Exception.php';
@@ -211,11 +212,15 @@ class Donor {
         $mail->Port = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
         //Recipients
         $mail->setFrom('sachinformationsystem@gmail.com');
-        $mail->addAddress("aasadh2000@gmail.com");     //Add a recipient             //Name is optional
+        $mail->addAddress($email);     //Add a recipient             //Name is optional
         //Content
         $mail->isHTML(true);                                  //Set email format to HTML
-        $mail->Subject = 'Staff Registration';
-        $message = "Dear";
+        $mail->Subject = 'Donor Registration';
+        $message = "Dear ".$name.",<br>";
+        $message .= "Congratulations! , your account has been successfully created.";
+        $message .= "Your username:".$UserName.",<br>";
+        $message .= "Your Password: ".$password.",<br>";
+        
 
         $mail->Body = $message;
 
