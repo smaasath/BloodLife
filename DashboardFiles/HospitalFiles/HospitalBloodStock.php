@@ -239,8 +239,9 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
             <div class="row align-items-center">
                 <div class="col-3">           
                     <div class="input-group rounded p-3">
+                        <form method="GET" action="search.php">
                         <input type="search" class="form-control rounded" placeholder="Search ID" aria-label="Search" aria-describedby="search-addon" >
-
+                        </form>
 
 
                     </div>
@@ -248,6 +249,7 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
 
 
                 <div class="col-2"> 
+                    <form method="GET" >
                     <select class="form-select" aria-label="Default select example">
                         <option selected>BloodGroup</option>
                         <option value="1">A+</option>
@@ -259,6 +261,7 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
                         <option value="3">AB-</option>
                         <option value="2">O-</option>
                     </select>
+                    </form>
                 </div>
 
 
@@ -291,12 +294,12 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
 
 
                 <tr>
-                    <td class="col-1">B001</td>
-                    <td class="col-2">B+</td>
-                    <td class="col-2">2000-01-20</td>
-                    <td class="col-2">Jaffna</td>
-                    <td class="col-2">1L</td>
-                    <td class="col-2">Given</td>
+                    <td class="col-1" style="text-align: center">B001</td>
+                    <td class="col-2" style="text-align: center">B+</td>
+                    <td class="col-2" style="text-align: center">2000-01-20</td>
+                    <td class="col-2" style="text-align: center">Jaffna</td>
+                    <td class="col-2" style="text-align: center">1L</td>
+                    <td class="col-2" style="text-align: center">Given</td>
                     <td class="col-1"><button type="button" class="viewbtn" onclick="openBloodbankDetails()" data-bs-toggle="modal" data-bs-target="#viewModal">View</button></td>
 
                 </tr>
@@ -313,7 +316,7 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
         <!-- Table Head -->
 
     </div>
-    <-<!--view -->
+    <!--view -->
     <div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="view" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">

@@ -7,18 +7,6 @@
     font-family: Arial, sans-serif;
 }
 
-.container-01 {
-    position: absolute;
-    top: 200px;
-    left: 300px;
-    width: 100px;
-    height: 300px;
-    background-color: #f2f2f2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px ;
-}
 
 .form-container {
     background-color: #fff;
@@ -58,18 +46,11 @@ select {
     border-radius: 4px;
 }
 
-.button-row {
-  display: flex;
-  justify-content: flex-end;
-}
+.buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
 
-
-button {
-    padding: 8px 15px;
-    margin-left: 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
 }
 
 #submitButton {
@@ -96,7 +77,7 @@ button {
     margin-top: 20px; 
 }
 
-.card1{
+.card3{
 
     display: flex;
     flex-direction: column;
@@ -104,15 +85,16 @@ button {
     border: 1px solid rgba(255, 255, 255, .25);
     background-color: white !important;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    height: 350px;
+    height: 800px !important;
     padding: 20px;
-    margin: 20px;
-    width :500px;
+/*    margin: 60px auto;*/
+    margin-left: 250px;
+    width :350px;
 }
 .p-3 {
     padding: 1.5rem!important;
 }
-.stockcon1{
+.stockcon{
     background-color: #FF6666;
     border-radius: 10px;
     -webkit-transition: all .2s ease;
@@ -120,12 +102,9 @@ button {
     transition: all .2s ease;
     height: 100px;
     margin-top:  -18px;
+    margin-left: 200px;
+}
+.yeyeyeye{
+    margin-left: 500px;
 }
 
-.stockcon1:hover{
-    -webkit-transform: scale(1.1);
-    -ms-transform: scale(1.1);
-    transform: scale(1.1);
-    background-color: #F31559 !important;
-    height: 100px;
-}

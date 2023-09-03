@@ -87,10 +87,10 @@ class bloodBank {
             $stmt->execute();
             $row = $stmt->fetch();
 
-            if ($row) {
+            
                 if ($row) {
                     echo '<table class="detail">';
-                    
+
                     echo '<tr><td><label for="BloodbankID">BloodbankID:</label></td><td>' . $row["bloodBankId"] . '</td></tr>';
                     echo '<tr><td><label for="Bloodbank Name">Bloodbank Name:</label></td><td>' . $row["bloodBankName"] . '</td></tr>';
                     echo '<tr><td><label for="Address">Address:</label></td><td>' . $row["Address"] . '</td></tr>';
@@ -100,9 +100,11 @@ class bloodBank {
                 } else {
                     echo "No results found.";
                 }
-            }
-        } catch (Exception $exc) {
-            echo $exc->getTraceAsString();
+                
+                
+                      
+        } catch (PDOException $exc) {
+            echo $exc->getMessage();
         }
     }
 

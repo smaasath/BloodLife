@@ -13,7 +13,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <style>
 .container {
   position: relative;
-  text-align: center;
+  text-align: right;
   color: white;
 }
 

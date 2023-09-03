@@ -40,16 +40,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
 .col-5{
     flex:auto !important;
 }
-.btn-info{
-    background-color: #FF9F9F!important;
-    border-color: black;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}
-.btn-info:hover{
-     background-color: wheat!important;
-     border-color: black;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}
+
 .quantity{
     text-align: center;
     font-size: 30px;
@@ -59,4 +50,16 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
 }
 .p-0 {
     padding: 0.25rem!important;
+}
+.viewbtn{
+    background-color: #FF9F9F!important;
+    border-color: black;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: 60px;
+    border: 1px solid rgba(255, 255, 255, .25);
+     border-radius: 20px;
+}
+.viewbtn:hover{
+     
+     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }

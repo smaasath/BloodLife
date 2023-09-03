@@ -80,7 +80,7 @@
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .editbtn{
-    border-color: black;
+    
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     width: 60px;
     border: 1px solid rgba(255, 255, 255, .25);
@@ -98,11 +98,9 @@ table tr th{
   align-items: center;
   margin-bottom: 10px;
     
-    
 }
 .savebtn{
-     background-color: #FF6666 !important;
-    
+     
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     width: 60px;
     border: 1px solid rgba(255, 255, 255, .25);
