@@ -13,8 +13,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
       require '../classes/hospitalrequestclass.php';
       use classes\hospitalrequestclass;
-      $array = hospitalrequestclass::getAllRequest();
-              print_r($array);
+   $array = hospitalrequestclass::getAllRequestwithHospitalusingID(19);
+
+
+   
+    echo $array->getCreateDate();
+
+
        
 
        

@@ -1,8 +1,9 @@
-<?php $userId = 1; 
+<?php
+$userId = 1;
 
- require_once '../classes/hospitalrequestclass.php';
- use classes\hospitalrequestclass;
+require_once '../classes/hospitalrequestclass.php';
 
+use classes\hospitalrequestclass;
 ?>
 <!DOCTYPE html>
 <html>
@@ -57,22 +58,20 @@
         <!-- Hospital Request start -->
 
         <div class="container">
-            <?php 
-
-if (isset($_GET['addreq']) && $_GET['addreq'] === 'Success') {
-    echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+            <?php
+            if (isset($_GET['addreq']) && $_GET['addreq'] === 'Success') {
+                echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
         <strong>Success!</strong> Indicates a successful or positive action.
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>';
-} else {
-    // Handle other cases here or leave it empty.
-}
-
-?>
+            } else {
+                // Handle other cases here or leave it empty.
+            }
+            ?>
             <div class="mt-5 m-4 mb-2" style="color:gray;"> <h5>Create Request</h5></div>
 
             <div class="row bg-white m-3 pt-0  align-items-center justify-content-center rounded-5" style="height: 600px;">
-               
+
                 <div class="col-lg-6">
                     <div class="form-container">
 
@@ -81,18 +80,18 @@ if (isset($_GET['addreq']) && $_GET['addreq'] === 'Success') {
                             <h2 class="container-title">Create Request</h2>
                             <label for="bloodGroup">Blood Group:</label>
                             <select class="form-control form-control-lg" name="bloodGroup" required>
-                                                <option selected>Select your Blood Group</option>
-                                                <option value="A+">A+</option>
-                                                <option value="A-"> A-</option>
-                                                <option value="B+"> B+</option>
-                                                <option value="B-"> B-</option>
-                                                <option value="O+"> O+</option>
-                                                <option value="O-"> O-</option>
-                                                <option value="AB+"> AB+</option>
-                                                <option value="AB-"> AB-</option>
+                                <option selected>Select your Blood Group</option>
+                                <option value="A+">A+</option>
+                                <option value="A-"> A-</option>
+                                <option value="B+"> B+</option>
+                                <option value="B-"> B-</option>
+                                <option value="O+"> O+</option>
+                                <option value="O-"> O-</option>
+                                <option value="AB+"> AB+</option>
+                                <option value="AB-"> AB-</option>
 
-                                            </select>
-                           
+                            </select>
+
                             <label for="bloodQuantity">Blood Quantity (ml):</label>
                             <input type="number"  name="bloodQuantity" required>
                             <label for="status">Status:</label>
@@ -103,7 +102,7 @@ if (isset($_GET['addreq']) && $_GET['addreq'] === 'Success') {
                                 <option value="Completed">Completed</option>
                             </select>
                             <br>
-              
+
                             <br>
                             <input type="hidden" name="userID" value="<?php echo $userId; ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                             <div class="text-end">
@@ -120,70 +119,46 @@ if (isset($_GET['addreq']) && $_GET['addreq'] === 'Success') {
                 </div>
             </div>
 
-<div class="mt-5 m-4 mb-2" style="color:gray;"> <h5>Request</h5></div>
+            <div class="mt-5 m-4 mb-2" style="color:gray;"> <h5>Request</h5></div>
             <div class="row bg-white m-3 pt-0 align-items-center p-3 justify-content-start rounded-3 d-flex" >
-                 <?php 
-         
-                
+                <?php
                 $requestArray = hospitalrequestclass::getAllRequest();
-                
-                                foreach ($requestArray as $datAarray){
-                
-                
-                
-                ?>
-                <div class="col">
-               
-                    <div class="bg-white p-3  m-3" style="width: 270px; height: 170px; box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; background: <?php echo hospitalrequestclass::getHospitalStatusGradient($datAarray["requestStatus"]) ; ?>;">
-                        <a href="../Dashboards/HospitalDashboard.php?page=hospitalreqview"style="text-decoration: none;">
-                        <div class="row">
-                            <div class="col">
-                                <p class="m-b-0 text-white"  style="margin-top: 5px"><strong><?php echo $datAarray["hospitalRequestID"]; ?></strong><span class="f-right"><strong style="margin-left: 100px" <?php echo $datAarray["bloodGroup"]; ?>>A+</strong></span></p>
-                            </div>
-                        </div>
-                        <div class="row align-items-center justify-content-center text-white">
-                            <div class="col">
-                               <?php echo $datAarray["bloodQuantity"]; ?>
-                                
-                            </div>  
-                            <div class="col">
-                                <img class="w-50" src="../Images/icons8-blood-100.png"/>
-                            </div>
-                        </div>                        
 
-                        <div class="row">
-                            <div class="col">
-                                <p class="m-b-0 text-white " ><?php echo $datAarray["createdDate"]; ?><span class="f-right" style="margin-left:30px;font-weight: bold"><?php echo $datAarray["requestStatus"]; ?></span></p> 
-                            </div>       
+                foreach ($requestArray as $datAarray) {
+                    ?>
+                    <div class="col">
+
+                        <div class="bg-white p-3  m-3" style="width: 270px; height: 170px; box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; background: <?php echo hospitalrequestclass::getHospitalStatusGradient($datAarray["requestStatus"]); ?>;">
+                            <a href="../Dashboards/HospitalDashboard.php?page=hospitalreqview"style="text-decoration: none;">
+                                <div class="row">
+                                    <div class="col">
+                                        <p class="m-b-0 text-white"  style="margin-top: 5px"><strong><?php echo $datAarray["hospitalRequestID"]; ?></strong><span class="f-right"><strong style="margin-left: 100px" <?php echo $datAarray["bloodGroup"]; ?>></strong></span></p>
+                                    </div>
+                                </div>
+                                <div class="row align-items-center justify-content-center text-white">
+                                    <div class="col">
+    <?php echo $datAarray["bloodQuantity"]; ?>
+
+                                    </div>  
+                                    <div class="col">
+                                        <img class="w-50" src="../Images/icons8-blood-100.png"/>
+                                    </div>
+                                </div>                        
+
+                                <div class="row">
+                                    <div class="col">
+                                        <p class="m-b-0 text-white " ><?php echo $datAarray["createdDate"]; ?><span class="f-right" style="margin-left:30px;font-weight: bold"><?php echo $datAarray["requestStatus"]; ?></span></p> 
+                                    </div>       
+                                </div>
+                            </a>   
                         </div>
-                             </a>
+
                     </div>
-                    
-                               
-                    
-                    
-                      
-                </div>
-                 <?php } ?>
-          
-
+<?php } ?>
             </div>
-
-
         </div>
-
-
-
-
-
-
-
-
-
-
-
-        <?php
+<?php
 // put your code here
-        ?>
+?>
     </body>
 </html>

@@ -1,8 +1,9 @@
 <?php
 $userId = 1;
 
- require_once '../classes/hospitalrequestclass.php';
- use classes\hospitalrequestclass;
+require_once '../classes/hospitalrequestclass.php';
+
+use classes\hospitalrequestclass;
 ?>
 
 
@@ -34,13 +35,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <div class="col-4">
                     <div class="row align-items-center">
                         <div class="col-2 mb-2">
-                           
+
                         </div>
                         <div class="col-2 mb-2">
-                           
+
                         </div>
                         <div class="col-2 mb-2">
-                          
+
                         </div>
                         <div class="col-6 mt-2 	d-none d-xl-block">
                             <b>Jaffna Blood Bank</b>
@@ -57,49 +58,54 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
         <!-- body start -->
     <center> <h1>BloodBank Hospital Request</h1></center>
-  
+    <div class="container">
+        <div class="row bg-white m-3 pt-0 align-items-center p-3 justify-content-start rounded-3 d-flex">
 
+            <?php
+            $requestArray = hospitalrequestclass::getAllRequestwithHospitalDetails();
 
-      
+            foreach ($requestArray as $datAarray) {
+                ?>
 
-        <div class="container">
-            
-                  <div class="row bg-white m-3 pt-0 align-items-center p-3 justify-content-start rounded-3 d-flex">
-                      <a href="../Dashboards/BloodBankDashboard.php?page=bbhrv"style="text-decoration: none;">
-                <div class="bg-white p-3  m-3" style="width: 270px; height: 200px; box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; background: <?php echo hospitalrequestclass::getHospitalStatusGradient("Emergency") ; ?>; ">
-                    <div class="row">
-                        <div class="col">
-                            <p class="m-b-0 text-white"  style="margin-top: 5px"><strong>BR001</strong><span class="f-right"><strong style="margin-left: 100px">A+</strong></span></p>
-                        </div>
+                <div class="col">
+
+                    <div class="bg-white p-3  m-3" style="width: 270px; height: 200px; box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; background: <?php echo hospitalrequestclass::getHospitalStatusGradient($datAarray["requestStatus"]); ?>; ">
+                        <a href="../Dashboards/BloodBankDashboard.php?page=bbhrv&reqid=<?php echo $datAarray['hospitalRequestID']; ?>" style="text-decoration: none;">
+
+                            <div class="row">
+                                <div class="col">
+                                    <p class="m-b-0 text-white"  style="margin-top: 5px"><strong><?php echo $datAarray["hospitalRequestID"]; ?></strong><span class="f-right"><strong style="margin-left: 100px"<?php echo $datAarray["bloodGroup"]; ?>></strong></span></p>
+                                </div>
+                            </div>
+                            <div class="row text-white" >
+                                <div class="col">
+                                    <?php echo $datAarray["name"]; ?>
+                                </div>
+                                 <div class="col">
+                                    <img class="w-50" src="../Images/icons8-blood-100.png"/>
+                                </div>
+                            </div>
+                            <div class="row text-white">
+                                <div class="col">
+                                    <?php echo $datAarray["bloodQuantity"]; ?>
+                                </div>  
+                               
+                            </div>                        
+
+                            <div class="row">
+                                <div class="col">
+                                    <p class="m-b-0 text-white"><?php echo $datAarray["createdDate"]; ?><span class="f-right" style="margin-left:30px;font-weight: bold"><?php echo $datAarray["requestStatus"]; ?></span></p> 
+                                </div>       
+                            </div>
+                        </a>
                     </div>
-                    <div class="row text-white" >
-                        <div class="col">
-                            Hospital XYZ
-                        </div>
-                    </div><br>
-                    <div class="row text-white">
-                        <div class="col">
-                            500ml
-                        </div>       
-                    </div>                        
-                  
-                    <div class="row">
-                        <div class="col">
-                            <p class="m-b-0 text-white">2023-09-15 <span class="f-right" style="margin-left:30px;font-weight: bold">Completed</span></p> 
-                        </div>       
-                    </div>
+                    </a>
                 </div>
-                </a>
-
-            </div>
-           
+            <?php } ?>
         </div>
-
-
-
-        
-        <?php
+    </div>
+    <?php
 // put your code here
-        ?>
-    </body>
+    ?>
+</body>
 </html>
