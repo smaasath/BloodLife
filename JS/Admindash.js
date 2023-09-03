@@ -1,11 +1,60 @@
-function Popup(){
+function OpenBloodbankDetails(){
     
-    $('#editBloodbankDetails').modal('show');
+   
     $('#openBloodbankDetails').modal('show');
-    $('#savePopup').modal('show');
-    $('#deletePopup').modal('show');
-    $('#AddBloodbank').modal('show');
-    $('#AddHospital').modal('show');
+    
+        
+}
+function OpenHospitalDetails(){
+    
+   
+    $('#openHospitalDetails').modal('show');
+    
         
 }
 
+//function savePopup(){
+//    
+//   
+//    $('#savePopup').modal('show');
+//    
+//}
+
+//function deletePopup(){
+//    
+//    
+//    $('#deletePopup').modal('show');
+//    
+//        
+//}
+
+function AddBloodbank(){
+    
+    
+    $('#addBloodbank').modal('show');
+    
+        
+}
+
+function AddHospital(){
+    
+    $('#addHospital').modal('show');
+        
+}
+
+function EditBloodbankDetails(){
+    
+    $('#editBloodbankDetails').modal('show'); 
+        
+}
+function EditHospitalDetails(){
+    
+    $('#editHospitalDetails').modal('show'); 
+        
+}
+
+function AddCampaign(){
+    
+    $('#AddCampaign').modal('show'); 
+        
+}
