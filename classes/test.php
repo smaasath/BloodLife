@@ -12,13 +12,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <?Php
         
 
-use classes\district;
-use classes\DbConnector;
+require'./Donor.php';
+use classes\Donor;
+
+Donor::SendMail();
 
 
-if (isset($_POST["district"])) {
-            echo 'kkk';
-    }
+
+
   ?>      
     </body>
 </html>
