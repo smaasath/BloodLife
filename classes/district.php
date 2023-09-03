@@ -7,7 +7,7 @@
 
 namespace classes;
 
-require 'DbConnector.php';
+require_once'DbConnector.php';
 
 use PDO;
 use PDOException;
@@ -119,7 +119,41 @@ WHERE district.division= ?";
     }
     
     
+    
+    
+    
+    public static function getDistrictIDDD($district, $division) {
+    try {
+        $dbcon = new DbConnector();
+        $con = $dbcon->getConnection();
 
+        $query = "SELECT districtId FROM `district` WHERE district=? AND division=?";
+
+        $pstmt = $con->prepare($query);
+        $pstmt->bindValue(1, $district);
+        $pstmt->bindValue(2, $division);
+
+        $pstmt->execute();
+
+        if ($pstmt->rowCount() > 0) {
+            // Assuming you want to return the districtId value
+            $row = $pstmt->fetch(PDO::FETCH_ASSOC);
+            return $row["districtId"];
+        } else {
+           
+        }
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+        
+    }
+}
+
+    
+    
+
+   
+    
+    
 }
 
 
