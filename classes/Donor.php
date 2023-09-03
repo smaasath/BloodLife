@@ -182,7 +182,7 @@ class Donor {
 
             if ($pstmt->rowCount() > 0) {
                 echo 'Success.';
-                $DonorId = $con->lastInsertId();
+                $DonorId = $con->lastInsertId ();
                 User::AddUser($UserName, $password, $email, 5, null, $DonorId, null);
                 self::SendMail($UserName, $password, $email, $name);
             } else {
@@ -232,4 +232,26 @@ class Donor {
         }
     }
 
+    static function getAllDetails() {
+        try {
+            $dbcon = new DbConnector();
+            $con = $dbcon->getConnection();
+
+            $query = "SELECT * FROM `donor`";
+
+            $stmt = $con->prepare($query);
+            $stmt->execute();
+
+            $dataArray = array();
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $dataArray[] = $row;
+            }
+            
+           return $dataArray;
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+                  
 }
+
+            }
