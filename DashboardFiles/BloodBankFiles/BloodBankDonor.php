@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <!--
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -75,14 +76,30 @@ $bloodBankId = 1;
 
                         </div>
                     </div>
-                    <div class="col-3"> 
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Blood Group</option>
-                            <option value="1">O+</option>
-                            <option value="2">AB-</option>
-                            <option value="3">A+</option>
-                        </select>
-                    </div>
+                    
+                    
+                    
+                   <div class="col-3">
+                                            <select class="form-control form-control-lg" name="bloodGroup">
+                                                <option selected>Select your Blood Group</option>
+                                                <option value="A+">A+</option>
+                                                <option value="A-"> A-</option>
+                                                <option value="B+"> B+</option>
+                                                <option value="B-"> B-</option>
+                                                <option value="O+"> O+</option>
+                                                <option value="O-"> O-</option>
+                                                <option value="AB+"> AB+</option>
+                                                <option value="AB-"> AB-</option>
+
+                                            </select>
+                                        </div>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
 
                     <div class="col-2"> 
                         <select class="form-select" aria-label="Default select example">
@@ -102,12 +119,17 @@ $bloodBankId = 1;
 
 
             </div>
+        </div>
             <!-- Table body -->
-            <div class="container bg-white m-0 p-0" style=" max-height: 373px; overflow: scroll;">
-                <table class="table table-hover p-0">
-
+           
                     <!-- Table row -->
 
+                    
+                    
+
+                    
+                     <div class="container bg-white m-0 p-0" style=" max-height: 373px; overflow: scroll;">
+                <table class="table table-hover p-0">
 
                     <tr class="sticky-top">
 
@@ -122,36 +144,39 @@ $bloodBankId = 1;
                         <th class="col-1 bgcol p-2">View</th>
 
                     </tr>
+ <?php 
+         
+                     
+                     require_once '../classes/Donor.php';
 
+                    use classes\Donor;
+                
+                $requestArray = Donor::getAllDetails();
+                
+                                foreach ($requestArray as $donorAarray){
+                
+                
+                
+                ?>
                     <tr>
-                        <td class="col-1">D001</td>
-                        <td class="col-2">Nelax</td>
-                        <td class="col-1">O+</td>
-                        <td class="col-1">Jaffna</td>
-                        <td class="col-2">0755701765</td>
-                        <td class="col-1">available</td>
-                        <td class="col-1">06/07/2023</td>
+                        
+                        <td class="col-1"><?php echo $donorAarray["donorId"]; ?></td>
+                        <td class="col-2"><?php echo $donorAarray["name"]; ?></td>
+                        <td class="col-1"><?php echo $donorAarray["bloodGroup"]; ?></td>
+                        <td class="col-1"><?php echo $donorAarray["districtId"]; ?></td>
+                        <td class="col-2"><?php echo $donorAarray["contactNumber"]; ?></td>
+                        <td class="col-1"><?php echo $donorAarray["availability"]; ?></td>
+                        <td class="col-1"><?php echo $donorAarray["donationLastDate"]; ?></td>
                         <td class="col-1"><button type="button" class="btn btn-danger" onclick="DonorEdit()" data-bs-toggle="modal" data-bs-target="#DonorEdit">
                                 Edit</button></td>
                         <td class="col-1"><button type="button" class="btn btn-success" onclick="EditCamp()">View</button></td>
 
                     </tr>
 
-                    <tr>
-                        <td class="col-1">D001</td>
-                        <td class="col-2">Nelax</td>
-                        <td class="col-1">O+</td>
-                        <td class="col-1">Jaffna</td>
-                        <td class="col-2">0755701765</td>
-                        <td class="col-1">available</td>
-                        <td class="col-1">06/07/2023</td>
-                        <td class="col-1"><button type="button" class="btn btn-danger" onclick="DonorEdit()" data-bs-toggle="modal" data-bs-target="#DonorEdit">
-                                Edit</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-success" onclick="EditCamp()">View</button></td>
-
-                    </tr>
+                   <?php } ?> 
 
                 </table>
+                     </div>
 
                 <!-----------------------------AddDonorDtails------------------------------------------------------------------------------->
                 <!-- Modal -->
