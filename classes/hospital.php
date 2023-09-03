@@ -6,6 +6,10 @@
  */
 
 namespace classes;
+require_once 'DbConnector.php';
+use classes\DbConnector;
+use PDOException;
+use PDO;
 
 /**
  * Description of hospital
@@ -59,7 +63,6 @@ class hospital {
     public function setAddress($address): void {
         $this->address = $address;
     }
-
     public function setContactNumber($contactNumber): void {
         $this->contactNumber = $contactNumber;
     }
@@ -68,16 +71,16 @@ class hospital {
         $this->districtId = $districtId;
     }
 
-public static function AddHospital($hospitalId, $name, $address, $contactNumber, $districtId) {
+public static function AddHospital( $name, $address, $contactNumber, $districtId) {
     try {
         $dbcon = new DbConnector();
         $con = $dbcon->getConnection();
 
-        $query = "INSERT INTO `hospital` (`hospitalId`, `name`, `address`, `contactNumber`, `districtId`) VALUES ( ?, ?, ?, ?, ?);";
+        $query = "INSERT INTO `hospital` ( `name`, `address`, `contactNumber`, `districtId`) VALUES ( ?, ?, ?, ?);";
 
         $pstmt = $con->prepare($query);
         $pstmt->bindValue(1, $name);
-        $pstmt->bindValue(2, $address); // Use different placeholders for each parameter
+        $pstmt->bindValue(2, $address); 
         $pstmt->bindValue(3, $contactNumber);
         $pstmt->bindValue(4, $districtId);
         
@@ -85,9 +88,12 @@ public static function AddHospital($hospitalId, $name, $address, $contactNumber,
         $pstmt->execute();
 
         if ($pstmt->rowCount() > 0) {
-            echo 'Success.';
+          echo 'Success.';
+          $hospitalId = $con->lastInsertId();
+                User::AddUser($UserName, $password, $email, null, null, $DonorId, 4);
+                self::SendMail($UserName, $password, $email, $name);
         } else {
-            echo 'Error';
+           echo 'Error';
         }
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
