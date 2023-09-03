@@ -7,11 +7,12 @@
 
 namespace classes;
 
-/**
- * Description of campaign
- *
- * @author HP
- */
+require_once 'DbConnector.php';
+
+use PDO;
+use PDOException;
+use classes\DbConnector;
+
 class campaign {
    
     
@@ -131,17 +132,17 @@ class campaign {
 
         $pstmt = $con->prepare($query);
         $pstmt->bindValue(1, $Title);
-        $pstmt->bindValue(2, $address); // Use different placeholders for each parameter
+        $pstmt->bindValue(2, $address); 
         $pstmt->bindValue(3, $startDate);
         $pstmt->bindValue(4, $endDate);
         $pstmt->bindValue(5, $review);
-        $pstmt->bindValue(6,  );
-        $pstmt->bindValue(7, $coinValue);
-        $pstmt->bindValue(8, $donationLastDate);
-        $pstmt->bindValue(9, $availability);
-        $pstmt->bindValue(10, $medicalReport, PDO::PARAM_LOB);
-        $pstmt->bindValue(11, $bloodBankId);
-        $pstmt->bindValue(12, $districtId);
+
+        $pstmt->bindValue(6,  $status);
+        $pstmt->bindValue(7, $districtId);
+        $pstmt->bindValue(8, $organizerId);
+        $pstmt->bindValue(9, $bloodBankId);
+        
+
 
         $pstmt->execute();
 

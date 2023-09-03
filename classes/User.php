@@ -7,11 +7,13 @@
 
 namespace classes;
 
-/**
- * Description of userPassword
- *
- * @author HP
- */
+
+require_once 'DbConnector.php';
+ use PDO;
+ use PDOException;
+ use classes\DbConnector;
+
+
 class User {
    
     
@@ -24,6 +26,9 @@ class User {
     private $bloodBankId;
     private $donorId;
     private $hospitalId;
+    
+    
+    
     public function getUserId() {
         return $this->userId;
     }
@@ -107,34 +112,33 @@ class User {
 
     
     
-    public static function AddPassword($userId, $UserName, $password, $email, $userRole, $bloodBankId, $donorId, $hospitalId) {
+    public static function AddUser($UserName, $password, $email, $userRole, $bloodBankId, $donorId, $hospitalId) {
     try {
         $dbcon = new DbConnector();
         $con = $dbcon->getConnection();
 
-        $query = "INSERT INTO `user` (`donorId`, `name`, `bloodGroup`, `dob`, `contactNumber`, `nic`, `noOfDonation`, `coinValue`, `donationLastDate`, `availability`, `medicalReport`, `image`, `bloodBankId`, `districtId`) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NULL, ?, ?);";
-
+        $query = "INSERT INTO `user` (`userId`, `UserName`, `password`, `email`, `userRole`, `bloodBankId`, `donorId`, `hospitalId`) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?);"; // Update the query to include all placeholders
         $pstmt = $con->prepare($query);
         $pstmt->bindValue(1, $UserName);
-        $pstmt->bindValue(2, $password); // Use different placeholders for each parameter
+        $pstmt->bindValue(2, $password);
         $pstmt->bindValue(3, $email);
         $pstmt->bindValue(4, $userRole);
         $pstmt->bindValue(5, $bloodBankId);
         $pstmt->bindValue(6, $donorId);
         $pstmt->bindValue(7, $hospitalId);
-        
 
         $pstmt->execute();
 
         if ($pstmt->rowCount() > 0) {
-            echo 'Success.';
+            return 'Success';
         } else {
-            echo 'Error';
+            return 'Error';
         }
     } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage();
+        return "Error: " . $e->getMessage();
     }
 }
+
 
     
 

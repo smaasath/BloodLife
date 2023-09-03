@@ -3,9 +3,8 @@
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to edit this template
 -->
-<?php 
+<?php
 $bloodBankId = 1;
-
 ?>
 <html>
     <head>
@@ -321,8 +320,37 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
                                                 <option value="Availabile">Availabile</option>
                                                 <option value="Notavailable"> Notavailable</option>
 
-
                                             </select>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    
+                                     <div class="row align-items-center pb-3">
+                                        <div class="col-3">
+                                            <h6>Username</h6>
+                                        </div>
+                                        <div class="col-9">
+                                            <input type="text"  name="UserName" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                     <div class="row align-items-center pb-3">
+                                        <div class="col-3">
+                                            <h6>Password</h6>
+                                        </div>
+                                        <div class="col-9">
+                                            <input type="password"  name="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                        </div>
+                                    </div>
+                                    
+                                     <div class="row align-items-center pb-3">
+                                        <div class="col-3">
+                                            <h6>Email</h6>
+                                        </div>
+                                        <div class="col-9">
+                                            <input type="email"  name="email" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                                         </div>
                                     </div>
                                     <input type="hidden" name="bloodBankId" value="<?php echo $bloodBankId; ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
@@ -348,8 +376,8 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
 
 
 
-                <!-- --------------------------------------Campaign Edit------------------------------------------------------------------------ -->
-                <!-----------1st pop-up------------------------Campaign Details---------------->
+                <!-- --------------------------------------Donor Edit------------------------------------------------------------------------ -->
+                <!-----------1st pop-up------------------------Donor Details---------------->
                 <div class="modal fade" id="DonorEdit">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -359,9 +387,12 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
                             </div>
                             <div class="modal-body">
 
+
+
+
                                 <div class="row align-items-center pb-3">
                                     <div class="col-3">
-                                        <h6>First Name</h6>
+                                        <h6> Name</h6>
                                     </div>
                                     <div class="col-9">
                                         <input type="text"  name="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
@@ -369,7 +400,7 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
                                 </div>
                                 <div class="row align-items-center pb-3">
                                     <div class="col-3">
-                                        <h6>Last Name</h6>
+                                        <h6>Blood Group</h6>
                                     </div>
                                     <div class="col-9">
                                         <input type="text"  name="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
@@ -503,25 +534,14 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
                 <div class="modal fade" id="CampaignEdit">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Donor View Details</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="modal fade" id="ChampView" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
+                             
                                             <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="Save">View</h1>
+                                                <h1 class="modal-title fs-5" id="Save">View Donor Details</h1>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
+                                            
                                             <div class="modal-body">
 
-
-
-
-
-                                                <form action="/action_page.php">
                                                     <div class="container">
                                                         <div class="row">
                                                             <div class="col-md-12">
@@ -588,28 +608,15 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </form>
+                                                
                                             </div>
 
 
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal7">
-                                                    Organizer Details
-                                                </button>
-                                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal8">
-                                                    Donor Details
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
 
-
-                            </div>
+                           
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#OrganizerEdit">Organizer Details</button>
+                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#OrganizerEdit">Donation Details</button>
                             </div>
                         </div>
                     </div>
@@ -630,81 +637,29 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
                             <div class="modal-body">
 
 
-                                <form action="/action_page.php">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="card mb-4">
-                                                    <div class="card-body">
-                                                        <div class="row mb-3">
-                                                            <div class="col-sm-4">
-                                                                <strong>Hospital ID:</strong>
-                                                            </div>
-                                                            <div class="col-sm-8">
-                                                                <p class="text-muted mb-0">HS001</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row mb-3">
-                                                            <div class="col-sm-4">
-                                                                <strong>Hospital Name:</strong>
-                                                            </div>
-                                                            <div class="col-sm-8">
-                                                                <p class="text-muted mb-0">Jaffna Central Hospital</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row mb-3">
-                                                            <div class="col-sm-4">
-                                                                <strong>Address:</strong>
-                                                            </div>
-                                                            <div class="col-sm-8">
-                                                                <p class="text-muted mb-0">Hospital Road, Jaffna</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row mb-3">
-                                                            <div class="col-sm-4">
-                                                                <strong>District:</strong>
-                                                            </div>
-                                                            <div class="col-sm-8">
-                                                                <p class="text-muted mb-0">Jaffna</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row mb-3">
-                                                            <div class="col-sm-4">
-                                                                <strong>Phone No:</strong>
-                                                            </div>
-                                                            <div class="col-sm-8">
-                                                                <p class="text-muted mb-0">077 1028754</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row mb-3">
-                                                            <div class="col-sm-4">
-                                                                <strong>Mobile:</strong>
-                                                            </div>
-                                                            <div class="col-sm-8">
-                                                                <p class="text-muted mb-0">(098) 765-4321</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-sm-4">
-                                                                <strong>Email:</strong>
-                                                            </div>
-                                                            <div class="col-sm-8">
-                                                                <p class="text-muted mb-0">CentralHospitalJaffna@gmail.com</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
+                                <table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">DonorID</th>
+      <th scope="col">Last Donation Date</th>
+      <th scope="col">Donation Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+      <th scope="row">1</th>
+      <td>D004</td>
+      <td>07/12/2022</td>
+      <td>BloodBank</td>
+    </tr>
+  </tbody>
+</table>
                             </div>
-
-
                             <div class="modal-footer">
-                                <button type="button"  class="btn btn-info">Delete</button>
+                                
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="EditCamp()">Back</button>
-                                <button type="button" class="btn btn-primary">Save </button>
+                                
                             </div>
                         </div>
                     </div>

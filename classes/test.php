@@ -10,15 +10,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     </head>
     <body>
         <?Php
-        
-
-use classes\district;
-use classes\DbConnector;
 
 
-if (isset($_POST["district"])) {
-            echo 'kkk';
-    }
-  ?>      
     </body>
 </html>

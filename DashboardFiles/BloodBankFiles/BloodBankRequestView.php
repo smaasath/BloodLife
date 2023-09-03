@@ -44,7 +44,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
         <div class="container-01" >
             <div class="row bg-white m-3 pt-0 align-items-center p-3 justify-content-center rounded-3 d-flex">
-                <div class="bg-white m-3" style="height: 400px; width: 600px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+                <div class="bg-white m-3" style="height: 450px; width: 600px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
 
                     <div class="row p-3 m-1">
                         <div class="col-5">

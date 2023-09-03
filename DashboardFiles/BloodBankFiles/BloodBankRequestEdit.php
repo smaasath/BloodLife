@@ -54,7 +54,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
         <div class="row bg-white m-3 pt-0 align-items-center p-3 justify-content-center rounded-3 d-flex">
             <!-- <div class="text-center m-3"> <h1>BL rq edit</h1> </div>-->
-            <div class="bg-white m-3" style="height: 650px; width: 600px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+            <div class="bg-white m-3" style="height: 800px; width: 600px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
                 <div class="row p-3 m-1">
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label"><strong>BloodBankID</strong></label>
@@ -86,7 +86,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     </div>
                 </div>
                 <div class="buttons" >
-                      <button class="btn btn-primary" style="background-color: green !important;border: none;margin-left: 490px">Save</button>
+                      <button class="btn btn-primary" style="background-color: green !important;border: none;margin-left: 350px">Save</button>
                     
                 </div>
 
