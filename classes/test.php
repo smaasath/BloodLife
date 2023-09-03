@@ -18,11 +18,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
    
     echo $array->getCreateDate();
+    ?>
 
 
        
 
-       
-        ?>      
     </body>
 </html>
