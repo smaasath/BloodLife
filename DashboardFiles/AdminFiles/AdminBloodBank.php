@@ -125,7 +125,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="OpenBloodbankDetails()">View</button></td>
                     <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="EditBloodbankDetails()">Edit</button></td>
                 </tr>
-                
+
                 <tr>
                     <td class="id col-1">BBID001</td>
                     <td class="name col-3"> Regional Blood Centre</td>
@@ -137,7 +137,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="OpenBloodbankDetails()">View</button></td>
                     <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="EditBloodbankDetails()">Edit</button></td>
                 </tr>
-                
+
                 <tr>
                     <td class="id col-1">BBID001</td>
                     <td class="name col-3"> Regional Blood Centre</td>
@@ -149,7 +149,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="OpenBloodbankDetails()">View</button></td>
                     <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="EditBloodbankDetails()">Edit</button></td>
                 </tr>
-                
+
                 <tr>
                     <td class="id col-1">BBID001</td>
                     <td class="name col-3"> Regional Blood Centre</td>
@@ -161,7 +161,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="OpenBloodbankDetails()">View</button></td>
                     <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="EditBloodbankDetails()">Edit</button></td>
                 </tr>
-                
+
                 <tr>
                     <td class="id col-1">BBID001</td>
                     <td class="name col-3"> Regional Blood Centre</td>
@@ -173,7 +173,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="OpenBloodbankDetails()">View</button></td>
                     <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="EditBloodbankDetails()">Edit</button></td>
                 </tr>
-                
+
                 <tr>
                     <td class="id col-1">BBID001</td>
                     <td class="name col-3"> Regional Blood Centre</td>
@@ -185,7 +185,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="OpenBloodbankDetails()">View</button></td>
                     <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="EditBloodbankDetails()">Edit</button></td>
                 </tr>
-                
+
                 <tr>
                     <td class="id col-1">BBID001</td>
                     <td class="name col-3"> Regional Blood Centre</td>
@@ -197,7 +197,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="OpenBloodbankDetails()">View</button></td>
                     <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="EditBloodbankDetails()">Edit</button></td>
                 </tr>
-                
+
                 <tr>
                     <td class="id col-1">BBID001</td>
                     <td class="name col-3"> Regional Blood Centre</td>
@@ -209,7 +209,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="OpenBloodbankDetails()">View</button></td>
                     <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="EditBloodbankDetails()">Edit</button></td>
                 </tr>
-                
+
                 <tr>
                     <td class="id col-1">BBID001</td>
                     <td class="name col-3"> Regional Blood Centre</td>
@@ -221,7 +221,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="OpenBloodbankDetails()">View</button></td>
                     <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="EditBloodbankDetails()">Edit</button></td>
                 </tr>
-                
+
                 <tr>
                     <td class="id col-1">BBID001</td>
                     <td class="name col-3"> Regional Blood Centre</td>
@@ -233,7 +233,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="OpenBloodbankDetails()">View</button></td>
                     <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="EditBloodbankDetails()">Edit</button></td>
                 </tr>
-                
+
                 <tr>
                     <td class="id col-1">BBID001</td>
                     <td class="name col-3"> Regional Blood Centre</td>
@@ -245,8 +245,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="OpenBloodbankDetails()">View</button></td>
                     <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="EditBloodbankDetails()">Edit</button></td>
                 </tr>
-                
-                
+
+
 
 
 
@@ -266,6 +266,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 <!--editBloodbankDetails-->
 <!-- Modal -->
+
 <div class="modal fade" id="editBloodbankDetails">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -274,22 +275,43 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>--------------------------------------------------</p>
                 <form action="">
-                    <label for="BbId">Blood bank ID &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
-                    <input type="text" id="BbId" name="BbId" required><br><br>
-                    <label for="BbName">Blood Bank Name:</label>
-                    <input type="text" id="BbName" name="BbName" required><br><br>
-                    <label for="Adrs">Address&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
-                    <input type="text" id="Adrs" name="Adrs" required><br><br>
-                    <label for="Dst">District&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
-                    <input type="text" id="Dst" name="Dst" required><br><br>
-                    <label for="Divi">DS Division&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
-                    <input type="text" id="Divi" name="Divi" required><br><br>
-                    <label for="Cnct">Contact No&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
-                    <input type="tel" id="Cnct" name="Cnct" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required><br><br>
-                    <label for="email">Email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
-                    <input type="email" id="email" name="email" required><br><br>
+                    <table>
+                        <tr>
+                            <td><label for="BbId">Blood bank ID:</label></td>
+                            <td><input type="text" id="BbId" name="BbId" required></td>
+                        </tr>
+
+                        <tr>
+                            <td><label for="BbName">Blood Bank Name:</label></td>
+                            <td><input type="text" id="BbName" name="BbName" required> </td>
+                        </tr>
+
+                        <tr>
+                            <td><label for="Adrs">Address:</label></td>
+                            <td><input type="text" id="Adrs" name="Adrs" required></td>
+                        </tr>
+
+                        <tr>
+                            <td><label for="Dst">District:</label> </td>
+                            <td><input type="text" id="Dst" name="Dst" required> </td>
+                        </tr>
+
+                        <tr>
+                            <td><label for="Divi">DS Division:</label> </td>
+                            <td><input type="text" id="Divi" name="Divi" required> </td>
+                        </tr>
+
+                        <tr>
+                            <td><label for="Cnct">Contact No:</label></td>
+                            <td><input type="tel" id="Cnct" name="Cnct" placeholder="123-456-7890"  required></td>
+                        </tr>
+                        <tr>
+                            <td><label for="email">Email:</label></td>
+                            <td><input type="email" id="email" name="email" required></td><br>
+                        </tr>
+
+                    </table>
                 </form>
 
 
@@ -304,7 +326,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         </div>
     </div>
 </div>
-<!--Save Popup editbloodbank-->
+
+<!--Save Popup editbloodbank
 <!-- Modal -->
 <div class="modal fade" id="savePopup3" tabindex="-1" aria-labelledby="savePopup3Label" aria-hidden="true">
     <div class="modal-dialog">
@@ -373,22 +396,43 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-
-                <p>--------------------------------------------------</p>
                 <form action="">
+                    <table>
+                        <tr>
+                            <td><label for="BbId">Blood bank ID:</label></td>
+                            <td><input type="text" id="BbId" name="BbId" required></td>
+                        </tr>
 
-                    <label for="BbName">Blood Bank Name:</label>
-                    <input type="text" id="BbName" name="BbName" required><br><br>
-                    <label for="Adrs">Address&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
-                    <input type="text" id="Adrs" name="Adrs" required><br><br>
-                    <label for="Dst">District&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
-                    <input type="text" id="Dst" name="Dst" required><br><br>
-                    <label for="Divi">DS Division&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
-                    <input type="text" id="Divi" name="Divi" required><br><br>
-                    <label for="Cnct">Contact No&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
-                    <input type="tel" id="Cnct" name="Cnct" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required><br><br>
-                    <label for="email">Email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
-                    <input type="email" id="email" name="email" required><br><br>  
+                        <tr>
+                            <td><label for="BbName">Blood Bank Name:</label></td>
+                            <td><input type="text" id="BbName" name="BbName" required> </td>
+                        </tr>
+
+                        <tr>
+                            <td><label for="Adrs">Address:</label></td>
+                            <td><input type="text" id="Adrs" name="Adrs" required></td>
+                        </tr>
+
+                        <tr>
+                            <td><label for="Dst">District:</label> </td>
+                            <td><input type="text" id="Dst" name="Dst" required> </td>
+                        </tr>
+
+                        <tr>
+                            <td><label for="Divi">DS Division:</label> </td>
+                            <td><input type="text" id="Divi" name="Divi" required> </td>
+                        </tr>
+
+                        <tr>
+                            <td><label for="Cnct">Contact No:</label></td>
+                            <td><input type="tel" id="Cnct" name="Cnct" placeholder="123-456-7890"  required></td>
+                        </tr>
+                        <tr>
+                            <td><label for="email">Email:</label></td>
+                            <td><input type="email" id="email" name="email" required></td><br>
+                        </tr>
+
+                    </table> 
                 </form>
             </div>
 

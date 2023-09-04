@@ -276,55 +276,73 @@ $hospitalId = 1;
                     </div>
                     <div class="modal-body">
 
-                        <p>--------------------------------------------------</p>
+                        <table>
+                            <tr>
+                                <td><label for="HosName">Hospital Name:</label></td>
+                                <td> <input type="text" id="HosName" name="name" required></td>
+                            </tr>
 
+                            <tr>
+                                <td><label for="Adrs">Address:</label></td>
+                                <td><input type="text" id="Adrs" name="address" required> </td>
+                            </tr>
 
-                        <label for="HosName">Hospital Name:</label>
-                        <input type="text" id="HosName" name="name" required><br><br>
-                        <label for="Adrs">Address&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
-                        <input type="text" id="Adrs" name="address" required><br><br>
+                            <tr>
+                                <td><label for="Dst">District:</label></td>
+                                <td> <select name="district" class="form-control-sm form-control-sm" id="district" onchange="functionTest(this.value)">
+                                        <option>Select District</option>
+                                        <?php
+                                        require '../classes/district.php';
 
-
-                        <label for="Dst">District&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
-                        <select name="district" class="form-control-sm form-control-sm" id="district" onchange="functionTest(this.value)">
-                            <option>Select District</option>
-                            <?php
-                            require '../classes/district.php';
-
-                            use classes\district;
+                                        use classes\district;
 
 $dataArray = district::getAllDistrict(); // Retrieve district data using the "getAllDistrict()" method
 
-                            foreach ($dataArray as $district) {
-                                ?>
+                                        foreach ($dataArray as $district) {
+                                            ?>
 
-                                <option  value="<?php echo $district['district']; ?>"><?php echo $district['district']; ?></option>
-                                <?php
-                            }
-                            ?>
-                        </select> <br><br>
+                                            <option  value="<?php echo $district['district']; ?>"><?php echo $district['district']; ?></option>
+                                            <?php
+                                        }
+                                        ?>
+                                    </select> </td>
+                            </tr>
+
+                            <tr>
+                                <td><label for="Divi">DS Division:</label> </td>
+                                <td><select name="division" class="form-control-sm form-control-sm" id="divisionDropDown" onchange="getBloodBank(this.value)">
+                                        <option>Select Division</option> 
+
+                                    </select></td>
+                            </tr>
+
+                            <tr>
+                                <td><label for="Cnct">Contact No:</label> </td>
+                                <td><input type="tel" id="Cnct" name="contactNumber" placeholder="123-456-7890" required> </td>
+                            </tr>
+
+                            <tr>
+                                <td><label for="email">Email:</label></td>
+                                <td><input type="email" id="email" name="email" required></td>
+                            </tr>
+                            <tr>
+                                <td><input type ="hidden" name ="hospitalId" value="<?php echo $hospitalId; ?> "aria-label="Sizing example input" aria-discribedby="inputGroup-sizing-sm" required></td>
+                            </tr>
+                            <tr>
+                                <td><label for="username">User Name:</label></td>
+                                <td><input type="text" id="username" name="UserName" required></td>
+                            </tr>
+                            <tr>
+                                <td><label for="password">Password:</label></td>
+                                <td><input type="password"  name="password" id="password" required><br></td>
+                            </tr>
 
 
-
-
-                        <label for="Divi">DS Division&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
-                        <select name="division" class="form-control-sm form-control-sm" id="divisionDropDown" onchange="getBloodBank(this.value)">
-                            <option>Select Division</option> 
-
-                        </select>  <br><br>
-                        <label for="Cnct">Contact No&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
-                        <input type="tel" id="Cnct" name="contactNumber" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required><br><br>
-                        <label for="email">Email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
-                        <input type="email" id="email" name="email" required><br><br>  
-                        <input type ="hidden" name ="hospitalId" value="<?php echo $hospitalId; ?> "aria-label="Sizing example input" aria-discribedby="inputGroup-sizing-sm" required>
-                        <label for="username">User Name:</label>
-                        <input type="text" id="username" name="UserName" required><br><br>
-                        <label for="password">Password:</label>
-                        <input type="password"  name="password" id="password" required><br>
+                        </table>
                     </div>
 
                     <div class="modal-footer">
-                        
+
                         <button type="submit" class="btn btn-primary" >Save </button>
                         <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletePopup1">Delete</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -402,27 +420,56 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p>--------------------------------------------------</p>
                     <form action="">
-                        <label for="HosId">Hospital ID &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
-                        <input type="text" id="HosId" name="HosId" required><br><br>
-                        <label for="HosName">Hospital Name:</label>
-                        <input type="text" id="HosName" name="HosName" required><br><br>
-                        <label for="Adrs">Address&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
-                        <input type="text" id="Adrs" name="Adrs" required><br><br>
-                        <label for="Dst">District&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
-                        <select name="district" class="form-control-sm form-control-sm" id="district" onchange="functionTest(this.value)">
-                            <option>District</option> 
-                        </select><br><br>
-                        <label for="Divi">DS Division&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
-                        <select name="division" class="form-control-sm form-control-sm" id="divisionDropDown" onchange="getBloodBank(this.value)">
-                            <option>Select Division</option> 
+                        <table>
+                            <tr>
+                                <td><label for="HosId">Hospital ID:</label></label></td>
+                                <td><input type="password"  name="password" id="password" required><br></td>
+                            </tr>
+                            <tr>
+                                <td><label for="HosName">Hospital Name:</label></td>
+                                <td> <input type="text" id="HosName" name="name" required></td>
+                            </tr>
 
-                        </select>  <br><br>
-                        <label for="Cnct">Contact No&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
-                        <input type="tel" id="Cnct" name="Cnct" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required><br><br>
-                        <label for="email">Email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
-                        <input type="email" id="email" name="email" required><br><br>  
+                            <tr>
+                                <td><label for="Adrs">Address:</label></td>
+                                <td><input type="text" id="Adrs" name="address" required> </td>
+                            </tr>
+
+                            <tr>
+                                <td><label for="Dst">District:</label></td>
+                                <td> <select name="district" class="form-control-sm form-control-sm" id="district" onchange="functionTest(this.value)">
+                                        <option>Select District</option>
+
+                                    </select> </td>
+                            </tr>
+
+                            <tr>
+                                <td><label for="Divi">DS Division:</label> </td>
+                                <td><select name="division" class="form-control-sm form-control-sm" id="divisionDropDown" onchange="getBloodBank(this.value)">
+                                        <option>Select Division</option> 
+
+                                    </select></td>
+                            </tr>
+
+                            <tr>
+                                <td><label for="Cnct">Contact No:</label> </td>
+                                <td><input type="tel" id="Cnct" name="contactNumber" placeholder="123-456-7890" required> </td>
+                            </tr>
+
+                            <tr>
+                                <td><label for="email">Email:</label></td>
+                                <td><input type="email" id="email" name="email" required></td>
+                            </tr>
+                            <tr>
+                                <td><label for="username">User Name:</label></td>
+                                <td><input type="text" id="username" name="UserName" required></td>
+                            </tr>
+                            <tr>
+                                <td><label for="password">Password:</label></td>
+                                <td><input type="password"  name="password" id="password" required><br></td>
+                            </tr>
+                        </table>
                     </form>
 
 
