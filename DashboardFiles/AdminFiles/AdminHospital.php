@@ -3,6 +3,9 @@
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to edit this template
 -->
+<?php
+$hospitalId = 1;
+?>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -42,16 +45,16 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
         <!-- body start -->
     <center><h1>Admin Hospital - Management</h1></center>
-        <!-- Table -->
+    <!-- Table -->
 
-        <div class="p-5">
+    <div class="p-5">
 
 
-            <div class="rounded-top-4 p-0 border border-dark-subtle">
-                <div class="row align-items-center">
-                    <div class="col-3">           
-                        <div class="input-group rounded p-3">
-                            <input type="search" class="form-control rounded" placeholder="Search ID" aria-label="Search" aria-describedby="search-addon" >
+        <div class="rounded-top-4 p-0 border border-dark-subtle">
+            <div class="row align-items-center">
+                <div class="col-3">           
+                    <div class="input-group rounded p-3">
+                        <input type="search" class="form-control rounded" placeholder="Search ID" aria-label="Search" aria-describedby="search-addon" >
 
 
 
@@ -91,7 +94,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <!-- Table row -->
 
 
-                    <tr class="sticky-top">
 
                         <th class="col-1 bgcol p-2">Hospital ID</th>
                         <th class="col-3 bgcol p-2">Hospital Name</th>

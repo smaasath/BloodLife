@@ -1,3 +1,23 @@
+<?php
+require_once '../classes/hospitalrequestclass.php';
+
+use classes\hospitalrequestclass;
+
+// Check if the 'hospitalRequestID' parameter is set in the URL
+if (isset($_GET['reqid'])) {
+    // Retrieve and store the 'hospitalRequestID' value
+    $id = $_GET['reqid'];
+
+    // Now, you can use the $id variable in your code
+    echo "ID from GET: " . $id;
+} else {
+    echo "ID not found in the URL.";
+}
+?>
+
+
+
+
 <!DOCTYPE html>
 <!--
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -48,7 +68,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
         
-     
+     <?php
+                $requestObj = hospitalrequestclass::getAllRequestwithHospitalusingID($id);
+
+               
+                    ?>
         
         
         
@@ -61,33 +85,22 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             <div class="left-column">
                 <div class="form-group">
                     <label for="blood-group">Blood Group</label>
-                    <select id="blood-group">
-                        <option value="A+">A+</option>
-                        <option value="B+">B+</option>
-                        <option value="AB+">AB+</option>
-                        <!-- Add more options as needed -->
-                    </select>
+                    <input type="text" value="<?php echo $requestObj->getBloodGroup(); ?>" disabled>
                 </div>
                 <div class="form-group">
                     <label for="quantity">Quantity</label>
-                    <input type="number" id="quantity" min="1">
+                    <input type="number" value="<?php echo $requestObj->getBloodQuantity(); ?>" disabled>
                 </div>
-                <div class="form-group">
-                    <label for="location">Location</label>
-                    <input type="text" id="location">
-                </div>
+               
                 <div class="form-group">
                     <label for="status">Status</label>
-                    <input type="text" id="status">
+                    <input type="text" value="<?php echo $requestObj->getRequestStatus(); ?>" disabled>
                 </div>
                 <div class="form-group">
                     <label for="hospital-id">Hospital ID</label>
-                    <input type="text" id="hospital-id">
+                    <input type="text" value="<?php echo $requestObj->getHospitalRequestID(); ?>" disabled>
                 </div>
-                <div class="form-group">
-                    <label for="hospital-name">Hospital Name</label>
-                    <input type="text" id="hospital-name">
-                </div>
+                
             </div>
             <div class="right-column">
                 <div class="form-group">
@@ -103,7 +116,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         </div><br>
 
         <?php
-        // put your code here
+                
         ?>
     </body>
 </html>

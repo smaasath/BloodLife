@@ -236,6 +236,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
         </div>
+        <!-- Table body -->
+        <div class="container bg-white m-0 p-0" style=" max-height: 500px; overflow: scroll;">
+            <table class="table table-hover p-0">
 
     </div>
     <br>
