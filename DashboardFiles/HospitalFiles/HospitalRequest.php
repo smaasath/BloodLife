@@ -132,12 +132,12 @@ use classes\hospitalrequestclass;
                             <a href="../Dashboards/HospitalDashboard.php?page=hospitalreqview"style="text-decoration: none;">
                                 <div class="row">
                                     <div class="col">
-                                        <p class="m-b-0 text-white"  style="margin-top: 5px"><strong><?php echo $datAarray["hospitalRequestID"]; ?></strong><span class="f-right"><strong style="margin-left: 100px" <?php echo $datAarray["bloodGroup"]; ?>></strong></span></p>
+                                        <p class="m-b-0 text-white"  style="margin-top: 5px"><strong><?php echo $datAarray["hospitalRequestID"]; ?></strong><span class="f-right" style="margin-left:140px;font-weight: bold"><?php echo $datAarray["bloodGroup"]; ?></span></p>
                                     </div>
                                 </div>
                                 <div class="row align-items-center justify-content-center text-white">
                                     <div class="col">
-    <?php echo $datAarray["bloodQuantity"]; ?>
+                                        <?php echo $datAarray["bloodQuantity"]; ?>
 
                                     </div>  
                                     <div class="col">
@@ -154,11 +154,11 @@ use classes\hospitalrequestclass;
                         </div>
 
                     </div>
-<?php } ?>
+                <?php } ?>
             </div>
         </div>
-<?php
+        <?php
 // put your code here
-?>
+        ?>
     </body>
 </html>

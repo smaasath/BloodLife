@@ -9,7 +9,7 @@ if (isset($_GET['reqid'])) {
     $id = $_GET['reqid'];
 
     // Now, you can use the $id variable in your code
-    echo "ID from GET: " . $id;
+    
 } else {
     echo "ID not found in the URL.";
 }
@@ -68,12 +68,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
         
-     <?php
+     
+        <?php
                 $requestObj = hospitalrequestclass::getAllRequestwithHospitalusingID($id);
 
                
                     ?>
-        
         
         
         
@@ -97,7 +97,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <input type="text" value="<?php echo $requestObj->getRequestStatus(); ?>" disabled>
                 </div>
                 <div class="form-group">
-                    <label for="hospital-id">Hospital ID</label>
+                    <label for="hospital-id">HospitalRequest ID</label>
                     <input type="text" value="<?php echo $requestObj->getHospitalRequestID(); ?>" disabled>
                 </div>
                 
