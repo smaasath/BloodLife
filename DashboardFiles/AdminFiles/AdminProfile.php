@@ -139,7 +139,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                         </div>
                     </div>
-                    <div class="col-3"> 
+<!--                    <div class="col-3"> 
                         <select class="form-select" aria-label="Default select example">
                             <option selected>Department</option>
                             <option value="1">Department1</option>
@@ -163,7 +163,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <div class="col-2" >
                         <button type="button" class="btn btn-success">Save</button>
                     </div>
-                </div>
+                </div>-->
 
 
 
@@ -173,12 +173,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
 
-            </div>
-            <!-- Table body -->
+<!--            </div>
+             Table body 
             <div class="container bg-white m-0 p-0" style=" max-height: 373px; overflow: scroll;">
                 <table class="table table-hover p-0">
 
-                    <!-- Table row -->
+                     Table row 
 
 
                     <tr class="sticky-top">
@@ -274,19 +274,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     </tr>
 
 
-                    <!-- Table row -->
+                     Table row 
 
                 </table> 
 
             </div>
             <br>
-            <!-- Table Head -->
+             Table Head 
           
         </div>
 
-        <!-- Table -->
+         Table 
 
-
+-->
 
         
         
