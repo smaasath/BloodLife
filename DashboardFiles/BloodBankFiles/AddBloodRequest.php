@@ -41,24 +41,41 @@
 
         <!-- body start -->
         <div class="container" >
-            
+
             <div class="row bg-white m-3 pt-0 align-items-center p-3 justify-content-center rounded-3 d-flex">
                 <div class="text-center m-3"> <h1>Add blood bank</h1> </div>
-                <div class="bg-white m-3" style="height: 500px; width: 600px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+                <div class="bg-white m-3" style="height: 650px; width: 600px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
 
                     <div class="row p-3 m-1">
                         <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label"><strong>BloodBank ID:</strong></label>
+                            <label for="exampleFormControlInput1" class="form-label"><strong>BloodBankRequest ID</strong></label>
                             <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="B001">
                         </div>
-
                     </div>
-                     <div class="row p-3 m-1">
+                    <div class="row p-3 m-1">
                         <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label"><strong>BloodBank Name:</strong></label>
+                            <label for="exampleFormControlInput1" class="form-label"><strong>Created Date</strong></label>
                             <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="XRM Hospital">
                         </div>
+                    </div>
 
+                    <div class="row p-3 m-1">
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label"><strong>Blood Quantity</strong></label>
+                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="XRM Hospital">
+                        </div>
+                    </div>
+                    <div class="row p-3 m-1">
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label"><strong>Blood Group </strong></label>
+                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="XRM Hospital">
+                        </div>
+                    </div>
+                    <div class="row p-3 m-1">
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label"><strong>Request Status</strong></label>
+                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="XRM Hospital">
+                        </div>
                     </div>
 
                 </div>
@@ -71,7 +88,6 @@
 
 
 
-      
 
 
 
@@ -79,8 +95,9 @@
 
 
 
-    <?php
-    // put your code here
-    ?>
-</body>
+
+        <?php
+        // put your code here
+        ?>
+    </body>
 </html>
