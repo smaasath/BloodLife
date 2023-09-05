@@ -203,7 +203,7 @@ INNER JOIN district ON hospital.districtId = district.districtId;
                 $result["requestStatus"],
                 $result["hospitalId"]
             );
-            echo $result["bloodQuantity"];
+            
             return $newReq;
         } else {
             // Return null or handle the case where no records are found

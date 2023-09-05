@@ -6,11 +6,13 @@
  */
 
 namespace classes;
+
 require 'DbConnector.php';
 
 use PDO;
 use PDOException;
 use classes\DbConnector;
+
 /**
  * Description of bloodBank
  *
@@ -85,15 +87,20 @@ class bloodBank {
             $stmt->execute();
             $row = $stmt->fetch();
 
-           if($row){
-               
-               echo $row["bloodBankName"];
-               
-               echo $row["Address"];
-               echo $row["ContactNo"];
-               echo $row["districtId "];
-               
-           }
+            if ($row) {
+                if ($row) {
+                    echo '<table class="detail">';
+
+                    echo '<tr><td><label for="BloodbankID">BloodbankID:</label></td><td>' . $row["bloodBankId"] . '</td></tr>';
+                    echo '<tr><td><label for="Bloodbank Name">Bloodbank Name:</label></td><td>' . $row["bloodBankName"] . '</td></tr>';
+                    echo '<tr><td><label for="Address">Address:</label></td><td>' . $row["Address"] . '</td></tr>';
+                    echo '<tr><td><label for="Contact No">Contact No:</label></td><td>' . $row["ContactNo"] . '</td></tr>';
+                    echo '<tr><td><label for="DistrictID">DistrictID:</label></td><td>' . $row["districtId"] . '</td></tr>';
+                    echo '</table>';
+                } else {
+                    echo "No results found.";
+                }
+            }
         } catch (Exception $exc) {
             echo $exc->getTraceAsString();
         }
