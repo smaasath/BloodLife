@@ -166,12 +166,12 @@ class Donor {
         $this->districtId = $districtId;
     }
 
-    public static function AddDonor($name, $bloodGroup, $dob, $contactNumber, $nic, $noOfDonation, $coinValue, $donationLastDate, $availability, $medicalReport, $bloodBankId, $districtId, $UserName, $password, $email) {
+    public static function AddDonor($name, $medicalReport, $bloodBankId,  $UserName,  $email) {
         try {
             $dbcon = new DbConnector();
             $con = $dbcon->getConnection();
 
-            $query = "INSERT INTO `donor` (`donorId`, `name`, `bloodGroup`, `dob`, `contactNumber`, `nic`, `noOfDonation`, `coinValue`, `donationLastDate`, `availability`, `medicalReport`, `image`, `bloodBankId`, `districtId`) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NULL, ?, ?);";
+            $query = "INSERT INTO `donor` (`donorId`, `name`, `bloodGroup`, `dob`, `contactNumber`, `nic`, `medicalReport`, `image`, `bloodBankId`) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, NULL);";
 
             $pstmt = $con->prepare($query);
             $pstmt->bindValue(1, $name);
@@ -179,20 +179,24 @@ class Donor {
             $pstmt->bindValue(3, $dob);
             $pstmt->bindValue(4, $contactNumber);
             $pstmt->bindValue(5, $nic);
-            $pstmt->bindValue(6, $noOfDonation);
-            $pstmt->bindValue(7, $coinValue);
-            $pstmt->bindValue(8, $donationLastDate);
-            $pstmt->bindValue(9, $availability);
-            $pstmt->bindValue(10, $medicalReport, PDO::PARAM_LOB);
-            $pstmt->bindValue(11, $bloodBankId);
-            $pstmt->bindValue(12, $districtId);
+           
+            //$pstmt->bindValue(6, $donationLastDate);
+            $pstmt->bindValue(7, null);
+            $pstmt->bindValue(8, $medicalReport, PDO::PARAM_LOB);
+            $pstmt->bindValue(9, $bloodBankId);
+            //$pstmt->bindValue(10, $districtId);
 
             $pstmt->execute();
+ 
+           
+
+
+
 
             if ($pstmt->rowCount() > 0) {
                 echo 'Success.';
                 $DonorId = $con->lastInsertId ();
-                User::AddUser($UserName, $password, $email, 5, null, $DonorId, null);
+                User::AddUser($UserName, $email, 5, null, $DonorId, null);
                 self::SendMail($UserName, $password, $email, $name);
             } else {
                 echo 'Error';
@@ -316,5 +320,59 @@ static function getDonorById($donoId){
              return null;
          }
 }
+
+
+
+
+
+
+function validateContactNumber($contactNumber) {
+    // Remove any non-digit characters from the phone number, allowing hyphens
+    $cleanedContactNumber = preg_replace('/[^0-9-]/', '', $contactNumber);
+
+    // Check if the cleaned phone number contains exactly 10 digits
+    if (strlen($cleanedContactNumber) === 10) {
+        return true; // Valid phone number
+    } else {
+        return false; // Invalid phone number
+    }
+}
+
+
+
+
+
+
+
+function validateSriLankanNIC($nic) {
+    // Remove spaces and convert to uppercase
+    $nic = strtoupper(str_replace(' ', '', $nic));
+
+    // Check if the NIC length is 10 characters (old format) or 12 characters (new format)
+    if (strlen($nic) !== 10 && strlen($nic) !== 12) {
+        return false;
+    }
+
+    // Validate based on the format
+    if (preg_match('/^[0-9]{9}[vVxX]$/', $nic) || preg_match('/^[0-9]{11}[vVxX]$/', $nic)) {
+        // NIC is valid
+        return true;
+    } else {
+        // NIC is not valid
+        return false;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
             }
