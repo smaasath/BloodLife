@@ -34,10 +34,11 @@ class Donor {
     private $donationLastDate;
     private $availability;
     private $medicalReport;
+    private $image;
     private $bloodBankId;
     private $districtId;
 
-    public function __construct($donorId, $name, $bloodGroup, $dob, $contactNumber, $nic, $noOfDonation, $coinValue, $donationLastDate, $availability, $medicalReport, $bloodBankId, $districtId) {
+    public function __construct($donorId, $name, $bloodGroup, $dob, $contactNumber, $nic, $noOfDonation, $coinValue, $donationLastDate, $availability, $medicalReport,$image, $bloodBankId, $districtId) {
         $this->donorId = $donorId;
         $this->name = $name;
         $this->bloodGroup = $bloodGroup;
@@ -49,6 +50,7 @@ class Donor {
         $this->donationLastDate = $donationLastDate;
         $this->availability = $availability;
         $this->medicalReport = $medicalReport;
+        $this->image = $image;
         $this->bloodBankId = $bloodBankId;
         $this->districtId = $districtId;
     }
@@ -79,6 +81,13 @@ class Donor {
 
     public function getNoOfDonation() {
         return $this->noOfDonation;
+    }
+    public function getImage() {
+        return $this->image;
+    }
+
+    public function setImage($image): void {
+        $this->image = $image;
     }
 
     public function getCoinValue() {
@@ -252,6 +261,60 @@ class Donor {
             echo "Error: " . $e->getMessage();
         }
                   
+}
+
+
+static function getDonorById($donoId){
+    try {
+        $dbcon = new DbConnector();
+        $con = $dbcon->getConnection();
+
+        $query = "SELECT * FROM `donor` WHERE donorId=?";
+
+             // Prepare the SQL statement
+             $stmt = $con->prepare($query);
+
+             // Bind the parameter (hospitalRequestID)
+             $stmt->bindParam(1, $donoId, PDO::PARAM_INT);
+     
+             // Execute the query
+             $stmt->execute();
+     
+             // Fetch the result as an associative array
+             $result = $stmt->fetch(PDO::FETCH_ASSOC);
+     
+             // Handle the result as needed
+             if ($result) {
+                 // Create a new hospitalrequestclass object using the retrieved data
+                 $newDonor = new Donor(
+                     $donoId,
+                     $result["name"],
+                     $result["bloodGroup"],
+                     $result["dob"],
+                     $result["contactNumber"],
+                     $result["nic"],
+                     $result["noOfDonation"],
+                     $result["coinValue"],
+                     $result["donationLastDate"],
+                     $result["availability"],
+                     $result["medicalReport"],
+                     $result["image"],
+                     $result["bloodBankId"],
+                     $result["districtId"]
+                    
+                 );
+                 
+                 return $newDonor;
+             } else {
+                 // Return null or handle the case where no records are found
+                 return null;
+             }
+     
+         } catch (PDOException $e) {
+             // Handle the error or log it as needed
+             echo "Error: " . $e->getMessage();
+             return null;
+         }
 }
 
             }

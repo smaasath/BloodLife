@@ -9,11 +9,7 @@ $method = $_SERVER["REQUEST_METHOD"];
 if ($method === "POST") {
     $data = json_decode(file_get_contents("php://input"), true);
 
-    if (!isset($data['UserName']) || !isset($data['password'])) {
-        // Return a meaningful error message
-        echo json_encode(array("message" => "Both UserName and password are required."));
-        exit();
-    }
+   
 
     $UserName = $data['UserName'];
     $password = $data['password'];
