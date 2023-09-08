@@ -20,6 +20,15 @@ $hospitalId = 1;
         width: 100%; /* Set the width to 100% */
         box-sizing: border-box; /* Include padding and border in the total width */
     }
+    
+        .valid {
+            color: green;
+        }
+        
+        .not-valid {
+            color: red;
+        }
+    
 </style>
         
     </head>
@@ -206,7 +215,8 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
                                             <h6>Contact No</h6>
                                         </div>
                                         <div class="col-9">
-                                            <input type="tel"  name="contactNumber" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                            <input type="text" name="contactNumber" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"  required id="contactNumberInput" oninput="validateMobileNumber(this.value)">
+                                            <p id="validationResult"></p>
                                         </div>
                                     </div>
                                     <div class="row align-items-center pb-3">
@@ -530,7 +540,7 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
 </div>
 </div>
 
-<!--Delete Popup view Hospital
+<!--Delete Popup view Hospital-->
 <!-- Modal -->
 <div class="modal fade" id="deletePopup2" tabindex="-1" aria-labelledby="deletePopup2Label" aria-hidden="true">
     <div class="modal-dialog">
@@ -565,7 +575,28 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
 // put your code here
 ?>
 
+<script>
+        function validateMobileNumber(contactNumber) {
+            // Remove any non-numeric characters from the input
+            contactNumber = contactNumber.replace(/\D/g, '');
 
+            // Check if the mobile number is 10 digits long (including the prefix)
+            if (contactNumber.length === 10) {
+                // Check if the mobile number starts with a valid Sri Lankan prefix
+                const validPrefixes = ["071", "072", "075", "076", "077", "078", "074"];
+                const prefix = contactNumber.substr(0, 3);
+
+                if (validPrefixes.includes(prefix)) {
+                    document.getElementById("validationResult").textContent = ` ${contactNumber} is a valid Sri Lankan mobile number.`;
+                    document.getElementById("validationResult").className = "valid"; // Set the text color to green
+                    return;
+                }
+            }
+
+            document.getElementById("validationResult").textContent = `${contactNumber} is not a valid Sri Lankan mobile number.`;
+            document.getElementById("validationResult").className = "not-valid"; // Set the text color to red
+        }
+    </script>
 
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
