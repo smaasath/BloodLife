@@ -112,10 +112,9 @@ class User {
 
     
     
-    public static function AddUser($UserName, $email, $userRole, $bloodBankId, $donorId, $hospitalId) {
+    public static function AddUser($UserName, $email, $userRole, $hashedPassword,  $bloodBankId, $donorId, $hospitalId) {
 
-$password=User::generateRandomPassword();
-$hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+
 
 
     try {
@@ -125,7 +124,7 @@ $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
         $query = "INSERT INTO `user` (`userId`, `UserName`, `password`, `email`, `userRole`, `bloodBankId`, `donorId`, `hospitalId`) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?);"; // Update the query to include all placeholders
         $pstmt = $con->prepare($query);
         $pstmt->bindValue(1, $UserName);
-        $pstmt->bindValue(2, $$hashedPassword);
+        $pstmt->bindValue(2, $hashedPassword);
         $pstmt->bindValue(3, $email);
         $pstmt->bindValue(4, $userRole);
         $pstmt->bindValue(5, $bloodBankId);

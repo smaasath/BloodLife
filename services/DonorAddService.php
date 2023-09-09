@@ -21,27 +21,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $dob = filter_var($_POST['dob'], FILTER_SANITIZE_STRING);
     $contactNumber = filter_var($_POST['contactNumber'], FILTER_SANITIZE_STRING);
     $nic = filter_var($_POST['nic'], FILTER_SANITIZE_STRING);
-    //$noOfDonation = filter_var($_POST['noOfDonation'], FILTER_SANITIZE_NUMBER_INT);
-   // $coinValue = filter_var($_POST['coinValue'], FILTER_SANITIZE_NUMBER_INT);
-    //$donationLastDate = filter_var($_POST['donationLastDate'], FILTER_SANITIZE_STRING);
-   // $availability = filter_var($_POST['availability'], FILTER_SANITIZE_STRING);
+   
     $medicalReport = file_get_contents($_FILES['medicalReport']['tmp_name']);
-    //$district = filter_var($_POST['district'], FILTER_SANITIZE_STRING);
-    //$division = filter_var($_POST['division'], FILTER_SANITIZE_STRING);
+    
     $bloodBankId = filter_var($_POST['bloodBankId'], FILTER_SANITIZE_NUMBER_INT);
     $UserName = filter_var($_POST['UserName'], FILTER_SANITIZE_STRING);
-   // $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
+  
     $email = filter_var($_POST['email'], FILTER_SANITIZE_STRING);
 
     $districtId = district::getDistrictIDDD($district, $division);
     echo $bloodBankId;
 
 
-    //$password = $_POST["password"];
-
-// Hash the password using PASSWORD_BCRYPT
+   
 
 
 
-    Donor::AddDonor($name, $bloodGroup, $dob, $contactNumber, $nic,  $medicalReport, $UserName, $email);
+    Donor::AddDonor($name, $medicalReport,$bloodGroup,$dob,$contactNumber,$nic, $bloodBankId,  $UserName,  $email);
 }

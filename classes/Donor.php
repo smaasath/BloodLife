@@ -166,12 +166,12 @@ class Donor {
         $this->districtId = $districtId;
     }
 
-    public static function AddDonor($name, $medicalReport, $bloodBankId,  $UserName,  $email) {
+    public static function AddDonor($name, $medicalReport,$bloodGroup,$dob,$contactNumber,$nic, $bloodBankId,  $UserName,  $email) {
         try {
             $dbcon = new DbConnector();
             $con = $dbcon->getConnection();
 
-            $query = "INSERT INTO `donor` (`donorId`, `name`, `bloodGroup`, `dob`, `contactNumber`, `nic`, `medicalReport`, `image`, `bloodBankId`) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, NULL);";
+            $query = "INSERT INTO `donor` (`donorId`, `name`, `bloodGroup`, `dob`, `contactNumber`, `nic`,noOfDonation `medicalReport`, `image`, `bloodBankId`) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, NULL);";
 
             $pstmt = $con->prepare($query);
             $pstmt->bindValue(1, $name);
@@ -180,11 +180,10 @@ class Donor {
             $pstmt->bindValue(4, $contactNumber);
             $pstmt->bindValue(5, $nic);
            
-            //$pstmt->bindValue(6, $donationLastDate);
-            $pstmt->bindValue(7, null);
+           
             $pstmt->bindValue(8, $medicalReport, PDO::PARAM_LOB);
             $pstmt->bindValue(9, $bloodBankId);
-            //$pstmt->bindValue(10, $districtId);
+            
 
             $pstmt->execute();
  
@@ -196,7 +195,11 @@ class Donor {
             if ($pstmt->rowCount() > 0) {
                 echo 'Success.';
                 $DonorId = $con->lastInsertId ();
-                User::AddUser($UserName, $email, 5, null, $DonorId, null);
+$password=user::generateRandomPassword();
+
+$hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+
+                User::AddUser($UserName, $email, 5, $hashedPassword , null, $DonorId, null);
                 self::SendMail($UserName, $password, $email, $name);
             } else {
                 echo 'Error';

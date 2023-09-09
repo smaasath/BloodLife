@@ -336,15 +336,7 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
 
 
 
-                                    <div class="row align-items-center pb-3">
-                                        <div class="col-3">
-                                            <h6>Donation Last Date</h6>
-                                        </div>
-                                        <div class="col-9">
-                                            <input type="date"  name="donationLastDate" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                                        </div>
-                                    </div>
-
+                                   
 
                                     <div class="row align-items-center pb-3">
                                         <div class="col-3">
@@ -357,19 +349,7 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
                                     </div>
 
 
-                                    <div class="row align-items-center pb-3">
-                                        <div class="col-3">
-                                            <h6>Availability</h6>
-                                        </div>
-                                        <div class="col-9">
-                                            <select class="form-control form-control-lg" name="availability">
-                                                <option selected>Select your Blood Group</option>
-                                                <option value="Availabile">Availabile</option>
-                                                <option value="Notavailable"> Notavailable</option>
-
-                                            </select>
-                                        </div>
-                                    </div>
+                                    
                                     
                                     
                                     
@@ -384,16 +364,7 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
                                     
                                     
                                     <div class="row align-items-center pb-3">
-    <div class="col-3">
-        <h6>Password</h6>
-    </div>
-    <div class="col-6">
-        <input type="password" name="password" id="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-    </div>
-    <div class="col-3">
-        <button type="button" id="generatePassword" class="btn btn-primary">Generate Password</button>
-    </div>
-</div>
+    
 
                                      <div class="row align-items-center pb-3">
                                         <div class="col-3">
