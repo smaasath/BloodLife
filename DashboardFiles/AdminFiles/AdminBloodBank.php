@@ -12,6 +12,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             .buttoncolor {
                 background-color: #f44336;
             } /* Red */
+           
+    /* CSS to set a consistent width for input elements */
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"] {
+        width: 100%; /* Set the width to 100% */
+        box-sizing: border-box; /* Include padding and border in the total width */
+    }
+
         </style>
     </head>
     <body>
@@ -127,137 +136,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="EditBloodbankDetails()">Edit</button></td>
                 </tr>
 
-                <tr>
-                    <td class="id col-1">BBID001</td>
-                    <td class="name col-3"> Regional Blood Centre</td>
-                    <td class="addrs col-2">Victoria Rd, Jaffna</td>
-                    <td class="district col-3">Jaffna</td>
-                    <td class="division col-3">Jaffna</td>
-                    <td class="contact col-3">94212223063</td>
-                    <td class="email col-3">info@thjaffna.lk</td>
-                    <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="OpenBloodbankDetails()">View</button></td>
-                    <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="EditBloodbankDetails()">Edit</button></td>
-                </tr>
-
-                <tr>
-                    <td class="id col-1">BBID001</td>
-                    <td class="name col-3"> Regional Blood Centre</td>
-                    <td class="addrs col-2">Victoria Rd, Jaffna</td>
-                    <td class="district col-3">Jaffna</td>
-                    <td class="division col-3">Jaffna</td>
-                    <td class="contact col-3">94212223063</td>
-                    <td class="email col-3">info@thjaffna.lk</td>
-                    <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="OpenBloodbankDetails()">View</button></td>
-                    <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="EditBloodbankDetails()">Edit</button></td>
-                </tr>
-
-                <tr>
-                    <td class="id col-1">BBID001</td>
-                    <td class="name col-3"> Regional Blood Centre</td>
-                    <td class="addrs col-2">Victoria Rd, Jaffna</td>
-                    <td class="district col-3">Jaffna</td>
-                    <td class="division col-3">Jaffna</td>
-                    <td class="contact col-3">94212223063</td>
-                    <td class="email col-3">info@thjaffna.lk</td>
-                    <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="OpenBloodbankDetails()">View</button></td>
-                    <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="EditBloodbankDetails()">Edit</button></td>
-                </tr>
-
-                <tr>
-                    <td class="id col-1">BBID001</td>
-                    <td class="name col-3"> Regional Blood Centre</td>
-                    <td class="addrs col-2">Victoria Rd, Jaffna</td>
-                    <td class="district col-3">Jaffna</td>
-                    <td class="division col-3">Jaffna</td>
-                    <td class="contact col-3">94212223063</td>
-                    <td class="email col-3">info@thjaffna.lk</td>
-                    <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="OpenBloodbankDetails()">View</button></td>
-                    <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="EditBloodbankDetails()">Edit</button></td>
-                </tr>
-
-                <tr>
-                    <td class="id col-1">BBID001</td>
-                    <td class="name col-3"> Regional Blood Centre</td>
-                    <td class="addrs col-2">Victoria Rd, Jaffna</td>
-                    <td class="district col-3">Jaffna</td>
-                    <td class="division col-3">Jaffna</td>
-                    <td class="contact col-3">94212223063</td>
-                    <td class="email col-3">info@thjaffna.lk</td>
-                    <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="OpenBloodbankDetails()">View</button></td>
-                    <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="EditBloodbankDetails()">Edit</button></td>
-                </tr>
-
-                <tr>
-                    <td class="id col-1">BBID001</td>
-                    <td class="name col-3"> Regional Blood Centre</td>
-                    <td class="addrs col-2">Victoria Rd, Jaffna</td>
-                    <td class="district col-3">Jaffna</td>
-                    <td class="division col-3">Jaffna</td>
-                    <td class="contact col-3">94212223063</td>
-                    <td class="email col-3">info@thjaffna.lk</td>
-                    <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="OpenBloodbankDetails()">View</button></td>
-                    <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="EditBloodbankDetails()">Edit</button></td>
-                </tr>
-
-                <tr>
-                    <td class="id col-1">BBID001</td>
-                    <td class="name col-3"> Regional Blood Centre</td>
-                    <td class="addrs col-2">Victoria Rd, Jaffna</td>
-                    <td class="district col-3">Jaffna</td>
-                    <td class="division col-3">Jaffna</td>
-                    <td class="contact col-3">94212223063</td>
-                    <td class="email col-3">info@thjaffna.lk</td>
-                    <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="OpenBloodbankDetails()">View</button></td>
-                    <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="EditBloodbankDetails()">Edit</button></td>
-                </tr>
-
-                <tr>
-                    <td class="id col-1">BBID001</td>
-                    <td class="name col-3"> Regional Blood Centre</td>
-                    <td class="addrs col-2">Victoria Rd, Jaffna</td>
-                    <td class="district col-3">Jaffna</td>
-                    <td class="division col-3">Jaffna</td>
-                    <td class="contact col-3">94212223063</td>
-                    <td class="email col-3">info@thjaffna.lk</td>
-                    <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="OpenBloodbankDetails()">View</button></td>
-                    <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="EditBloodbankDetails()">Edit</button></td>
-                </tr>
-
-                <tr>
-                    <td class="id col-1">BBID001</td>
-                    <td class="name col-3"> Regional Blood Centre</td>
-                    <td class="addrs col-2">Victoria Rd, Jaffna</td>
-                    <td class="district col-3">Jaffna</td>
-                    <td class="division col-3">Jaffna</td>
-                    <td class="contact col-3">94212223063</td>
-                    <td class="email col-3">info@thjaffna.lk</td>
-                    <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="OpenBloodbankDetails()">View</button></td>
-                    <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="EditBloodbankDetails()">Edit</button></td>
-                </tr>
-
-                <tr>
-                    <td class="id col-1">BBID001</td>
-                    <td class="name col-3"> Regional Blood Centre</td>
-                    <td class="addrs col-2">Victoria Rd, Jaffna</td>
-                    <td class="district col-3">Jaffna</td>
-                    <td class="division col-3">Jaffna</td>
-                    <td class="contact col-3">94212223063</td>
-                    <td class="email col-3">info@thjaffna.lk</td>
-                    <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="OpenBloodbankDetails()">View</button></td>
-                    <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="EditBloodbankDetails()">Edit</button></td>
-                </tr>
-
-
-
-
-
-
-
-
-
-
-
-
             </table> 
         </div>
     </div>
@@ -328,7 +206,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     </div>
 </div>
 
-<!--Save Popup editbloodbank
+<!--Save Popup editbloodbank-->
 <!-- Modal -->
 <div class="modal fade" id="savePopup3" tabindex="-1" aria-labelledby="savePopup3Label" aria-hidden="true">
     <div class="modal-dialog">

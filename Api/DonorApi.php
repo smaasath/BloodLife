@@ -8,7 +8,7 @@ header('Content-Type: application/json');
 
 $method = $_SERVER["REQUEST_METHOD"];
 
-if ($method === "GET") {
+if ($method === "POST") {
     $data = json_decode(file_get_contents("php://input"), true);
 
    
@@ -35,7 +35,8 @@ if ($method === "GET") {
             "coinValue" => $newDonor->getCoinValue(),
             "donationLastDate" => $newDonor->getDonationLastDate(),
             "availability" => $newDonor->getAvailability(),
-        
+            "medicalReport" =>  base64_encode($newDonor->getMedicalReport()),
+            "image" => base64_encode($newDonor->getImage()),
             "bloodBankId" => $newDonor->getBloodBankId(),
             "districtId" => $newDonor->getDistrictId(),     
            )

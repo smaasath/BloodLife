@@ -7,6 +7,7 @@
     background-color: white !important;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     padding-top: 50px;
+    height: 350px;
 
 
 }
@@ -21,7 +22,7 @@
     -webkit-transition: all .5s ease;
     -o-transition: all .5s ease;
     transition: all .5s ease;
-    height: 100px;
+    height: 150px;
     margin-top:  -18px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
@@ -30,30 +31,29 @@
     -webkit-transform: scale(1.1);
     -ms-transform: scale(1.1);
     transform: scale(1.1);
-    height: 100px;
+    height: 150px;
     cursor: pointer;
 }
 .stockcon h4{
     color: red;
 }
-.form-control{
-    font-size: 0.70rem;
-    
-}
 
-.btn-primary{
+
+.savebtn{
     background-color: #FF6666 !important;
     border-color: black;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    height: 30px;
+    width: 60px;
+    border-radius: 5px;
 }
-.btn-primary:hover {
+.savebtn:hover {
     background-color: red!important;
     border-color: black;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 5px;
 }
-.btn-primary:active{
-    color:#000000;
-}
+
 .blood{
    text-align:center; 
    font-size: 30px;
@@ -66,15 +66,19 @@
  .table tr td{
     text-align: center;
 }   
-.btn-info{
-    background-color: #FF9F9F!important;
+.editbtn{
+    background-color: white!important;
     border-color: black;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    height: 30px;
+    width: 60px;
+    border-radius: 5px;
 }
-.btn-info:hover{
-     background-color: wheat!important;
+.editbtn:hover{
+    
      border-color: black;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 5px;
 }
 .btn-secondary{
     border-color: black;
@@ -82,9 +86,7 @@
     
 }
 
-table tr th{
-   text-align: center; 
-}
+
 
 .stocky-1{
    display: flex;
