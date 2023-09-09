@@ -90,36 +90,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-function validateSriLankanMobileNumber($contactNumber) {
-    // Remove any non-numeric characters from the input
-    $contactNumber = preg_replace("/[^0-9]/", "", $contactNumber);
-    
-    // Check if the mobile number is 10 digits long (including the prefix)
-    if (strlen($contactNumber) != 10) {
-        return false;
-    }
-    
-    // Check if the mobile number starts with a valid Sri Lankan prefix
-    $validPrefixes = array("071", "072", "075", "076", "077", "078");
-    $prefix = substr($contactNumber, 0, 3);
-    
-    if (!in_array($prefix, $validPrefixes)) {
-        return false;
-    }
-    
-    // If all checks pass, the mobile number is valid
-    return true;
-}
-
-
-if (validateSriLankanMobileNumber($contactNumber)) {
-    echo "$contactNumber is a valid Sri Lankan mobile number.";
-} else {
-    echo "$contactNumber is not a valid Sri Lankan mobile number.";
-}
-
-
 
 
 }
+?>
+
+
+
+
+
 
