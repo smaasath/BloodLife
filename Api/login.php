@@ -18,7 +18,10 @@ if ($method === "POST") {
     $conn = $dbcon->getConnection();
 
     // Use a prepared statement with placeholders to prevent SQL injection
-    $sql = "SELECT UserName, userRole, donorId FROM user WHERE UserName=? AND password=?";
+    $sql = "SELECT user.UserName, user.userRole, donor.donorId, donor.bloodBankId
+    FROM user
+    INNER JOIN donor ON user.donorId = donor.donorId
+    WHERE user.UserName = ? AND user.password = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(1, $UserName, PDO::PARAM_STR);
     $stmt->bindParam(2, $password, PDO::PARAM_STR);
