@@ -146,4 +146,27 @@ public static function SendMail($UserName, $password, $email,$name) {
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         }
     }
+
+    public static function GetHospitalData($hospitalId) {
+        try {
+            $dbcon = new DbConnector();
+            $con = $dbcon->getConnection();
+    
+            $query = "SELECT * FROM `hospital` WHERE `id` = ?";
+    
+            $pstmt = $con->prepare($query);
+            $pstmt->bindValue(1, $hospitalId);
+    
+            $pstmt->execute();
+    
+            if ($pstmt->rowCount() > 0) {
+                return $pstmt->fetch(PDO::FETCH_ASSOC);
+            } else {
+                return false; // Return false if no data is found
+            }
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+    
 }

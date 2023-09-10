@@ -111,7 +111,7 @@ $hospitalId = 1;
         <!-- Table body -->
         <div class="container bg-white m-0 p-0" style=" max-height: 500px; overflow: scroll;">
             <table class="table table-hover p-0">
-
+            <thead>
                 <!-- Table row -->
 
 
@@ -128,8 +128,36 @@ $hospitalId = 1;
                     <th class="col-1 bgcol p-2">Edit</th>
 
                 </tr>
+                </thead>
+    <tbody>
+    <?php
+        
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            
+            $hospitalId = $_POST["hospitalId"];
+            $hospitalName = $_POST["name"];
+            $address = $_POST["address"];
+            $district = $_POST["district"];
+            $dsDivision = $_POST["division"];
+            $contactNumber = $_POST["contactNumber"];
+            $email = $_POST["email"];
 
-                <tr>
+            // Output the inputted data in a table row
+            echo "<tr>";
+            echo "<td>$hospitalId</td>";
+            echo "<td>$hospitalName</td>";
+            echo "<td>$address</td>";
+            echo "<td>$district</td>";
+            echo "<td>$dsDivision</td>";
+            echo "<td>$contactNumber</td>";
+            echo "<td>$email</td>";
+            echo '<td><button type="button" class="btn btn-primary" data-bs-toggle="modal" onclick="OpenHospitalDetails()">View</button></td>';
+            echo '<td><button type="button" class="btn btn-primary" data-bs-toggle="modal" onclick="EditHospitalDetails()">Edit</button></td>';
+            echo "</tr>";
+        }
+        ?>
+    </tbody>
+                <!-- <tr>
                     <td class="col-1">H_ID001</td>
                     <td class="col-3"> Teaching Hospital-Jaffna</td>
                     <td class="col-2"> Hospital St, Jaffna</td>
@@ -139,7 +167,7 @@ $hospitalId = 1;
                     <td class="col-3">info@thjaffna.lk</td>
                     <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="OpenHospitalDetails()">View</button></td>
                     <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="EditHospitalDetails()">Edit</button></td>
-                </tr>
+                </tr> -->
 
                 
             </table> 
