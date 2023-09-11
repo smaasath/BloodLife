@@ -124,6 +124,7 @@ class campaign {
 
     
     public static function AddCampaign($Title, $address, $startDate, $endDate, $review, $status, $districtId, $organizerId, $bloodBankId) {
+
     try {
         $dbcon = new DbConnector();
         $con = $dbcon->getConnection();
@@ -179,5 +180,17 @@ static function getAllCampaign(){
         echo "Error: " . $e->getMessage();
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

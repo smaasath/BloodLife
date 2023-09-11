@@ -26,16 +26,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     $bloodBankId = filter_var($_POST['bloodBankId'], FILTER_SANITIZE_NUMBER_INT);
     $UserName = filter_var($_POST['UserName'], FILTER_SANITIZE_STRING);
+    $district = filter_var($_POST['district'], FILTER_SANITIZE_STRING);
+    $division = filter_var($_POST['division'], FILTER_SANITIZE_STRING);
   
     $email = filter_var($_POST['email'], FILTER_SANITIZE_STRING);
 
     $districtId = district::getDistrictIDDD($district, $division);
     echo $bloodBankId;
+    
 
 
    
 
 
 
-    Donor::AddDonor($name, $medicalReport,$bloodGroup,$dob,$contactNumber,$nic, $bloodBankId,  $UserName,  $email);
+    Donor::AddDonor($name, $medicalReport,$bloodGroup,$dob,$contactNumber,$nic, $bloodBankId,  $UserName,  $email,$districtId);
 }
