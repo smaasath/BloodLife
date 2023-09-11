@@ -112,7 +112,11 @@ class User {
 
     
     
-    public static function AddUser($UserName, $password, $email, $userRole, $bloodBankId, $donorId, $hospitalId) {
+    public static function AddUser($UserName, $email, $userRole, $hashedPassword,  $bloodBankId, $donorId, $hospitalId) {
+
+
+
+
     try {
         $dbcon = new DbConnector();
         $con = $dbcon->getConnection();
@@ -120,7 +124,7 @@ class User {
         $query = "INSERT INTO `user` (`userId`, `UserName`, `password`, `email`, `userRole`, `bloodBankId`, `donorId`, `hospitalId`) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?);"; // Update the query to include all placeholders
         $pstmt = $con->prepare($query);
         $pstmt->bindValue(1, $UserName);
-        $pstmt->bindValue(2, $password);
+        $pstmt->bindValue(2, $hashedPassword);
         $pstmt->bindValue(3, $email);
         $pstmt->bindValue(4, $userRole);
         $pstmt->bindValue(5, $bloodBankId);
@@ -138,6 +142,34 @@ class User {
         return "Error: " . $e->getMessage();
     }
 }
+
+
+static function generateRandomPassword($length = 10) {
+    // Define a character pool for generating the password
+    $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_';
+
+    // Get the total number of characters in the pool
+    $characterCount = strlen($characters);
+
+    // Initialize the password variable
+    $password = '';
+
+    // Generate a random password of the specified length
+    for ($i = 0; $i < $length; $i++) {
+        // Get a random character from the pool
+        $randomCharacter = $characters[rand(0, $characterCount - 1)];
+
+        // Append the random character to the password
+        $password .= $randomCharacter;
+    }
+
+    // Return the generated password
+    return $password;
+}
+
+
+
+
 
 
     

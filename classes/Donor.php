@@ -21,7 +21,8 @@ use PDO;
 use PDOException;
 use classes\DbConnector;
 
-class Donor {
+class Donor
+{
 
     private $donorId;
     private $name;
@@ -38,7 +39,8 @@ class Donor {
     private $bloodBankId;
     private $districtId;
 
-    public function __construct($donorId, $name, $bloodGroup, $dob, $contactNumber, $nic, $noOfDonation, $coinValue, $donationLastDate, $availability, $medicalReport,$image, $bloodBankId, $districtId) {
+    public function __construct($donorId, $name, $bloodGroup, $dob, $contactNumber, $nic, $noOfDonation, $coinValue, $donationLastDate, $availability, $medicalReport, $image, $bloodBankId, $districtId)
+    {
         $this->donorId = $donorId;
         $this->name = $name;
         $this->bloodGroup = $bloodGroup;
@@ -55,123 +57,153 @@ class Donor {
         $this->districtId = $districtId;
     }
 
-    public function getDonorId() {
+    public function getDonorId()
+    {
         return $this->donorId;
     }
 
-    public function getName() {
+    public function getName()
+    {
         return $this->name;
     }
 
-    public function getBloodGroup() {
+    public function getBloodGroup()
+    {
         return $this->bloodGroup;
     }
 
-    public function getDob() {
+    public function getDob()
+    {
         return $this->dob;
     }
 
-    public function getContactNumber() {
+    public function getContactNumber()
+    {
         return $this->contactNumber;
     }
 
-    public function getNic() {
+    public function getNic()
+    {
         return $this->nic;
     }
 
-    public function getNoOfDonation() {
+    public function getNoOfDonation()
+    {
         return $this->noOfDonation;
     }
-    public function getImage() {
+    public function getImage()
+    {
         return $this->image;
     }
 
-    public function setImage($image): void {
+    public function setImage($image): void
+    {
         $this->image = $image;
     }
 
-    public function getCoinValue() {
+    public function getCoinValue()
+    {
         return $this->coinValue;
     }
 
-    public function getDonationLastDate() {
+    public function getDonationLastDate()
+    {
         return $this->donationLastDate;
     }
 
-    public function getAvailability() {
+    public function getAvailability()
+    {
         return $this->availability;
     }
 
-    public function getMedicalReport() {
+    public function getMedicalReport()
+    {
         return $this->medicalReport;
     }
 
-    public function getBloodBankId() {
+    public function getBloodBankId()
+    {
         return $this->bloodBankId;
     }
 
-    public function getDistrictId() {
+    public function getDistrictId()
+    {
         return $this->districtId;
     }
 
-    public function setDonorId($donorId): void {
+    public function setDonorId($donorId): void
+    {
         $this->donorId = $donorId;
     }
 
-    public function setName($name): void {
+    public function setName($name): void
+    {
         $this->name = $name;
     }
 
-    public function setBloodGroup($bloodGroup): void {
+    public function setBloodGroup($bloodGroup): void
+    {
         $this->bloodGroup = $bloodGroup;
     }
 
-    public function setDob($dob): void {
+    public function setDob($dob): void
+    {
         $this->dob = $dob;
     }
 
-    public function setContactNumber($contactNumber): void {
+    public function setContactNumber($contactNumber): void
+    {
         $this->contactNumber = $contactNumber;
     }
 
-    public function setNic($nic): void {
+    public function setNic($nic): void
+    {
         $this->nic = $nic;
     }
 
-    public function setNoOfDonation($noOfDonation): void {
+    public function setNoOfDonation($noOfDonation): void
+    {
         $this->noOfDonation = $noOfDonation;
     }
 
-    public function setCoinValue($coinValue): void {
+    public function setCoinValue($coinValue): void
+    {
         $this->coinValue = $coinValue;
     }
 
-    public function setDonationLastDate($donationLastDate): void {
+    public function setDonationLastDate($donationLastDate): void
+    {
         $this->donationLastDate = $donationLastDate;
     }
 
-    public function setAvailability($availability): void {
+    public function setAvailability($availability): void
+    {
         $this->availability = $availability;
     }
 
-    public function setMedicalReport($medicalReport): void {
+    public function setMedicalReport($medicalReport): void
+    {
         $this->medicalReport = $medicalReport;
     }
 
-    public function setBloodBankId($bloodBankId): void {
+    public function setBloodBankId($bloodBankId): void
+    {
         $this->bloodBankId = $bloodBankId;
     }
 
-    public function setDistrictId($districtId): void {
+    public function setDistrictId($districtId): void
+    {
         $this->districtId = $districtId;
     }
 
-    public static function AddDonor($name, $bloodGroup, $dob, $contactNumber, $nic, $noOfDonation, $coinValue, $donationLastDate, $availability, $medicalReport, $bloodBankId, $districtId, $UserName, $password, $email) {
+    public static function AddDonor($name, $medicalReport, $bloodGroup, $dob, $contactNumber, $nic, $bloodBankId,  $UserName,  $email, $districtId)
+    {
         try {
             $dbcon = new DbConnector();
             $con = $dbcon->getConnection();
 
-            $query = "INSERT INTO `donor` (`donorId`, `name`, `bloodGroup`, `dob`, `contactNumber`, `nic`, `noOfDonation`, `coinValue`, `donationLastDate`, `availability`, `medicalReport`, `image`, `bloodBankId`, `districtId`) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NULL, ?, ?);";
+            $query = "INSERT INTO `donor` (`donorId`, `name`, `bloodGroup`, `dob`, `contactNumber`, `nic`, `noOfDonation`, `coinValue`, `donationLastDate`, `availability`, `medicalReport`, `image`, `bloodBankId`, `districtId`) 
+            VALUES (Null,?,?,?,?,?,Null,'100',Null,'Available',?,Null,?,?)";
 
             $pstmt = $con->prepare($query);
             $pstmt->bindValue(1, $name);
@@ -179,21 +211,32 @@ class Donor {
             $pstmt->bindValue(3, $dob);
             $pstmt->bindValue(4, $contactNumber);
             $pstmt->bindValue(5, $nic);
-            $pstmt->bindValue(6, $noOfDonation);
-            $pstmt->bindValue(7, $coinValue);
-            $pstmt->bindValue(8, $donationLastDate);
-            $pstmt->bindValue(9, $availability);
-            $pstmt->bindValue(10, $medicalReport, PDO::PARAM_LOB);
-            $pstmt->bindValue(11, $bloodBankId);
-            $pstmt->bindValue(12, $districtId);
+
+
+            $pstmt->bindValue(6, $medicalReport, PDO::PARAM_LOB);
+            $pstmt->bindValue(7, $bloodBankId);
+            $pstmt->bindValue(8, $districtId);
+
 
             $pstmt->execute();
 
+
+
+
+
+
             if ($pstmt->rowCount() > 0) {
-                echo 'Success.';
-                $DonorId = $con->lastInsertId ();
-                User::AddUser($UserName, $password, $email, 5, null, $DonorId, null);
+                
+                $DonorId = $con->lastInsertId();
+                $password = user::generateRandomPassword();
+
+                $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+
+               
+
+                // User::AddUser($UserName, $email, 5, $hashedPassword, null, $DonorId, null);
                 self::SendMail($UserName, $password, $email, $name);
+                header("Location: ../Dashboards/BloodBankDashboard.php");
             } else {
                 echo 'Error';
             }
@@ -202,7 +245,8 @@ class Donor {
         }
     }
 
-    public static function SendMail($UserName, $password, $email,$name) {
+    public static function SendMail($UserName, $password, $email, $name)
+    {
         // Create an instance; passing `true` enables exceptions
 
         require '../mail/Exception.php';
@@ -225,11 +269,11 @@ class Donor {
         //Content
         $mail->isHTML(true);                                  //Set email format to HTML
         $mail->Subject = 'Donor Registration';
-        $message = "Dear ".$name.",<br>";
-        $message .= "Welcome to BloodLife! , your account has been successfully created."."<br>";
-        $message .= "        Your username:".$UserName.",<br>";
-        $message .= "        Your Password: ".$password.",<br>";
-        
+        $message = "Dear " . $name . ",<br>";
+        $message .= "Welcome to BloodLife! , your account has been successfully created." . "<br>";
+        $message .= "        Your username:" . $UserName . ",<br>";
+        $message .= "        Your Password: " . $password . ",<br>";
+
 
         $mail->Body = $message;
 
@@ -241,7 +285,8 @@ class Donor {
         }
     }
 
-    static function getAllDetails() {
+    static function getAllDetails()
+    {
         try {
             $dbcon = new DbConnector();
             $con = $dbcon->getConnection();
@@ -255,66 +300,108 @@ class Donor {
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 $dataArray[] = $row;
             }
-            
-           return $dataArray;
+
+            return $dataArray;
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
-                  
-}
+    }
 
 
-static function getDonorById($donoId){
-    try {
-        $dbcon = new DbConnector();
-        $con = $dbcon->getConnection();
+    static function getDonorById($donoId)
+    {
+        try {
+            $dbcon = new DbConnector();
+            $con = $dbcon->getConnection();
 
-        $query = "SELECT * FROM `donor` WHERE donorId=?";
+            $query = "SELECT * FROM `donor` WHERE donorId=?";
 
-             // Prepare the SQL statement
-             $stmt = $con->prepare($query);
+            // Prepare the SQL statement
+            $stmt = $con->prepare($query);
 
-             // Bind the parameter (hospitalRequestID)
-             $stmt->bindParam(1, $donoId, PDO::PARAM_INT);
-     
-             // Execute the query
-             $stmt->execute();
-     
-             // Fetch the result as an associative array
-             $result = $stmt->fetch(PDO::FETCH_ASSOC);
-     
-             // Handle the result as needed
-             if ($result) {
-                 // Create a new hospitalrequestclass object using the retrieved data
-                 $newDonor = new Donor(
-                     $donoId,
-                     $result["name"],
-                     $result["bloodGroup"],
-                     $result["dob"],
-                     $result["contactNumber"],
-                     $result["nic"],
-                     $result["noOfDonation"],
-                     $result["coinValue"],
-                     $result["donationLastDate"],
-                     $result["availability"],
-                     $result["medicalReport"],
-                     $result["image"],
-                     $result["bloodBankId"],
-                     $result["districtId"]
-                    
-                 );
-                 
-                 return $newDonor;
-             } else {
-                 // Return null or handle the case where no records are found
-                 return null;
-             }
-     
-         } catch (PDOException $e) {
-             // Handle the error or log it as needed
-             echo "Error: " . $e->getMessage();
-             return null;
-         }
-}
+            // Bind the parameter (hospitalRequestID)
+            $stmt->bindParam(1, $donoId, PDO::PARAM_INT);
 
+            // Execute the query
+            $stmt->execute();
+
+            // Fetch the result as an associative array
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            // Handle the result as needed
+            if ($result) {
+                // Create a new hospitalrequestclass object using the retrieved data
+                $newDonor = new Donor(
+                    $donoId,
+                    $result["name"],
+                    $result["bloodGroup"],
+                    $result["dob"],
+                    $result["contactNumber"],
+                    $result["nic"],
+                    $result["noOfDonation"],
+                    $result["coinValue"],
+                    $result["donationLastDate"],
+                    $result["availability"],
+                    $result["medicalReport"],
+                    $result["image"],
+                    $result["bloodBankId"],
+                    $result["districtId"]
+
+                );
+
+                return $newDonor;
+            } else {
+                // Return null or handle the case where no records are found
+                return null;
             }
+        } catch (PDOException $e) {
+            // Handle the error or log it as needed
+            echo "Error: " . $e->getMessage();
+            return null;
+        }
+    }
+
+
+
+
+
+
+    function validateContactNumber($contactNumber)
+    {
+        // Remove any non-digit characters from the phone number, allowing hyphens
+        $cleanedContactNumber = preg_replace('/[^0-9-]/', '', $contactNumber);
+
+        // Check if the cleaned phone number contains exactly 10 digits
+        if (strlen($cleanedContactNumber) === 10) {
+            return true; // Valid phone number
+        } else {
+            return false; // Invalid phone number
+        }
+    }
+
+
+
+
+
+
+
+    function validateSriLankanNIC($nic)
+    {
+        // Remove spaces and convert to uppercase
+        $nic = strtoupper(str_replace(' ', '', $nic));
+
+        // Check if the NIC length is 10 characters (old format) or 12 characters (new format)
+        if (strlen($nic) !== 10 && strlen($nic) !== 12) {
+            return false;
+        }
+
+        // Validate based on the format
+        if (preg_match('/^[0-9]{9}[vVxX]$/', $nic) || preg_match('/^[0-9]{11}[vVxX]$/', $nic)) {
+            // NIC is valid
+            return true;
+        } else {
+            // NIC is not valid
+            return false;
+        }
+    }
+}

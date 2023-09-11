@@ -123,7 +123,8 @@ class campaign {
 
 
     
-    public static function AddCampaign($campaignId, $Title, $address, $startDate, $endDate, $review, $status, $districtId, $organizerId, $bloodBankId) {
+    public static function AddCampaign($Title, $address, $startDate, $endDate, $review, $status, $districtId, $organizerId, $bloodBankId) {
+
     try {
         $dbcon = new DbConnector();
         $con = $dbcon->getConnection();
@@ -155,6 +156,40 @@ class campaign {
         echo "Error: " . $e->getMessage();
     }
 }
+
+static function getAllCampaign(){
+    try {
+        $dbcon = new DbConnector();
+        $con = $dbcon->getConnection();
+
+        $query = "SELECT campaigntable.*, district.district,bloodbank.ContactNo
+        FROM campaigntable
+        JOIN district ON campaigntable.districtId = district.districtId
+        join bloodbank on campaigntable.bloodBankId = bloodbank.bloodBankId";
+
+        $stmt = $con->prepare($query);
+        $stmt->execute();
+
+        $dataArray = array();
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $dataArray[] = $row;
+        }
+
+        return $dataArray;
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
+}
+
+
+
+
+
+
+
+
+
+
 
 
 

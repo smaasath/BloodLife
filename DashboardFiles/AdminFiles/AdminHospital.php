@@ -10,6 +10,27 @@ $hospitalId = 1;
     <head>
         <meta charset="UTF-8">
         <title></title>
+        <style>
+    /* CSS to set a consistent width for input elements */
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"],
+    input[type="password"],
+    select {
+        width: 100%; /* Set the width to 100% */
+        box-sizing: border-box; /* Include padding and border in the total width */
+    }
+    
+        .valid {
+            color: green;
+        }
+        
+        .not-valid {
+            color: red;
+        }
+    
+</style>
+        
     </head>
     <body>
 
@@ -120,143 +141,7 @@ $hospitalId = 1;
                     <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="EditHospitalDetails()">Edit</button></td>
                 </tr>
 
-                <tr>
-                    <td class="col-1">H_ID001</td>
-                    <td class="col-3"> Teaching Hospital-Jaffna</td>
-                    <td class="col-2"> Hospital St, Jaffna</td>
-                    <td class="col-3">Jaffna</td>
-                    <td class="col-3">Jaffna</td>
-                    <td class="col-3">0212223348</td>
-                    <td class="col-3">info@thjaffna.lk</td>
-                    <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="OpenHospitalDetails()">View</button></td>
-                    <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="EditHospitalDetails()">Edit</button></td>
-                </tr>
-
-                <tr>
-                    <td class="col-1">H_ID001</td>
-                    <td class="col-3"> Teaching Hospital-Jaffna</td>
-                    <td class="col-2"> Hospital St, Jaffna</td>
-                    <td class="col-3">Jaffna</td>
-                    <td class="col-3">Jaffna</td>
-                    <td class="col-3">0212223348</td>
-                    <td class="col-3">info@thjaffna.lk</td>
-                    <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="OpenHospitalDetails()">View</button></td>
-                    <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="EditHospitalDetails()">Edit</button></td>
-                </tr>
-
-                <tr>
-                    <td class="col-1">H_ID001</td>
-                    <td class="col-3"> Teaching Hospital-Jaffna</td>
-                    <td class="col-2"> Hospital St, Jaffna</td>
-                    <td class="col-3">Jaffna</td>
-                    <td class="col-3">Jaffna</td>
-                    <td class="col-3">0212223348</td>
-                    <td class="col-3">info@thjaffna.lk</td>
-                    <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="OpenHospitalDetails()">View</button></td>
-                    <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="EditHospitalDetails()">Edit</button></td>
-                </tr>
-
-                <tr>
-                    <td class="col-1">H_ID001</td>
-                    <td class="col-3"> Teaching Hospital-Jaffna</td>
-                    <td class="col-2"> Hospital St, Jaffna</td>
-                    <td class="col-3">Jaffna</td>
-                    <td class="col-3">Jaffna</td>
-                    <td class="col-3">0212223348</td>
-                    <td class="col-3">info@thjaffna.lk</td>
-                    <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="OpenHospitalDetails()">View</button></td>
-                    <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="EditHospitalDetails()">Edit</button></td>
-                </tr>
-
-                <tr>
-                    <td class="col-1">H_ID001</td>
-                    <td class="col-3"> Teaching Hospital-Jaffna</td>
-                    <td class="col-2"> Hospital St, Jaffna</td>
-                    <td class="col-3">Jaffna</td>
-                    <td class="col-3">Jaffna</td>
-                    <td class="col-3">0212223348</td>
-                    <td class="col-3">info@thjaffna.lk</td>
-                    <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="OpenHospitalDetails()">View</button></td>
-                    <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="EditHospitalDetails()">Edit</button></td>
-                </tr>
-
-                <tr>
-                    <td class="col-1">H_ID001</td>
-                    <td class="col-3"> Teaching Hospital-Jaffna</td>
-                    <td class="col-2"> Hospital St, Jaffna</td>
-                    <td class="col-3">Jaffna</td>
-                    <td class="col-3">Jaffna</td>
-                    <td class="col-3">0212223348</td>
-                    <td class="col-3">info@thjaffna.lk</td>
-                    <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="OpenHospitalDetails()">View</button></td>
-                    <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="EditHospitalDetails()">Edit</button></td>
-                </tr>
-
-                <tr>
-                    <td class="col-1">H_ID001</td>
-                    <td class="col-3"> Teaching Hospital-Jaffna</td>
-                    <td class="col-2"> Hospital St, Jaffna</td>
-                    <td class="col-3">Jaffna</td>
-                    <td class="col-3">Jaffna</td>
-                    <td class="col-3">0212223348</td>
-                    <td class="col-3">info@thjaffna.lk</td>
-                    <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="OpenHospitalDetails()">View</button></td>
-                    <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="EditHospitalDetails()">Edit</button></td>
-                </tr>
-
-                <tr>
-                    <td class="col-1">H_ID001</td>
-                    <td class="col-3"> Teaching Hospital-Jaffna</td>
-                    <td class="col-2"> Hospital St, Jaffna</td>
-                    <td class="col-3">Jaffna</td>
-                    <td class="col-3">Jaffna</td>
-                    <td class="col-3">0212223348</td>
-                    <td class="col-3">info@thjaffna.lk</td>
-                    <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="OpenHospitalDetails()">View</button></td>
-                    <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="EditHospitalDetails()">Edit</button></td>
-                </tr>
-
-                <tr>
-                    <td class="col-1">H_ID001</td>
-                    <td class="col-3"> Teaching Hospital-Jaffna</td>
-                    <td class="col-2"> Hospital St, Jaffna</td>
-                    <td class="col-3">Jaffna</td>
-                    <td class="col-3">Jaffna</td>
-                    <td class="col-3">0212223348</td>
-                    <td class="col-3">info@thjaffna.lk</td>
-                    <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="OpenHospitalDetails()">View</button></td>
-                    <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="EditHospitalDetails()">Edit</button></td>
-                </tr>
-
-                <tr>
-                    <td class="col-1">H_ID001</td>
-                    <td class="col-3"> Teaching Hospital-Jaffna</td>
-                    <td class="col-2"> Hospital St, Jaffna</td>
-                    <td class="col-3">Jaffna</td>
-                    <td class="col-3">Jaffna</td>
-                    <td class="col-3">0212223348</td>
-                    <td class="col-3">info@thjaffna.lk</td>
-                    <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="OpenHospitalDetails()">View</button></td>
-                    <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="EditHospitalDetails()">Edit</button></td>
-                </tr>
-
-                <tr>
-                    <td class="col-1">H_ID001</td>
-                    <td class="col-3"> Teaching Hospital-Jaffna</td>
-                    <td class="col-2"> Hospital St, Jaffna</td>
-                    <td class="col-3">Jaffna</td>
-                    <td class="col-3">Jaffna</td>
-                    <td class="col-3">0212223348</td>
-                    <td class="col-3">info@thjaffna.lk</td>
-                    <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="OpenHospitalDetails()">View</button></td>
-                    <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="EditHospitalDetails()">Edit</button></td>
-                </tr>
-
-
-
-
-
-
+                
             </table> 
         </div>
         <br>
@@ -275,21 +160,28 @@ $hospitalId = 1;
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-
-                        <table>
-                            <tr>
-                                <td><label for="HosName">Hospital Name:</label></td>
-                                <td> <input type="text" id="HosName" name="name" required></td>
-                            </tr>
-
-                            <tr>
-                                <td><label for="Adrs">Address:</label></td>
-                                <td><input type="text" id="Adrs" name="address" required> </td>
-                            </tr>
-
-                            <tr>
-                                <td><label for="Dst">District:</label></td>
-                                <td> <select name="district" class="form-control-sm form-control-sm" id="district" onchange="functionTest(this.value)">
+                    <div class="row align-items-center pb-3">
+                                        <div class="col-3">
+                                            <h6>Hospital Name</h6>
+                                        </div>
+                                        <div class="col-9">
+                                            <input type="text"  name="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                        </div>
+                                    </div>
+                                    <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                            <h6>Address</h6>
+                                        </div>
+                                        <div class="col-9">
+                                            <input type="text"  name="address" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                        </div>
+                                    </div>
+                                    <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                            <h6>District</h6>
+                                        </div>
+                                        <div class="col-9">
+                                        <select name="district" class="form-control-sm form-control-sm" id="district" onchange="functionTest(this.value)">
                                         <option>Select District</option>
                                         <?php
                                         require '../classes/district.php';
@@ -305,41 +197,56 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
                                             <?php
                                         }
                                         ?>
-                                    </select> </td>
-                            </tr>
-
-                            <tr>
-                                <td><label for="Divi">DS Division:</label> </td>
-                                <td><select name="division" class="form-control-sm form-control-sm" id="divisionDropDown" onchange="getBloodBank(this.value)">
+                                    </select>
+                                        </div>
+                                    </div>
+                                    <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                            <h6>DS Division</h6>
+                                        </div>
+                                        <div class="col-9">
+                                        <select name="division" class="form-control-sm form-control-sm" id="divisionDropDown" onchange="getBloodBank(this.value)">
                                         <option>Select Division</option> 
-
-                                    </select></td>
-                            </tr>
-
-                            <tr>
-                                <td><label for="Cnct">Contact No:</label> </td>
-                                <td><input type="tel" id="Cnct" name="contactNumber" placeholder="123-456-7890" required> </td>
-                            </tr>
-
-                            <tr>
-                                <td><label for="email">Email:</label></td>
-                                <td><input type="email" id="email" name="email" required></td>
-                            </tr>
-                            <tr>
-                                <td><input type ="hidden" name ="hospitalId" value="<?php echo $hospitalId; ?> "aria-label="Sizing example input" aria-discribedby="inputGroup-sizing-sm" required></td>
-                            </tr>
-                            <tr>
-                                <td><label for="username">User Name:</label></td>
-                                <td><input type="text" id="username" name="UserName" required></td>
-                            </tr>
-                            <tr>
-                                <td><label for="password">Password:</label></td>
-                                <td><input type="password"  name="password" id="password" required><br></td>
-                            </tr>
-
-
-                        </table>
-                    </div>
+                                    </select>
+                                        </div>
+                                    </div>
+                                    <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                            <h6>Contact No</h6>
+                                        </div>
+                                        <div class="col-9">
+                                            <input type="text" name="contactNumber" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"  required id="contactNumberInput" oninput="validateMobileNumber(this.value)">
+                                            <p id="validationResult"></p>
+                                        </div>
+                                    </div>
+                                    <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                            <h6>Email</h6>
+                                        </div>
+                                        <div class="col-9">
+                                            <input type="email"  name="email" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                        </div>
+                                    </div>
+                                    <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                            <h6>User Name</h6>
+                                        </div>
+                                        <div class="col-9">
+                                            <input type="text"  name="UserName" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                        </div>
+                                    </div>
+                                    <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                            <h6>Password</h6>
+                                        </div>
+                                        <div class="col-9">
+                                            <input type="password"  name="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                        </div>
+                                    </div>
+                            
+                            <input type ="hidden" name ="hospitalId" value="<?php echo $hospitalId; ?> "aria-label="Sizing example input" aria-discribedby="inputGroup-sizing-sm" required>
+                            
+                            </div>
 
                     <div class="modal-footer">
 
@@ -421,55 +328,84 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
                 </div>
                 <div class="modal-body">
                     <form action="">
-                        <table>
-                            <tr>
-                                <td><label for="HosId">Hospital ID:</label></label></td>
-                                <td><input type="password"  name="password" id="password" required><br></td>
-                            </tr>
-                            <tr>
-                                <td><label for="HosName">Hospital Name:</label></td>
-                                <td> <input type="text" id="HosName" name="name" required></td>
-                            </tr>
 
-                            <tr>
-                                <td><label for="Adrs">Address:</label></td>
-                                <td><input type="text" id="Adrs" name="address" required> </td>
-                            </tr>
-
-                            <tr>
-                                <td><label for="Dst">District:</label></td>
-                                <td> <select name="district" class="form-control-sm form-control-sm" id="district" onchange="functionTest(this.value)">
+                    <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                            <h6>Hospital ID</h6>
+                                        </div>
+                                        <div class="col-9">
+                                            <input type="text"  name="hospitalId" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                        </div>
+                                    </div>
+                    <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                            <h6>Hospital Name</h6>
+                                        </div>
+                                        <div class="col-9">
+                                            <input type="text"  name="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                        </div>
+                                    </div>                
+                    <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                            <h6>Address</h6>
+                                        </div>
+                                        <div class="col-9">
+                                            <input type="text"  name="address" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                        </div>
+                                    </div>  
+                    <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                            <h6>District</h6>
+                                        </div>
+                                        <div class="col-9">
+                                        <select name="district" class="form-control-sm form-control-sm" id="district" onchange="functionTest(this.value)">
                                         <option>Select District</option>
-
-                                    </select> </td>
-                            </tr>
-
-                            <tr>
-                                <td><label for="Divi">DS Division:</label> </td>
-                                <td><select name="division" class="form-control-sm form-control-sm" id="divisionDropDown" onchange="getBloodBank(this.value)">
+                                    </select>
+                                        </div>
+                                    </div> 
+                    <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                            <h6>DS Division</h6>
+                                        </div>
+                                        <div class="col-9">
+                                        <select name="division" class="form-control-sm form-control-sm" id="divisionDropDown" onchange="getBloodBank(this.value)">
                                         <option>Select Division</option> 
-
-                                    </select></td>
-                            </tr>
-
-                            <tr>
-                                <td><label for="Cnct">Contact No:</label> </td>
-                                <td><input type="tel" id="Cnct" name="contactNumber" placeholder="123-456-7890" required> </td>
-                            </tr>
-
-                            <tr>
-                                <td><label for="email">Email:</label></td>
-                                <td><input type="email" id="email" name="email" required></td>
-                            </tr>
-                            <tr>
-                                <td><label for="username">User Name:</label></td>
-                                <td><input type="text" id="username" name="UserName" required></td>
-                            </tr>
-                            <tr>
-                                <td><label for="password">Password:</label></td>
-                                <td><input type="password"  name="password" id="password" required><br></td>
-                            </tr>
-                        </table>
+                                    </select>
+                                        </div>
+                                    </div>   
+                    <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                            <h6>Contact No</h6>
+                                        </div>
+                                        <div class="col-9">
+                                            <input type="tel"  name="contactNumber" class="form-control" placeholder="+94" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                        </div>
+                                    </div> 
+                    <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                            <h6>Email</h6>
+                                        </div>
+                                        <div class="col-9">
+                                            <input type="email"  name="email" class="form-control"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                        </div>
+                                    </div>  
+                    <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                            <h6>User Name</h6>
+                                        </div>
+                                        <div class="col-9">
+                                            <input type="text"  name="UserName" class="form-control"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                        </div>
+                                    </div>         
+                    <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                            <h6>Password</h6>
+                                        </div>
+                                        <div class="col-9">
+                                            <input type="password"  name="password" class="form-control"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                        </div>
+                                    </div>         
+                           
                     </form>
 
 
@@ -604,7 +540,7 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
 </div>
 </div>
 
-<!--Delete Popup view Hospital
+<!--Delete Popup view Hospital-->
 <!-- Modal -->
 <div class="modal fade" id="deletePopup2" tabindex="-1" aria-labelledby="deletePopup2Label" aria-hidden="true">
     <div class="modal-dialog">
@@ -639,11 +575,14 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
 // put your code here
 ?>
 
-
+<script>
+       
+    </script>
 
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 <script src="/JS/Admindash.js"></script>
+<script src="../JS/DashboardJS.js"></script>
 </body>
 </html>
