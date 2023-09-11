@@ -72,6 +72,24 @@ use classes\hospitalrequestclass;
 
             <div class="row bg-white m-3 pt-0  align-items-center justify-content-center rounded-5" style="height: 600px;">
 
+            <script>
+    function validateBloodQuantity() {
+        // Get the values of the contact number, NIC, and password fields
+        var contactNumber = document.forms["donorForm"]["contactNumber"].value;
+        
+
+        // Validate the contact number using a regular expression
+        var contactNumberPattern = /^[0-9]{3}$/;
+        if (!contactNumberPattern.test(contactNumber)) {
+            alert("Invalid contact number. Please enter a 10-digit number.");
+            return false; // Prevent form submission
+        }
+
+        
+        return true;
+    }
+</script>
+
                 <div class="col-lg-6">
                     <div class="form-container">
 
@@ -93,13 +111,32 @@ use classes\hospitalrequestclass;
                             </select>
 
                             <label for="bloodQuantity">Blood Quantity (ml):</label>
-                            <input type="number"  name="bloodQuantity" required>
+<input type="text" name="bloodQuantity" id="bloodQuantityInput" required>
+<p id="bloodQuantityError" style="color: red;"></p>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const bloodQuantityInput = document.getElementById("bloodQuantityInput");
+    const bloodQuantityError = document.getElementById("bloodQuantityError");
+
+    bloodQuantityInput.addEventListener("input", function() {
+        const inputValue = bloodQuantityInput.value;
+        if (!/^\d{3}$/.test(inputValue)) {
+            bloodQuantityError.textContent = "Please enter a valid three-digit number.";
+        } else {
+            bloodQuantityError.textContent = "";
+        }
+    });
+});
+</script>
+
+
                             <label for="status">Status:</label>
+
                             <select class="form-control form-control-lg" name="requestStatus" required>
                                 <option value="Normal">Normal</option>
                                 <option value="Emergency">Emergency</option>
                                 <option value="Urgent">Urgent</option>
-                                <option value="Completed">Completed</option>
                             </select>
                             <br>
 
