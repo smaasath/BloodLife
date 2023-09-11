@@ -195,9 +195,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                              include '../DashboardFiles/HospitalFiles/HospitalRequestView.php';
                         }elseif ($_SESSION['selectedLink']=="hospitalreqedit") {
                              include '../DashboardFiles/HospitalFiles/HospitalRequestEdit.php';
-                        } else {
-                             include '../DashboardFiles/HospitalFiles/HospitalProfile.php';
-                        }
+                        } elseif ($_SESSION['selectedLink']=="profile") {
+                            include '../DashboardFiles/HospitalFiles/HospitalProfile.php';
+                       } 
     
 
                     } else {

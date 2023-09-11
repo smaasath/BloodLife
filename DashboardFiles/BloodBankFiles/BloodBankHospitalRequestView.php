@@ -112,7 +112,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         </div>
         <div class="buttons">
             <a href="../Dashboards/BloodBankDashboard.php?page=bbraa">   <button class="btn btn-primary" style="justify-content: flex-end;  gap: 10px;  background-color: green !important;border: none ">Accept</button></a>
-            <a href="../Dashboards/BloodBankDashboard.php?page=bbhra">     <button class="btn btn-primary" style=" justify-content: flex-end;  gap: 10px;  background-color: blue !important;border: none">Publish</button></a>
+            <a href="">     <button class="btn btn-primary" style=" justify-content: flex-end;  gap: 10px;  background-color: blue !important;border: none">Publish</button></a>
         </div><br>
 
         <?php

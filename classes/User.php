@@ -146,7 +146,7 @@ class User {
 
 static function generateRandomPassword($length = 10) {
     // Define a character pool for generating the password
-    $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_';
+    $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&';
 
     // Get the total number of characters in the pool
     $characterCount = strlen($characters);
