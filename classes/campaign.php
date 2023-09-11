@@ -123,7 +123,7 @@ class campaign {
 
 
     
-    public static function AddCampaign($campaignId, $Title, $address, $startDate, $endDate, $review, $status, $districtId, $organizerId, $bloodBankId) {
+    public static function AddCampaign( $Title, $address, $startDate, $endDate, $review, $status, $districtId, $organizerId, $bloodBankId) {
     try {
         $dbcon = new DbConnector();
         $con = $dbcon->getConnection();
@@ -155,6 +155,18 @@ class campaign {
         echo "Error: " . $e->getMessage();
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

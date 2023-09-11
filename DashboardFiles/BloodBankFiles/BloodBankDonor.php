@@ -272,16 +272,21 @@ $bloodBankId = 1;
                                     </div>
 
 
-
                                     <div class="row align-items-center pb-3">
-                                        <div class="col-3">
-                                            <h6>Phone No</h6>
+                                    <div class="col-3">
+                                            <h6>Contact No</h6>
                                         </div>
                                         <div class="col-9">
-                                            <input type="number"  name="contactNumber" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                            <input type="text" name="contactNumber" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"  required id="contactNumberInput" oninput="validateMobileNumber(this.value)">
+                                            <p id="validationResult"></p>
                                         </div>
                                     </div>
 
+
+
+
+
+                                   
 
                                     <div class="row align-items-center pb-3">
                                         <div class="col-3">
@@ -385,6 +390,7 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
                             </div>
                         </div>
                     </div>
+                    </div>
                 </form>
                 <!--AddDonorDetails---------------------------------------------------------->
 
@@ -419,14 +425,7 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
                                         <input type="text"  name="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                                     </div>
                                 </div>
-                                <div class="row align-items-center pb-3">
-                                    <div class="col-3">
-                                        <h6>Blood Group</h6>
-                                    </div>
-                                    <div class="col-9">
-                                        <input type="text"  name="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                                    </div>
-                                </div>
+                               
                                 <div class="row align-items-center pb-3">
                                     <div class="col-3">
                                         <h6>Blood Group</h6>
@@ -442,10 +441,10 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
                                 </div>
                                 <div class="row align-items-center pb-3">
                                     <div class="col-3">
-                                        <h6>Disease</h6>
+                                        <h6>DateOfBirth</h6>
                                     </div>
                                     <div class="col-9">
-                                        <input type="text"  name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                        <input type="date"  name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                                     </div>
                                 </div>
 
