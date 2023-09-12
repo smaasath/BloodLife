@@ -49,7 +49,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <form>
             <div class="field">
                 <label for="bloodGroup">BloodGroup:</label>
-                <input type="text" class="form-control" id="bloodGroup" name="bloodGroup" value="O+">
+                <select class="form-control form-control-lg" name="bloodGroup" required>
+                                <option selected>Select your Blood Group</option>
+                                <option value="A+">A+</option>
+                                <option value="A-"> A-</option>
+                                <option value="B+"> B+</option>
+                                <option value="B-"> B-</option>
+                                <option value="O+"> O+</option>
+                                <option value="O-"> O-</option>
+                                <option value="AB+"> AB+</option>
+                                <option value="AB-"> AB-</option>
+
+                            </select>
             </div>
             <div class="field">
                 <label for="date">Date:     </label>
@@ -62,10 +73,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             <div class="field">
                 <label for="status">Status:   </label>
                 <select id="blood-group" class="form-control">
-                    <option value="A+">Normal</option>
-                    <option value="B+">Urgent</option>
-                    <option value="AB+">Very Urgent</option>
-                    <!-- Add more options as needed -->
+                <option value="Normal">Normal</option>
+                <option value="Emergency">Emergency</option>
+                <option value="Urgent">Urgent</option>
+                <option value="Completed">Completed</option>
+                    
                 </select>
             </div>      
             <button class="edit-button">Publish Request</button>

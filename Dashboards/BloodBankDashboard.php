@@ -57,7 +57,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <div class="nav nav-pills flex-column mb-1">
                         <li>
 
-                            <a href="BloodBankDashboard.php?page=bloodBankHospital" class="nav-link navbarcolor <?php echo ($_SESSION['selectedLink'] ?? '') === 'bloodBankHospital' ? 'active' : ''; ?><?php echo ($_SESSION['selectedLink'] ?? '') === '' ? 'active' : ''; ?><?php echo ($_SESSION['selectedLink'] ?? '') === 'bbhrv' ? 'active' : ''; ?><?php echo ($_SESSION['selectedLink'] ?? '') === 'bbhra' ? 'active' : ''; ?>"  aria-current="page">
+                            <a href="BloodBankDashboard.php?page=bloodBankHospital" class="nav-link navbarcolor <?php echo ($_SESSION['selectedLink'] ?? '') === 'bloodBankHospital' ? 'active' : ''; ?><?php echo ($_SESSION['selectedLink'] ?? '') === '' ? 'active' : ''; ?><?php echo ($_SESSION['selectedLink'] ?? '') === 'bbhrv' ? 'active' : ''; ?>"  aria-current="page">
 
                                 <i class="fa-solid fa-square-h fa-xl icondash"></i>
 
@@ -68,7 +68,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         </li>
 
                         <li>
-                            <a href="BloodBankDashboard.php?page=bankrequest" class="nav-link navbarcolor <?php echo ($_SESSION['selectedLink'] ?? '') === 'bankrequest' ? 'active' : ''; ?><?php echo ($_SESSION['selectedLink'] ?? '') === 'bbrv' ? 'active' : ''; ?><?php echo ($_SESSION['selectedLink'] ?? '') === 'bbre' ? 'active' : ''; ?>"  aria-current="page">
+                            <a href="BloodBankDashboard.php?page=bankrequest" class="nav-link navbarcolor <?php echo ($_SESSION['selectedLink'] ?? '') === 'bankrequest' ? 'active' : ''; ?><?php echo ($_SESSION['selectedLink'] ?? '') === 'bbrv' ? 'active' : ''; ?><?php echo ($_SESSION['selectedLink'] ?? '') === 'bbre' ? 'active' : ''; ?><?php echo ($_SESSION['selectedLink'] ?? '') === 'bbhra' ? 'active' : ''; ?>"  aria-current="page">
 
                                 <i class="fa-sharp fa-solid fa-city fa-xl icondash"></i>
 

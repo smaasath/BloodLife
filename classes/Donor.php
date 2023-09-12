@@ -270,9 +270,12 @@ class Donor
         $mail->isHTML(true);                                  //Set email format to HTML
         $mail->Subject = 'Donor Registration';
         $message = "Dear " . $name . ",<br>";
-        $message .= "Welcome to BloodLife! , your account has been successfully created." . "<br>";
-        $message .= "        Your username:" . $UserName . ",<br>";
-        $message .= "        Your Password: " . $password . ",<br>";
+        $message .= "Welcome to BloodLife! , ". "<br>";
+        $message .= "your account has been successfully created." . "<br><br>";
+        $message .= "        Your username:     " . $UserName . "<br>";
+        $message .= "        Your Password:     " . $password . "<br><br><br>";
+        $message .= "Regards,<br>";
+        $message .= "BloodLife";
 
 
         $mail->Body = $message;
