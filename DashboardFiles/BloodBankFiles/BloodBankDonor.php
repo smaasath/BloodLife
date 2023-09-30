@@ -162,12 +162,12 @@ $bloodBankId = 1;
             return false; // Prevent form submission
         }
 
-        // Validate the NIC using a regular expression (customize the pattern as needed)
-        var nicPattern = /^[0-9]{9}[vVxX]$/;
-        if (!nicPattern.test(nic)) {
-            alert("Invalid NIC. Please enter a valid NIC number.");
-            return false; // Prevent form submission
-        }
+//        // Validate the NIC using a regular expression (customize the pattern as needed)
+//        var nicPattern = /^[0-9]{9}[vVxX]$/;
+//        if (!nicPattern.test(nic)) {
+//            alert("Invalid NIC. Please enter a valid NIC number.");
+//            return false; // Prevent form submission
+//        }
 
         // Validate the password using your specified criteria
        // var passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
