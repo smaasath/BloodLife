@@ -1,32 +1,67 @@
 <?php
 
 require_once '../classes/bloodbankhsrequest.php';
+
 use classes\bloodbankhsrequest;
 
+require_once '../classes/Donor.php';
+
+use classes\Donor;
 
 header('Content-Type: application/json');
 
 $method = $_SERVER["REQUEST_METHOD"];
 
-if ($method === "POST") {
-    $data = json_decode(file_get_contents("php://input"), true);
+require_once '../classes/DbConnector.php';
+require_once '../classes/User.php';
 
-   
+use classes\User;
+use classes\DbConnector;
 
-    $bloodBankId  = $data['bloodBankId'];
-
-    $newReq = bloodbankhsrequest::getBloodBankReqByBankID($bloodBankId);
+header('Content-Type: application/json');
 
 
-    if ($newReq==null) {
+$headers = getallheaders();
+$authorizationHeader = isset($headers['authorization']) ? $headers['authorization'] : null;
+
+
+
+
+$method = $_SERVER["REQUEST_METHOD"];
+
+if ($method === "GET") {
+     
+if (isset($authorizationHeader) && preg_match('/Bearer\s+(.*)$/i', $authorizationHeader, $matches)) {
+
+    $token = $matches[1];
+    $user = new User(null, null, null, null, null, $token, null, null, null, null);
+
+    if ($user->validateToken()) {
        
-        echo json_encode(array("message" => "Request Not Found"));
+            
+            
+            $donorId = $user->getDonorId();
+
+            $newDonor = Donor::getDonorById($donorId);
+
+            $bloodBankId = $newDonor->getBloodBankId();
+
+            $newReq = bloodbankhsrequest::getBloodBankReqByBankID($bloodBankId);
+
+            if ($newReq == null) {
+
+                echo json_encode(array("message" => false));
+            } else {
+
+                echo json_encode($newReq);
+            }
+        } else {
+            // Invalid HTTP method
+            echo json_encode(array("message" => false));
+        }
     } else {
-        
-        echo json_encode($newReq);
-       
+        echo json_encode(array("message" => false));
     }
 } else {
-    // Invalid HTTP method
     echo json_encode(array("message" => "Invalid request method."));
 }

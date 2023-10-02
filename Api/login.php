@@ -19,10 +19,12 @@ if (isset($authorizationHeader) && preg_match('/Bearer\s+(.*)$/i', $authorizatio
 
     if ($user->validateToken()) {
         echo json_encode(array("message" => true));
-    } else if ($method === "POST") {
+    }
+} else if ($method === "POST") {
 
         $data = json_decode(file_get_contents("php://input"), true);
         if (isset($data['UserName']) && isset($data['password'])) {
+            $user = new User(null, null, null, null, null, null, null, null, null, null);
             $UserName = filter_var($data['UserName'], FILTER_SANITIZE_STRING);
             $password = filter_var($data['password'], FILTER_SANITIZE_STRING);
 
@@ -43,10 +45,7 @@ if (isset($authorizationHeader) && preg_match('/Bearer\s+(.*)$/i', $authorizatio
         // Invalid HTTP method
         echo json_encode(array("message" => "Invalid request method."));
     }
-} else {
-    // Invalid HTTP method
-    echo json_encode(array("message" => "Invalid request method ra."));
-} 
+
     
     
 
