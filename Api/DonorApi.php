@@ -2,9 +2,11 @@
 
 require_once '../classes/Donor.php';
 require_once '../classes/User.php';
+require_once '../classes/district.php';
 
 use classes\Donor;
 use classes\User;
+use classes\district;
 
 
 header('Content-Type: application/json');
@@ -27,6 +29,8 @@ if ($method === "GET") {
             $donorId = $user->getDonorId();
 
             $newDonor = Donor::getDonorById($donorId);
+            
+            $district = district::getDistrictDivisionById($newDonor->getDistrictId());
 
             if ($newDonor == null) {
 
@@ -48,7 +52,8 @@ if ($method === "GET") {
                             "medicalReport" => base64_encode($newDonor->getMedicalReport()),
                             "image" => base64_encode($newDonor->getImage()),
                             "bloodBankId" => $newDonor->getBloodBankId(),
-                            "districtId" => $newDonor->getDistrictId(),
+                            "district" => $district["district"],
+                            "division" => $district["division"]
                         )
                 );
             }
