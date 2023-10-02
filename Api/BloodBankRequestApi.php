@@ -1,33 +1,23 @@
 <?php
 
 require_once '../classes/bloodbankhsrequest.php';
+require_once '../classes/Donor.php';
+require_once '../classes/User.php';
 
 use classes\bloodbankhsrequest;
-
-require_once '../classes/Donor.php';
-
 use classes\Donor;
+use classes\User;
+
+
+
 
 header('Content-Type: application/json');
 
 $method = $_SERVER["REQUEST_METHOD"];
-
-require_once '../classes/DbConnector.php';
-require_once '../classes/User.php';
-
-use classes\User;
-use classes\DbConnector;
-
-header('Content-Type: application/json');
-
 
 $headers = getallheaders();
 $authorizationHeader = isset($headers['authorization']) ? $headers['authorization'] : null;
 
-
-
-
-$method = $_SERVER["REQUEST_METHOD"];
 
 if ($method === "GET") {
      

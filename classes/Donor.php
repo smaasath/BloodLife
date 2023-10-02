@@ -234,7 +234,7 @@ class Donor
 
                
 
-                // User::AddUser($UserName, $email, 5, $hashedPassword, null, $DonorId, null);
+                User::AddUser($UserName, $email, 5, $hashedPassword, null, $DonorId, null);
                 self::SendMail($UserName, $password, $email, $name);
                 header("Location: ../Dashboards/BloodBankDashboard.php");
             } else {
@@ -365,10 +365,6 @@ class Donor
     }
 
 
-
-
-
-
     function validateContactNumber($contactNumber)
     {
         // Remove any non-digit characters from the phone number, allowing hyphens
@@ -381,10 +377,6 @@ class Donor
             return false; // Invalid phone number
         }
     }
-
-
-
-
 
 
 

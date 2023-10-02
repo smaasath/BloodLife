@@ -1,10 +1,9 @@
 <?php
 
-require_once '../classes/DbConnector.php';
 require_once '../classes/User.php';
 
 use classes\User;
-use classes\DbConnector;
+
 
 header('Content-Type: application/json');
 
