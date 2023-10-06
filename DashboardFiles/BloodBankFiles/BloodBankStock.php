@@ -198,7 +198,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         </select>
                     </div>
                 <div class="col-1">
-                <button type="button" class="addbtn" style="margin-left: 400px; border-radius:5px" onclick="Add()" data-bs-toggle="modal" data-bs-target="#addModal">Add+</button>
+                <button type="button" class="addbtn" style="margin-left: 400px; border-radius:5px" data-bs-toggle="modal" data-bs-target="#addModal">Add+</button>
                 </div>
 
 
@@ -254,7 +254,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         </div>
 
         <!-- add-->
-        <div class="modal fade show" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-modal="true" role="dialog" style="display: block;">
+        <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-modal="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -262,8 +262,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form>                           
-                        <select class="form-select" aria-label="Default select example">
+                        <form method="post" action="bloodpackets.php">   
+                        <label for="BloodGroup">BloodGroup:</label>                        
+                        <select class="form-select" aria-laquantitybel="Default select example">
+                        
                             <option selected>BloodGroup</option>
                             <option value="1">A+</option>
                             <option value="2">B+</option>
@@ -281,13 +283,34 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="savebtn" >Save</button>
-                        <button type="button" class="editbtn" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="savebtn" data-bs-toggle="modal" data-bs-target="#addsave">Save</button>
+                        <button type="button" class="editbtn"  data-bs-dismiss="modal">Close</button>
 
                     </div>
                 </div>
             </div>
         </div>
+
+
+        <div class="modal" tabindex="-1" id ="addsave">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Do you want to save ?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Save changes</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <!-- validate-
         <?php
 
@@ -300,10 +323,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
              echo "Invalid input: $input does not have exactly three digits.";
             }
 ?>
------>>
+----->
+
+
         <!--end add-->
         <-<!--view -->
-        <div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="view" aria-hidden="true">
+        <div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="view" aria-hidden="true" >
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -311,47 +336,47 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form >
                             <div class="stocky">
                                 <label for="BloodID">BloodID:</label>                          
                                 B001
-                            </div>
+                            </div><br>
                             <div class="stocky">
                                 <label for="BloodGroup">BloodGroup:</label>
                                 <span>O+</span>
-                            </div>
+                            </div><br>
                             <div class="stocky">
                                 <label for="Location">Location:</label>
                                 <span>JAFFNA</span>
-                            </div>
+                            </div><br>
                             <div class="stocky">
                                 <label for="Quantity">Quantity:</label>
                                 <span>2L</span>
-                            </div>
+                            </div><br>
                             <div class="stocky">
                                 <label for="Status">Status:</label>
                                 <span>Available</span>
-                            </div>
+                            </div><br>
                             <div class="stocky">
                                 <label for="ExpiryDate">ExpiryDate:</label>
                                 <span>2023-10-02</span>
-                            </div>
+                            </div><br>
                             <div class="stocky">
                                 <label for="Bloodbank">Bloodbank:</label>
                                 <span>Venus</span>
-                            </div>
+                            </div><br>
                             <div class="stocky">
                                 <label for="BloodbankID">BloodbankID:</label>
                                 <span>BB001</span>
-                            </div>
+                            </div><br>
                             <div class="stocky">
                                 <label for="Address">Address:</label>
                                 <span>100,JAFFNA</span>
-                            </div>
+                            </div><br>
                             <div class="stocky">
                                 <label for="Contact No">Contact No:</label>
                                 <span>0214578965</span>
-                            </div>
+                            </div><br>
                             <div class="stocky">
                                 <label for="Email">Email:</label>
                                 <span>SAALU@gmail</span>
