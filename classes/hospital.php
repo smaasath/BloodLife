@@ -168,5 +168,44 @@ public static function SendMail($UserName, $password, $email,$name) {
             echo "Error: " . $e->getMessage();
         }
     }
+
+    public static function showHospitalDetails($hospitalID) {
+        try {
+            
+            $dbcon = new DbConnector();
+            $con = $dbcon->getConnection();
+            // Define your SQL query with a WHERE clause to fetch specific hospital details
+            $query = "SELECT * FROM `hospital` WHERE hospitalId = ?";
+    
+            // Prepare the SQL query
+           
+            $stmt = $con->prepare($query);
+    
+            // Bind the parameter
+            $stmt->bindParam(':hospitalID', $hospitalID, PDO::PARAM_INT);
+    
+            // Execute the query
+            $stmt->execute();
+    
+            // Fetch and display results
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                echo '<tr>
+                    <td class="col-1">' . $row['hospitalId'] . '</td>
+                    <td class="col-3">' . $row['name'] . '</td>
+                    <td class="col-2">' . $row['address'] . '</td>
+                    <td class="col-3">' . $row['districtId'] . '</td>
+                    <td class="col-3">' . $row['contactNumber'] . '</td>
+                    <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal" onclick="OpenHospitalDetails()">View</button></td>
+                    <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal" onclick="EditHospitalDetails()">Edit</button></td>
+                </tr>';
+            }
+        } catch (PDOException $e) {
+            // Handle database errors here
+            echo "Error: " . $e->getMessage();
+        }
+    }
+    
+
+
     
 }

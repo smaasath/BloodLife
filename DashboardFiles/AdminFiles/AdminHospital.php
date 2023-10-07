@@ -131,30 +131,33 @@ $hospitalId = 1;
                 </thead>
     <tbody>
     <?php
-        
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            
-            $hospitalId = $_POST["hospitalId"];
-            $hospitalName = $_POST["name"];
-            $address = $_POST["address"];
-            $district = $_POST["district"];
-            $dsDivision = $_POST["division"];
-            $contactNumber = $_POST["contactNumber"];
-            $email = $_POST["email"];
+    
 
-            // Output the inputted data in a table row
-            echo "<tr>";
-            echo "<td>$hospitalId</td>";
-            echo "<td>$hospitalName</td>";
-            echo "<td>$address</td>";
-            echo "<td>$district</td>";
-            echo "<td>$dsDivision</td>";
-            echo "<td>$contactNumber</td>";
-            echo "<td>$email</td>";
-            echo '<td><button type="button" class="btn btn-primary" data-bs-toggle="modal" onclick="OpenHospitalDetails()">View</button></td>';
-            echo '<td><button type="button" class="btn btn-primary" data-bs-toggle="modal" onclick="EditHospitalDetails()">Edit</button></td>';
-            echo "</tr>";
-        }
+
+        
+        // if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            
+        //     $hospitalId = $_POST["hospitalId"];
+        //     $hospitalName = $_POST["name"];
+        //     $address = $_POST["address"];
+        //     $district = $_POST["district"];
+        //     $dsDivision = $_POST["division"];
+        //     $contactNumber = $_POST["contactNumber"];
+        //     $email = $_POST["email"];
+
+        //     // Output the inputted data in a table row
+        //     echo "<tr>";
+        //     echo "<td>$hospitalId</td>";
+        //     echo "<td>$hospitalName</td>";
+        //     echo "<td>$address</td>";
+        //     echo "<td>$district</td>";
+        //     echo "<td>$dsDivision</td>";
+        //     echo "<td>$contactNumber</td>";
+        //     echo "<td>$email</td>";
+        //     echo '<td><button type="button" class="btn btn-primary" data-bs-toggle="modal" onclick="OpenHospitalDetails()">View</button></td>';
+        //     echo '<td><button type="button" class="btn btn-primary" data-bs-toggle="modal" onclick="EditHospitalDetails()">Edit</button></td>';
+        //     echo "</tr>";
+        // }
         ?>
     </tbody>
                 <!-- <tr>
