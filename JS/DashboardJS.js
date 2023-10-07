@@ -150,3 +150,24 @@ function getBloodBankDetails(value){
             
         }});
 }
+
+function validateMobileNumber(contactNumber) {
+    // Remove any non-numeric characters from the input
+    contactNumber = contactNumber.replace(/\D/g, '');
+
+    // Check if the mobile number is 10 digits long (including the prefix)
+    if (contactNumber.length === 10) {
+        // Check if the mobile number starts with a valid Sri Lankan prefix
+        const validPrefixes = ["071", "072", "075", "076", "077", "078", "074"];
+        const prefix = contactNumber.substr(0, 3);
+
+        if (validPrefixes.includes(prefix)) {
+            document.getElementById("validationResult").textContent = ` ${contactNumber} is a valid Sri Lankan mobile number.`;
+            document.getElementById("validationResult").className = "valid"; // Set the text color to green
+            return;
+        }
+    }
+
+    document.getElementById("validationResult").textContent = `${contactNumber} is not a valid Sri Lankan mobile number.`;
+    document.getElementById("validationResult").className = "not-valid"; // Set the text color to red
+}

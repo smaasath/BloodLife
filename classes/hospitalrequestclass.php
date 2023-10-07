@@ -112,9 +112,6 @@ class hospitalrequestclass {
             case "Normal":
                 return "linear-gradient(45deg,#4099ff,#73b4ff)";
                 break;
-            case "Completed":
-                return "linear-gradient(45deg,#2ed8b6,#59e0c5)";
-                break;
             case "Urgent":
                 return "linear-gradient(45deg,#FF5370,#ff869a)";
                 break;
@@ -131,7 +128,9 @@ class hospitalrequestclass {
             $dbcon = new DbConnector();
             $con = $dbcon->getConnection();
 
-            $query = "SELECT * FROM `hospitalrequest`";
+            $query = "SELECT * FROM `hospitalrequest` ORDER BY `hospitalRequestID` DESC";
+
+
 
             $stmt = $con->prepare($query);
             $stmt->execute();
@@ -153,11 +152,11 @@ class hospitalrequestclass {
             $con = $dbcon->getConnection();
 
             $query = "SELECT hospitalrequest.*, hospital.districtId, hospital.name, district.district
-FROM hospitalrequest
-INNER JOIN hospital ON hospitalrequest.hospitalId = hospital.hospitalId
-INNER JOIN district ON hospital.districtId = district.districtId;
-";
-
+            FROM hospitalrequest
+            INNER JOIN hospital ON hospitalrequest.hospitalId = hospital.hospitalId
+            INNER JOIN district ON hospital.districtId = district.districtId
+            ORDER BY hospitalrequest.hospitalRequestID DESC;";
+            
             $stmt = $con->prepare($query);
             $stmt->execute();
 
@@ -178,7 +177,7 @@ INNER JOIN district ON hospital.districtId = district.districtId;
         $con = $dbcon->getConnection();
 
         // Define the SQL query with a placeholder for hospitalRequestID
-        $query = "SELECT * FROM `hospitalrequest` WHERE hospitalRequestID=?";
+        $query = "SELECT * FROM `hospitalrequest` WHERE hospitalRequestID=? ";
         
         // Prepare the SQL statement
         $stmt = $con->prepare($query);
@@ -218,4 +217,39 @@ INNER JOIN district ON hospital.districtId = district.districtId;
 }
 
 
+//new
+static function publishBBRequest($createdDate, $bloodQuantity, $bloodGroup, $requestStatus, $hospitalRequestId, $bloodBankId, $districtId) {
+    try {
+        $dbcon = new DbConnector();
+        $con = $dbcon->getConnection();
+
+        $query = "INSERT INTO `bloodbankrequest`(`bloodBankRequestId`, `createdDate`, `bloodQuantity`, `bloodGroup`, `requestStatus`, `hospitalRequestId`, `bloodBankId`, `districtId`) VALUES (Null,?,?,?,?,?,?,?);";
+
+        $pstmt = $con->prepare($query);
+        
+
+        $pstmt->execute();
+
+        if ($pstmt->rowCount() > 0) {
+            echo 'Successfully Created.';
+        } else {
+            echo 'Error, Try Again';
+        }
+    } catch (PDOException $e) {
+        echo "ERROR:" . $e->getMessage();
+    }
 }
+
+
+
+    
+   
+
+   
+}
+
+
+    
+
+
+

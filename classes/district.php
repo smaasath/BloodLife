@@ -146,6 +146,33 @@ WHERE district.division= ?";
         echo "Error: " . $e->getMessage();
         
     }
+    
+    }
+    public static function getDistrictDivisionById($districtId) {
+        
+    try {
+        $dbcon = new DbConnector();
+        $con = $dbcon->getConnection();
+
+        $query = "SELECT * FROM `district` WHERE districtId=?";
+
+        $pstmt = $con->prepare($query);
+        $pstmt->bindValue(1, $districtId);
+        
+
+        $pstmt->execute();
+
+        if ($pstmt->rowCount() > 0) {
+            // Assuming you want to return the districtId value
+            $row = $pstmt->fetch(PDO::FETCH_ASSOC);
+            return $row;
+        } else {
+           
+        }
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+        
+    }
 }
 
     

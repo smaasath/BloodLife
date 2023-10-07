@@ -44,7 +44,7 @@
 
             <div class="row bg-white m-3 pt-0 align-items-center p-3 justify-content-center rounded-3 d-flex">
                 <div class="text-center m-3"> <h1>Add blood bank</h1> </div>
-                <div class="bg-white m-3" style="height: 650px; width: 600px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+                <div class="bg-white m-3" style="height: 1100px; width: 600px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
 
                     <div class="row p-3 m-1">
                         <div class="mb-3">
@@ -77,7 +77,24 @@
                             <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="XRM Hospital">
                         </div>
                     </div>
-
+                    <div class="row p-3 m-1">
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label"><strong>HospitalRequestId</strong></label>
+                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="XRM Hospital">
+                        </div>
+                    </div>
+                    <div class="row p-3 m-1">
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label"><strong>BloodBankId</strong></label>
+                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="XRM Hospital">
+                        </div>
+                    </div>
+                    <div class="row p-3 m-1">
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label"><strong>DistrictId</strong></label>
+                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="XRM Hospital">
+                        </div>
+                    </div>
                 </div>
 
 

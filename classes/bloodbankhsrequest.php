@@ -82,8 +82,26 @@ static function getBloodBankReqByBankID($bloodBankId){
         $dbcon = new DbConnector();
         $con = $dbcon->getConnection();
 
-        $query = "SELECT * FROM bloodbankrequest WHERE bloodBankId = ? ORDER BY bloodBankRequestId DESC;
-        ";
+        $query = "SELECT
+        bloodbankrequest.*,
+        hospital.name AS hospitalName,
+        hospital.address AS hospitalAddress,
+        bloodbank.bloodBankName as bloodBankName,
+        bloodbank.Address as bloodbankAddress
+      FROM
+        bloodbankrequest
+      LEFT JOIN
+        hospital
+      ON
+        hospital.hospitalId = bloodbankrequest.hospitalRequestId
+      LEFT JOIN
+        bloodbank
+      ON
+        bloodbank.bloodBankId = bloodbankrequest.bloodBankId
+      WHERE
+        bloodbankrequest.bloodBankId = ?
+      ORDER BY
+        bloodbankrequest.bloodBankRequestId DESC;";
 
         $stmt = $con->prepare($query);
         $stmt->bindParam(1, $bloodBankId, PDO::PARAM_INT);

@@ -274,7 +274,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                            <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">
                                 Organizer Details
                             </button>
                         </div>
@@ -286,50 +286,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
 
-        <!--OrganizerAdd-->
-        <!-- Modal -->
- 
-        <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel1">Organizer Details</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-
-
-
-
-
-                       <div class="row align-items-center pb-3">
-                                <div class="col-3">
-                                    <h6>Campaign Name</h6>
-                                </div>
-                                <div class="col-9">
-                                    <input type="text"  name="Title" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                                </div>
-                            </div>
-
-
-                            <div class="row align-items-center pb-3">
-                                <div class="col-3">
-                                    <h6>start Date</h6>
-                                </div>
-                                <div class="col-9">
-                                    <input type="date"  name="startDate" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                                </div>
-                            </div>
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="AddCampaign()">Back</button>
-                        <button type="button" class="btn btn-primary">Save </button>
-                    </div>
-                </div>
-            </div>
         
-    </div>
 </form>
 
 

@@ -604,31 +604,13 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
 ?>
 
 <script>
-        function validateMobileNumber(contactNumber) {
-            // Remove any non-numeric characters from the input
-            contactNumber = contactNumber.replace(/\D/g, '');
-
-            // Check if the mobile number is 10 digits long (including the prefix)
-            if (contactNumber.length === 10) {
-                // Check if the mobile number starts with a valid Sri Lankan prefix
-                const validPrefixes = ["071", "072", "075", "076", "077", "078", "074"];
-                const prefix = contactNumber.substr(0, 3);
-
-                if (validPrefixes.includes(prefix)) {
-                    document.getElementById("validationResult").textContent = ` ${contactNumber} is a valid Sri Lankan mobile number.`;
-                    document.getElementById("validationResult").className = "valid"; // Set the text color to green
-                    return;
-                }
-            }
-
-            document.getElementById("validationResult").textContent = `${contactNumber} is not a valid Sri Lankan mobile number.`;
-            document.getElementById("validationResult").className = "not-valid"; // Set the text color to red
-        }
+       
     </script>
 
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 <script src="/JS/Admindash.js"></script>
+<script src="../JS/DashboardJS.js"></script>
 </body>
 </html>
