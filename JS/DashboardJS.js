@@ -151,6 +151,7 @@ function getBloodBankDetails(value){
         }});
 }
 
+
 function validateMobileNumber(contactNumber) {
     // Remove any non-numeric characters from the input
     contactNumber = contactNumber.replace(/\D/g, '');
@@ -171,3 +172,5 @@ function validateMobileNumber(contactNumber) {
     document.getElementById("validationResult").textContent = `${contactNumber} is not a valid Sri Lankan mobile number.`;
     document.getElementById("validationResult").className = "not-valid"; // Set the text color to red
 }
+
+

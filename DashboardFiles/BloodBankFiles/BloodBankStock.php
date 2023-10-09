@@ -3,6 +3,9 @@
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to edit this template
 -->
+<?php 
+$bloodbankid = 1;
+?>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -49,6 +52,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <div class="row">
             <div class ="card1 col p-3 m-1" >
                 <div class="row">
+                    <?php if(isset($_GET['status'])){
+                        if($_GET['status']==1){
+                            echo 'enter all values!!';
+                        }elseif ($_GET['status']==2) {
+                             echo 'enter 2';
+                        }elseif ($_GET['status']==3) {
+                             echo 'enter 3';
+                        }elseif ($_GET['status']==4) {
+                             echo 'enter 4';
+                        }
+                    } ?>
                     <div class="col-3 p-0 m-0">
                         <div class="container p-3" >
                             <div class="stockcon" style="height: 120px;background-color: white">
@@ -254,6 +268,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         </div>
 
         <!-- add-->
+        <form action="../services/bloodpackets.php" method="POST">
         <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-modal="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -264,34 +279,35 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <div class="modal-body">
                         <form method="post" action="bloodpackets.php">   
                         <label for="BloodGroup">BloodGroup:</label>                        
-                        <select class="form-select" aria-laquantitybel="Default select example">
+                        <select class="form-select" name="bloodgroup" aria-laquantitybel="Default select example">
                         
-                            <option selected>BloodGroup</option>
-                            <option value="1">A+</option>
-                            <option value="2">B+</option>
-                            <option value="2">O+</option>
-                            <option value="3">AB+</option>
-                            <option value="1">A-</option>
-                            <option value="2">B-</option>
-                            <option value="3">AB-</option>
-                            <option value="2">O-</option>
+                            <option selected>Select your Blood Group</option>
+                            <option value="A+">A+</option>
+                            <option value="A-"> A-</option>
+                            <option value="B+"> B+</option>
+                            <option value="B-"> B-</option>
+                            <option value="O+"> O+</option>
+                            <option value="O-"> O-</option>
+                            <option value="AB+"> AB+</option>
+                            <option value="AB-"> AB-</option>
                         </select><br>
                             <label for="Quantity">Quantity:</label>
                             <input type="number" class="form-control"  name="quantity"><br>
-                            <label for="ExpiryDate">ExpiryDate:</label>
+                            <label for="ExpiryDate">Expiry Date:</label>
                             <input type="date" class="form-control"  name="expiryDate"><br>
+                            <input type="hidden" value="<?php echo $bloodbankid ?>"  name="id">
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="savebtn" data-bs-toggle="modal" data-bs-target="#addsave">Save</button>
+                        <button type="submit" class="savebtn">Save</button>
                         <button type="button" class="editbtn"  data-bs-dismiss="modal">Close</button>
 
                     </div>
                 </div>
             </div>
         </div>
-
-
+</form>
+<!--
         <div class="modal" tabindex="-1" id ="addsave">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -308,22 +324,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
       </div>
     </div>
   </div>
-</div>
+</div>-->
 
 
-<!-- validate-
-        <?php
-
-              $quantity = "123"; 
-
-
-                 if (preg_match('/^\d{3}$/', $quantity)) {
-             echo "Valid input: $input has exactly three digits.";
-           } else {
-             echo "Invalid input: $input does not have exactly three digits.";
-            }
-?>
------>
 
 
         <!--end add-->

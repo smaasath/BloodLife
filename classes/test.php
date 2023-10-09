@@ -10,6 +10,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     </head>
     <body>
         <?Php
+        if($_SERVER["REQUEST_METHOD"] =="POST"){
+            header("Location: ../Dashboards/AdminDashboard.php?status=success");
+        }
 ?>
 
        ?>

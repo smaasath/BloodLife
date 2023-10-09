@@ -16,26 +16,26 @@ use classes\hospital;
         <meta charset="UTF-8">
         <title></title>
         <style>
-    /* CSS to set a consistent width for input elements */
-    input[type="text"],
-    input[type="tel"],
-    input[type="email"],
-    input[type="password"],
-    select {
-        width: 100%; /* Set the width to 100% */
-        box-sizing: border-box; /* Include padding and border in the total width */
-    }
-    
-        .valid {
-            color: green;
-        }
-        
-        .not-valid {
-            color: red;
-        }
-    
-</style>
-        
+            /* CSS to set a consistent width for input elements */
+            input[type="text"],
+            input[type="tel"],
+            input[type="email"],
+            input[type="password"],
+            select {
+                width: 100%; /* Set the width to 100% */
+                box-sizing: border-box; /* Include padding and border in the total width */
+            }
+
+            .valid {
+                color: green;
+            }
+
+            .not-valid {
+                color: red;
+            }
+
+        </style>
+
     </head>
     <body>
 
@@ -78,18 +78,14 @@ use classes\hospital;
 
         <div class="rounded-top-4 p-0 border border-dark-subtle">
             <div class="row align-items-center">
-                <div class="col-3">           
-                    <div class="input-group rounded p-3">
-                        <input type="search" class="form-control rounded" placeholder="Search ID" aria-label="Search" aria-describedby="search-addon" >
 
-
-
-                    </div>
-                </div>
 
                 <div class="col-3">           
                     <div class="input-group rounded p-3">
-                        <input type="search" class="form-control rounded" placeholder="Search Name" aria-label="Search" aria-describedby="search-addon" >
+                        <input type="search" id="search" class="form-control rounded" placeholder="Search Name" aria-label="Search" aria-describedby="search-addon"
+                               oninput="teeest(this.value)">
+
+
 
 
 
@@ -115,49 +111,94 @@ use classes\hospital;
         </div>
         <!-- Table body -->
         <div class="container bg-white m-0 p-0" style=" max-height: 500px; overflow: scroll;">
-        <table class="table table-hover p-0">
-            <thead>
-                <!-- Table row -->
-                <tr class="sticky-top">
+            <table class="table table-hover p-0">
+                <thead>
+                    <!-- Table row -->
+                    <tr class="sticky-top">
 
-                <th class="col-1 bgcol p-2">Hospital ID</th>
-                <th class="col-3 bgcol p-2">Hospital Name</th>
-                <th class="col-2 bgcol p-2">Address</th>                
-                <!-- <th class="col-1 bgcol p-2">DS Division</th> -->
-                <th class="col-3 bgcol p-2">Contact Number</th>
-                <th class="col-3 bgcol p-2">District ID</th>
-                <!-- <th class="col-1 bgcol p-2">Email</th> -->
-                <!-- <th class="col-3"></th>
-                <th class="col-3"></th> -->
-                <th class="col-1 bgcol p-2">View</th>
-                <th class="col-1 bgcol p-2">Edit</th>
+                        <th class="col-1 bgcol p-2">Hospital ID</th>
+                        <th class="col-3 bgcol p-2">Hospital Name</th>
+                        <th class="col-2 bgcol p-2">Address</th>                
+                        <!-- <th class="col-1 bgcol p-2">DS Division</th> -->
+                        <th class="col-3 bgcol p-2">Contact Number</th>
+                        <th class="col-3 bgcol p-2">District ID</th>
+                        <!-- <th class="col-1 bgcol p-2">Email</th> -->
+                        <!-- <th class="col-3"></th>
+                        <th class="col-3"></th> -->
+                        <th class="col-1 bgcol p-2">View</th>
+                        <th class="col-1 bgcol p-2">Edit</th>
 
-</tr>
-</thead>
-       
-    <tbody>
-    <?php
-            $detailsArray = hospital::showAllHospital();
+                    </tr>
+                </thead>
 
-            foreach ($detailsArray as $hospitalArray) {
-            ?>
-           
-    
-                <tr>
-                    <td class="col-1"><?php echo $hospitalArray["hospitalId"]; ?></td>
-                    <td class="col-3"><?php echo $hospitalArray["name"]; ?></td>
-                    <td class="col-2"><?php echo $hospitalArray["address"]; ?></td>
-                    <td class="col-3"><?php echo $hospitalArray["contactNumber"]; ?></td>
-                    <td class="col-3"><?php echo $hospitalArray["districtId"]; ?></td>
-                    <!-- <td class="col-3"></td>
-                    <td class="col-3"></td> -->
-                    <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="OpenHospitalDetails()">View</button></td>
-                    <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="EditHospitalDetails()">Edit</button></td>
-                </tr>
-                <?php
-            }
-            ?>
-    </tbody>
+                <tbody id="output">
+
+                    <?php
+                    $detailsArray = hospital::showAllHospital();
+                    ?>
+                <script>
+                    const array = <?php echo json_encode($detailsArray) ?>;
+                    const detailsList = document.getElementById("output");
+                    detailsList.innerHTML = "";
+                    array.forEach((item) => {
+                        var htmlCode = ` <tr>
+                        <td class="col-1">${item.hospitalId}</td>
+                        <td class="col-3">${item.name}</td>
+                        <td class="col-2">${item.address}</td>
+                        <td class="col-3">${item.contactNumber}</td>
+                        <td class="col-3">${item.districtId}</td>
+                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="OpenHospitalDetails()">View</button></td>
+                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="EditHospitalDetails()">Edit</button></td>
+                    </tr>`;
+
+                      
+                        var divElement = document.createElement("tr");
+
+                        
+                        divElement.innerHTML = htmlCode;
+
+                        
+                        detailsList.appendChild(divElement);
+                    });
+                    let filterArray;
+
+                    function teeest(test) {
+
+                        var testValue = parseInt(test, 10);
+
+                        
+                        filterArray = array.filter((item) => item.hospitalId === testValue || item.name.toLowerCase().includes(test));
+
+                        
+                        const detailsList = document.getElementById("output");
+                        detailsList.innerHTML = ""; 
+
+                        filterArray.forEach((item) => {
+                            var htmlCode = ` 
+                    <tr>
+                        <td class="col-1">${item.hospitalId}</td>
+                        <td class="col-3">${item.name}</td>
+                        <td class="col-2">${item.address}</td>
+                        <td class="col-3">${item.contactNumber}</td>
+                        <td class="col-3">${item.districtId}</td>
+                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="OpenHospitalDetails()">View</button></td>
+                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="EditHospitalDetails()">Edit</button></td>
+                    </tr>`;
+
+                            
+                            var divElement = document.createElement("tr");
+
+                            
+                            divElement.innerHTML = htmlCode;
+
+                            
+                            detailsList.appendChild(divElement);
+
+                        });
+                    }
+                </script>
+
+                </tbody>
             </table> 
         </div>
         <br>
@@ -176,93 +217,93 @@ use classes\hospital;
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                    <div class="row align-items-center pb-3">
-                                        <div class="col-3">
-                                            <h6>Hospital Name</h6>
-                                        </div>
-                                        <div class="col-9">
-                                            <input type="text"  name="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                                        </div>
-                                    </div>
-                                    <div class="row align-items-center pb-3">
-                                    <div class="col-3">
-                                            <h6>Address</h6>
-                                        </div>
-                                        <div class="col-9">
-                                            <input type="text"  name="address" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                                        </div>
-                                    </div>
-                                    <div class="row align-items-center pb-3">
-                                    <div class="col-3">
-                                            <h6>District</h6>
-                                        </div>
-                                        <div class="col-9">
-                                        <select name="district" class="form-control-sm form-control-sm" id="district" onchange="functionTest(this.value)">
-                                        <option>Select District</option>
-                                        <?php
-                                        require '../classes/district.php';
+                        <div class="row align-items-center pb-3">
+                            <div class="col-3">
+                                <h6>Hospital Name</h6>
+                            </div>
+                            <div class="col-9">
+                                <input type="text"  name="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                            </div>
+                        </div>
+                        <div class="row align-items-center pb-3">
+                            <div class="col-3">
+                                <h6>Address</h6>
+                            </div>
+                            <div class="col-9">
+                                <input type="text"  name="address" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                            </div>
+                        </div>
+                        <div class="row align-items-center pb-3">
+                            <div class="col-3">
+                                <h6>District</h6>
+                            </div>
+                            <div class="col-9">
+                                <select name="district" class="form-control-sm form-control-sm" id="district" onchange="functionTest(this.value)">
+                                    <option>Select District</option>
+                                    <?php
+                                    require '../classes/district.php';
 
-                                        use classes\district;
+                                    use classes\district;
 
 $dataArray = district::getAllDistrict(); // Retrieve district data using the "getAllDistrict()" method
 
-                                        foreach ($dataArray as $district) {
-                                            ?>
-
-                                            <option  value="<?php echo $district['district']; ?>"><?php echo $district['district']; ?></option>
-                                            <?php
-                                        }
+                                    foreach ($dataArray as $district) {
                                         ?>
-                                    </select>
-                                        </div>
-                                    </div>
-                                    <div class="row align-items-center pb-3">
-                                    <div class="col-3">
-                                            <h6>DS Division</h6>
-                                        </div>
-                                        <div class="col-9">
-                                        <select name="division" class="form-control-sm form-control-sm" id="divisionDropDown" onchange="getBloodBank(this.value)">
-                                        <option>Select Division</option> 
-                                    </select>
-                                        </div>
-                                    </div>
-                                    <div class="row align-items-center pb-3">
-                                    <div class="col-3">
-                                            <h6>Contact No</h6>
-                                        </div>
-                                        <div class="col-9">
-                                            <input type="text" name="contactNumber" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"  required id="contactNumberInput" oninput="validateMobileNumber(this.value)">
-                                            <p id="validationResult"></p>
-                                        </div>
-                                    </div>
-                                    <div class="row align-items-center pb-3">
-                                    <div class="col-3">
-                                            <h6>Email</h6>
-                                        </div>
-                                        <div class="col-9">
-                                            <input type="email"  name="email" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                                        </div>
-                                    </div>
-                                    <div class="row align-items-center pb-3">
-                                    <div class="col-3">
-                                            <h6>User Name</h6>
-                                        </div>
-                                        <div class="col-9">
-                                            <input type="text"  name="UserName" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                                        </div>
-                                    </div>
-                                    <div class="row align-items-center pb-3">
-                                    <div class="col-3">
-                                            <h6>Password</h6>
-                                        </div>
-                                        <div class="col-9">
-                                            <input type="password"  name="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                                        </div>
-                                    </div>
-                            
-                            <input type ="hidden" name ="hospitalId" value="<?php echo $hospitalId; ?> "aria-label="Sizing example input" aria-discribedby="inputGroup-sizing-sm" required>
-                            
+
+                                        <option  value="<?php echo $district['district']; ?>"><?php echo $district['district']; ?></option>
+                                        <?php
+                                    }
+                                    ?>
+                                </select>
                             </div>
+                        </div>
+                        <div class="row align-items-center pb-3">
+                            <div class="col-3">
+                                <h6>DS Division</h6>
+                            </div>
+                            <div class="col-9">
+                                <select name="division" class="form-control-sm form-control-sm" id="divisionDropDown" onchange="getBloodBank(this.value)">
+                                    <option>Select Division</option> 
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row align-items-center pb-3">
+                            <div class="col-3">
+                                <h6>Contact No</h6>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" name="contactNumber" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"  required id="contactNumberInput" oninput="validateMobileNumber(this.value)">
+                                <p id="validationResult"></p>
+                            </div>
+                        </div>
+                        <div class="row align-items-center pb-3">
+                            <div class="col-3">
+                                <h6>Email</h6>
+                            </div>
+                            <div class="col-9">
+                                <input type="email"  name="email" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                            </div>
+                        </div>
+                        <div class="row align-items-center pb-3">
+                            <div class="col-3">
+                                <h6>User Name</h6>
+                            </div>
+                            <div class="col-9">
+                                <input type="text"  name="UserName" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                            </div>
+                        </div>
+                        <div class="row align-items-center pb-3">
+                            <div class="col-3">
+                                <h6>Password</h6>
+                            </div>
+                            <div class="col-9">
+                                <input type="password"  name="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                            </div>
+                        </div>
+
+                        <input type ="hidden" name ="hospitalId" value="<?php echo $hospitalId; ?> "aria-label="Sizing example input" aria-discribedby="inputGroup-sizing-sm" required>
+
+                    </div>
 
                     <div class="modal-footer">
 
@@ -345,83 +386,83 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
                 <div class="modal-body">
                     <form action="">
 
-                    <div class="row align-items-center pb-3">
-                                    <div class="col-3">
-                                            <h6>Hospital ID</h6>
-                                        </div>
-                                        <div class="col-9">
-                                            <input type="text"  name="hospitalId" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                                        </div>
-                                    </div>
-                    <div class="row align-items-center pb-3">
-                                    <div class="col-3">
-                                            <h6>Hospital Name</h6>
-                                        </div>
-                                        <div class="col-9">
-                                            <input type="text"  name="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                                        </div>
-                                    </div>                
-                    <div class="row align-items-center pb-3">
-                                    <div class="col-3">
-                                            <h6>Address</h6>
-                                        </div>
-                                        <div class="col-9">
-                                            <input type="text"  name="address" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                                        </div>
-                                    </div>  
-                    <div class="row align-items-center pb-3">
-                                    <div class="col-3">
-                                            <h6>District</h6>
-                                        </div>
-                                        <div class="col-9">
-                                        <select name="district" class="form-control-sm form-control-sm" id="district" onchange="functionTest(this.value)">
-                                        <option>Select District</option>
-                                    </select>
-                                        </div>
-                                    </div> 
-                    <div class="row align-items-center pb-3">
-                                    <div class="col-3">
-                                            <h6>DS Division</h6>
-                                        </div>
-                                        <div class="col-9">
-                                        <select name="division" class="form-control-sm form-control-sm" id="divisionDropDown" onchange="getBloodBank(this.value)">
-                                        <option>Select Division</option> 
-                                    </select>
-                                        </div>
-                                    </div>   
-                    <div class="row align-items-center pb-3">
-                                    <div class="col-3">
-                                            <h6>Contact No</h6>
-                                        </div>
-                                        <div class="col-9">
-                                            <input type="tel"  name="contactNumber" class="form-control" placeholder="+94" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                                        </div>
-                                    </div> 
-                    <div class="row align-items-center pb-3">
-                                    <div class="col-3">
-                                            <h6>Email</h6>
-                                        </div>
-                                        <div class="col-9">
-                                            <input type="email"  name="email" class="form-control"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                                        </div>
-                                    </div>  
-                    <div class="row align-items-center pb-3">
-                                    <div class="col-3">
-                                            <h6>User Name</h6>
-                                        </div>
-                                        <div class="col-9">
-                                            <input type="text"  name="UserName" class="form-control"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                                        </div>
-                                    </div>         
-                    <div class="row align-items-center pb-3">
-                                    <div class="col-3">
-                                            <h6>Password</h6>
-                                        </div>
-                                        <div class="col-9">
-                                            <input type="password"  name="password" class="form-control"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                                        </div>
-                                    </div>         
-                           
+                        <div class="row align-items-center pb-3">
+                            <div class="col-3">
+                                <h6>Hospital ID</h6>
+                            </div>
+                            <div class="col-9">
+                                <input type="text"  name="hospitalId" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                            </div>
+                        </div>
+                        <div class="row align-items-center pb-3">
+                            <div class="col-3">
+                                <h6>Hospital Name</h6>
+                            </div>
+                            <div class="col-9">
+                                <input type="text"  name="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                            </div>
+                        </div>                
+                        <div class="row align-items-center pb-3">
+                            <div class="col-3">
+                                <h6>Address</h6>
+                            </div>
+                            <div class="col-9">
+                                <input type="text"  name="address" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                            </div>
+                        </div>  
+                        <div class="row align-items-center pb-3">
+                            <div class="col-3">
+                                <h6>District</h6>
+                            </div>
+                            <div class="col-9">
+                                <select name="district" class="form-control-sm form-control-sm" id="district" onchange="functionTest(this.value)">
+                                    <option>Select District</option>
+                                </select>
+                            </div>
+                        </div> 
+                        <div class="row align-items-center pb-3">
+                            <div class="col-3">
+                                <h6>DS Division</h6>
+                            </div>
+                            <div class="col-9">
+                                <select name="division" class="form-control-sm form-control-sm" id="divisionDropDown" onchange="getBloodBank(this.value)">
+                                    <option>Select Division</option> 
+                                </select>
+                            </div>
+                        </div>   
+                        <div class="row align-items-center pb-3">
+                            <div class="col-3">
+                                <h6>Contact No</h6>
+                            </div>
+                            <div class="col-9">
+                                <input type="tel"  name="contactNumber" class="form-control" placeholder="+94" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                            </div>
+                        </div> 
+                        <div class="row align-items-center pb-3">
+                            <div class="col-3">
+                                <h6>Email</h6>
+                            </div>
+                            <div class="col-9">
+                                <input type="email"  name="email" class="form-control"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                            </div>
+                        </div>  
+                        <div class="row align-items-center pb-3">
+                            <div class="col-3">
+                                <h6>User Name</h6>
+                            </div>
+                            <div class="col-9">
+                                <input type="text"  name="UserName" class="form-control"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                            </div>
+                        </div>         
+                        <div class="row align-items-center pb-3">
+                            <div class="col-3">
+                                <h6>Password</h6>
+                            </div>
+                            <div class="col-9">
+                                <input type="password"  name="password" class="form-control"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                            </div>
+                        </div>         
+
                     </form>
 
 
@@ -506,13 +547,8 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
             </div>
             <div class="modal-body">
 
-                <!-- <p>--------------------------------------------------</p>
-                <p>Hospital ID   :<?php echo $hospitalArray["hospitalId"]; ?></p>
-                <p>Hospital Name :<?php echo $hospitalArray["name"]; ?></p>
-                <p>Address       :<?php echo $hospitalArray["address"]; ?></p>
-                <p>District ID   :<?php echo $hospitalArray["districtId"]; ?></p>                
-                <p>Contact No    :<?php echo $hospitalArray["contactNumber"]; ?></p>
-                <p>Email         : info@thjaffna.lk</p> -->
+
+
             </div>
 
             <div class="modal-footer">
@@ -591,8 +627,12 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
 ?>
 
 <script>
-       
-    </script>
+
+
+    console.log(12);
+
+
+</script>
 
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

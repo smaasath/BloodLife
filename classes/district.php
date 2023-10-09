@@ -140,7 +140,7 @@ WHERE district.division= ?";
             $row = $pstmt->fetch(PDO::FETCH_ASSOC);
             return $row["districtId"];
         } else {
-           
+           return false;
         }
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
@@ -167,7 +167,7 @@ WHERE district.division= ?";
             $row = $pstmt->fetch(PDO::FETCH_ASSOC);
             return $row;
         } else {
-           
+           return false;
         }
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
