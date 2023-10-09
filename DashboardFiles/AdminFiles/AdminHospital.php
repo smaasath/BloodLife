@@ -110,7 +110,7 @@ use classes\hospital;
 
         </div>
         <!-- Table body -->
-        <div class="container bg-white m-0 p-0" style=" max-height: 500px; overflow: scroll;">
+        <div class="container bg-white m-0 p-0" style=" min-height: 500px; overflow: scroll;">
             <table class="table table-hover p-0">
                 <thead>
                     <!-- Table row -->
@@ -140,41 +140,57 @@ use classes\hospital;
                     const array = <?php echo json_encode($detailsArray) ?>;
                     const detailsList = document.getElementById("output");
                     detailsList.innerHTML = "";
-                    array.forEach((item) => {
-                        var htmlCode = ` <tr>
+                    if (array === null || array.length === 0) {
+                        var htmlCode = `<tr><td colspan="12" style="text-align: center;color: red;" >No Results Found</td></tr>`;
+                        detailsList.innerHTML = htmlCode;
+                    } else {
+                        array.forEach((item) => {
+                            var htmlCode = ` <tr>
                         <td class="col-1">${item.hospitalId}</td>
                         <td class="col-3">${item.name}</td>
                         <td class="col-2">${item.address}</td>
                         <td class="col-3">${item.contactNumber}</td>
                         <td class="col-3">${item.districtId}</td>
-                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="OpenHospitalDetails()">View</button></td>
+                        <td class="col-1">
+                                        <button type="button" 
+                                                  class="btn btn-primary" 
+                                                  data-bs-toggle="modal"    
+                                                  onclick="OpenHospitalDetails()">
+                                          View
+                                        </button>
+                        </td>
                         <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="EditHospitalDetails()">Edit</button></td>
                     </tr>`;
 
-                      
-                        var divElement = document.createElement("tr");
 
-                        
-                        divElement.innerHTML = htmlCode;
+                            var divElement = document.createElement("tr");
 
-                        
-                        detailsList.appendChild(divElement);
-                    });
+
+                            divElement.innerHTML = htmlCode;
+
+
+                            detailsList.appendChild(divElement);
+                        });
+                    }
+                    ;
                     let filterArray;
 
                     function teeest(test) {
 
                         var testValue = parseInt(test, 10);
 
-                        
+
                         filterArray = array.filter((item) => item.hospitalId === testValue || item.name.toLowerCase().includes(test));
 
-                        
-                        const detailsList = document.getElementById("output");
-                        detailsList.innerHTML = ""; 
 
-                        filterArray.forEach((item) => {
-                            var htmlCode = ` 
+                        const detailsList = document.getElementById("output");
+                        detailsList.innerHTML = "";
+                        if (filterArray === null || filterArray.length === 0) {
+                            var htmlCode = `<tr><td colspan="12" style="text-align: center;color: red;">No Results Found</td></tr>`;
+                            detailsList.innerHTML = htmlCode;
+                        } else {
+                            filterArray.forEach((item) => {
+                                var htmlCode = ` 
                     <tr>
                         <td class="col-1">${item.hospitalId}</td>
                         <td class="col-3">${item.name}</td>
@@ -185,16 +201,17 @@ use classes\hospital;
                         <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="EditHospitalDetails()">Edit</button></td>
                     </tr>`;
 
-                            
-                            var divElement = document.createElement("tr");
 
-                            
-                            divElement.innerHTML = htmlCode;
+                                var divElement = document.createElement("tr");
 
-                            
-                            detailsList.appendChild(divElement);
 
-                        });
+                                divElement.innerHTML = htmlCode;
+
+
+                                detailsList.appendChild(divElement);
+
+                            });
+                        }
                     }
                 </script>
 
