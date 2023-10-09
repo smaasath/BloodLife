@@ -30,7 +30,7 @@ function bigtosmal() {
 
     var div = document.getElementById("col1");
     div.style.display = "block";
-    
+
 
     var col2element = document.getElementById("col10");
 
@@ -40,7 +40,7 @@ function bigtosmal() {
     var div1 = document.getElementById("smalltobig");
     div1.style.display = "block";
 
-   
+
 }
 
 function smalltobig() {
@@ -55,14 +55,14 @@ function smalltobig() {
     var newClassNamecol2 = "col-10 container p-0 m-0 content col10edit";
     col2element.className = newClassNamecol2;
 
- 
+
 }
 
 function handleWindowWidth() {
     var windowWidth = window.innerWidth;
 
     // Code to execute based on the window width
-if (windowWidth < 1456) {
+    if (windowWidth < 1024) {
 
 
         var div = document.getElementById("col2");
@@ -71,15 +71,31 @@ if (windowWidth < 1456) {
         var div = document.getElementById("col1");
         div.style.display = "block";
 
-
         var col2element = document.getElementById("col10");
-        var newClassNamecol2 = "col-11 container p-0 m-0 content col11edit";
+        var newClassNamecol2 = "col-11 container p-0 m-0 content col10edit";
         col2element.className = newClassNamecol2;
 
-        var div1 = document.getElementById("smalltobig");
-        div1.style.display = "none";
+    } else if (windowWidth < 1500) {
 
-       
+        var div = document.getElementById("col2");
+        div.style.display = "block";
+
+        var div = document.getElementById("col1");
+        div.style.display = "none";
+
+        var col2element = document.getElementById("col10");
+        var newClassNamecol2 = "col-10 container p-0 m-0 content col10edit";
+        col2element.className = newClassNamecol2;
+
+        var elements = document.querySelectorAll('[id="letter"]');
+
+        for (var i = 0; i < elements.length; i++) {
+            var div = elements[i];
+            div.style.fontSize = "10px";
+            div.className = "col-9 ml-5";
+        }
+
+
 
     } else {
         var div = document.getElementById("col2");
@@ -92,9 +108,17 @@ if (windowWidth < 1456) {
         var newClassNamecol2 = "col-10 container p-0 m-0 content col10edit";
         col2element.className = newClassNamecol2;
 
-     
+        var elements = document.querySelectorAll('[id="letter"]');
 
-       
+        for (var i = 0; i < elements.length; i++) {
+            var div = elements[i];
+            div.style.fontSize = "16px";
+            div.className = "col-10";
+        }
+
+
+
+
     }
 }
 
@@ -112,42 +136,42 @@ runFunctionOnResize();
 window.addEventListener('resize', runFunctionOnResize);
 
 
-function functionTest(value){
-    
-    
-     $.ajax({url: "../services/locationService.php",
+function functionTest(value) {
+
+
+    $.ajax({url: "../services/locationService.php",
         method: 'post',
         data: {district: value},
         success: function (result) {
-            
+
             $("#divisionDropDown").html(result);
-            
+
         }});
 }
 
-function getBloodBank(value){
+function getBloodBank(value) {
     console.log(value);
-    
-     $.ajax({url: "../services/locationService.php",
+
+    $.ajax({url: "../services/locationService.php",
         method: 'post',
         data: {division: value},
         success: function (result) {
-            
+
             $("#bloodbankDropDown").html(result);
-            
+
         }});
 }
 
-function getBloodBankDetails(value){
+function getBloodBankDetails(value) {
     console.log(value);
-    
-     $.ajax({url: "../services/bloodbankservices.php",
+
+    $.ajax({url: "../services/bloodbankservices.php",
         method: 'post',
         data: {bloodBank: value},
         success: function (result) {
             console.log("Success");
             $("#bloodbankdetails").html(result);
-            
+
         }});
 }
 
