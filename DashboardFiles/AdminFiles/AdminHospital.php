@@ -5,7 +5,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 -->
 <?php
 $hospitalId = 1;
+
+require_once '../classes/hospital.php';
+
+use classes\hospital;
 ?>
+
 <html>
     <head>
         <meta charset="UTF-8">
@@ -110,38 +115,49 @@ $hospitalId = 1;
         </div>
         <!-- Table body -->
         <div class="container bg-white m-0 p-0" style=" max-height: 500px; overflow: scroll;">
-            <table class="table table-hover p-0">
-
+        <table class="table table-hover p-0">
+            <thead>
                 <!-- Table row -->
-
-
                 <tr class="sticky-top">
 
-                    <th class="col-1 bgcol p-2">Hospital ID</th>
-                    <th class="col-3 bgcol p-2">Hospital Name</th>
-                    <th class="col-2 bgcol p-2">Address</th>
-                    <th class="col-3 bgcol p-2">District</th>
-                    <th class="col-1 bgcol p-2">DS Division</th>
-                    <th class="col-1 bgcol p-2">Contact Number</th>
-                    <th class="col-1 bgcol p-2">Email</th>
-                    <th class="col-1 bgcol p-2">View</th>
-                    <th class="col-1 bgcol p-2">Edit</th>
+                <th class="col-1 bgcol p-2">Hospital ID</th>
+                <th class="col-3 bgcol p-2">Hospital Name</th>
+                <th class="col-2 bgcol p-2">Address</th>                
+                <!-- <th class="col-1 bgcol p-2">DS Division</th> -->
+                <th class="col-3 bgcol p-2">Contact Number</th>
+                <th class="col-3 bgcol p-2">District ID</th>
+                <!-- <th class="col-1 bgcol p-2">Email</th> -->
+                <!-- <th class="col-3"></th>
+                <th class="col-3"></th> -->
+                <th class="col-1 bgcol p-2">View</th>
+                <th class="col-1 bgcol p-2">Edit</th>
 
-                </tr>
+</tr>
+</thead>
+       
+    <tbody>
+    <?php
+            $detailsArray = hospital::showAllHospital();
 
+            foreach ($detailsArray as $hospitalArray) {
+            ?>
+           
+    
                 <tr>
-                    <td class="col-1">H_ID001</td>
-                    <td class="col-3"> Teaching Hospital-Jaffna</td>
-                    <td class="col-2"> Hospital St, Jaffna</td>
-                    <td class="col-3">Jaffna</td>
-                    <td class="col-3">Jaffna</td>
-                    <td class="col-3">0212223348</td>
-                    <td class="col-3">info@thjaffna.lk</td>
+                    <td class="col-1"><?php echo $hospitalArray["hospitalId"]; ?></td>
+                    <td class="col-3"><?php echo $hospitalArray["name"]; ?></td>
+                    <td class="col-2"><?php echo $hospitalArray["address"]; ?></td>
+                    <td class="col-3"><?php echo $hospitalArray["contactNumber"]; ?></td>
+                    <td class="col-3"><?php echo $hospitalArray["districtId"]; ?></td>
+                    <!-- <td class="col-3"></td>
+                    <td class="col-3"></td> -->
                     <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="OpenHospitalDetails()">View</button></td>
                     <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="EditHospitalDetails()">Edit</button></td>
                 </tr>
-
-                
+                <?php
+            }
+            ?>
+    </tbody>
             </table> 
         </div>
         <br>
@@ -490,14 +506,13 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
             </div>
             <div class="modal-body">
 
-                <p>--------------------------------------------------</p>
-                <p>Hospital ID   : H_ID0040</p>
-                <p>Hospital Name : Teaching Hospital - Jaffna</p>
-                <p>Address       : Hospital St,Jaffna,40000</p>
-                <p>District      : Jaffna </p>
-                <p>DS Division   : Jaffna</p>
-                <p>Contact No    : 0212223348</p>
-                <p>Email         : info@thjaffna.lk</p>
+                <!-- <p>--------------------------------------------------</p>
+                <p>Hospital ID   :<?php echo $hospitalArray["hospitalId"]; ?></p>
+                <p>Hospital Name :<?php echo $hospitalArray["name"]; ?></p>
+                <p>Address       :<?php echo $hospitalArray["address"]; ?></p>
+                <p>District ID   :<?php echo $hospitalArray["districtId"]; ?></p>                
+                <p>Contact No    :<?php echo $hospitalArray["contactNumber"]; ?></p>
+                <p>Email         : info@thjaffna.lk</p> -->
             </div>
 
             <div class="modal-footer">
