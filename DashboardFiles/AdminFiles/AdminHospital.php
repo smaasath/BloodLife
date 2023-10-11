@@ -135,7 +135,7 @@ use classes\district;
 
                     <?php
                     $detailsArray = hospital::showAllHospital();
-                    
+                   
                     ?>
                 <script>
                     const array = <?php echo json_encode($detailsArray) ?>;
@@ -148,7 +148,7 @@ use classes\district;
                         array.forEach((item) => {
 
                            
-                             const districtInfo = <?php echo json_encode(district::getDistrictDivisionById(' +districtId + ')); ?>;
+                             const districtInfo = <?php echo json_encode(district::getDistrictDivisionById($detailsArray["districtId"])); ?>;
 
 
 
@@ -200,7 +200,7 @@ use classes\district;
                             filterArray.forEach((item) => {
                                 
 
-                                const districtInfo = <?php echo json_encode(district::getDistrictDivisionById(' +districtId + ')); ?>;
+                                const districtInfo = <?php echo json_encode(district::getDistrictDivisionById($detailsArray["districtId"])); ?>;
 
 
                                 var htmlCode = ` 
