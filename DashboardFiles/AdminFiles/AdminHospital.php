@@ -5,7 +5,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 -->
 <?php
 $hospitalId = 1;
-$districtId = 1;
 require_once '../classes/hospital.php';
 require_once '../classes/district.php';
 
@@ -148,11 +147,6 @@ use classes\district;
                     } else {
                         array.forEach((item) => {
 
-                           
-                        
-
-
-
                             var htmlCode = ` <tr>
                         <td class="col-1">${item.hospitalId}</td>
                         <td class="col-3">${item.name}</td>
@@ -200,10 +194,6 @@ use classes\district;
                         } else {
                             filterArray.forEach((item) => {
                                 
-
-                                
-
-
                                 var htmlCode = ` 
                     <tr>
                         <td class="col-1">${item.hospitalId}</td>
@@ -273,11 +263,9 @@ use classes\district;
                                 <select name="district" class="form-control-sm form-control-sm" id="district" onchange="functionTest(this.value)">
                                     <option>Select District</option>
                                     <?php
-                                    require '../classes/district.php';
+                                    
 
-                                    // use classes\district;
-
-$dataArray = district::getAllDistrict(); // Retrieve district data using the "getAllDistrict()" method
+                                    $dataArray = district::getAllDistrict(); // Retrieve district data using the "getAllDistrict()" method
 
                                     foreach ($dataArray as $district) {
                                         ?>
@@ -658,18 +646,11 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
 // put your code here
 ?>
 
-<script>
 
-
-    console.log(12);
-
-
-</script>
 
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-<script src="/JS/Admindash.js"></script>
-<script src="../JS/DashboardJS.js"></script>
+<script src="../JS/Admindash.js"></script>
 </body>
 </html>
