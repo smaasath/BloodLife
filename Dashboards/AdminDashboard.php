@@ -174,7 +174,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             include '../DashboardFiles/AdminFiles/AdminHospital.php';
                         }elseif ($_SESSION['selectedLink']=="adminBank") {
                             include '../DashboardFiles/AdminFiles/AdminBloodBank.php';
-                        } else {
+                        } elseif ($_SESSION['selectedLink']=="adminProfile") {
                             include '../DashboardFiles/AdminFiles/AdminProfile.php';
                         }
     

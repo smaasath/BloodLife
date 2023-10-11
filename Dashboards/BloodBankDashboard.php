@@ -43,7 +43,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <!-- large Side bar start-->
 
                 <div id="col2" class="col-2 colordashbord fixed-top" style=" z-index: 10000 !important; display: none;">
-
+                    
+                    <hr class="dashboardhr">
+                    <div class="nav nav-pills flex-column mb-auto logoutheight" >
+                        
+                        <a href="#">
+                            <img src="../Images/logo.jpg" alt="Home"  class="w-50 m-5 mb-1 mt-4 rounded-5 logimage">
+                        </a>
+                    </div>
                     <hr class="dashboardhr">
                     <div class="nav nav-pills flex-column mb-1">
                         <li>
@@ -60,13 +67,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                         <li>
                             <a href="BloodBankDashboard.php?page=bankrequest" class="nav-link navbarcolor <?php echo ($_SESSION['selectedLink'] ?? '') === 'bankrequest' ? 'active' : ''; ?><?php echo ($_SESSION['selectedLink'] ?? '') === 'bbrv' ? 'active' : ''; ?><?php echo ($_SESSION['selectedLink'] ?? '') === 'bbre' ? 'active' : ''; ?><?php echo ($_SESSION['selectedLink'] ?? '') === 'bbhra' ? 'active' : ''; ?>"  aria-current="page">
-                                
+
                                 <div class="row align-items-center justify-content-center">
-                                    
+
                                     <div class="col-2 "> <i class="fa-sharp fa-solid fa-city fa-xl"></i></div>
 
                                     <div class="col-10" id="letter" style="padding-left: 29px;">Bank Request</div> 
-                                    
+
                                 </div>
 
                             </a>
@@ -77,13 +84,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             <a href="BloodBankDashboard.php?page=bloodbankstock" class="nav-link navbarcolor <?php echo ($_SESSION['selectedLink'] ?? '') === 'bloodbankstock' ? 'active' : ''; ?>"  aria-current="page">
 
                                 <div class="row align-items-center justify-content-center">
-                                    
+
                                     <div class="col-2 "> <i class="fa-solid fa-warehouse fa-xl"></i></div>
 
                                     <div class="col-10" id="letter" style="padding-left: 29px;">Blood Stock</div> 
-                                    
+
                                 </div>
-                                
+
                             </a>
 
                         </li>
@@ -92,13 +99,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             <a href="BloodBankDashboard.php?page=alert"  class="nav-link navbarcolor <?php echo ($_SESSION['selectedLink'] ?? '') === 'alert' ? 'active' : ''; ?>"  aria-current="page">
 
                                 <div class="row align-items-center justify-content-center">
-                                    
+
                                     <div class="col-2 "> <i class="fa-solid fa-triangle-exclamation fa-xl"></i></div>
 
                                     <div class="col-10" id="letter" style="padding-left: 29px;">Stock Alert</div> 
-                                    
+
                                 </div>
-                                
+
                             </a>
 
                         </li>
@@ -107,13 +114,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             <a href="BloodBankDashboard.php?page=campaign" class="nav-link navbarcolor <?php echo ($_SESSION['selectedLink'] ?? '') === 'campaign' ? 'active' : ''; ?>"  aria-current="page">
 
                                 <div class="row align-items-center justify-content-center">
-                                    
+
                                     <div class="col-2 "> <i class="fa-sharp fa-solid fa-house-chimney-medical fa-xl"></i></div>
 
                                     <div class="col-10" id="letter" style="padding-left: 29px;">Campaign</div> 
-                                    
+
                                 </div>
-                                
+
                             </a>
 
                         </li>
@@ -123,13 +130,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             <a href="BloodBankDashboard.php?page=donor" class="nav-link navbarcolor <?php echo ($_SESSION['selectedLink'] ?? '') === 'donor' ? 'active' : ''; ?>"  aria-current="page">
 
                                 <div class="row align-items-center justify-content-center">
-                                    
+
                                     <div class="col-2 "> <i class="fa-solid fa-hospital-user fa-xl"></i></div>
 
                                     <div class="col-10" id="letter" style="padding-left: 29px;">Donor</div> 
-                                    
+
                                 </div>
-                                
+
                             </a>
 
                         </li>
@@ -138,13 +145,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             <a href="BloodBankDashboard.php?page=bankprofile" class="nav-link navbarcolor <?php echo ($_SESSION['selectedLink'] ?? '') === 'bankprofile' ? 'active' : ''; ?>"  aria-current="page">
 
                                 <div class="row align-items-center justify-content-center">
-                                    
+
                                     <div class="col-2 "> <i class="fa-solid fa-user fa-xl"></i></div>
 
                                     <div class="col-10" id="letter" style="padding-left: 29px;">Profile</div> 
-                                    
+
                                 </div>
-                                
+
                             </a>
 
                         </li>
@@ -259,7 +266,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <div style="margin-left: -9px;">
                             <div class="dropdown">
                                 <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa-solid fa-power-off fa-lg icondash"></i>
+                                    <i class="fa-solid fa-power-off fa-sm icondash"></i>
 
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1" style="">
@@ -303,7 +310,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             include '../DashboardFiles/BloodBankFiles/BloodBankRequestEdit.php';
                         } elseif ($_SESSION['selectedLink'] == "bbraa") {
                             include '../DashboardFiles/BloodBankFiles/BloodBankHosReqAccept.php';
-                        } else {
+                        } elseif ($_SESSION['selectedLink'] == "bankprofile") {
                             include '../DashboardFiles/BloodBankFiles/BloodBankProfile.php';
                         }
                     } else {

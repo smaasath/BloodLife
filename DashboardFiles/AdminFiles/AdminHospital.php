@@ -135,6 +135,7 @@ use classes\district;
 
                     <?php
                     $detailsArray = hospital::showAllHospital();
+                     
                    
                     ?>
                 <script>
@@ -148,7 +149,7 @@ use classes\district;
                         array.forEach((item) => {
 
                            
-                             const districtInfo = <?php echo json_encode(district::getDistrictDivisionById($detailsArray["districtId"])); ?>;
+                        
 
 
 
@@ -157,8 +158,8 @@ use classes\district;
                         <td class="col-3">${item.name}</td>
                         <td class="col-2">${item.address}</td>
                         <td class="col-3">${item.contactNumber}</td>
-                        <td class="col-1">${districtInfo.division}</td>
-                        <td class="col-1">${districtInfo.district}</td>
+                        <td class="col-1">${item.division}</td>
+                        <td class="col-1">${item.district}</td>
                         <td class="col-1">
                                         <button type="button" 
                                                   class="btn btn-primary" 
@@ -200,7 +201,7 @@ use classes\district;
                             filterArray.forEach((item) => {
                                 
 
-                                const districtInfo = <?php echo json_encode(district::getDistrictDivisionById($detailsArray["districtId"])); ?>;
+                                
 
 
                                 var htmlCode = ` 
@@ -209,8 +210,8 @@ use classes\district;
                         <td class="col-3">${item.name}</td>
                         <td class="col-2">${item.address}</td>
                         <td class="col-1">${item.contactNumber}</td>
-                        <td class="col-1">${districtInfo.division}</td>
-                        <td class="col-1">${districtInfo.district}</td>
+                        <td class="col-1">${item.division}</td>
+                        <td class="col-1">${item.district}</td>
                         <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="OpenHospitalDetails()">View</button></td>
                         <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="EditHospitalDetails()">Edit</button></td>
                     </tr>`;

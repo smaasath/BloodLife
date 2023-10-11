@@ -174,7 +174,7 @@ public static function SendMail($UserName, $password, $email,$name) {
             $dbcon = new DbConnector();
             $con = $dbcon->getConnection();
 
-            $query = "SELECT * FROM `hospital`";
+            $query = "SELECT *, district.district, district.division FROM hospital, district WHERE hospital.districtId = district.districtId;`";
             
 
 
