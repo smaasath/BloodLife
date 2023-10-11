@@ -5,10 +5,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 -->
 <?php
 $hospitalId = 1;
-
+$districtId = 1;
 require_once '../classes/hospital.php';
+require_once '../classes/district.php';
 
 use classes\hospital;
+use classes\district;
+
 ?>
 
 <html>
@@ -119,12 +122,9 @@ use classes\hospital;
                         <th class="col-1 bgcol p-2">Hospital ID</th>
                         <th class="col-3 bgcol p-2">Hospital Name</th>
                         <th class="col-2 bgcol p-2">Address</th>                
-                        <!-- <th class="col-1 bgcol p-2">DS Division</th> -->
                         <th class="col-3 bgcol p-2">Contact Number</th>
-                        <th class="col-3 bgcol p-2">District ID</th>
-                        <!-- <th class="col-1 bgcol p-2">Email</th> -->
-                        <!-- <th class="col-3"></th>
-                        <th class="col-3"></th> -->
+                        <th class="col-1 bgcol p-2">District </th>
+                        <th class="col-1 bgcol p-2">division </th>
                         <th class="col-1 bgcol p-2">View</th>
                         <th class="col-1 bgcol p-2">Edit</th>
 
@@ -135,6 +135,7 @@ use classes\hospital;
 
                     <?php
                     $detailsArray = hospital::showAllHospital();
+                    
                     ?>
                 <script>
                     const array = <?php echo json_encode($detailsArray) ?>;
@@ -145,12 +146,19 @@ use classes\hospital;
                         detailsList.innerHTML = htmlCode;
                     } else {
                         array.forEach((item) => {
+
+                           
+                             const districtInfo = <?php echo json_encode(district::getDistrictDivisionById(' +districtId + ')); ?>;
+
+
+
                             var htmlCode = ` <tr>
                         <td class="col-1">${item.hospitalId}</td>
                         <td class="col-3">${item.name}</td>
                         <td class="col-2">${item.address}</td>
                         <td class="col-3">${item.contactNumber}</td>
-                        <td class="col-3">${item.districtId}</td>
+                        <td class="col-1">${districtInfo.division}</td>
+                        <td class="col-1">${districtInfo.district}</td>
                         <td class="col-1">
                                         <button type="button" 
                                                   class="btn btn-primary" 
@@ -190,13 +198,19 @@ use classes\hospital;
                             detailsList.innerHTML = htmlCode;
                         } else {
                             filterArray.forEach((item) => {
+                                
+
+                                const districtInfo = <?php echo json_encode(district::getDistrictDivisionById(' +districtId + ')); ?>;
+
+
                                 var htmlCode = ` 
                     <tr>
                         <td class="col-1">${item.hospitalId}</td>
                         <td class="col-3">${item.name}</td>
                         <td class="col-2">${item.address}</td>
-                        <td class="col-3">${item.contactNumber}</td>
-                        <td class="col-3">${item.districtId}</td>
+                        <td class="col-1">${item.contactNumber}</td>
+                        <td class="col-1">${districtInfo.division}</td>
+                        <td class="col-1">${districtInfo.district}</td>
                         <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="OpenHospitalDetails()">View</button></td>
                         <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="EditHospitalDetails()">Edit</button></td>
                     </tr>`;
@@ -260,7 +274,7 @@ use classes\hospital;
                                     <?php
                                     require '../classes/district.php';
 
-                                    use classes\district;
+                                    // use classes\district;
 
 $dataArray = district::getAllDistrict(); // Retrieve district data using the "getAllDistrict()" method
 
