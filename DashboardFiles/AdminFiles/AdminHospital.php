@@ -6,13 +6,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 <?php
 $hospitalId = 1;
 
-
 require_once '../classes/hospital.php';
 require_once '../classes/district.php';
 
 use classes\hospital;
 use classes\district;
-
 ?>
 
 <html>
@@ -98,18 +96,18 @@ use classes\district;
 
 
                 <div class="col-2"> 
-                    <select class="form-select" aria-label="Default select example"  oninput="teeest(this.value)">
-                        <option selected>District</option>
-                        <?php
-                                    $dataArray = district::getAllDistrict(); // Retrieve district data using the "getAllDistrict()" method
+                    <select class="form-select" aria-label="Default select example"  oninput="teest(this.value)">
+                        <option selected value="">District</option>
+<?php
+$dataArray = district::getAllDistrict(); // Retrieve district data using the "getAllDistrict()" method
 
-                                    foreach ($dataArray as $district) {
-                                        ?>
+foreach ($dataArray as $district) {
+    ?>
 
-                                        <option  value="<?php echo $district['district']; ?>"><?php echo $district['district']; ?></option>
-                                        <?php
-                                    }
-                                    ?>
+                            <option  value="<?php echo $district['district']; ?>"><?php echo $district['district']; ?></option>
+    <?php
+}
+?>
                     </select>
                 </div>
 
@@ -141,22 +139,24 @@ use classes\district;
 
                 <tbody id="output">
 
-                    <?php
-                    $detailsArray = hospital::showAllHospital();
-                     
-                   
-                    ?>
+<?php
+$detailsArray = hospital::showAllHospital();
+?>
                 <script>
-                    const array = <?php echo json_encode($detailsArray) ?>;
-                    const detailsList = document.getElementById("output");
-                    detailsList.innerHTML = "";
-                    if (array === null || array.length === 0) {
-                        var htmlCode = `<tr><td colspan="12" style="text-align: center;color: red;" >No Results Found</td></tr>`;
-                        detailsList.innerHTML = htmlCode;
-                    } else {
-                        array.forEach((item) => {
+                    let array = <?php echo json_encode($detailsArray) ?>;
+                    let filterArray;
+                    showall(array);
 
-                            var htmlCode = ` <tr>
+                    function showall(array) {
+                        const detailsList = document.getElementById("output");
+                        detailsList.innerHTML = "";
+                        if (array === null || array.length === 0) {
+                            var htmlCode = `<tr><td colspan="12" style="text-align: center;color: red;" >No Results Found</td></tr>`;
+                            detailsList.innerHTML = htmlCode;
+                        } else {
+                            array.forEach((item) => {
+
+                                var htmlCode = ` <tr>
                         <td class="col-1">${item.hospitalId}</td>
                         <td class="col-3">${item.name}</td>
                         <td class="col-2">${item.address}</td>
@@ -175,25 +175,39 @@ use classes\district;
                     </tr>`;
 
 
-                            var divElement = document.createElement("tr");
+                                var divElement = document.createElement("tr");
 
 
-                            divElement.innerHTML = htmlCode;
+                                divElement.innerHTML = htmlCode;
 
 
-                            detailsList.appendChild(divElement);
-                        });
+                                detailsList.appendChild(divElement);
+                            });
+                        }
+                        ;
+
                     }
-                    ;
-                    let filterArray;
+
+                    function teest(test) {
+                        if (test === "") {
+                            array = <?php echo json_encode($detailsArray) ?>;
+                            showall(array);
+                        } else {
+                            array = <?php echo json_encode($detailsArray) ?>;
+                            var testValue = test.toLowerCase();
+                            array = array.filter((item) => item.district.toLowerCase().includes(testValue));
+                            showall(array);
+                        }
+
+                    }
 
                     function teeest(test) {
 
-                        var testValue = parseInt(test, 10);
+                        var id = parseInt(test, 10);
 
                         var testValue = test.toLowerCase();
-    
-                        filterArray = array.filter((item) => item.name.toLowerCase().includes(testValue) || item.district.toLowerCase().includes(testValue));
+
+                        filterArray = array.filter((item) => item.hospitalId === id || item.name.toLowerCase().includes(testValue));
 
 
                         const detailsList = document.getElementById("output");
@@ -203,7 +217,7 @@ use classes\district;
                             detailsList.innerHTML = htmlCode;
                         } else {
                             filterArray.forEach((item) => {
-                                
+
                                 var htmlCode = ` 
                     <tr>
                         <td class="col-1">${item.hospitalId}</td>
@@ -228,10 +242,10 @@ use classes\district;
                             });
                         }
 
-                       
+
                     }
 
-                   
+
 
                 </script>
 
@@ -277,13 +291,11 @@ use classes\district;
                             <div class="col-9">
                                 <select name="district" class="form-control-sm form-control-sm" id="district" onchange="functionTest(this.value)">
                                     <option>Select District</option>
-                                    <?php
-                                    
+<?php
+$dataArray = district::getAllDistrict(); // Retrieve district data using the "getAllDistrict()" method
 
-                                    $dataArray = district::getAllDistrict(); // Retrieve district data using the "getAllDistrict()" method
-
-                                    foreach ($dataArray as $district) {
-                                        ?>
+foreach ($dataArray as $district) {
+    ?>
 
                                         <option  value="<?php echo $district['district']; ?>"><?php echo $district['district']; ?></option>
                                         <?php
