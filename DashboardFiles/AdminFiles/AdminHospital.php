@@ -5,6 +5,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 -->
 <?php
 $hospitalId = 1;
+
+
 require_once '../classes/hospital.php';
 require_once '../classes/district.php';
 
@@ -96,11 +98,18 @@ use classes\district;
 
 
                 <div class="col-2"> 
-                    <select class="form-select" aria-label="Default select example">
+                    <select class="form-select" aria-label="Default select example"  oninput="teeest(this.value)">
                         <option selected>District</option>
-                        <option value="1">Jaffna</option>
-                        <option value="2">Badulla</option>
-                        <option value="3">Vavuniya</option>
+                        <?php
+                                    $dataArray = district::getAllDistrict(); // Retrieve district data using the "getAllDistrict()" method
+
+                                    foreach ($dataArray as $district) {
+                                        ?>
+
+                                        <option  value="<?php echo $district['district']; ?>"><?php echo $district['district']; ?></option>
+                                        <?php
+                                    }
+                                    ?>
                     </select>
                 </div>
 
@@ -151,9 +160,9 @@ use classes\district;
                         <td class="col-1">${item.hospitalId}</td>
                         <td class="col-3">${item.name}</td>
                         <td class="col-2">${item.address}</td>
-                        <td class="col-3">${item.contactNumber}</td>
-                        <td class="col-1">${item.division}</td>
+                        <td class="col-3">${item.contactNumber}</td>                    
                         <td class="col-1">${item.district}</td>
+                        <td class="col-1">${item.division}</td>
                         <td class="col-1">
                                         <button type="button" 
                                                   class="btn btn-primary" 
@@ -182,8 +191,9 @@ use classes\district;
 
                         var testValue = parseInt(test, 10);
 
-
-                        filterArray = array.filter((item) => item.hospitalId === testValue || item.name.toLowerCase().includes(test));
+                        var testValue = test.toLowerCase();
+    
+                        filterArray = array.filter((item) => item.name.toLowerCase().includes(testValue) || item.district.toLowerCase().includes(testValue));
 
 
                         const detailsList = document.getElementById("output");
@@ -200,8 +210,8 @@ use classes\district;
                         <td class="col-3">${item.name}</td>
                         <td class="col-2">${item.address}</td>
                         <td class="col-1">${item.contactNumber}</td>
-                        <td class="col-1">${item.division}</td>
                         <td class="col-1">${item.district}</td>
+                        <td class="col-1">${item.division}</td>
                         <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="OpenHospitalDetails()">View</button></td>
                         <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="EditHospitalDetails()">Edit</button></td>
                     </tr>`;
@@ -217,7 +227,12 @@ use classes\district;
 
                             });
                         }
+
+                       
                     }
+
+                   
+
                 </script>
 
                 </tbody>
