@@ -27,7 +27,7 @@ use classes\district;
     input[type="text"],
     input[type="tel"],
     input[type="email"],
-    input[type="password"],
+    
      select{
         width: 100%; /* Set the width to 100% */
         box-sizing: border-box; /* Include padding and border in the total width */
@@ -475,14 +475,6 @@ foreach ($dataArray as $district) {
                             </div>
                             <div class="col-9">
                                 <input type="text"  name="UserName" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                            </div>
-                        </div>
-                        <div class="row align-items-center pb-3">
-                            <div class="col-3">
-                                <h6>Password</h6>
-                            </div>
-                            <div class="col-9">
-                                <input type="password"  name="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                             </div>
                         </div>
 

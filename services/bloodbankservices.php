@@ -24,8 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $division = filter_var($_POST['division'], FILTER_SANITIZE_STRING);
     $email = filter_var($_POST['email'], FILTER_SANITIZE_STRING);
     $UserName = filter_var($_POST['UserName'], FILTER_SANITIZE_STRING);
-    $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
-
+    
     $districtId = district::getDistrictIDDD($district, $division);
     echo $districtId;
     
@@ -40,55 +39,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo "success";
 
     
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $password = $_POST['password'];
-
-    // Define your password validation criteria
-    $min_length = 8;
-    $uppercase_required = true;
-    $lowercase_required = true;
-    $digit_required = true;
-    $special_char_required = false; // You can set this to true if you want to require special characters
-
-    // Perform password validation
-    $errors = [];
-
-    // Check if the password meets the minimum length requirement
-    if (strlen($password) < $min_length) {
-        $errors[] = "Password must be at least $min_length characters long.";
-    }
-
-    // Check if the password contains at least one uppercase letter
-    if ($uppercase_required && !preg_match('/[A-Z]/', $password)) {
-        $errors[] = "Password must contain at least one uppercase letter.";
-    }
-
-    // Check if the password contains at least one lowercase letter
-    if ($lowercase_required && !preg_match('/[a-z]/', $password)) {
-        $errors[] = "Password must contain at least one lowercase letter.";
-    }
-
-    // Check if the password contains at least one digit
-    if ($digit_required && !preg_match('/[0-9]/', $password)) {
-        $errors[] = "Password must contain at least one digit.";
-    }
-
-    // Check if the password contains special characters (if required)
-    if ($special_char_required && !preg_match('/[^a-zA-Z0-9]/', $password)) {
-        $errors[] = "Password must contain at least one special character.";
-    }
-
-    // Display validation results
-    if (empty($errors)) {
-        echo "Password is valid!";
-        echo "<br>";
-    } else {
-        echo "Password is not valid. Errors:<br>";
-        foreach ($errors as $error) {
-            echo $error . "<br>";
-        }
-    }
-}
 
  
 
