@@ -206,7 +206,7 @@ class Donor
             VALUES (Null,?,?,?,?,?,Null,'100',Null,'Available',?,Null,?,?)";
 
             $pstmt = $con->prepare($query);
-            $pstmt->bindValue(1, $name);
+            $pstmt->bindValue(1, $name, PDO::PARAM_STR);
             $pstmt->bindValue(2, $bloodGroup); // Use different placeholders for each parameter
             $pstmt->bindValue(3, $dob);
             $pstmt->bindValue(4, $contactNumber);
@@ -221,27 +221,27 @@ class Donor
             $pstmt->execute();
 
 
-
-
-
-
             if ($pstmt->rowCount() > 0) {
-                
+
                 $DonorId = $con->lastInsertId();
                 $password = user::generateRandomPassword();
 
                 $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
-               
 
-                User::AddUser($UserName, $email, 5, $hashedPassword, null, $DonorId, null);
-                self::SendMail($UserName, $password, $email, $name);
-                header("Location: ../Dashboards/BloodBankDashboard.php");
+
+                if (User::AddUser($UserName, $email, 5, $hashedPassword, null, $DonorId, null)) {
+                    self::SendMail($UserName, $password, $email, $name);
+                    echo "donor successfully added";
+                    return true;
+                } else {
+                    return false;
+                }
             } else {
-                echo 'Error';
+                return false;
             }
         } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
+            return false;
         }
     }
 
@@ -270,7 +270,7 @@ class Donor
         $mail->isHTML(true);                                  //Set email format to HTML
         $mail->Subject = 'Donor Registration';
         $message = "Dear " . $name . ",<br>";
-        $message .= "Welcome to BloodLife! , ". "<br>";
+        $message .= "Welcome to BloodLife! , " . "<br>";
         $message .= "your account has been successfully created." . "<br><br>";
         $message .= "        Your username:     " . $UserName . "<br>";
         $message .= "        Your Password:     " . $password . "<br><br><br>";
