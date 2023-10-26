@@ -141,12 +141,14 @@ class User {
             $pstmt->execute();
 
             if ($pstmt->rowCount() > 0) {
-                return 'Success';
+                echo "successfully user added ";
+                return true;
             } else {
-                return 'Error';
+                echo "user added failed";
+                return false;
             }
         } catch (PDOException $e) {
-            return "Error: " . $e->getMessage();
+            return false ;
         }
     }
 
