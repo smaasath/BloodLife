@@ -208,7 +208,7 @@ class Donor {
         }
     }
 
-    public function SendMail($UserName, $password, $email, $name) {
+    public static function SendMail($UserName, $password, $email, $name) {
         // Create an instance; passing `true` enables exceptions
 
         require '../mail/Exception.php';

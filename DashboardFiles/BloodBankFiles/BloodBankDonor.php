@@ -348,8 +348,8 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
                                             <h6>Medical Report</h6>
                                         </div>
                                         <div class="col-9">
-                                            <input class="form-control" type="file" name="medicalReport" accept="image/jpeg">
-                                            <p style="font-size: 9px; color: red;">only jpeg</p>
+                                            <input class="form-control" type="file" name="medicalReport" accept=".pdf">
+                                            <p style="font-size: 9px; color: red;">only PDF</p>
                                         </div>
                                     </div>
 
