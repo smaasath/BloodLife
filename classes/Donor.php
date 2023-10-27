@@ -243,7 +243,7 @@ class Donor {
 
         try {
             $mail->send();
-            echo 'Success';
+            return true;
         } catch (Exception $e) {
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         }
@@ -352,16 +352,30 @@ class Donor {
         $age = $inputDOB->diff($currentDate)->y;
 
         // Check if the person is older than 18 years and not bigger than current date
-        return ($age >= $minAge && $inputDOB <= $currentDate) ;
-   
+        return ($age >= $minAge && $inputDOB <= $currentDate);
     }
-    
-    public static function validateBloodGroup($bloodGroup) {
-    // Regular expression for blood group validation
-    $pattern = '/^(A|B|AB|O)[+-]$/';
 
-    // Check if the blood group matches the pattern
-    return preg_match($pattern, $bloodGroup);
-}
+    public static function validateBloodGroup($bloodGroup) {
+        // Regular expression for blood group validation
+        $pattern = '/^(A|B|AB|O)[+-]$/';
+
+        // Check if the blood group matches the pattern
+        return preg_match($pattern, $bloodGroup);
+    }
+
+    public static function encryptedValue($value) {
+        $encryptedKey = "lkoipiydrvgf";
+        $iv = openssl_random_pseudo_bytes(16);
+        $encryptedValue = openssl_encrypt($value, 'aes-256-cbc', $encryptedKey, 0, $iv);
+        return base64_encode($iv . $encryptedValue);
+    }
+
+    public static function decryptedValue($value) {
+        $encryptedKey = "lkoipiydrvgf";
+        $data = base64_decode($value);
+        $iv = substr($data, 0, 16);
+        $encryptedValue = substr($data, 16);
+        return openssl_decrypt($encryptedValue, 'aes-256-cbc', $encryptedKey, 0, $iv);
+    }
 
 }
