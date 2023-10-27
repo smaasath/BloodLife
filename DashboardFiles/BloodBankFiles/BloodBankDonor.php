@@ -5,7 +5,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to edit this template
 -->
 <?php
-$bloodBankId = 1;
+$token = "12b378738a1a6be3bacea473fe9e3d2fbfce8e678d514e1d943";
 ?>
 <html>
     <head>
@@ -316,7 +316,7 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
                                                 <div class="col-6">
 
                                                     <select name="division" class="form-control form-control-lg" id="divisionDropDown" onchange="getBloodBank(this.value)">
-                                                        <option>Select Division</option> 
+                                                       
 
                                                     </select>  
                                                 </div>
@@ -379,7 +379,7 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
                                             <input type="email"  name="email" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                                         </div>
                                     </div>
-                                    <input type="hidden" name="bloodBankId" value="<?php echo $bloodBankId; ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    <input type="hidden" name="token" value="<?php echo $token; ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
 
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
