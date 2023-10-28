@@ -121,9 +121,6 @@ class User {
 
     public static function AddUser($UserName, $email, $userRole, $hashedPassword, $bloodBankId, $donorId, $hospitalId) {
 
-
-
-
         try {
             $dbcon = new DbConnector();
             $con = $dbcon->getConnection();
@@ -141,13 +138,49 @@ class User {
             $pstmt->execute();
 
             if ($pstmt->rowCount() > 0) {
-                return 'Success';
+                echo "successfully user added ";
+                return true;
             } else {
-                return 'Error';
+                echo "user added failed";
+                return false;
             }
         } catch (PDOException $e) {
-            return "Error: " . $e->getMessage();
+            echo "Error: " . $e->getMessage();
         }
+    }
+
+    public static function validateAlreadyExist($attibute, $value, $table) {
+        try {
+            $dbcon = new DbConnector();
+            $con = $dbcon->getConnection();
+
+            $query = "SELECT * FROM `" . $table . "` WHERE " . $attibute . "=?";
+
+            $stmt = $con->prepare($query);
+            $stmt->bindParam(1, $value, PDO::PARAM_STR);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+
+    public static function validateGmail($email) {
+
+        if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            // Check if the domain is Gmail
+            list($username, $domain) = explode('@', $email);
+            if ($domain === 'gmail.com') {
+                return true; // Valid Gmail address
+            }
+        }
+        return false; // Invalid Gmail address
+    }
+
+    public static function generateOTP() {
+        // Generate a random 6-digit number
+        $otp = rand(100000, 999999);
+        return $otp;
     }
 
     static function generateRandomPassword($length = 10) {
@@ -217,8 +250,10 @@ class User {
         $stmt->bindParam(1, $this->Token, PDO::PARAM_STR);
         $stmt->execute();
         $rs = $stmt->fetch(PDO::FETCH_OBJ);
-        if($rs && $rs->expire > time()){
+        if ($rs && $rs->expire > time()) {
             $this->donorId = $rs->donorId;
+            $this->bloodBankId = $rs->bloodBankId;
+            $this->hospitalId = $rs->hospitalId;
             return true;
         } else {
             return false;

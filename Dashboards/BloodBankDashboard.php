@@ -127,7 +127,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
                         <li>
-                            <a href="BloodBankDashboard.php?page=donor" class="nav-link navbarcolor <?php echo ($_SESSION['selectedLink'] ?? '') === 'donor' ? 'active' : ''; ?>"  aria-current="page">
+                            <a href="BloodBankDashboard.php?page=donor" class="nav-link navbarcolor <?php echo ($_SESSION['selectedLink'] ?? '') === 'donor' ? 'active' : ''; ?><?php echo ($_SESSION['selectedLink'] ?? '') === 'verifydonorgmail' ? 'active' : ''; ?>"  aria-current="page">
 
                                 <div class="row align-items-center justify-content-center">
 
@@ -237,7 +237,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
                         <li>
-                            <a href="BloodBankDashboard.php?page=donor" class="nav-link navbarcolor <?php echo ($_SESSION['selectedLink'] ?? '') === 'donor' ? 'active' : ''; ?>"  aria-current="page">
+                            <a href="BloodBankDashboard.php?page=donor" class="nav-link navbarcolor <?php echo ($_SESSION['selectedLink'] ?? '') === 'donor' ? 'active' : ''; ?><?php echo ($_SESSION['selectedLink'] ?? '') === 'verifydonorgmail' ? 'active' : ''; ?>"  aria-current="page">
 
                                 <i class="fa-solid fa-hospital-user fa-sm"></i>
 
@@ -312,6 +312,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             include '../DashboardFiles/BloodBankFiles/BloodBankHosReqAccept.php';
                         } elseif ($_SESSION['selectedLink'] == "bankprofile") {
                             include '../DashboardFiles/BloodBankFiles/BloodBankProfile.php';
+                        } elseif ($_SESSION['selectedLink'] == "verifydonorgmail") {
+                            include '../DashboardFiles/BloodBankFiles/DonorEmailVerification.php';
                         }
                     } else {
                         include '../DashboardFiles/BloodBankFiles/BloodBankHospitalRequest.php';
