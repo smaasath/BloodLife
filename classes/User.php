@@ -119,15 +119,15 @@ class User {
         $this->hospitalId = $hospitalId;
     }
 
-    public static function AddUser($UserName, $email, $userRole, $hashedPassword, $bloodBankId, $donorId, $hospitalId) {
+    public static function AddUser( $email, $userRole, $hashedPassword, $bloodBankId, $donorId, $hospitalId) {
 
         try {
             $dbcon = new DbConnector();
             $con = $dbcon->getConnection();
 
-            $query = "INSERT INTO `user` (`userId`, `UserName`, `password`, `email`, `userRole`, `bloodBankId`, `donorId`, `hospitalId`) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?);"; // Update the query to include all placeholders
+            $query = "INSERT INTO `user` (`userId`, , `password`, `email`, `userRole`, `bloodBankId`, `donorId`, `hospitalId`) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?);"; // Update the query to include all placeholders
             $pstmt = $con->prepare($query);
-            $pstmt->bindValue(1, $UserName);
+            // $pstmt->bindValue(1, $UserName);
             $pstmt->bindValue(2, $hashedPassword);
             $pstmt->bindValue(3, $email);
             $pstmt->bindValue(4, $userRole);

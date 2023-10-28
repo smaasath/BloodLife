@@ -469,14 +469,14 @@ foreach ($dataArray as $district) {
                                 <input type="email"  name="email" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                             </div>
                         </div>
-                        <div class="row align-items-center pb-3">
+                        <!-- <div class="row align-items-center pb-3">
                             <div class="col-3">
                                 <h6>User Name</h6>
                             </div>
                             <div class="col-9">
                                 <input type="text"  name="UserName" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                             </div>
-                        </div>
+                        </div> -->
 
                         <input type ="hidden" name ="bloodBankId" value="<?php echo $bloodBankId; ?> "aria-label="Sizing example input" aria-discribedby="inputGroup-sizing-sm" required>
 
