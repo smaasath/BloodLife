@@ -63,7 +63,10 @@ class district {
         }
     }
 
-    public static function getAllDivision($districtfromdrop) {
+
+    
+    
+        public static function getAllDivision($district) {
 
         try {
             $dbcon = new DbConnector();
@@ -72,117 +75,91 @@ class district {
             $query = "SELECT division FROM district WHERE district= ? ";
 
             $stmt = $con->prepare($query);
-            $stmt->bindValue(1, $districtfromdrop);
+            $stmt->bindValue(1, $district);
             $stmt->execute();
-            echo ' <option>Select Division</option>';
+
             $dataArray = array();
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 $dataArray[] = $row;
             }
-
-            foreach ($dataArray as $division) {
-                echo ' <option value=' . $division["division"] . '>' . $division["division"] . '</option>';
-            }
+            return $dataArray;
+            
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
     }
 
-    public static function getAllBloodBank($divisionfromdrop) {
+    public static function getAllDstrictDivition() {
 
 
         try {
             $dbcon = new DbConnector();
             $con = $dbcon->getConnection();
 
-            $query = "SELECT district.districtId, bloodbank.bloodBankName, bloodbank.bloodBankId
-FROM district
-INNER JOIN bloodbank ON district.districtId = bloodbank.districtId
-WHERE district.division= ?";
+            $query = "SELECT  district,division FROM `district`";
 
             $stmt = $con->prepare($query);
-            $stmt->bindValue(1, $divisionfromdrop);
             $stmt->execute();
 
             $dataArray = array();
-            echo ' <option>Select Blood Bank</option>';
+
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 $dataArray[] = $row;
             }
+            return $dataArray;
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
 
-            foreach ($dataArray as $bloodbank) {
-                echo ' <option value=' . $bloodbank["bloodBankId"] . '>' . $bloodbank["bloodBankName"] . '</option>';
+    public static function getDistrictIDDD($district, $division) {
+        try {
+            $dbcon = new DbConnector();
+            $con = $dbcon->getConnection();
+
+            $query = "SELECT districtId FROM `district` WHERE district=? AND division=?";
+
+            $pstmt = $con->prepare($query);
+            $pstmt->bindValue(1, $district);
+            $pstmt->bindValue(2, $division);
+
+            $pstmt->execute();
+
+            if ($pstmt->rowCount() > 0) {
+                // Assuming you want to return the districtId value
+                $row = $pstmt->fetch(PDO::FETCH_ASSOC);
+                return $row["districtId"];
+            } else {
+                return false;
             }
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
     }
-    
-    
-    
-    
-    
-    public static function getDistrictIDDD($district, $division) {
-    try {
-        $dbcon = new DbConnector();
-        $con = $dbcon->getConnection();
 
-        $query = "SELECT districtId FROM `district` WHERE district=? AND division=?";
-
-        $pstmt = $con->prepare($query);
-        $pstmt->bindValue(1, $district);
-        $pstmt->bindValue(2, $division);
-
-        $pstmt->execute();
-
-        if ($pstmt->rowCount() > 0) {
-            // Assuming you want to return the districtId value
-            $row = $pstmt->fetch(PDO::FETCH_ASSOC);
-            return $row["districtId"];
-        } else {
-           return false;
-        }
-    } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage();
-        
-    }
-    
-    }
     public static function getDistrictDivisionById($districtId) {
-        
-    try {
-        $dbcon = new DbConnector();
-        $con = $dbcon->getConnection();
 
-        $query = "SELECT * FROM `district` WHERE districtId=?";
+        try {
+            $dbcon = new DbConnector();
+            $con = $dbcon->getConnection();
 
-        $pstmt = $con->prepare($query);
-        $pstmt->bindValue(1, $districtId);
-        
+            $query = "SELECT * FROM `district` WHERE districtId=?";
 
-        $pstmt->execute();
+            $pstmt = $con->prepare($query);
+            $pstmt->bindValue(1, $districtId);
 
-        if ($pstmt->rowCount() > 0) {
-            // Assuming you want to return the districtId value
-            $row = $pstmt->fetch(PDO::FETCH_ASSOC);
-            return $row;
-        } else {
-           return false;
+            $pstmt->execute();
+
+            if ($pstmt->rowCount() > 0) {
+                // Assuming you want to return the districtId value
+                $row = $pstmt->fetch(PDO::FETCH_ASSOC);
+                return $row;
+            } else {
+                return false;
+            }
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
         }
-    } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage();
-        
     }
+
 }
-
-    
-    
-
-   
-    
-    
-}
-
-
-
-

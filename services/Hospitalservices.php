@@ -15,11 +15,10 @@ use classes\hospital;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-//    $hospitalId = filter_var($_POST['hospitalId'], FILTER_SANITIZE_NUMBER_INT);
+
     $name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
     $address = filter_var($_POST['address'], FILTER_SANITIZE_STRING);
     $contactNumber = filter_var($_POST['contactNumber'], FILTER_SANITIZE_STRING);
-//   $districtId = filter_var($_POST['districtId'], FILTER_SANITIZE_NUMBER_INT);
     $district = filter_var($_POST['district'], FILTER_SANITIZE_STRING);
     $division = filter_var($_POST['division'], FILTER_SANITIZE_STRING);
     $email = filter_var($_POST['email'], FILTER_SANITIZE_STRING);
