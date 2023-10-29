@@ -25,11 +25,12 @@ if($_SERVER["REQUEST_METHOD"] =="POST"){
       $status = 4;
     }
     
-   // header("Location: ../Dashboards/BloodBankDashboard.php?status=$status");
+   header("Location: ../Dashboards/BloodBankDashboard.php?status=$status");
     
   
 
 }
+
 echo $status;
 
 ?>
