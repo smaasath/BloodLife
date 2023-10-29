@@ -27,7 +27,6 @@ class Bloodtable {
     private $bloodBankId;
     private $status;
 
-
     public function __construct($bloodId, $expiryDate, $bloodGroup, $quantity, $bloodBankId, $status) {
         $this->bloodId = $bloodId;
         $this->expiryDate = $expiryDate;
@@ -35,7 +34,6 @@ class Bloodtable {
         $this->quantity = $quantity;
         $this->bloodBankId = $bloodBankId;
         $this->status = $status;
-        
     }
 
     public function getBloodId() {
@@ -62,8 +60,6 @@ class Bloodtable {
         return $this->status;
     }
 
-    
-
     public function setBloodId($bloodId): void {
         $this->bloodId = $bloodId;
     }
@@ -88,8 +84,6 @@ class Bloodtable {
         $this->status = $status;
     }
 
-   
-
     public static function getAllbloodpackets($bloodBankId) {
         try {
             $dbcon = new DbConnector();
@@ -103,7 +97,6 @@ class Bloodtable {
             $dataArray = array();
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 $dataArray[] = $row;
-              
             }
 
             if (empty($dataArray)) {
@@ -116,28 +109,29 @@ class Bloodtable {
         }
     }
 
-    public static function addbloodpacket() {
+    public function addbloodpacket() {
         try {
-             $dbcon = new DbConnector();
+            $dbcon = new DbConnector();
             $con = $dbcon->getConnection();
-            
-            $query ="INSERT INTO 'bloodtable'(bloodGroup,quantity,expiryDate,status) VALUES(?, ?, ?, ?);";
-            $pstmt =$con->prepare($query);
-           
-            $pstmt->bindValue(1, $this->bloodGroup);
-            $pstmt->bindValue(2, $this->quantity);
-            $pstmt->bindValue(3, $this->expiryDate);
-            $pstmt->bindValue(4, $this->status);
-            
+
+            $query = "INSERT INTO `bloodtable` (`bloodId`, `expiryDate`, `bloodGroup`, `quantity`, `bloodBankId`, `status`) VALUES (NULL, ?, ?, ?, ?, ?);";
+            $pstmt = $con->prepare($query);
+
+            $pstmt->bindValue(1, $this->expiryDate);
+            $pstmt->bindValue(2, $this->bloodGroup);
+            $pstmt->bindValue(3, $this->quantity);
+            $pstmt->bindValue(4, $this->bloodBankId);
+            $pstmt->bindValue(5, $this->status);
+
             $pstmt->execute();
-            if($pstmt->rowCount()>0){
+            if ($pstmt->rowCount() > 0) {
                 return true;
-                
-            }else{
+            } else {
                 return false;
             }
         } catch (PDOException $exc) {
             echo $exc->getMessage();
         }
-        }
+    }
+
 }

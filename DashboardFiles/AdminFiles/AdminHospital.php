@@ -98,16 +98,16 @@ use classes\district;
                 <div class="col-2"> 
                     <select class="form-select" aria-label="Default select example"  oninput="teest(this.value)">
                         <option selected value="">District</option>
-<?php
-$dataArray = district::getAllDistrict(); // Retrieve district data using the "getAllDistrict()" method
+                        <?php
+                        $dataArray = district::getAllDistrict(); // Retrieve district data using the "getAllDistrict()" method
 
-foreach ($dataArray as $district) {
-    ?>
+                        foreach ($dataArray as $district) {
+                            ?>
 
                             <option  value="<?php echo $district['district']; ?>"><?php echo $district['district']; ?></option>
-    <?php
-}
-?>
+                            <?php
+                        }
+                        ?>
                     </select>
                 </div>
 
@@ -139,9 +139,9 @@ foreach ($dataArray as $district) {
 
                 <tbody id="output">
 
-<?php
-$detailsArray = hospital::showAllHospital();
-?>
+                    <?php
+                    $detailsArray = hospital::showAllHospital();
+                    ?>
                 <script>
                     let array = <?php echo json_encode($detailsArray) ?>;
                     let filterArray;
@@ -291,11 +291,11 @@ $detailsArray = hospital::showAllHospital();
                             <div class="col-9">
                                 <select name="district" class="form-control-sm form-control-sm" id="district" onchange="functionTest(this.value)">
                                     <option>Select District</option>
-<?php
-$dataArray = district::getAllDistrict(); // Retrieve district data using the "getAllDistrict()" method
+                                    <?php
+                                    $dataArray = district::getAllDistrict(); // Retrieve district data using the "getAllDistrict()" method
 
-foreach ($dataArray as $district) {
-    ?>
+                                    foreach ($dataArray as $district) {
+                                        ?>
 
                                         <option  value="<?php echo $district['district']; ?>"><?php echo $district['district']; ?></option>
                                         <?php

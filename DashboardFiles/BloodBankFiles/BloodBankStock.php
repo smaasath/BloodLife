@@ -34,7 +34,7 @@ $bloodbankid = 1;
 
                         </div>
                         <div class="col-6 mt-2 	d-none d-xl-block">
-                            <b>General Hospital</b>
+                            <b>General Hspital</b>
                             <p style="font-size: 10px;">Hospital</p>
                         </div>
                     </div>

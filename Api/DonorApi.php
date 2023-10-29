@@ -20,7 +20,7 @@ if ($method === "GET") {
     if (isset($authorizationHeader) && preg_match('/Bearer\s+(.*)$/i', $authorizationHeader, $matches)) {
 
         $token = $matches[1];
-        $user = new User(null, null, null, null, null, $token, null, null, null, null);
+        $user = new User(null, null, null, null, $token, null, null, null, null);
 
         if ($user->validateToken()) {
 

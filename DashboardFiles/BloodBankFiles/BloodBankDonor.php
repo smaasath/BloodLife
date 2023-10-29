@@ -5,6 +5,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to edit this template
 -->
 <?php
+
 $token = "12b378738a1a6be3bacea473fe9e3d2fbfce8e678d514e1d943";
 require_once '../classes/Donor.php';
 
@@ -61,14 +62,7 @@ use classes\Donor;
             if (isset($_GET["status"]) && !empty($_GET["status"])) {
                 $status = Donor::decryptedValue($_GET["status"]);
 
-                if (in_array($status, array(3, 4, 5, 6))) {
-                    echo $status;
-                    $status = Donor::encryptedValue($status);
-                    echo "<script>window.location.href = '" . $_SERVER['PHP_SELF'] . "?page=verifydonorgmail&status=" .$status. "';</script>";
-                    exit();
-                } else {
-                    echo $status;
-                }
+                
             }
             ?>
             <div class="rounded-top-4 p-0 border border-dark-subtle">

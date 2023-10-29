@@ -13,6 +13,7 @@ if($_SERVER["REQUEST_METHOD"] =="POST"){
         } else {
              
            $bloodpacked = new Bloodtable(null, $_POST["expiryDate"], $_POST["bloodgroup"], $_POST["quantity"], $_POST["id"], "Available");
+           
            if($bloodpacked->addbloodpacket()){
                $status = 2;
            } else {
@@ -24,10 +25,11 @@ if($_SERVER["REQUEST_METHOD"] =="POST"){
       $status = 4;
     }
     
-    header("Location: ../Dashboards/BloodBankDashboard.php?status=$status");
+   // header("Location: ../Dashboards/BloodBankDashboard.php?status=$status");
     
   
 
 }
+echo $status;
 
 ?>

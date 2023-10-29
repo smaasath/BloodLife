@@ -66,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             //validations
             $nicExist = User::validateAlreadyExist("nic", $nic, "donor");
             $emailExist = User::validateAlreadyExist("email", $email, "user");
-            $userNameExist = User::validateAlreadyExist("UserName", $UserName, "user");
+     
             $validateEmail = User::validateGmail($email);
             $validatePhoneNumber = Donor::validateContactNumber($contactNumber);
             $validateNic = Donor::validateSriLankanNIC($nic);
@@ -83,7 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if ($validateEmail && $validatePhoneNumber && $validateNic && $validateDob && $validateBloodGroup) {
 
                     //nic,email,username exist check in db
-                    if (!$nicExist && !$emailExist && !$userNameExist) {
+                    if (!$nicExist && !$emailExist) {
 
                         //create donor object
                         $donor = new Donor(null, $name, $bloodGroup, $dob, $contactNumber, $nic, null, null, null, null, $medicalReport, null, $bloodBankId, $districtId);
