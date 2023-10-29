@@ -22,17 +22,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $district = filter_var($_POST['district'], FILTER_SANITIZE_STRING);
     $division = filter_var($_POST['division'], FILTER_SANITIZE_STRING);
     $email = filter_var($_POST['email'], FILTER_SANITIZE_STRING);
-    $UserName = filter_var($_POST['UserName'], FILTER_SANITIZE_STRING);
     $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
 
     $districtId = district::getDistrictIDDD($district, $division);
     echo $districtId;
     
-//    echo $district;
-//    echo $division;
-//    echo $name;
-//    echo $address;
-//    echo $contactNumber;
 
 
     hospital::AddHospital($name, $address, $contactNumber, $districtId, $email, $UserName, $password);
