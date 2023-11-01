@@ -6,11 +6,13 @@
 
 namespace classes;
 
-require '../classes/Donor.php';
-require '../classes/district.php';
+require_once '../classes/Donor.php';
+ require_once  '../classes/district.php';
+ require_once '../classes/Validation.php';
 
 use classes\district;
 use classes\Donor;
+use classes\Validation;
 
 $status = null;
 
@@ -18,15 +20,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     session_start();
 
-    if (isset($_POST["VerificationCode"], $_SESSION["VerificationCode"], $_SESSION["donor"], $_SESSION["userName"], $_SESSION["email"], $_SESSION['timestamp'])) {
+    if (isset($_POST["VerificationCode"], $_SESSION["VerificationCode"], $_SESSION["donor"], $_SESSION["email"], $_SESSION['timestamp'])) {
         //check status for adding donor
 
         $verifyOtp = (int) $_POST["VerificationCode"] === (int) $_SESSION["VerificationCode"];
-        $time = time() - $_SESSION['timestamp'] > 60;
+        $time = time() - $_SESSION['timestamp'] > 60000000;
 
-        if ($verifyOtp && $time) {
+        if ($verifyOtp) {
             
-            $status = $_SESSION["donor"]->AddDonor($_SESSION["userName"], $_SESSION["email"]) ? 1 : 2;
+            $status = $_SESSION["donor"]->AddDonor($_SESSION["email"]) ? 1 : 2;
             session_destroy();
             
         } else {
@@ -38,13 +40,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else if (isset($_POST["name"], $_POST["bloodGroup"], $_POST["dob"],
                     $_POST["nic"], $_POST["contactNumber"], $_FILES["medicalReport"],
                     $_POST["district"], $_POST["division"], $_POST["token"],
-                    $_POST["UserName"], $_POST["email"])) {
+                    $_POST["email"])) {
 
         //empty value check
         if (!empty($_POST["name"]) && ( $_POST["bloodGroup"]) && ($_POST["dob"]) &&
                 ($_POST["nic"]) && ($_POST["contactNumber"]) && ($_FILES["medicalReport"]) &&
-                ($_POST["district"]) && ($_POST["division"]) && ($_POST["token"]) &&
-                ($_POST["UserName"]) && ($_POST["email"])) {
+                ($_POST["district"]) && ($_POST["division"]) && ($_POST["token"]) && ($_POST["email"])) {
 
             // sanitizing the inputs
             $name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
@@ -64,14 +65,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $user = new User(null, null, null, null, null, $token, null, null, null, null);
 
             //validations
-            $nicExist = User::validateAlreadyExist("nic", $nic, "donor");
-            $emailExist = User::validateAlreadyExist("email", $email, "user");
+            $nicExist = Validation::validateAlreadyExist("nic", $nic, "donor");
+            $emailExist = Validation::validateAlreadyExist("email", $email, "user");
      
-            $validateEmail = User::validateGmail($email);
-            $validatePhoneNumber = Donor::validateContactNumber($contactNumber);
-            $validateNic = Donor::validateSriLankanNIC($nic);
-            $validateDob = Donor::validateDOB($dob);
-            $validateBloodGroup = Donor::validateBloodGroup($bloodGroup);
+            $validateEmail = Validation::validateGmail($email);
+            $validatePhoneNumber = Validation::validateContactNumber($contactNumber);
+            $validateNic = Validation::validateSriLankanNIC($nic);
+            $validateDob = Validation::validateDOB($dob);
+            $validateBloodGroup = Validation::validateBloodGroup($bloodGroup);
             $validateToken = $user->validateToken();
             $bloodBankId = $user->getBloodBankId();
 
@@ -88,12 +89,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         //create donor object
                         $donor = new Donor(null, $name, $bloodGroup, $dob, $contactNumber, $nic, null, null, null, null, $medicalReport, null, $bloodBankId, $districtId);
 
-                        $_SESSION["VerificationCode"] = User::generateOTP();
+                        $_SESSION["VerificationCode"] = Validation::generateOTP();
                         $_SESSION["donor"] = $donor;
-                        $_SESSION["userName"] = $UserName;
                         $_SESSION["email"] = $email;
                         $_SESSION['timestamp'] = time();
-                        $status = $donor->SendMail($UserName, $_SESSION["VerificationCode"], $email, $name) ? 6 : 7;
+                        $status = $donor->SendMail($_SESSION["VerificationCode"], $email, $name) ? header("Location: newEmptyPHPWebPage.php") : 7;
 
                     } else {
                         //check status for exist values
@@ -120,4 +120,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo"Invalid request method";
 }
 
-header("Location: ../Dashboards/BloodBankDashboard.php?status=".Donor::encryptedValue($status));
+echo $status;
