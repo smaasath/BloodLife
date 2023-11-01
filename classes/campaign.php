@@ -24,10 +24,10 @@ class campaign {
     private $review;
     private $status;
     private $districtId;
-    private $organizerId;
+
     private $bloodBankId;
     
-    public function __construct($campaignId, $Title, $address, $startDate, $endDate, $review, $status, $districtId, $organizerId, $bloodBankId) {
+    public function __construct($campaignId, $Title, $address, $startDate, $endDate, $review, $status, $districtId, $bloodBankId) {
         $this->campaignId = $campaignId;
         $this->Title = $Title;
         $this->address = $address;
@@ -36,7 +36,7 @@ class campaign {
         $this->review = $review;
         $this->status = $status;
         $this->districtId = $districtId;
-        $this->organizerId = $organizerId;
+       
         $this->bloodBankId = $bloodBankId;
     }
     
@@ -72,9 +72,7 @@ class campaign {
         return $this->districtId;
     }
 
-    public function getOrganizerId() {
-        return $this->organizerId;
-    }
+    
 
     public function getBloodBankId() {
         return $this->bloodBankId;
@@ -113,36 +111,37 @@ class campaign {
         $this->districtId = $districtId;
     }
 
-    public function setOrganizerId($organizerId): void {
-        $this->organizerId = $organizerId;
-    }
+    
 
     public function setBloodBankId($bloodBankId): void {
         $this->bloodBankId = $bloodBankId;
     }
 
 
-    
-    public static function AddCampaign($Title, $address, $startDate, $endDate, $review, $status, $districtId, $organizerId, $bloodBankId) {
+    /*
+    public static function AddCampaign() {
 
     try {
         $dbcon = new DbConnector();
         $con = $dbcon->getConnection();
 
-        $query = "INSERT INTO `campaigntable` (`campaignId`, `Title`, `address`, `startDate`, `endDate`, `review`, `status`, `districtId`, `organizerId`, `bloodBankId`) VALUES (NULL, ?, ?, ?, ?, ?, ?, NULL, NULL, NULL);";
+        $query = "INSERT INTO `campaigntable` (`campaignId`,`Title`, `address`, `startDate`, `endDate`, `review`, `status`, `districtId`, `bloodBankId`) 
+        VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?);";
+  //$pstmt->bindValue(1, $this->name, PDO::PARAM_STR);
 
-        $pstmt = $con->prepare($query);
-        $pstmt->bindValue(1, $Title);
-        $pstmt->bindValue(2, $address); 
-        $pstmt->bindValue(3, $startDate);
-        $pstmt->bindValue(4, $endDate);
-        $pstmt->bindValue(5, $review);
 
-        $pstmt->bindValue(6,  $status);
-        $pstmt->bindValue(7, $districtId);
-        $pstmt->bindValue(8, $organizerId);
-        $pstmt->bindValue(9, $bloodBankId);
-        
+
+$pstmt = $con->prepare($query);
+$pstmt->bindValue(1, $this->Title, PDO::PARAM_STR);
+$pstmt->bindValue(2, $this->address, PDO::PARAM_STR );
+$pstmt->bindValue(3, $this-> startDate, PDO::PARAM_STR);
+$pstmt->bindValue(4, $this-> endDate, PDO::PARAM_STR);
+$pstmt->bindValue(5, $this->review, PDO::PARAM_STR);
+$pstmt->bindValue(6, $this->status, PDO::PARAM_STR);
+//$pstmt->bindValue(7, $districtId);
+//$pstmt->bindValue(8, $organizerId);
+//$pstmt->bindValue(8, $bloodBankId);
+
 
 
         $pstmt->execute();
@@ -155,7 +154,42 @@ class campaign {
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
     }
+}$Title, $address, $startDate, $endDate, $review, $status
+
+*/
+
+public function AddCampaign() {
+    try {
+        $dbcon = new DbConnector();
+        $con = $dbcon->getConnection();
+
+        $query = "INSERT INTO `campaigntable` (`campaignId`, `Title`, `address`, `startDate`, `endDate`, `review`, `status`, `districtId`, `bloodBankId`) 
+        VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?);";
+
+        $pstmt = $con->prepare($query);
+        $pstmt->bindValue(1, $this->Title, PDO::PARAM_STR);
+        $pstmt->bindValue(2, $this->address, PDO::PARAM_STR);
+        $pstmt->bindValue(3, $this->startDate, PDO::PARAM_STR);
+        $pstmt->bindValue(4, $this->endDate, PDO::PARAM_STR);
+        $pstmt->bindValue(5, $this->review, PDO::PARAM_STR);
+        $pstmt->bindValue(6, $this->status, PDO::PARAM_STR);
+       $pstmt->bindValue(7, $this->districtId, PDO::PARAM_INT);
+       $pstmt->bindValue(8, $this->bloodBankId, PDO::PARAM_INT);
+
+        $pstmt->execute();
+
+       return $pstmt->rowCount() > 0;
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
 }
+           
+
+
+
+
+
+
 
 static function getAllCampaign(){
     try {
@@ -177,8 +211,13 @@ static function getAllCampaign(){
 
         return $dataArray;
     } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage();
+        echo "Database Connection Error: " . $e->getMessage();
     }
+    
+}
+
+
+
 }
 
 
@@ -190,7 +229,3 @@ static function getAllCampaign(){
 
 
 
-
-
-
-}

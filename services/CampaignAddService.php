@@ -24,14 +24,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $endDate = filter_var( $_POST['endDate'],FILTER_SANITIZE_STRING);
     $review = filter_var($_POST['review'],FILTER_SANITIZE_STRING);
     $status= filter_var($_POST['status'],FILTER_SANITIZE_STRING);
-    $districtId = filter_var($_POST['districtId'],FILTER_SANITIZE_NUMBER_INT);
-    $organizerId  =filter_var( $_POST['organizerId'],FILTER_SANITIZE_NUMBER_INT);
-    $bloodBankId = filter_var($_POST['bloodBankId'],FILTER_SANITIZE_NUMBER_INT);
+   // $districtId = filter_var($_POST['districtId'],FILTER_SANITIZE_NUMBER_INT);
+   // $organizerId  =filter_var( $_POST['organizerId'],FILTER_SANITIZE_NUMBER_INT);
+    //$bloodBankId = filter_var($_POST['bloodBankId'],FILTER_SANITIZE_NUMBER_INT);
     
-$districtId = district::getDistrictIDDD($district, $division);
-echo $campaignId  ;
+//$districtId = district::getDistrictIDDD($district, $division);
+//echo $campaignId  ;
+
+
+
+
+
 
     
-campaign::AddCampaign( $Title, $address, $startDate, $endDate, $review, $status, $districtId, $organizerId, $bloodBankId);
+campaign::AddCampaign($Title, $address, $startDate, $endDate, $review, $status);
 
 }

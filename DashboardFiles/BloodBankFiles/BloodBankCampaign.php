@@ -1,5 +1,8 @@
 
 <?php
+
+use classes\campaign;
+
 $campaignId = 1;
 ?>
 
@@ -67,8 +70,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <!-- nav bar end -->
 
 
-
-        <div class="container">
+<!--
+       <div class="container">
             <img src="https://assets.telegraphindia.com/telegraph/2022/Jan/1643137545_blood.jpg" alt="Blood" width="100%" height="200">
 
 
@@ -76,22 +79,55 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             <div class="centered" style="font-size:3vw" ><br><strong>.</strong></div>
 
         </div>
+        -->
 
     <center><h1> BL Campaign </h1></center>
 
     <div class="p-5">
 
 
-        <div class="rounded-top-4 p-0 border border-dark-subtle">
+       <!-- <div class="rounded-top-4 p-0 border border-dark-subtle">
             <div class="row align-items-center">
-                <div class="col-3">           
-                    <div class="input-group rounded p-3">
-                        <input type="search" class="form-control rounded" placeholder="Campaign ID" aria-label="Search" aria-describedby="search-addon" >
+        
 
 
+               // <?php
+           // if (isset($_GET["status"]) && !empty($_GET["status"])) {
+               // $status = campaign::decryptedValue($_GET["status"]);
 
+                
+           // }
+           // ?>
+            -->
+            <div class="rounded-top-4 p-0 border border-dark-subtle">
+                <div class="row align-items-center">
+                    <!-- Search input -->
+                    <div class="col-3">
+                        <div class="input-group rounded p-3">
+                            <input type="search" class="form-control rounded" placeholder="campaignID" aria-label="Search" aria-describedby="search-addon">
+                        </div>
                     </div>
-                </div>
+
+                    <!-- Blood Group filter -->
+                    <!--
+                    <div class="col-3">
+                        <select class="form-control form-control-lg" name="bloodGroup">
+                            <option selected>Select your Blood Group</option>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                        </select>
+                    </div>
+        -->
+
+
+
+
                 <div class="col-3"> 
                     <select class="form-select" aria-label="Default select example">
                         <option selected>Date</option>
