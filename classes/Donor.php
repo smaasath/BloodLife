@@ -13,11 +13,13 @@ use PHPMailer\PHPMailer\Exception;
 
 require_once 'DbConnector.php';
 require_once 'User.php';
+require_once 'Validation.php';
 
 use classes\User;
 use PDO;
 use PDOException;
 use classes\DbConnector;
+use classes\Validation;
 
 class Donor {
 
@@ -165,7 +167,7 @@ class Donor {
         $this->districtId = $districtId;
     }
 
-    public function AddDonor($UserName, $email) {
+    public function AddDonor($email) {
         try {
             $dbcon = new DbConnector();
             $con = $dbcon->getConnection();
@@ -184,7 +186,7 @@ class Donor {
             $pstmt->bindValue(8, $this->districtId);
             $pstmt->execute();
             if ($pstmt->rowCount() > 0) {
-                return self::adduser($con, $UserName, $email, $this->name);
+                return self::adduser($con, $email, $this->name);
             } else {
                 return false;
             }
@@ -193,22 +195,22 @@ class Donor {
         }
     }
 
-    public function adduser($con, $UserName, $email, $name) {
+    public function adduser($con, $email, $name) {
 
         $DonorId = $con->lastInsertId();
-        $password = user::generateRandomPassword();
+        $password = Validation::generateRandomPassword();
 
         $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
-        if (User::AddUser($UserName, $email, 5, $hashedPassword, null, $DonorId, null)) {
-            self::SendMail($UserName, $password, $email, $name);
+        if (User::AddUser($email, 5, $hashedPassword, null, $DonorId, null)) {
+            self::SendMail($password, $email, $name);
             return true;
         } else {
             return false;
         }
     }
 
-    public static function SendMail($UserName, $password, $email, $name) {
+    public static function SendMail($password, $email, $name) {
         // Create an instance; passing `true` enables exceptions
 
         require '../mail/Exception.php';
@@ -234,7 +236,7 @@ class Donor {
         $message = "Dear " . $name . ",<br>";
         $message .= "Welcome to BloodLife! , " . "<br>";
         $message .= "your account has been successfully created." . "<br><br>";
-        $message .= "        Your username:     " . $UserName . "<br>";
+        $message .= "        Your username:     " . $email . "<br>";
         $message .= "        Your Password:     " . $password . "<br><br><br>";
         $message .= "Regards,<br>";
         $message .= "BloodLife";
@@ -321,61 +323,6 @@ class Donor {
         }
     }
 
-    public static function validateContactNumber($contactNumber) {
-        // Remove spaces and dashes from the phone number
-        $cleanedPhoneNumber = preg_replace('/\s+|-/', '', $contactNumber);
 
-        // Regular expression for Sri Lankan phone numbers
-        $pattern = '/^(\+94|0)(7[1-9])([0-9]{7})$/';
-
-        // Check if the phone number matches the pattern
-        return preg_match($pattern, $cleanedPhoneNumber);
-    }
-
-    public static function validateSriLankanNIC($nic) {
-        // Remove spaces and convert to uppercase
-        $cleanNIC = strtoupper(str_replace(' ', '', $nic));
-
-        // Regular expression patterns for Sri Lankan NIC numbers
-        $pattern1 = preg_match('/^[0-9]{9}[vVxX]$/', $cleanNIC);
-        $pattern2 = preg_match('/^\d{12}$/', $cleanNIC);
-
-        // Return true if the input matches either pattern, false otherwise
-        return $pattern1 || $pattern2;
-    }
-
-    public static function validateDOB($dob) {
-        $currentDate = new \DateTime();
-        $inputDOB = new \DateTime($dob);
-        $minAge = 18; // Minimum age required
-        // Calculate the difference in years between DOB and current date
-        $age = $inputDOB->diff($currentDate)->y;
-
-        // Check if the person is older than 18 years and not bigger than current date
-        return ($age >= $minAge && $inputDOB <= $currentDate);
-    }
-
-    public static function validateBloodGroup($bloodGroup) {
-        // Regular expression for blood group validation
-        $pattern = '/^(A|B|AB|O)[+-]$/';
-
-        // Check if the blood group matches the pattern
-        return preg_match($pattern, $bloodGroup);
-    }
-
-    public static function encryptedValue($value) {
-        $encryptedKey = "lkoipiydrvgf";
-        $iv = openssl_random_pseudo_bytes(16);
-        $encryptedValue = openssl_encrypt($value, 'aes-256-cbc', $encryptedKey, 0, $iv);
-        return base64_encode($iv . $encryptedValue);
-    }
-
-    public static function decryptedValue($value) {
-        $encryptedKey = "lkoipiydrvgf";
-        $data = base64_decode($value);
-        $iv = substr($data, 0, 16);
-        $encryptedValue = substr($data, 16);
-        return openssl_decrypt($encryptedValue, 'aes-256-cbc', $encryptedKey, 0, $iv);
-    }
 
 }
