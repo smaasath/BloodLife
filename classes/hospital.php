@@ -78,7 +78,7 @@ class hospital {
         $this->districtId = $districtId;
     }
 
-public static function AddHospital( $name, $address, $contactNumber, $districtId, $email, $UserName, $password) {
+public static function AddHospital($name, $address, $contactNumber, $districtId, $email, $password) {
     try {
         $dbcon = new DbConnector();
         $con = $dbcon->getConnection();
@@ -97,8 +97,8 @@ public static function AddHospital( $name, $address, $contactNumber, $districtId
         if ($pstmt->rowCount() > 0) {
           echo 'Success.';
           $hospitalId = $con->lastInsertId();
-                User::AddUser($UserName, $password, $email, 3, null,null, $hospitalId);
-                self::SendMail($UserName, $password, $email, $name);
+                User::AddUser( $password, $email, 3, null,null, $hospitalId);
+                self::SendMail( $password, $email, $name);
         } else {
            echo 'Error';
         }
@@ -108,7 +108,7 @@ public static function AddHospital( $name, $address, $contactNumber, $districtId
 }
 
 
-public static function SendMail($UserName, $password, $email,$name) {
+public static function SendMail( $password, $email,$name) {
         // Create an instance; passing `true` enables exceptions
 
         require '../mail/Exception.php';
@@ -133,7 +133,6 @@ public static function SendMail($UserName, $password, $email,$name) {
         $mail->Subject = 'Donor Registration';
         $message = "Dear ".$name.",<br>";
         $message .= "Welcome to BloodLife! , your account has been successfully created."."<br>";
-        $message .= "        Your username:".$UserName.",<br>";
         $message .= "        Your Password: ".$password.",<br>";
         
 
