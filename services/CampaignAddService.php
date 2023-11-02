@@ -6,37 +6,103 @@
  */
 
 namespace classes;
-require '../classes/Campaign.php';
-require '../classes/district.php';
 
-
+require_once '../classes/Campaign.php';
+require_once  '../classes/district.php';
+require_once  '../classes/User.php';
+require_once  '../classes/Validation.php';
 use classes\district;
 use classes\campaign;
+use classes\User;
+use classes\Validation;
 
+
+// $districtId = filter_var($_POST['districtId'],FILTER_SANITIZE_NUMBER_INT);
+// $organizerId  =filter_var( $_POST['organizerId'],FILTER_SANITIZE_NUMBER_INT);
+//$bloodBankId = filter_var($_POST['bloodBankId'],FILTER_SANITIZE_NUMBER_INT);
+
+//$districtId = district::getDistrictIDDD($district, $division);
+//echo $campaignId  ;
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
-    $Title = filter_var($_POST['Title'],FILTER_SANITIZE_NUMBER_INT);
-    $address = filter_var($_POST['address'],FILTER_SANITIZE_STRING);
-    $startDate = filter_var($_POST['startDate'],FILTER_SANITIZE_STRING);
-    $endDate = filter_var( $_POST['endDate'],FILTER_SANITIZE_STRING);
-    $review = filter_var($_POST['review'],FILTER_SANITIZE_STRING);
-    $status= filter_var($_POST['status'],FILTER_SANITIZE_STRING);
-   // $districtId = filter_var($_POST['districtId'],FILTER_SANITIZE_NUMBER_INT);
-   // $organizerId  =filter_var( $_POST['organizerId'],FILTER_SANITIZE_NUMBER_INT);
-    //$bloodBankId = filter_var($_POST['bloodBankId'],FILTER_SANITIZE_NUMBER_INT);
-    
-//$districtId = district::getDistrictIDDD($district, $division);
-//echo $campaignId  ;
+    if (isset(
+        $_POST["Title"],
+        $_POST["address"],
+        $_POST["startDate"],
+        $_POST["endDate"],
+        $_POST["district"],
+        $_POST["division"],
+        $_POST["token"],
+    )) {
+
+        //empty value check
+        if (
+            !empty($_POST["Title"]) && ($_POST["address"]) && ($_POST["startDate"]) &&
+            ($_POST["endDate"])  &&
+            ($_POST["district"]) && ($_POST["division"]) && ($_POST["token"])
+        ) {
+
+            // sanitizing the inputs
+
+            $Title = filter_var($_POST['Title'], FILTER_SANITIZE_STRING);
+            $address = filter_var($_POST['address'], FILTER_SANITIZE_STRING);
+            $startDate = filter_var($_POST['startDate'], FILTER_SANITIZE_STRING);
+            $endDate = filter_var($_POST['endDate'], FILTER_SANITIZE_STRING);
+            $district = filter_var($_POST['district'], FILTER_SANITIZE_STRING);
+            $division = filter_var($_POST['division'], FILTER_SANITIZE_STRING);
+           $token= filter_var($_POST['token'], FILTER_SANITIZE_STRING);
 
 
 
 
+            //create user object with token
+            $user = new User(null, null, null, null, null, $token, null, null, null, null);
+
+            //validations
+           $validateName = Validation::validateLettersLength($Title,6);
+           $validateAddress = Validation::validateLettersLength($address,6);
+            $validateDates = Validation::validateChamDate($startDate, $endDate);
+            $districtId = district::getDistrictIDDD($district,$division);
+
+            $validateToken = $user->validateToken();
+            $bloodBankId = $user->getBloodBankId();
+
+            //token and bloodbank id checking
+            if ($validateToken && $bloodBankId != null) {
 
 
-    
-campaign::AddCampaign($Title, $address, $startDate, $endDate, $review, $status);
+                //email,phonenumber,nic,dob,bloodgroup valitaion check
+                if ($validateDates   && $validateName &&   $validateAddress ) {
+                  
 
+                        //create Campign object
+                        $campaign  = new campaign(null, $Title, $address, $startDate, $endDate,null, "Active", $districtId, $bloodBankId);
+                        $status = $campaign->AddCampaign() ? 1 : 2 ;          
+              
+                } else {
+                    //check status for valitations
+                    $status = !$validateDates ? 3 : (!$validateName ? 4 : (!$validateAddress ? 5 : 6));
+                }
+            } else {
+                //status for not valid token
+                $status = 7;
+            }
+        } else {
+            //status for empty value
+            $status = 8;
+        }
+    } else {
+        //status for isset value
+        $status = 9;
+    }
+} else {
+
+    echo "Invalid request method";
 }
+
+echo $status;
+
+

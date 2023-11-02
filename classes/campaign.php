@@ -118,45 +118,6 @@ class campaign {
     }
 
 
-    /*
-    public static function AddCampaign() {
-
-    try {
-        $dbcon = new DbConnector();
-        $con = $dbcon->getConnection();
-
-        $query = "INSERT INTO `campaigntable` (`campaignId`,`Title`, `address`, `startDate`, `endDate`, `review`, `status`, `districtId`, `bloodBankId`) 
-        VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?);";
-  //$pstmt->bindValue(1, $this->name, PDO::PARAM_STR);
-
-
-
-$pstmt = $con->prepare($query);
-$pstmt->bindValue(1, $this->Title, PDO::PARAM_STR);
-$pstmt->bindValue(2, $this->address, PDO::PARAM_STR );
-$pstmt->bindValue(3, $this-> startDate, PDO::PARAM_STR);
-$pstmt->bindValue(4, $this-> endDate, PDO::PARAM_STR);
-$pstmt->bindValue(5, $this->review, PDO::PARAM_STR);
-$pstmt->bindValue(6, $this->status, PDO::PARAM_STR);
-//$pstmt->bindValue(7, $districtId);
-//$pstmt->bindValue(8, $organizerId);
-//$pstmt->bindValue(8, $bloodBankId);
-
-
-
-        $pstmt->execute();
-
-        if ($pstmt->rowCount() > 0) {
-            echo 'Success.';
-        } else {
-            echo 'Error';
-        }
-    } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage();
-    }
-}$Title, $address, $startDate, $endDate, $review, $status
-
-*/
 
 public function AddCampaign() {
     try {
@@ -186,8 +147,15 @@ public function AddCampaign() {
            
 
 
-
-
+function is_valid_age($age) {
+    if (is_numeric($age)) {
+        $age = (int)$age;
+        if ($age >= 0 && $age <= 150) {  // Assuming a valid age range between 0 and 150
+            return true;
+        }
+    }
+    return false;
+}
 
 
 

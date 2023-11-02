@@ -1,9 +1,8 @@
-
 <?php
 
 use classes\campaign;
 
-$campaignId = 1;
+$token = "12b378738a1a6be3bacea473fe9e3d2fbfce8e678d514e1d943";
 ?>
 
 <!DOCTYPE html>
@@ -12,65 +11,66 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to edit this template
 -->
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="../../CSS/Table.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-        <title></title>
 
-        <style>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../CSS/Table.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title></title>
 
-            .centered {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-            }
-        </style>
-
-
+    <style>
+        .centered {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
 
 
 
 
 
-    </head>
-    <body>
-
-        <!-- nav bar start -->
-        <div class="sticky-top bg-white shadownav" style="height: 50px;">
-            <div class="row m-0 d-flex">
-                <div class="col-8">
-
-                </div>
 
 
-                <div class="col-4">
-                    <div class="row align-items-center">
-                        <div class="col-2 mb-2">
+</head>
 
-                        </div>
-                        <div class="col-2 mb-2">
+<body>
 
-                        </div>
-                        <div class="col-2 mb-2">
-
-                        </div>
-                        <div class="col-6 mt-2 	d-none d-xl-block">
-                            <b>Jaffna Blood Bank</b>
-                            <p style="font-size: 10px;">Blood Bank</p>
-                        </div>
-                    </div>
-
-                </div>
-
+    <!-- nav bar start -->
+    <div class="sticky-top bg-white shadownav" style="height: 50px;">
+        <div class="row m-0 d-flex">
+            <div class="col-8">
 
             </div>
+
+
+            <div class="col-4">
+                <div class="row align-items-center">
+                    <div class="col-2 mb-2">
+
+                    </div>
+                    <div class="col-2 mb-2">
+
+                    </div>
+                    <div class="col-2 mb-2">
+
+                    </div>
+                    <div class="col-6 mt-2 	d-none d-xl-block">
+                        <b>Jaffna Blood Bank</b>
+                        <p style="font-size: 10px;">Blood Bank</p>
+                    </div>
+                </div>
+
+            </div>
+
+
         </div>
-        <!-- nav bar end -->
+    </div>
+    <!-- nav bar end -->
 
 
-<!--
+    <!--
        <div class="container">
             <img src="https://assets.telegraphindia.com/telegraph/2022/Jan/1643137545_blood.jpg" alt="Blood" width="100%" height="200">
 
@@ -81,35 +81,38 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         </div>
         -->
 
-    <center><h1> BL Campaign </h1></center>
+    <center>
+        <h1> BL Campaign </h1>
+    </center>
 
     <div class="p-5">
 
 
-       <!-- <div class="rounded-top-4 p-0 border border-dark-subtle">
+        <!-- <div class="rounded-top-4 p-0 border border-dark-subtle">
             <div class="row align-items-center">
         
 
 
                // <?php
-           // if (isset($_GET["status"]) && !empty($_GET["status"])) {
-               // $status = campaign::decryptedValue($_GET["status"]);
+                    // if (isset($_GET["status"]) && !empty($_GET["status"])) {
+                    // $status = campaign::decryptedValue($_GET["status"]);
 
-                
-           // }
-           // ?>
+
+                    // }
+                    // 
+                    ?>
             -->
-            <div class="rounded-top-4 p-0 border border-dark-subtle">
-                <div class="row align-items-center">
-                    <!-- Search input -->
-                    <div class="col-3">
-                        <div class="input-group rounded p-3">
-                            <input type="search" class="form-control rounded" placeholder="campaignID" aria-label="Search" aria-describedby="search-addon">
-                        </div>
+        <div class="rounded-top-4 p-0 border border-dark-subtle">
+            <div class="row align-items-center">
+                <!-- Search input -->
+                <div class="col-3">
+                    <div class="input-group rounded p-3">
+                        <input type="search" class="form-control rounded" placeholder="campaignID" aria-label="Search" aria-describedby="search-addon">
                     </div>
+                </div>
 
-                    <!-- Blood Group filter -->
-                    <!--
+                <!-- Blood Group filter -->
+                <!--
                     <div class="col-3">
                         <select class="form-control form-control-lg" name="bloodGroup">
                             <option selected>Select your Blood Group</option>
@@ -128,7 +131,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
 
-                <div class="col-3"> 
+                <div class="col-3">
                     <select class="form-select" aria-label="Default select example">
                         <option selected>Date</option>
                         <option value="1">12/09/2023</option>
@@ -137,7 +140,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     </select>
                 </div>
 
-                <div class="col-2"> 
+                <div class="col-2">
                     <select class="form-select" aria-label="Default select example">
                         <option selected>Location</option>
                         <option value="1">Jaffna</option>
@@ -145,8 +148,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <option value="3">Mannar</option>
                     </select>
                 </div>
-                <div class="col-2"> 
-                    <button type="button"  class="btn btn-primary" onclick="AddCampaign()" >Add Campaign</button>
+                <div class="col-2">
+                    <button type="button" class="btn btn-primary" onclick="AddCampaign()">Add Campaign</button>
 
 
 
@@ -207,14 +210,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                         <!-- Table row -->
 
-                    </table> 
+                    </table>
 
                 </div>
 
                 <!-- Table Head -->
 
 
-            </div> </div>
+            </div>
+        </div>
 
         <!-- Table -->
         <!-------------------------------------------->
@@ -226,9 +230,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
         <!--CampaignAddDetails-->
         <!-- Modal -->
-        <form action="../services/CampaignAddService.php" method="POST" enctype="multipart/form-data"> 
-            
-            
+        <form action="../services/CampaignAddService.php" method="POST" enctype="multipart/form-data">
+
+
             <div class="modal fade" id="AddCampaign">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -243,7 +247,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                     <h6>Campaign Name</h6>
                                 </div>
                                 <div class="col-9">
-                                    <input type="text"  name="Title" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    <input type="text" name="Title" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                                 </div>
                             </div>
 
@@ -253,7 +257,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                     <h6>start Date</h6>
                                 </div>
                                 <div class="col-9">
-                                    <input type="date"  name="startDate" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    <input type="date" name="startDate" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                                 </div>
                             </div>
 
@@ -263,7 +267,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                     <h6>End Date</h6>
                                 </div>
                                 <div class="col-9">
-                                    <input type="date"  name="endDate" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    <input type="date" name="endDate" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                                 </div>
                             </div>
 
@@ -273,39 +277,53 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                     <h6>Address</h6>
                                 </div>
                                 <div class="col-9">
-                                    <input type="text "  name="address" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    <input type="text " name="address" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                                 </div>
                             </div>
 
 
                             <div class="row align-items-center pb-3">
                                 <div class="col-3">
-                                    <h6>Review</h6>
+                                    <h6>Location</h6>
                                 </div>
                                 <div class="col-9">
-                                    <input type="text"  name="review" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <select name="district" class="form-control form-control-lg" id="district" onchange="functionTest(this.value)">
+                                                <option>Select District</option>
+                                                <?php
+                                                require '../classes/district.php';
+
+                                                use classes\district;
+
+                                                $dataArray = district::getAllDistrict(); // Retrieve district data using the "getAllDistrict()" method
+
+                                                foreach ($dataArray as $district) {
+                                                ?>
+
+                                                    <option value="<?php echo $district['district']; ?>"><?php echo $district['district']; ?></option>
+                                                <?php
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
+                                        <div class="col-6">
+
+                                            <select name="division" class="form-control form-control-lg" id="divisionDropDown" onchange="getBloodBank(this.value)">
+                                                <option>Select Division</option>
+
+                                            </select>
+                                        </div>
+
+                                    </div>
                                 </div>
                             </div>
 
 
-                            <div class="row align-items-center pb-3">
-                                <div class="col-3">
-                                    <h6>Status</h6>
-                                </div>
-                                <div class="col-9">
-                                    <select class="form-control form-control-lg" name="status">
-                                        <option selected> </option>
-                                        <option value="Select">Select</option>
-                                        <option value="NotSelect"> NotSelect</option>
-
-
-                                    </select>
-                                </div>
-                            </div>
 
                         </div>
 
-
+                        <input type="hidden" name="token" value="<?php echo $token; ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
 
 
                         <div class="modal-footer">
@@ -317,409 +335,409 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     </div>
                 </div>
             </div>
-       
-        <!--CampaignAddDetails-->
 
-
-
-        
-</form>
+            <!--CampaignAddDetails-->
 
 
 
 
+        </form>
 
 
 
-    <!-- --------------------------------------Campaign Edit------------------------------------------------------------------------ -->
-    <!-----------1st pop-up------------------------Campaign Details---------------->
-    <div class="modal fade" id="CampaignEdit">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Campaign Edit Details</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
 
-                <div class="modal-body">
-                                        
 
-                    
-                    
-                    
-                    <div class="row align-items-center pb-3">
-                                        <div class="col-3">
-                                            <h6>Location</h6>
-                                        </div>
-                                        <div class="col-9">
-                                            <div class="row">
-                                                <div class="col-6">
-                                                    <select name="district" class="form-control form-control-lg" id="district" onchange="functionTest(this.value)">
-                                                        <option>Select District</option>
-                                                        <?php
-                                                        require '../classes/district.php';
 
-                                                        use classes\district;
 
-$dataArray = district::getAllDistrict(); // Retrieve district data using the "getAllDistrict()" method
+        <!-- --------------------------------------Campaign Edit------------------------------------------------------------------------ -->
+        <!-----------1st pop-up------------------------Campaign Details---------------->
+        <div class="modal fade" id="CampaignEdit">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Campaign Edit Details</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
 
-                                                        foreach ($dataArray as $district) {
-                                                            ?>
+                    <div class="modal-body">
 
-                                                            <option  value="<?php echo $district['district']; ?>"><?php echo $district['district']; ?></option>
-                                                            <?php
-                                                        }
-                                                        ?>
-                                                    </select> 
-                                                </div>
-                                                <div class="col-6">
 
-                                                    <select name="division" class="form-control form-control-lg" id="divisionDropDown" onchange="getBloodBank(this.value)">
-                                                        <option>Select Division</option> 
 
-                                                    </select>  
-                                                </div>
 
-                                            </div>
-                                        </div>
+
+                        <div class="row align-items-center pb-3">
+                            <div class="col-3">
+                                <h6>Location</h6>
+                            </div>
+                            <div class="col-9">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <select name="district" class="form-control form-control-lg" id="district" onchange="functionTest(this.value)">
+                                            <option>Select District</option>
+                                            <?php
+                                            //   require '../classes/district.php';
+
+                                            //  use classes\district;
+
+                                            $dataArray = district::getAllDistrict(); // Retrieve district data using the "getAllDistrict()" method
+
+                                            foreach ($dataArray as $district) {
+                                            ?>
+
+                                                <option value="<?php echo $district['district']; ?>"><?php echo $district['district']; ?></option>
+                                            <?php
+                                            }
+                                            ?>
+                                        </select>
                                     </div>
-  
-                    
-                    
-                    
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#OrganizerEdit">Organizer Details</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--Camp Edit-->
+                                    <div class="col-6">
 
+                                        <select name="division" class="form-control form-control-lg" id="divisionDropDown" onchange="getBloodBank(this.value)">
+                                            <option>Select Division</option>
 
+                                        </select>
+                                    </div>
 
-    <!--OrganizerEdit-->
-
-    <div class="modal fade" id="OrganizerEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModal2">Organizer Details</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="/action_page.php">
-                        <div class="row align-items-center pb-3">
-                            <div class="col-3">
-                                <h6> Name</h6>
-                            </div>
-                            <div class="col-9">
-                                <input type="text"  name="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="row align-items-center pb-3">
-                            <div class="col-3">
-                                <h6>Address</h6>
-                            </div>
-                            <div class="col-9">
-                                <input type="text "  name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                            </div>
-                        </div>
-                        <div class="row align-items-center pb-3">
-                            <div class="col-3">
-                                <h6>District</h6>
-                            </div>
-                            <div class="col-9">
-                                <select class="form-control form-control-lg">
-                                    <option selected>Select your District</option>
-                                    <option value="1">Mannar</option>
-                                    <option value="2"> </option>
-                                    <option value="3"> </option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="row align-items-center pb-3">
-                            <div class="col-3">
-                                <h6> Contact No</h6>
-                            </div>
-                            <div class="col-9">
-                                <input type="text"  name="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                            </div>
-                        </div>
-                        <div class="row align-items-center pb-3">
-                            <div class="col-3">
-                                <h6> Email</h6>
-                            </div>
-                            <div class="col-9">
-                                <input type="text"  name="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                            </div>
-                        </div>
-                        <div class="row align-items-center pb-3">
-                            <div class="col-3">
-                                <h6> Age</h6>
-                            </div>
-                            <div class="col-9">
-                                <input type="text"  name="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                            </div>
-                        </div>
-                        <div class="row align-items-center pb-3">
-                            <div class="col-3">
-                                <h6> NIC</h6>
-                            </div>
-                            <div class="col-9">
-                                <input type="text"  name="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                            </div>
-                        </div>
+                        <input type="hidden" name="token" value="<?php echo $token; ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
 
 
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Delete</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="EditCamp()">Back</button>
-                    <button type="button" class="btn btn-primary">Save </button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--OrganizerEdit-->
-
-
-
-
-    <!--------------------------------------------------->
-    <!-------------------Review-------------------------------->
-
-    <div class="modal fade" id="Review" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="Review">Review Campaign</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Percentege</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder=""><br>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#OrganizerEdit">Organizer Details</button>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Back</button>
+            </div>
+        </div>
+        <!--Camp Edit-->
 
+
+
+        <!--OrganizerEdit-->
+
+        <div class="modal fade" id="OrganizerEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModal2">Organizer Details</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/action_page.php">
+                            <div class="row align-items-center pb-3">
+                                <div class="col-3">
+                                    <h6> Name</h6>
+                                </div>
+                                <div class="col-9">
+                                    <input type="text" name="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                </div>
+                            </div>
+
+                            <div class="row align-items-center pb-3">
+                                <div class="col-3">
+                                    <h6>Address</h6>
+                                </div>
+                                <div class="col-9">
+                                    <input type="text " name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                </div>
+                            </div>
+                            <div class="row align-items-center pb-3">
+                                <div class="col-3">
+                                    <h6>District</h6>
+                                </div>
+                                <div class="col-9">
+                                    <select class="form-control form-control-lg">
+                                        <option selected>Select your District</option>
+                                        <option value="1">Mannar</option>
+                                        <option value="2"> </option>
+                                        <option value="3"> </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row align-items-center pb-3">
+                                <div class="col-3">
+                                    <h6> Contact No</h6>
+                                </div>
+                                <div class="col-9">
+                                    <input type="text" name="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                </div>
+                            </div>
+                            <div class="row align-items-center pb-3">
+                                <div class="col-3">
+                                    <h6> Email</h6>
+                                </div>
+                                <div class="col-9">
+                                    <input type="text" name="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                </div>
+                            </div>
+                            <div class="row align-items-center pb-3">
+                                <div class="col-3">
+                                    <h6> Age</h6>
+                                </div>
+                                <div class="col-9">
+                                    <input type="text" name="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                </div>
+                            </div>
+                            <div class="row align-items-center pb-3">
+                                <div class="col-3">
+                                    <h6> NIC</h6>
+                                </div>
+                                <div class="col-9">
+                                    <input type="text" name="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                </div>
+                            </div>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">Delete</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="EditCamp()">Back</button>
+                        <button type="button" class="btn btn-primary">Save </button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>  
+        <!--OrganizerEdit-->
 
 
 
 
+        <!--------------------------------------------------->
+        <!-------------------Review-------------------------------->
 
+        <div class="modal fade" id="Review" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="Review">Review Campaign</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
 
-    <!-- --------------------------------------Campaign View------------------------------------------------------------------------ -->
-    <!--CampDetailsView-->
-    <!-- 1st pop-up -->
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Percentege</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder=""><br>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Back</button>
 
-    <div class="modal fade" id="ChampView" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="Save">View Details</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
                 </div>
-                <div class="modal-body">
-                    <form action="/action_page.php">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="card mb-4">
-                                        <div class="card-body">
-                                            <div class="row mb-3">
-                                                <div class="col-sm-4">
-                                                    <strong>Hospital ID:</strong>
+            </div>
+        </div>
+
+
+
+
+
+
+        <!-- --------------------------------------Campaign View------------------------------------------------------------------------ -->
+        <!--CampDetailsView-->
+        <!-- 1st pop-up -->
+
+        <div class="modal fade" id="ChampView" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="Save">View Details</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/action_page.php">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card mb-4">
+                                            <div class="card-body">
+                                                <div class="row mb-3">
+                                                    <div class="col-sm-4">
+                                                        <strong>Hospital ID:</strong>
+                                                    </div>
+                                                    <div class="col-sm-8">
+                                                        <p class="text-muted mb-0">HS001</p>
+                                                    </div>
                                                 </div>
-                                                <div class="col-sm-8">
-                                                    <p class="text-muted mb-0">HS001</p>
+                                                <div class="row mb-3">
+                                                    <div class="col-sm-4">
+                                                        <strong>Hospital Name:</strong>
+                                                    </div>
+                                                    <div class="col-sm-8">
+                                                        <p class="text-muted mb-0">Jaffna Central Hospital</p>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="row mb-3">
-                                                <div class="col-sm-4">
-                                                    <strong>Hospital Name:</strong>
+                                                <div class="row mb-3">
+                                                    <div class="col-sm-4">
+                                                        <strong>Address:</strong>
+                                                    </div>
+                                                    <div class="col-sm-8">
+                                                        <p class="text-muted mb-0">Hospital Road, Jaffna</p>
+                                                    </div>
                                                 </div>
-                                                <div class="col-sm-8">
-                                                    <p class="text-muted mb-0">Jaffna Central Hospital</p>
+                                                <div class="row mb-3">
+                                                    <div class="col-sm-4">
+                                                        <strong>District:</strong>
+                                                    </div>
+                                                    <div class="col-sm-8">
+                                                        <p class="text-muted mb-0">Jaffna</p>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="row mb-3">
-                                                <div class="col-sm-4">
-                                                    <strong>Address:</strong>
+                                                <div class="row mb-3">
+                                                    <div class="col-sm-4">
+                                                        <strong>Phone No:</strong>
+                                                    </div>
+                                                    <div class="col-sm-8">
+                                                        <p class="text-muted mb-0">077 1028754</p>
+                                                    </div>
                                                 </div>
-                                                <div class="col-sm-8">
-                                                    <p class="text-muted mb-0">Hospital Road, Jaffna</p>
+                                                <div class="row mb-3">
+                                                    <div class="col-sm-4">
+                                                        <strong>Mobile:</strong>
+                                                    </div>
+                                                    <div class="col-sm-8">
+                                                        <p class="text-muted mb-0">(098) 765-4321</p>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="row mb-3">
-                                                <div class="col-sm-4">
-                                                    <strong>District:</strong>
-                                                </div>
-                                                <div class="col-sm-8">
-                                                    <p class="text-muted mb-0">Jaffna</p>
-                                                </div>
-                                            </div>
-                                            <div class="row mb-3">
-                                                <div class="col-sm-4">
-                                                    <strong>Phone No:</strong>
-                                                </div>
-                                                <div class="col-sm-8">
-                                                    <p class="text-muted mb-0">077 1028754</p>
-                                                </div>
-                                            </div>
-                                            <div class="row mb-3">
-                                                <div class="col-sm-4">
-                                                    <strong>Mobile:</strong>
-                                                </div>
-                                                <div class="col-sm-8">
-                                                    <p class="text-muted mb-0">(098) 765-4321</p>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-4">
-                                                    <strong>Email:</strong>
-                                                </div>
-                                                <div class="col-sm-8">
-                                                    <p class="text-muted mb-0">CentralHospitalJaffna@gmail.com</p>
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <strong>Email:</strong>
+                                                    </div>
+                                                    <div class="col-sm-8">
+                                                        <p class="text-muted mb-0">CentralHospitalJaffna@gmail.com</p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </form>
-                </div>
+                        </form>
+                    </div>
 
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal7">
-                        Organizer Details
-                    </button>
-                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal8">
-                        Donor Details
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!--CampDetailsView-->
-
-
-
-    <!--OrganizerDetailsview-->
-    <!-- Modal -->
-
-    <div class="modal fade" id="exampleModal7" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModal7">Organizer Details</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <table class="table">
-                        <thead class="thead-light">
-                            <tr>
-                                <th scope="col"> </th>
-                                <th scope="col">OrganizerID</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Contact_NO</th>
-                                <th scope="col">Distict</th>
-                                <th scope="col">Email</th>
-
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>D001</td>
-                                <td>Mani</td>
-                                <td>07722223</td>
-                                <td>Jaffna</td>
-                                <td>M@gmail.com</td>
-
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>D001</td>
-                                <td>Mani</td>
-                                <td>07722223</td>
-                                <td>Jaffna</td>
-                                <td>M@gmail.com</td>
-
-                            </tr>
-                        </tbody>
-                    </table>                    
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="Save()">Back</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal7">
+                            Organizer Details
+                        </button>
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal8">
+                            Donor Details
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>  
+
+        <!--CampDetailsView-->
 
 
 
-    <!--Donorview-->
-    <!-- pop-up3-->
+        <!--OrganizerDetailsview-->
+        <!-- Modal -->
 
-    <div class="modal fade" id="exampleModal8" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModal7">Donor Details</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
+        <div class="modal fade" id="exampleModal7" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModal7">Organizer Details</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col"> </th>
+                                    <th scope="col">OrganizerID</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Contact_NO</th>
+                                    <th scope="col">Distict</th>
+                                    <th scope="col">Email</th>
 
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>D001</td>
+                                    <td>Mani</td>
+                                    <td>07722223</td>
+                                    <td>Jaffna</td>
+                                    <td>M@gmail.com</td>
 
-                    <table class="table">
-                        <thead class="thead-light">
-                            <tr>
-                                <th scope="col"> </th>
-                                <th scope="col">DonorID</th>
-                                <th scope="col">Last Donation Date</th>
-                                <th scope="col">Donation Type</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>D001</td>
-                                <td>07/12/2022</td>
-                                <td>Blood Bank</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>D002</td>
-                                <td>23/09/2011</td>
-                                <td>Campaign</td>
-                            </tr>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>D001</td>
+                                    <td>Mani</td>
+                                    <td>07722223</td>
+                                    <td>Jaffna</td>
+                                    <td>M@gmail.com</td>
 
-                        </tbody>
-                    </table>     
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="Save()">Back</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="Save()">Back</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>  
-    <!--------------------------------------------------------------------------------------------------------------->
+
+
+
+        <!--Donorview-->
+        <!-- pop-up3-->
+
+        <div class="modal fade" id="exampleModal8" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModal7">Donor Details</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+
+                        <table class="table">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col"> </th>
+                                    <th scope="col">DonorID</th>
+                                    <th scope="col">Last Donation Date</th>
+                                    <th scope="col">Donation Type</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>D001</td>
+                                    <td>07/12/2022</td>
+                                    <td>Blood Bank</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>D002</td>
+                                    <td>23/09/2011</td>
+                                    <td>Campaign</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="Save()">Back</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--------------------------------------------------------------------------------------------------------------->
 
 
 
@@ -728,8 +746,9 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
 
 
 
-    <?php
-    // put your code here
-    ?>
+        <?php
+        // put your code here
+        ?>
 </body>
+
 </html>
