@@ -9,7 +9,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <title></title>
     </head>
     <body>
-        <form action="DonorAddService.php" method="POST">
+        <form action="Hospitalservices.php" method="POST">
             <input type="text" name="VerificationCode" value="" />
             <input type="submit" value="submit" />
         </form>

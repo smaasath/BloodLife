@@ -5,6 +5,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 -->
 <?php
 $hospitalId = 1;
+$token="abcde";
 
 require_once '../classes/hospital.php';
 require_once '../classes/district.php';
@@ -332,9 +333,10 @@ use classes\district;
                             </div>
                         </div>
                         
-                        
+                        <input type="hidden" name="token" value="<?php echo $token; ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
 
-                        <input type ="hidden" name ="hospitalId" value="<?php echo $hospitalId; ?> "aria-label="Sizing example input" aria-discribedby="inputGroup-sizing-sm" required>
+
+                        <!-- <input type ="hidden" name ="hospitalId" value="<?php echo $hospitalId; ?> "aria-label="Sizing example input" aria-discribedby="inputGroup-sizing-sm" required> -->
 
                     </div>
 
