@@ -132,5 +132,25 @@ class Validation {
 
         // Return the generated password
         return $password;
+
     }
+
+public static function validateChamDate($startDate,$endDate){
+    $currentDate = new \DateTime();  
+    $inputstartDate = new \DateTime($startDate);
+    $inputendDate = new \DateTime($endDate);
+   
+    
+    return ($inputstartDate>=$currentDate && $inputendDate>=$inputstartDate);
+
+}
+
+
+public static function validateLettersLength($Title,$length) {
+    $title = trim($Title); // Remove leading and trailing whitespace
+    $title_length = strlen($Title);
+    //$address_length =strlen($address)
+    return $title_length >= $length;
+}
+
 }
