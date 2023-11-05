@@ -17,24 +17,25 @@ use classes\district;
 $bloodbankid = 1;
 ?>
 <?php if (isset($_GET['status'])) {
-                        if ($_GET['status'] == 1) {
-                            echo 'enter all values!!';
-                        } elseif ($_GET['status'] == 2) {
-                            echo '<script>
-                            Swal.fire({
-                                position: "top-end",
-                                icon: "success",
-                                title: "Your work has been saved",
-                                showConfirmButton: false,
-                                timer: 1500
-                            });
-                        </script>';
-                        } elseif ($_GET['status'] == 3) {
-                            echo 'enter 3';
-                        } elseif ($_GET['status'] == 4) {
-                            echo 'enter 4';
-                        }
-                    } ?>
+    if ($_GET['status'] == 1) {
+        echo 'enter all values!!';
+    } elseif ($_GET['status'] == 2) {
+        echo '<script>
+            console.log("saalu");
+            document.addEventListener("DOMContentLoaded", function () {
+                Swal.fire(
+                    "Good job!",
+                    "You clicked the button!",
+                    "success"
+                );
+            });
+        </script>';
+    } elseif ($_GET['status'] == 3) {
+        echo 'enter 3';
+    } elseif ($_GET['status'] == 4) {
+        echo 'enter 4';
+    }
+} ?>
 <html>
 
 <head>
@@ -65,7 +66,7 @@ $bloodbankid = 1;
 
                     </div>
                     <div class="col-6 mt-2 	d-none d-xl-block">
-                        <b>General Hspital</b>
+                        <b>General Hospital</b>
                         <p style="font-size: 10px;">Hospital</p>
                     </div>
                 </div>
@@ -83,7 +84,7 @@ $bloodbankid = 1;
         <div class="row">
             <div class="card1 col p-3 m-1">
                 <div class="row">
-                    
+
                     <div class="col-3 p-0 m-0">
                         <div class="container p-3">
                             <div class="stockcon" style="height: 120px;background-color: white">
@@ -211,7 +212,7 @@ $bloodbankid = 1;
                     <div class="row align-items-center">
                         <div class="col-3">
                             <div class="input-group rounded p-3">
-                                <input type="search" class="form-control rounded" placeholder="Search ID" aria-label="Search" aria-describedby="search-addon"  oninput="teeest(this.value)">
+                                <input type="search" class="form-control rounded" placeholder="Search ID" aria-label="Search" aria-describedby="search-addon" oninput="teeest(this.value)">
 
                             </div>
                         </div>
@@ -251,7 +252,7 @@ $bloodbankid = 1;
                             <th class="col-1 bgcol p-2" style="text-align: center;">BloodID</th>
                             <th class="col-2 bgcol p-2" style="text-align: center;">BloodGroup</th>
                             <th class="col-2 bgcol p-2" style="text-align: center;">ExpiryDate</th>
-                            <th class="col-2 bgcol p-2" style="text-align: center;">Location</th>
+                            <!-- <th class="col-2 bgcol p-2" style="text-align: center;">Location</th> -->
                             <th class="col-2 bgcol p-2" style="text-align: center;">Quantity(ml)</th>
                             <th class="col-2 bgcol p-2" style="text-align: center;">Status</th>
                             <th class="col-1 bgcol p-2" style="text-align: center;">Action</th>
@@ -265,28 +266,27 @@ $bloodbankid = 1;
 
                         <tbody id="output">
 
-                    <?php
-                    $detailsArray =Bloodtable::showBloodPackets();
-                    ?>
-                <script>
-                    let array = <?php echo json_encode($detailsArray) ?>;
-                    let filterArray;
-                    showall(array);
+                            <?php
+                            $detailsArray = Bloodtable::showBloodPackets();
+                            ?>
+                            <script>
+                                let array = <?php echo json_encode($detailsArray) ?>;
+                                let filterArray;
+                                showall(array);
 
-                    function showall(array) {
-                        const detailsList = document.getElementById("output");
-                        detailsList.innerHTML = "";
-                        if (array === null || array.length === 0) {
-                            var htmlCode = `<tr><td colspan="12" style="text-align: center;color: red;" >No Results Found</td></tr>`;
-                            detailsList.innerHTML = htmlCode;
-                        } else {
-                            array.forEach((item) => {
+                                function showall(array) {
+                                    const detailsList = document.getElementById("output");
+                                    detailsList.innerHTML = "";
+                                    if (array === null || array.length === 0) {
+                                        var htmlCode = `<tr><td colspan="12" style="text-align: center;color: red;" >No Results Found</td></tr>`;
+                                        detailsList.innerHTML = htmlCode;
+                                    } else {
+                                        array.forEach((item) => {
 
-                                var htmlCode = ` <tr>
+                                            var htmlCode = ` <tr>
                         <td class="col-1">${item.bloodId}</td>
                         <td class="col-3">${item.bloodGroup}</td>
-                        <td class="col-2">${item.expiryDate}</td>
-                        <td class="col-3">${item.expiryDate}</td>                    
+                        <td class="col-2">${item.expiryDate}</td>                  
                         <td class="col-1">${item.quantity}</td>
                         <td class="col-1">${item.status}</td>
                         <td class="col-1">
@@ -301,50 +301,49 @@ $bloodbankid = 1;
                     </tr>`;
 
 
-                                var divElement = document.createElement("tr");
+                                            var divElement = document.createElement("tr");
 
 
-                                divElement.innerHTML = htmlCode;
+                                            divElement.innerHTML = htmlCode;
 
 
-                                detailsList.appendChild(divElement);
-                            });
-                        }
-                        ;
+                                            detailsList.appendChild(divElement);
+                                        });
+                                    };
 
-                    }
+                                }
 
-                    function teest(test) {
-                        if (test === "") {
-                            array = <?php echo json_encode($detailsArray) ?>;
-                            showall(array);
-                        } else {
-                            array = <?php echo json_encode($detailsArray) ?>;
-                            var testValue = test.toLowerCase();
-                            array = array.filter((item) => item.bloodGroup.toLowerCase().includes(testValue));
-                            showall(array);
-                        }
+                                function teest(test) {
+                                    if (test === "") {
+                                        array = <?php echo json_encode($detailsArray) ?>;
+                                        showall(array);
+                                    } else {
+                                        array = <?php echo json_encode($detailsArray) ?>;
+                                        var testValue = test.toLowerCase();
+                                        array = array.filter((item) => item.bloodGroup.toLowerCase().includes(testValue));
+                                        showall(array);
+                                    }
 
-                    }
+                                }
 
-                    function teeest(test) {
+                                function teeest(test) {
 
-                        var id = parseInt(test, 10);
+                                    var id = parseInt(test, 10);
 
-                        var testValue = test.toLowerCase();
+                                    var testValue = test.toLowerCase();
 
-                        filterArray = array.filter((item) => item.bloodId === id);
+                                    filterArray = array.filter((item) => item.bloodId === id);
 
 
-                        const detailsList = document.getElementById("output");
-                        detailsList.innerHTML = "";
-                        if (filterArray === null || filterArray.length === 0) {
-                            var htmlCode = `<tr><td colspan="12" style="text-align: center;color: red;">No Results Found</td></tr>`;
-                            detailsList.innerHTML = htmlCode;
-                        } else {
-                            filterArray.forEach((item) => {
+                                    const detailsList = document.getElementById("output");
+                                    detailsList.innerHTML = "";
+                                    if (filterArray === null || filterArray.length === 0) {
+                                        var htmlCode = `<tr><td colspan="12" style="text-align: center;color: red;">No Results Found</td></tr>`;
+                                        detailsList.innerHTML = htmlCode;
+                                    } else {
+                                        filterArray.forEach((item) => {
 
-                                var htmlCode = ` 
+                                            var htmlCode = ` 
                     <tr>
                     <td class="col-1">${item.bloodId}</td>
                         <td class="col-3">${item.bloodGroup}</td>
@@ -357,25 +356,22 @@ $bloodbankid = 1;
                     </tr>`;
 
 
-                                var divElement = document.createElement("tr");
+                                            var divElement = document.createElement("tr");
 
 
-                                divElement.innerHTML = htmlCode;
+                                            divElement.innerHTML = htmlCode;
 
 
-                                detailsList.appendChild(divElement);
+                                            detailsList.appendChild(divElement);
 
-                            });
-                        }
-
-
-                    }
+                                        });
+                                    }
 
 
+                                }
+                            </script>
 
-                </script>
-
-                </tbody>
+                        </tbody>
 
 
 
@@ -520,7 +516,10 @@ $bloodbankid = 1;
                 <?php
                 // put your code here
                 ?>
-                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@12"></script>
+
+                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+                <script src="sweetalert2.all.min.js"></script>
 
                 <script>
                     function sanitizeQuantity(inputField) {
