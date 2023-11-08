@@ -146,31 +146,36 @@ class district {
     }
 
     public static function getBloodBanks($district) {
-
         try {
             $dbcon = new DbConnector();
             $con = $dbcon->getConnection();
-
+    
             $query = "SELECT bloodbank.bloodBankId, bloodbank.bloodBankName
                       FROM bloodbank
                       JOIN district ON bloodbank.districtId = district.districtId
                       WHERE district.district = ?";
-
+    
             $pstmt = $con->prepare($query);
             $pstmt->bindValue(1, $district);
-
-            $pstmt->execute();
-
-            if ($pstmt->rowCount() > 0) {
-                
-                return self::rowToArray($pstmt);
+            
+            if ($pstmt->execute()) {
+                if ($pstmt->rowCount() > 0) {
+                    return self::rowToArray($pstmt);
+                } else {
+                    return false; // No records found
+                }
             } else {
+                // Handle query execution error
+                echo "Query execution error: " . print_r($pstmt->errorInfo(), true);
                 return false;
             }
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
+            return false;
         }
     }
+    
+    
 
     public static function rowToArray($pstmt) {
         $dataArray = array();

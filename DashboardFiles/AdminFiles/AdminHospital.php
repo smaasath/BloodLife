@@ -12,6 +12,8 @@ require_once '../classes/district.php';
 
 use classes\hospital;
 use classes\district;
+
+
 ?>
 
 <html>
@@ -76,6 +78,7 @@ use classes\district;
     <center><h1>Admin Hospital - Management</h1></center>
     <!-- Table -->
 
+    
     <div class="p-5">
 
 
@@ -114,6 +117,12 @@ use classes\district;
 
                 <div class="col-3" > 
                     <button type="button" class="btn btn-primary bgcol" onclick="AddHospital()" >Add Hospital </button>     
+                </div>
+
+                <div class="col-3" > 
+                    <button type="button" class="btn btn-primary bgcol" onclick="EditHospital()" data-bs-toggle="modal" data-bs-target="#editHospital">Edit Hospital</button>
+
+
                 </div>
 
             </div>
@@ -310,7 +319,12 @@ use classes\district;
                                 <h6>DS Division</h6>
                             </div>
                             <div class="col-9">
-                                <select name="division" class="form-control-sm form-control-sm" id="divisionDropDown" onchange="getBloodBank(this.value)">
+                                <select name="division" class="form-control-sm form-control-sm" id="divisionDropDown" onchange="getBloodBanks(this.value)">
+                                    <option>Select Division</option> 
+                                </select>
+                            </div>
+                            <div class="col-9">
+                                <select name="division" class="form-control-sm form-control-sm" id="divisionDropDown" onchange="getBloodBanks(this.value)">
                                     <option>Select Division</option> 
                                 </select>
                             </div>
@@ -407,26 +421,28 @@ use classes\district;
     </div>
     </div>-->
 
+   
 
 
-    <!--edit Hospital Details-->
+
+    <!--edit Hospital -->
     <!-- Modal -->
-    <div class="modal fade" id="editHospitalDetails">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="editHospitalDetails">Add Hospital</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="">
-
-                        <div class="row align-items-center pb-3">
+    <form action="../services/Hospitalservices.php" method="POST" enctype="multipart/form-data"> 
+        <div class="modal fade" id="editHospital">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="editHospital">Edit Hospital </h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                    <div class="row align-items-center pb-3">
                             <div class="col-3">
                                 <h6>Hospital ID</h6>
                             </div>
                             <div class="col-9">
-                                <input type="text"  name="hospitalId" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                <!-- <input type="text"  name="hospitalId " class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required> -->
+                                <input type="text" name="hospitalId" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value="" required>
                             </div>
                         </div>
                         <div class="row align-items-center pb-3">
@@ -434,69 +450,93 @@ use classes\district;
                                 <h6>Hospital Name</h6>
                             </div>
                             <div class="col-9">
-                                <input type="text"  name="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                <!-- <input type="text"  name="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required> -->
+                                <input type="text" name="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value="<?php echo $name; ?>" required>
+
                             </div>
-                        </div>                
+                        </div>
                         <div class="row align-items-center pb-3">
                             <div class="col-3">
                                 <h6>Address</h6>
                             </div>
                             <div class="col-9">
-                                <input type="text"  name="address" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                <!-- <input type="text"  name="address" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required> -->
+                                <input type="text" name="address" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value="<?php echo $address; ?>" required>
                             </div>
-                        </div>  
-                        <div class="row align-items-center pb-3">
+                        </div>
+                        
+                            <!-- <div class="row align-items-center pb-3">
                             <div class="col-3">
                                 <h6>District</h6>
                             </div>
                             <div class="col-9">
                                 <select name="district" class="form-control-sm form-control-sm" id="district" onchange="functionTest(this.value)">
                                     <option>Select District</option>
+                                    <?php
+                                    // $dataArray = district::getAllDistrict(); // Retrieve district data using the "getAllDistrict()" method
+
+                                    // foreach ($dataArray as $district) {
+                                        ?>
+
+                                        <option  value="<?php echo $district['district']; ?>"><?php echo $district['district']; ?></option>
+                                        <?php
+                                    // }
+                                    ?>
                                 </select>
                             </div>
-                        </div> 
+                        </div>
                         <div class="row align-items-center pb-3">
                             <div class="col-3">
                                 <h6>DS Division</h6>
                             </div>
                             <div class="col-9">
-                                <select name="division" class="form-control-sm form-control-sm" id="divisionDropDown" onchange="getBloodBank(this.value)">
+                                <select name="division" class="form-control-sm form-control-sm" id="divisionDropDown" onchange="getBloodBanks(this.value)">
                                     <option>Select Division</option> 
                                 </select>
                             </div>
-                        </div>   
+                        </div> -->
                         <div class="row align-items-center pb-3">
                             <div class="col-3">
                                 <h6>Contact No</h6>
                             </div>
                             <div class="col-9">
-                                <input type="tel"  name="contactNumber" class="form-control" placeholder="+94" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                <!-- <input type="text" name="contactNumber" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"  required id="contactNumberInput" oninput="validateMobileNumber(this.value)"> -->
+                                <input type="text" name="contactNumber" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value="<?php echo $contactNumber; ?>" required id="contactNumberInput" oninput="validateMobileNumber(this.value)">
+                <!-- Rest of your form fields -->
+                                <p id="validationResult"></p>
                             </div>
-                        </div> 
+                        </div>
+
                         <div class="row align-items-center pb-3">
                             <div class="col-3">
                                 <h6>Email</h6>
                             </div>
                             <div class="col-9">
-                                <input type="email"  name="email" class="form-control"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                <input type="email"  name="email" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                             </div>
-                        </div>  
+                        </div>
                         
-
-                    </form>
-
-
-                </div>
-                <div class="modal-footer">
+                        <input type="hidden" name="token" value="<?php echo $token; ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
 
 
-                    <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#savePopup3">Save </button>
-                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletePopup3">Delete</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <!-- <input type ="hidden" name ="hospitalId" value="<?php echo $hospitalId; ?> "aria-label="Sizing example input" aria-discribedby="inputGroup-sizing-sm" required> -->
+
+                    </div>
+
+                    <div class="modal-footer">
+
+                        <button type="submit" class="btn btn-primary" >Save </button>
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletePopup1">Delete</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+
+    </form> 
+                                
+
     <!--Save Popup edit Hospital-->
     <!-- Modal -->
     <div class="modal fade" id="savePopup3" tabindex="-1" aria-labelledby="savePopup3Label" aria-hidden="true">
