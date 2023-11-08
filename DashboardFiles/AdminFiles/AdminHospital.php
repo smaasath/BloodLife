@@ -323,11 +323,7 @@ use classes\district;
                                     <option>Select Division</option> 
                                 </select>
                             </div>
-                            <div class="col-9">
-                                <select name="division" class="form-control-sm form-control-sm" id="divisionDropDown" onchange="getBloodBanks(this.value)">
-                                    <option>Select Division</option> 
-                                </select>
-                            </div>
+                            
                         </div>
                         <div class="row align-items-center pb-3">
                             <div class="col-3">
