@@ -1,7 +1,7 @@
 <?php
 
 require_once '../classes/User.php';
-require_once '../classes/DbConnector.php'; 
+require_once '../classes/DbConnector.php';
 
 use classes\User;
 use classes\DbConnector;
@@ -12,28 +12,37 @@ if (!empty($_POST['save'])) {
     $UserName = $_POST['UserName'];
     $password = $_POST['password'];
 
-    
-    $query = "SELECT * FROM login WHERE username=? AND password=?";
-    $stmt = mysqli_prepare($connect, $query);
-    mysqli_stmt_bind_param($stmt, "ss", $UserName, $password);
-    mysqli_stmt_execute($stmt);
-    $result = mysqli_stmt_get_result($stmt);
+    // Sanitize and validate user inputs
+    $UserName = filter_var($UserName, FILTER_SANITIZE_STRING);
+    $password = filter_var($password, FILTER_SANITIZE_STRING);
 
-    if ($result && mysqli_num_rows($result) > 0) {
-        echo "Login is successful";
-
-        $user = new User($UserName, $password);
-        $user->webLogin();
+    if (empty($UserName) || empty($password)) {
+        echo "Invalid input data.";
     } else {
-        echo "Login is not successful";
+        $query = "SELECT * FROM login WHERE username=? AND password=?";
+        $stmt = mysqli_prepare($connect, $query);
+        mysqli_stmt_bind_param($stmt, "ss", $UserName, $password);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+
+        if ($result && mysqli_num_rows($result) > 0) {
+            echo "Login is successful";
+
+            // Create a User object and call the webLogin method
+            $user = new User($UserName, $password);
+            $user->webLogin();
+        } else {
+            echo "Login is not successful";
+        }
     }
 }
 
 function webLogin() {
     $dbcon = new DbConnector();
     $conn = $dbcon->getConnection();
-    
-   
+
+    // You don't need to sanitize and validate inputs here. Do that in the main code block.
+
     $sql = "SELECT * FROM `user` WHERE UserName = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(1, $this->UserName, PDO::PARAM_STR);
