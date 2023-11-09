@@ -39,6 +39,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 background-color: var(--container-bg-color);
                 border-radius: 10px;
                 padding: 20px;
+                min-width:600px;
             }
 
             .form-container .form-control {
@@ -98,11 +99,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <div class="countdown-container">
                     <div id="countdown-bar"></div>
                 </div>
-                <h2 class="text-center">Verify your email</h2>
+                <h2 class="text-center">Verify your email</h2><br><br>
                 <div class="mb-3">
-                    <span class="text-center">We've sent you a code to your email</span>
-                    <span class="text-center">To complete the verification process <br> please enter the code below.</span>
-                    <input type="text" class="form-control col-md-6 col-sm-6 col-sm-offset-2" name="verifyCode" required>
+                    <center><span class="text-center">We've sent you a code to your email</span> </center><br>
+                    <span class="text-center">To complete the verification process, please enter the code below.</span><br><br>
+                    <input type="text" class="form-control col-md-6 col-sm-6 col-sm-offset-2" name="verifyCode" required><br>
                     <p class="text-center">Didn't receive the code
                         <a href=""> <b>RESEND</b>  </a>
                     </p>

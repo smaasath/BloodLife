@@ -166,12 +166,12 @@ public static function SendMail( $password, $email,$name) {
         }
     }
 
-    public static function GetHospitalData($hospitalId) {
+    public function GetHospitalData($hospitalId) {
         try {
             $dbcon = new DbConnector();
             $con = $dbcon->getConnection();
     
-            $query = "SELECT * FROM `hospital` WHERE `id` = ?";
+            $query = "SELECT * FROM `hospital` WHERE `hospitalId` = ?";
     
             $pstmt = $con->prepare($query);
             $pstmt->bindValue(1, $hospitalId);
@@ -179,9 +179,15 @@ public static function SendMail( $password, $email,$name) {
             $pstmt->execute();
     
             if ($pstmt->rowCount() > 0) {
-                return $pstmt->fetch(PDO::FETCH_ASSOC);
+                $rs = $pstmt->fetch(PDO::FETCH_OBJ);
+                 $this->name = $rs->name;
+                 $this->address = $rs->address;
+                 $this->contactNumber = $rs->contactNumber;
+                 $this->districtId = $rs->districtId;
+                 return true;
+
             } else {
-                return false; // Return false if no data is found
+                return false; 
             }
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
@@ -212,37 +218,9 @@ public static function SendMail( $password, $email,$name) {
         }
     }
 
-    public function EditHospital($hospitalId) {
-
-        if (!is_numeric($this->districtId) || !is_numeric($hospitalId)) {
-            // Handle the error, e.g., return false or throw an exception
-            return false;
-        }
-        try {
-            $dbcon = new DbConnector();
-            $con = $dbcon->getConnection();
+   
+   
     
-            $query = "UPDATE `hospital` SET `name` = ?, `address` = ?, `contactNumber` = ?, `districtId` = ? WHERE `hospitalId` = ?";
-    
-            $pstmt = $con->prepare($query);
-            $pstmt->bindValue(1, $this->name);
-            $pstmt->bindValue(2, $this->address);
-            $pstmt->bindValue(3, $this->contactNumber);
-            $pstmt->bindValue(4, $this->districtId);
-            $pstmt->bindValue(5, $hospitalId);
-    
-            $pstmt->execute();
-    
-            if ($pstmt->rowCount() > 0) {
-                return true; // Hospital details were successfully updated
-            } else {
-                return false; // No records were updated, possibly due to incorrect hospitalId
-            }
-        } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
-        }
-    }
-    
-
+       
     
 }

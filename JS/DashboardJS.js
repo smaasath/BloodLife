@@ -145,9 +145,12 @@ function functionTest(value) {
         success: function (result) {
 
             $("#divisionDropDown").html(result);
+           
 
         }});
 }
+
+
 
 function getBloodBank(value) {
     console.log(value);
