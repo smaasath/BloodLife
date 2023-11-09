@@ -200,6 +200,7 @@ class User {
         if ($rs && $rs->expire > time()) {
             $this->donorId = $rs->donorId;
             $this->bloodBankId = $rs->bloodBankId;
+            $this->userRole=$rs->userRole;
             $this->hospitalId = $rs->hospitalId;
             return true;
         } else {
