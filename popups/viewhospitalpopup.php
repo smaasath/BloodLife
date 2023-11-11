@@ -20,36 +20,50 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
             <div class="row align-items-center pb-3">
-                <div class="col-3">
-                    <h6>Hospital Name : <?php echo $hospital->getName(); ?> </h6>
+                <div class="col-4">
+                    <h6>Hospital Name : </h6>
                 </div>
-                
-            </div>
-            <div class="row align-items-center pb-3">
-                <div class="col-3">
-                    <h6>Address : <?php echo $hospital->getAddress(); ?></h6>
+                <div class="col-8 text-left">
+                    <?php echo $hospital->getName(); ?>
                 </div>
-               
+
             </div>
 
             <div class="row align-items-center pb-3">
-                <div class="col-3">
-                    <h6>District : <?php echo $rs["district"]; ?></h6>
+            <div class="col-4">
+                    <h6>Address :</h6>
                 </div>
-            </div>
-            <div class="row align-items-center pb-3">
-                <div class="col-3">
-                    <h6>DS Division : <?php echo $rs["division"]; ?></h6>
+                <div class="col-8 text-left">
+                <?php echo $hospital->getAddress(); ?>
                 </div>
-            </div>
-            <div class="row align-items-center pb-3">
-                <div class="col-3">
-                    <h6>Contact No : <?php echo $hospital->getContactNumber(); ?></h6>
-                </div>
-                
             </div>
 
-            
+            <div class="row align-items-center pb-3">
+                <div class="col-4">
+                    <h6>District : </h6>
+                </div>
+                <div class="col-8 text-left">
+                <?php echo $rs["district"]; ?>
+                </div>
+            </div>
+            <div class="row align-items-center pb-3">
+                <div class="col-4">
+                    <h6>DS Division : </h6>
+                </div>
+                <div class="col-8 text-left">
+                <?php echo $rs["division"]; ?>
+                </div>
+            </div>
+            <div class="row align-items-center pb-3">
+                <div class="col-4">
+                    <h6>Contact No : </h6>
+                </div>
+                <div class="col-8 text-left">
+                <?php echo $hospital->getContactNumber(); ?>
+                </div>
+            </div>
+
+
 
 
 
