@@ -11,17 +11,18 @@ $connect = mysqli_connect("localhost", "root", "bloodline", "Login-Details") or 
 if (!empty($_POST['save'])) {
     $UserName = $_POST['UserName'];
     $password = $_POST['password'];
+    $role = $_POST['userRole']; // Assuming you have a form field for selecting the user's role.
 
     // Sanitize and validate user inputs
     $UserName = filter_var($UserName, FILTER_SANITIZE_STRING);
     $password = filter_var($password, FILTER_SANITIZE_STRING);
 
-    if (empty($UserName) || empty($password)) {
+    if (empty($UserName) || empty($password) || empty($role)) {
         echo "Invalid input data.";
     } else {
-        $query = "SELECT * FROM login WHERE username=? AND password=?";
+        $query = "SELECT * FROM login WHERE username=? AND password=? AND role=?";
         $stmt = mysqli_prepare($connect, $query);
-        mysqli_stmt_bind_param($stmt, "ss", $UserName, $password);
+        mysqli_stmt_bind_param($stmt, "sss", $UserName, $password, $role);
         mysqli_stmt_execute($stmt);
         $result = mysqli_stmt_get_result($stmt);
 
@@ -29,7 +30,7 @@ if (!empty($_POST['save'])) {
             echo "Login is successful";
 
             // Create a User object and call the webLogin method
-            $user = new User($UserName, $password);
+            $user = new User($UserName, $password, $role);
             $user->webLogin();
         } else {
             echo "Login is not successful";
@@ -43,9 +44,10 @@ function webLogin() {
 
     // You don't need to sanitize and validate inputs here. Do that in the main code block.
 
-    $sql = "SELECT * FROM `user` WHERE UserName = ?";
+    $sql = "SELECT * FROM `user` WHERE UserName = ? AND role = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(1, $this->UserName, PDO::PARAM_STR);
+    $stmt->bindParam(2, $this->role, PDO::PARAM_STR);
     $stmt->execute();
 
     if ($stmt->rowCount() > 0) {
