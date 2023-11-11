@@ -148,11 +148,7 @@ class Bloodtable {
             $pstmt->bindValue(5, $this->status);
 
             $pstmt->execute();
-            if ($pstmt->rowCount() > 0) {
-                return true;
-            } else {
-                return false;
-            }
+            return $pstmt->rowCount() > 0 ;
         } catch (PDOException $exc) {
             echo $exc->getMessage();
         }

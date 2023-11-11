@@ -4,7 +4,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to edit this template
 -->
 <?php
-$hospitalId = 1;
+$token = "12b378738a1a6be3bacea473fe9e3d2fbfce8e678d514e1d943";
 
 require_once '../classes/Bloodtable.php';
 require_once '../classes/district.php';
@@ -413,7 +413,7 @@ $bloodbankid = 1;
                                     <input type="number" class="form-control" name="quantity" oninput="sanitizeQuantity(this);" maxlength="3" required><br>
                                     <label for="ExpiryDate">Expiry Date:</label>
                                     <input type="date" class="form-control" name="expiryDate" oninput="sanitizeExpiryDate(this)" required><br>
-                                    <input type="hidden" value="<?php echo $bloodbankid ?>" name="id">
+                                    <input type="hidden" value="<?php echo $token ?>" name="token">
                                 </form>
                             </div>
                             <div class="modal-footer">
