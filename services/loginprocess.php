@@ -1,7 +1,7 @@
 <?php
 
 require_once '../classes/User.php';
-require_once '../classes/DbConnector.php'; //master
+require_once '../classes/DbConnector.php';
 
 use classes\User;
 use classes\DbConnector;
