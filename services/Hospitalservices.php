@@ -9,89 +9,122 @@ namespace classes;
 
 require '../classes/district.php';
 require '../classes/hospital.php';
+require '../classes/Validation.php';
 
 use classes\district;
 use classes\hospital;
+use classes\Validation;
+
+$status = null;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
+    session_start();
 
+    if (isset($_POST["VerificationCode"], $_SESSION["VerificationCode"], $_SESSION["hospital"], $_SESSION["email"], $_SESSION['timestamp'])) {
+        //check status for adding hospital
+
+        $verifyOtp = (int) $_POST["VerificationCode"] === (int) $_SESSION["VerificationCode"];
+        $time = time() - $_SESSION['timestamp'] > 60000000;
+
+        if ($verifyOtp) {
+            
+            $status = $_SESSION["hospital"]->AddHospital($_SESSION["email"]) ? 1 : 2;
+            session_destroy();
+            
+        } else {
+            unset($_SESSION["VerificationCode"]);
+            unset($_SESSION['timestamp']);
+            $status = !$verifyOtp ? 3 : (!$time ? 4 : 5);
+
+        }
+    } else if(isset($_POST["name"], $_POST["address"], $_POST["contactNumber"],
+              $_POST["district"], $_POST["division"], $_POST["token"],
+               $_POST["email"])) {
+
+    //empty value check
+    if (!empty($_POST["name"]) && ( $_POST["address"]) && ($_POST["contactNumber"]) &&
+              ($_POST["district"]) && ($_POST["division"]) && ($_POST["token"]) &&
+              ($_POST["email"])) {
+
+
+    // sanitizing the inputs
     $name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
     $address = filter_var($_POST['address'], FILTER_SANITIZE_STRING);
     $contactNumber = filter_var($_POST['contactNumber'], FILTER_SANITIZE_STRING);
+    $token = filter_var($_POST['token'], FILTER_SANITIZE_STRING);
     $district = filter_var($_POST['district'], FILTER_SANITIZE_STRING);
     $division = filter_var($_POST['division'], FILTER_SANITIZE_STRING);
     $email = filter_var($_POST['email'], FILTER_SANITIZE_STRING);
-    $UserName = filter_var($_POST['UserName'], FILTER_SANITIZE_STRING);
     $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
 
     $districtId = district::getDistrictIDDD($district, $division);
-    echo $districtId;
+    // echo $districtId;
     
-//    echo $district;
-//    echo $division;
-//    echo $name;
-//    echo $address;
-//    echo $contactNumber;
-
-
-    hospital::AddHospital($name, $address, $contactNumber, $districtId, $email, $UserName, $password);
-    echo "success";
-
+   
+   
+   
+    //create user object with token
+   $user = new User(null, null, null, null, null, $token, null, null, null, null);
     
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $password = $_POST['password'];
+    //validations
+    $emailExist = Validation::validateAlreadyExist("email", $email, "user");
+    $validateEmail = Validation::validateGmail($email);
+    $validatePhoneNumber = Validation::validateContactNumber($contactNumber);
+    $validateToken = $user->validateToken();
+    $userrole= $user->getUserRole();
+    
+    echo $token;
+    echo $userrole;
+     //token  checking
+     if ($validateToken && $userrole == 1) {
 
-    // Define your password validation criteria
-    $min_length = 8;
-    $uppercase_required = true;
-    $lowercase_required = true;
-    $digit_required = true;
-    $special_char_required = false; // You can set this to true if you want to require special characters
+         //email,phonenumber validation check
+         if ($validateEmail && $validatePhoneNumber ) {
 
-    // Perform password validation
-    $errors = [];
+            //email,username exist check in db
+            if ( !$emailExist) {
 
-    // Check if the password meets the minimum length requirement
-    if (strlen($password) < $min_length) {
-        $errors[] = "Password must be at least $min_length characters long.";
-    }
+                //create hospital object
+                $hospital = new hospital(null, $name, $address, $contactNumber, $districtId);
 
-    // Check if the password contains at least one uppercase letter
-    if ($uppercase_required && !preg_match('/[A-Z]/', $password)) {
-        $errors[] = "Password must contain at least one uppercase letter.";
-    }
+                $_SESSION["VerificationCode"] = Validation::generateOTP();
+                $_SESSION["hospital"] = $hospital;
+                $_SESSION["email"] = $email;
+                $_SESSION['timestamp'] = time();
+                $status = $hospital->SendMail( $_SESSION["VerificationCode"], $email, $name) ? header("Location: newEmptyPHPWebPage.php") : 7;
 
-    // Check if the password contains at least one lowercase letter
-    if ($lowercase_required && !preg_match('/[a-z]/', $password)) {
-        $errors[] = "Password must contain at least one lowercase letter.";
-    }
-
-    // Check if the password contains at least one digit
-    if ($digit_required && !preg_match('/[0-9]/', $password)) {
-        $errors[] = "Password must contain at least one digit.";
-    }
-
-    // Check if the password contains special characters (if required)
-    if ($special_char_required && !preg_match('/[^a-zA-Z0-9]/', $password)) {
-        $errors[] = "Password must contain at least one special character.";
-    }
-
-    // Display validation results
-    if (empty($errors)) {
-        echo "Password is valid!";
-        echo "<br>";
-    } else {
-        echo "Password is not valid. Errors:<br>";
-        foreach ($errors as $error) {
-            echo $error . "<br>";
+            } else {
+                //check status for exist values
+                $status = $emailExist ? 9 :  10;
+            }
+        } else {
+            //check status for valitations
+            $status = !$validateEmail ? 11 : (!$validatePhoneNumber ? 12 :13);
         }
+    } else {
+        //status for not valid token
+        $status = 14;
     }
+} else {
+    //status for empty value
+    $status = 15;
+}
+} else {
+//status for isset value
+$status = 16;
+}
+} else {
+
+echo"Invalid request method";
 }
 
- 
+    
+echo $status;
 
-}
+
+
+
 ?>
 
 

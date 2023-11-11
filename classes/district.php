@@ -52,21 +52,13 @@ class district {
             $stmt = $con->prepare($query);
             $stmt->execute();
 
-            $dataArray = array();
-            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $dataArray[] = $row;
-            }
-
-            return $dataArray;
+            return self::rowToArray($stmt);
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
     }
 
-
-    
-    
-        public static function getAllDivision($district) {
+    public static function getAllDivision($district) {
 
         try {
             $dbcon = new DbConnector();
@@ -78,12 +70,7 @@ class district {
             $stmt->bindValue(1, $district);
             $stmt->execute();
 
-            $dataArray = array();
-            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $dataArray[] = $row;
-            }
-            return $dataArray;
-            
+            return self::rowToArray($stmt);
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
@@ -101,12 +88,8 @@ class district {
             $stmt = $con->prepare($query);
             $stmt->execute();
 
-            $dataArray = array();
-
-            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $dataArray[] = $row;
-            }
-            return $dataArray;
+            return self::rowToArray($stmt);
+            
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
@@ -160,6 +143,47 @@ class district {
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
+    }
+
+    public static function getBloodBanks($district) {
+        try {
+            $dbcon = new DbConnector();
+            $con = $dbcon->getConnection();
+    
+            $query = "SELECT bloodbank.bloodBankId, bloodbank.bloodBankName
+                      FROM bloodbank
+                      JOIN district ON bloodbank.districtId = district.districtId
+                      WHERE district.district = ?";
+    
+            $pstmt = $con->prepare($query);
+            $pstmt->bindValue(1, $district);
+            
+            if ($pstmt->execute()) {
+                if ($pstmt->rowCount() > 0) {
+                    return self::rowToArray($pstmt);
+                } else {
+                    return false; // No records found
+                }
+            } else {
+                // Handle query execution error
+                echo "Query execution error: " . print_r($pstmt->errorInfo(), true);
+                return false;
+            }
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            return false;
+        }
+    }
+    
+    
+
+    public static function rowToArray($pstmt) {
+        $dataArray = array();
+
+        while ($row = $pstmt->fetch(PDO::FETCH_ASSOC)) {
+            $dataArray[] = $row;
+        }
+        return $dataArray;
     }
 
 }

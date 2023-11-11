@@ -119,29 +119,32 @@ class User {
         $this->hospitalId = $hospitalId;
     }
 
-    public static function AddUser($UserName, $email, $userRole, $hashedPassword, $bloodBankId, $donorId, $hospitalId) {
+
+    public static function AddUser( $email, $userRole, $hashedPassword, $bloodBankId, $donorId, $hospitalId) {
+
 
         try {
             $dbcon = new DbConnector();
             $con = $dbcon->getConnection();
 
-            $query = "INSERT INTO `user` (`userId`, `UserName`, `password`, `email`, `userRole`, `bloodBankId`, `donorId`, `hospitalId`) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?);"; // Update the query to include all placeholders
+
+            $query = "INSERT INTO `user` (`userId`, `password`, `email`, `userRole`, `bloodBankId`, `donorId`, `hospitalId`) VALUES (NULL, ?, ?, ?, ?, ?, ?);"; // Update the query to include all placeholders
             $pstmt = $con->prepare($query);
-            $pstmt->bindValue(1, $UserName);
-            $pstmt->bindValue(2, $hashedPassword);
-            $pstmt->bindValue(3, $email);
-            $pstmt->bindValue(4, $userRole);
-            $pstmt->bindValue(5, $bloodBankId);
-            $pstmt->bindValue(6, $donorId);
-            $pstmt->bindValue(7, $hospitalId);
+            $pstmt->bindValue(1, $hashedPassword);
+            $pstmt->bindValue(2, $email);
+            $pstmt->bindValue(3, $userRole);
+            $pstmt->bindValue(4, $bloodBankId);
+            $pstmt->bindValue(5, $donorId);
+            $pstmt->bindValue(6, $hospitalId);
+
 
             $pstmt->execute();
 
             if ($pstmt->rowCount() > 0) {
-                echo "successfully user added ";
+        
                 return true;
             } else {
-                echo "user added failed";
+               
                 return false;
             }
         } catch (PDOException $e) {
@@ -149,62 +152,6 @@ class User {
         }
     }
 
-    public static function validateAlreadyExist($attibute, $value, $table) {
-        try {
-            $dbcon = new DbConnector();
-            $con = $dbcon->getConnection();
-
-            $query = "SELECT * FROM `" . $table . "` WHERE " . $attibute . "=?";
-
-            $stmt = $con->prepare($query);
-            $stmt->bindParam(1, $value, PDO::PARAM_STR);
-            $stmt->execute();
-            return $stmt->fetch(PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
-        }
-    }
-
-    public static function validateGmail($email) {
-
-        if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            // Check if the domain is Gmail
-            list($username, $domain) = explode('@', $email);
-            if ($domain === 'gmail.com') {
-                return true; // Valid Gmail address
-            }
-        }
-        return false; // Invalid Gmail address
-    }
-
-    public static function generateOTP() {
-        // Generate a random 6-digit number
-        $otp = rand(100000, 999999);
-        return $otp;
-    }
-
-    static function generateRandomPassword($length = 10) {
-        // Define a character pool for generating the password
-        $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&';
-
-        // Get the total number of characters in the pool
-        $characterCount = strlen($characters);
-
-        // Initialize the password variable
-        $password = '';
-
-        // Generate a random password of the specified length
-        for ($i = 0; $i < $length; $i++) {
-            // Get a random character from the pool
-            $randomCharacter = $characters[rand(0, $characterCount - 1)];
-
-            // Append the random character to the password
-            $password .= $randomCharacter;
-        }
-
-        // Return the generated password
-        return $password;
-    }
 
     function donorLogin() {
         $dbcon = new DbConnector;
@@ -253,6 +200,7 @@ class User {
         if ($rs && $rs->expire > time()) {
             $this->donorId = $rs->donorId;
             $this->bloodBankId = $rs->bloodBankId;
+            $this->userRole=$rs->userRole;
             $this->hospitalId = $rs->hospitalId;
             return true;
         } else {
