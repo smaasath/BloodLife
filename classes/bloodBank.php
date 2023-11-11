@@ -6,9 +6,14 @@
  */
 
 namespace classes;
+namespace classes;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+require_once 'DbConnector.php';
+require_once 'User.php';
 
-require 'DbConnector.php';
-
+use classes\User;
 use PDO;
 use PDOException;
 use classes\DbConnector;
@@ -16,17 +21,16 @@ use classes\DbConnector;
 /**
  * Description of bloodBank
  *
- * @author Saalu
+ * @author Sankavi
  */
 class bloodBank {
 
-    //put your code here
     private $bloodBankId;
     private $bloodBankName;
     private $Address;
     private $ContactNo;
     private $districtId;
-
+    
     public function __construct($bloodBankId, $bloodBankName, $Address, $ContactNo, $districtId) {
         $this->bloodBankId = $bloodBankId;
         $this->bloodBankName = $bloodBankName;
@@ -34,7 +38,27 @@ class bloodBank {
         $this->ContactNo = $ContactNo;
         $this->districtId = $districtId;
     }
+    
+    public function getBloodBankId() {
+        return $this->bloodBankId;
+    }
 
+    public function getBloodBankName() {
+        return $this->bloodBankName;
+    }
+
+    public function getAddress() {
+        return $this->Address;
+    }
+
+    public function getContactNo() {
+        return $this->ContactNo;
+    }
+
+    public function getDistrictId() {
+        return $this->districtId;
+    }
+    
     public function setBloodBankId($bloodBankId): void {
         $this->bloodBankId = $bloodBankId;
     }
@@ -55,55 +79,118 @@ class bloodBank {
         $this->districtId = $districtId;
     }
 
-    public function getBloodBankId() {
-        return $this->bloodBankId;
-    }
-
-    public function getBloodBankName() {
-        return $this->bloodBankName;
-    }
-
-    public function getAddress() {
-        return $this->Address;
-    }
-
-    public function getContactNo() {
-        return $this->ContactNo;
-    }
-
-    public function getDistrictId() {
-        return $this->districtId;
-    }
-
-    public static function showbloodbankdetails($blID) {
+    public static function AddBloodBank( $bloodBankName, $Address, $ContactNo, $districtId, $email, $password) {
         try {
-
             $dbcon = new DbConnector();
             $con = $dbcon->getConnection();
-            $query = "SELECT * FROM `bloodbank` WHERE bloodBankId=?";
-
-            $stmt = $con->prepare($query);
-            $stmt->bindValue(1, $blID);
-            $stmt->execute();
-            $row = $stmt->fetch();
-
-            if ($row) {
-                if ($row) {
-                    echo '<table class="detail">';
-
-                    echo '<tr><td><label for="BloodbankID">BloodbankID:</label></td><td>' . $row["bloodBankId"] . '</td></tr>';
-                    echo '<tr><td><label for="Bloodbank Name">Bloodbank Name:</label></td><td>' . $row["bloodBankName"] . '</td></tr>';
-                    echo '<tr><td><label for="Address">Address:</label></td><td>' . $row["Address"] . '</td></tr>';
-                    echo '<tr><td><label for="Contact No">Contact No:</label></td><td>' . $row["ContactNo"] . '</td></tr>';
-                    echo '<tr><td><label for="DistrictID">DistrictID:</label></td><td>' . $row["districtId"] . '</td></tr>';
-                    echo '</table>';
-                } else {
-                    echo "No results found.";
-                }
+           
+            $query = "INSERT INTO `bloodbank` ( `bloodBankName`, `Address`, `ContactNo`, `districtId`) VALUES ( ?, ?, ?, ?);";
+    
+            $pstmt = $con->prepare($query);
+            $pstmt->bindValue(1, $bloodBankName);
+            $pstmt->bindValue(2, $Address); 
+            $pstmt->bindValue(3, $ContactNo);
+            $pstmt->bindValue(4, $districtId);
+            
+    
+            $pstmt->execute();
+    
+            if ($pstmt->rowCount() > 0) {
+              echo 'Success.';
+              $bloodBankId = $con->lastInsertId();
+                    User::AddUser( $password, $email, 3, null,null, $bloodBankId);
+                    self::SendMail($password, $email, $bloodBankName);
+            } else {
+               echo 'Error';
             }
-        } catch (Exception $exc) {
-            echo $exc->getTraceAsString();
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
         }
     }
+
+    public static function SendMail($password, $email,$bloodBankName) {
+        // Create an instance; passing `true` enables exceptions
+
+        require '../mail/Exception.php';
+        require '../mail/PHPMailer.php';
+        require '../mail/SMTP.php';
+        $mail = new PHPMailer(true);
+
+        //Server settings
+        $mail->SMTPDebug = 0;                      //Enable verbose debug output
+        $mail->isSMTP();                                            //Send using SMTP
+        $mail->Host = 'smtp.gmail.com';                     //Set the SMTP server to send through
+        $mail->SMTPAuth = true;                                   //Enable SMTP authentication
+        $mail->Username = 'sachinformationsystem@gmail.com';                     //SMTP username
+        $mail->Password = 'upyjmbtlcfckzoke';                               //SMTP password
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+        $mail->Port = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+        //Recipients
+        $mail->setFrom('sachinformationsystem@gmail.com');
+        $mail->addAddress($email);     //Add a recipient             //Name is optional
+        //Content
+        $mail->isHTML(true);                                  //Set email format to HTML
+        $mail->Subject = 'Donor Registration';
+        $message = "Dear ".$bloodBankName.",<br>";
+        $message .= "Welcome to BloodLife! , your account has been successfully created."."<br>";
+        $message .= "        Your Password: ".$password.",<br>";
+        
+
+        $mail->Body = $message;
+
+        try {
+            $mail->send();
+            echo 'Success';
+        } catch (Exception $e) {
+            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        }
+    }
+
+    public static function GetBloodbankData($bloodBankId) {
+        try {
+            $dbcon = new DbConnector();
+            $con = $dbcon->getConnection();
+    
+            $query = "SELECT * FROM  `bloodbank` WHERE `id` = ?";
+    
+            $pstmt = $con->prepare($query);
+            $pstmt->bindValue(1, $bloodBankId);
+    
+            $pstmt->execute();
+    
+            if ($pstmt->rowCount() > 0) {
+                return $pstmt->fetch(PDO::FETCH_ASSOC);
+            } else {
+                return false; // Return false if no data is found
+            }
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+
+    public static function showAllBloodbank() {
+        try {
+            $dbcon = new DbConnector();
+            $con = $dbcon->getConnection();
+
+            $query = "SELECT *, district.district, district.division FROM bloodbank, district WHERE bloodbank.districtId = district.districtId;`";
+            
+
+
+            $stmt = $con->prepare($query);
+            
+            $stmt->execute();
+
+            $bloodBankArray = array();
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $bloodBankArray[] = $row;
+            }
+
+            return $bloodBankArray;
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+
 
 }

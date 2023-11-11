@@ -4,6 +4,16 @@
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to edit this template
 -->
+<?php
+$bloodBankId=1;
+
+require_once '../classes/bloodBank.php';
+require_once '../classes/district.php';
+
+use classes\bloodBank;
+use classes\district;
+?>
+
 <html>
     <head>
         <meta charset="UTF-8">
@@ -16,10 +26,21 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     /* CSS to set a consistent width for input elements */
     input[type="text"],
     input[type="tel"],
-    input[type="email"] {
+    input[type="email"],
+    
+     select{
         width: 100%; /* Set the width to 100% */
         box-sizing: border-box; /* Include padding and border in the total width */
     }
+
+    .valid {
+                color: green;
+            }
+
+    .not-valid {
+                color: red;
+            }
+
 
         </style>
     </head>
@@ -69,16 +90,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             <div class="row align-items-center">
                 <div class="col-3">           
                     <div class="input-group rounded p-3">
-                        <input type="search" class="form-control rounded" placeholder="Search ID" aria-label="Search" aria-describedby="search-addon"  >
-
-
-
-                    </div>
-                </div>
-
-                <div class="col-3">           
-                    <div class="input-group rounded p-3">
-                        <input type="search" class="form-control rounded" placeholder="Search Name" aria-label="Search" aria-describedby="search-addon" >
+                        <input type="search" id="search" class="form-control rounded" placeholder="Search Name" aria-label="Search" aria-describedby="search-addon"  oninput="teeest(this.value)">
 
 
 
@@ -87,11 +99,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
                 <div class="col-2"> 
-                    <select class="form-select" aria-label="Default select example" >
+                    <select class="form-select" aria-label="Default select example" oninput="teest(this.value)" >
                         <option selected>District</option>
-                        <option value="1">Jaffna</option>
-                        <option value="2">Badulla</option>
-                        <option value="3">Vavuniya</option>
+                        <?php
+$dataArray = district::getAllDistrict(); // Retrieve district data using the "getAllDistrict()" method
+
+foreach ($dataArray as $district) {
+    ?>
+
+                            <option  value="<?php echo $district['district']; ?>"><?php echo $district['district']; ?></option>
+    <?php
+}
+?>
                     </select>
                 </div>
 
@@ -106,25 +125,23 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <!-- Table body -->
         <div class="container bg-white m-0 p-0" style=" max-height: 500px; overflow: scroll;">
             <table class="table table-hover p-0">
-
+                <thead>
                 <!-- Table row -->
-
-
                 <tr class="sticky-top">
 
                     <th class="col-1 bgcol p-2">Blood Bank ID</th>
                     <th class="col-3 bgcol p-2">Blood Bank Name</th>
                     <th class="col-2 bgcol p-2">Address</th>
-                    <th class="col-3 bgcol p-2">District</th>
-                    <th class="col-1 bgcol p-2">DS Division</th>
                     <th class="col-1 bgcol p-2">Contact Number</th>
-                    <th class="col-1 bgcol p-2">Email</th>
+                    <th class="col-3 bgcol p-2">District</th>
+                    <th class="col-1 bgcol p-2">DS Division</th>                    
                     <th class="col-1 bgcol p-2">View</th>
                     <th class="col-1 bgcol p-2">Edit</th>
 
                 </tr>
+                </thead>
 
-                <tr>
+                <!-- <tr>
                     <td class="id col-1">BBID001</td>
                     <td class="name col-3"> Regional Blood Centre</td>
                     <td class="addrs col-2">Victoria Rd, Jaffna</td>
@@ -134,7 +151,118 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <td class="email col-3">info@thjaffna.lk</td>
                     <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="OpenBloodbankDetails()">View</button></td>
                     <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="EditBloodbankDetails()">Edit</button></td>
-                </tr>
+                </tr> -->
+
+                <tbody id="output">
+
+                <?php
+                $bloodbankdetailsArray = bloodBank::showAllBloodbank();
+                ?>
+
+                <script>
+                    let array = <?php echo json_encode($bloodbankdetailsArray) ?>;
+                    let filterArray;
+                    showall(array);
+
+                    function showall(array) {
+                        const detailsList = document.getElementById("output");
+                        detailsList.innerHTML = "";
+                        if (array === null || array.length === 0) {
+                            var htmlCode = `<tr><td colspan="12" style="text-align: center;color: red;" >No Results Found</td></tr>`;
+                            detailsList.innerHTML = htmlCode;
+                        } else {
+                            array.forEach((item) => {
+
+                                var htmlCode = ` <tr>
+                        <td class="col-1">${item.bloodBankId}</td>
+                        <td class="col-3">${item.bloodBankName}</td>
+                        <td class="col-2">${item.Address}</td>
+                        <td class="col-3">${item.ContactNo}</td>                    
+                        <td class="col-1">${item.district}</td>
+                        <td class="col-1">${item.division}</td>
+                        <td class="col-1">
+                                        <button type="button" 
+                                                  class="btn btn-primary" 
+                                                  data-bs-toggle="modal"    
+                                                  onclick="OpenBloodbankDetails()">
+                                          View
+                                        </button>
+                        </td>
+                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="EditBloodbankDetails()">Edit</button></td>
+                    </tr>`;
+
+
+                                var divElement = document.createElement("tr");
+
+
+                                divElement.innerHTML = htmlCode;
+
+
+                                detailsList.appendChild(divElement);
+                            });
+                        }
+                        ;
+
+                    }
+
+                    function teest1(test) {
+                        if (test === "") {
+                            array = <?php echo json_encode($bloodbankdetailsArray) ?>;
+                            showall(array);
+                        } else {
+                            array = <?php echo json_encode($bloodbankdetailsArray) ?>;
+                            var testValue = test.toLowerCase();
+                            array = array.filter((item) => item.district.toLowerCase().includes(testValue));
+                            showall(array);
+                        }
+
+                    }
+                    function teeest1(test) {
+
+                        var id = parseInt(test, 10);
+
+                        var testValue = test.toLowerCase();
+
+                        filterArray = array.filter((item) => item.bloodBankId === id || item.name.toLowerCase().includes(testValue));
+
+
+                        const detailsList = document.getElementById("output");
+                        detailsList.innerHTML = "";
+                        if (filterArray === null || filterArray.length === 0) {
+                            var htmlCode = `<tr><td colspan="12" style="text-align: center;color: red;">No Results Found</td></tr>`;
+                            detailsList.innerHTML = htmlCode;
+                        } else {
+                            filterArray.forEach((item) => {
+
+                                var htmlCode = ` 
+                            <tr>
+                                <td class="col-1">${item.bloodBankId}</td>
+                                <td class="col-3">${item.bloodBankName}</td>
+                                <td class="col-2">${item.Address}</td>
+                                <td class="col-1">${item.ContactNo}</td>
+                                <td class="col-1">${item.district}</td>
+                                <td class="col-1">${item.division}</td>
+                                <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"   onclick="OpenBloodbankDetails()">View</button></td>
+                                <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="EditBloodbankDetails()">Edit</button></td>
+                                </tr>`;
+
+
+        var divElement = document.createElement("tr");
+
+
+        divElement.innerHTML = htmlCode;
+
+
+        detailsList.appendChild(divElement);
+
+    });
+}
+
+
+}
+                </script>
+                
+
 
             </table> 
         </div>
@@ -267,6 +395,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 <!--add blood bank-->
 <!-- Modal -->
+<form action="../services/bloodbankservices.php" method="POST" enctype="multipart/form-data">
 <div class="modal fade" id="addBloodbank">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -275,63 +404,103 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="">
-                    <table>
-                        <tr>
-                            <td><label for="BbId">Blood bank ID:</label></td>
-                            <td><input type="text" id="BbId" name="BbId" required></td>
-                        </tr>
+               
+            <div class="modal-body">
+                        <div class="row align-items-center pb-3">
+                            <div class="col-3">
+                                <h6>Blood Bank Name</h6>
+                            </div>
+                            <div class="col-9">
+                                <input type="text"  name="bloodBankName" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                            </div>
+                        </div>
+                        <div class="row align-items-center pb-3">
+                            <div class="col-3">
+                                <h6>Address</h6>
+                            </div>
+                            <div class="col-9">
+                                <input type="text"  name="Address" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                            </div>
+                        </div>
+                        <div class="row align-items-center pb-3">
+                            <div class="col-3">
+                                <h6>District</h6>
+                            </div>
+                            <div class="col-9">
+                                <select name="district" class="form-control-sm form-control-sm" id="district" onchange="functionTest(this.value)">
+                                    <option>Select District</option>
+<?php
+$dataArray = district::getAllDistrict(); // Retrieve district data using the "getAllDistrict()" method
 
-                        <tr>
-                            <td><label for="BbName">Blood Bank Name:</label></td>
-                            <td><input type="text" id="BbName" name="BbName" required> </td>
-                        </tr>
+foreach ($dataArray as $district) {
+    ?>
 
-                        <tr>
-                            <td><label for="Adrs">Address:</label></td>
-                            <td><input type="text" id="Adrs" name="Adrs" required></td>
-                        </tr>
+                                        <option  value="<?php echo $district['district']; ?>"><?php echo $district['district']; ?></option>
+                                        <?php
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row align-items-center pb-3">
+                            <div class="col-3">
+                                <h6>DS Division</h6>
+                            </div>
+                            <div class="col-9">
+                                <select name="division" class="form-control-sm form-control-sm" id="divisionDropDown" onchange="getBloodBank(this.value)">
+                                    <option>Select Division</option> 
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row align-items-center pb-3">
+                            <div class="col-3">
+                                <h6>Contact No</h6>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" name="ContactNo" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"  required id="contactNumberInput" oninput="validateMobileNumber(this.value)">
+                                <p id="validationResult"></p>
+                            </div>
+                        </div>
+                        <div class="row align-items-center pb-3">
+                            <div class="col-3">
+                                <h6>Email</h6>
+                            </div>
+                            <div class="col-9">
+                                <input type="email"  name="email" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                            </div>
+                        </div>
+                        <!-- <div class="row align-items-center pb-3">
+                            <div class="col-3">
+                                <h6>User Name</h6>
+                            </div>
+                            <div class="col-9">
+                                <input type="text"  name="UserName" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                            </div>
+                        </div> -->
 
-                        <tr>
-                            <td><label for="Dst">District:</label> </td>
-                            <td><input type="text" id="Dst" name="Dst" required> </td>
-                        </tr>
+                        <input type ="hidden" name ="bloodBankId" value="<?php echo $bloodBankId; ?> "aria-label="Sizing example input" aria-discribedby="inputGroup-sizing-sm" required>
 
-                        <tr>
-                            <td><label for="Divi">DS Division:</label> </td>
-                            <td><input type="text" id="Divi" name="Divi" required> </td>
-                        </tr>
+                    </div>
 
-                        <tr>
-                            <td><label for="Cnct">Contact No:</label></td>
-                            <td><input type="tel" id="Cnct" name="Cnct" placeholder="123-456-7890"  required></td>
-                        </tr>
-                        <tr>
-                            <td><label for="email">Email:</label></td>
-                            <td><input type="email" id="email" name="email" required></td><br>
-                        </tr>
+                    <div class="modal-footer">
 
-                    </table> 
-                </form>
-            </div>
+                        <button type="submit" class="btn btn-primary" >Save </button>
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletePopup1">Delete</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
 
-            <div class="modal-footer">
-
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#savePopup1">Save </button>
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletePopup1">Delete</button>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
+
+                </form>
+            
 
 
 
-
-<!--Save Popup addbloodbank-->
-<!-- Modal -->
-<div class="modal fade" id="savePopup1" tabindex="-1" aria-labelledby="savePopup1Label" aria-hidden="true">
+<!-- Save Popup addbloodbank
+ Modal -->
+<!-- <div class="modal fade" id="savePopup1" tabindex="-1" aria-labelledby="savePopup1Label" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -354,10 +523,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         </div>
     </div>
 </div>
-</div>
+</div> -->
 <!--Delete Popup addbloodbank-->
 <!-- Modal -->
-<div class="modal fade" id="deletePopup1" tabindex="-1" aria-labelledby="deletePopup1Label" aria-hidden="true">
+<!-- <div class="modal fade" id="deletePopup1" tabindex="-1" aria-labelledby="deletePopup1Label" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -380,7 +549,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         </div>
     </div>
 </div>
-</div>
+</div>  -->
 
 <!-- Modal View Blood bank Details-->
 <!-- Modal -->
