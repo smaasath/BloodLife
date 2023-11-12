@@ -40,17 +40,17 @@ if (isset($authorizationHeader) && preg_match('/Bearer\s+(.*)$/i', $authorizatio
 
             if ($newReq == null) {
 
-                echo json_encode(array("message" => false));
+                echo json_encode(array("message" => "No Request Found"));
             } else {
 
-                echo json_encode($newReq);
+                echo json_encode(array("message" => true, "data"=>$newReq));
             }
         } else {
             // Invalid HTTP method
-            echo json_encode(array("message" => false));
+            echo json_encode(array("message" => "Invalid Token"));
         }
     } else {
-        echo json_encode(array("message" => false));
+        echo json_encode(array("message" => "Didn't Find Header"));
     }
 } else {
     echo json_encode(array("message" => "Invalid request method."));

@@ -34,7 +34,7 @@ if ($method === "GET") {
 
             if ($newDonor == null) {
 
-                echo json_encode(array("message" => false));
+                echo json_encode(array("message" => "Donor Didn't found"));
             } else {
 
                 echo json_encode(
@@ -53,16 +53,17 @@ if ($method === "GET") {
                             "image" => base64_encode($newDonor->getImage()),
                             "bloodBankId" => $newDonor->getBloodBankId(),
                             "district" => $district["district"],
-                            "division" => $district["division"]
+                            "division" => $district["division"],
+                            "message" => true
                         )
                 );
             }
         } else {
 
-            echo json_encode(array("message" => false));
+            echo json_encode(array("message" => "Invalid Token"));
         }
     } else {
-        echo json_encode(array("message" => false));
+        echo json_encode(array("message" => "Header Didn't Find"));
     }
 } else {
     echo json_encode(array("message" => "Invalid request method"));

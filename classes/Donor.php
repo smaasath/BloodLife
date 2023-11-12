@@ -167,13 +167,13 @@ class Donor {
         $this->districtId = $districtId;
     }
 
-    public function AddDonor($email) {
+    public function AddDonor($email,$password) {
         try {
             $dbcon = new DbConnector();
             $con = $dbcon->getConnection();
 
-            $query = "INSERT INTO `donor` (`donorId`, `name`, `bloodGroup`, `dob`, `contactNumber`, `nic`, `noOfDonation`, `coinValue`, `donationLastDate`, `availability`, `medicalReport`, `image`, `bloodBankId`, `districtId`) 
-            VALUES (Null,?,?,?,?,?,Null,'100',Null,'Available',?,Null,?,?)";
+            $query = "INSERT INTO `donor` (`donorId`, `name`, `bloodGroup`, `dob`, `contactNumber`, `nic`, `noOfDonation`, `coinValue`, `donationLastDate`, `availability`, `image`, `bloodBankId`, `districtId`) "
+                    . "VALUES (NULL, ?, ?, ?, ?, ?, NULL, null, NULL, ?, NULL, ?, ?);";
 
             $pstmt = $con->prepare($query);
             $pstmt->bindValue(1, $this->name, PDO::PARAM_STR);
@@ -181,12 +181,12 @@ class Donor {
             $pstmt->bindValue(3, $this->dob);
             $pstmt->bindValue(4, $this->contactNumber);
             $pstmt->bindValue(5, $this->nic);
-            $pstmt->bindValue(6, $this->medicalReport, PDO::PARAM_LOB);
+            $pstmt->bindValue(6, $this->availability);
             $pstmt->bindValue(7, $this->bloodBankId);
             $pstmt->bindValue(8, $this->districtId);
             $pstmt->execute();
             if ($pstmt->rowCount() > 0) {
-                return self::adduser($con, $email, $this->name);
+                return self::adduser($con, $email, $password);
             } else {
                 return false;
             }
@@ -195,62 +195,21 @@ class Donor {
         }
     }
 
-    public function adduser($con, $email, $name) {
+    public function adduser($con, $email, $password) {
 
         $DonorId = $con->lastInsertId();
-        $password = Validation::generateRandomPassword();
+        
 
         $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
         if (User::AddUser($email, 5, $hashedPassword, null, $DonorId, null)) {
-            self::SendMail($password, $email, $name);
             return true;
         } else {
             return false;
         }
     }
 
-    public static function SendMail($password, $email, $name) {
-        // Create an instance; passing `true` enables exceptions
-
-        require '../mail/Exception.php';
-        require '../mail/PHPMailer.php';
-        require '../mail/SMTP.php';
-        $mail = new PHPMailer(true);
-
-        //Server settings
-        $mail->SMTPDebug = 0;                      //Enable verbose debug output
-        $mail->isSMTP();                                            //Send using SMTP
-        $mail->Host = 'smtp.gmail.com';                     //Set the SMTP server to send through
-        $mail->SMTPAuth = true;                                   //Enable SMTP authentication
-        $mail->Username = 'sachinformationsystem@gmail.com';                     //SMTP username
-        $mail->Password = 'upyjmbtlcfckzoke';                               //SMTP password
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-        $mail->Port = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
-        //Recipients
-        $mail->setFrom('sachinformationsystem@gmail.com');
-        $mail->addAddress($email);     //Add a recipient             //Name is optional
-        //Content
-        $mail->isHTML(true);                                  //Set email format to HTML
-        $mail->Subject = 'Donor Registration';
-        $message = "Dear " . $name . ",<br>";
-        $message .= "Welcome to BloodLife! , " . "<br>";
-        $message .= "your account has been successfully created." . "<br><br>";
-        $message .= "        Your username:     " . $email . "<br>";
-        $message .= "        Your Password:     " . $password . "<br><br><br>";
-        $message .= "Regards,<br>";
-        $message .= "BloodLife";
-
-        $mail->Body = $message;
-
-        try {
-            $mail->send();
-            return true;
-        } catch (Exception $e) {
-            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-        }
-    }
-
+    
     static function getAllDetails() {
         try {
             $dbcon = new DbConnector();

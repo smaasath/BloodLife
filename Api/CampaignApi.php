@@ -29,17 +29,17 @@ if ($method === "GET") {
 
             if ($Allcamp == null) {
 
-                echo json_encode(array("message" => false));
+                echo json_encode(array("message" => "Donor Didn't found"));
             } else {
 
-                echo json_encode($Allcamp);
+                echo json_encode(array("message" => true, "data"=>$Allcamp));
             }
         } else {
             
-            echo json_encode(array("message" => false));
+            echo json_encode(array("message" => "Invalid Token"));
         }
     } else {
-        echo json_encode(array("message" => false));
+        echo json_encode(array("message" => "Didn't Find Header"));
     }
 } else {
     echo json_encode(array("message" => "Invalid request method."));

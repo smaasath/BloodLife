@@ -1,8 +1,10 @@
 <?php
 
 require_once '../classes/User.php';
+require_once '../classes/Validation.php';
 
 use classes\User;
+use classes\Validation;
 
 header('Content-Type: application/json');
 
@@ -11,21 +13,23 @@ $authorizationHeader = isset($headers['Authorization']) ? $headers['Authorizatio
 $method = $_SERVER["REQUEST_METHOD"];
 
 if (isset($authorizationHeader) && preg_match('/Bearer\s+(.*)$/i', $authorizationHeader, $matches)) {
-
+   
     $token = $matches[1];
-    $user = new User(null, null, null, null, null, $token, null, null, null, null);
+    $user = new User(null, null, null, null, $token, null, null, null, null);
 
     if ($user->validateToken()) {
         echo json_encode(array("message" => true));
+    } else {
+        echo json_encode(array("message" => "Token Not Valid"));
     }
 } else if ($method === "POST") {
 
     $data = json_decode(file_get_contents("php://input"), true);
     if (isset($data['email']) && isset($data['password'])) {
-        $user = new User(null, null, null, null, null, null, null, null, null, null);
+        $user = new User(null, null, null, null, null, null, null, null, null);
         $email = filter_var($data['email'], FILTER_SANITIZE_EMAIL);
         $password = filter_var($data['password'], FILTER_SANITIZE_STRING);
-        $emailValidation = User::validateGmail($email);
+        $emailValidation = Validation::validateGmail($email);
 
         if($emailValidation) {
 
