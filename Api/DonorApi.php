@@ -1,5 +1,6 @@
 <?php
 
+
 require_once '../classes/Donor.php';
 require_once '../classes/User.php';
 require_once '../classes/district.php';
@@ -8,13 +9,11 @@ use classes\Donor;
 use classes\User;
 use classes\district;
 
-
 header('Content-Type: application/json');
 
 $headers = getallheaders();
-$authorizationHeader = isset($headers['authorization']) ? $headers['authorization'] : null;
+$authorizationHeader = isset($headers['Authorization']) ? $headers['Authorization'] : (isset($headers['authorization']) ? $headers['authorization'] : null);
 $method = $_SERVER["REQUEST_METHOD"];
-
 
 if ($method === "GET") {
     if (isset($authorizationHeader) && preg_match('/Bearer\s+(.*)$/i', $authorizationHeader, $matches)) {

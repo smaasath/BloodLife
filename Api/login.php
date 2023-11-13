@@ -9,7 +9,7 @@ use classes\Validation;
 header('Content-Type: application/json');
 
 $headers = getallheaders();
-$authorizationHeader = isset($headers['Authorization']) ? $headers['Authorization'] : null;
+$authorizationHeader = isset($headers['Authorization']) ? $headers['Authorization'] : (isset($headers['authorization']) ? $headers['authorization'] : null);
 $method = $_SERVER["REQUEST_METHOD"];
 
 if (isset($authorizationHeader) && preg_match('/Bearer\s+(.*)$/i', $authorizationHeader, $matches)) {

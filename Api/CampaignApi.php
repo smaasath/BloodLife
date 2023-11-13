@@ -12,8 +12,7 @@ header('Content-Type: application/json');
 $method = $_SERVER["REQUEST_METHOD"];
 
 $headers = getallheaders();
-$authorizationHeader = isset($headers['authorization']) ? $headers['authorization'] : null;
-
+$authorizationHeader = isset($headers['Authorization']) ? $headers['Authorization'] : (isset($headers['authorization']) ? $headers['authorization'] : null);
 
 
 if ($method === "GET") {
