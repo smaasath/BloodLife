@@ -99,3 +99,30 @@ function functionTestt(value) {
 
         }});
 }
+
+function editBloodbank(bloodBankId){
+   
+    $.ajax({url: "../popups/EditBloodbank.php",
+    method: 'post',
+    data: {bloodBankId: bloodBankId},
+    success: function (result) {
+
+        $("#bloodbankEdit").html(result);
+        
+
+    }});
+}
+
+function VeiwBloodbank(bloodBankId){
+    console.log("clicked");
+     $.ajax({url: "../popups/viewBloodbankpopup.php",
+     method: 'post',
+     data: {bloodBankId: bloodBankId},
+     success: function (result) {
+ 
+         $("#bloodbankVeiw").html(result);
+         console.log(result);
+         
+ 
+     }});
+ }

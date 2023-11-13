@@ -146,12 +146,12 @@ class bloodBank {
         }
     }
 
-    public static function GetBloodbankData($bloodBankId) {
+    public  function GetBloodbankData($bloodBankId) {
         try {
             $dbcon = new DbConnector();
             $con = $dbcon->getConnection();
     
-            $query = "SELECT * FROM  `bloodbank` WHERE `id` = ?";
+            $query = "SELECT * FROM  `bloodbank` WHERE `bloodBankId` = ?";
     
             $pstmt = $con->prepare($query);
             $pstmt->bindValue(1, $bloodBankId);
@@ -159,9 +159,15 @@ class bloodBank {
             $pstmt->execute();
     
             if ($pstmt->rowCount() > 0) {
-                return $pstmt->fetch(PDO::FETCH_ASSOC);
+                $rs = $pstmt->fetch(PDO::FETCH_OBJ);
+                 $this->bloodBankName = $rs->bloodBankName;
+                 $this->Address = $rs->Address;
+                 $this->ContactNo = $rs->ContactNo;
+                 $this->districtId = $rs->districtId;
+                 return true;
+
             } else {
-                return false; // Return false if no data is found
+                return false; 
             }
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
