@@ -6,7 +6,9 @@
  */
 
 namespace classes;
-
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 require_once 'DbConnector.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
@@ -231,6 +233,48 @@ class User {
         $message = "Your Verification Code :".$code."<br>";   
         $message .= "Regards,<br>";
         $message .= "BloodLife";
+
+        $mail->Body = $message;
+
+        try {
+            $mail->send();
+            return true;
+        } catch (Exception $e) {
+            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        }
+    }
+
+    public static function SendMail( $password, $email,$name,$type) {
+        // Create an instance; passing `true` enables exceptions
+
+        require '../mail/Exception.php';
+        require '../mail/PHPMailer.php';
+        require '../mail/SMTP.php';
+        $mail = new PHPMailer(true);
+
+        //Server settings
+        $mail->SMTPDebug = 0;                      //Enable verbose debug output
+        $mail->isSMTP();                                            //Send using SMTP
+        $mail->Host = 'smtp.gmail.com';                     //Set the SMTP server to send through
+        $mail->SMTPAuth = true;                                   //Enable SMTP authentication
+        $mail->Username = 'sachinformationsystem@gmail.com';                     //SMTP username
+        $mail->Password = 'upyjmbtlcfckzoke';                               //SMTP password
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+        $mail->Port = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+        //Recipients
+        $mail->setFrom('sachinformationsystem@gmail.com');
+        $mail->addAddress($email);     //Add a recipient             //Name is optional
+        //Content
+        $mail->isHTML(true);                                  //Set email format to HTML
+        $mail->Subject = $type.' Registration';
+        $message = "Dear ".$name.",<br>";
+        $message .= "Welcome to BloodLife! , " . "<br>";
+        $message .= "your account has been successfully created." . "<br><br>";
+        $message .= "        Your username:     " . $email . "<br>";
+        $message .= "        Your Password:     " . $password . "<br><br><br>";
+        $message .= "Regards,<br>";
+        $message .= "BloodLife";
+        
 
         $mail->Body = $message;
 
