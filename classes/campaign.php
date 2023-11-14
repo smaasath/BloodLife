@@ -159,6 +159,11 @@ function is_valid_age($age) {
 
 
 
+
+
+
+
+
 static function getAllCampaign(){
     try {
         $dbcon = new DbConnector();
@@ -183,6 +188,168 @@ static function getAllCampaign(){
     }
     
 }
+
+
+
+public function EditCampaign() {
+    try {
+        $dbcon = new DbConnector();
+        $con = $dbcon->getConnection();
+
+
+ $query = "UPDATE `campaigntable` SET `Title` = ?, `address` = ?, `startDate` = ?, `endDate` = ?, `review` = ?, `status` = ?, `districtId` = ?, `bloodBankId` = ? WHERE `campaignId` = ?";
+
+
+        $pstmt = $con->prepare($query);
+        $pstmt->bindValue(1, $this->Title, PDO::PARAM_STR);
+        $pstmt->bindValue(2, $this->address, PDO::PARAM_STR);
+        $pstmt->bindValue(3, $this->startDate, PDO::PARAM_STR);
+        $pstmt->bindValue(4, $this->endDate, PDO::PARAM_STR);
+        $pstmt->bindValue(5, $this->review, PDO::PARAM_STR);
+        $pstmt->bindValue(6, $this->status, PDO::PARAM_STR);
+       $pstmt->bindValue(7, $this->districtId, PDO::PARAM_INT);
+       $pstmt->bindValue(8, $this->bloodBankId, PDO::PARAM_INT);
+
+       if ($pstmt->execute()) {
+        return true; // Successful update
+    } else {
+        return false; // Update failed
+    }
+} catch (PDOException $e) {
+    error_log("Error: " . $e->getMessage());
+    return false;
+    }
+}
+
+/*
+
+// Create a function to fetch campaign details
+function getCampaignDetails() {
+    try {
+        $dbcon = new DbConnector(); // Replace with your database connection code
+        $con = $dbcon->getConnection();
+
+        // Prepare a SQL query to select campaign details by campaignId
+        $query = "SELECT Title, startDate, endDate, status FROM campaigntable WHERE campaignId = :campaignId";
+
+        $pstmt = $con->prepare($query);
+       // $pstmt->bindValue(':campaignId', $campaignId, PDO::PARAM_INT);
+        $pstmt->bindValue(1, $this->Title, PDO::PARAM_STR);
+        $pstmt->bindValue(2, $this->address, PDO::PARAM_STR);
+        $pstmt->bindValue(3, $this->startDate, PDO::PARAM_STR);
+        $pstmt->bindValue(4, $this->endDate, PDO::PARAM_STR);
+        $pstmt->bindValue(5, $this->review, PDO::PARAM_STR);
+        $pstmt->bindValue(6, $this->status, PDO::PARAM_STR);
+       $pstmt->bindValue(7, $this->districtId, PDO::PARAM_INT);
+       $pstmt->bindValue(8, $this->bloodBankId, PDO::PARAM_INT);
+        $pstmt->execute();
+
+        // Fetch the campaign details
+        $campaignDetails = $pstmt->fetch(PDO::FETCH_ASSOC);
+
+        return $campaignDetails;
+    } catch (PDOException $e) {
+        // Handle database connection or query errors here
+        error_log("Error: " . $e->getMessage());
+        return false;
+    }
+}*/ 
+
+
+
+// Create a function to fetch campaign details
+public function getCampaignDetails() {
+    try {
+        $dbcon = new DbConnector(); // Replace with your database connection code
+        $con = $dbcon->getConnection();
+
+        // Prepare a SQL query to select campaign details by campaignId
+        $query = "SELECT Title, startDate, endDate, status FROM campaigntable WHERE campaignId = :campaignId";
+
+        $pstmt = $con->prepare($query);
+     //$pstmt->bindValue(':campaignId', PDO::PARAM_INT);
+        $pstmt->bindValue(1, $this->Title, PDO::PARAM_STR);
+        $pstmt->bindValue(2, $this->address, PDO::PARAM_STR);
+        $pstmt->bindValue(3, $this->startDate, PDO::PARAM_STR);
+        $pstmt->bindValue(4, $this->endDate, PDO::PARAM_STR);
+        $pstmt->bindValue(5, $this->review, PDO::PARAM_STR);
+        $pstmt->bindValue(6, $this->status, PDO::PARAM_STR);
+       $pstmt->bindValue(7, $this->districtId, PDO::PARAM_INT);
+       $pstmt->bindValue(8, $this->bloodBankId, PDO::PARAM_INT);
+        $pstmt->execute();
+
+        // Fetch the campaign details
+        $campaignDetails = $pstmt->fetch(PDO::FETCH_ASSOC);
+
+        return $campaignDetails;
+    } catch (PDOException $e) {
+        // Handle database connection or query errors here
+        error_log("Error: " . $e->getMessage());
+        return false;
+    }
+}
+
+
+/*
+public function UpdateCampaign() {
+    try {
+        $dbcon = new DbConnector();
+        $con = $dbcon->getConnection();
+
+        $query = "UPDATE `campaigntable` SET `Title` = ?, `startDate` = ?, `endDate` = ?, `status` = ? WHERE `campaignId` = ?";
+
+        $pstmt = $con->prepare($query);
+        $pstmt->bindValue(1, $this->Title, PDO::PARAM_STR);
+        $pstmt->bindValue(2, $this->startDate, PDO::PARAM_STR);
+        $pstmt->bindValue(3, $this->endDate, PDO::PARAM_STR);
+        $pstmt->bindValue(4, $this->status, PDO::PARAM_STR);
+        $pstmt->bindValue(5, $this->campaignId, PDO::PARAM_INT);
+
+        if ($pstmt->execute()) {
+            return true; // Successful update
+        } else {
+            return false; // Update failed
+        }
+    } catch (PDOException $e) {
+        error_log("Error: " . $e->getMessage());
+        return false;
+    }
+}
+
+*/
+
+
+public function UpdateCampaign() {
+    try {
+        $dbcon = new DbConnector();
+        $con = $dbcon->getConnection();
+
+        $query = "UPDATE `campaigntable` SET `Title` = ?, `address` = ?, `startDate` = ?, `endDate` = ?, `review` = ?, `status` = ?, `districtId` = ?, `bloodBankId` = ? WHERE `campaignId` = ?";
+
+        $pstmt = $con->prepare($query);
+        $pstmt->bindValue(1, $this->Title, PDO::PARAM_STR);
+        $pstmt->bindValue(2, $this->address, PDO::PARAM_STR);
+        $pstmt->bindValue(3, $this->startDate, PDO::PARAM_STR);
+        $pstmt->bindValue(4, $this->endDate, PDO::PARAM_STR);
+        $pstmt->bindValue(5, $this->review, PDO::PARAM_STR);
+        $pstmt->bindValue(6, $this->status, PDO::PARAM_STR);
+        $pstmt->bindValue(7, $this->districtId, PDO::PARAM_INT);
+        $pstmt->bindValue(8, $this->bloodBankId, PDO::PARAM_INT);
+        $pstmt->bindValue(9, $this->campaignId, PDO::PARAM_INT); // Assuming you have a campaignId property in your class
+
+        if ($pstmt->execute()) {
+            return true; // Successful update
+        } else {
+            return false; // Update failed
+        }
+    } catch (PDOException $e) {
+        error_log("Error: " . $e->getMessage());
+        return false;
+    }
+}
+
+
+
 
 
 
