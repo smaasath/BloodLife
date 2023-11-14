@@ -109,6 +109,30 @@ class Bloodtable {
         }
     }
 
+    public static function showBloodPackets() {
+        try {
+            $dbcon = new DbConnector();
+            $con = $dbcon->getConnection();
+
+            $query = "SELECT * FROM `bloodtable`";
+            
+
+
+            $stmt = $con->prepare($query);
+            
+            $stmt->execute();
+
+            $bloodArray = array();
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $bloodArray[] = $row;
+            }
+
+            return $bloodArray;
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+
     public function addbloodpacket() {
         try {
             $dbcon = new DbConnector();
@@ -124,11 +148,7 @@ class Bloodtable {
             $pstmt->bindValue(5, $this->status);
 
             $pstmt->execute();
-            if ($pstmt->rowCount() > 0) {
-                return true;
-            } else {
-                return false;
-            }
+            return $pstmt->rowCount() > 0 ;
         } catch (PDOException $exc) {
             echo $exc->getMessage();
         }
