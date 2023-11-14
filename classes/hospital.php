@@ -6,9 +6,11 @@
  */
 
 namespace classes;
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
+
 require_once 'DbConnector.php';
 require_once 'User.php';
 
@@ -17,20 +19,19 @@ use PDO;
 use PDOException;
 use classes\DbConnector;
 
-
 /**
  * Description of hospital
  *
  * @author Sankavi
  */
 class hospital {
-    
+
     private $hospitalId;
-    private $name	;
+    private $name;
     private $address;
     private $contactNumber;
     private $districtId;
-    
+
     public function __construct($hospitalId, $name, $address, $contactNumber, $districtId) {
         $this->hospitalId = $hospitalId;
         $this->name = $name;
@@ -70,6 +71,7 @@ class hospital {
     public function setAddress($address): void {
         $this->address = $address;
     }
+
     public function setContactNumber($contactNumber): void {
         $this->contactNumber = $contactNumber;
     }
@@ -78,53 +80,52 @@ class hospital {
         $this->districtId = $districtId;
     }
 
-public  function AddHospital($email) {
+    public function AddHospital($email) {
 
-    if (!is_numeric($this->districtId)) {
-        // Handle the error, e.g., return false or throw an exception
-        return false;
+        if (!is_numeric($this->districtId)) {
+            // Handle the error, e.g., return false or throw an exception
+            return false;
+        }
+        try {
+            $dbcon = new DbConnector();
+            $con = $dbcon->getConnection();
+
+            $query = "INSERT INTO `hospital` ( `name`, `address`, `contactNumber`, `districtId`) VALUES ( ?, ?, ?, ?);";
+
+            $pstmt = $con->prepare($query);
+            $pstmt->bindValue(1, $this->name);
+            $pstmt->bindValue(2, $this->address);
+            $pstmt->bindValue(3, $this->contactNumber);
+            $pstmt->bindValue(4, $this->districtId);
+
+            $pstmt->execute();
+
+            if ($pstmt->rowCount() > 0) {
+                return self::addhospitaluser($con, $email, $this->name);
+            } else {
+                return false;
+            }
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
     }
-    try {
-        $dbcon = new DbConnector();
-        $con = $dbcon->getConnection();
 
-        $query = "INSERT INTO `hospital` ( `name`, `address`, `contactNumber`, `districtId`) VALUES ( ?, ?, ?, ?);";
+    public function addhospitaluser($con, $email, $name) {
 
-        $pstmt = $con->prepare($query);
-        $pstmt->bindValue(1, $this->name);
-        $pstmt->bindValue(2, $this->address); 
-        $pstmt->bindValue(3, $this->contactNumber);
-        $pstmt->bindValue(4, $this->districtId);
-        
+        $hospitalId = $con->lastInsertId();
+        $password = Validation::generateRandomPassword();
 
-        $pstmt->execute();
+        $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
-        if ($pstmt->rowCount() > 0) {
-            return self::addhospitaluser($con, $email, $this->name);
+        if (User::AddUser($email, 5, $hashedPassword, null, null, $hospitalId)) {
+            self::SendMail($password, $email, $name);
+            return true;
         } else {
             return false;
         }
-    } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage();
     }
-}
 
-public function addhospitaluser($con, $email, $name) {
-
-    $hospitalId = $con->lastInsertId();
-    $password = Validation::generateRandomPassword();
-
-    $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
-
-    if (User::AddUser($email, 5, $hashedPassword, null, null, $hospitalId)) {
-        self::SendMail($password, $email, $name);
-        return true;
-    } else {
-        return false;
-    }
-}
-
-public static function SendMail( $password, $email,$name) {
+    public static function SendMail($password, $email, $name) {
         // Create an instance; passing `true` enables exceptions
 
         require '../mail/Exception.php';
@@ -147,14 +148,13 @@ public static function SendMail( $password, $email,$name) {
         //Content
         $mail->isHTML(true);                                  //Set email format to HTML
         $mail->Subject = 'Hospital Registration';
-        $message = "Dear ".$name.",<br>";
+        $message = "Dear " . $name . ",<br>";
         $message .= "Welcome to BloodLife! , " . "<br>";
         $message .= "your account has been successfully created." . "<br><br>";
         $message .= "        Your username:     " . $email . "<br>";
         $message .= "        Your Password:     " . $password . "<br><br><br>";
         $message .= "Regards,<br>";
         $message .= "BloodLife";
-        
 
         $mail->Body = $message;
 
@@ -170,24 +170,23 @@ public static function SendMail( $password, $email,$name) {
         try {
             $dbcon = new DbConnector();
             $con = $dbcon->getConnection();
-    
+
             $query = "SELECT * FROM `hospital` WHERE `hospitalId` = ?";
-    
+
             $pstmt = $con->prepare($query);
             $pstmt->bindValue(1, $hospitalId);
-    
+
             $pstmt->execute();
-    
+
             if ($pstmt->rowCount() > 0) {
                 $rs = $pstmt->fetch(PDO::FETCH_OBJ);
-                 $this->name = $rs->name;
-                 $this->address = $rs->address;
-                 $this->contactNumber = $rs->contactNumber;
-                 $this->districtId = $rs->districtId;
-                 return true;
-
+                $this->name = $rs->name;
+                $this->address = $rs->address;
+                $this->contactNumber = $rs->contactNumber;
+                $this->districtId = $rs->districtId;
+                return true;
             } else {
-                return false; 
+                return false;
             }
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
@@ -200,11 +199,9 @@ public static function SendMail( $password, $email,$name) {
             $con = $dbcon->getConnection();
 
             $query = "SELECT *, district.district, district.division FROM hospital, district WHERE hospital.districtId = district.districtId;`";
-            
-
 
             $stmt = $con->prepare($query);
-            
+
             $stmt->execute();
 
             $hospitalArray = array();
@@ -218,9 +215,4 @@ public static function SendMail( $password, $email,$name) {
         }
     }
 
-   
-   
-    
-       
-    
 }
