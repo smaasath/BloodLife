@@ -65,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
    
    
     //create user object with token
-   $user = new User(null, null, null, null, null, $token, null, null, null, null);
+   $user = new User(null, null, null, null, $token, null, null, null, null);
     
     //validations
     $emailExist = Validation::validateAlreadyExist("email", $email, "user");

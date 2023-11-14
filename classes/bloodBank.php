@@ -191,6 +191,31 @@ class bloodBank {
             echo "Error: " . $e->getMessage();
         }
     }
-
+public function GetBloodbankByName() {
+        try {
+            $dbcon = new DbConnector();
+            $con = $dbcon->getConnection();
+    
+            $query = "SELECT * FROM  `bloodbank` WHERE `bloodBankName` = ?";
+    
+            $pstmt = $con->prepare($query);
+            $pstmt->bindValue(1, $this->bloodBankName);
+    
+            $pstmt->execute();
+    
+            if ($pstmt->rowCount() > 0) {
+                $rs =  $pstmt->fetch(PDO::FETCH_OBJ);
+                $this->bloodBankId = $rs->bloodBankId;
+                $this->Address = $rs->Address;
+                $this->	ContactNo = $rs->ContactNo;
+                $this->districtId  = $rs->districtId;
+                return true;
+            } else {
+                return false; // Return false if no data is found
+            }
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
 
 }

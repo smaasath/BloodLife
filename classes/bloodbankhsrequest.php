@@ -77,7 +77,7 @@ class bloodbankhsrequest
 
 
 
-static function getBloodBankReqByBankID($bloodBankId){
+static function getBloodBankReqByBankID($bloodBankId,$bloodgroup){
     try {
         $dbcon = new DbConnector();
         $con = $dbcon->getConnection();
@@ -99,12 +99,13 @@ static function getBloodBankReqByBankID($bloodBankId){
       ON
         bloodbank.bloodBankId = bloodbankrequest.bloodBankId
       WHERE
-        bloodbankrequest.bloodBankId = ?
+        bloodbankrequest.bloodBankId = ? && bloodbankrequest.bloodGroup=?
       ORDER BY
         bloodbankrequest.bloodBankRequestId DESC;";
 
         $stmt = $con->prepare($query);
         $stmt->bindParam(1, $bloodBankId, PDO::PARAM_INT);
+        $stmt->bindParam(2, $bloodgroup);
 
         $stmt->execute();
 
