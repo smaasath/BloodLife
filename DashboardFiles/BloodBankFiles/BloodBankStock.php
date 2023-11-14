@@ -256,7 +256,7 @@ $bloodbankid = 1;
                             <th class="col-2 bgcol p-2" style="text-align: center;">Quantity(ml)</th>
                             <th class="col-2 bgcol p-2" style="text-align: center;">Status</th>
                             <th class="col-1 bgcol p-2" style="text-align: center;">Action</th>
-                            
+
 
 
 
@@ -290,7 +290,7 @@ $bloodbankid = 1;
                         <td class="col-1">${item.quantity}</td>
                         <td class="col-1">${item.status}</td>
                         
-                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="EditHospitalDetails()">Edit</button></td>
+                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal"  onclick="EditHospitalDetails()">Edit</button></td>
                     </tr>`;
 
 
@@ -344,8 +344,8 @@ $bloodbankid = 1;
                         <td class="col-3">${item.expiryDate}</td>                    
                         <td class="col-1">${item.quantity}</td>
                         <td class="col-1">${item.status}</td>
-                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="OpenHospitalDetails()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  onclick="EditHospitalDetails()">Edit</button></td>
+                        
+                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal" onclick="EditHospitalDetails()">Edit</button></td>
                     </tr>`;
 
 
@@ -442,73 +442,44 @@ $bloodbankid = 1;
 
             <!--end add-->
             <-<!--edit -->
-                <div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="view" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="view">EDIT DETAILS</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <form>
-                                <div class="row align-items-center pb-3">
-                            <div class="col-3">
-                                <h6>Blood Group</h6>
-                            </div>
-                            <div class="col-9">
-                                <select class="form-control form-control-lg">
-                                    <option selected>Select your Blood Group</option>
-                                    <option value="1">A+</option>
-                                    <option value="2"> </option>
-                                    <option value="3"> </option>
-                                </select>
-                            </div>
-                        </div>
-                                    <div class="stocky">
-                                        <label for="BloodGroup">BloodGroup:</label>
-                                        <span>O+</span>
-                                    </div><br>
+                <form action="../services/bloodpackets.php" method="POST" enctype="multipart/form-data">
+                    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="edit" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="view">EDIT DETAILS</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                <label for="BloodGroup">BloodGroup:</label>
+                                    <select class="form-select" name="bloodgroup" aria-laquantitybel="Default select example" required>
+                                        <option value="" selected>Select your Blood Group</option>
+                                        <option value="A+">A+</option>
+                                        <option value="A-">A-</option>
+                                        <option value="B+">B+</option>
+                                        <option value="B-">B-</option>
+                                        <option value="O+">O+</option>
+                                        <option value="O-">O-</option>
+                                        <option value="AB+">AB+</option>
+                                        <option value="AB-">AB-</option>
+                                    </select><br>
+                                    <label for="Quantity">Quantity(ml):</label>
+                                    <input type="number" class="form-control" name="quantity" oninput="sanitizeQuantity(this);" maxlength="3" required><br>
+                                    <label for="ExpiryDate">Expiry Date:</label>
+                                    <input type="date" class="form-control" name="expiryDate" oninput="sanitizeExpiryDate(this)" required><br>
+                                    <input type="hidden" value="<?php echo $token ?>" name="token">
                                     
-                                    <div class="stocky">
-                                        <label for="Quantity">Quantity:</label>
-                                        <span>2L</span>
-                                    </div><br>
-                                    
-                                    <div class="stocky">
-                                        <label for="ExpiryDate">ExpiryDate:</label>
-                                        <span>2023-10-02</span>
-                                    </div><br>
-                                    <div class="stocky">
-                                        <label for="Bloodbank">Bloodbank:</label>
-                                        <span>Venus</span>
-                                    </div><br>
-                                    <div class="stocky">
-                                        <label for="BloodbankID">BloodbankID:</label>
-                                        <span>BB001</span>
-                                    </div><br>
-                                    <div class="stocky">
-                                        <label for="Address">Address:</label>
-                                        <span>100,JAFFNA</span>
-                                    </div><br>
-                                    <div class="stocky">
-                                        <label for="Contact No">Contact No:</label>
-                                        <span>0214578965</span>
-                                    </div><br>
-                                    <div class="stocky">
-                                        <label for="Email">Email:</label>
-                                        <span>SAALU@gmail</span>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+                                <div class="modal-footer">
 
+                                    <button type="submit" class="btn btn-primary">Save </button>
+                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletePopup1">Delete</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
 
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
+                </form>
                 <?php
                 // put your code here
                 ?>
