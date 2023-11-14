@@ -58,3 +58,71 @@ function AddCampaign(){
     $('#AddCampaign').modal('show'); 
         
 }
+
+function editHospital(hospitalId){
+   
+    $.ajax({url: "../popups/EditHospital.php",
+    method: 'post',
+    data: {hospitalId: hospitalId},
+    success: function (result) {
+
+        $("#hoapitlEdit").html(result);
+        
+
+    }});
+}
+
+function VeiwHospital(hospitalId){
+   console.log("clicked");
+    $.ajax({url: "../popups/viewhospitalpopup.php",
+    method: 'post',
+    data: {hospitalId: hospitalId},
+    success: function (result) {
+
+        $("#hospitalVeiw").html(result);
+        console.log(result);
+        
+
+    }});
+}
+
+function functionTestt(value) {
+
+
+    $.ajax({url: "../services/locationService.php",
+        method: 'post',
+        data: {district: value},
+        success: function (result) {
+
+            $("#divisionDropDownp").html(result);
+           
+
+        }});
+}
+
+function editBloodbank(bloodBankId){
+   
+    $.ajax({url: "../popups/EditBloodbank.php",
+    method: 'post',
+    data: {bloodBankId: bloodBankId},
+    success: function (result) {
+
+        $("#bloodbankEdit").html(result);
+        
+
+    }});
+}
+
+function VeiwBloodbank(bloodBankId){
+    console.log("clicked");
+     $.ajax({url: "../popups/viewBloodbankpopup.php",
+     method: 'post',
+     data: {bloodBankId: bloodBankId},
+     success: function (result) {
+ 
+         $("#bloodbankVeiw").html(result);
+         console.log(result);
+         
+ 
+     }});
+ }

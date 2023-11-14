@@ -153,4 +153,30 @@ public static function validateLettersLength($Title,$length) {
     return $title_length >= $length;
 }
 
+static function validateexpirydate($date){
+        
+        
+    // Get the current date
+    $currentDate = date("Y-m-d");
+
+    if (strtotime($date) >= strtotime($currentDate)) {
+        return true; // Valid date (present or future)
+    }
+
+    return false; // Invalid date (in the past)
+
+}
+
+static function validatequantity($quantity){
+
+return preg_match('/^\d{3}$/', $quantity);
+    
+}
+
+public static function validatePassword($password) {
+    $pattern = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{6,}$/';
+
+    return preg_match($pattern, $password);
+}
+
 }
