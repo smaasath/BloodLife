@@ -61,9 +61,6 @@ class User {
         return $this->userId;
     }
 
-    public function getUserName() {
-        return $this->UserName;
-    }
 
     public function getPassword() {
         return $this->password;
@@ -93,9 +90,7 @@ class User {
         $this->userId = $userId;
     }
 
-    public function setUserName($UserName): void {
-        $this->UserName = $UserName;
-    }
+ 
 
     public function setPassword($password): void {
         $this->password = $password;
