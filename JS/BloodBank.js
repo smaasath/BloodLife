@@ -75,4 +75,14 @@ function profile() {
     
 }
 
+function EditBloodpackets(bloodId){
+    $.ajax({url: "../popups/EditBloodpackets.php",
+    method: 'post',
+    data: {bloodId: bloodId},
+    success: function (result) {
+console.log("success");
+        $("#editbloodpackets").html(result);
+       
 
+    }});
+}

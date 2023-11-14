@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
       //validate
-      $user = new User(null, null, null, null, null, $token, null, null, null, null);
+      $user = new User( null, null, null, null, $token, null, null, null, null);
 
       $validateexpiry = validation::validateexpirydate($expirydate);
       $validatebloodgroup = validation::validateBloodGroup($bloodgroup);

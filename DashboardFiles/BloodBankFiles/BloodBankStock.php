@@ -290,7 +290,7 @@ $bloodbankid = 1;
                         <td class="col-1">${item.quantity}</td>
                         <td class="col-1">${item.status}</td>
                         
-                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal"  onclick="EditHospitalDetails()">Edit</button></td>
+                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal"  onclick="EditBloodpackets(${item.bloodId})">Edit</button></td>
                     </tr>`;
 
 
@@ -345,7 +345,7 @@ $bloodbankid = 1;
                         <td class="col-1">${item.quantity}</td>
                         <td class="col-1">${item.status}</td>
                         
-                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal" onclick="EditHospitalDetails()">Edit</button></td>
+                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal" onclick="EditBloodpackets(${item.bloodId})">Edit</button></td>
                     </tr>`;
 
 
@@ -389,7 +389,7 @@ $bloodbankid = 1;
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form method="post" action="bloodpackets.php">
+                                
                                     <label for="BloodGroup">BloodGroup:</label>
                                     <select class="form-select" name="bloodgroup" aria-laquantitybel="Default select example" required>
                                         <option value="" selected>Select your Blood Group</option>
@@ -407,7 +407,7 @@ $bloodbankid = 1;
                                     <label for="ExpiryDate">Expiry Date:</label>
                                     <input type="date" class="form-control" name="expiryDate" oninput="sanitizeExpiryDate(this)" required><br>
                                     <input type="hidden" value="<?php echo $token ?>" name="token">
-                                </form>
+                                
                             </div>
                             <div class="modal-footer">
                                 <button type="submit" class="savebtn">Save</button>
@@ -450,25 +450,10 @@ $bloodbankid = 1;
                                     <h1 class="modal-title fs-5" id="view">EDIT DETAILS</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                                <div class="modal-body">
-                                <label for="BloodGroup">BloodGroup:</label>
-                                    <select class="form-select" name="bloodgroup" aria-laquantitybel="Default select example" required>
-                                        <option value="" selected>Select your Blood Group</option>
-                                        <option value="A+">A+</option>
-                                        <option value="A-">A-</option>
-                                        <option value="B+">B+</option>
-                                        <option value="B-">B-</option>
-                                        <option value="O+">O+</option>
-                                        <option value="O-">O-</option>
-                                        <option value="AB+">AB+</option>
-                                        <option value="AB-">AB-</option>
-                                    </select><br>
-                                    <label for="Quantity">Quantity(ml):</label>
-                                    <input type="number" class="form-control" name="quantity" oninput="sanitizeQuantity(this);" maxlength="3" required><br>
-                                    <label for="ExpiryDate">Expiry Date:</label>
-                                    <input type="date" class="form-control" name="expiryDate" oninput="sanitizeExpiryDate(this)" required><br>
+                                <div class="modal-body" id ="editbloodpackets">
+                               
                                     <input type="hidden" value="<?php echo $token ?>" name="token">
-                                    
+                                </div>
                                 <div class="modal-footer">
 
                                     <button type="submit" class="btn btn-primary">Save </button>

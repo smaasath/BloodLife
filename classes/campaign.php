@@ -147,15 +147,6 @@ public function AddCampaign() {
            
 
 
-function is_valid_age($age) {
-    if (is_numeric($age)) {
-        $age = (int)$age;
-        if ($age >= 0 && $age <= 150) {  // Assuming a valid age range between 0 and 150
-            return true;
-        }
-    }
-    return false;
-}
 
 
 
