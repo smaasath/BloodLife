@@ -41,13 +41,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       if ($validateToken && $bloodBankId != null) {
 
         if ($validateexpiry && $validatebloodgroup && $validatequantity) {
-          $bloodpacked = new Bloodtable(null, $expirydate, $bloodgroup, $quantity, $bloodBankId, "Available");
+          $bloodpacked = new Bloodtable(null, $expirydate, $bloodgroup, $quantity, $bloodBankId, $status);
 
-          if ($bloodpacked->addbloodpacket()) {
-            $status = 1;
-          } else {
-            $status = 2;
-          }
+         
         } else {
           $status = !$validateexpiry ? 3 : (!$validatebloodgroup ? 4 : (!$validatequantity ? 5 : 6));
         }

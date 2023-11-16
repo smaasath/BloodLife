@@ -31,7 +31,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $validatebloodgroup = validation::validateBloodGroup($bloodgroup);
       $validatequantity = validation::validatequantity($quantity);
       $validateToken = $user->validateToken();
+      
       $bloodBankId = $user->getBloodBankId();
+   
 
       if ($validateToken && $bloodBankId != null) {
 

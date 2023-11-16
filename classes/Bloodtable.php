@@ -109,17 +109,17 @@ class Bloodtable {
         }
     }
 
-    public static function showBloodPackets() {
+    public static function showBloodPackets($bloodBankId) {
         try {
             $dbcon = new DbConnector();
             $con = $dbcon->getConnection();
 
-            $query = "SELECT * FROM `bloodtable`";
+            $query = "SELECT * FROM `bloodtable` WHERE bloodBankId = ?";
             
 
 
             $stmt = $con->prepare($query);
-            
+            $stmt->bindValue(1, $bloodBankId);
             $stmt->execute();
 
             $bloodArray = array();
