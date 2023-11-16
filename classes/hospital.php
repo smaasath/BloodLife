@@ -121,8 +121,11 @@ class hospital {
         return false;
 
     }
+
 }
 
+
+    
 
 
     public function GetHospitalData($hospitalId) {

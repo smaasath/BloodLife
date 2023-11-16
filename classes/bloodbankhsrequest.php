@@ -77,7 +77,7 @@ class bloodbankhsrequest
 
 
 
-static function getBloodBankReqByBankID($bloodBankId,$bloodgroup){
+public static function getBloodBankReqByBankID($bloodBankId,$bloodgroup){
     try {
         $dbcon = new DbConnector();
         $con = $dbcon->getConnection();
