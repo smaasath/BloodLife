@@ -442,7 +442,7 @@ $bloodbankid = 1;
 
             <!--end add-->
             <-<!--edit -->
-                <form action="../services/bloodpackets.php" method="POST" enctype="multipart/form-data">
+                <form action="../services/Editbloodpackets.php" method="POST" enctype="multipart/form-data">
                     <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="edit" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
