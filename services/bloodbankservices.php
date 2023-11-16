@@ -74,7 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
    
 
    //token  checking
-   if ($validateToken && $userrole == 1) {
+   if ($validateToken && $userrole == 2) {
 
     //email,phonenumber validation check
     if ($validateEmail && $validatePhoneNumber ) {
@@ -89,7 +89,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
            $_SESSION["bloodbank"] = $bloodbank;
            $_SESSION["email"] = $email;
            $_SESSION['timestamp'] = time();
-           $status = $bloodbank->SendMail( $_SESSION["VerificationCode"], $email, $name) ? header("Location: newEmptyPHPWebPage.php") : 7;
+           $status = $User->SendMail( $_SESSION["VerificationCode"], $email, $name) ? header("Location: newEmptyPHPWebPage.php") : 7;
 
        } else {
            //check status for exist values

@@ -5,7 +5,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 -->
 <?php
 $bloodBankId = 1;
-$token = "abcde1234";
+$token = "12b378738a1a6be3bacea473fe9e3d2fbfce8e678d514e1d943";
 
 require_once '../classes/bloodBank.php';
 require_once '../classes/district.php';
