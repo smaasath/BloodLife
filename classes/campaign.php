@@ -24,7 +24,6 @@ class campaign {
     private $review;
     private $status;
     private $districtId;
-
     private $bloodBankId;
     
     public function __construct($campaignId, $Title, $address, $startDate, $endDate, $review, $status, $districtId, $bloodBankId) {
