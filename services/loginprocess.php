@@ -6,6 +6,8 @@ require_once '../classes/DbConnector.php';
 use classes\User;
 use classes\DbConnector;
 
+session_start();
+
 $connect = mysqli_connect("localhost", "root", "bloodline", "Login-Details") or die("Connection Failed");
 
 if (!empty($_POST['save'])) {
@@ -27,11 +29,20 @@ if (!empty($_POST['save'])) {
         $result = mysqli_stmt_get_result($stmt);
 
         if ($result && mysqli_num_rows($result) > 0) {
-            echo "Login is successful";
+            // Login is successful
 
             // Create a User object and call the webLogin method
             $user = new User($UserName, $password, $role);
             $user->webLogin();
+
+            // Store user information in session
+            $_SESSION['user_id'] = $user->userId;
+            $_SESSION['UserName'] = $user->UserName;
+            $_SESSION['userRole'] = $user->role;
+
+            // Redirect to a dashboard or another page
+            header("Location: dashboard.php");
+            exit();
         } else {
             echo "Login is not successful";
         }
