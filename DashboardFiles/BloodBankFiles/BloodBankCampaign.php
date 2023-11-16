@@ -1,9 +1,11 @@
 <?php
 require_once '../classes/campaign.php';
+require_once '../classes/User.php';
 
 use classes\campaign;
+use classes\User;
 
-$token = "12b378738a1a6be3bacea473fe9e3d2fbfce8e678d514e1d943";
+$token = "5e0efecebe48576807e25ec8db0487b7ec42b4a3f87142d592";
 ?>
 
 <!DOCTYPE html>
@@ -206,7 +208,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                                 <tbody>
                                     <?php
-                                    $requestArray = campaign::getAllCampaign();
+                                    $user = new User(null, null, null, null, $token, null, null, null, null);
+                                    $user->validateToken();
+                                    $requestArray = campaign::getAllCampaign($user->getBloodBankId());
                                     foreach ($requestArray as $donorArray) {
                                     ?>
                                         <tr>
@@ -216,7 +220,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                             <td class="col-1"><?php echo $donorArray["endDate"]; ?></td>
                                             <td class="col-1"><?php echo $donorArray["status"]; ?></td>
                                             <td class="col-1">
-                                                <button type="button" class="btn btn-danger editbtn" onclick="EditCamp()" data-bs-toggle="modal" data-bs-target="#DonorEdit">
+                                                <button type="button" class="btn btn-danger editbtn" data-bs-toggle="modal" data-bs-target="#EditCampaignDetailsModal" onclick="EditCamp(<?php echo $donorArray['campaignId']; ?>)" >
                                                     Edit
                                                 </button>
                                             </td>
@@ -613,64 +617,22 @@ $(document).ready(function(){
 
 
             <!-- Edit Campaign Modal -->
+            <form action="CampaignEditService" method="POST" enctype="multipart/form-data">
             <div class="modal fade" id="EditCampaignDetailsModal" tabindex="-1" role="dialog" aria-labelledby="EditCampaignDetailsLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
 
-                            <h5 class="modal-title" id="EditCampaignDetailsLabel">Edit Campaign Details</h5>
+                            <h5 class="modal-title" id="EditCampaignDetailsModal">Edit Campaign Details</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
 
-                        <form action="CampaignEditService" method="POST">
-                            <div class="modal-body">
-                                <div class="row align-items-center pb-3">
-                                    <div class="col-3">
-                                        <h6>CampaignId</h6>
-                                    </div>
-                                    <div class="col-9">
-                                        <input type="text" name="EditTitle" id="EditTitle" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                                    </div>
-                                </div>
-
-                                <div class="row align-items-center pb-3">
-                                    <div class="col-3">
-                                        <h6>CampaignName</h6>
-                                    </div>
-                                    <div class="col-9">
-                                        <input type="text" name="Title" id="Title" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                                    </div>
-                                </div>
-
-                                <div class="row align-items-center pb-3">
-                                    <div class="col-3">
-                                        <h6>Start Date</h6>
-                                    </div>
-                                    <div class="col-9">
-                                        <input type="text" name="startDate" id="startDate" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                                    </div>
-                                </div>
-                                <div class="row align-items-center pb-3">
-                                    <div class="col-3">
-                                        <h6>End Date</h6>
-                                    </div>
-                                    <div class="col-9">
-                                        <input type="date" name="endDate" id="endDate" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                                    </div>
-                                </div>
-
-
-                                <div class="row align-items-center pb-3">
-                                    <div class="col-3">
-                                        <h6>status</h6>
-                                    </div>
-                                    <div class="col-9">
-                                        <input type="text " name="status" id="status" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                                    </div>
-                                </div>
+                        
+                            <div class="modal-body" id="campaignEdit">
+                               
                                 <!-- Add more fields for editing campaign details here -->
                             </div>
-                        </form>
+                        
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <button type="button" name="updateCampaign" class="btn btn-primary">Save Changes</button>
@@ -678,7 +640,7 @@ $(document).ready(function(){
                     </div>
                 </div>
             </div>
-
+            </form>
 
             <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 

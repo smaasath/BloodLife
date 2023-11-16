@@ -164,17 +164,18 @@ function is_valid_age($age) {
 
 
 
-static function getAllCampaign(){
+static function getAllCampaign($bloodBankId){
     try {
         $dbcon = new DbConnector();
         $con = $dbcon->getConnection();
 
-        $query = "SELECT campaigntable.*, district.district,bloodbank.ContactNo
-        FROM campaigntable
-        JOIN district ON campaigntable.districtId = district.districtId
-        join bloodbank on campaigntable.bloodBankId = bloodbank.bloodBankId";
+        $query = "SELECT campaigntable.*, district.district,bloodbank.ContactNo 
+        FROM campaigntable JOIN district ON campaigntable.districtId = district.districtId 
+        join bloodbank on campaigntable.bloodBankId = bloodbank.bloodBankId 
+        where campaigntable.bloodBankId = ?";
 
         $stmt = $con->prepare($query);
+        $stmt->bindValue(1, $bloodBankId, PDO::PARAM_INT);
         $stmt->execute();
 
         $dataArray = array();
