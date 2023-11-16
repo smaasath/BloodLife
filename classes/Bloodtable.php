@@ -154,4 +154,33 @@ class Bloodtable {
         }
     }
 
+    public function GetBloodpacketsData() {
+        try {
+            $dbcon = new DbConnector();
+            $con = $dbcon->getConnection();
+
+            $query = "SELECT * FROM `bloodtable` WHERE bloodId=?";
+
+            $pstmt = $con->prepare($query);
+            $pstmt->bindValue(1, $this->bloodId);
+
+            $pstmt->execute();
+
+            if ($pstmt->rowCount() > 0) {
+                $rs = $pstmt->fetch(PDO::FETCH_OBJ);
+                $this->bloodId = $rs->bloodId;
+                $this->expiryDate = $rs->expiryDate;
+                $this->bloodGroup = $rs->bloodGroup;
+                $this->quantity = $rs->quantity;
+                $this->bloodBankId  =$rs->bloodBankId ;
+                $this->status = $rs->status;
+                return true;
+            } else {
+                return false;
+            }
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+
 }

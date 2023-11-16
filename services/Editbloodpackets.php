@@ -1,3 +1,5 @@
+
+
 <?php
 
 require_once '../classes/Bloodtable.php';
@@ -12,16 +14,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   $status;
 
-  if (isset($_POST["bloodgroup"], $_POST["quantity"], $_POST["expiryDate"], $_POST["token"])) {
+  if (isset($_POST["bloodgroup"], $_POST["quantity"], $_POST["expiryDate"], $_POST["token"], $_POST["status"], $_POST["bloodId"])) {
 
 
-    if (!empty($_POST["bloodgroup"]) && ($_POST["quantity"]) && ($_POST["expiryDate"]) && ($_POST["token"])) {
+    if (!empty($_POST["bloodgroup"]) && ($_POST["quantity"]) && ($_POST["expiryDate"]) && ($_POST["token"]) && ($_POST["status"]) && ($_POST["bloodId"])) {
 
       //sanitize
       $expirydate = filter_var($_POST["expiryDate"], FILTER_SANITIZE_STRING);
       $bloodgroup = filter_var($_POST["bloodgroup"], FILTER_SANITIZE_STRING);
       $quantity = filter_var($_POST["quantity"], FILTER_SANITIZE_STRING);
       $token = filter_var($_POST["token"], FILTER_SANITIZE_STRING);
+      $status = filter_var($_POST["status"], FILTER_SANITIZE_STRING);
+      $bloodId =filter_has_var($_POST["bloodId"], FILTER_SANITIZE_STRING);
+    
 
 
       //validate
