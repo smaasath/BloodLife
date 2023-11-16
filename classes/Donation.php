@@ -12,17 +12,13 @@ namespace classes;
  *
  * @author aasad
  */
-
 require_once 'DbConnector.php';
 require_once 'Validation.php';
-
 
 use PDO;
 use PDOException;
 use classes\DbConnector;
 use classes\Validation;
-
-
 
 class Donation {
 
@@ -98,12 +94,11 @@ class Donation {
             $query = "INSERT INTO `donationtable` (`donationId`, `donorId`, `bloodBankId`, `campaignId`,`certificate`,`bloodBankRequestId`) VALUES (NULL, ?, ?, ?, ?,?);";
 
             $pstmt = $con->prepare($query);
-            $pstmt->bindValue(1, $this->donationId, PDO::PARAM_STR);
-            $pstmt->bindValue(2, $this->donorId); // Use different placeholders for each parameter
-            $pstmt->bindValue(3, $this->bloodBankId);
-            $pstmt->bindValue(4, $this->campaignId);
-            $pstmt->bindValue(5, $this->certificate, PDO::PARAM_LOB);
-            $pstmt->bindValue(6, $this->bloodBankRequestId);
+            $pstmt->bindValue(1, $this->donorId); // Use different placeholders for each parameter
+            $pstmt->bindValue(2, $this->bloodBankId);
+            $pstmt->bindValue(3, $this->campaignId);
+            $pstmt->bindValue(4, $this->certificate, PDO::PARAM_LOB);
+            $pstmt->bindValue(5, $this->bloodBankRequestId);
             $pstmt->execute();
             return $pstmt->rowCount() > 0;
         } catch (PDOException $e) {
@@ -120,4 +115,35 @@ class Donation {
         return array("type" => $letters, "EncryptedId" => $numbers);
     }
 
-}
+    public static function CreateCertificates($Name, $date) {
+        // Create Image From Existing File
+        $jpg_image = imagecreatefromjpeg('../Images/certificate.jpg');
+
+        // Check if image creation is successful
+        if (!$jpg_image) {
+            die('Error: Unable to create image from JPEG.');
+        } else {
+            // Allocate A Color For The Text
+            $white = imagecolorallocate($jpg_image, 54, 12, 110);
+
+            // Set Path to Font File
+            $font_path = '../Images/font.ttf';
+
+            imagettftext($jpg_image, 26, 0, 375, 350, $white, $font_path, $Name);
+            imagettftext($jpg_image, 11, 0, 730, 430, $white, $font_path, $date);
+
+            // Start output buffering
+            ob_start();
+
+            // Output the image
+            imagejpeg($jpg_image);
+
+            // Get the buffered output
+            $output = ob_get_clean();
+            
+            return $output;
+        }
+    }
+    
+    }
+    
