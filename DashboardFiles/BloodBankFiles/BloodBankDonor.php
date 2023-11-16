@@ -60,7 +60,7 @@ use classes\Donor;
             <!-- Search and Add Donor section -->
             <?php
             if (isset($_GET["status"]) && !empty($_GET["status"])) {
-                $status = Donor::decryptedValue($_GET["status"]);
+                // $status = Donor::decryptedValue($_GET["status"]);
 
                 
             }

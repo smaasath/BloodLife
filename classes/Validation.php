@@ -111,10 +111,10 @@ class Validation {
         return $otp;
     }
 
-    static function generateRandomPassword($length = 10) {
+    static function generateRandomPassword() {
         // Define a character pool for generating the password
         $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&';
-
+        $length = 10;
         // Get the total number of characters in the pool
         $characterCount = strlen($characters);
 
