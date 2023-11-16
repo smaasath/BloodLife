@@ -1,5 +1,6 @@
 <?php
 require_once '../classes/campaign.php';
+
 use classes\campaign;
 
 $token = "12b378738a1a6be3bacea473fe9e3d2fbfce8e678d514e1d943";
@@ -163,24 +164,24 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <!-- Table row -->
 
 
-<!-- Donor table -->
+                        <!-- Donor table -->
 
-                    <thead>
-                        <tr class="sticky-top">
-                            <th class="col-1 bg-secondary text-dark p-2">CampaignID</th>
-                            <th class="col-1 bg-secondary text-dark p-2">Name</th>
-                            <th class="col-1 bg-secondary text-dark p-2">StartDate</th>
-                            <th class="col-1 bg-secondary text-dark p-2">EndDate</th>
-                            <th class="col-1 bg-secondary text-dark p-2">Status</th>
-                           
-                            <th class="col-1 bg-secondary text-dark p-2">Edit</th>
-                            <th class="col-1 bg-secondary text-dark p-2">Review</th>
-                            <th class="col-1 bg-secondary text-dark p-2">View</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                        <thead>
+                            <tr class="sticky-top">
+                                <th class="col-1 bg-secondary text-dark p-2">CampaignID</th>
+                                <th class="col-1 bg-secondary text-dark p-2">Name</th>
+                                <th class="col-1 bg-secondary text-dark p-2">StartDate</th>
+                                <th class="col-1 bg-secondary text-dark p-2">EndDate</th>
+                                <th class="col-1 bg-secondary text-dark p-2">Status</th>
 
-                  <!--  <tr class="sticky-top">
+                                <th class="col-1 bg-secondary text-dark p-2">Edit</th>
+                                <th class="col-1 bg-secondary text-dark p-2">Review</th>
+                                <th class="col-1 bg-secondary text-dark p-2">View</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <!--  <tr class="sticky-top">
 
 <th class="col-1 bgcol p-2">CampaignID</th>
 <th class="col-2 bgcol p-2">Name</th>
@@ -201,47 +202,47 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
 
-                    <table class="table">
-    
-    <tbody>
-    <?php
-    $requestArray = campaign::getAllCampaign();
-    foreach ($requestArray as $donorArray) {
-    ?>
-        <tr>
-            <td class="col-1"><?php echo $donorArray["campaignId"]; ?></td>
-            <td class="col-1"><?php echo $donorArray["Title"]; ?></td>
-            <td class="col-1"><?php echo $donorArray["startDate"]; ?></td>
-            <td class="col-1"><?php echo $donorArray["endDate"]; ?></td>
-            <td class="col-1"><?php echo $donorArray["status"]; ?></td>
-            <td class="col-1">
-                <button type="button" class="btn btn-danger editbtn" onclick="EditCamp()" data-bs-toggle="modal" data-bs-target="#DonorEdit">
-                    Edit
-                </button>
-            </td>
+                            <table class="table">
 
-            <td class="col-1">
-                <button type="button" class="btn btn-success" onclick="ReviewChamp()">
-                    Review
-                </button>
-            </td>
+                                <tbody>
+                                    <?php
+                                    $requestArray = campaign::getAllCampaign();
+                                    foreach ($requestArray as $donorArray) {
+                                    ?>
+                                        <tr>
+                                            <td class="col-1"><?php echo $donorArray["campaignId"]; ?></td>
+                                            <td class="col-1"><?php echo $donorArray["Title"]; ?></td>
+                                            <td class="col-1"><?php echo $donorArray["startDate"]; ?></td>
+                                            <td class="col-1"><?php echo $donorArray["endDate"]; ?></td>
+                                            <td class="col-1"><?php echo $donorArray["status"]; ?></td>
+                                            <td class="col-1">
+                                                <button type="button" class="btn btn-danger editbtn" onclick="EditCamp()" data-bs-toggle="modal" data-bs-target="#DonorEdit">
+                                                    Edit
+                                                </button>
+                                            </td>
 
-            <td class="col-1">
-                <button type="button" class="btn btn-success view_Edit" onclick="ViewChamp()" >
-                    View
-                </button>
-            </td>
-        </tr>
-    <?php
-    }
-    ?>
-    </tbody>
-</table>
+                                            <td class="col-1">
+                                                <button type="button" class="btn btn-success" onclick="ReviewChamp()">
+                                                    Review
+                                                </button>
+                                            </td>
 
-
+                                            <td class="col-1">
+                                                <button type="button" class="btn btn-success view_Edit" onclick="ViewChamp()">
+                                                    View
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    <?php
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
 
 
-<!--
+
+
+                            <!--
 
 
                         <tr class="sticky-top">
@@ -272,9 +273,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                         </tr>
                         -->
-                       
 
-                        <!-- Table row -->
+
+                            <!-- Table row -->
 
                     </table>
 
@@ -420,8 +421,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
 
-        <!-- --------------------------------------Campaign Edit------------------------------------------------------------------------ -->
-        <!-----------1st pop-up------------------------Campaign Details-----
+            <!-- --------------------------------------Campaign Edit------------------------------------------------------------------------ -->
+            <!-----------1st pop-up------------------------Campaign Details-----
 
 
 
@@ -525,7 +526,7 @@ $('#endDate').val(data[2]);
 -->
 
 
-        <!-- View Campaign Modal --
+            <!-- View Campaign Modal --
         <div class="modal fade" id="ViewCampaignDetailsModal" tabindex="-1" role="dialog" aria-labelledby="ViewCampaignDetailsLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -571,7 +572,7 @@ $(document).ready(function(){
 </script>
 
 -->
-<!-- xample-
+            <!-- xample-
 <div class="modal fade" id="ViewCampaignDetailsModal" tabindex="-1" role="dialog" aria-labelledby="ViewCampaignDetailsLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -611,130 +612,129 @@ $(document).ready(function(){
 
 
 
-<!-- Edit Campaign Modal -->
-<div class="modal fade" id="EditCampaignDetailsModal" tabindex="-1" role="dialog" aria-labelledby="EditCampaignDetailsLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                
-                <h5 class="modal-title" id="EditCampaignDetailsLabel">Edit Campaign Details</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
+            <!-- Edit Campaign Modal -->
+            <div class="modal fade" id="EditCampaignDetailsModal" tabindex="-1" role="dialog" aria-labelledby="EditCampaignDetailsLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
 
-            <form action="CampaignEditService" method="POST">
-                <div class="modal-body">
-                    <div class="row align-items-center pb-3">
-                        <div class="col-3">
-                            <h6>CampaignId</h6>
+                            <h5 class="modal-title" id="EditCampaignDetailsLabel">Edit Campaign Details</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="col-9">
-                            <input type="text" name="EditTitle" id="EditTitle" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                        </div>
-                    </div>
 
-                    <div class="row align-items-center pb-3">
-                        <div class="col-3">
-                            <h6>CampaignName</h6>
-                        </div>
-                        <div class="col-9">
-                            <input type="text" name="Title" id="Title" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                        </div>
-                    </div>
-
-                    <div class="row align-items-center pb-3">
-                        <div class="col-3">
-                            <h6>Start Date</h6>
-                        </div>
-                        <div class="col-9">
-                            <input type="text" name="startDate" id="startDate" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                        </div>
-                    </div>
-                    <div class="row align-items-center pb-3">
-                                <div class="col-3">
-                                    <h6>End Date</h6>
+                        <form action="CampaignEditService" method="POST">
+                            <div class="modal-body">
+                                <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                        <h6>CampaignId</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="text" name="EditTitle" id="EditTitle" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    </div>
                                 </div>
-                                <div class="col-9">
-                                    <input type="date" name="endDate" id="endDate" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+
+                                <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                        <h6>CampaignName</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="text" name="Title" id="Title" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    </div>
                                 </div>
+
+                                <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                        <h6>Start Date</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="text" name="startDate" id="startDate" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    </div>
+                                </div>
+                                <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                        <h6>End Date</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="date" name="endDate" id="endDate" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    </div>
+                                </div>
+
+
+                                <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                        <h6>status</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="text " name="status" id="status" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    </div>
+                                </div>
+                                <!-- Add more fields for editing campaign details here -->
                             </div>
-
-
-                            <div class="row align-items-center pb-3">
-                                <div class="col-3">
-                                    <h6>status</h6>
-                                </div>
-                                <div class="col-9">
-                                    <input type="text " name="status"  id="status"class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                                </div>
-                            </div>
-                    <!-- Add more fields for editing campaign details here -->
+                        </form>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" name="updateCampaign" class="btn btn-primary">Save Changes</button>
+                        </div>
+                    </div>
                 </div>
-            </form>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" name="updateCampaign" class="btn btn-primary">Save Changes</button>
             </div>
-        </div>
-    </div>
-</div>
 
 
-<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+            <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
-<script>
-$(document).ready(function(){
-    $('.editbtn ').on('click', function(){
-        $('#EditCampaignDetailsModal').modal('show');
-        $tr = $(this).closest('tr');
-        var data = $tr.find('td').map(function(){
-            return $(this).text();
-        }).get();
-        console.log(data);
-        $('#EditTitle').val(data[0]);
-        $('#Title').val(data[1]);
-$('#startDate').val(data[2]);
-$('#endDate').val(data[3]);
-$('#status').val(data[4]);
-        // Set values for other fields as well
-         $('#EditStartDate').val(data[1]);
-        $('#EditEndDate').val(data[2]);
-         // Handle the Save Changes button click
-         $('#updateCampaignBtn').on('click', function() {
-            // Collect the updated data from the modal fields
-            var updatedTitle = $('#EditTitle').val();
-            var updatedStartDate = $('#startDate').val();
-            // Get values for other fields as needed
+            <script>
+                $(document).ready(function() {
+                    $('.editbtn ').on('click', function() {
+                        $('#EditCampaignDetailsModal').modal('show');
+                        $tr = $(this).closest('tr');
+                        var data = $tr.find('td').map(function() {
+                            return $(this).text();
+                        }).get();
+                        console.log(data);
+                        $('#EditTitle').val(data[0]);
+                        $('#Title').val(data[1]);
+                        $('#startDate').val(data[2]);
+                        $('#endDate').val(data[3]);
+                        $('#status').val(data[4]);
+                        // Set values for other fields as well
+                        $('#EditStartDate').val(data[1]);
+                        $('#EditEndDate').val(data[2]);
+                        // Handle the Save Changes button click
+                        $('#updateCampaignBtn').on('click', function() {
+                            // Collect the updated data from the modal fields
+                            var updatedTitle = $('#EditTitle').val();
+                            var updatedStartDate = $('#startDate').val();
+                            // Get values for other fields as needed
 
-            // Make an AJAX request to update the campaign
-            $.ajax({
-                type: 'POST',
-                url: 'update_campaign.php', // Replace with the actual URL
-                data: {
-                    campaignId: data[0], // Include campaign ID for identifying the record to update
-                    updatedTitle: updatedTitle,
-                    updatedStartDate: updatedStartDate,
-                    // Include other updated fields
-                },
-                success: function(response) {
-                    // Handle the response from the server, e.g., show a success message or update the table
-                    if (response === 'success') {
-                        $('#EditCampaignDetailsModal').modal('hide');
-                        // You can update the table or show a success message here
-                    }
-                },
-                error: function(xhr, status, error) {
-                    console.log('Error: ' + error);
-                }
-            });
-        });
-    });
-});
-
-</script>
+                            // Make an AJAX request to update the campaign
+                            $.ajax({
+                                type: 'POST',
+                                url: 'update_campaign.php', // Replace with the actual URL
+                                data: {
+                                    campaignId: data[0], // Include campaign ID for identifying the record to update
+                                    updatedTitle: updatedTitle,
+                                    updatedStartDate: updatedStartDate,
+                                    // Include other updated fields
+                                },
+                                success: function(response) {
+                                    // Handle the response from the server, e.g., show a success message or update the table
+                                    if (response === 'success') {
+                                        $('#EditCampaignDetailsModal').modal('hide');
+                                        // You can update the table or show a success message here
+                                    }
+                                },
+                                error: function(xhr, status, error) {
+                                    console.log('Error: ' + error);
+                                }
+                            });
+                        });
+                    });
+                });
+            </script>
 
 
 
-<!--
+            <!--
 <div class="modal-footer">
     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 --
@@ -796,90 +796,90 @@ $(document).ready(function(){
 </script>
 
 <---------------------------------------------------------------------------------------------------------->
-<!-- View Campaign Modal -->
-<div class="modal fade" id="ViewCampaignDetailsModal" tabindex="-1" role="dialog" aria-labelledby="EditCampaignDetailsLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                
-                <h5 class="modal-title" id="ViewCampaignDetailsLabel">Edit Campaign Details</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
+            <!-- View Campaign Modal -->
+            <div class="modal fade" id="ViewCampaignDetailsModal" tabindex="-1" role="dialog" aria-labelledby="EditCampaignDetailsLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
 
-            <form action="CampaignEditService" method="POST">
-                <div class="modal-body">
+                            <h5 class="modal-title" id="ViewCampaignDetailsLabel">Edit Campaign Details</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+
+                        <form action="CampaignEditService" method="POST">
+                            <div class="modal-body">
 
 
-                <div class="container">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="card mb-4">
-                                        <div class="card-body">
-                                            <div class="row mb-3">
-                                                <div class="col-sm-4">
-                                                    <strong>Hospital ID:</strong>
-                                                </div>
-                                                <div class="col-sm-8">
-                                                    <p class="text-muted mb-0" name="EditTitle" id="EditTitle" ></p>
-                                                </div>
-                                            </div>
-                                            <div class="row mb-3">
-                                                <div class="col-sm-4">
-                                                    <strong>Hospital Name:</strong>
-                                                </div>
-                                                <div class="col-sm-8">
-                                                    <p class="text-muted mb-0" name="Title" id="Title" ></p>
-                                                </div>
-                                            </div>
-                                            <div class="row mb-3">
-                                                <div class="col-sm-4">
-                                                    <strong>Address:</strong>
-                                                </div>
-                                                <div class="col-sm-8">
-                                                    <p class="text-muted mb-0">Hospital Road, Jaffna</p>
-                                                </div>
-                                            </div>
-                                            <div class="row mb-3">
-                                                <div class="col-sm-4">
-                                                    <strong>District:</strong>
-                                                </div>
-                                                <div class="col-sm-8">
-                                                    <p class="text-muted mb-0">Jaffna</p>
-                                                </div>
-                                            </div>
-                                            <div class="row mb-3">
-                                                <div class="col-sm-4">
-                                                    <strong>Phone No:</strong>
-                                                </div>
-                                                <div class="col-sm-8">
-                                                    <p class="text-muted mb-0">077 1028754</p>
-                                                </div>
-                                            </div>
-                                            <div class="row mb-3">
-                                                <div class="col-sm-4">
-                                                    <strong>Mobile:</strong>
-                                                </div>
-                                                <div class="col-sm-8">
-                                                    <p class="text-muted mb-0">(098) 765-4321</p>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-4">
-                                                    <strong>Email:</strong>
-                                                </div>
-                                                <div class="col-sm-8">
-                                                    <p class="text-muted mb-0">CentralHospitalJaffna@gmail.com</p>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="card mb-4">
+                                                <div class="card-body">
+                                                    <div class="row mb-3">
+                                                        <div class="col-sm-4">
+                                                            <strong>Hospital ID:</strong>
+                                                        </div>
+                                                        <div class="col-sm-8">
+                                                            <p class="text-muted mb-0" name="EditTitle" id="EditTitle"></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-3">
+                                                        <div class="col-sm-4">
+                                                            <strong>Hospital Name:</strong>
+                                                        </div>
+                                                        <div class="col-sm-8">
+                                                            <p class="text-muted mb-0" name="Title" id="Title"></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-3">
+                                                        <div class="col-sm-4">
+                                                            <strong>Address:</strong>
+                                                        </div>
+                                                        <div class="col-sm-8">
+                                                            <p class="text-muted mb-0">Hospital Road, Jaffna</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-3">
+                                                        <div class="col-sm-4">
+                                                            <strong>District:</strong>
+                                                        </div>
+                                                        <div class="col-sm-8">
+                                                            <p class="text-muted mb-0">Jaffna</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-3">
+                                                        <div class="col-sm-4">
+                                                            <strong>Phone No:</strong>
+                                                        </div>
+                                                        <div class="col-sm-8">
+                                                            <p class="text-muted mb-0">077 1028754</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-3">
+                                                        <div class="col-sm-4">
+                                                            <strong>Mobile:</strong>
+                                                        </div>
+                                                        <div class="col-sm-8">
+                                                            <p class="text-muted mb-0">(098) 765-4321</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-4">
+                                                            <strong>Email:</strong>
+                                                        </div>
+                                                        <div class="col-sm-8">
+                                                            <p class="text-muted mb-0">CentralHospitalJaffna@gmail.com</p>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
 
 
 
-<!----------------------------------------------
+                                <!----------------------------------------------
 
                     <div class="row align-items-center pb-3">
                         <div class="col-3">
@@ -925,71 +925,70 @@ $(document).ready(function(){
                                     <input type="text " name="status"  id="status"class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                                 </div>
                             </div>-------->
-                    <!-- Add more fields for editing campaign details here -->
+                                <!-- Add more fields for editing campaign details here -->
+                            </div>
+                        </form>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" name="updateCampaign" class="btn btn-primary">Save Changes</button>
+                        </div>
+                    </div>
                 </div>
-            </form>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" name="updateCampaign" class="btn btn-primary">Save Changes</button>
             </div>
-        </div>
-    </div>
-</div>
---
+            --
 
-<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+            <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
-<script>
-$(document).ready(function(){
-    $('.view_Edit ').on('click', function(){
-        $('#ViewCampaignDetailsModal').modal('show');
-        $tr = $(this).closest('tr');
-        var data = $tr.find('td').map(function(){
-            return $(this).text();
-        }).get();
-        console.log(data);
-        $('#EditTitle').val(data[0]);
-        $('#Title').val(data[1]);
-$('#startDate').val(data[2]);
-$('#endDate').val(data[3]);
-$('#status').val(data[4]);
-        // Set values for other fields as well
-        // $('#EditStartDate').val(data[1]);
-        // $('#EditEndDate').val(data[2]);
-         // Handle the Save Changes button click
-         $('#updateCampaignBtn').on('click', function() {
-            // Collect the updated data from the modal fields
-            var updatedTitle = $('#EditTitle').val();
-            var updatedStartDate = $('#startDate').val();
-            // Get values for other fields as needed
+            <script>
+                $(document).ready(function() {
+                    $('.view_Edit ').on('click', function() {
+                        $('#ViewCampaignDetailsModal').modal('show');
+                        $tr = $(this).closest('tr');
+                        var data = $tr.find('td').map(function() {
+                            return $(this).text();
+                        }).get();
+                        console.log(data);
+                        $('#EditTitle').val(data[0]);
+                        $('#Title').val(data[1]);
+                        $('#startDate').val(data[2]);
+                        $('#endDate').val(data[3]);
+                        $('#status').val(data[4]);
+                        // Set values for other fields as well
+                        // $('#EditStartDate').val(data[1]);
+                        // $('#EditEndDate').val(data[2]);
+                        // Handle the Save Changes button click
+                        $('#updateCampaignBtn').on('click', function() {
+                            // Collect the updated data from the modal fields
+                            var updatedTitle = $('#EditTitle').val();
+                            var updatedStartDate = $('#startDate').val();
+                            // Get values for other fields as needed
 
-            // Make an AJAX request to update the campaign
-            $.ajax({
-                type: 'POST',
-                url: 'update_campaign.php', // Replace with the actual URL
-                data: {
-                    campaignId: data[0], // Include campaign ID for identifying the record to update
-                    updatedTitle: updatedTitle,
-                    updatedStartDate: updatedStartDate,
-                    // Include other updated fields
-                },
-                success: function(response) {
-                    // Handle the response from the server, e.g., show a success message or update the table
-                    if (response === 'success') {
-                        $('#EditCampaignDetailsModal').modal('hide');
-                        // You can update the table or show a success message here
-                    }
-                },
-                error: function(xhr, status, error) {
-                    console.log('Error: ' + error);
-                }
-            });
-        });
-    });
-});
-
-</script>
-<!--
+                            // Make an AJAX request to update the campaign
+                            $.ajax({
+                                type: 'POST',
+                                url: 'update_campaign.php', // Replace with the actual URL
+                                data: {
+                                    campaignId: data[0], // Include campaign ID for identifying the record to update
+                                    updatedTitle: updatedTitle,
+                                    updatedStartDate: updatedStartDate,
+                                    // Include other updated fields
+                                },
+                                success: function(response) {
+                                    // Handle the response from the server, e.g., show a success message or update the table
+                                    if (response === 'success') {
+                                        $('#EditCampaignDetailsModal').modal('hide');
+                                        // You can update the table or show a success message here
+                                    }
+                                },
+                                error: function(xhr, status, error) {
+                                    console.log('Error: ' + error);
+                                }
+                            });
+                        });
+                    });
+                });
+            </script>
+            <!--
 </div>
 </form>
 
@@ -1030,9 +1029,9 @@ $('#status').val(data[4]);
 
 
 
--->
+            -->
 
-<!--
+            <!--
 <script>
 $(document).ready(function(){
     $('.edit-details-btn').on('click', function(){
@@ -1061,8 +1060,8 @@ $(document).ready(function(){
 
 
 
-                     <!--Other form fields for editing (Start Date, End Date, etc.) go here -->
-<!--
+            <!--Other form fields for editing (Start Date, End Date, etc.) go here -->
+            <!--
                 </div>
             </form>
             <div class="modal-footer">
@@ -1078,7 +1077,7 @@ $(document).ready(function(){
 -->
 
 
-<!--
+            <!--
 <script
   src="https://code.jquery.com/jquery-3.7.1.min.js"
   integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
@@ -1116,7 +1115,7 @@ $('#endDate').val(data[3]);
 
 
 
-<!-- Campaign Details Modal -
+            <!-- Campaign Details Modal -
 <div class="modal fade" id="campaignDetailsModal" tabindex="-1" role="dialog" aria-labelledby="campaignDetailsModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -1177,7 +1176,7 @@ $(document).ready(function () {
 
 
         OrganizerEdit-->
-<!--
+            <!--
         <div class="modal fade" id="OrganizerEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -1261,43 +1260,43 @@ $(document).ready(function () {
                 </div>
             </div>
         </div>-->
-        <!--OrganizerEdit-->
+            <!--OrganizerEdit-->
 
 
 
 
-        <!--------------------------------------------------->
-        <!-------------------Review-------------------------------->
+            <!--------------------------------------------------->
+            <!-------------------Review-------------------------------->
 
-        <div class="modal fade" id="Review" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="Review">Review Campaign</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Percentege</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder=""><br>
+            <div class="modal fade" id="Review" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="Review">Review Campaign</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Back</button>
+                        <div class="modal-body">
 
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Percentege</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder=""><br>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Back</button>
+
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
 
 
 
 
 
-        <!-- --------------------------------------Campaign View------------------------------------------------------------------------ -->
-        <!--CampDetailsView-
+            <!-- --------------------------------------Campaign View------------------------------------------------------------------------ -->
+            <!--CampDetailsView-
 
         <table>
     <tr class="campaign-details">
@@ -1339,10 +1338,10 @@ $(document).ready(function(){
 
 
 
-        <!-- 1st pop-up -->
+            <!-- 1st pop-up -->
 
 
-        <!-- Trigger button for opening the modal --
+            <!-- Trigger button for opening the modal --
 
 
 <!-- Campaign table --
@@ -1456,7 +1455,7 @@ $(document).ready(function(){
 
 
         -Donorview-->
-        <!-- pop-up3-
+            <!-- pop-up3-
 
         <div class="modal fade" id="exampleModal8" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -1510,9 +1509,9 @@ $(document).ready(function(){
 
 
 
-        <?php
-        // put your code here
-        ?>
+            <?php
+            // put your code here
+            ?>
 </body>
 
 </html>
