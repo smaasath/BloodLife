@@ -4,6 +4,7 @@ $userId = 1;
 require_once '../classes/hospitalrequestclass.php';
 
 use classes\hospitalrequestclass;
+$token = "12b378738a1a6be3bacea473fe9e3d2fbfce8e678d514e1d943";
 ?>
 <!DOCTYPE html>
 <html>
@@ -143,7 +144,7 @@ use classes\hospitalrequestclass;
                         <br>
 
                         <br>
-                        <input type="hidden" name="userID" value="<?php echo $userId; ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                        <input type="hidden" name="token" value="<?php echo $token; ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                         <div class="text-end">
                             <button type="submit" class="btn btn-danger" id="reqsum">Send Request</button>
                             <button type="button" class="btn btn-danger" onclick="cancel()">Cancel Request</button>
