@@ -39,8 +39,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <option value="Expired">Expired</option>
 
                 </select><br>
-                <input type="hidden" value="<?php echo $bloodId ?>" name="bloodId">
+                <input type="hidden" value="<?php echo $bloodId; ?>" name="bloodId">
+               
 <?php
+ 
             } else {
                 echo 'bloodpacket not found';
             }

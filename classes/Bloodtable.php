@@ -183,4 +183,27 @@ class Bloodtable {
         }
     }
 
+    public function Editbloodpacket() {
+        try {
+            $dbcon = new DbConnector();
+            $con = $dbcon->getConnection();
+
+            $query = "UPDATE `bloodtable` SET `expiryDate`= ? ,
+            `bloodGroup`= ?,`quantity`= ?,`bloodBankId`=?,`status`= ? WHERE `bloodId`= ? ";
+            $pstmt = $con->prepare($query);
+
+            $pstmt->bindValue(1, $this->expiryDate);
+            $pstmt->bindValue(2, $this->bloodGroup);
+            $pstmt->bindValue(3, $this->quantity);
+            $pstmt->bindValue(4, $this->bloodBankId);
+            $pstmt->bindValue(5, $this->status);
+            $pstmt->bindValue(6, $this->bloodId);
+
+            $pstmt->execute();
+            return $pstmt->rowCount() > 0 ;
+        } catch (PDOException $exc) {
+            echo $exc->getMessage();
+        }
+    }
+
 }
