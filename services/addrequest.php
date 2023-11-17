@@ -41,10 +41,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                     $request = new hospitalrequestclass(null, $createdDate, $quantity, $bloodgroup, $requestStatus, $hospitalid);
 
-                    if($request->addHosRequest()){
-$status=1;
-                    }else{
-                        $status=2;
+                    if ($request->addHosRequest()) {
+                        $status = 1;
+                    } else {
+                        $status = 2;
                     }
                 } else {
                     $status = !$validatebloodgroup ? 4 : (!$validatequantity ? 5 : 6);

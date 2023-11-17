@@ -17,14 +17,17 @@ class bloodbankhsrequest
     private $requestStatus;
     private $hospitalRequestId;
     private $bloodBankId ;
+    private $bloodGroup;
+    
 
-    public function __construct($bloodBankRequestId, $createdDate, $bloodQuantity, $requestStatus, $hospitalRequestId, $bloodBankId) {
+    public function __construct($bloodBankRequestId, $createdDate, $bloodQuantity,$bloodGroup, $requestStatus, $hospitalRequestId, $bloodBankId) {
         $this->bloodBankRequestId = $bloodBankRequestId;
         $this->createdDate = $createdDate;
         $this->bloodQuantity = $bloodQuantity;
         $this->requestStatus = $requestStatus;
         $this->hospitalRequestId = $hospitalRequestId;
         $this->bloodBankId = $bloodBankId;
+        $this->bloodGroup = $bloodGroup;
     }
 
     public function getBloodBankRequestId() {
@@ -51,6 +54,10 @@ class bloodbankhsrequest
         return $this->bloodBankId;
     }
 
+    public function getbloodGroup() {
+        return $this->bloodGroup;
+    }
+
     public function setBloodBankRequestId($bloodBankRequestId): void {
         $this->bloodBankRequestId = $bloodBankRequestId;
     }
@@ -74,6 +81,11 @@ class bloodbankhsrequest
     public function setBloodBankId($bloodBankId): void {
         $this->bloodBankId = $bloodBankId;
     }
+
+    public function setbloodGroup($bloodGroup): void {
+        $this->bloodBankId = $bloodGroup;
+    }
+
 
 
 
@@ -120,6 +132,28 @@ public static function getBloodBankReqByBankID($bloodBankId,$bloodgroup){
     }
 }
 
+public function addbloodbankRequest() {
+    try {
+        $dbcon = new DbConnector();
+        $con = $dbcon->getConnection();
+
+        $query = "INSERT INTO `bloodbankrequest`(`bloodBankRequestId`, `createdDate`, `bloodQuantity`, `bloodGroup`, `requestStatus`, `hospitalRequestId`, `bloodBankId`) VALUES (null,?,?,?,?,?,?)";
+
+        $pstmt = $con->prepare($query);
+        $pstmt->bindValue(1, $this->createdDate);
+        $pstmt->bindValue(2, $this->bloodQuantity);
+        $pstmt->bindValue(3, $this->bloodGroup);
+        $pstmt->bindValue(4, $this->requestStatus);
+        $pstmt->bindValue(5, $this->hospitalRequestId);
+        $pstmt->bindValue(6, $this->bloodBankId);
+
+        $pstmt->execute();
+
+        return $pstmt->rowCount() > 0;
+    } catch (PDOException $e) {
+        echo "ERROR:" . $e->getMessage();
+    }
+}
 
 }
 

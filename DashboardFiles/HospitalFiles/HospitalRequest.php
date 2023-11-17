@@ -14,7 +14,7 @@ $token = "12b378738a1a6be3bacea473fe9e3d2fbfce8e678d514e1d943";
     <title> Hospital Request</title>
 
 
-    <link rel="stylesheet" href="../../CSS/HospitalHSRequest.css">
+  
     <style>
         .card4 {
             display: flex;
@@ -86,7 +86,7 @@ $token = "12b378738a1a6be3bacea473fe9e3d2fbfce8e678d514e1d943";
                     <form action="../services/addrequest.php" method="POST">
                         <h2 class="container-title">Create Request</h2>
                         <label for="bloodGroup">Blood Group:</label>
-                        <select class="form-control form-control-lg" name="bloodGroup" id="bloodgroup" required>
+                        <select class="form-control" name="bloodGroup" id="bloodgroup" required>
                             <option selected>Select your Blood Group</option>
                             <option value="A+">A+</option>
                             <option value="A-"> A-</option>
@@ -100,7 +100,7 @@ $token = "12b378738a1a6be3bacea473fe9e3d2fbfce8e678d514e1d943";
                         </select>
 
                         <label for="bloodQuantity">Blood Quantity (ml):</label>
-                        <input type="number" name="bloodQuantity" id="bloodQuantityInput" required>
+                        <input type="number"  class="form-control" name="bloodQuantity" id="bloodQuantityInput" required>
                         <p id="bloodQuantityError" style="color: red;"></p>
 
                         <script>
@@ -135,7 +135,7 @@ $token = "12b378738a1a6be3bacea473fe9e3d2fbfce8e678d514e1d943";
 
                         <label for="status">Status:</label>
 
-                        <select class="form-control form-control-lg" name="requestStatus" id="requestStatus" required>
+                        <select class="form-control" name="requestStatus" id="requestStatus" required>
                             <option selected>Select Status</option>
                             <option value="Normal">Normal</option>
                             <option value="Emergency">Emergency</option>

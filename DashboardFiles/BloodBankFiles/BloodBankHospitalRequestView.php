@@ -2,6 +2,7 @@
 require_once '../classes/hospitalrequestclass.php';
 
 use classes\hospitalrequestclass;
+$token = "12b378738a1a6be3bacea473fe9e3d2fbfce8e678d514e1d943";
 
 // Check if the 'hospitalRequestID' parameter is set in the URL
 if (isset($_GET['reqid'])) {
@@ -81,40 +82,45 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
         <div class="container-05">
-          
+         <div class="form-container">
+         <form action="../services/Addbloodbankrequest.php" method="POST">
             <div class="left-column">
                 <div class="form-group">
                     <label for="blood-group">Blood Group</label>
-                    <input type="text" value="<?php echo $requestObj->getBloodGroup(); ?>" disabled>
+                    <input type="text" name="bloodGroup" value="<?php echo $requestObj->getBloodGroup(); ?>">
                 </div>
                 <div class="form-group">
                     <label for="quantity">Quantity</label>
-                    <input type="number" value="<?php echo $requestObj->getBloodQuantity(); ?>" disabled>
+                    <input type="number" name="bloodQuantity" value="<?php echo $requestObj->getBloodQuantity(); ?>">
                 </div>
                
                 <div class="form-group">
                     <label for="status">Status</label>
-                    <input type="text" value="<?php echo $requestObj->getRequestStatus(); ?>" disabled>
+                    <input type="text" name="requestStatus" value="<?php echo $requestObj->getRequestStatus(); ?>" >
                 </div>
                 <div class="form-group">
                     <label for="hospital-id">HospitalRequest ID</label>
-                    <input type="text" value="<?php echo $requestObj->getHospitalRequestID(); ?>" disabled>
+                    <input type="text" name="hospitalRequestId" value="<?php echo $requestObj->getHospitalRequestID(); ?>" >
                 </div>
                 
             </div>
             <div class="right-column">
                 <div class="form-group">
                     <label for="available-quantity">Available Quantity</label>
-                    <input type="number" id="available-quantity" disabled>
+                    <input type="number" name="available quantity" id="available-quantity" >
                 </div>
-                
-            </div>
-        </div>
+                <?php echo $token; ?>
+                <input type="hidden" name="token" value="<?php echo $token; ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                <div class="text-end">
         <div class="buttons">
             <a href="../Dashboards/BloodBankDashboard.php?page=bbraa">   <button class="btn btn-primary" style="justify-content: flex-end;  gap: 10px;  background-color: green !important;border: none ">Accept</button></a>
-            <a href="">     <button class="btn btn-primary" style=" justify-content: flex-end;  gap: 10px;  background-color: blue !important;border: none">Publish</button></a>
+            <button type="sumbit" class="btn btn-primary" style=" justify-content: flex-end;  gap: 10px;  background-color: blue !important;border: none">Publish</button>
         </div><br>
-
+                </div>
+        </div>
+        </form>
+        </div>
+        </div>
         <?php
                 
         ?>
