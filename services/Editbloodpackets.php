@@ -24,8 +24,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $bloodgroup = filter_var($_POST["bloodgroup"], FILTER_SANITIZE_STRING);
       $quantity = filter_var($_POST["quantity"], FILTER_SANITIZE_STRING);
       $token = filter_var($_POST["token"], FILTER_SANITIZE_STRING);
-      $status = filter_var($_POST["status"], FILTER_SANITIZE_STRING);
-      $bloodId =filter_has_var($_POST["bloodId"], FILTER_SANITIZE_STRING);
+      $Requeststatus = filter_var($_POST["status"], FILTER_SANITIZE_STRING);
+      $bloodId =filter_var($_POST["bloodId"], FILTER_SANITIZE_NUMBER_INT);
+  
     
 
 
@@ -37,17 +38,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $validatequantity = validation::validatequantity($quantity);
       $validateToken = $user->validateToken();
       $bloodBankId = $user->getBloodBankId();
+      
 
       if ($validateToken && $bloodBankId != null) {
 
         if ($validateexpiry && $validatebloodgroup && $validatequantity) {
-          $bloodpacked = new Bloodtable(null, $expirydate, $bloodgroup, $quantity, $bloodBankId, "Available");
-
-          if ($bloodpacked->addbloodpacket()) {
-            $status = 1;
-          } else {
-            $status = 2;
+          $bloodpacked = new Bloodtable($bloodId, $expirydate, $bloodgroup, $quantity, $bloodBankId, $Requeststatus);
+          if($bloodpacked->Editbloodpacket()){
+            $status =1;
+          }else{
+            $status =2;
           }
+
+         
         } else {
           $status = !$validateexpiry ? 3 : (!$validatebloodgroup ? 4 : (!$validatequantity ? 5 : 6));
         }

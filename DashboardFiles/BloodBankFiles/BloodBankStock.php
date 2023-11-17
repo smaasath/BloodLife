@@ -8,14 +8,14 @@ $token = "12b378738a1a6be3bacea473fe9e3d2fbfce8e678d514e1d943";
 
 require_once '../classes/Bloodtable.php';
 require_once '../classes/district.php';
+require_once '../classes/User.php';
 
 use classes\Bloodtable;
 use classes\hospital;
 use classes\district;
+use classes\User;
 ?>
-<?php
-$bloodbankid = 1;
-?>
+
 <?php if (isset($_GET['status'])) {
     if ($_GET['status'] == 1) {
         echo 'enter all values!!';
@@ -267,7 +267,11 @@ $bloodbankid = 1;
                         <tbody id="output">
 
                             <?php
-                            $detailsArray = Bloodtable::showBloodPackets();
+                             $user = new User( null, null, null, null, $token, null, null, null, null);
+                             $validateToken = $user->validateToken();
+                             $bloodBankId = $user->getBloodBankId();
+
+                            $detailsArray = Bloodtable::showBloodPackets($bloodBankId);
                             ?>
                             <script>
                                 let array = <?php echo json_encode($detailsArray) ?>;
@@ -450,8 +454,10 @@ $bloodbankid = 1;
                                     <h1 class="modal-title fs-5" id="view">EDIT DETAILS</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                                <div class="modal-body" id ="editbloodpackets">
-                               
+                                <div class="modal-body" >
+                               <div id ="editbloodpackets">
+                                
+                               </div>
                                     <input type="hidden" value="<?php echo $token ?>" name="token">
                                 </div>
                                 <div class="modal-footer">

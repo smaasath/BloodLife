@@ -109,17 +109,17 @@ class Bloodtable {
         }
     }
 
-    public static function showBloodPackets() {
+    public static function showBloodPackets($bloodBankId) {
         try {
             $dbcon = new DbConnector();
             $con = $dbcon->getConnection();
 
-            $query = "SELECT * FROM `bloodtable`";
+            $query = "SELECT * FROM `bloodtable` WHERE bloodBankId = ?";
             
 
 
             $stmt = $con->prepare($query);
-            
+            $stmt->bindValue(1, $bloodBankId);
             $stmt->execute();
 
             $bloodArray = array();
@@ -180,6 +180,29 @@ class Bloodtable {
             }
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
+        }
+    }
+
+    public function Editbloodpacket() {
+        try {
+            $dbcon = new DbConnector();
+            $con = $dbcon->getConnection();
+
+            $query = "UPDATE `bloodtable` SET `expiryDate`= ? ,
+            `bloodGroup`= ?,`quantity`= ?,`bloodBankId`=?,`status`= ? WHERE `bloodId`= ? ";
+            $pstmt = $con->prepare($query);
+
+            $pstmt->bindValue(1, $this->expiryDate);
+            $pstmt->bindValue(2, $this->bloodGroup);
+            $pstmt->bindValue(3, $this->quantity);
+            $pstmt->bindValue(4, $this->bloodBankId);
+            $pstmt->bindValue(5, $this->status);
+            $pstmt->bindValue(6, $this->bloodId);
+
+            $pstmt->execute();
+            return $pstmt->rowCount() > 0 ;
+        } catch (PDOException $exc) {
+            echo $exc->getMessage();
         }
     }
 
