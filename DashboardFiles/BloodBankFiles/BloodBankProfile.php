@@ -50,29 +50,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   <!-- body start -->
 
   <div class="mt-5 m-4 mb-2" style="color:gray;">
-    <h5>Hospital Profile</h5>
+    <h5>Bloodbank Profile</h5>
   </div>
 
-
-
-  
 
   <div class="row bg-white m-3 pt-0  align-items-center justify-content-center rounded-5" style="height: 600px;">
 

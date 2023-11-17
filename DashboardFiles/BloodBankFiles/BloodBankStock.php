@@ -6,6 +6,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 <?php
 $token = "12b378738a1a6be3bacea473fe9e3d2fbfce8e678d514e1d943";
 
+
 require_once '../classes/Bloodtable.php';
 require_once '../classes/district.php';
 require_once '../classes/User.php';
@@ -14,6 +15,10 @@ use classes\Bloodtable;
 use classes\hospital;
 use classes\district;
 use classes\User;
+
+$user = new User( null, null, null, null, $token, null, null, null, null);
+$validateToken = $user->validateToken();
+$bloodBankId = $user->getBloodBankId();
 ?>
 
 <?php if (isset($_GET['status'])) {
@@ -84,14 +89,22 @@ use classes\User;
         <div class="row">
             <div class="card1 col p-3 m-1">
                 <div class="row">
+                <?php
+                            $blood = new Bloodtable( null, null, null, null,$bloodBankId, null);
+                            $QArray = $blood->totalQuantityarray();
+                          
+                            foreach ($QArray as $QuantityArray) {
 
+
+                            ?>
+                     
                     <div class="col-3 p-0 m-0">
                         <div class="container p-3">
                             <div class="stockcon" style="height: 120px;background-color: white">
-                                <h4 class="blood1">A+</h4>
+                                <h4 class="blood1"><?php  echo $QuantityArray["bloodGroup"]?></h4>
                                 <div style="display: flex;flex-direction: row">
                                     <img src="../Images/blood-bag.png" height="30px" width="30px" style="margin-left: 10px" />
-                                    <h5 style="padding-left: 10px">10L</h5>
+                                    <h5 style="padding-left: 10px"><?php  echo $QuantityArray["totalQuantity"]?>ml</h5>
                                 </div>
                                 <br>
                                 <br>
@@ -99,106 +112,11 @@ use classes\User;
                             </div>
                         </div>
                     </div>
-                    <div class="col-3 p-0 m-0">
-                        <div class="container p-3">
-                            <div class="stockcon" style="height: 120px;background-color: white">
-                                <h4 class="blood1">A-</h4>
-                                <div style="display: flex;flex-direction: row">
-                                    <img src="../Images/blood-bag.png" height="30px" width="30px" style="margin-left: 10px" />
-                                    <h5 style="padding-left: 10px">10L</h5>
-                                </div>
-                                <br>
-                                <br>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-3 p-0 m-0">
-                        <div class="container p-3">
-                            <div class="stockcon" style="height: 120px;background-color: white">
-                                <h4 class="blood1">B+</h4>
-                                <div style="display: flex;flex-direction: row">
-                                    <img src="../Images/blood-bag.png" height="30px" width="30px" style="margin-left: 10px" />
-                                    <h5 style="padding-left: 10px">10L</h5>
-                                </div>
-                                <br>
-                                <br>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-3 p-0 m-0">
-                        <div class="container p-3">
-                            <div class="stockcon" style="height: 120px;background-color: white">
-                                <h4 class="blood1">B-</h4>
-                                <div style="display: flex;flex-direction: row">
-                                    <img src="../Images/blood-bag.png" height="30px" width="30px" style="margin-left: 10px" />
-                                    <h5 style="padding-left: 10px">10L</h5>
-                                </div>
-                                <br>
-                                <br>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-3 p-0 m-0">
-                        <div class="container p-3">
-                            <div class="stockcon" style="height: 120px;background-color: white">
-                                <h4 class="blood1">AB+</h4>
-                                <div style="display: flex;flex-direction: row">
-                                    <img src="../Images/blood-bag.png" height="30px" width="30px" style="margin-left: 10px" />
-                                    <h5 style="padding-left: 10px">10L</h5>
-                                </div>
-                                <br>
-                                <br>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-3 p-0 m-0">
-                        <div class="container p-3">
-                            <div class="stockcon" style="height: 120px;background-color: white">
-                                <h4 class="blood1">AB-</h4>
-                                <div style="display: flex;flex-direction: row">
-                                    <img src="../Images/blood-bag.png" height="30px" width="30px" style="margin-left: 10px" />
-                                    <h5 style="padding-left: 10px">10L</h5>
-                                </div>
-                                <br>
-                                <br>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-3 p-0 m-0">
-                        <div class="container p-3">
-                            <div class="stockcon" style="height: 120px;background-color: white">
-                                <h4 class="blood1">O+</h4>
-                                <div style="display: flex;flex-direction: row">
-                                    <img src="../Images/blood-bag.png" height="30px" width="30px" style="margin-left: 10px" />
-                                    <h5 style="padding-left: 10px">10L</h5>
-                                </div>
-                                <br>
-                                <br>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-3 p-0 m-0">
-                        <div class="container p-3">
-                            <div class="stockcon" style="height: 120px;background-color: white">
-                                <h4 class="blood1">O-</h4>
-                                <div style="display: flex;flex-direction: row">
-                                    <img src="../Images/blood-bag.png" height="30px" width="30px" style="margin-left: 10px" />
-                                    <h5 style="padding-left: 10px">10L</h5>
-                                </div>
-                                <br>
-                                <br>
-
-                            </div>
-                        </div>
-                    </div>
+                    <?php 
+                    }?>
+                   
                 </div>
+                                        
             </div>
 
 
@@ -267,9 +185,7 @@ use classes\User;
                         <tbody id="output">
 
                             <?php
-                             $user = new User( null, null, null, null, $token, null, null, null, null);
-                             $validateToken = $user->validateToken();
-                             $bloodBankId = $user->getBloodBankId();
+                           
 
                             $detailsArray = Bloodtable::showBloodPackets($bloodBankId);
                             ?>

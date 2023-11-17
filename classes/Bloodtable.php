@@ -18,7 +18,8 @@ use classes\DbConnector;
  *
  * @author Saalu
  */
-class Bloodtable {
+class Bloodtable
+{
 
     private $bloodId;
     private $expiryDate;
@@ -27,7 +28,8 @@ class Bloodtable {
     private $bloodBankId;
     private $status;
 
-    public function __construct($bloodId, $expiryDate, $bloodGroup, $quantity, $bloodBankId, $status) {
+    public function __construct($bloodId, $expiryDate, $bloodGroup, $quantity, $bloodBankId, $status)
+    {
         $this->bloodId = $bloodId;
         $this->expiryDate = $expiryDate;
         $this->bloodGroup = $bloodGroup;
@@ -36,55 +38,68 @@ class Bloodtable {
         $this->status = $status;
     }
 
-    public function getBloodId() {
+    public function getBloodId()
+    {
         return $this->bloodId;
     }
 
-    public function getExpiryDate() {
+    public function getExpiryDate()
+    {
         return $this->expiryDate;
     }
 
-    public function getBloodGroup() {
+    public function getBloodGroup()
+    {
         return $this->bloodGroup;
     }
 
-    public function getQuantity() {
+    public function getQuantity()
+    {
         return $this->quantity;
     }
 
-    public function getBloodBankId() {
+    public function getBloodBankId()
+    {
         return $this->bloodBankId;
     }
 
-    public function getStatus() {
+    public function getStatus()
+    {
         return $this->status;
     }
 
-    public function setBloodId($bloodId): void {
+    public function setBloodId($bloodId): void
+    {
         $this->bloodId = $bloodId;
     }
 
-    public function setExpiryDate($expiryDate): void {
+    public function setExpiryDate($expiryDate): void
+    {
         $this->expiryDate = $expiryDate;
     }
 
-    public function setBloodGroup($bloodGroup): void {
+    public function setBloodGroup($bloodGroup): void
+    {
         $this->bloodGroup = $bloodGroup;
     }
 
-    public function setQuantity($quantity): void {
+    public function setQuantity($quantity): void
+    {
         $this->quantity = $quantity;
     }
 
-    public function setBloodBankId($bloodBankId): void {
+    public function setBloodBankId($bloodBankId): void
+    {
         $this->bloodBankId = $bloodBankId;
     }
 
-    public function setStatus($status): void {
+    public function setStatus($status): void
+    {
         $this->status = $status;
     }
 
-    public static function getAllbloodpackets($bloodBankId) {
+    public static function getAllbloodpackets($bloodBankId)
+    {
         try {
             $dbcon = new DbConnector();
             $con = $dbcon->getConnection();
@@ -109,13 +124,14 @@ class Bloodtable {
         }
     }
 
-    public static function showBloodPackets($bloodBankId) {
+    public static function showBloodPackets($bloodBankId)
+    {
         try {
             $dbcon = new DbConnector();
             $con = $dbcon->getConnection();
 
             $query = "SELECT * FROM `bloodtable` WHERE bloodBankId = ?";
-            
+
 
 
             $stmt = $con->prepare($query);
@@ -133,7 +149,8 @@ class Bloodtable {
         }
     }
 
-    public function addbloodpacket() {
+    public function addbloodpacket()
+    {
         try {
             $dbcon = new DbConnector();
             $con = $dbcon->getConnection();
@@ -148,13 +165,14 @@ class Bloodtable {
             $pstmt->bindValue(5, $this->status);
 
             $pstmt->execute();
-            return $pstmt->rowCount() > 0 ;
+            return $pstmt->rowCount() > 0;
         } catch (PDOException $exc) {
             echo $exc->getMessage();
         }
     }
 
-    public function GetBloodpacketsData() {
+    public function GetBloodpacketsData()
+    {
         try {
             $dbcon = new DbConnector();
             $con = $dbcon->getConnection();
@@ -172,7 +190,7 @@ class Bloodtable {
                 $this->expiryDate = $rs->expiryDate;
                 $this->bloodGroup = $rs->bloodGroup;
                 $this->quantity = $rs->quantity;
-                $this->bloodBankId  =$rs->bloodBankId ;
+                $this->bloodBankId  = $rs->bloodBankId;
                 $this->status = $rs->status;
                 return true;
             } else {
@@ -183,7 +201,8 @@ class Bloodtable {
         }
     }
 
-    public function Editbloodpacket() {
+    public function Editbloodpacket()
+    {
         try {
             $dbcon = new DbConnector();
             $con = $dbcon->getConnection();
@@ -200,10 +219,32 @@ class Bloodtable {
             $pstmt->bindValue(6, $this->bloodId);
 
             $pstmt->execute();
-            return $pstmt->rowCount() > 0 ;
+            return $pstmt->rowCount() > 0;
         } catch (PDOException $exc) {
             echo $exc->getMessage();
         }
     }
+    public function totalQuantityarray()
+    {
+        try {
+            $dbcon = new DbConnector();
+            $con = $dbcon->getConnection();
+            $query = "SELECT bloodGroup, SUM(quantity) AS totalQuantity
+            FROM `bloodtable`
+            WHERE bloodBankId = ?
+            GROUP BY bloodGroup;
+            ";
+            $stmt = $con->prepare($query);
+            $stmt->bindValue(1, $this->bloodBankId);
+            $stmt->execute();
+            $dataArray = array();
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $dataArray[] = $row;
+            }
 
+            return $dataArray;
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
 }
