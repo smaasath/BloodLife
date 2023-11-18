@@ -5,7 +5,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 -->
 <?php
 $bloodBankId = 1;
-$token = "12b378738a1a6be3bacea473fe9e3d2fbfce8e678d514e1d943";
+$token = "abcde1234";
 
 require_once '../classes/bloodBank.php';
 require_once '../classes/district.php';
@@ -594,6 +594,7 @@ use classes\district;
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <script src="../JS/Admindash.js"></script>
+    <script src="../JS/DashboardJS.js"></script>
 </body>
 
 </html>

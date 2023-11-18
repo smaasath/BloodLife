@@ -10,10 +10,15 @@ namespace classes;
 require '../classes/district.php';
 require '../classes/bloodBank.php';
 require '../classes/Validation.php';
+require_once '../classes/User.php';
+
 
 use classes\district;
 use classes\bloodBank;
 use classes\Validation;
+use classes\User;
+
+$status = null;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -49,11 +54,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $bloodBankName = filter_var($_POST['bloodBankName'], FILTER_SANITIZE_STRING);
     $Address = filter_var($_POST['Address'], FILTER_SANITIZE_STRING);
     $ContactNo = filter_var($_POST['ContactNo'], FILTER_SANITIZE_STRING);
+    $token = filter_var($_POST['token'], FILTER_SANITIZE_STRING);
     $district = filter_var($_POST['district'], FILTER_SANITIZE_STRING);
     $division = filter_var($_POST['division'], FILTER_SANITIZE_STRING);
     $email = filter_var($_POST['email'], FILTER_SANITIZE_STRING);
-    
-    
+    $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
+
     $districtId = district::getDistrictIDDD($district, $division);
     // echo $districtId;
     
@@ -62,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // echo "success";
 
      //create user object with token
-   $user = new User(null, null, null, null, null, $token, null, null, null, null);
+   $user = new User(null, null, null, null, $token, null, null, null, null);
     
    //validations
    $emailExist = Validation::validateAlreadyExist("email", $email, "user");
@@ -74,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
    
 
    //token  checking
-   if ($validateToken && $userrole == 2) {
+   if ($validateToken && $userrole == 1) {
 
     //email,phonenumber validation check
     if ($validateEmail && $validatePhoneNumber ) {
@@ -89,7 +95,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
            $_SESSION["bloodbank"] = $bloodbank;
            $_SESSION["email"] = $email;
            $_SESSION['timestamp'] = time();
-           $status = $User->SendMail( $_SESSION["VerificationCode"], $email, $name) ? header("Location: newEmptyPHPWebPage.php") : 7;
+           $status = $user->SendMail( $_SESSION["VerificationCode"], $email, $name,$type) ? header("Location: newEmptyPHPWebPage.php?type=bloodbank") : 7;
 
        } else {
            //check status for exist values
@@ -118,8 +124,7 @@ echo"Invalid request method";
 
 
 echo $status;
-echo $token;
-echo $userrole;
+
 
 
 ?>

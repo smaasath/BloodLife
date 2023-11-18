@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               ($_POST["district"]) && ($_POST["division"]) && ($_POST["token"]) &&
               ($_POST["email"])) {
 
-
+   
     // sanitizing the inputs
     $name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
     $address = filter_var($_POST['address'], FILTER_SANITIZE_STRING);
@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $division = filter_var($_POST['division'], FILTER_SANITIZE_STRING);
     $email = filter_var($_POST['email'], FILTER_SANITIZE_STRING);
     $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
-
+    
     $districtId = district::getDistrictIDDD($district, $division);
     // echo $districtId;
     
@@ -92,7 +92,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION["hospital"] = $hospital;
                 $_SESSION["email"] = $email;
                 $_SESSION['timestamp'] = time();
-                $status = $User->SendMail( $_SESSION["VerificationCode"], $email, $name) ? header("Location: newEmptyPHPWebPage.php") : 7;
+                $status = $user->SendMail( $_SESSION["VerificationCode"], $email, $name,$type) ? header("Location: newEmptyPHPWebPage.php?type=hospital") : 7;
 
             } else {
                 //check status for exist values
