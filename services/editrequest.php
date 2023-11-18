@@ -11,11 +11,12 @@ use classes\hospitalrequestclass;
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $status;
+  
 
-    if (isset($_POST["bloodGroup"], $_POST["bloodQuantity"], $_POST["requestStatus"], $_POST["token"])) {
+    if (isset($_POST["bloodGroup"], $_POST["bloodQuantity"], $_POST["requestStatus"], $_POST["token"], $_POST["hospitalRequestID"])) {
 
 
-        if (!empty($_POST["bloodGroup"]) && ($_POST["bloodQuantity"]) && ($_POST["requestStatus"]) && ($_POST["token"])) {
+        if (!empty($_POST["bloodGroup"]) && ($_POST["bloodQuantity"]) && ($_POST["requestStatus"]) && ($_POST["token"]) && ($_POST["hospitalRequestID"])) {
 
             //sanitize
 
@@ -23,6 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $quantity = filter_var($_POST["bloodQuantity"], FILTER_SANITIZE_STRING);
             $requestStatus = filter_var($_POST["requestStatus"], FILTER_SANITIZE_STRING);
             $token = filter_var($_POST["token"], FILTER_SANITIZE_STRING);
+            $reqid= filter_var($_POST["hospitalRequestID"], FILTER_SANITIZE_NUMBER_INT);
 
 
             //validate
@@ -38,10 +40,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($validateToken && $hospitalid != null) {
 
                 if ($validatebloodgroup && $validatequantity) {
-
-                    $request = new hospitalrequestclass(null, $createdDate, $quantity, $bloodgroup, $requestStatus, $hospitalid);
-
-                    if ($request->addHosRequest()) {
+                    $request = new hospitalrequestclass($reqid, $createdDate, $quantity, $bloodgroup, $requestStatus, $hospitalid);
+                   
+                    if ($request->EditHosRequest()) {
                         $status = 1;
                     } else {
                         $status = 2;

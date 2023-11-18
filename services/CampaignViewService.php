@@ -15,7 +15,8 @@ use classes\district;
 use classes\campaign;
 use classes\User;
 use classes\Validation;
-
+use PDO;
+use PDOException;
 
 // $districtId = filter_var($_POST['districtId'],FILTER_SANITIZE_NUMBER_INT);
 // $organizerId  =filter_var( $_POST['organizerId'],FILTER_SANITIZE_NUMBER_INT);
@@ -23,6 +24,10 @@ use classes\Validation;
 
 //$districtId = district::getDistrictIDDD($district, $division);
 //echo $campaignId  ;
+
+
+
+
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -33,8 +38,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_POST["address"],
         $_POST["startDate"],
         $_POST["endDate"],
-        $_POST["district"],
-        $_POST["division"],
+        $_POST["status"],
+        //$_POST["district"],
+        //$_POST["division"],
         $_POST["token"],
     )) {
 
@@ -42,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (
             !empty($_POST["Title"]) && ($_POST["address"]) && ($_POST["startDate"]) &&
             ($_POST["endDate"])  &&
-            ($_POST["district"]) && ($_POST["division"]) && ($_POST["token"])
+            ($_POST["status"]) && ($_POST["token"])
         ) {
 
             // sanitizing the inputs
@@ -51,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $address = filter_var($_POST['address'], FILTER_SANITIZE_STRING);
             $startDate = filter_var($_POST['startDate'], FILTER_SANITIZE_STRING);
             $endDate = filter_var($_POST['endDate'], FILTER_SANITIZE_STRING);
-            $district = filter_var($_POST['district'], FILTER_SANITIZE_STRING);
+           // $district = filter_var($_POST['district'], FILTER_SANITIZE_STRING);
             $division = filter_var($_POST['division'], FILTER_SANITIZE_STRING);
            $token= filter_var($_POST['token'], FILTER_SANITIZE_STRING);
 
@@ -59,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
             //create user object with token
-            $user = new User( null, null, null, null, $token, null, null, null, null);
+            $user = new User(null, null, null, null, null, $token, null, null, null, null);
 
             //validations
            $validateName = Validation::validateLettersLength($Title,6);

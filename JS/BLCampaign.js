@@ -10,9 +10,15 @@ function AddCampaign(){
         
 }
 
-function EditCamp(){
+function EditCamp(campaignId){
     
-    $('#CampaignEdit').modal('show'); 
+    $.ajax({url: "../popups/EditCampaign.php",
+    method: 'post',
+    data: {campaignId : campaignId },
+    success: function (result) {
+
+        $("#campaignEdit").html(result);
+    }});
         
 }
 

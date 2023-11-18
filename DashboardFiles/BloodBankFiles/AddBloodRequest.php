@@ -1,106 +1,145 @@
+<?php
+$userId = 1;
+
+require_once '../classes/bloodbankhsrequest.php';
+
+use classes\bloodbankhsrequest;
+$token = "12b378738a1a6be3bacea473fe9e3d2fbfce8e678d514e1d943";
+
+?>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title></title>
-        <link rel="stylesheet" href="../../CSS/BloodBankHospitalReguestAccept.css">
-    </head>
-    <body>
 
-        <!-- nav bar start -->
-        <div class="sticky-top bg-white shadownav" style="height: 50px;">
-            <div class="row m-0 d-flex">
-                <div class="col-8">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../CSS/BloodBankHospitalReguestAccept.css">
+    <link rel="stylesheet" href="../../CSS/HospitalHSRequest.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
 
-                </div>
+<body>
 
-
-                <div class="col-4">
-                    <div class="row align-items-center">
-                        <div class="col-2 mb-2">
-                            <i class="fa-solid fa-bell fa-xl"></i>
-                        </div>
-                        <div class="col-2 mb-2">
-                            <i class="fa-solid fa-gear fa-xl"></i>
-                        </div>
-                        <div class="col-2 mb-2">
-                            <i class="fa-solid fa-user fa-xl"></i>
-                        </div>
-                        <div class="col-6 mt-2 	d-none d-xl-block">
-                            <b>Jaffna Blood Bank</b>
-                            <p style="font-size: 10px;">Blood Bank</p>
-                        </div>
-                    </div>
-
-                </div>
-
-
-            </div>
-        </div>
-        <!-- nav bar end -->
-
-        <!-- body start -->
-        <div class="container" >
-
-            <div class="row bg-white m-3 pt-0 align-items-center p-3 justify-content-center rounded-3 d-flex">
-                <div class="text-center m-3"> <h1>Add blood bank</h1> </div>
-                <div class="bg-white m-3" style="height: 1100px; width: 600px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
-
-                    <div class="row p-3 m-1">
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label"><strong>BloodBankRequest ID</strong></label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="B001">
-                        </div>
-                    </div>
-                    <div class="row p-3 m-1">
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label"><strong>Created Date</strong></label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="XRM Hospital">
-                        </div>
-                    </div>
-
-                    <div class="row p-3 m-1">
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label"><strong>Blood Quantity</strong></label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="XRM Hospital">
-                        </div>
-                    </div>
-                    <div class="row p-3 m-1">
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label"><strong>Blood Group </strong></label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="XRM Hospital">
-                        </div>
-                    </div>
-                    <div class="row p-3 m-1">
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label"><strong>Request Status</strong></label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="XRM Hospital">
-                        </div>
-                    </div>
-                    <div class="row p-3 m-1">
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label"><strong>HospitalRequestId</strong></label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="XRM Hospital">
-                        </div>
-                    </div>
-                    <div class="row p-3 m-1">
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label"><strong>BloodBankId</strong></label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="XRM Hospital">
-                        </div>
-                    </div>
-                    <div class="row p-3 m-1">
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label"><strong>DistrictId</strong></label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="XRM Hospital">
-                        </div>
-                    </div>
-                </div>
-
+    <!-- nav bar start -->
+    <div class="sticky-top bg-white shadownav" style="height: 50px;">
+        <div class="row m-0 d-flex">
+            <div class="col-8">
 
             </div>
 
+
+            <div class="col-4">
+                <div class="row align-items-center">
+                    <div class="col-2 mb-2">
+                        <i class="fa-solid fa-bell fa-xl"></i>
+                    </div>
+                    <div class="col-2 mb-2">
+                        <i class="fa-solid fa-gear fa-xl"></i>
+                    </div>
+                    <div class="col-2 mb-2">
+                        <i class="fa-solid fa-user fa-xl"></i>
+                    </div>
+                    <div class="col-6 mt-2 	d-none d-xl-block">
+                        <b>Jaffna Blood Bank</b>
+                        <p style="font-size: 10px;">Blood Bank</p>
+                    </div>
+                </div>
+
+            </div>
+
+
         </div>
+    </div>
+    <!-- nav bar end -->
+
+    <!-- body start -->
+    <div class="container">
+
+        <div class="row bg-white m-3 pt-0  align-items-center justify-content-center rounded-5" style="height: 600px;">
+
+
+
+            <div class="col-lg-6">
+                <div class="form-container">
+
+
+                    <form action="../services/Addbloodbankrequest.php" method="POST">
+                        <h2 class="container-title">Create Request</h2>
+                        <label for="bloodGroup">Blood Group:</label>
+                        <select class="form-control" name="bloodGroup" id="bloodgroup" required>
+                            <option selected>Select your Blood Group</option>
+                            <option value="A+">A+</option>
+                            <option value="A-"> A-</option>
+                            <option value="B+"> B+</option>
+                            <option value="B-"> B-</option>
+                            <option value="O+"> O+</option>
+                            <option value="O-"> O-</option>
+                            <option value="AB+"> AB+</option>
+                            <option value="AB-"> AB-</option>
+
+                        </select>
+
+                        <label for="bloodQuantity">Blood Quantity (ml):</label>
+                        <input type="number"  class="form-control" name="bloodQuantity" id="bloodQuantityInput" required>
+                        <p id="bloodQuantityError" style="color: red;"></p>
+
+                        <script>
+                            document.addEventListener("DOMContentLoaded", function() {
+                                const bloodQuantityInput = document.getElementById("bloodQuantityInput");
+                                const bloodQuantityError = document.getElementById("bloodQuantityError");
+
+                                bloodQuantityInput.addEventListener("input", function() {
+                                    const inputValue = bloodQuantityInput.value;
+                                    if (!/^\d{3}$/.test(inputValue)) {
+                                        bloodQuantityError.textContent = "Please enter a valid three-digit number.";
+                                        document.getElementById("reqsum").disabled = true;
+                                    } else {
+                                        bloodQuantityError.textContent = "";
+                                        document.getElementById("reqsum").disabled = false;
+
+
+                                    }
+                                });
+                            });
+
+                            function cancel() {
+                                const bloodQuantityInput = document.getElementById("bloodQuantityInput");
+                                const bloodgroup = document.getElementById("bloodgroup");
+                                const status = document.getElementById("requestStatus");
+                                bloodQuantityInput.value = "";
+                                bloodgroup.value = "Select your Blood Group";
+                                status.value = "Select Status";
+                            }
+                        </script>
+
+
+                        <label for="status">Status:</label>
+
+                        <select class="form-control" name="requestStatus" id="requestStatus" required>
+                            <option selected>Select Status</option>
+                            <option value="Normal">Normal</option>
+                            <option value="Emergency">Emergency</option>
+                            <option value="Urgent">Urgent</option>
+                        </select>
+                        <br>
+                        
+                        <br>
+                        <input type="hidden" name="token" value="<?php echo $token; ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                        <input type="hidden" name="hospitalRequestId" value="" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                        <div class="text-end">
+                            <button type="submit" class="btn btn-danger" id="reqsum">Add Request</button>
+                            <button type="button" class="btn btn-danger" onclick="cancel()">Cancel Request</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+            <div class="col-6 align-items-center justify-content-center">
+                <img class="d-none d-xl-block" src="../Images/hospitalreq.png" />
+            </div>
+        </div>
+    </div>
 
 
 
@@ -113,8 +152,10 @@
 
 
 
-        <?php
-        // put your code here
-        ?>
-    </body>
+    <?php
+    // put your code here
+    ?>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+
 </html>

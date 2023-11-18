@@ -81,7 +81,7 @@ class hospitalrequestclass {
         $this->hospitalId = $hospitalId;
     }
 
-    static function addHosRequest($createdDate, $bloodQuantity, $bloodGroup, $requestStatus, $hospitalId) {
+    public function addHosRequest() {
         try {
             $dbcon = new DbConnector();
             $con = $dbcon->getConnection();
@@ -89,19 +89,15 @@ class hospitalrequestclass {
             $query = "INSERT INTO `hospitalrequest` (`hospitalRequestID`, `createdDate`, `bloodQuantity`, `bloodGroup`, `requestStatus`, `hospitalId`) VALUES (NULL, ?, ?, ?, ?, ?);";
 
             $pstmt = $con->prepare($query);
-            $pstmt->bindValue(1, $createdDate);
-            $pstmt->bindValue(2, $bloodQuantity);
-            $pstmt->bindValue(3, $bloodGroup);
-            $pstmt->bindValue(4, $requestStatus);
-            $pstmt->bindValue(5, $hospitalId);
+            $pstmt->bindValue(1, $this->createDate);
+            $pstmt->bindValue(2, $this->bloodQuantity);
+            $pstmt->bindValue(3, $this->bloodGroup);
+            $pstmt->bindValue(4, $this->requestStatus);
+            $pstmt->bindValue(5, $this->hospitalId);
 
             $pstmt->execute();
 
-            if ($pstmt->rowCount() > 0) {
-                echo 'Successfully Created.';
-            } else {
-                echo 'Error, Try Again';
-            }
+            return $pstmt->rowCount() > 0;
         } catch (PDOException $e) {
             echo "ERROR:" . $e->getMessage();
         }
@@ -170,7 +166,7 @@ class hospitalrequestclass {
             echo "Error: " . $e->getMessage();
         }
     }
- public static function getAllRequestwithHospitalusingID($hospitalRequestID) {
+ public static function getRequestwithHospitalusingID($hospitalRequestID) {
     try {
         // Assuming you have a DbConnector class that handles database connections
         $dbcon = new DbConnector();
@@ -206,7 +202,7 @@ class hospitalrequestclass {
             return $newReq;
         } else {
             // Return null or handle the case where no records are found
-            return null;
+            return false;
         }
 
     } catch (PDOException $e) {
@@ -240,7 +236,30 @@ static function publishBBRequest($createdDate, $bloodQuantity, $bloodGroup, $req
     }
 }
 
+public function EditHosRequest() {
+    try {
+        $dbcon = new DbConnector();
+        $con = $dbcon->getConnection();
 
+        $query = "UPDATE `hospitalrequest` SET `createdDate`= ? ,`bloodQuantity`= ? ,`bloodGroup`= ? ,
+        `requestStatus`= ? ,`hospitalId`= ?  WHERE `hospitalRequestID`= ? ";
+
+        $pstmt = $con->prepare($query);
+        $pstmt->bindValue(1, $this->createDate);
+        $pstmt->bindValue(2, $this->bloodQuantity);
+        $pstmt->bindValue(3, $this->bloodGroup);
+        $pstmt->bindValue(4, $this->requestStatus);
+        $pstmt->bindValue(5, $this->hospitalId);
+        $pstmt->bindValue(6, $this->hospitalRequestID);
+        
+
+        $pstmt->execute();
+
+        return $pstmt->rowCount() > 0;
+    } catch (PDOException $e) {
+        echo "ERROR:" . $e->getMessage();
+    }
+}
 
     
    
