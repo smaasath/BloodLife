@@ -247,4 +247,23 @@ class Bloodtable
             echo "Error: " . $e->getMessage();
         }
     }
+
+    public function expirydateAlert(){
+        try {
+            $dbcon = new DbConnector();
+            $con = $dbcon->getConnection();
+            $query = "SELECT * FROM `bloodtable` WHERE expiryDate <= DATE_SUB(NOW(), INTERVAL 14 DAY)";
+            $stmt = $con->prepare($query);
+            $stmt->bindValue(1, $this->bloodBankId);
+            $stmt->execute();
+            $dataArray = array();
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $dataArray[] = $row;
+            }
+            return $dataArray;
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
 }
+

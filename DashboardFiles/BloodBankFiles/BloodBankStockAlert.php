@@ -3,6 +3,24 @@
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to edit this template
 -->
+
+<?php
+$token = "12b378738a1a6be3bacea473fe9e3d2fbfce8e678d514e1d943";
+
+
+require_once '../classes/Bloodtable.php';
+require_once '../classes/district.php';
+require_once '../classes/User.php';
+
+use classes\Bloodtable;
+use classes\hospital;
+use classes\district;
+use classes\User;
+
+$user = new User(null, null, null, null, $token, null, null, null, null);
+$validateToken = $user->validateToken();
+$bloodBankId = $user->getBloodBankId();
+?>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -48,36 +66,28 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <div class="container">
 
             <div class="row">
+            <?php
+
+
+
+                        $expiryalert = new Bloodtable(null, null, null, null, $bloodBankId, null);
+                        $expiryalertArray = $$expiryalert->expirydateAlert();
+
+                        foreach ($expiryalertArray as $expiryArray) {
+
+
+                        ?>
                 <div class="col-5 p-2 m-2 alert alert-warning" style="height: 150px;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; ">
                     <div style="display: flex;flex-direction: row">
                         <img src="../Images/warning.png" height="50px" width="50px" style="margin-center: 10px"/>
-                        <h5 style="padding-left: 10px">Stock Alert <br><br>Expiry date is 10-01-2023</h5>
+                        <h5 style="padding-left: 10px">Stock Alert <br><br><?php echo $expiryArray["expiryDate"] ?></h5>
                         
                     </div>
                     <button type="button" class="btn btn-primary bgcol"   onclick="Takeaction()" style="width: 130px;height: 40px; float: right" >Take action</button>
                 </div>
-                <div class=" col-5 p-2 m-2 alert alert-danger" style="height: 150px;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;" >
-                    <div style="display: flex;flex-direction: row">
-                        <img src="../Images/warning.png" height="50px" width="50px" style="margin-center: 10px"/><br>
-                        <h5 style="padding-left: 10px">Stock Alert <br><br>Expiry date is 10-01-2023</h5>
-                    </div>
-                     <button type="button" class="btn btn-primary bgcol"   onclick="Takeaction()" style="width: 130px;height: 40px; float: right" >Take action</button>
-                </div>
-                <div class=" col-5 p-2 m-2 alert alert-danger" style="height: 150px;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;" >
-                    <div style="display: flex;flex-direction: row">
-                        <img src="../Images/warning.png" height="50px" width="50px" style="margin-center: 10px"/><br>
-                        <h5 style="padding-left: 10px">Stock Alert <br><br>Expiry date is 10-01-2023</h5>
-                    </div>
-                     <button type="button" class="btn btn-primary bgcol"   onclick="Takeaction()" style="width: 130px;height: 40px; float: right" >Take action</button>
-                </div>
-                <div class="col-5 p-2 m-2 alert alert-warning" style="height: 150px;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
-                    <div style="display: flex;flex-direction: row">
-                        <img src="../Images/warning.png" height="50px" width="50px" style="margin-center: 10px"/><br>
-                        <h5 style="padding-left: 10px">Stock Alert <br><br>Expiry date is 10-01-2023</h5>
-                    </div>
-                     <button type="button" class="btn btn-primary bgcol"   onclick="Takeaction()" style="width: 130px;height: 40px; float: right" >Take action</button>
-                </div>
-
+                
+                <?php
+                        } ?>
             </div>
 
         </div>
