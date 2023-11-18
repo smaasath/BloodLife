@@ -228,6 +228,66 @@ public static function getAllBloodBankReqByBankID($bloodBankId){
     }
 }
 
+static function getHospitalStatusGradient($status) {
+    switch ($status) {
+        case "Normal":
+            return "linear-gradient(45deg,#4099ff,#73b4ff)";
+            break;
+        case "Urgent":
+            return "linear-gradient(45deg,#FF5370,#ff869a)";
+            break;
+        case "Emergency":
+            return " linear-gradient(45deg,#FFB64D,#ffcb80)";
+            break;
+        default:
+            return "linear-gradient(45deg,#4099ff,#73b4ff)";
+    }
+}
+
+public function getBloodBankReqByReqID(){
+    try {
+        $dbcon = new DbConnector();
+        $con = $dbcon->getConnection();
+
+        $query = "SELECT
+        bloodbankrequest.*,
+        hospital.name AS hospitalName,
+        hospital.address AS hospitalAddress,
+        bloodbank.bloodBankName as bloodBankName,
+        bloodbank.Address as bloodbankAddress
+    FROM
+        bloodbankrequest
+    LEFT JOIN
+        hospitalrequest
+    ON
+        hospitalrequest.hospitalRequestID = bloodbankrequest.hospitalRequestId
+    LEFT JOIN
+        hospital
+    ON
+        hospital.hospitalId = hospitalrequest.hospitalId
+    LEFT JOIN
+        bloodbank
+    ON
+        bloodbank.bloodBankId = bloodbankrequest.bloodBankId
+    WHERE
+        bloodbankrequest.bloodBankRequestId = ? ";
+
+        $stmt = $con->prepare($query);
+        $stmt->bindParam(1, $this->bloodBankRequestId, PDO::PARAM_INT);
+    
+
+        $stmt->execute();
+        if ($stmt->rowCount() > 0) {
+            $rs = $stmt->fetch(PDO::FETCH_OBJ);
+            return $rs;
+        } else {
+            return false;
+        }
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
+}
+
 }
 
 

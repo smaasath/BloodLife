@@ -6,10 +6,7 @@
  */
 
 namespace classes;
-// namespace classes;
-// use PHPMailer\PHPMailer\PHPMailer;
-// use PHPMailer\PHPMailer\SMTP;
-// use PHPMailer\PHPMailer\Exception;
+
 require_once 'DbConnector.php';
 require_once 'User.php';
 
@@ -79,7 +76,12 @@ class bloodBank {
         $this->districtId = $districtId;
     }
 
-    public static function AddBloodBank( $bloodBankName, $Address, $ContactNo, $districtId, $email, $password) {
+    public function AddBloodBank($email) {
+        
+        if (!is_numeric($this->districtId)) {
+            // Handle the error, e.g., return false or throw an exception
+            return false;
+        }
         try {
             $dbcon = new DbConnector();
             $con = $dbcon->getConnection();
@@ -87,64 +89,42 @@ class bloodBank {
             $query = "INSERT INTO `bloodbank` ( `bloodBankName`, `Address`, `ContactNo`, `districtId`) VALUES ( ?, ?, ?, ?);";
     
             $pstmt = $con->prepare($query);
-            $pstmt->bindValue(1, $bloodBankName);
-            $pstmt->bindValue(2, $Address); 
-            $pstmt->bindValue(3, $ContactNo);
-            $pstmt->bindValue(4, $districtId);
+            $pstmt->bindValue(1, $this->bloodBankName);
+            $pstmt->bindValue(2, $this->Address); 
+            $pstmt->bindValue(3, $this->ContactNo);
+            $pstmt->bindValue(4, $this->districtId);
             
     
             $pstmt->execute();
     
             if ($pstmt->rowCount() > 0) {
-              echo 'Success.';
-              $bloodBankId = $con->lastInsertId();
-                    User::AddUser( $password, $email, 3, null,null, $bloodBankId);
-                    User::SendMail($password, $email, $bloodBankName,"Bloodbank");
+                return self::addbloodbankuser($con, $email, $this->bloodBankName);
             } else {
-               echo 'Error';
+                return false;
             }
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
     }
 
-    // public static function SendMail($password, $email,$bloodBankName) {
-    //     // Create an instance; passing `true` enables exceptions
+    public function addbloodbankuser($con, $email, $bloodBankName) {
 
-    //     require '../mail/Exception.php';
-    //     require '../mail/PHPMailer.php';
-    //     require '../mail/SMTP.php';
-    //     $mail = new PHPMailer(true);
+        $bloodBankId = $con->lastInsertId();
+        $password = Validation::generateRandomPassword();
 
-    //     //Server settings
-    //     $mail->SMTPDebug = 0;                      //Enable verbose debug output
-    //     $mail->isSMTP();                                            //Send using SMTP
-    //     $mail->Host = 'smtp.gmail.com';                     //Set the SMTP server to send through
-    //     $mail->SMTPAuth = true;                                   //Enable SMTP authentication
-    //     $mail->Username = 'sachinformationsystem@gmail.com';                     //SMTP username
-    //     $mail->Password = 'upyjmbtlcfckzoke';                               //SMTP password
-    //     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-    //     $mail->Port = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
-    //     //Recipients
-    //     $mail->setFrom('sachinformationsystem@gmail.com');
-    //     $mail->addAddress($email);     //Add a recipient             //Name is optional
-    //     //Content
-    //     $mail->isHTML(true);                                  //Set email format to HTML
-    //     $mail->Subject = 'Donor Registration';
-    //     $message = "Dear ".$bloodBankName.",<br>";
-    //     $message .= "Welcome to BloodLife! , your account has been successfully created."."<br>";
-    //     $message .= "        Your Password: ".$password.",<br>";
-        
+        $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
-    //     $mail->Body = $message;
 
-    //     try {
-    //         $mail->send();
-    //         echo 'Success';
-    //     } catch (Exception $e) {
-    //         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-    //     }
-    // }
+    if (User::AddUser($email, 2, $hashedPassword,  $bloodBankId,null, null)) {
+        User::SendMail($password, $email, $bloodBankName,"bloodbank");
+        return true;
+    } else {
+        return false;
+
+    }
+
+}
+
 
     public  function GetBloodbankData($bloodBankId) {
         try {

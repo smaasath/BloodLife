@@ -14,8 +14,6 @@ require_once 'DbConnector.php';
 
 
 
-
-
 use PDO;
 use PDOException;
 use classes\DbConnector;
