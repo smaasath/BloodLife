@@ -2,9 +2,11 @@
 
 require_once '../classes/campaign.php';
 require_once '../classes/User.php';
+require_once '../classes/Donation.php';
 
 use classes\campaign;
 use classes\User;
+use classes\Donation;
 
 
 header('Content-Type: application/json');
@@ -24,14 +26,15 @@ if ($method === "GET") {
         if ($user->validateToken() && $user->getDonorId() != null) {
 
 
-            $Allcamp = campaign::getAllCampaign();
-
-            if ($Allcamp == null) {
-
-                echo json_encode(array("message" => "Donor Didn't found"));
+            $donation = new Donation(null, $user->getDonorId(), null, null, null, null);
+            $donationArray = $donation->getCertificates();
+            
+            
+           if (!empty($donationArray)) {
+               
+                echo json_encode(array("message" => true, "data" => $donationArray));
             } else {
-
-                echo json_encode(array("message" => true, "data"=>$Allcamp));
+                echo json_encode(array("message" => "No Certificates Found", "data" => []));
             }
         } else {
             

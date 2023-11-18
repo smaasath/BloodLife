@@ -21,11 +21,13 @@ if ($method === "GET") {
         $token = $matches[1];
         $user = new User(null, null, null, null, $token, null, null, null, null);
 
-        if ($user->validateToken()) {
+        if ($user->validateToken() && $user->getDonorId() != null ) {
 
             $data = json_decode(file_get_contents("php://input"), true);
 
             $donorId = $user->getDonorId();
+    
+           
 
             $newDonor = Donor::getDonorById($donorId);
             

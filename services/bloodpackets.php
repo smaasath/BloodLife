@@ -33,6 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $validateToken = $user->validateToken();
       
       $bloodBankId = $user->getBloodBankId();
+      
    
 
       if ($validateToken && $bloodBankId != null) {

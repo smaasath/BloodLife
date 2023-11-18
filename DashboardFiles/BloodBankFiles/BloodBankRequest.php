@@ -154,7 +154,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                         <div class="row mt-1 p-1 justify-content-end">
                                         <div class="col-6 d-flex justify-content-around">
                                             <div style="width: 25px"> <a href="../Dashboards/BloodBankDashboard.php?page=bbre"><img src="../Images/icons8-edit-24.png" style="width: 20px;" /></a></div>
-                                            <div style="width: 25px"><a href="../Dashboards/BloodBankDashboard.php?page=bbrv"><img style="width: 20px;" src="../Images/icons8-view-90.png" /></a></div>
+                                            <div style="width: 25px"><a href="../Dashboards/BloodBankDashboard.php?page=bbrv&&breqId=${item.bloodBankRequestId}"><img style="width: 20px;" src="../Images/icons8-view-90.png" /></a></div>
                                         </div>
                                         </div>
                                     </div>`;
@@ -199,7 +199,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         var id = parseInt(test, 10);
 
 
-                        filterArray = array.filter((item) => item.bloodBankRequestId.includes(id));
+                        filterArray = array.filter((item) => item.bloodBankRequestId === id);
 
 
 

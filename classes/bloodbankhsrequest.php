@@ -244,6 +244,50 @@ static function getHospitalStatusGradient($status) {
     }
 }
 
+public function getBloodBankReqByReqID(){
+    try {
+        $dbcon = new DbConnector();
+        $con = $dbcon->getConnection();
+
+        $query = "SELECT
+        bloodbankrequest.*,
+        hospital.name AS hospitalName,
+        hospital.address AS hospitalAddress,
+        bloodbank.bloodBankName as bloodBankName,
+        bloodbank.Address as bloodbankAddress
+    FROM
+        bloodbankrequest
+    LEFT JOIN
+        hospitalrequest
+    ON
+        hospitalrequest.hospitalRequestID = bloodbankrequest.hospitalRequestId
+    LEFT JOIN
+        hospital
+    ON
+        hospital.hospitalId = hospitalrequest.hospitalId
+    LEFT JOIN
+        bloodbank
+    ON
+        bloodbank.bloodBankId = bloodbankrequest.bloodBankId
+    WHERE
+        bloodbankrequest.bloodBankRequestId = ? ";
+
+        $stmt = $con->prepare($query);
+        $stmt->bindParam(1, $this->bloodBankRequestId, PDO::PARAM_INT);
+    
+
+        $stmt->execute();
+        if ($stmt->rowCount() > 0) {
+            $rs = $stmt->fetch(PDO::FETCH_OBJ);
+            return $rs;
+        } else {
+            return false;
+        }
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
+}
+
 }
 
 
