@@ -202,7 +202,7 @@ class hospitalrequestclass {
             return $newReq;
         } else {
             // Return null or handle the case where no records are found
-            return null;
+            return false;
         }
 
     } catch (PDOException $e) {
@@ -236,7 +236,30 @@ static function publishBBRequest($createdDate, $bloodQuantity, $bloodGroup, $req
     }
 }
 
+public function EditHosRequest() {
+    try {
+        $dbcon = new DbConnector();
+        $con = $dbcon->getConnection();
 
+        $query = "UPDATE `hospitalrequest` SET `createdDate`= ? ,`bloodQuantity`= ? ,`bloodGroup`= ? ,
+        `requestStatus`= ? ,`hospitalId`= ?  WHERE `hospitalRequestID`= ? ";
+
+        $pstmt = $con->prepare($query);
+        $pstmt->bindValue(1, $this->createDate);
+        $pstmt->bindValue(2, $this->bloodQuantity);
+        $pstmt->bindValue(3, $this->bloodGroup);
+        $pstmt->bindValue(4, $this->requestStatus);
+        $pstmt->bindValue(5, $this->hospitalId);
+        $pstmt->bindValue(6, $this->hospitalRequestID);
+        
+
+        $pstmt->execute();
+
+        return $pstmt->rowCount() > 0;
+    } catch (PDOException $e) {
+        echo "ERROR:" . $e->getMessage();
+    }
+}
 
     
    
