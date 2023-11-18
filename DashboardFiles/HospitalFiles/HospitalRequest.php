@@ -173,7 +173,7 @@ $token = "saintha";
                 <div class="col">
 
                     <div class="bg-white p-3  m-3" style="width: 270px; height: 170px; box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; background: <?php echo hospitalrequestclass::getHospitalStatusGradient($datAarray["requestStatus"]); ?>;">
-                        <a href="../Dashboards/HospitalDashboard.php?page=hospitalreqview&&reqid=<?php echo Validation::encryptedValue($datAarray["hospitalRequestID"]); ?>" style="text-decoration: none;">
+                        <a href="../Dashboards/HospitalDashboard.php?page=hospitalreqview&&hreqid=<?php echo Validation::encryptedValue($datAarray["hospitalRequestID"]); ?>" style="text-decoration: none;">
                             <div class="row">
                                 <div class="col">
                                     <p class="m-b-0 text-white" style="margin-top: 5px"><strong><?php echo $datAarray["hospitalRequestID"]; ?></strong><span class="f-right" style="margin-left:140px;font-weight: bold"><?php echo $datAarray["bloodGroup"]; ?></span></p>

@@ -9,9 +9,9 @@ use classes\Validation;
 
 $token = "saintha";
 // Check if the 'hospitalRequestID' parameter is set in the URL
-if (isset($_GET['reqid'])) {
+if (isset($_GET['hreqid'])) {
     // Retrieve and store the 'hospitalRequestID' value
-    $id = Validation::decryptedValue($_GET['reqid']);
+    $id = Validation::decryptedValue($_GET['hreqid']);
     
 
 
@@ -124,7 +124,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </div>
                 <input type="hidden" name="token" value="<?php echo $token; ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                 <div class="text-end">
-                    <a href="HospitalDashboard.php?page=hospitalreqedit&&reqid=<?php echo $_GET['reqid']; ?>" style="text-decoration: none;color: black"> <button class="edit-button">Edit</button></a>
+                    <a href="HospitalDashboard.php?page=hospitalreqedit&&hreqid=<?php echo $_GET['hreqid']; ?>" style="text-decoration: none;color: black"> <button class="edit-button">Edit</button></a>
                 </div>
 
 
