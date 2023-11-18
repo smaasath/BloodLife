@@ -100,25 +100,30 @@ public static function getBloodBankReqByBankID($bloodBankId,$bloodgroup){
         hospital.address AS hospitalAddress,
         bloodbank.bloodBankName as bloodBankName,
         bloodbank.Address as bloodbankAddress
-      FROM
+    FROM
         bloodbankrequest
-      LEFT JOIN
+    LEFT JOIN
+        hospitalrequest
+    ON
+        hospitalrequest.hospitalRequestID = bloodbankrequest.hospitalRequestId
+    LEFT JOIN
         hospital
-      ON
-        hospital.hospitalId = bloodbankrequest.hospitalRequestId
-      LEFT JOIN
+    ON
+        hospital.hospitalId = hospitalrequest.hospitalId
+    LEFT JOIN
         bloodbank
-      ON
+    ON
         bloodbank.bloodBankId = bloodbankrequest.bloodBankId
-      WHERE
-        bloodbankrequest.bloodBankId = ? && bloodbankrequest.bloodGroup=?
-      ORDER BY
+    WHERE
+        bloodbankrequest.bloodBankId = ?  && bloodbankrequest.bloodGroup=?
+    ORDER BY
         bloodbankrequest.bloodBankRequestId DESC;";
+
 
         $stmt = $con->prepare($query);
         $stmt->bindParam(1, $bloodBankId, PDO::PARAM_INT);
         $stmt->bindParam(2, $bloodgroup);
-
+       
         $stmt->execute();
 
         $dataArray = array();
@@ -172,6 +177,54 @@ public function ValidatePublishRequest() {
         return $pstmt->rowCount() > 0;
     } catch (PDOException $e) {
         echo "ERROR:" . $e->getMessage();
+    }
+}
+
+public static function getAllBloodBankReqByBankID($bloodBankId){
+    try {
+        $dbcon = new DbConnector();
+        $con = $dbcon->getConnection();
+
+        $query = "SELECT
+        bloodbankrequest.*,
+        hospital.name AS hospitalName,
+        hospital.address AS hospitalAddress,
+        bloodbank.bloodBankName as bloodBankName,
+        bloodbank.Address as bloodbankAddress
+    FROM
+        bloodbankrequest
+    LEFT JOIN
+        hospitalrequest
+    ON
+        hospitalrequest.hospitalRequestID = bloodbankrequest.hospitalRequestId
+    LEFT JOIN
+        hospital
+    ON
+        hospital.hospitalId = hospitalrequest.hospitalId
+    LEFT JOIN
+        bloodbank
+    ON
+        bloodbank.bloodBankId = bloodbankrequest.bloodBankId
+    WHERE
+        bloodbankrequest.bloodBankId = ?
+    ORDER BY
+        bloodbankrequest.bloodBankRequestId DESC;
+    ";
+
+        $stmt = $con->prepare($query);
+        $stmt->bindParam(1, $bloodBankId, PDO::PARAM_INT);
+    
+
+        $stmt->execute();
+
+        $dataArray = array();
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $dataArray[] = $row;
+        }
+
+        return $dataArray;
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
     }
 }
 
