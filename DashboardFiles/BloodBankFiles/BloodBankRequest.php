@@ -78,14 +78,46 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     <div class="container">
+        <div class="row p-3">
+            <div class="col-6">
+            <input type="search" id="search" class="form-control rounded" placeholder="Search Name" aria-label="Search" aria-describedby="search-addon" oninput="teeest(this.value)">
+            </div>
+            <div class="col-6">
+                <select class="form-select" aria-label="Default select example" oninput="teest(this.value)">
+                    <option selected value="">Status</option>
+                    <option value="Normal">Normal</option>
+                    <option value="Urgent">Urgent</option>
+                    <option value="Emergency">Emergency</option>
+                    <option value="Completed">Completed</option>
+
+
+                </select>
+            </div>
+        </div>
+        <?php
+        $detailsArray = bloodbankhsrequest::getAllBloodBankReqByBankID($bankid);
+        $test = bloodbankhsrequest::getBloodBankReqByBankID($bankid, "O+");
+
+        ?>
+
         <div class="bg-white m-3 pt-0 p-3 rounded-3">
             <div class="row d-flex justify-content-around" id="output"></div>
-            <?php
-            $detailsArray = bloodbankhsrequest::getAllBloodBankReqByBankID($bankid);
-            $test = bloodbankhsrequest::getBloodBankReqByBankID($bankid,"O+");
-            print_r($test);
-            ?>
+
+
             <script>
+                function getHospitalStatusGradient(status) {
+                    switch (status) {
+                        case "Normal":
+                            return "linear-gradient(45deg,#4099ff,#73b4ff)";
+                        case "Urgent":
+                            return "linear-gradient(45deg,#FF5370,#ff869a)";
+                        case "Emergency":
+                            return "linear-gradient(45deg,#FFB64D,#ffcb80)";
+                        default:
+                            return "linear-gradient(45deg,#4099ff,#73b4ff)";
+                    }
+                }
+
                 let array = <?php echo json_encode($detailsArray) ?>;
                 let filterArray;
                 showall(array);
@@ -100,7 +132,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         array.forEach((item) => {
 
                             var htmlCode = `     
-                                    <div class="bg-white p-4 mt-4 rounded-4" style="height: 220px; width: 300px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+                            <div class="bg-white p-4 mt-4 rounded-4" style="height: 180px; width: 300px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; background: ${getHospitalStatusGradient(item.requestStatus)}">
                                        
                                             <div class="row p-1">
                                                 <div class="col-6" style="height: 30px;">B${item.bloodBankRequestId}</div>
@@ -114,13 +146,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                             <div class="col"> ${item.hospitalName===null ?  "Bank Request" : item.hospitalName} </div>
                                         </div>
 
-                                        <div class="row p-1 pl-2" style="height: 30px">
-                                            <div class="col">Urgent </div>
-                                        </div>
-
                                         <div class="row p-1 pl-4">
-                                            <div class="col-6" style="height: 30px">2022-12-12</div>
-                                            <div class="col-6" style="height: 30px">Completed</div>
+                                            <div class="col-6" style="height: 30px">${item.requestStatus}</div>
+                                            <div class="col-6" style="height: 30px">${item.createdDate}</div>
                                         </div>
 
                                         <div class="row mt-1 p-1 justify-content-end">
@@ -153,51 +181,54 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     } else {
                         array = <?php echo json_encode($detailsArray) ?>;
                         var testValue = test.toLowerCase();
-                        array = array.filter((item) => item.district.toLowerCase().includes(testValue));
+                        array = array.filter((item) => item.requestStatus.toLowerCase().includes(testValue));
                         showall(array);
                     }
 
                 }
 
+
+
+
                 function teeest(test) {
-
-                    var id = parseInt(test, 10);
-
-                    var testValue = test.toLowerCase();
-
-                    filterArray = array.filter((item) => item.hospitalId === id || item.name.toLowerCase().includes(testValue));
-
-
-                    const detailsList = document.getElementById("output");
-                    detailsList.innerHTML = "";
-                    if (filterArray === null || filterArray.length === 0) {
-                        var htmlCode = `<tr><td colspan="12" style="text-align: center;color: red;">No Results Found</td></tr>`;
-                        detailsList.innerHTML = htmlCode;
+                    if (test === "") {
+                        array = <?php echo json_encode($detailsArray) ?>;
+                        showall(array);
                     } else {
-                        filterArray.forEach((item) => {
 
-                            var htmlCode = `     
-                                    <div class="bg-white p-4 mt-4 rounded-4" style="height: 220px; width: 300px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+                        var id = parseInt(test, 10);
+
+
+                        filterArray = array.filter((item) => item.bloodBankRequestId.includes(id));
+
+
+
+                        const detailsList = document.getElementById("output");
+                        detailsList.innerHTML = "";
+                        if (filterArray === null || filterArray.length === 0) {
+                            var htmlCode = `<tr><td colspan="12" style="text-align: center;color: red;">No Results Found</td></tr>`;
+                            detailsList.innerHTML = htmlCode;
+                        } else {
+                            filterArray.forEach((item) => {
+
+                                var htmlCode = `     
+                            <div class="bg-white p-4 mt-4 rounded-4" style="height: 180px; width: 300px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; background: ${getHospitalStatusGradient(item.requestStatus)}">
                                        
                                             <div class="row p-1">
                                                 <div class="col-6" style="height: 30px;">B${item.bloodBankRequestId}</div>
 
-                                                <div class="col-6" style="height: 30px">2L</div>
+                                                <div class="col-6" style="height: 30px">${item.bloodGroup}</div>
                                             </div>
 
                                      
 
                                         <div class="row p-1 pl-2" style="height: 30px">
-                                            <div class="col"> Hospital </div>
-                                        </div>
-
-                                        <div class="row p-1 pl-2" style="height: 30px">
-                                            <div class="col">Urgent </div>
+                                            <div class="col"> ${item.hospitalName===null ?  "Bank Request" : item.hospitalName} </div>
                                         </div>
 
                                         <div class="row p-1 pl-4">
-                                            <div class="col-6" style="height: 30px">2022-12-12</div>
-                                            <div class="col-6" style="height: 30px">Completed</div>
+                                            <div class="col-6" style="height: 30px">${item.requestStatus}</div>
+                                            <div class="col-6" style="height: 30px">${item.createdDate}</div>
                                         </div>
 
                                         <div class="row mt-1 p-1 justify-content-end">
@@ -209,17 +240,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                     </div>`;
 
 
-                            var divElement = document.createElement("tr");
+
+                                var divElement = document.createElement("tr");
 
 
-                            divElement.innerHTML = htmlCode;
+                                divElement.innerHTML = htmlCode;
 
 
-                            detailsList.appendChild(divElement);
+                                detailsList.appendChild(divElement);
 
-                        });
+                            });
+                        }
                     }
-
 
                 }
             </script>
