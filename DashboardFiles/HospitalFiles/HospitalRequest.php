@@ -2,9 +2,11 @@
 $userId = 1;
 
 require_once '../classes/hospitalrequestclass.php';
+require_once '../classes/Validation.php';
 
+use classes\Validation;
 use classes\hospitalrequestclass;
-$token = "12b378738a1a6be3bacea473fe9e3d2fbfce8e678d514e1d943";
+$token = "saintha";
 ?>
 <!DOCTYPE html>
 <html>
@@ -171,7 +173,7 @@ $token = "12b378738a1a6be3bacea473fe9e3d2fbfce8e678d514e1d943";
                 <div class="col">
 
                     <div class="bg-white p-3  m-3" style="width: 270px; height: 170px; box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; background: <?php echo hospitalrequestclass::getHospitalStatusGradient($datAarray["requestStatus"]); ?>;">
-                        <a href="../Dashboards/HospitalDashboard.php?page=hospitalreqview" style="text-decoration: none;">
+                        <a href="../Dashboards/HospitalDashboard.php?page=hospitalreqview&&reqid=<?php echo Validation::encryptedValue($datAarray["hospitalRequestID"]); ?>" style="text-decoration: none;">
                             <div class="row">
                                 <div class="col">
                                     <p class="m-b-0 text-white" style="margin-top: 5px"><strong><?php echo $datAarray["hospitalRequestID"]; ?></strong><span class="f-right" style="margin-left:140px;font-weight: bold"><?php echo $datAarray["bloodGroup"]; ?></span></p>

@@ -50,26 +50,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
                     }else{
                         $request = new bloodbankhsrequest(null, $createdDate, $quantity,$bloodgroup, $requestStatus,$hospitalRequestId, $bloodBankId);
+                        if(!$request->ValidatePublishRequest()){
                         $status = $request->addbloodbankRequest() ? 1 : 2 ;
+                        }else{
+                            $status = 3;
+                        }
                     }
+
 
                     
                 } else {
-                    $status = !$validatebloodgroup ? 3 : (!$validatequantity ? 4 : 5);
+                    $status = !$validatebloodgroup ? 4 : (!$validatequantity ? 5: 6);
                 }
             } else {
-                $status = 6;
+                $status = 7;
             }
         } else {
-            $status = 7;
+            $status = 8;
         }
     } else {
-        $status = 8;
+        $status = 9;
     }
 
     // header("Location: ../Dashboards/BloodBankDashboard.php?status=$status");
 } else {
-    $status = 9;
+    $status = 10;
 }
 
 echo $status;

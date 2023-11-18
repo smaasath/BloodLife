@@ -166,7 +166,7 @@ class hospitalrequestclass {
             echo "Error: " . $e->getMessage();
         }
     }
- public static function getAllRequestwithHospitalusingID($hospitalRequestID) {
+ public static function getRequestwithHospitalusingID($hospitalRequestID) {
     try {
         // Assuming you have a DbConnector class that handles database connections
         $dbcon = new DbConnector();

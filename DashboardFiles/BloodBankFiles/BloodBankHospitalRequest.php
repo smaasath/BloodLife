@@ -2,8 +2,10 @@
 $userId = 1;
 
 require_once '../classes/hospitalrequestclass.php';
+require_once '../classes/Validation.php';
 
 use classes\hospitalrequestclass;
+use classes\Validation;
 ?>
 
 
@@ -70,7 +72,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <div class="col">
 
                     <div class="bg-white p-3  m-3" style="width: 270px; height: 200px; box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; background: <?php echo hospitalrequestclass::getHospitalStatusGradient($datAarray["requestStatus"]); ?>; ">
-                        <a href="../Dashboards/BloodBankDashboard.php?page=bbhrv&reqid=<?php echo $datAarray['hospitalRequestID']; ?>" style="text-decoration: none;">
+                        <a href="../Dashboards/BloodBankDashboard.php?page=bbhrv&&reqid=<?php echo Validation::encryptedValue($datAarray["hospitalRequestID"]); ?>" style="text-decoration: none;">
 
                             <div class="row">
                                 <div class="col">

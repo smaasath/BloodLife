@@ -155,6 +155,26 @@ public function addbloodbankRequest() {
     }
 }
 
+public function ValidatePublishRequest() {
+    try {
+        $dbcon = new DbConnector();
+        $con = $dbcon->getConnection();
+
+        $query = "SELECT * FROM `bloodbankrequest` WHERE bloodBankId = ? && hospitalRequestId = ?;";
+
+        $pstmt = $con->prepare($query);
+        $pstmt->bindValue(1, $this->bloodBankId);
+        $pstmt->bindValue(2, $this->hospitalRequestId);
+   
+
+        $pstmt->execute();
+
+        return $pstmt->rowCount() > 0;
+    } catch (PDOException $e) {
+        echo "ERROR:" . $e->getMessage();
+    }
+}
+
 }
 
 

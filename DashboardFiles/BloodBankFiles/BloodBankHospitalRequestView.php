@@ -1,19 +1,19 @@
 <?php
 require_once '../classes/hospitalrequestclass.php';
+require_once '../classes/Validation.php';
 
 use classes\hospitalrequestclass;
+use classes\Validation;
 $token = "12b378738a1a6be3bacea473fe9e3d2fbfce8e678d514e1d943";
 
 // Check if the 'hospitalRequestID' parameter is set in the URL
 if (isset($_GET['reqid'])) {
     // Retrieve and store the 'hospitalRequestID' value
-    $id = $_GET['reqid'];
+    $id = Validation::decryptedValue($_GET['reqid']);
 
     // Now, you can use the $id variable in your code
     
-} else {
-    echo "ID not found in the URL.";
-}
+
 ?>
 
 
@@ -71,7 +71,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         
      
         <?php
-                $requestObj = hospitalrequestclass::getAllRequestwithHospitalusingID($id);
+                $requestObj = hospitalrequestclass::getRequestwithHospitalusingID($id);
 
                
                     ?>
@@ -109,7 +109,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <label for="available-quantity">Available Quantity</label>
                     <input type="number" name="available quantity" id="available-quantity" >
                 </div>
-                <?php echo $token; ?>
+                
                 <input type="hidden" name="token" value="<?php echo $token; ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                 <div class="text-end">
         <div class="buttons">
@@ -121,8 +121,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         </form>
         </div>
         </div>
+
+
+
+
+
         <?php
-                
+           } else {
+            echo "ID not found in the URL.";
+        }     
         ?>
     </body>
 </html>
