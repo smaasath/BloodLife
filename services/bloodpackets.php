@@ -32,6 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $validatequantity = validation::validatequantity($quantity);
       $validateToken = $user->validateToken();
       $bloodBankId = $user->getBloodBankId();
+      
 
       if ($validateToken && $bloodBankId != null) {
 

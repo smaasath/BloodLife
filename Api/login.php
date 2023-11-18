@@ -17,7 +17,7 @@ if (isset($authorizationHeader) && preg_match('/Bearer\s+(.*)$/i', $authorizatio
     $token = $matches[1];
     $user = new User(null, null, null, null, $token, null, null, null, null);
 
-    if ($user->validateToken()) {
+    if ($user->validateToken() && $user->getDonorId() != null ) {
         echo json_encode(array("message" => true));
     } else {
         echo json_encode(array("message" => "Token Not Valid"));
