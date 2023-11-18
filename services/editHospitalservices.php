@@ -23,15 +23,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     session_start();
 
-    if (isset($_POST["VerificationCode"], $_SESSION["VerificationCode"], $_SESSION["hospital"], $_SESSION["email"], $_SESSION['timestamp'])) {
-        //check status for adding hospital
+    if (isset($_POST["VerificationCode"], $_SESSION["VerificationCode"], $_SESSION["hospital"], $_SESSION['timestamp'])) {
+        //check status for edit hospital
 
         $verifyOtp = (int) $_POST["VerificationCode"] === (int) $_SESSION["VerificationCode"];
         $time = time() - $_SESSION['timestamp'] > 60000000;
 
         if ($verifyOtp) {
             
-            $status = $_SESSION["hospital"]->AddHospital($_SESSION["email"]) ? 1 : 2;
+            $status = $_SESSION["hospital"]->editHospital($_SESSION["email"]) ? 1 : 2;
             session_destroy();
             
         } else {
@@ -41,15 +41,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         }
     } else if(isset($_POST["name"], $_POST["address"], $_POST["contactNumber"],
-              $_POST["district"], $_POST["division"], $_POST["token"],
-               $_POST["email"])) {
+              $_POST["district"], $_POST["division"], $_POST["token"])) {
 
     //empty value check
     if (!empty($_POST["name"]) && ( $_POST["address"]) && ($_POST["contactNumber"]) &&
-              ($_POST["district"]) && ($_POST["division"]) && ($_POST["token"]) &&
-              ($_POST["email"])) {
+              ($_POST["district"]) && ($_POST["division"]) && ($_POST["token"])) {
 
-   
+
     // sanitizing the inputs
     $name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
     $address = filter_var($_POST['address'], FILTER_SANITIZE_STRING);
@@ -59,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $division = filter_var($_POST['division'], FILTER_SANITIZE_STRING);
     $email = filter_var($_POST['email'], FILTER_SANITIZE_STRING);
     $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
-    
+
     $districtId = district::getDistrictIDDD($district, $division);
     // echo $districtId;
     
@@ -76,6 +74,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $validateToken = $user->validateToken();
     $userrole= $user->getUserRole();
     
+    echo $token;
+    echo $userrole;
      //token  checking
      if ($validateToken && $userrole == 1) {
 
@@ -92,7 +92,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION["hospital"] = $hospital;
                 $_SESSION["email"] = $email;
                 $_SESSION['timestamp'] = time();
-                $status = $user->SendMail( $_SESSION["VerificationCode"], $email, $name,$type) ? header("Location: newEmptyPHPWebPage.php?type=hospital") : 7;
+                $status = $User->SendMail( $_SESSION["VerificationCode"], $email, $name) ? header("Location: newEmptyPHPWebPage.php") : 7;
 
             } else {
                 //check status for exist values
