@@ -252,7 +252,11 @@ class Bloodtable
         try {
             $dbcon = new DbConnector();
             $con = $dbcon->getConnection();
-            $query = "SELECT * FROM `bloodtable` WHERE expiryDate <= DATE_SUB(NOW(), INTERVAL 14 DAY)";
+            $query = "SELECT * FROM `bloodtable`
+            WHERE expiryDate <= DATE_ADD(NOW(), INTERVAL 14 DAY)
+            AND expiryDate > NOW()
+            AND bloodBankId = ?
+            ";
             $stmt = $con->prepare($query);
             $stmt->bindValue(1, $this->bloodBankId);
             $stmt->execute();

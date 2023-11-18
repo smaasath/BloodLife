@@ -9,12 +9,11 @@ $token = "12b378738a1a6be3bacea473fe9e3d2fbfce8e678d514e1d943";
 
 
 require_once '../classes/Bloodtable.php';
-require_once '../classes/district.php';
+
 require_once '../classes/User.php';
 
 use classes\Bloodtable;
-use classes\hospital;
-use classes\district;
+
 use classes\User;
 
 $user = new User(null, null, null, null, $token, null, null, null, null);
@@ -71,7 +70,7 @@ $bloodBankId = $user->getBloodBankId();
 
 
                         $expiryalert = new Bloodtable(null, null, null, null, $bloodBankId, null);
-                        $expiryalertArray = $$expiryalert->expirydateAlert();
+                        $expiryalertArray = $expiryalert->expirydateAlert();
 
                         foreach ($expiryalertArray as $expiryArray) {
 
