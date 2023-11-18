@@ -114,7 +114,7 @@ class hospital {
         $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
 
-    if (User::AddUser($email, 5, $hashedPassword, null, null, $hospitalId)) {
+    if (User::AddUser($email, 3, $hashedPassword, null, null, $hospitalId)) {
         User::SendMail($password, $email, $name,"Hospital");
         return true;
     } else {

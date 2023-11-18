@@ -20,7 +20,7 @@ if (isset($_POST["district"])) {
     
  if (isset($_POST["division"])) {
         $bank = $_POST["division"];
-        $dataArray = district::getAllBloodBank($bank);
+        $dataArray = district::getBloodBanks($bank);
         echo ' <option>Select Blood Bank</option>';
         foreach ($dataArray as $bloodbank) {
                 echo ' <option value=' . $bloodbank["bloodBankId"] . '>' . $bloodbank["bloodBankName"] . '</option>';

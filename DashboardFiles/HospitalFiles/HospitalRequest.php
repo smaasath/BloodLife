@@ -2,8 +2,11 @@
 $userId = 1;
 
 require_once '../classes/hospitalrequestclass.php';
+require_once '../classes/Validation.php';
 
+use classes\Validation;
 use classes\hospitalrequestclass;
+$token = "saintha";
 ?>
 <!DOCTYPE html>
 <html>
@@ -13,7 +16,7 @@ use classes\hospitalrequestclass;
     <title> Hospital Request</title>
 
 
-    <link rel="stylesheet" href="../../CSS/HospitalHSRequest.css">
+  
     <style>
         .card4 {
             display: flex;
@@ -85,7 +88,7 @@ use classes\hospitalrequestclass;
                     <form action="../services/addrequest.php" method="POST">
                         <h2 class="container-title">Create Request</h2>
                         <label for="bloodGroup">Blood Group:</label>
-                        <select class="form-control form-control-lg" name="bloodGroup" id="bloodgroup" required>
+                        <select class="form-control" name="bloodGroup" id="bloodgroup" required>
                             <option selected>Select your Blood Group</option>
                             <option value="A+">A+</option>
                             <option value="A-"> A-</option>
@@ -99,7 +102,7 @@ use classes\hospitalrequestclass;
                         </select>
 
                         <label for="bloodQuantity">Blood Quantity (ml):</label>
-                        <input type="number" name="bloodQuantity" id="bloodQuantityInput" required>
+                        <input type="number"  class="form-control" name="bloodQuantity" id="bloodQuantityInput" required>
                         <p id="bloodQuantityError" style="color: red;"></p>
 
                         <script>
@@ -134,7 +137,7 @@ use classes\hospitalrequestclass;
 
                         <label for="status">Status:</label>
 
-                        <select class="form-control form-control-lg" name="requestStatus" id="requestStatus" required>
+                        <select class="form-control" name="requestStatus" id="requestStatus" required>
                             <option selected>Select Status</option>
                             <option value="Normal">Normal</option>
                             <option value="Emergency">Emergency</option>
@@ -143,7 +146,7 @@ use classes\hospitalrequestclass;
                         <br>
 
                         <br>
-                        <input type="hidden" name="userID" value="<?php echo $userId; ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                        <input type="hidden" name="token" value="<?php echo $token; ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                         <div class="text-end">
                             <button type="submit" class="btn btn-danger" id="reqsum">Send Request</button>
                             <button type="button" class="btn btn-danger" onclick="cancel()">Cancel Request</button>
@@ -170,7 +173,7 @@ use classes\hospitalrequestclass;
                 <div class="col">
 
                     <div class="bg-white p-3  m-3" style="width: 270px; height: 170px; box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; background: <?php echo hospitalrequestclass::getHospitalStatusGradient($datAarray["requestStatus"]); ?>;">
-                        <a href="../Dashboards/HospitalDashboard.php?page=hospitalreqview" style="text-decoration: none;">
+                        <a href="../Dashboards/HospitalDashboard.php?page=hospitalreqview&&hreqid=<?php echo Validation::encryptedValue($datAarray["hospitalRequestID"]); ?>" style="text-decoration: none;">
                             <div class="row">
                                 <div class="col">
                                     <p class="m-b-0 text-white" style="margin-top: 5px"><strong><?php echo $datAarray["hospitalRequestID"]; ?></strong><span class="f-right" style="margin-left:140px;font-weight: bold"><?php echo $datAarray["bloodGroup"]; ?></span></p>
