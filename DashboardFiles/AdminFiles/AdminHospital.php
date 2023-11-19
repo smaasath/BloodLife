@@ -418,7 +418,7 @@ use classes\district;
 
     <!--edit Hospital -->
     <!-- Modal -->
-    <form action="../services/Hospitalservices.php" method="POST" enctype="multipart/form-data">
+    <form action="../services/editHospitalservices.php" method="POST" enctype="multipart/form-data">
         <div class="modal fade" id="editHospital">
             <div class="modal-dialog">
                 <div class="modal-content">
