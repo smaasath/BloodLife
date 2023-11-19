@@ -4,7 +4,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to edit this template
 -->
 <?php
-$bloodBankId = 1;
+
 $token = "abcde1234";
 
 require_once '../classes/bloodBank.php';
@@ -419,66 +419,12 @@ use classes\district;
     </form>
 
 
-    
 
-
-    <!-- Save Popup addbloodbank
- Modal -->
-    <!-- <div class="modal fade" id="savePopup1" tabindex="-1" aria-labelledby="savePopup1Label" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="savePopup1Label1"></h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-
-            <div class="modal-body">
-
-                <h1>Do you want to save the changes?</h1>
-
-            </div>
-            <div class="modal-footer">
-
-                <button type="button" class="btn btn-primary">Save </button>
-                <button type="button" class="btn btn-danger">Don't Save </button>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="AddBloodbank()">cancel</button>
-
-            </div>
-        </div>
-    </div>
-</div>
-</div> -->
-    <!--Delete Popup addbloodbank-->
-    <!-- Modal -->
-    <!-- <div class="modal fade" id="deletePopup1" tabindex="-1" aria-labelledby="deletePopup1Label" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="deletePopup1Label1"></h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-
-            <div class="modal-body">
-
-                <h1>Do you want to delete the changes?</h1>
-
-            </div>
-            <div class="modal-footer">
-
-                <button type="button" class="btn btn-primary">No </button>
-                <button type="button" class="btn btn-danger">Yes </button>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="AddBloodbank()">cancel</button>
-
-            </div>
-        </div>
-    </div>
-</div>
-</div>  -->
 
 <!--editBloodbankDetails-->
     <!-- Modal -->
     
-    <form action="../services/bloodbankservices.php" method="POST" enctype="multipart/form-data">
+    <form action="../services/editBloodbankservices.php" method="POST" enctype="multipart/form-data">
     <div class="modal fade" id="editBloodbank">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -486,13 +432,16 @@ use classes\district;
                     <h1 class="modal-title fs-5" id="editBloodbank">Edit Blood bank</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body" id="bloodbankEdit">
-                                           
+                <div class="modal-body" >
+                    <div id ="bloodbankEdit"></div>
+                    <input type="hidden" name="token" value="<?php echo $token; ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+
                 </div>
+
                 <div class="modal-footer">
 
 
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#savePopup3">Save </button>
+                    <button type="submit" class="btn btn-primary">Save </button>
                     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletePopup3">Delete</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                 </div>
