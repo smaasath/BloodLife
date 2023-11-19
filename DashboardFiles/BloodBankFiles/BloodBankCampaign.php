@@ -2,6 +2,9 @@
 require_once '../classes/campaign.php';
 require_once '../classes/district.php';
 
+
+
+
 use classes\district;
 use classes\campaign;
 
@@ -119,14 +122,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     </select>
                 </div>
 
-                <div class="col-2">
-                    <button type="button" class="btn btn-primary" onclick="AddCampaign()">Add Campaign</button>
+                
 
 
 
-
-
-                </div><br>
+                
                 <!-- Table body -->
                 <div class="container bg-white m-0 p-0" style=" max-height: 373px; overflow: scroll;">
                     <table class="table table-hover p-0">

@@ -12,7 +12,6 @@ require '../classes/district.php';
 use classes\district;
 
 use classes\Donor;
-
 ?>
 <html>
 
@@ -58,20 +57,14 @@ use classes\Donor;
     <div class="mt-5 m-3 mb-1" style="color:gray;">
         <h5>Donor</h5>
         <div class="row  align-items-right justify-content-center">
-                        <img class="d-none d-xl-block" src="../Images/donor1.jpg" style="height:250px;width:400px;align-items: center; " />
-                    </div>
+            <img class="d-none d-xl-block" src="../Images/donor1.jpg" style="height:250px;width:400px;align-items: center; " />
+        </div>
     </div>
 
     <!-- Page content -->
     <div class="container p-2">
         <!-- Search and Add Donor section -->
-        <?php
-        if (isset($_GET["status"]) && !empty($_GET["status"])) {
-            // $status = Donor::decryptedValue($_GET["status"]);
-
-
-        }
-        ?>
+       
         <div class="row bg-white m-1 pt-0  align-items-center justify-content-center rounded-5" style="height: 500px;">
             <div class="container">
                 <div class="rounded-top-4 p-0 border border-dark-subtle">
@@ -99,61 +92,173 @@ use classes\Donor;
                         </div>
 
                         <!-- Add Donor button -->
-                        <div class="col-5">
-                            <button type="button" class="btn btn-danger bgcol" style="display: flex; border-radius: 5px; gap: 5px; margin-left: 450px; width: 80px; height: 40px; justify-content: center; align-items: center;" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                <i class="fa-solid fa-user-plus fa-xl" style="color: #f5f5f5;"></i>
-                            </button>
-
-
-                        </div>
-                    </div>
-                </div>
+                       
 
                 <!-- Donor table -->
-                <div class="container bg-white m-0 p-0" style="max-height: 373px; overflow: scroll;">
+
+
+
+
+
+
+
+
+
+
+                <!-- Table body -->
+                <div class="container bg-white m-0 p-0" style=" max-height: 373px; overflow: scroll;">
                     <table class="table table-hover p-0">
+
+                        <!-- Table row ----->
+
+
+                        <!-- Campaign table Heading-->
+
                         <thead>
                             <tr class="sticky-top">
                                 <th class="col-1 bg-secondary text-dark p-2" style="text-align: center;">DonorID</th>
                                 <th class="col-1 bg-secondary text-dark p-2" style="text-align: center;">Name</th>
                                 <th class="col-1 bg-secondary text-dark p-2" style="text-align: center;">Blood Group</th>
-                                <th class="col-1 bg-secondary text-dark p-2" style="text-align: center;">Location</th>
                                 <th class="col-1 bg-secondary text-dark p-2" style="text-align: center;">Contact No</th>
+                                <th class="col-1 bg-secondary text-dark p-2" style="text-align: center;">nic</th>
+                                
                                 <th class="col-1 bg-secondary text-dark p-2" style="text-align: center;">Available</th>
                                 <th class="col-1 bg-secondary text-dark p-2" style="text-align: center;">Last Donation</th>
                                 <th class="col-1 bg-secondary text-dark p-2" style="text-align: center;">Edit</th>
                                 <th class="col-1 bg-secondary text-dark p-2" style="text-align: center;">View</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <?php
-                            $requestArray = Donor::getAllDetails();
-                            foreach ($requestArray as $donorArray) {
-                            ?>
-                                <tr>
-                                    <td class="col-1"><?php echo $donorArray["donorId"]; ?></td>
-                                    <td class="col-1"><?php echo $donorArray["name"]; ?></td>
-                                    <td class="col-1"><?php echo $donorArray["bloodGroup"]; ?></td>
-                                    <td class="col-1"><?php echo $donorArray["districtId"]; ?></td>
-                                    <td class="col-1"><?php echo $donorArray["contactNumber"]; ?></td>
-                                    <td class="col-1"><?php echo $donorArray["availability"]; ?></td>
-                                    <td class="col-1"><?php echo $donorArray["donationLastDate"]; ?></td>
-                                    <td class="col-1">
-                                        <i class="fas fa-edit fa-lg" style="color: #f21818;" onclick="DonorEdit()" data-bs-toggle="modal" data-bs-target="#DonorEdit"></i>
 
-                                    </td>
+                        <!---Table body Details----------->
 
 
-                                    <td class="col-1"><i class="fa-solid fa-eye fa-xl" style="color: #afacac;" onclick="EditCamp()"></i>
+                        <table class="table">
 
-                                    </td>
-                                </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table>
+                            <tbody id="output">
+                                <?php
+                                $user = new User(null, null, null, null, $token, null, null, null, null);
+                                $user->validateToken();
+                                $requestArray = Donor::getAllDonor($user->getBloodBankId());
+                                ?>
+
+                                <script>
+                                    let array = <?php echo json_encode($requestArray) ?>;
+                                    let filterArray;
+                                    showall(array);
+
+                                    function showall(array) {
+                                        const detailsList = document.getElementById("output");
+                                        detailsList.innerHTML = "";
+                                        if (array === null || array.length === 0) {
+                                            var htmlCode = `<tr><td colspan="12" style="text-align: center;color: red;" >No Results Found</td></tr>`;
+                                            detailsList.innerHTML = htmlCode;
+                                        } else {
+                                            array.forEach((item) => {
+
+                                                var htmlCode = ` <tr>
+                        <td class="col-1">${item.donorId}</td>
+                        <td class="col-1">${item.name}</td>
+                         <td class="col-1">${item.contactNumber}</td>                    
+                        <td class="col-1">${item.availability }</td>
+                        <td class="col-1">${item.medicalReport }</td>
+                     
+                       
+                      
+                    
+                        <td class="col-1"><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="EditDonor(${item.donorId})" >Edit</button> </td>
+
+                        
+
+                        <td class="col-1"> <a href="../Dashboards/BloodBankDashboard.php?page=CampaignView&&camid=${item.campaignId}" style="text-decoration: none;"><button type="button" class="btn btn-success"> View </button></a></td>
+
+
+
+                                                </tr>`;
+
+
+                                                var divElement = document.createElement("tr");
+
+
+                                                divElement.innerHTML = htmlCode;
+
+
+                                                detailsList.appendChild(divElement);
+                                            });
+                                        };
+
+
+                                    }
+
+
+                                    function DistrictFilter(test) {
+                                        if (test === "") {
+                                            array = <?php echo json_encode($requestArray) ?>;
+                                            showall(array);
+                                        } else {
+                                            array = <?php echo json_encode($requestArray) ?>;
+                                            var testValue = test.toLowerCase();
+                                            array = array.filter((item) => item.district.toLowerCase().includes(testValue));
+                                            showall(array);
+                                        }
+
+                                    }
+
+                                    function searchfilter(test) {
+
+                                        var id = parseInt(test, 10);
+
+                                        var testValue = test.toLowerCase();
+
+                                        filterArray = array.filter((item) => item.campaignId === id || item.Title.toLowerCase().includes(testValue));
+
+
+                                        const detailsList = document.getElementById("output");
+                                        detailsList.innerHTML = "";
+                                        if (filterArray === null || filterArray.length === 0) {
+                                            var htmlCode = `<tr><td colspan="12" style="text-align: center;color: red;">No Results Found</td></tr>`;
+                                            detailsList.innerHTML = htmlCode;
+                                        } else {
+                                            filterArray.forEach((item) => {
+
+                                                var htmlCode = ` 
+                            <tr>
+                            <td class="col-1">${item.donorId}</td>
+                        <td class="col-1">${item.name}</td>
+                         <td class="col-1">${item.contactNumber}</td>                    
+                        <td class="col-1">${item.availability }</td>
+                        <td class="col-1">${item.medicalReport }</td>
+                        <td class="col-1"><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="EditDonor(${item.donorId})" >Edit</button> </td>
+                        
+
+                        <td class="col-1"> <a href="../Dashboards/BloodBankDashboard.php?page=CampaignView&&camid=${item.campaignId}" style="text-decoration: none;"><button type="button" class="btn btn-success"> View </button></a></td>
+                        </tr>`;
+
+
+                                                var divElement = document.createElement("tr");
+
+
+                                                divElement.innerHTML = htmlCode;
+
+
+                                                detailsList.appendChild(divElement);
+
+                                            });
+                                        }
+
+
+                                    }
+                                </script>
+
+
+                            </tbody>
+                        </table>
                 </div>
+
+                </table>
             </div>
         </div>
+    </div>
+    </div>
 
 
 
@@ -166,541 +271,187 @@ use classes\Donor;
 
 
 
-        <script>
-            function validateForm() {
-                // Get the values of the contact number, NIC, and password fields
-                var contactNumber = document.forms["donorForm"]["contactNumber"].value;
-                var nic = document.forms["donorForm"]["nic"].value;
-                //var password = document.forms["donorForm"]["password"].value;
-
-                // Validate the contact number using a regular expression
-                var contactNumberPattern = /^[0-9]{10}$/;
-                if (!contactNumberPattern.test(contactNumber)) {
-                    alert("Invalid contact number. Please enter a 10-digit number.");
-                    return false; // Prevent form submission
-                }
-
-                //        // Validate the NIC using a regular expression (customize the pattern as needed)
-                //        var nicPattern = /^[0-9]{9}[vVxX]$/;
-                //        if (!nicPattern.test(nic)) {
-                //            alert("Invalid NIC. Please enter a valid NIC number.");
-                //            return false; // Prevent form submission
-                //        }
-
-                // Validate the password using your specified criteria
-                // var passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-                // if (!passwordPattern.test(password)) {
-                // alert("Invalid password. It must meet the specified criteria.");
-                // return false; // Prevent form submission
-                //}
-
-                // If all validations pass, allow form submission
-                return true;
-            }
-        </script>
-
-
-
-
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const passwordInput = document.getElementById('password');
-                const generatePasswordButton = document.getElementById('generatePassword');
-
-                generatePasswordButton.addEventListener('click', function() {
-                    const passwordLength = 12; // Adjust the desired password length
-                    const randomPassword = generateRandomPassword(passwordLength);
-                    passwordInput.value = randomPassword;
-                });
-
-                function generateRandomPassword(length) {
-                    const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_';
-                    const characterCount = characters.length;
-                    let password = '';
-
-                    for (let i = 0; i < length; i++) {
-                        const randomCharacter = characters.charAt(Math.floor(Math.random() * characterCount));
-                        password += randomCharacter;
-                    }
-
-                    return password;
-                }
-            });
-        </script>
-
-
-
-
-
-        <!-----------------------------AddDonorDtails------------------------------------------------------------------------------->
-        <!-- Modal -->
-        <form name="donorForm" action="../services/DonorAddService.php" method="POST" enctype="multipart/form-data" onsubmit="return validateForm();">
+    <!----------------------------EditDonorDtails------------------------------------------------------------------------------->
+    <!-- Modal -->
+    <form action="../services/DonorEditService.php" method="POST" enctype="multipart/form-data">
+        <!--<form name="donorForm" action="../services/DonorAddService.php" method="POST" enctype="multipart/form-data" onsubmit="return validateForm();">
             <!-- Your form content here -->
 
 
 
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Donor Details</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-
-                            <div class="row align-items-center pb-3">
-                                <div class="col-3">
-                                    <h6>Name</h6>
-                                </div>
-                                <div class="col-9">
-                                    <input type="text" name="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                                </div>
-                            </div>
-
-
-                            <div class="row align-items-center pb-3">
-                                <div class="col-3">
-                                    <h6>Blood Group</h6>
-                                </div>
-                                <div class="col-9">
-                                    <select class="form-control form-control-lg" name="bloodGroup">
-                                        <option selected>Select your Blood Group</option>
-                                        <option value="A+">A+</option>
-                                        <option value="A-"> A-</option>
-                                        <option value="B+"> B+</option>
-                                        <option value="B-"> B-</option>
-                                        <option value="O+"> O+</option>
-                                        <option value="O-"> O-</option>
-                                        <option value="AB+"> AB+</option>
-                                        <option value="AB-"> AB-</option>
-
-                                    </select>
-                                </div>
-                            </div>
-
-
-                            <div class="row align-items-center pb-3">
-                                <div class="col-3">
-                                    <h6>Date Of Birth</h6>
-                                </div>
-                                <div class="col-9">
-                                    <input type="date" name="dob" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                                </div>
-                            </div>
-
-
-                            <div class="row align-items-center pb-3">
-                                <div class="col-3">
-                                    <h6>Contact No</h6>
-                                </div>
-                                <div class="col-9">
-                                    <input type="text" name="contactNumber" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required id="contactNumberInput" oninput="validateMobileNumber(this.value)">
-                                    <p id="validationResult"></p>
-                                </div>
-                            </div>
-
-
-
-
-
-
-
-                            <div class="row align-items-center pb-3">
-                                <div class="col-3">
-                                    <h6>Location</h6>
-                                </div>
-                                <div class="col-9">
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <select name="district" class="form-control form-control-lg" id="district" onchange="functionTest(this.value)">
-                                                <option>Select District</option>
-                                                <?php
-                                              
-
-                                                $dataArray = district::getAllDistrict(); // Retrieve district data using the "getAllDistrict()" method
-
-                                                foreach ($dataArray as $district) {
-                                                ?>
-
-                                                    <option value="<?php echo $district['district']; ?>"><?php echo $district['district']; ?></option>
-                                                <?php
-                                                }
-                                                ?>
-                                            </select>
-                                        </div>
-                                        <div class="col-6">
-
-                                            <select name="division" class="form-control form-control-lg" id="divisionDropDown" onchange="getBloodBank(this.value)">
-
-
-                                            </select>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-                            <div class="row align-items-center pb-3">
-                                <div class="col-3">
-                                    <h6>NIC</h6>
-                                </div>
-                                <div class="col-9">
-                                    <input type="text" name="nic" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                                </div>
-                            </div>
-
-
-
-
-
-
-
-
-                            <div class="row align-items-center pb-3">
-                                <div class="col-3">
-                                    <h6>Medical Report</h6>
-                                </div>
-                                <div class="col-9">
-                                    <input class="form-control" type="file" name="medicalReport" accept=".pdf">
-                                    <p style="font-size: 9px; color: red;">only PDF</p>
-                                </div>
-                            </div>
-
-
-
-
-
-
-                            <div class="row align-items-center pb-3">
-                                <div class="col-3">
-                                    <h6>Username</h6>
-                                </div>
-                                <div class="col-9">
-                                    <input type="text" name="UserName" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                                </div>
-                            </div>
-
-
-                            <div class="row align-items-center pb-3">
-
-
-                                <div class="row align-items-center pb-3">
-                                    <div class="col-3">
-                                        <h6>Email</h6>
-                                    </div>
-                                    <div class="col-9">
-                                        <input type="email" name="email" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                                    </div>
-                                </div>
-                                <input type="hidden" name="token" value="<?php echo $token; ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Add Donor</button>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
-        <!--AddDonorDetails---------------------------------------------------------->
-
-
-
-
-
-
-
-
-
-
-        <!-- --------------------------------------Donor Edit------------------------------------------------------------------------ -->
-        <!-----------1st pop-up------------------------Donor Details---------------->
-        <div class="modal fade" id="DonorEdit">
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModal" aria-hidden="true">
             <div class="modal-dialog">
+
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Donor Edit Details</h1>
+                        <h1 class="modal-title fs-5" id="exampleModal">Donor Details</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
+                        <div id="DonorEdit"></div>
+                        <input type="hidden" name="token" value="<?php echo $token; ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
 
-
-
-
-                        <div class="row align-items-center pb-3">
-                            <div class="col-3">
-                                <h6> Name</h6>
-                            </div>
-                            <div class="col-9">
-                                <input type="text" name="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                            </div>
-                        </div>
-
-                        <div class="row align-items-center pb-3">
-                            <div class="col-3">
-                                <h6>Blood Group</h6>
-                            </div>
-                            <div class="col-9">
-                                <select class="form-control form-control-lg">
-                                    <option selected>Select your Blood Group</option>
-                                    <option value="1">A+</option>
-                                    <option value="2"> </option>
-                                    <option value="3"> </option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row align-items-center pb-3">
-                            <div class="col-3">
-                                <h6>DateOfBirth</h6>
-                            </div>
-                            <div class="col-9">
-                                <input type="date" name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                            </div>
-                        </div>
-
-                        <div class="row align-items-center pb-3">
-                            <div class="col-3">
-                                <h6>Age</h6>
-                            </div>
-                            <div class="col-9">
-                                <input type="text " name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                            </div>
-                        </div>
-                        <div class="row align-items-center pb-3">
-                            <div class="col-3">
-                                <h6>Phone No</h6>
-                            </div>
-                            <div class="col-9">
-                                <input type="text" name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                            </div>
-                        </div>
-                        <div class="row align-items-center pb-3">
-                            <div class="col-3">
-                                <h6>NIC</h6>
-                            </div>
-                            <div class="col-9">
-                                <input type="text" name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                            </div>
-                        </div>
-                        <div class="row align-items-center pb-3">
-                            <div class="col-3">
-                                <h6>District</h6>
-                            </div>
-                            <div class="col-9">
-                                <select class="form-control form-control-lg">
-                                    <option selected>Select your District</option>
-                                    <option value="1">Mannar</option>
-                                    <option value="2"> </option>
-                                    <option value="3"> </option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row align-items-center pb-3">
-                            <div class="col-3">
-                                <h6>DS Division</h6>
-                            </div>
-                            <div class="col-9">
-                                <select class="form-control form-control-lg">
-                                    <option selected>Select your District</option>
-                                    <option value="1"> </option>
-                                    <option value="2"> </option>
-                                    <option value="3"> </option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="row align-items-center pb-3">
-                            <div class="col-3">
-                                <h6>No Of Donation</h6>
-                            </div>
-                            <div class="col-9">
-                                <input type="text" name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                            </div>
-                        </div>
-
-                        <div class="row align-items-center pb-3">
-                            <div class="col-3">
-                                <h6>coin Value</h6>
-                            </div>
-                            <div class="col-9">
-                                <input type="text" name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                            </div>
-                        </div>
-
-                        <div class="row align-items-center pb-3">
-                            <div class="col-3">
-                                <h6>Donation Last Date</h6>
-                            </div>
-                            <div class="col-9">
-                                <input type="date" name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                            </div>
-                        </div>
-
-                        <div class="row align-items-center pb-3">
-                            <div class="col-3">
-                                <h6>availability</h6>
-                            </div>
-                            <div class="col-9">
-                                <input type="text" name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                            </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Add Donor</button>
                         </div>
                     </div>
 
-
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary">delete</button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Back</button>
-                        <button type="button" class="btn btn-secondary">Save</button>
-                    </div>
                 </div>
             </div>
         </div>
-        <!--Camp Edit-->
+        </div>
+    </form>
+    <!--AddDonorDetails---------------------------------------------------------->
 
 
-        <!-- --------------------------------------Donor View----------------------------------------------------------------------- -->
-        <!-----------1st pop-up------------------------Campaign Details---------------->
-        <div class="modal fade" id="CampaignEdit">
-            <div class="modal-dialog">
-                <div class="modal-content">
 
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="Save">View Donor Details</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
 
-                    <div class="modal-body">
 
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="card mb-4">
-                                        <div class="card-body">
-                                            <div class="row mb-3">
-                                                <div class="col-sm-4">
-                                                    <strong>Hospital ID:</strong>
-                                                </div>
-                                                <div class="col-sm-8">
-                                                    <p class="text-muted mb-0">HS001</p>
-                                                </div>
+
+
+
+
+
+
+
+
+    <!-- --------------------------------------Donor View----------------------------------------------------------------------- -->
+    <!-----------1st pop-up------------------------Campaign Details---------------->
+    <div class="modal fade" id="CampaignEdit">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="Save">View Donor Details</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card mb-4">
+                                    <div class="card-body">
+                                        <div class="row mb-3">
+                                            <div class="col-sm-4">
+                                                <strong>Hospital ID:</strong>
                                             </div>
-                                            <div class="row mb-3">
-                                                <div class="col-sm-4">
-                                                    <strong>Hospital Name:</strong>
-                                                </div>
-                                                <div class="col-sm-8">
-                                                    <p class="text-muted mb-0">Jaffna Central Hospital</p>
-                                                </div>
+                                            <div class="col-sm-8">
+                                                <p class="text-muted mb-0">HS001</p>
                                             </div>
-                                            <div class="row mb-3">
-                                                <div class="col-sm-4">
-                                                    <strong>Address:</strong>
-                                                </div>
-                                                <div class="col-sm-8">
-                                                    <p class="text-muted mb-0">Hospital Road, Jaffna</p>
-                                                </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-sm-4">
+                                                <strong>Hospital Name:</strong>
                                             </div>
-                                            <div class="row mb-3">
-                                                <div class="col-sm-4">
-                                                    <strong>District:</strong>
-                                                </div>
-                                                <div class="col-sm-8">
-                                                    <p class="text-muted mb-0">Jaffna</p>
-                                                </div>
+                                            <div class="col-sm-8">
+                                                <p class="text-muted mb-0">Jaffna Central Hospital</p>
                                             </div>
-                                            <div class="row mb-3">
-                                                <div class="col-sm-4">
-                                                    <strong>Phone No:</strong>
-                                                </div>
-                                                <div class="col-sm-8">
-                                                    <p class="text-muted mb-0">077 1028754</p>
-                                                </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-sm-4">
+                                                <strong>Address:</strong>
                                             </div>
-                                            <div class="row mb-3">
-                                                <div class="col-sm-4">
-                                                    <strong>Mobile:</strong>
-                                                </div>
-                                                <div class="col-sm-8">
-                                                    <p class="text-muted mb-0">(098) 765-4321</p>
-                                                </div>
+                                            <div class="col-sm-8">
+                                                <p class="text-muted mb-0">Hospital Road, Jaffna</p>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-sm-4">
-                                                    <strong>Email:</strong>
-                                                </div>
-                                                <div class="col-sm-8">
-                                                    <p class="text-muted mb-0">CentralHospitalJaffna@gmail.com</p>
-                                                </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-sm-4">
+                                                <strong>District:</strong>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <p class="text-muted mb-0">Jaffna</p>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-sm-4">
+                                                <strong>Phone No:</strong>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <p class="text-muted mb-0">077 1028754</p>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-sm-4">
+                                                <strong>Mobile:</strong>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <p class="text-muted mb-0">(098) 765-4321</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <strong>Email:</strong>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <p class="text-muted mb-0">CentralHospitalJaffna@gmail.com</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
 
+                </div>
 
 
 
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#OrganizerEdit">Donation Details</button>
-                    </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#OrganizerEdit">Donation Details</button>
                 </div>
             </div>
         </div>
-        <!--Camp Edit-->
+    </div>
+    <!--Camp Edit-->
 
 
 
-        <!--OrganizerEdit-->
+    <!--OrganizerEdit-->
 
-        <div class="modal fade" id="OrganizerEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModal2">Organizer Details</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
+    <div class="modal fade" id="OrganizerEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModal2">Organizer Details</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
 
 
-                        <table class="table">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">DonorID</th>
-                                    <th scope="col">Last Donation Date</th>
-                                    <th scope="col">Donation Type</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+                    <table class="table">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">DonorID</th>
+                                <th scope="col">Last Donation Date</th>
+                                <th scope="col">Donation Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
 
-                                <th scope="row">1</th>
-                                <td>D004</td>
-                                <td>07/12/2022</td>
-                                <td>BloodBank</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="modal-footer">
+                            <th scope="row">1</th>
+                            <td>D004</td>
+                            <td>07/12/2022</td>
+                            <td>BloodBank</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
 
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="EditCamp()">Back</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="EditCamp()">Back</button>
 
-                    </div>
                 </div>
             </div>
         </div>
-        <!--OrganizerEdit-->
+    </div>
+    <!--OrganizerEdit-->
 
 
 
@@ -710,6 +461,7 @@ use classes\Donor;
 
 
         ?>
+
 </body>
 
 </html>

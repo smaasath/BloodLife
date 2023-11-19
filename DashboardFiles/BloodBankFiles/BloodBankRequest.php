@@ -9,10 +9,7 @@ $bankid = $user->getBloodBankId();
 ?>
 
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to edit this template
--->
+
 <html>
 
 <head>
@@ -57,14 +54,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     <!-- nav bar end -->
 
     <!-- body start -->
-    <center>
-        <h1>BloodBank Request</h1>
-    </center>
+    <div class="mt-5 m-3 mb-1" style="color:gray;">
+            <h5>Bloodbank Request </h5>
+</div>
     <div class="text-center">
         <a href="../Dashboards/BloodBankDashboard.php?page=bbhra"><button type="button" class="btn btn-primary">Add Request</button></a>
     </div>
 
-
+   
 
 
 
@@ -148,7 +145,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                                         <div class="row mt-1 p-1 justify-content-end">
                                         <div class="col-6 d-flex justify-content-around">
-                                            <div style="width: 25px"> <a href="../Dashboards/BloodBankDashboard.php?page=bbre"><img src="../Images/icons8-edit-24.png" style="width: 20px;" /></a></div>
+                                            <div style="width: 25px"> <a href="../Dashboards/BloodBankDashboard.php?page=bbre&&hreqedit=${item.bloodBankRequestId}"><img src="../Images/icons8-edit-24.png" style="width: 20px;" /></a></div>
                                             <div style="width: 25px"><a href="../Dashboards/BloodBankDashboard.php?page=bbrv&&breqId=${item.bloodBankRequestId}"><img style="width: 20px;" src="../Images/icons8-view-90.png" /></a></div>
                                         </div>
                                         </div>
@@ -205,7 +202,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             detailsList.innerHTML = htmlCode;
                         } else {
                             filterArray.forEach((item) => {
-
                                 var htmlCode = `     
                             <div class="bg-white p-4 mt-4 rounded-4" style="height: 180px; width: 300px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; background: ${getHospitalStatusGradient(item.requestStatus)}">
                                        
@@ -228,8 +224,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                                         <div class="row mt-1 p-1 justify-content-end">
                                         <div class="col-6 d-flex justify-content-around">
-                                            <div style="width: 25px"> <a href="../Dashboards/BloodBankDashboard.php?page=bbre"><img src="../Images/icons8-edit-24.png" style="width: 20px;" /></a></div>
-                                            <div style="width: 25px"><a href="../Dashboards/BloodBankDashboard.php?page=bbrv"><img style="width: 20px;" src="../Images/icons8-view-90.png" /></a></div>
+                                            <div style="width: 25px"> <a href="../Dashboards/BloodBankDashboard.php?page=bbre&&hreqedit=${item.bloodBankRequestId}"><img src="../Images/icons8-edit-24.png" style="width: 20px;" /></a></div>
+                                            <div style="width: 25px"><a href="../Dashboards/BloodBankDashboard.php?page=bbrv&&breqId=${item.bloodBankRequestId}"><img style="width: 20px;" src="../Images/icons8-view-90.png" /></a></div>
                                         </div>
                                         </div>
                                     </div>`;

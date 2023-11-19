@@ -287,7 +287,32 @@ public function getBloodBankReqByReqID(){
         echo "Error: " . $e->getMessage();
     }
 }
+public function EditBbRequest() {
+    try {
+        $dbcon = new DbConnector();
+        $con = $dbcon->getConnection();
+
+        $query = "UPDATE `bloodbankrequest` SET `createdDate`=?,`bloodQuantity`=>,`bloodGroup`=?,
+        `requestStatus`=?,`hospitalRequestId`=?,`bloodBankId`='[value-7]' WHERE `bloodBankRequestId`=? ";
+
+
+        $pstmt = $con->prepare($query);
+        $pstmt->bindValue(1, $this->createdDate);
+        $pstmt->bindValue(2, $this->bloodQuantity);
+        $pstmt->bindValue(3, $this->bloodGroup);
+        $pstmt->bindValue(4, $this->requestStatus);
+        $pstmt->bindValue(5, $this->bloodBankId);
+        $pstmt->bindValue(6, $this->bloodBankRequestId);
+        
+
+        $pstmt->execute();
+
+        return $pstmt->rowCount() > 0;
+    } catch (PDOException $e) {
+        echo "ERROR:" . $e->getMessage();
+    }
 
 }
 
 
+}
