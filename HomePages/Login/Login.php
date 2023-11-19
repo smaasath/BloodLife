@@ -5,7 +5,7 @@
     <title>Login Page in HTML with CSS</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <link rel="stylesheet" href="./homepages/css/login.css">
+    <link rel="stylesheet" href="./css/login.css">
     <style>
         body {
             margin: 0;
@@ -64,7 +64,7 @@
 </head>
 <body>
 <div class="box-form">
-    <div class="left">
+    <div class="left col-5">
         <div class="overlay">
             <h1>Blood Life</h1>
             <p>Hello bloods, we welcome you to our blood stock managing platform.</p>
@@ -75,7 +75,7 @@
     <div class="right">
         <h5>Login</h5>
       
-        <form method="post" action="./services/loginprocess.php">
+        <form method="post" action="../../services/loginprocess.php">
             <div class="inputs">
                 <input type="text" name="UserName" placeholder="user name">
                 <br>
@@ -87,7 +87,7 @@
             <div class="remember-me--forget-password">
                 
                 <label class="">
-                    <input type="checkbox" name="item" checked/>
+                    <input type="checkbox" name="remember" checked/>
                     <span class="text-checkbox">Remember me</span>
                 </label>
                 <p class="text-forgot">forget password?</p>

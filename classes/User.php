@@ -207,4 +207,29 @@ class User {
         }
     }
 
+    function webLogin() {
+        $dbcon = new DbConnector;
+        $conn = $dbcon->getConnection();
+        $sql = "SELECT * FROM `user` WHERE UserName= ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(1, $this->UserName, PDO::PARAM_STR);
+        $stmt->execute();
+
+        if ($stmt->rowCount() > 0) {
+            $rs = $stmt->fetch(PDO::FETCH_OBJ);
+
+            if (password_verify($this->password, $rs->password) ) {
+                $this->Token = bin2hex(random_bytes(25));
+                $this->expire = time() + (3600 * 24 * 30);
+                $this->userId = $rs->userId;
+                return array("Token" => $this->updateToken(), "UserRole" => $rs->UserRole);
+
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
 }
