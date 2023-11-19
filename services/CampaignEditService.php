@@ -11,25 +11,14 @@ require_once '../classes/Campaign.php';
 require_once  '../classes/district.php';
 require_once  '../classes/User.php';
 require_once  '../classes/Validation.php';
+
 use classes\district;
 use classes\campaign;
 use classes\User;
 use classes\Validation;
-use PDO;
-use PDOException;
-
-// $districtId = filter_var($_POST['districtId'],FILTER_SANITIZE_NUMBER_INT);
-// $organizerId  =filter_var( $_POST['organizerId'],FILTER_SANITIZE_NUMBER_INT);
-//$bloodBankId = filter_var($_POST['bloodBankId'],FILTER_SANITIZE_NUMBER_INT);
-
-//$districtId = district::getDistrictIDDD($district, $division);
-//echo $campaignId  ;
 
 
-
-
-
-
+$status;
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
@@ -38,17 +27,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_POST["address"],
         $_POST["startDate"],
         $_POST["endDate"],
+        $_POST["district"],
+        $_POST["division"],
         $_POST["status"],
-        //$_POST["district"],
-        //$_POST["division"],
         $_POST["token"],
+        $_POST["campaignId"]
     )) {
 
         //empty value check
         if (
             !empty($_POST["Title"]) && ($_POST["address"]) && ($_POST["startDate"]) &&
             ($_POST["endDate"])  &&
-            ($_POST["status"]) && ($_POST["token"])
+            ($_POST["district"]) && ($_POST["division"]) && ($_POST["token"]) && ($_POST["status"]) && ($_POST["campaignId"])
         ) {
 
             // sanitizing the inputs
@@ -57,37 +47,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $address = filter_var($_POST['address'], FILTER_SANITIZE_STRING);
             $startDate = filter_var($_POST['startDate'], FILTER_SANITIZE_STRING);
             $endDate = filter_var($_POST['endDate'], FILTER_SANITIZE_STRING);
-           // $district = filter_var($_POST['district'], FILTER_SANITIZE_STRING);
+            $district = filter_var($_POST['district'], FILTER_SANITIZE_STRING);
             $division = filter_var($_POST['division'], FILTER_SANITIZE_STRING);
-           $token= filter_var($_POST['token'], FILTER_SANITIZE_STRING);
-
+            $Camstatus = filter_var($_POST['status'], FILTER_SANITIZE_STRING);
+            $token = filter_var($_POST['token'], FILTER_SANITIZE_STRING);
+            $campaignId = filter_var($_POST['campaignId'], FILTER_SANITIZE_STRING);
 
 
 
             //create user object with token
-            $user = new User(null, null, null, null, null, $token, null, null, null, null);
+            $user = new User(null, null, null, null, $token, null, null, null, null);
 
             //validations
-           $validateName = Validation::validateLettersLength($Title,6);
-           $validateAddress = Validation::validateLettersLength($address,6);
+            $validateName = Validation::validateLettersLength($Title, 6);
+            $validateAddress = Validation::validateLettersLength($address, 6);
             $validateDates = Validation::validateChamDate($startDate, $endDate);
-            $districtId = district::getDistrictIDDD($district,$division);
+            $districtId = district::getDistrictIDDD($district, $division);
 
             $validateToken = $user->validateToken();
             $bloodBankId = $user->getBloodBankId();
-
+            //$campaignId = $campaign->getcampaignId();
+            
             //token and bloodbank id checking
             if ($validateToken && $bloodBankId != null) {
 
 
                 //email,phonenumber,nic,dob,bloodgroup valitaion check
-                if ($validateDates   && $validateName &&   $validateAddress ) {
-                  
+                if ($validateDates   && $validateName &&   $validateAddress) {
 
-                        //create Campign object
-                        $campaign  = new campaign(null, $Title, $address, $startDate, $endDate,null, "Active", $districtId, $bloodBankId);
-                        $status = $campaign->EditCampaign() ? 1 : 2 ;          
-              
+
+                    //create Campign object
+                    $campaign  = new campaign($campaignId, $Title, $address, $startDate, $endDate, null, $Camstatus, $districtId, $bloodBankId);
+                    $status = $campaign->EditCampaign() ? 1 : 2;
+                    // echo $campaign->getAddress();        
+
                 } else {
                     //check status for valitations
                     $status = !$validateDates ? 3 : (!$validateName ? 4 : (!$validateAddress ? 5 : 6));
@@ -110,5 +103,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 echo $status;
-
-
