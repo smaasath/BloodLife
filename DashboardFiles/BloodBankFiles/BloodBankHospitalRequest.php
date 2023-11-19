@@ -5,6 +5,8 @@ require_once '../classes/Validation.php';
 
 use classes\hospitalrequestclass;
 use classes\Validation;
+
+
 ?>
 
 
@@ -108,7 +110,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         </div>
     </div>
     <?php
-// put your code here
+
     ?>
 </body>
 </html>

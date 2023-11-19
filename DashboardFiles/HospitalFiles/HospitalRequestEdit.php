@@ -7,7 +7,7 @@ require_once '../classes/Validation.php';
 use classes\hospitalrequestclass;
 use classes\Validation;
 
-$token = "saintha";
+
 // Check if the 'hospitalRequestID' parameter is set in the URL
 if (isset($_GET['hreqid'])) {
     // Retrieve and store the 'hospitalRequestID' value

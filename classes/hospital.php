@@ -142,7 +142,6 @@ class hospital {
 
             if ($pstmt->rowCount() > 0) {
                 $rs = $pstmt->fetch(PDO::FETCH_OBJ);
-                // $this->hospitalId = $rs->hospitalId;
                 $this->name = $rs->name;
                 $this->address = $rs->address;
                 $this->contactNumber = $rs->contactNumber;
@@ -178,7 +177,7 @@ class hospital {
         }
     }
 
-    public function editHospital($hospitalId,$email) {
+    public function editHospital() {
         if (!is_numeric($this->districtId)) {
             // Handle the error, e.g., return false or throw an exception
             return false;
@@ -195,16 +194,11 @@ class hospital {
             $pstmt->bindValue(2, $this->address); 
             $pstmt->bindValue(3, $this->contactNumber);
             $pstmt->bindValue(4, $this->districtId);
-            $pstmt->bindValue(5, $hospitalId); 
+            $pstmt->bindValue(5, $this->hospitalId); 
 
             $pstmt->execute();
     
-            if ($pstmt->rowCount() > 0) {
-                
-                return self::addhospitaluser($con, $email, $this->name);
-            } else {
-                return false;
-            }
+            return $pstmt->rowCount() > 0;
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
             return false;

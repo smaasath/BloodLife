@@ -1,3 +1,6 @@
+<?php
+
+?>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -37,6 +40,7 @@ and open the template in the editor.
             <p style="font-size: 10px;">Blood Bank</p>
           </div>
         </div>
+
 
       </div>
 
@@ -152,3 +156,4 @@ and open the template in the editor.
 </body>
 
 </html>
+

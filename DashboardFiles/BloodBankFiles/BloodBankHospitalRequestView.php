@@ -1,29 +1,19 @@
 <?php
-require_once '../classes/hospitalrequestclass.php';
-require_once '../classes/Validation.php';
-require_once '../classes/Bloodtable.php';
-require_once '../classes/User.php';
+require_once "../classes/bloodbankhsrequest.php";
+require_once "../phpqrcode/qrlib.php";
 
-use classes\hospitalrequestclass;
-use classes\Validation;
-use classes\Bloodtable;
-use classes\User;
-
-$token = "12b378738a1a6be3bacea473fe9e3d2fbfce8e678d514e1d943";
-
-$user = new User(null, null, null, null, $token, null, null, null, null);
-$validateToken = $user->validateToken();
-$bloodBankId = $user->getBloodBankId();
-
-// Check if the 'hospitalRequestID' parameter is set in the URL
-if (isset($_GET['bhreqid'])) {
-    // Retrieve and store the 'hospitalRequestID' value
-    $id = Validation::decryptedValue($_GET['bhreqid']);
+use classes\bloodbankhsrequest;
 
 
 
+$bankid = $user->getBloodBankId();
+echo $bankid;
 
-
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
+    if (isset($_GET["breqId"])) {
+        $BReqId = $_GET["breqId"];
+        $BBRequest = new bloodbankhsrequest($BReqId, null, null, null, null, null, null);
+        $Result = $BBRequest->getBloodBankReqByReqID();
 
 ?>
 
@@ -148,6 +138,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
             </div>
 
+
     <?php
         } else {
             echo "detail not found";
@@ -156,6 +147,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         echo "ID not found in the URL.";
     }
     ?>
+
     </body>
 
     </html>
