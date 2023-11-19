@@ -244,7 +244,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     </div>
 
     <?php
-    // put your code here
+    } else{
+      header('Location: ../../index.php');
+  }
     ?>
 </body>
 
