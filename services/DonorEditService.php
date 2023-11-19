@@ -1,9 +1,4 @@
 <?php
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHP.php to edit this template
- */
-
 namespace classes;
 
 require_once '../classes/Donor.php';
@@ -40,12 +35,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else if (isset($_POST["name"], $_POST["bloodGroup"], $_POST["dob"],
                     $_POST["nic"], $_POST["contactNumber"], $_FILES["medicalReport"],
                     $_POST["district"], $_POST["division"], $_POST["token"],
-                    $_POST["email"])) {
+                    $_POST["email"],$_POST["donorId"])) {
 
         //empty value check
         if (!empty($_POST["name"]) && ( $_POST["bloodGroup"]) && ($_POST["dob"]) &&
                 ($_POST["nic"]) && ($_POST["contactNumber"]) && ($_FILES["medicalReport"]) &&
-                ($_POST["district"]) && ($_POST["division"]) && ($_POST["token"]) && ($_POST["email"])) {
+                ($_POST["district"]) && ($_POST["division"]) && ($_POST["token"]) && ($_POST["email"])&& ($_POST["donorId"])) {
 
             // sanitizing the inputs
             $name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
@@ -59,6 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $district = filter_var($_POST['district'], FILTER_SANITIZE_STRING);
             $division = filter_var($_POST['division'], FILTER_SANITIZE_STRING);
             $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+            $donorId = filter_var($_POST['donorId'], FILTER_SANITIZE_NUMBER_INT);
             $districtId = district::getDistrictIDDD($district, $division);
 
             //create user object with token
