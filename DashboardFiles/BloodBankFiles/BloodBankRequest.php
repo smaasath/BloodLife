@@ -1,17 +1,10 @@
 <?php
 require_once "../classes/bloodbankhsrequest.php";
-require_once "../classes/User.php";
-require_once '../classes/Validation.php';
 
-use classes\User;
 use classes\bloodbankhsrequest;
-use classes\Validation;
 
-$token = "12b378738a1a6be3bacea473fe9e3d2fbfce8e678d514e1d943";
-$user = new User(null, null, null, null, $token, null, null, null, null);
-$user->validateToken();
 $bankid = $user->getBloodBankId();
-echo $bankid;
+
 
 ?>
 
@@ -285,7 +278,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
     <?php
-    // put your code here
+      
     ?>
 </body>
 

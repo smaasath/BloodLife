@@ -1,5 +1,5 @@
 <?php
-$userId = 1;
+
 
 require_once '../classes/bloodbankhsrequest.php';
 require_once '../classes/Validation.php';
@@ -7,9 +7,7 @@ require_once '../classes/Validation.php';
 use classes\bloodbankhsrequest;
 use classes\Validation;
 
-$token = "12b378738a1a6be3bacea473fe9e3d2fbfce8e678d514e1d943";
 if (isset($_GET['hreqedit'])) {
-    // Retrieve and store the 'hospitalRequestID' value
    
     $BReqId = $_GET["hreqedit"];
     $BBRequest = new bloodbankhsrequest($BReqId, null, null, null, null, null, null);
@@ -124,10 +122,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
     <?php
+
     
 } else {
     echo "ID not found in the URL.";
 }
+
     ?>
 </body>
 </html>

@@ -5,8 +5,19 @@
 
 
 
-function EditCamp(){
+
+
+function EditDonor(donorId){
+
+    console.log(donorId);
     
-    $('#CampaignEdit').modal('show'); 
+    $.ajax({url: "../popups/EditDonor.php",
+    method: 'post',
+    data: {donorId : donorId },
+    success: function (result) {
+
+        $("#DonorEdit").html(result);
+    }});
         
 }
+

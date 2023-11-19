@@ -10,6 +10,7 @@ namespace classes;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
+
 require_once 'DbConnector.php';
 
 
@@ -18,7 +19,8 @@ use PDO;
 use PDOException;
 use classes\DbConnector;
 
-class User {
+class User
+{
 
     private $userId;
     private $password;
@@ -30,7 +32,8 @@ class User {
     private $donorId;
     private $hospitalId;
 
-    public function __construct($userId, $password, $email, $userRole, $Token, $expire, $bloodBankId, $donorId, $hospitalId) {
+    public function __construct($userId, $password, $email, $userRole, $Token, $expire, $bloodBankId, $donorId, $hospitalId)
+    {
         $this->userId = $userId;
         $this->password = $password;
         $this->email = $email;
@@ -42,83 +45,102 @@ class User {
         $this->hospitalId = $hospitalId;
     }
 
-    public function getToken() {
+    public function getToken()
+    {
         return $this->Token;
     }
 
-    public function getExpire() {
+    public function getExpire()
+    {
         return $this->expire;
     }
 
-    public function setToken($Token): void {
+    public function setToken($Token): void
+    {
         $this->Token = $Token;
     }
 
-    public function setExpire($expire): void {
+    public function setExpire($expire): void
+    {
         $this->expire = $expire;
     }
 
-    public function getUserId() {
+    public function getUserId()
+    {
         return $this->userId;
     }
 
 
-    public function getPassword() {
+    public function getPassword()
+    {
         return $this->password;
     }
 
-    public function getEmail() {
+    public function getEmail()
+    {
         return $this->email;
     }
 
-    public function getUserRole() {
+    public function getUserRole()
+    {
         return $this->userRole;
     }
 
-    public function getBloodBankId() {
+    public function getBloodBankId()
+    {
         return $this->bloodBankId;
     }
 
-    public function getDonorId() {
+    public function getDonorId()
+    {
         return $this->donorId;
     }
 
-    public function getHospitalId() {
+    public function getHospitalId()
+    {
         return $this->hospitalId;
     }
 
-    public function setUserId($userId): void {
+    public function setUserId($userId): void
+    {
         $this->userId = $userId;
     }
 
- 
 
-    public function setPassword($password): void {
+
+    public function setPassword($password): void
+    {
         $this->password = $password;
     }
 
-    public function setEmail($email): void {
+    public function setEmail($email): void
+    {
         $this->email = $email;
     }
 
-    public function setUserRole($userRole): void {
+    public function setUserRole($userRole): void
+    {
         $this->userRole = $userRole;
     }
 
-    public function setBloodBankId($bloodBankId): void {
+    public function setBloodBankId($bloodBankId): void
+    {
         $this->bloodBankId = $bloodBankId;
     }
 
-    public function setDonorId($donorId): void {
+    public function setDonorId($donorId): void
+    {
         $this->donorId = $donorId;
     }
 
-    public function setHospitalId($hospitalId): void {
+    public function setHospitalId($hospitalId): void
+    {
         $this->hospitalId = $hospitalId;
     }
 
 
-    public static function AddUser( $email, $userRole, $hashedPassword, $bloodBankId, $donorId, $hospitalId) {
+    public static function AddUser($email, $userRole, $hashedPassword, $bloodBankId, $donorId, $hospitalId)
+    {
 
 
         try {
@@ -139,10 +161,10 @@ class User {
             $pstmt->execute();
 
             if ($pstmt->rowCount() > 0) {
-        
+
                 return true;
             } else {
-               
+
                 return false;
             }
         } catch (PDOException $e) {
@@ -151,7 +173,8 @@ class User {
     }
 
 
-    function donorLogin() {
+    function donorLogin()
+    {
         $dbcon = new DbConnector;
         $conn = $dbcon->getConnection();
         $sql = "SELECT * FROM `user` WHERE email= ?";
@@ -164,7 +187,7 @@ class User {
 
             if (password_verify($this->password, $rs->password) && $rs->userRole == 5) {
                 $this->Token = bin2hex(random_bytes(25));
-                $this->expire = time() + (3600 * 24 * 30);
+                $this->expire = time() + (30 * 24 * 60 * 60);
                 $this->userId = $rs->userId;
                 return $this->updateToken();
             } else {
@@ -175,7 +198,8 @@ class User {
         }
     }
 
-    function updateToken() {
+    function updateToken()
+    {
         $dbcon = new DbConnector;
         $conn = $dbcon->getConnection();
         $sql = "UPDATE `user` SET `Token`=?,`expire`=? WHERE userId = ?";
@@ -187,7 +211,8 @@ class User {
         return $stmt->rowCount() > 0;
     }
 
-    function validateToken() {
+    function validateToken()
+    {
         $dbcon = new DbConnector;
         $conn = $dbcon->getConnection();
         $sql = "SELECT * FROM `user` WHERE Token= ?";
@@ -198,17 +223,19 @@ class User {
         if ($rs && $rs->expire > time()) {
             $this->donorId = $rs->donorId;
             $this->bloodBankId = $rs->bloodBankId;
-            $this->userRole=$rs->userRole;
+            $this->userRole = $rs->userRole;
             $this->hospitalId = $rs->hospitalId;
+            $this->expire = $rs->expire;
             return true;
         } else {
             return false;
         }
     }
-    
-    
-    public static function SendVerificationCode($code,$email) {
-    
+
+
+    public static function SendVerificationCode($code, $email)
+    {
+
         require '../mail/Exception.php';
         require '../mail/PHPMailer.php';
         require '../mail/SMTP.php';
@@ -229,7 +256,7 @@ class User {
         //Content
         $mail->isHTML(true);                                  //Set email format to HTML
         $mail->Subject = 'Verification Code';
-        $message = "Your Verification Code :".$code."<br>";   
+        $message = "Your Verification Code :" . $code . "<br>";
         $message .= "Regards,<br>";
         $message .= "BloodLife";
 
@@ -243,7 +270,8 @@ class User {
         }
     }
 
-    public static function SendMail( $password, $email,$name,$type) {
+    public static function SendMail($password, $email, $name, $type)
+    {
         // Create an instance; passing `true` enables exceptions
 
         require '../mail/Exception.php';
@@ -265,15 +293,15 @@ class User {
         $mail->addAddress($email);     //Add a recipient             //Name is optional
         //Content
         $mail->isHTML(true);                                  //Set email format to HTML
-        $mail->Subject = $type.' Registration';
-        $message = "Dear ".$name.",<br>";
+        $mail->Subject = $type . ' Registration';
+        $message = "Dear " . $name . ",<br>";
         $message .= "Welcome to BloodLife! , " . "<br>";
         $message .= "your account has been successfully created." . "<br><br>";
         $message .= "        Your username:     " . $email . "<br>";
         $message .= "        Your Password:     " . $password . "<br><br><br>";
         $message .= "Regards,<br>";
         $message .= "BloodLife";
-        
+
 
         $mail->Body = $message;
 
@@ -285,4 +313,29 @@ class User {
         }
     }
 
+    function webLogin()
+    {
+        $dbcon = new DbConnector;
+        $conn = $dbcon->getConnection();
+        $sql = "SELECT * FROM `user` WHERE email= ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(1, $this->email, PDO::PARAM_STR);
+        $stmt->execute();
+
+        if ($stmt->rowCount() > 0) {
+            $rs = $stmt->fetch(PDO::FETCH_OBJ);
+
+            if (password_verify($this->password, $rs->password)) {
+                $this->Token = bin2hex(random_bytes(25));
+                $this->expire = time() + (30 * 24 * 60 * 60);
+                $this->userId = $rs->userId;
+                $this->userRole = $rs->userRole;
+                return $this->updateToken();
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
 }

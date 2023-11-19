@@ -329,6 +329,34 @@ class Donor {
             return false; // Return false indicating an error occurred
         }
     }
+
+
+
+    static function getAllDonor($bloodBankId){
+        try {
+            $dbcon = new DbConnector();
+            $con = $dbcon->getConnection();
+    
+            $query = "SELECT donor.*, district.district,bloodbank.ContactNo 
+            FROM donor JOIN district ON donor.districtId = district.districtId 
+            join bloodbank on donor.bloodBankId = bloodbank.bloodBankId 
+            where donor.bloodBankId = ?";
+    
+            $stmt = $con->prepare($query);
+            $stmt->bindValue(1, $bloodBankId, PDO::PARAM_INT);
+            $stmt->execute();
+    
+            $dataArray = array();
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $dataArray[] = $row;
+            }
+    
+            return $dataArray;
+        } catch (PDOException $e) {
+            echo "Database Connection Error: " . $e->getMessage();
+        }
+        
+    }
     
 public function EditDonor() {
     try {
@@ -366,6 +394,51 @@ public function EditDonor() {
         echo "Error: " . $e->getMessage();
     }
 }
+
+public function getDonorDetails() {
+    try {
+        $dbcon = new DbConnector(); // Replace with your database connection code
+        $con = $dbcon->getConnection();
+
+        // Prepare a SQL query to select campaign details by campaignId
+        $query = "SELECT * FROM `donor` WHERE donorId=?";
+
+        $pstmt = $con->prepare($query);
+     //$pstmt->bindValue(':campaignId', PDO::PARAM_INT);
+        $pstmt->bindValue(1, $this->donorId, PDO::PARAM_INT);
+
+        $pstmt->execute();
+        if ($pstmt->rowCount() > 0) {
+            $rs = $pstmt->fetch(PDO::FETCH_OBJ);
+            $this->name = $rs->name;
+            $this->bloodGroup = $rs->bloodGroup;
+            $this->dob = $rs->dob;
+            $this->contactNumber = $rs->eontactNumber;
+            $this->nic = $rs->nic;
+            $this->noOfDonation= $rs->noOfDonation;
+            $this->coinValue = $rs->coinValue;
+            $this->donationLastDate = $rs->donationLastDate;
+            $this->availability = $rs->availability;
+            $this->medicalReport = $rs->medicalReport;
+            $this->image = $rs->image;
+            $this->bloodBankId = $rs->bloodBankId;
+            $this->districtId = $rs->districtId;
+            $this->donorId = $rs->donorId;
+            return true;
+        } else {
+            return false;
+        }
+
+       // $campaignDetails = $pstmt->fetch(PDO::FETCH_ASSOC);
+
+       // return $campaignDetails;
+    } catch (PDOException $e) {
+        // Handle database connection or query errors here
+        error_log("Error: " . $e->getMessage());
+       // return false;
+    }
+}
+
 
 
 }
