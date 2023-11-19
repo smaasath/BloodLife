@@ -77,7 +77,7 @@
       
         <form method="post" action="services/loginprocess.php">
             <div class="inputs">
-                <input type="text" name="UserName"  placeholder="user name">
+                <input type="text" name="email"  placeholder="email">
                 <br>
                 <input type="password" name="password"   placeholder="password">
             </div>
@@ -86,11 +86,16 @@
 
             <div class="remember-me--forget-password">
                 
-                <label class="">
+                <label class="remember">
                     <input type="checkbox" name="remember" checked/>
                     <span class="text-checkbox">Remember me</span>
                 </label>
-                <p class="text-forgot">forget password?</p>
+                
+                <label class="forgot">
+                    <input type="checkbox" name="forgot" checked/>
+                    <span class="text-checkbox">Forgot password</span>
+                </label>
+                
             </div>
 
             <br>
