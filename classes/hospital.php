@@ -142,6 +142,7 @@ class hospital {
 
             if ($pstmt->rowCount() > 0) {
                 $rs = $pstmt->fetch(PDO::FETCH_OBJ);
+                // $this->hospitalId = $rs->hospitalId;
                 $this->name = $rs->name;
                 $this->address = $rs->address;
                 $this->contactNumber = $rs->contactNumber;

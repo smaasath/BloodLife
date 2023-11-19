@@ -1,4 +1,4 @@
-                 <?php
+<?php
                     require_once '../classes/Campaign.php';
                     require_once  '../classes/district.php';
 
@@ -19,12 +19,12 @@
 
 
 
-                             <div class="row align-items-center pb-3">
-                                 <div class="col-3">
+                             <div class="row align-items-center mt-3">
+                                 <div class="col-5 justify-content-center">
                                      <h6>CampaignName</h6>
                                  </div>
-                                 <div class="col-9">
-                                     <input type="text" name="Title" value="<?php echo $campaign->getTitle(); ?>" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                 <div class="col-7 pl-4 justify-content-center">
+                                 <?php echo $campaign->getTitle(); ?>
                                  </div>
                              </div>
 

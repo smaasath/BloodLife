@@ -62,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <h6>DS Division</h6>
                 </div>
                 <div class="col-9">
-                    <select name="division" class="form-control-sm form-control-sm" id="divisionDropDownp" onchange="getBloodBanks(this.value)">
+                    <select name="division" class="form-control-sm form-control-sm" id="divisionDropDownp" onchange="getBloodBank(this.value)">
                         <option><?php echo $rs["division"]; ?></option>
                     </select>
                 </div>
@@ -74,7 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
                 <div class="col-9">
                     <input type="text" name="contactNumber" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value="<?php echo $hospital->getContactNumber(); ?>" required id="contactNumberInput" oninput="validateMobileNumber(this.value)">
-                    <!-- Rest of your form fields -->
+                   
                     <p id="validationResult"></p>
                 </div>
             </div>

@@ -18,7 +18,7 @@ use classes\Validation;
 use classes\User;
 
 $status = null;
-
+$name = $address = $contactNumber = $district = $division = $token = $hospitalId = '';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     session_start();
@@ -30,105 +30,107 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $time = time() - $_SESSION['timestamp'] > 60000000;
 
         if ($verifyOtp) {
-            
+
             $status = $_SESSION["hospital"]->editHospital($_SESSION["email"]) ? 1 : 2;
             session_destroy();
-            
         } else {
             unset($_SESSION["VerificationCode"]);
             unset($_SESSION['timestamp']);
             $status = !$verifyOtp ? 3 : (!$time ? 4 : 5);
-
         }
-    } else if(isset($_POST["name"], $_POST["address"], $_POST["contactNumber"],
-              $_POST["district"], $_POST["division"], $_POST["token"])) {
+    } else if (isset(
+        $_POST["name"],$_POST["address"],$_POST["contactNumber"],
+        $_POST["district"],$_POST["division"],$_POST["token"],$_POST["hospitalId"]
+    )) {
 
-    //empty value check
-    if (!empty($_POST["name"]) && ( $_POST["address"]) && ($_POST["contactNumber"]) &&
-              ($_POST["district"]) && ($_POST["division"]) && ($_POST["token"])) {
+        //empty value check
+        if (
+            !empty($_POST["name"]) && ($_POST["address"]) && ($_POST["contactNumber"]) &&
+            ($_POST["district"]) && ($_POST["division"]) && ($_POST["token"]) && $_POST["hospitalId"]
+        ) {
 
 
-    // sanitizing the inputs
-    $name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
-    $address = filter_var($_POST['address'], FILTER_SANITIZE_STRING);
-    $contactNumber = filter_var($_POST['contactNumber'], FILTER_SANITIZE_STRING);
-    $token = filter_var($_POST['token'], FILTER_SANITIZE_STRING);
-    $district = filter_var($_POST['district'], FILTER_SANITIZE_STRING);
-    $division = filter_var($_POST['division'], FILTER_SANITIZE_STRING);
-    $email = filter_var($_POST['email'], FILTER_SANITIZE_STRING);
-    $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
+            // sanitizing the inputs
+            $name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
+            $address = filter_var($_POST['address'], FILTER_SANITIZE_STRING);
+            $contactNumber = filter_var($_POST['contactNumber'], FILTER_SANITIZE_STRING);
+            $token = filter_var($_POST['token'], FILTER_SANITIZE_STRING);
+            $district = filter_var($_POST['district'], FILTER_SANITIZE_STRING);
+            $division = filter_var($_POST['division'], FILTER_SANITIZE_STRING);
+            $hospitalId = filter_var($_POST['hospitalId'], FILTER_VALIDATE_INT);
 
-    $districtId = district::getDistrictIDDD($district, $division);
-    // echo $districtId;
-    
-   
-   
-   
-    //create user object with token
-   $user = new User(null, null, null, null, $token, null, null, null, null);
-    
-    //validations
-    $emailExist = Validation::validateAlreadyExist("email", $email, "user");
-    $validateEmail = Validation::validateGmail($email);
-    $validatePhoneNumber = Validation::validateContactNumber($contactNumber);
-    $validateToken = $user->validateToken();
-    $userrole= $user->getUserRole();
-    
-    echo $token;
-    echo $userrole;
-     //token  checking
-     if ($validateToken && $userrole == 1) {
+            $districtId = district::getDistrictIDDD($district, $division);
+            // echo $districtId;
 
-         //email,phonenumber validation check
-         if ($validateEmail && $validatePhoneNumber ) {
 
-            //email,username exist check in db
-            if ( !$emailExist) {
 
-                //create hospital object
-                $hospital = new hospital(null, $name, $address, $contactNumber, $districtId);
 
-                $_SESSION["VerificationCode"] = Validation::generateOTP();
-                $_SESSION["hospital"] = $hospital;
-                $_SESSION["email"] = $email;
-                $_SESSION['timestamp'] = time();
-                $status = $User->SendMail( $_SESSION["VerificationCode"], $email, $name) ? header("Location: newEmptyPHPWebPage.php") : 7;
+            //create user object with token
+            $user = new User(null, null, null, null, $token, null, null, null, null);
 
+            //validations
+
+            $emailExist = Validation::validateAlreadyExist("email", $email, "user");
+            $validateEmail = Validation::validateGmail($email);
+            $validatePhoneNumber = Validation::validateContactNumber($contactNumber);
+            $validateToken = $user->validateToken();
+            $userrole = $user->getUserRole();
+
+
+            echo $token;
+            echo $userrole;
+            //token  checking
+            if ($validateToken && $userrole == 1) {
+
+                //email,phonenumber validation check
+                if ($validateEmail && $validatePhoneNumber) {
+
+                    //email,username exist check in db
+                    if (!$emailExist) {
+
+                        //create hospital object
+                        $hospital = new hospital($hospitalId, $name, $address, $contactNumber, $districtId);
+
+                        // if ($hospitals->editHospital($hospitalId, $email)) {
+                        //     echo 'gugu';
+                        // }
+
+                        $_SESSION["VerificationCode"] = Validation::generateOTP();
+                        $_SESSION["hospital"] = $hospital;
+                        $_SESSION["email"] = $email;
+                        $_SESSION['timestamp'] = time();
+                        $status = $User->SendMail($_SESSION["VerificationCode"], $email, $name) ? header("Location: editverification.php?type=hospital") : 7;
+                    } else {
+                        //check status for exist values
+                        $status = $emailExist ? 9 :  10;
+                    }
+                } else {
+                    //check status for valitations
+                    $status = !$validateEmail ? 11 : (!$validatePhoneNumber ? 12 : 13);
+                }
             } else {
-                //check status for exist values
-                $status = $emailExist ? 9 :  10;
+                //status for not valid token
+                $status = 14;
             }
         } else {
-            //check status for valitations
-            $status = !$validateEmail ? 11 : (!$validatePhoneNumber ? 12 :13);
+            //status for empty value
+            $status = 15;
         }
     } else {
-        //status for not valid token
-        $status = 14;
+        //status for isset value
+        $status = 17;
     }
 } else {
-    //status for empty value
-    $status = 15;
-}
-} else {
-//status for isset value
-$status = 16;
-}
-} else {
 
-echo"Invalid request method";
+    echo "Invalid request method";
 }
 
-    
+echo $name;
+echo $address;
+echo $contactNumber;
+echo $district;
+echo $division;
+echo $token;
+echo $hospitalId;
 echo $status;
-
-
-
-
-?>
-
-
-
-
-
 
