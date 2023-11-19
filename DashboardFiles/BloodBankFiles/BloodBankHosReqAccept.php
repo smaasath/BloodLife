@@ -1,3 +1,6 @@
+<?php
+if($token){
+?>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -105,7 +108,9 @@ and open the template in the editor.
 
         </div>
         <?php
-        // put your code here
+           } else{
+            header('Location: ../../index.php');
+        }
         ?>
     </body>
 </html>

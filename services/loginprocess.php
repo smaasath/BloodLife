@@ -8,11 +8,33 @@ use classes\Validation;
 
 session_start();
 $status = null;
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
+    if (isset($_COOKIE["remember_me"])) {
+        $token = $_COOKIE["remember_me"];
+        $user = new User(null, null, null, null, $token, null, null, null, null);
+        if ($user->validateToken()) {
+            $_SESSION["Token"] = $userArray['Token'];
+            switch ($userArray['UserRole']) {
+                case 1:
 
-    if (isset($_POST["email"], $_POST["password"])) {
+                    header('Location: ../Dashboards/AdminDashboard.php');
+                    break;
+                case 2:
+                    header('Location: ../Dashboards/BloodBankDashboard.php');
+                    break;
+                case 3:
+                    header('Location: ../Dashboards/HospitalDashboard.php');
+                    break;
+                default:
+                    $status = 10;
+            }
+        } else {
+            setcookie("remember_me", "", time() - (30 * 24 * 60 * 60 ));
+            header('Location: ../index.php');
+        
+        }
+    } else if (isset($_POST["email"], $_POST["password"])) {
 
         if (!empty($_POST["email"] && $_POST["password"])) {
 
@@ -29,7 +51,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
                     if (isset($_POST["remember"])) {
-                        $status = 9;
+                        setcookie("remember_me", $_SESSION["Token"], $user->getExpire());
+                        switch ($userArray['UserRole']) {
+                            case 1:
+    
+                                header('Location: ../Dashboards/AdminDashboard.php');
+                                break;
+                            case 2:
+                                header('Location: ../Dashboards/BloodBankDashboard.php');
+                                break;
+                            case 3:
+                                header('Location: ../Dashboards/HospitalDashboard.php');
+                                break;
+                            default:
+                                $status = 10;
+                        }
                     } else {
                         switch ($userArray['UserRole']) {
                             case 1:
@@ -60,8 +96,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         //status for isset value
         $status = 02;
     }
-} else {
-    //status for request method
-    $status = 07;
-}
+
 echo $status;

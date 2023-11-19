@@ -1,3 +1,13 @@
+
+<?php
+
+require_once '../classes/hospitalrequestclass.php';
+require_once '../classes/Validation.php';
+
+use classes\Validation;
+use classes\hospitalrequestclass;
+if($token){
+?>
 <!DOCTYPE html>
 <!--
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license

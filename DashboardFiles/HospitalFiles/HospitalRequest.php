@@ -1,12 +1,11 @@
 <?php
-$userId = 1;
 
 require_once '../classes/hospitalrequestclass.php';
 require_once '../classes/Validation.php';
 
 use classes\Validation;
 use classes\hospitalrequestclass;
-$token = "saintha";
+if($token){
 ?>
 <!DOCTYPE html>
 <html>
@@ -202,7 +201,9 @@ $token = "saintha";
         </div>
     </div>
     <?php
-    // put your code here
+} else {
+    header('Location: ../../index.php');
+}
     ?>
 </body>
 

@@ -15,7 +15,7 @@ use classes\Bloodtable;
 use classes\hospital;
 use classes\district;
 use classes\User;
-
+if($token){
 $user = new User(null, null, null, null, $token, null, null, null, null);
 $validateToken = $user->validateToken();
 $bloodBankId = $user->getBloodBankId();
@@ -384,7 +384,9 @@ $bloodBankId = $user->getBloodBankId();
                 </div>
             </form>
             <?php
-            // put your code here
+              } else{
+                header('Location: ../../index.php');
+            }
             ?>
 
             <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
