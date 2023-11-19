@@ -93,7 +93,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $_SESSION["donor"] = $donor;
                         $_SESSION["email"] = $email;
                         $_SESSION['timestamp'] = time();
-                        $status = $donor->SendMail($_SESSION["VerificationCode"], $email, $name) ? header("Location: newEmptyPHPWebPage.php") : 7;
+                        $status = $user->SendMail($_SESSION["VerificationCode"], $email, $name) ? header("Location: newEmptyPHPWebPage.php") : 7;
 
                     } else {
                         //check status for exist values

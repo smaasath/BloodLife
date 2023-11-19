@@ -140,10 +140,35 @@ class Donation {
 
             // Get the buffered output
             $output = ob_get_clean();
-            
+
             return $output;
         }
     }
-    
+
+    public function getCertificates() {
+        try {
+            $dbcon = new DbConnector();
+            $con = $dbcon->getConnection();
+
+            $query = "SELECT * FROM `donationtable` WHERE donorId =?;";
+
+            $stmt = $con->prepare($query);
+            $stmt->bindParam(1, $this->donorId, PDO::PARAM_INT);
+
+            $stmt->execute();
+
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                // Fetch other fields including the 'certificate' field
+                $certificate = base64_encode($row['certificate']); // Convert binary data to base64
+                unset($row['certificate']); // Remove the binary data from the array
+                $row['certificate_base64'] = $certificate; // Add base64 encoded certificate to the array
+                $dataArray[] = $row;
+            }
+
+            return $dataArray;
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
     }
-    
+
+}

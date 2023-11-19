@@ -1,6 +1,14 @@
 <?php
+require_once '../classes/campaign.php';
+require_once '../classes/User.php';
+require_once '../classes/district.php';
+
+use classes\district;
+
+
 
 use classes\campaign;
+use classes\User;
 
 $token = "12b378738a1a6be3bacea473fe9e3d2fbfce8e678d514e1d943";
 ?>
@@ -14,7 +22,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../../CSS/Table.css">
+    <link rel="stylesheet" href="../CSS/Table.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title></title>
 
@@ -27,13 +35,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         }
     </style>
 
-
-
-
-
-
-
 </head>
+
 
 <body>
 
@@ -70,16 +73,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     <!-- nav bar end -->
 
 
-    <!--
-       <div class="container">
-            <img src="https://assets.telegraphindia.com/telegraph/2022/Jan/1643137545_blood.jpg" alt="Blood" width="100%" height="200">
 
-
-
-            <div class="centered" style="font-size:3vw" ><br><strong>.</strong></div>
-
-        </div>
-        -->
 
     <center>
         <h1> BL Campaign </h1>
@@ -88,45 +82,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     <div class="p-5">
 
 
-        <!-- <div class="rounded-top-4 p-0 border border-dark-subtle">
-            <div class="row align-items-center">
-        
 
-
-               // <?php
-                    // if (isset($_GET["status"]) && !empty($_GET["status"])) {
-                    // $status = campaign::decryptedValue($_GET["status"]);
-
-
-                    // }
-                    // 
-                    ?>
-            -->
+        -->
         <div class="rounded-top-4 p-0 border border-dark-subtle">
             <div class="row align-items-center">
                 <!-- Search input -->
                 <div class="col-3">
                     <div class="input-group rounded p-3">
-                        <input type="search" class="form-control rounded" placeholder="campaignID" aria-label="Search" aria-describedby="search-addon">
+                        <input type="search" class="form-control rounded" placeholder="campaignID" aria-label="Search" oninput="searchfilter(this.value)" aria-describedby="search-addon">
                     </div>
                 </div>
 
-                <!-- Blood Group filter -->
-                <!--
-                    <div class="col-3">
-                        <select class="form-control form-control-lg" name="bloodGroup">
-                            <option selected>Select your Blood Group</option>
-                            <option value="A+">A+</option>
-                            <option value="A-">A-</option>
-                            <option value="B+">B+</option>
-                            <option value="B-">B-</option>
-                            <option value="O+">O+</option>
-                            <option value="O-">O-</option>
-                            <option value="AB+">AB+</option>
-                            <option value="AB-">AB-</option>
-                        </select>
-                    </div>
-        -->
+
 
 
 
@@ -141,13 +108,21 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </div>
 
                 <div class="col-2">
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>Location</option>
-                        <option value="1">Jaffna</option>
-                        <option value="2">Badulla</option>
-                        <option value="3">Mannar</option>
+                    <select class="form-select" aria-label="Default select example" oninput="DistrictFilter(this.value)">
+                        <option selected value="">District</option>
+                        <?php
+                        $dataArray = district::getAllDistrict(); // Retrieve district data using the "getAllDistrict()" method
+
+                        foreach ($dataArray as $district) {
+                        ?>
+
+                            <option value="<?php echo $district['district']; ?>"><?php echo $district['district']; ?></option>
+                        <?php
+                        }
+                        ?>
                     </select>
                 </div>
+
                 <div class="col-2">
                     <button type="button" class="btn btn-primary" onclick="AddCampaign()">Add Campaign</button>
 
@@ -160,58 +135,150 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <div class="container bg-white m-0 p-0" style=" max-height: 373px; overflow: scroll;">
                     <table class="table table-hover p-0">
 
-                        <!-- Table row -->
+                        <!-- Table row ----->
+
+
+                        <!-- Campaign table Heading-->
+
+                        <thead>
+                            <tr class="sticky-top">
+                                <th class="col-1 bg-secondary text-dark p-2">CampaignID</th>
+                                <th class="col-1 bg-secondary text-dark p-2">Name</th>
+                                <th class="col-1 bg-secondary text-dark p-2">StartDate</th>
+                                <th class="col-1 bg-secondary text-dark p-2">EndDate</th>
+                                <th class="col-1 bg-secondary text-dark p-2">Status</th>
+
+                                <th class="col-1 bg-secondary text-dark p-2">Edit</th>
+                                <th class="col-1 bg-secondary text-dark p-2">Review</th>
+                                <th class="col-1 bg-secondary text-dark p-2">View</th>
+                            </tr>
+                        </thead>
+
+                        <!---Table body Details----------->
+
+
+                        <table class="table">
+
+                            <tbody id="output">
+                                <?php
+                                $user = new User(null, null, null, null, $token, null, null, null, null);
+                                $user->validateToken();
+                                $requestArray = campaign::getAllCampaign($user->getBloodBankId());
+                                ?>
+
+                                <script>
+                                    let array = <?php echo json_encode($requestArray) ?>;
+                                    let filterArray;
+                                    showall(array);
+
+                                    function showall(array) {
+                                        const detailsList = document.getElementById("output");
+                                        detailsList.innerHTML = "";
+                                        if (array === null || array.length === 0) {
+                                            var htmlCode = `<tr><td colspan="12" style="text-align: center;color: red;" >No Results Found</td></tr>`;
+                                            detailsList.innerHTML = htmlCode;
+                                        } else {
+                                            array.forEach((item) => {
+
+                                                var htmlCode = ` <tr>
+                        <td class="col-1">${item.campaignId}</td>
+                        <td class="col-1">${item.Title}</td>
+                         <td class="col-1">${item.startDate}</td>                    
+                        <td class="col-1">${item.endDate }</td>
+                        <td class="col-1">${item.status }</td>
+                     
+                       
+                      
+                    
+                        <td class="col-1"><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#EditCampaignDetailsModal" onclick="EditCamp(${item.campaignId})" >Edit</button> </td>
+
+                        <td class="col-1"><button type="button" class="btn btn-success" onclick="ReviewChamp()">Review</button></td>
+
+                        <td class="col-1"> <a href="../Dashboards/BloodBankDashboard.php?page=CampaignView&&camid=${item.campaignId}" style="text-decoration: none;"><button type="button" class="btn btn-success"> View </button></a></td>
 
 
 
+                                                </tr>`;
 
 
-                        <tr class="sticky-top">
-
-                            <th class="col-1 bgcol p-2">CampaignID</th>
-                            <th class="col-2 bgcol p-2">Name</th>
-                            <th class="col-1 bgcol p-2">Date</th>
-                            <th class="col-1 bgcol p-2">Location</th>
-                            <th class="col-2 bgcol p-2">Contact No</th>
-                            <th class="col-1 bgcol p-2">No of.Donors</th>
-                            <th class="col-1 bgcol p-2">Edit</th>
-                            <th class="col-1 bgcol p-2">Review</th>
-                            <th class="col-1 bgcol p-2">View</th>
-
-                        </tr>
+                                                var divElement = document.createElement("tr");
 
 
-                        <tr>
-                            <td class="col-1">C001</td>
-                            <td class="col-2">Bloody Sweet</td>
-                            <td class="col-1">03/09/2023</td>
-                            <td class="col-1">Jaffna</td>
-                            <td class="col-2">0755701765</td>
-                            <td class="col-1">67</td>
-                            <td class="col-1"><button type="button" class="btn btn-danger" onclick="EditCamp()">Edit</button></td>
-                            <td class="col-1"><button type="button" class="btn btn-secondary" onclick="ReviewChamp()" data-bs-toggle="modal" data-bs-target="#Review">Review</button></td>
-                            <td class="col-1"><button type="button" class="btn btn-success" onclick="ViewChamp()">View</button></td>
-
-                        </tr>
-
-                        <tr>
-                            <td class="col-1">C001</td>
-                            <td class="col-2">Bloody Sweet</td>
-                            <td class="col-1">03/09/2023</td>
-                            <td class="col-1">Jaffna</td>
-                            <td class="col-2">0755701765</td>
-                            <td class="col-1">67</td>
-                            <td class="col-1"><button type="button" class="btn btn-danger" onclick="EditCamp()">Edit</button></td>
-                            <td class="col-1"><button type="button" class="btn btn-secondary" onclick="ReviewChamp()" data-bs-toggle="modal" data-bs-target="#Review">Review</button></td>
-                            <td class="col-1"><button type="button" class="btn btn-success" onclick="ViewChamp()">View</button></td>
-
-                        </tr>
+                                                divElement.innerHTML = htmlCode;
 
 
-                        <!-- Table row -->
+                                                detailsList.appendChild(divElement);
+                                            });
+                                        };
 
-                    </table>
+                                    }
 
+                                    function DistrictFilter(test) {
+                                        if (test === "") {
+                                            array = <?php echo json_encode($requestArray) ?>;
+                                            showall(array);
+                                        } else {
+                                            array = <?php echo json_encode($requestArray) ?>;
+                                            var testValue = test.toLowerCase();
+                                            array = array.filter((item) => item.district.toLowerCase().includes(testValue));
+                                            showall(array);
+                                        }
+
+                                    }
+
+                                    function searchfilter(test) {
+
+                                        var id = parseInt(test, 10);
+
+                                        var testValue = test.toLowerCase();
+
+                                        filterArray = array.filter((item) => item.campaignId === id || item.Title.toLowerCase().includes(testValue));
+
+
+                                        const detailsList = document.getElementById("output");
+                                        detailsList.innerHTML = "";
+                                        if (filterArray === null || filterArray.length === 0) {
+                                            var htmlCode = `<tr><td colspan="12" style="text-align: center;color: red;">No Results Found</td></tr>`;
+                                            detailsList.innerHTML = htmlCode;
+                                        } else {
+                                            filterArray.forEach((item) => {
+
+                                                var htmlCode = ` 
+                            <tr>
+                            <td class="col-1">${item.campaignId}</td>
+                        <td class="col-1">${item.Title}</td>
+                        
+                        <td class="col-1">${item.startDate}</td>                    
+                        <td class="col-1">${item.endDate }</td>
+                        <td class="col-1">${item.review}</td>
+                        <td class="col-1">${item.status }</td>
+                        <td class="col-1">${item.districtId}</td>
+                        <td class="col-1"><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#EditCampaignDetailsModal" onclick="EditCamp(${item.campaignId})" >Edit</button> </td>
+
+                        <td class="col-1"><button type="button" class="btn btn-success" onclick="ReviewChamp()">Review</button></td>
+
+                        <td class="col-1"> <a href="../Dashboards/BloodBankDashboard.php?page=CampaignView&&camid=${item.campaignId}" style="text-decoration: none;"><button type="button" class="btn btn-success"> View </button></a></td>
+                        </tr>`;
+
+
+                                                var divElement = document.createElement("tr");
+
+
+                                                divElement.innerHTML = htmlCode;
+
+
+                                                detailsList.appendChild(divElement);
+
+                                            });
+                                        }
+
+
+                                    }
+                                </script>
+
+
+                            </tbody>
+                        </table>
                 </div>
 
                 <!-- Table Head -->
@@ -292,9 +359,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                             <select name="district" class="form-control form-control-lg" id="district" onchange="functionTest(this.value)">
                                                 <option>Select District</option>
                                                 <?php
-                                                require '../classes/district.php';
 
-                                                use classes\district;
 
                                                 $dataArray = district::getAllDistrict(); // Retrieve district data using the "getAllDistrict()" method
 
@@ -328,20 +393,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">
-                                Organizer Details
-                            </button>
+                            <button type="submit" class="btn btn-primary">Add</button>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!--CampaignAddDetails-->
-
-
-
-
         </form>
+            <!--CampaignAddDetails->
 
 
 
@@ -349,406 +407,106 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
 
-        <!-- --------------------------------------Campaign Edit------------------------------------------------------------------------ -->
-        <!-----------1st pop-up------------------------Campaign Details---------------->
-        <div class="modal fade" id="CampaignEdit">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Campaign Edit Details</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-
-                    <div class="modal-body">
 
 
 
 
 
-                        <div class="row align-items-center pb-3">
-                            <div class="col-3">
-                                <h6>Location</h6>
+
+
+
+            <!-- Edit Campaign Modal -->
+            <form action="../services/CampaignEditService.php" method="POST" enctype="multipart/form-data">
+                <div class="modal fade" id="EditCampaignDetailsModal" tabindex="-1" role="dialog" aria-labelledby="EditCampaignDetailsLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="EditCampaignDetailsModal">Edit Campaign Details</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <div class="col-9">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <select name="district" class="form-control form-control-lg" id="district" onchange="functionTest(this.value)">
-                                            <option>Select District</option>
-                                            <?php
-                                            //   require '../classes/district.php';
+                            <div class="modal-body" >
+                                <div id="campaignEdit"></div>
+                                <input type="hidden" name="token" value="<?php echo $token; ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                
+                            </div>
+                           
+                            
+                           
 
-                                            //  use classes\district;
-
-                                            $dataArray = district::getAllDistrict(); // Retrieve district data using the "getAllDistrict()" method
-
-                                            foreach ($dataArray as $district) {
-                                            ?>
-
-                                                <option value="<?php echo $district['district']; ?>"><?php echo $district['district']; ?></option>
-                                            <?php
-                                            }
-                                            ?>
-                                        </select>
-                                    </div>
-                                    <div class="col-6">
-
-                                        <select name="division" class="form-control form-control-lg" id="divisionDropDown" onchange="getBloodBank(this.value)">
-                                            <option>Select Division</option>
-
-                                        </select>
-                                    </div>
-
-                                </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Save</button>
                             </div>
                         </div>
-
-                        <input type="hidden" name="token" value="<?php echo $token; ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#OrganizerEdit">Organizer Details</button>
                     </div>
                 </div>
-            </div>
-        </div>
-        <!--Camp Edit-->
+            </form>
+
+           
 
 
 
-        <!--OrganizerEdit-->
 
-        <div class="modal fade" id="OrganizerEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModal2">Organizer Details</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="/action_page.php">
-                            <div class="row align-items-center pb-3">
-                                <div class="col-3">
-                                    <h6> Name</h6>
+            <!-- View Campaign Modal -->
+            <form action="../services/CampaignViewService.php" method="POST" enctype="multipart/form-data">
+            <div class="modal fade" id="ViewCampaignDetailsModal" tabindex="-1" role="dialog" aria-labelledby="ViewCampaignDetailsModal" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+
+                            <h5 class="modal-title" id="ViewCampaignDetailsLabel">Edit Campaign Details</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+
+                        
+                            <div class="modal-body" id="ViewCampaign">
+                            
+
                                 </div>
-                                <div class="col-9">
-                                    <input type="text" name="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+
+
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Save</button>
                                 </div>
                             </div>
-
-                            <div class="row align-items-center pb-3">
-                                <div class="col-3">
-                                    <h6>Address</h6>
-                                </div>
-                                <div class="col-9">
-                                    <input type="text " name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                                </div>
-                            </div>
-                            <div class="row align-items-center pb-3">
-                                <div class="col-3">
-                                    <h6>District</h6>
-                                </div>
-                                <div class="col-9">
-                                    <select class="form-control form-control-lg">
-                                        <option selected>Select your District</option>
-                                        <option value="1">Mannar</option>
-                                        <option value="2"> </option>
-                                        <option value="3"> </option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="row align-items-center pb-3">
-                                <div class="col-3">
-                                    <h6> Contact No</h6>
-                                </div>
-                                <div class="col-9">
-                                    <input type="text" name="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                                </div>
-                            </div>
-                            <div class="row align-items-center pb-3">
-                                <div class="col-3">
-                                    <h6> Email</h6>
-                                </div>
-                                <div class="col-9">
-                                    <input type="text" name="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                                </div>
-                            </div>
-                            <div class="row align-items-center pb-3">
-                                <div class="col-3">
-                                    <h6> Age</h6>
-                                </div>
-                                <div class="col-9">
-                                    <input type="text" name="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                                </div>
-                            </div>
-                            <div class="row align-items-center pb-3">
-                                <div class="col-3">
-                                    <h6> NIC</h6>
-                                </div>
-                                <div class="col-9">
-                                    <input type="text" name="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                                </div>
-                            </div>
-
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Delete</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="EditCamp()">Back</button>
-                        <button type="button" class="btn btn-primary">Save </button>
                     </div>
                 </div>
-            </div>
-        </div>
-        <!--OrganizerEdit-->
+            </form>
+
+
+           
 
 
 
 
-        <!--------------------------------------------------->
-        <!-------------------Review-------------------------------->
+            <!--------------------------------------------------->
+            <!-------------------Review-------------------------------->
 
-        <div class="modal fade" id="Review" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="Review">Review Campaign</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
+            <div class="modal fade" id="Review" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="Review">Review Campaign</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
 
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Percentege</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder=""><br>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Percentege</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder=""><br>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Back</button>
+
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Back</button>
-
-                    </div>
                 </div>
             </div>
-        </div>
+            <script src="sweetalert2.all.min.js"></script>
 
 
-
-
-
-
-        <!-- --------------------------------------Campaign View------------------------------------------------------------------------ -->
-        <!--CampDetailsView-->
-        <!-- 1st pop-up -->
-
-        <div class="modal fade" id="ChampView" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="Save">View Details</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="/action_page.php">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="card mb-4">
-                                            <div class="card-body">
-                                                <div class="row mb-3">
-                                                    <div class="col-sm-4">
-                                                        <strong>Hospital ID:</strong>
-                                                    </div>
-                                                    <div class="col-sm-8">
-                                                        <p class="text-muted mb-0">HS001</p>
-                                                    </div>
-                                                </div>
-                                                <div class="row mb-3">
-                                                    <div class="col-sm-4">
-                                                        <strong>Hospital Name:</strong>
-                                                    </div>
-                                                    <div class="col-sm-8">
-                                                        <p class="text-muted mb-0">Jaffna Central Hospital</p>
-                                                    </div>
-                                                </div>
-                                                <div class="row mb-3">
-                                                    <div class="col-sm-4">
-                                                        <strong>Address:</strong>
-                                                    </div>
-                                                    <div class="col-sm-8">
-                                                        <p class="text-muted mb-0">Hospital Road, Jaffna</p>
-                                                    </div>
-                                                </div>
-                                                <div class="row mb-3">
-                                                    <div class="col-sm-4">
-                                                        <strong>District:</strong>
-                                                    </div>
-                                                    <div class="col-sm-8">
-                                                        <p class="text-muted mb-0">Jaffna</p>
-                                                    </div>
-                                                </div>
-                                                <div class="row mb-3">
-                                                    <div class="col-sm-4">
-                                                        <strong>Phone No:</strong>
-                                                    </div>
-                                                    <div class="col-sm-8">
-                                                        <p class="text-muted mb-0">077 1028754</p>
-                                                    </div>
-                                                </div>
-                                                <div class="row mb-3">
-                                                    <div class="col-sm-4">
-                                                        <strong>Mobile:</strong>
-                                                    </div>
-                                                    <div class="col-sm-8">
-                                                        <p class="text-muted mb-0">(098) 765-4321</p>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-sm-4">
-                                                        <strong>Email:</strong>
-                                                    </div>
-                                                    <div class="col-sm-8">
-                                                        <p class="text-muted mb-0">CentralHospitalJaffna@gmail.com</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal7">
-                            Organizer Details
-                        </button>
-                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal8">
-                            Donor Details
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!--CampDetailsView-->
-
-
-
-        <!--OrganizerDetailsview-->
-        <!-- Modal -->
-
-        <div class="modal fade" id="exampleModal7" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModal7">Organizer Details</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <table class="table">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th scope="col"> </th>
-                                    <th scope="col">OrganizerID</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Contact_NO</th>
-                                    <th scope="col">Distict</th>
-                                    <th scope="col">Email</th>
-
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>D001</td>
-                                    <td>Mani</td>
-                                    <td>07722223</td>
-                                    <td>Jaffna</td>
-                                    <td>M@gmail.com</td>
-
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>D001</td>
-                                    <td>Mani</td>
-                                    <td>07722223</td>
-                                    <td>Jaffna</td>
-                                    <td>M@gmail.com</td>
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="Save()">Back</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
-        <!--Donorview-->
-        <!-- pop-up3-->
-
-        <div class="modal fade" id="exampleModal8" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModal7">Donor Details</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-
-
-                        <table class="table">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th scope="col"> </th>
-                                    <th scope="col">DonorID</th>
-                                    <th scope="col">Last Donation Date</th>
-                                    <th scope="col">Donation Type</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>D001</td>
-                                    <td>07/12/2022</td>
-                                    <td>Blood Bank</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>D002</td>
-                                    <td>23/09/2011</td>
-                                    <td>Campaign</td>
-                                </tr>
-
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="Save()">Back</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--------------------------------------------------------------------------------------------------------------->
-
-
-
-
-
-
-
-
-        <?php
-        // put your code here
-        ?>
 </body>
 
 </html>

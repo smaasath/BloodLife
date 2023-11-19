@@ -1,13 +1,38 @@
-<!DOCTYPE html>
-<!--
+<?php
+$userId = 1;
+
+require_once '../classes/hospitalrequestclass.php';
+require_once '../classes/Validation.php';
+
+use classes\hospitalrequestclass;
+use classes\Validation;
+
+$token = "saintha";
+// Check if the 'hospitalRequestID' parameter is set in the URL
+if (isset($_GET['hreqid'])) {
+    // Retrieve and store the 'hospitalRequestID' value
+    $id = Validation::decryptedValue($_GET['hreqid']);
+
+
+
+
+
+
+?>
+
+
+    <!DOCTYPE html>
+    <!--
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to edit this template
 -->
-<html>
+    <html>
+
     <head>
         <meta charset="UTF-8">
         <title></title>
     </head>
+
     <body>
         <!-- nav bar start -->
         <div class="sticky-top bg-white shadownav" style="height: 50px;">
@@ -42,51 +67,63 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <!-- nav bar end -->
 
         <!-- body start -->
-    <center><h1>Hospital Request Edit</h1></center>
+        <div class="mt-5 m-4 mb-2" style="color:gray;">
+            <h5>Hospital Request Edit</h5>
+        </div>
 
-    <div class="form-container">
-        <h1>Edit Form</h1>
-        <form>
-            <div class="field">
-                <label for="bloodGroup">BloodGroup:</label>
-                <select class="form-control form-control-lg" name="bloodGroup" required>
-                                <option selected>Select your Blood Group</option>
-                                <option value="A+">A+</option>
-                                <option value="A-"> A-</option>
-                                <option value="B+"> B+</option>
-                                <option value="B-"> B-</option>
-                                <option value="O+"> O+</option>
-                                <option value="O-"> O-</option>
-                                <option value="AB+"> AB+</option>
-                                <option value="AB-"> AB-</option>
+        <?php
+        $hospitalrequesteditobj = hospitalrequestclass::getRequestwithHospitalusingID($id);
 
-                            </select>
+
+        ?>
+
+        <div class="row bg-white m-3 pt-0  align-items-center justify-content-center rounded-5" style="height: 500px;">
+            <div class="form-container">
+
+                <form action="../services/editrequest.php"  method="POST">
+                    <label for="BloodGroup">BloodGroup:</label>
+                    <select class="form-select" name="bloodGroup" aria-laquantitybel="Default select example" required>
+                        <option value="<?php echo $hospitalrequesteditobj->getBloodGroup() ?>" selected><?php echo $hospitalrequesteditobj->getBloodGroup() ?></option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                    </select>
+
+                    <label for="Quantity">Date:</label>
+                    <input type="date" class="form-control" name="expiryDate" value="<?php echo  $hospitalrequesteditobj->getCreateDate(); ?>" required>
+                    <label for="ExpiryDate"> Blood Quantity:</label>
+                    <input type="number" class="form-control" name="bloodQuantity" value="<?php echo  $hospitalrequesteditobj->getBloodQuantity(); ?>" maxlength="3" required>
+                    <label for="status">Status:</label>
+
+                    <select class="form-select" name="requestStatus" aria-laquantitybel="Default select example" required>
+                        <option value="" selected></option>
+                        <option value="<?php echo $hospitalrequesteditobj->getRequestStatus() ?>" selected><?php echo $hospitalrequesteditobj->getRequestStatus() ?></option>
+                        <option value="Available">Normal</option>
+                        <option value="Given">Emergency</option>
+                        <option value="Expired">Urgent</option>
+                    </select><br>
+
+                    <input type="hidden" name="token" value="<?php echo $token; ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                    <input type="hidden" name="hospitalRequestID" value="<?php echo $id; ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                    <div class="text-end">
+                        <button class="edit-button" type="submit">Save</button>
+                    </div>
+
+                </form>
             </div>
-            <div class="field">
-                <label for="date">Date:     </label>
-                <input type="date" class="form-control" id="date" name="date" value="2023-08-25">
-            </div>
-            <div class="field">
-                <label for="bloodQuantity">BloodQuantity:</label>
-                <input type="text" class="form-control" id="bloodQuantity" name="bloodQuantity" value="250 ml">
-            </div>
-            <div class="field">
-                <label for="status">Status:   </label>
-                <select id="blood-group" class="form-control">
-                <option value="Normal">Normal</option>
-                <option value="Emergency">Emergency</option>
-                <option value="Urgent">Urgent</option>
-                <option value="Completed">Completed</option>
-                    
-                </select>
-            </div>      
-            <button class="edit-button">Publish Request</button>
-        </form>
-    </div>
+        </div>
 
 
     <?php
-    // put your code here
+} else {
+    echo "ID not found in the URL.";
+}
     ?>
-</body>
-</html>
+    </body>
+
+    </html>

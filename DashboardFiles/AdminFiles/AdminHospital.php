@@ -5,7 +5,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 -->
 <?php
 
-$token = "abcde1234";
 
 require_once '../classes/hospital.php';
 require_once '../classes/district.php';
