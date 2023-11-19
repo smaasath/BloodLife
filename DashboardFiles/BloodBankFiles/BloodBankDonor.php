@@ -136,8 +136,7 @@ use classes\Donor;
 
                             <tbody id="output">
                                 <?php
-                                $user = new User(null, null, null, null, $token, null, null, null, null);
-                                $user->validateToken();
+                             
                                 $requestArray = Donor::getAllDonor($user->getBloodBankId());
                                 ?>
 
