@@ -1,5 +1,18 @@
 <?php
 
+
+require_once '../classes/bloodbankhsrequest.php';
+require_once '../classes/Validation.php';
+
+use classes\bloodbankhsrequest;
+use classes\Validation;
+
+if (isset($_GET['hreqedit'])) {
+   
+    $BReqId = $_GET["hreqedit"];
+    $BBRequest = new bloodbankhsrequest($BReqId, null, null, null, null, null, null);
+    $Result = $BBRequest->getBloodBankReqByReqID();
+
 ?>
 
 
@@ -50,43 +63,52 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <!-- body start -->
     <center><h1>BloodBank Request-Edit</h1></center>
 
+    
+
     <div class="container" >
 
         <div class="row bg-white m-3 pt-0 align-items-center p-3 justify-content-center rounded-3 d-flex">
             <!-- <div class="text-center m-3"> <h1>BL rq edit</h1> </div>-->
-            <div class="bg-white m-3" style="height: 800px; width: 600px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
-                <div class="row p-3 m-1">
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label"><strong>BloodBankID</strong></label>
-                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+            <div class="bg-white m-3" style="height: 400px; width: 600px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+                
+                    <div class="mb-3 m-2">
+                        <label for="exampleFormControlInput1" class="form-label"><strong>Blood Group :</strong></label>
+                        <select class="form-select" name="bloodGroup" aria-laquantitybel="Default select example" required>
+                        <option value=" <?php echo $Result->bloodGroup; ?>" selected><?php echo $Result->bloodGroup; ?> </option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                    </select>
                     </div>
-                </div>
-                <div class="row p-3 m-1">
-                    <div class="mb-3">
+               
+                
+                    <div class="mb-3 m-2">
                         <label for="exampleFormControlInput1" class="form-label"><strong>Blood Quantity</strong></label>
-                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="1L">
+                        <input type="number" class="form-control"  name="bloodQuantity" value="<?php echo $Result->bloodQuantity; ?>">
                     </div>
-                </div>
-                <div class="row p-3 m-1">
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label"><strong>Hospital Name</strong></label>
-                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="XRM Hospital">
+               
+                
+                    <div class="mb-3 m-2">
+                        <label for="exampleFormControlInput1" class="form-label"><strong>Status :</strong></label>
+                        <select class="form-select" name="requestStatus" aria-laquantitybel="Default select example" required>
+                       <option value="<?php echo $Result->requestStatus; ?>" selected><?php echo $Result->requestStatus; ?> </option>
+                        <option value="Available">Normal</option>
+                        <option value="Given">Emergency</option>
+                        <option value="Expired">Urgent</option>
+                    </select>
                     </div>
-                </div>
-                <div class="row p-3 m-1">
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label"><strong>Status</strong></label>
-                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Normal">
-                    </div>
-                </div>
-                <div class="row p-3 m-1">
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label"><strong>Date</strong></label>
-                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="2022-12-12">
-                    </div>
-                </div>
+                    
+                
+                
+                    <input type="hidden" name="token" value="<?php echo $token; ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                    <input type="hidden" name="bloodBankRequestId" value="<?php echo $id; ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                 <div class="buttons" >
-                      <button class="btn btn-primary" style="background-color: green !important;border: none;margin-left: 350px">Save</button>
+                      <button class="btn btn-secondary" type="submit" style=" border: none;margin-left: 480px">Save</button>
                     
                 </div>
 
@@ -100,7 +122,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
     <?php
-  
+
+    
+} else {
+    echo "ID not found in the URL.";
+}
+
     ?>
 </body>
 </html>
