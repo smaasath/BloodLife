@@ -78,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <p id="validationResult"></p>
                 </div>
             </div>
-
+            <input type="hidden" value="<?php echo $hospital->getHospitalId(); ?>" name="hospitalId">
             
 
 

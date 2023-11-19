@@ -5,16 +5,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 -->
 <?php
 
-$token = "12b378738a1a6be3bacea473fe9e3d2fbfce8e678d514e1d943";
+
 require_once '../classes/Donor.php';
-require_once '../classes/User.php';
-require_once '../classes/district.php';
+require '../classes/district.php';
 
-
-
-use classes\User;
-use classes\Donor;
 use classes\district;
+
+use classes\Donor;
 ?>
 <html>
 
@@ -189,7 +186,9 @@ use classes\district;
                                             });
                                         };
 
+
                                     }
+
 
                                     function DistrictFilter(test) {
                                         if (test === "") {
@@ -457,9 +456,12 @@ use classes\district;
 
 
 
-    <?php
-    // put your code here
-    ?>
+        <?php
+
+
+
+        ?>
+
 </body>
 
 </html>

@@ -7,17 +7,11 @@ require_once '../classes/Validation.php';
 use classes\hospitalrequestclass;
 use classes\Validation;
 
-$token = "saintha";
 // Check if the 'hospitalRequestID' parameter is set in the URL
 if (isset($_GET['hreqid'])) {
     // Retrieve and store the 'hospitalRequestID' value
     $id = Validation::decryptedValue($_GET['hreqid']);
     
-
-
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -181,6 +175,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 } else {
     echo "ID not found in the URL.";
 }
+
     ?>
 </body>
 

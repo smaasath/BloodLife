@@ -204,4 +204,33 @@ public function GetBloodbankByName() {
         }
     }
 
+    public function editBloodbank() {
+        if (!is_numeric($this->districtId)) {
+            // Handle the error, e.g., return false or throw an exception
+            return false;
+        }
+        
+        try {
+            $dbcon = new DbConnector();
+            $con = $dbcon->getConnection();
+    
+            $query = "UPDATE `bloodbank` SET `bloodBankName` = ?, `Address` = ?, `ContactNo` = ?, `districtId` = ? WHERE `bloodBankId` = ?";
+
+
+            $pstmt = $con->prepare($query);
+            $pstmt->bindValue(1, $this->bloodBankName);
+            $pstmt->bindValue(2, $this->Address); 
+            $pstmt->bindValue(3, $this->ContactNo);
+            $pstmt->bindValue(4, $this->districtId);
+            $pstmt->bindValue(5, $this->bloodBankId); 
+
+            $pstmt->execute();
+    
+            return $pstmt->rowCount() > 0;
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            return false;
+        }
+    }
+
 }

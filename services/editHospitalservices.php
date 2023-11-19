@@ -18,27 +18,11 @@ use classes\Validation;
 use classes\User;
 
 $status = null;
-$name = $address = $contactNumber = $district = $division = $token = $hospitalId = '';
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    session_start();
-
-    if (isset($_POST["VerificationCode"], $_SESSION["VerificationCode"], $_SESSION["hospital"], $_SESSION['timestamp'])) {
-        //check status for edit hospital
-
-        $verifyOtp = (int) $_POST["VerificationCode"] === (int) $_SESSION["VerificationCode"];
-        $time = time() - $_SESSION['timestamp'] > 60000000;
-
-        if ($verifyOtp) {
-
-            $status = $_SESSION["hospital"]->editHospital($_SESSION["email"]) ? 1 : 2;
-            session_destroy();
-        } else {
-            unset($_SESSION["VerificationCode"]);
-            unset($_SESSION['timestamp']);
-            $status = !$verifyOtp ? 3 : (!$time ? 4 : 5);
-        }
-    } else if (isset(
+   
+       if (isset(
         $_POST["name"],$_POST["address"],$_POST["contactNumber"],
         $_POST["district"],$_POST["division"],$_POST["token"],$_POST["hospitalId"]
     )) {
@@ -70,24 +54,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             //validations
 
-            $emailExist = Validation::validateAlreadyExist("email", $email, "user");
-            $validateEmail = Validation::validateGmail($email);
+            
             $validatePhoneNumber = Validation::validateContactNumber($contactNumber);
             $validateToken = $user->validateToken();
             $userrole = $user->getUserRole();
 
 
-            echo $token;
-            echo $userrole;
+            // echo $token;
+            // echo $userrole;
             //token  checking
             if ($validateToken && $userrole == 1) {
 
                 //email,phonenumber validation check
-                if ($validateEmail && $validatePhoneNumber) {
+                if ($validatePhoneNumber) {
 
                     //email,username exist check in db
-                    if (!$emailExist) {
-
+                   
                         //create hospital object
                         $hospital = new hospital($hospitalId, $name, $address, $contactNumber, $districtId);
 
@@ -95,18 +77,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         //     echo 'gugu';
                         // }
 
-                        $_SESSION["VerificationCode"] = Validation::generateOTP();
-                        $_SESSION["hospital"] = $hospital;
-                        $_SESSION["email"] = $email;
-                        $_SESSION['timestamp'] = time();
-                        $status = $User->SendMail($_SESSION["VerificationCode"], $email, $name) ? header("Location: editverification.php?type=hospital") : 7;
-                    } else {
-                        //check status for exist values
-                        $status = $emailExist ? 9 :  10;
-                    }
+                       if($hospital->editHospital()){
+                        $status =1;
+                       }else{
+                        $status =2;
+                       }
+                  
                 } else {
                     //check status for valitations
-                    $status = !$validateEmail ? 11 : (!$validatePhoneNumber ? 12 : 13);
+                    $status = !$validatePhoneNumber ? 12 : 13;
                 }
             } else {
                 //status for not valid token
@@ -125,12 +104,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo "Invalid request method";
 }
 
-echo $name;
-echo $address;
-echo $contactNumber;
-echo $district;
-echo $division;
-echo $token;
-echo $hospitalId;
 echo $status;
-
