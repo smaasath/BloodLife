@@ -1,9 +1,11 @@
 <?php
 require_once "../classes/bloodbankhsrequest.php";
 require_once "../classes/User.php";
+require_once '../classes/Validation.php';
 
 use classes\User;
 use classes\bloodbankhsrequest;
+use classes\Validation;
 
 $token = "12b378738a1a6be3bacea473fe9e3d2fbfce8e678d514e1d943";
 $user = new User(null, null, null, null, $token, null, null, null, null);
@@ -69,7 +71,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <a href="../Dashboards/BloodBankDashboard.php?page=bbhra"><button type="button" class="btn btn-primary">Add Request</button></a>
     </div>
 
-
+   
 
 
 
@@ -153,7 +155,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                                         <div class="row mt-1 p-1 justify-content-end">
                                         <div class="col-6 d-flex justify-content-around">
-                                            <div style="width: 25px"> <a href="../Dashboards/BloodBankDashboard.php?page=bbre"><img src="../Images/icons8-edit-24.png" style="width: 20px;" /></a></div>
+                                            <div style="width: 25px"> <a href="../Dashboards/BloodBankDashboard.php?page=bbre&&hreqedit=${item.bloodBankRequestId}"><img src="../Images/icons8-edit-24.png" style="width: 20px;" /></a></div>
                                             <div style="width: 25px"><a href="../Dashboards/BloodBankDashboard.php?page=bbrv&&breqId=${item.bloodBankRequestId}"><img style="width: 20px;" src="../Images/icons8-view-90.png" /></a></div>
                                         </div>
                                         </div>
@@ -210,7 +212,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             detailsList.innerHTML = htmlCode;
                         } else {
                             filterArray.forEach((item) => {
-
                                 var htmlCode = `     
                             <div class="bg-white p-4 mt-4 rounded-4" style="height: 180px; width: 300px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; background: ${getHospitalStatusGradient(item.requestStatus)}">
                                        
@@ -233,8 +234,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                                         <div class="row mt-1 p-1 justify-content-end">
                                         <div class="col-6 d-flex justify-content-around">
-                                            <div style="width: 25px"> <a href="../Dashboards/BloodBankDashboard.php?page=bbre"><img src="../Images/icons8-edit-24.png" style="width: 20px;" /></a></div>
-                                            <div style="width: 25px"><a href="../Dashboards/BloodBankDashboard.php?page=bbrv"><img style="width: 20px;" src="../Images/icons8-view-90.png" /></a></div>
+                                            <div style="width: 25px"> <a href="../Dashboards/BloodBankDashboard.php?page=bbre&&hreqedit=${item.bloodBankRequestId}"><img src="../Images/icons8-edit-24.png" style="width: 20px;" /></a></div>
+                                            <div style="width: 25px"><a href="../Dashboards/BloodBankDashboard.php?page=bbrv&&breqId=${item.bloodBankRequestId}"><img style="width: 20px;" src="../Images/icons8-view-90.png" /></a></div>
                                         </div>
                                         </div>
                                     </div>`;
