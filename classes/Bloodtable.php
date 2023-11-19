@@ -7,7 +7,7 @@
 
 namespace classes;
 
-require 'DbConnector.php';
+require_once 'DbConnector.php';
 
 use PDO;
 use PDOException;
@@ -272,5 +272,7 @@ class Bloodtable
             echo "Error: " . $e->getMessage();
         }
     }
+
+    
 }
 

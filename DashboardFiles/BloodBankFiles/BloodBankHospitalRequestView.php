@@ -1,35 +1,48 @@
 <?php
 require_once '../classes/hospitalrequestclass.php';
 require_once '../classes/Validation.php';
+require_once '../classes/Bloodtable.php';
+require_once '../classes/User.php';
 
 use classes\hospitalrequestclass;
 use classes\Validation;
+use classes\Bloodtable;
+use classes\User;
+
 $token = "12b378738a1a6be3bacea473fe9e3d2fbfce8e678d514e1d943";
 
-// Check if the 'hospitalRequestID' parameter is set in the URL
-if (isset($_GET['reqid'])) {
-    // Retrieve and store the 'hospitalRequestID' value
-    $id = Validation::decryptedValue($_GET['reqid']);
+$user = new User(null, null, null, null, $token, null, null, null, null);
+$validateToken = $user->validateToken();
+$bloodBankId = $user->getBloodBankId();
 
-    // Now, you can use the $id variable in your code
-    
+// Check if the 'hospitalRequestID' parameter is set in the URL
+if (isset($_GET['bhreqid'])) {
+    // Retrieve and store the 'hospitalRequestID' value
+    $id = Validation::decryptedValue($_GET['bhreqid']);
+
+
+
+
+
 
 ?>
 
 
 
 
-<!DOCTYPE html>
-<!--
+    <!DOCTYPE html>
+    <!--
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to edit this template
 -->
-<html>
+    <html>
+
     <head>
         <meta charset="UTF-8">
         <title></title>
         <link rel="stylesheet" href="../CSS/BloodBankHSRequest.css">
     </head>
+
     <body>
 
         <!-- nav bar start -->
@@ -65,71 +78,84 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <!-- nav bar end -->
 
         <!-- body start -->
-        <h1>BL Hos Req 2</h1>
-
-
-        
-     
-        <?php
-                $requestObj = hospitalrequestclass::getRequestwithHospitalusingID($id);
-
-               
-                    ?>
-        
-        
-        
-       
-
-
-        <div class="container-05">
-         <div class="form-container">
-         <form action="../services/Addbloodbankrequest.php" method="POST">
-            <div class="left-column">
-                <div class="form-group">
-                    <label for="blood-group">Blood Group</label>
-                    <input type="text" name="bloodGroup" value="<?php echo $requestObj->getBloodGroup(); ?>">
-                </div>
-                <div class="form-group">
-                    <label for="quantity">Quantity</label>
-                    <input type="number" name="bloodQuantity" value="<?php echo $requestObj->getBloodQuantity(); ?>">
-                </div>
-               
-                <div class="form-group">
-                    <label for="status">Status</label>
-                    <input type="text" name="requestStatus" value="<?php echo $requestObj->getRequestStatus(); ?>" >
-                </div>
-                <div class="form-group">
-                    <label for="hospital-id">HospitalRequest ID</label>
-                    <input type="text" name="hospitalRequestId" value="<?php echo $requestObj->getHospitalRequestID(); ?>" >
-                </div>
-                
-            </div>
-            <div class="right-column">
-                <div class="form-group">
-                    <label for="available-quantity">Available Quantity</label>
-                    <input type="number" name="available quantity" id="available-quantity" >
-                </div>
-                
-                <input type="hidden" name="token" value="<?php echo $token; ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                <div class="text-end">
-        <div class="buttons">
-            <a href="../Dashboards/BloodBankDashboard.php?page=bbraa">   <button class="btn btn-primary" style="justify-content: flex-end;  gap: 10px;  background-color: green !important;border: none ">Accept</button></a>
-            <button type="sumbit" class="btn btn-primary" style=" justify-content: flex-end;  gap: 10px;  background-color: blue !important;border: none">Publish</button>
-        </div><br>
-                </div>
+        <div class="mt-5 m-3 mb-1" style="color:gray;">
+            <h5>Hospital Request View</h5>
         </div>
-        </form>
-        </div>
-        </div>
-
-
+        <div class="row bg-white m-3 pt-0  align-items-center justify-content-center rounded-5" style="height: 600px;">
 
 
 
         <?php
-           } else {
-            echo "ID not found in the URL.";
-        }     
+
+        if (hospitalrequestclass::getRequestwithHospitalusingID($id) != false) {
+            $requestObj = hospitalrequestclass::getRequestwithHospitalusingID($id);
+
+
         ?>
+
+
+
+
+
+
+            <div class="row">
+                <div class="col-lg-5 m-3 p-1">
+                    
+                <div class="form-container" style=" border: 2px solid #ccc; border-radius:10px; width: 500px">
+
+                    <form action="../services/Addbloodbankrequest.php" method="POST">
+                        <div class="col m-2">
+                            <div class="form-group">
+                                <label for="blood-group">Blood Group</label>
+                                <input type="text" name="bloodGroup" value="<?php echo $requestObj->getBloodGroup(); ?>"  readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="quantity">Quantity</label>
+                                <input type="number" name="bloodQuantity" value="<?php echo $requestObj->getBloodQuantity(); ?>"  readonly>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="status">Status</label>
+                                <input type="text" name="requestStatus" value="<?php echo $requestObj->getRequestStatus(); ?>"  readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="hospital-id">HospitalRequest ID</label>
+                                <input type="text" name="hospitalRequestId" value="<?php echo $requestObj->getHospitalRequestID(); ?>"  readonly>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="available-quantity">Available Quantity</label>
+                                <input type="number" value="<?php echo $requestObj->totalQuantityarrayByBloodGroup($bloodBankId); ?>" name="available quantity" id="available-quantity"  readonly>
+                            </div>
+
+                            <input type="hidden" name="token" value="<?php echo $token; ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                            <div class="text-end"><br>
+                                <div class="buttons">
+                                    <a href="../Dashboards/BloodBankDashboard.php?page=bbraa"> <button type="button" class="btn btn-outline-secondary"><strong> Accept </strong></button></a>
+                                    <button type="button" class="btn btn-outline-danger"><strong>Publish </strong></button>
+                                    <!-- <button type="sumbit" class="btn btn-outline-danger" style=" justify-content: flex-end;  gap: 10px;  background-color: blue !important;border: none">Publish</button> -->
+                                </div><br>
+                            </div>
+                            </div>
+                    </form>
+                    </div>
+                </div>
+                <div class="col-lg-6 justify-content-center align-items-center text-center">
+                    <img class="d-none d-lg-block w-100 text-center" src="https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/35517/blood-donation-clipart-md.png" />
+                </div>
+            </div>
+
+
+            </div>
+
+    <?php
+        } else {
+            echo "detail not found";
+        }
+    } else {
+        echo "ID not found in the URL.";
+    }
+    ?>
     </body>
-</html>
+
+    </html>

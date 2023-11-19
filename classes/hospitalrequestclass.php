@@ -262,7 +262,29 @@ public function EditHosRequest() {
 }
 
     
-   
+public function totalQuantityarrayByBloodGroup($bloodBankId)
+{
+    try {
+        $dbcon = new DbConnector();
+        $con = $dbcon->getConnection();
+        $query = "SELECT bloodGroup, SUM(quantity) AS totalQuantity
+        FROM `bloodtable`
+        WHERE bloodBankId = ? && bloodGroup = ?;
+        ";
+        $stmt = $con->prepare($query);
+        $stmt->bindValue(1, $bloodBankId);
+        $stmt->bindValue(2, $this->bloodGroup);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_OBJ);
+        if ($result) {
+           return $result->totalQuantity;
+        }else{
+            return "error";
+        }
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
+}
 
    
 }

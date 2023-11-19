@@ -58,7 +58,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <!-- nav bar end -->
 
         <!-- body start -->
-   
+        <div class="mt-5 m-3 mb-1" style="color:gray;">
+        <h5>Hospital Request</h5>
+    </div>
     <div class="container">
         <div class="row bg-white m-3 pt-0 align-items-center p-3 justify-content-start rounded-3 d-flex">
 
@@ -68,10 +70,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             foreach ($requestArray as $datAarray) {
                 ?>
 
-                <div class="col">
+                <div class="col-4">
 
-                    <div class="bg-white p-3  m-3" style="width: 270px; height: 200px; box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; background: <?php echo hospitalrequestclass::getHospitalStatusGradient($datAarray["requestStatus"]); ?>; ">
-                        <a href="../Dashboards/BloodBankDashboard.php?page=bbhrv&&reqid=<?php echo Validation::encryptedValue($datAarray["hospitalRequestID"]); ?>" style="text-decoration: none;">
+                    <div class="bg-white p-3  m-2" style="width: 270px; height: 200px;   border-radius:10px;box-shadow: rgba(0, 0, 0, 0.16) 0px 8px 8px; background: <?php echo hospitalrequestclass::getHospitalStatusGradient($datAarray["requestStatus"]); ?>; ">
+                        <a href="../Dashboards/BloodBankDashboard.php?page=bbhrv&&bhreqid=<?php echo Validation::encryptedValue($datAarray["hospitalRequestID"]); ?>" style="text-decoration: none;">
 
                             <div class="row">
                                 <div class="col">

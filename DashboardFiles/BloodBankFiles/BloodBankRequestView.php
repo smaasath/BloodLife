@@ -26,7 +26,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to edit this template
 -->
         <html>
-
         <head>
             <meta charset="UTF-8">
             <title></title>
@@ -62,11 +61,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
 
-            <center>
-                <h1>BloodBank Request-View</h1>
-            </center>
+            <div class="mt-5 m-3 mb-1" style="color:gray;">
+                <h5>Request View</h5>
+            </div>
 
-
+            <div class="row bg-white m-2 pt-0  align-items-center justify-content-center rounded-5" style="height: 320px;">
 
             <div class="container">
                 <div class="row bg-white m-3 pt-0 align-items-center p-3 justify-content-center">
@@ -149,7 +148,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         ob_start(); // Start output buffering
 
                         // Generate the QR code image
-                        QRcode::png("bloodbank".$Result->bloodBankRequestId);
+                        QRcode::png("bloodbank" . $Result->bloodBankRequestId);
 
                         // Get the image data from output buffer
                         $imageData = ob_get_clean();
@@ -159,7 +158,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         echo '<img src="data:image/jpeg;base64,' . base64_encode($imageData) . '" class="w-75">';
                         ?>
 
-                        
+
 
                     </div>
 
