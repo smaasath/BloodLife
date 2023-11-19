@@ -9,10 +9,7 @@ $bankid = $user->getBloodBankId();
 ?>
 
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to edit this template
--->
+
 <html>
 
 <head>
@@ -57,9 +54,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     <!-- nav bar end -->
 
     <!-- body start -->
-    <center>
-        <h1>BloodBank Request</h1>
-    </center>
+    <div class="mt-5 m-3 mb-1" style="color:gray;">
+            <h5>Bloodbank Request </h5>
+</div>
     <div class="text-center">
         <a href="../Dashboards/BloodBankDashboard.php?page=bbhra"><button type="button" class="btn btn-primary">Add Request</button></a>
     </div>
