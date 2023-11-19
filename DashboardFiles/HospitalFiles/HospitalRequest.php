@@ -5,7 +5,7 @@ require_once '../classes/Validation.php';
 
 use classes\Validation;
 use classes\hospitalrequestclass;
-if($token){
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -201,9 +201,7 @@ if($token){
         </div>
     </div>
     <?php
-} else {
-    header('Location: ../../index.php');
-}
+
     ?>
 </body>
 

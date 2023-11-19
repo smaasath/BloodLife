@@ -1,14 +1,11 @@
 <?php
 require_once "../classes/bloodbankhsrequest.php";
-require_once "../classes/User.php";
 require_once "../phpqrcode/qrlib.php";
 
-use classes\User;
 use classes\bloodbankhsrequest;
 
-if($token){
-$user = new User(null, null, null, null, $token, null, null, null, null);
-$user->validateToken();
+
+
 $bankid = $user->getBloodBankId();
 echo $bankid;
 
@@ -173,9 +170,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     
     }
 }
-} else{
-    header('Location: ../../index.php');
-}
+
     ?>
         </body>
 

@@ -6,7 +6,7 @@ require_once '../classes/Validation.php';
 use classes\hospitalrequestclass;
 use classes\Validation;
 
-if($token){
+
 ?>
 
 
@@ -108,9 +108,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         </div>
     </div>
     <?php
-} else{
-    header('Location: ../../index.php');
-}
+
     ?>
 </body>
 </html>

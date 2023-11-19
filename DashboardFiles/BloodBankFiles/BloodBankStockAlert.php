@@ -10,14 +10,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 require_once '../classes/Bloodtable.php';
 
-require_once '../classes/User.php';
-
 use classes\Bloodtable;
 
-use classes\User;
-if($token){
-$user = new User(null, null, null, null, $token, null, null, null, null);
-$validateToken = $user->validateToken();
 $bloodBankId = $user->getBloodBankId();
 ?>
 <html>
@@ -144,9 +138,7 @@ $bloodBankId = $user->getBloodBankId();
     </div>
     </div>
     <?php
-     } else{
-        header('Location: ../../index.php');
-    }
+   
     ?>
 
     <form action="../services/Editbloodpackets.php" method="POST" enctype="multipart/form-data">

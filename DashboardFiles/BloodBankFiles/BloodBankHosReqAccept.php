@@ -1,5 +1,5 @@
 <?php
-if($token){
+
 ?>
 <!DOCTYPE html>
 <!--
@@ -108,9 +108,7 @@ and open the template in the editor.
 
         </div>
         <?php
-           } else{
-            header('Location: ../../index.php');
-        }
+      
         ?>
     </body>
 </html>

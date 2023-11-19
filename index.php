@@ -1,3 +1,11 @@
+<?php 
+
+if (isset($_COOKIE["remember_me"])) {
+   header('Location:services/loginprocess.php');
+
+}else{  
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -87,7 +95,7 @@
             <div class="remember-me--forget-password">
                 
                 <label class="remember">
-                    <input type="checkbox" name="remember" checked/>
+                    <input type="checkbox" name="remember"/>
                     <span class="text-checkbox">Remember me</span>
                 </label>
                 
@@ -112,3 +120,7 @@
 </body>
 </html>
 
+<?php 
+
+    }
+?>

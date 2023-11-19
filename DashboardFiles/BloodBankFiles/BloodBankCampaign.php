@@ -1,16 +1,12 @@
 <?php
 require_once '../classes/campaign.php';
-require_once '../classes/User.php';
 require_once '../classes/district.php';
 
 use classes\district;
-
-
-
 use classes\campaign;
-use classes\User;
 
-if($token){
+
+
 ?>
 
 <!DOCTYPE html>
@@ -161,8 +157,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                             <tbody id="output">
                                 <?php
-                                $user = new User(null, null, null, null, $token, null, null, null, null);
-                                $user->validateToken();
+                              
                                 $requestArray = campaign::getAllCampaign($user->getBloodBankId());
                                 ?>
 
@@ -507,9 +502,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             <script src="sweetalert2.all.min.js"></script>
 
             <?php
-    } else{
-      header('Location: ../../index.php');
-  }
+    
     ?>
 
 

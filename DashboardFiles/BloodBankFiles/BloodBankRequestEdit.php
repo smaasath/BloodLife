@@ -1,5 +1,5 @@
 <?php
-if($token){
+
 ?>
 
 
@@ -100,9 +100,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
     <?php
-     } else{
-        header('Location: ../../index.php');
-    }
+  
     ?>
 </body>
 </html>

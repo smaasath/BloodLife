@@ -1,11 +1,18 @@
 <?php
+require_once '../classes/User.php';
+
+use classes\User;
 session_start();
+if (isset($_SESSION['Token'])) {
+    $token = $_SESSION['Token'];
+    $user = new User(null, null, null, null, $token, null, null, null, null);
+    $validateToken = $user->validateToken();
+    if($validateToken && $user->getUserRole()==1){
 
 if (isset($_GET['page'])) {
     $_SESSION['selectedLink'] = $_GET['page'];
 }
-if (isset($_SESSION['Token'])) {
-    $token = $_SESSION['Token'];
+
 ?>
 
 
@@ -200,8 +207,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
     </div>
     <?php
+
 } else{
-    header('Location: ../index.php');
+    header('Location: ../services/loginprocess.php');
+}
+} else{
+    header('Location: ../services/loginprocess.php');
 }
     ?>
 

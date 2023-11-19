@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         if ($campaign->getCampaignDetails()) {
             $districtId = $campaign->getDistrictId();
             $rs = district::getDistrictDivisionById($districtId);
-            if($token){
+        
 
 
 ?>
@@ -129,9 +129,10 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     } else {
     }
 } else {
+    
 }
-header('Location: ../../index.php');
-}
+
+
 
 ?>
 

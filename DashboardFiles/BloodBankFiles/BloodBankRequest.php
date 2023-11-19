@@ -1,15 +1,10 @@
 <?php
 require_once "../classes/bloodbankhsrequest.php";
-require_once "../classes/User.php";
 
-use classes\User;
 use classes\bloodbankhsrequest;
 
-if($token){
-$user = new User(null, null, null, null, $token, null, null, null, null);
-$user->validateToken();
 $bankid = $user->getBloodBankId();
-echo $bankid;
+
 
 ?>
 
@@ -284,9 +279,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
     <?php
-        } else{
-            header('Location: ../../index.php');
-        }
+      
     ?>
 </body>
 

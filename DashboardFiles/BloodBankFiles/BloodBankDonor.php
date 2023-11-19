@@ -12,7 +12,7 @@ require '../classes/district.php';
 use classes\district;
 
 use classes\Donor;
-if($token){
+
 ?>
 <html>
 
@@ -707,9 +707,7 @@ if($token){
 
         <?php
 
-} else {
-    header('Location: ../../index.php');
-}
+
 
         ?>
 </body>
