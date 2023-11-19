@@ -3,16 +3,17 @@
 require_once '../classes/User.php';
 
 use classes\User;
+
 session_start();
 if (isset($_SESSION['Token'])) {
     $token = $_SESSION['Token'];
     $user = new User(null, null, null, null, $token, null, null, null, null);
     $validateToken = $user->validateToken();
-    if($validateToken && $user->getUserRole()==2){
+    if ($validateToken && $user->getUserRole() == 3) {
 
-if (isset($_GET['page'])) {
-    $_SESSION['selectedLink'] = $_GET['page'];
-}
+        if (isset($_GET['page'])) {
+            $_SESSION['selectedLink'] = $_GET['page'];
+        }
 
 ?>
 
@@ -121,12 +122,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <hr class="dashboardhr">
                     <div class="dropdown">
                         <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa-solid fa-power-off fa-lg loggedicon"></i>
+                        <li><a class="dropdown-item" href="../services/Logout.php">Log out</a></li>
                             <strong class="loggedout">Log Out</strong>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1" style="">
 
-                            <li><a class="dropdown-item" href="../HomePages/Login.html">Sign out</a></li>
+                            <li><a class="dropdown-item" href="../services/Logout.php">Log out</a></li>
                         </ul>
                     </div>
                     <hr class="dashboardhr">
@@ -178,7 +179,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1" style="">
 
-                                <li><a class="dropdown-item" href="#">Log out</a></li>
+                                <li><a class="dropdown-item" href="../services/Logout.php">Log out</a></li>
                             </ul>
                         </div>
                     </div>
