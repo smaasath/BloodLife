@@ -1,8 +1,15 @@
 <?php
 require_once "../classes/bloodbankhsrequest.php";
-require_once "../phpqrcode/qrlib.php";
+require_once "../vendor/autoload.php";
 
 use classes\bloodbankhsrequest;
+use Endroid\QrCode\Builder\Builder;
+use Endroid\QrCode\Encoding\Encoding;
+use Endroid\QrCode\ErrorCorrectionLevel;
+use Endroid\QrCode\Label\LabelAlignment;
+use Endroid\QrCode\Label\Font\NotoSans;
+use Endroid\QrCode\RoundBlockSizeMode;
+use Endroid\QrCode\Writer\PngWriter;
 
 
 
@@ -23,6 +30,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to edit this template
 -->
         <html>
+
         <head>
             <meta charset="UTF-8">
             <title></title>
@@ -64,113 +72,128 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
             <div class="row bg-white m-2 pt-0  align-items-center justify-content-center rounded-5" style="height: 320px;">
 
-            <div class="container">
-                <div class="row bg-white m-3 pt-0 align-items-center p-3 justify-content-center">
-                    <div class="col-sm-5 bg-white m-3 rounded-2" style="height: 450px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+                <div class="container">
+                    <div class="row bg-white m-3 pt-0 align-items-center p-3 justify-content-center">
+                        <div class="col-sm-5 bg-white m-3 rounded-2" style="height: 450px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
 
-                        <div class="row p-2 m-1 mt-5">
-                            <div class="col-5">
-                                <strong> Blood Bank Request ID</strong>
+                            <div class="row p-2 m-1 mt-5">
+                                <div class="col-5">
+                                    <strong> Blood Bank Request ID</strong>
+                                </div>
+                                <div class="col-4 ">
+                                    <?php echo "B" . $Result->bloodBankRequestId; ?>
+                                </div>
                             </div>
-                            <div class="col-4 ">
-                                <?php echo "B" . $Result->bloodBankRequestId; ?>
+                            <div class="row p-2 m-1">
+                                <div class="col-5">
+                                    <strong> Blood Quantity</strong>
+                                </div>
+                                <div class="col-4">
+                                    <?php echo $Result->bloodQuantity; ?>
+                                </div>
                             </div>
+                            <div class="row p-2 m-1">
+                                <div class="col-5">
+                                    <strong> Blood Group</strong>
+                                </div>
+                                <div class="col-4">
+                                    <?php echo $Result->bloodGroup; ?>
+                                </div>
+                            </div>
+                            <div class="row p-2 m-1">
+                                <div class="col-5">
+                                    <strong>Hospital Name</strong>
+                                </div>
+                                <div class="col-4">
+                                    <?php echo $Result->hospitalName; ?>
+                                </div>
+                            </div>
+                            <div class="row p-2 m-1">
+                                <div class="col-5">
+                                    <strong>Hospital Address</strong>
+                                </div>
+                                <div class="col-4">
+                                    <?php echo $Result->hospitalAddress; ?>
+                                </div>
+                            </div>
+
+                            <div class="row p-2 m-1">
+                                <div class="col-5">
+                                    <strong> hospital Request Id</strong>
+                                </div>
+                                <div class="col-4">
+                                    <?php echo $Result->hospitalRequestId; ?>
+                                </div>
+                            </div>
+                            <div class="row p-2 m-1">
+                                <div class="col-5">
+                                    <strong> Created Date</strong>
+                                </div>
+                                <div class="col-4">
+                                    <?php echo $Result->createdDate; ?>
+                                </div>
+                            </div>
+                            <div class="row p-2 m-1">
+                                <div class="col-5">
+                                    <strong>Status:</strong>
+                                </div>
+                                <div class="col-4">
+                                    <?php echo $Result->requestStatus; ?>
+                                </div>
+                            </div>
+
+
+
+
+
                         </div>
-                        <div class="row p-2 m-1">
-                            <div class="col-5">
-                                <strong> Blood Quantity</strong>
-                            </div>
-                            <div class="col-4">
-                                <?php echo $Result->bloodQuantity; ?>
-                            </div>
+
+                        <div class="col-sm-6 align-items-center justify-content-center text-center p-3" style="height: 450px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+                            <?php
+
+
+                            $result = Builder::create()
+                                ->writer(new PngWriter())
+                                ->writerOptions([])
+                                ->data("bloodbank" . $Result->bloodBankRequestId)
+                                ->encoding(new Encoding('UTF-8'))
+                                ->errorCorrectionLevel(ErrorCorrectionLevel::High)
+                                ->size(300)
+                                ->margin(10)
+                                ->roundBlockSizeMode(RoundBlockSizeMode::Margin)
+                                ->labelText('Scan the Qr')
+                                ->validateResult(false)
+                                ->build();
+
+
+
+
+                            // Get the image data as a string
+                            $imageData = $result->getString();
+
+                            // Encode the image data as a base64 string
+                            $base64 = base64_encode($imageData);
+
+                            // Output the base64 string within an img tag
+                            echo '<img src="data:image/png;base64,' . $base64 . '" alt="QR Code">';
+                            ?>
+
+
+
                         </div>
-                        <div class="row p-2 m-1">
-                            <div class="col-5">
-                                <strong> Blood Group</strong>
-                            </div>
-                            <div class="col-4">
-                                <?php echo $Result->bloodGroup; ?>
-                            </div>
-                        </div>
-                        <div class="row p-2 m-1">
-                            <div class="col-5">
-                                <strong>Hospital Name</strong>
-                            </div>
-                            <div class="col-4">
-                                <?php echo $Result->hospitalName; ?>
-                            </div>
-                        </div>
-                        <div class="row p-2 m-1">
-                            <div class="col-5">
-                                <strong>Hospital Address</strong>
-                            </div>
-                            <div class="col-4">
-                                <?php echo $Result->hospitalAddress; ?>
-                            </div>
-                        </div>
-
-                        <div class="row p-2 m-1">
-                            <div class="col-5">
-                                <strong> hospital Request Id</strong>
-                            </div>
-                            <div class="col-4">
-                                <?php echo $Result->hospitalRequestId; ?>
-                            </div>
-                        </div>
-                        <div class="row p-2 m-1">
-                            <div class="col-5">
-                                <strong> Created Date</strong>
-                            </div>
-                            <div class="col-4">
-                                <?php echo $Result->createdDate; ?>
-                            </div>
-                        </div>
-                        <div class="row p-2 m-1">
-                            <div class="col-5">
-                                <strong>Status:</strong>
-                            </div>
-                            <div class="col-4">
-                                <?php echo $Result->requestStatus; ?>
-                            </div>
-                        </div>
-
-
-
-
-
-                    </div>
-
-                    <div class="col-sm-6 align-items-center justify-content-center text-center p-3" style="height: 450px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
-                        <?php
-                        ob_start(); // Start output buffering
-
-                        // Generate the QR code image
-                        QRcode::png("bloodbank" . $Result->bloodBankRequestId);
-
-                        // Get the image data from output buffer
-                        $imageData = ob_get_clean();
-
-                        // Output the image data directly with appropriate headers
-
-                        echo '<img src="data:image/jpeg;base64,' . base64_encode($imageData) . '" class="w-75">';
-                        ?>
-
-
 
                     </div>
 
                 </div>
 
-            </div>
 
 
+        <?php
 
-    <?php
-    
     }
 }
 
-    ?>
+        ?>
         </body>
 
         </html>
