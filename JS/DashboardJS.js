@@ -145,9 +145,12 @@ function functionTest(value) {
         success: function (result) {
 
             $("#divisionDropDown").html(result);
+           
 
         }});
 }
+
+
 
 function getBloodBank(value) {
     console.log(value);
@@ -196,5 +199,6 @@ function validateMobileNumber(contactNumber) {
     document.getElementById("validationResult").textContent = `${contactNumber} is not a valid Sri Lankan mobile number.`;
     document.getElementById("validationResult").className = "not-valid"; // Set the text color to red
 }
+
 
 

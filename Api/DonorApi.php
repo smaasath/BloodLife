@@ -1,5 +1,6 @@
 <?php
 
+
 require_once '../classes/Donor.php';
 require_once '../classes/User.php';
 require_once '../classes/district.php';
@@ -8,13 +9,11 @@ use classes\Donor;
 use classes\User;
 use classes\district;
 
-
 header('Content-Type: application/json');
 
 $headers = getallheaders();
-$authorizationHeader = isset($headers['authorization']) ? $headers['authorization'] : null;
+$authorizationHeader = isset($headers['Authorization']) ? $headers['Authorization'] : (isset($headers['authorization']) ? $headers['authorization'] : null);
 $method = $_SERVER["REQUEST_METHOD"];
-
 
 if ($method === "GET") {
     if (isset($authorizationHeader) && preg_match('/Bearer\s+(.*)$/i', $authorizationHeader, $matches)) {
@@ -22,11 +21,13 @@ if ($method === "GET") {
         $token = $matches[1];
         $user = new User(null, null, null, null, $token, null, null, null, null);
 
-        if ($user->validateToken()) {
+        if ($user->validateToken() && $user->getDonorId() != null ) {
 
             $data = json_decode(file_get_contents("php://input"), true);
 
             $donorId = $user->getDonorId();
+    
+           
 
             $newDonor = Donor::getDonorById($donorId);
             
@@ -34,7 +35,7 @@ if ($method === "GET") {
 
             if ($newDonor == null) {
 
-                echo json_encode(array("message" => false));
+                echo json_encode(array("message" => "Donor Didn't found"));
             } else {
 
                 echo json_encode(
@@ -53,16 +54,17 @@ if ($method === "GET") {
                             "image" => base64_encode($newDonor->getImage()),
                             "bloodBankId" => $newDonor->getBloodBankId(),
                             "district" => $district["district"],
-                            "division" => $district["division"]
+                            "division" => $district["division"],
+                            "message" => true
                         )
                 );
             }
         } else {
 
-            echo json_encode(array("message" => false));
+            echo json_encode(array("message" => "Invalid Token"));
         }
     } else {
-        echo json_encode(array("message" => false));
+        echo json_encode(array("message" => "Header Didn't Find"));
     }
 } else {
     echo json_encode(array("message" => "Invalid request method"));

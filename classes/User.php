@@ -7,7 +7,12 @@
 
 namespace classes;
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 require_once 'DbConnector.php';
+
+
 
 use PDO;
 use PDOException;
@@ -16,7 +21,6 @@ use classes\DbConnector;
 class User {
 
     private $userId;
-    private $UserName;
     private $password;
     private $email;
     private $userRole;
@@ -26,9 +30,8 @@ class User {
     private $donorId;
     private $hospitalId;
 
-    public function __construct($userId, $UserName, $password, $email, $userRole, $Token, $expire, $bloodBankId, $donorId, $hospitalId) {
+    public function __construct($userId, $password, $email, $userRole, $Token, $expire, $bloodBankId, $donorId, $hospitalId) {
         $this->userId = $userId;
-        $this->UserName = $UserName;
         $this->password = $password;
         $this->email = $email;
         $this->userRole = $userRole;
@@ -59,9 +62,6 @@ class User {
         return $this->userId;
     }
 
-    public function getUserName() {
-        return $this->UserName;
-    }
 
     public function getPassword() {
         return $this->password;
@@ -91,9 +91,7 @@ class User {
         $this->userId = $userId;
     }
 
-    public function setUserName($UserName): void {
-        $this->UserName = $UserName;
-    }
+ 
 
     public function setPassword($password): void {
         $this->password = $password;
@@ -156,9 +154,9 @@ class User {
     function donorLogin() {
         $dbcon = new DbConnector;
         $conn = $dbcon->getConnection();
-        $sql = "SELECT * FROM `user` WHERE UserName= ?";
+        $sql = "SELECT * FROM `user` WHERE email= ?";
         $stmt = $conn->prepare($sql);
-        $stmt->bindParam(1, $this->UserName, PDO::PARAM_STR);
+        $stmt->bindParam(1, $this->email, PDO::PARAM_STR);
         $stmt->execute();
 
         if ($stmt->rowCount() > 0) {
@@ -200,10 +198,90 @@ class User {
         if ($rs && $rs->expire > time()) {
             $this->donorId = $rs->donorId;
             $this->bloodBankId = $rs->bloodBankId;
+            $this->userRole=$rs->userRole;
             $this->hospitalId = $rs->hospitalId;
             return true;
         } else {
             return false;
+        }
+    }
+    
+    
+    public static function SendVerificationCode($code,$email) {
+    
+        require '../mail/Exception.php';
+        require '../mail/PHPMailer.php';
+        require '../mail/SMTP.php';
+        $mail = new PHPMailer(true);
+
+        //Server settings
+        $mail->SMTPDebug = 0;                      //Enable verbose debug output
+        $mail->isSMTP();                                            //Send using SMTP
+        $mail->Host = 'smtp.gmail.com';                     //Set the SMTP server to send through
+        $mail->SMTPAuth = true;                                   //Enable SMTP authentication
+        $mail->Username = 'sachinformationsystem@gmail.com';                     //SMTP username
+        $mail->Password = 'upyjmbtlcfckzoke';                               //SMTP password
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+        $mail->Port = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+        //Recipients
+        $mail->setFrom('sachinformationsystem@gmail.com');
+        $mail->addAddress($email);     //Add a recipient             //Name is optional
+        //Content
+        $mail->isHTML(true);                                  //Set email format to HTML
+        $mail->Subject = 'Verification Code';
+        $message = "Your Verification Code :".$code."<br>";   
+        $message .= "Regards,<br>";
+        $message .= "BloodLife";
+
+        $mail->Body = $message;
+
+        try {
+            $mail->send();
+            return true;
+        } catch (Exception $e) {
+            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        }
+    }
+
+    public static function SendMail( $password, $email,$name,$type) {
+        // Create an instance; passing `true` enables exceptions
+
+        require '../mail/Exception.php';
+        require '../mail/PHPMailer.php';
+        require '../mail/SMTP.php';
+        $mail = new PHPMailer(true);
+
+        //Server settings
+        $mail->SMTPDebug = 0;                      //Enable verbose debug output
+        $mail->isSMTP();                                            //Send using SMTP
+        $mail->Host = 'smtp.gmail.com';                     //Set the SMTP server to send through
+        $mail->SMTPAuth = true;                                   //Enable SMTP authentication
+        $mail->Username = 'sachinformationsystem@gmail.com';                     //SMTP username
+        $mail->Password = 'upyjmbtlcfckzoke';                               //SMTP password
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+        $mail->Port = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+        //Recipients
+        $mail->setFrom('sachinformationsystem@gmail.com');
+        $mail->addAddress($email);     //Add a recipient             //Name is optional
+        //Content
+        $mail->isHTML(true);                                  //Set email format to HTML
+        $mail->Subject = $type.' Registration';
+        $message = "Dear ".$name.",<br>";
+        $message .= "Welcome to BloodLife! , " . "<br>";
+        $message .= "your account has been successfully created." . "<br><br>";
+        $message .= "        Your username:     " . $email . "<br>";
+        $message .= "        Your Password:     " . $password . "<br><br><br>";
+        $message .= "Regards,<br>";
+        $message .= "BloodLife";
+        
+
+        $mail->Body = $message;
+
+        try {
+            $mail->send();
+            return true;
+        } catch (Exception $e) {
+            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         }
     }
 

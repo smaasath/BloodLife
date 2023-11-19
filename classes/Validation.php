@@ -8,6 +8,7 @@
 namespace classes;
 
 require_once 'DbConnector.php';
+
 use PDO;
 use PDOException;
 use classes\DbConnector;
@@ -18,8 +19,8 @@ use classes\DbConnector;
  * @author aasad
  */
 class Validation {
-    
-       public static function validateContactNumber($contactNumber) {
+
+    public static function validateContactNumber($contactNumber) {
         // Remove spaces and dashes from the phone number
         $cleanedPhoneNumber = preg_replace('/\s+|-/', '', $contactNumber);
 
@@ -75,8 +76,7 @@ class Validation {
         $encryptedValue = substr($data, 16);
         return openssl_decrypt($encryptedValue, 'aes-256-cbc', $encryptedKey, 0, $iv);
     }
-    
-    
+
     public static function validateAlreadyExist($attibute, $value, $table) {
         try {
             $dbcon = new DbConnector();
@@ -111,10 +111,10 @@ class Validation {
         return $otp;
     }
 
-    static function generateRandomPassword($length = 10) {
+    static function generateRandomPassword() {
         // Define a character pool for generating the password
         $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&';
-
+        $length = 10;
         // Get the total number of characters in the pool
         $characterCount = strlen($characters);
 
@@ -132,25 +132,62 @@ class Validation {
 
         // Return the generated password
         return $password;
-
     }
 
-public static function validateChamDate($startDate,$endDate){
-    $currentDate = new \DateTime();  
-    $inputstartDate = new \DateTime($startDate);
-    $inputendDate = new \DateTime($endDate);
-   
-    
-    return ($inputstartDate>=$currentDate && $inputendDate>=$inputstartDate);
+    public static function validateChamDate($startDate, $endDate) {
+        $currentDate = new \DateTime();
+        $inputstartDate = new \DateTime($startDate);
+        $inputendDate = new \DateTime($endDate);
 
-}
+        return ($inputstartDate >= $currentDate && $inputendDate >= $inputstartDate);
+    }
+
+    public static function validateLettersLength($Title, $length) {
+        $title = trim($Title); // Remove leading and trailing whitespace
+        $title_length = strlen($Title);
+        //$address_length =strlen($address)
+        return $title_length >= $length;
+    }
+
+    static function validateexpirydate($date) {
 
 
-public static function validateLettersLength($Title,$length) {
-    $title = trim($Title); // Remove leading and trailing whitespace
-    $title_length = strlen($Title);
-    //$address_length =strlen($address)
-    return $title_length >= $length;
-}
+        // Get the current date
+        $currentDate = date("Y-m-d");
+
+        if (strtotime($date) >= strtotime($currentDate)) {
+            return true; // Valid date (present or future)
+        }
+
+        return false; // Invalid date (in the past)
+    }
+
+    static function validatequantity($quantity) {
+
+        return preg_match('/^\d{3}$/', $quantity);
+    }
+
+    public static function validatePassword($password) {
+        $pattern = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{6,}$/';
+
+        return preg_match($pattern, $password);
+    }
+
+    public static function validateAttendance($donorId, $campaignId, $tableName) {
+        try {
+            $dbcon = new DbConnector();
+            $con = $dbcon->getConnection();
+
+            $query = "SELECT * FROM `donationtable` WHERE donorId = ? && " . $tableName . " = ?";
+
+            $stmt = $con->prepare($query);
+            $stmt->bindParam(1, $donorId, PDO::PARAM_INT);
+            $stmt->bindParam(2, $campaignId, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
 
 }
