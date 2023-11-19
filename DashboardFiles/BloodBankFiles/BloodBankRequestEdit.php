@@ -1,5 +1,5 @@
 <?php
-$userId = 1;
+if($token){
 ?>
 
 
@@ -100,7 +100,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
     <?php
-// put your code here
+     } else{
+        header('Location: ../../index.php');
+    }
     ?>
 </body>
 </html>

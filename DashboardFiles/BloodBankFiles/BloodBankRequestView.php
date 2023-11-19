@@ -6,7 +6,7 @@ require_once "../phpqrcode/qrlib.php";
 use classes\User;
 use classes\bloodbankhsrequest;
 
-$token = "12b378738a1a6be3bacea473fe9e3d2fbfce8e678d514e1d943";
+if($token){
 $user = new User(null, null, null, null, $token, null, null, null, null);
 $user->validateToken();
 $bankid = $user->getBloodBankId();
@@ -170,7 +170,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
     <?php
+    
     }
+}
+} else{
+    header('Location: ../../index.php');
 }
     ?>
         </body>

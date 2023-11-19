@@ -1,10 +1,10 @@
 <?php
-$userId = 1;
+
 
 require_once '../classes/bloodbankhsrequest.php';
 
 use classes\bloodbankhsrequest;
-$token = "12b378738a1a6be3bacea473fe9e3d2fbfce8e678d514e1d943";
+if($token){
 
 ?>
 <!DOCTYPE html>
@@ -153,7 +153,8 @@ $token = "12b378738a1a6be3bacea473fe9e3d2fbfce8e678d514e1d943";
 
 
     <?php
-    // put your code here
+      header('Location: ../../index.php');
+    }
     ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>

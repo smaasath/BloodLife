@@ -4,7 +4,7 @@ require_once '../classes/Validation.php';
 
 use classes\hospitalrequestclass;
 use classes\Validation;
-$token = "12b378738a1a6be3bacea473fe9e3d2fbfce8e678d514e1d943";
+if($token){
 
 // Check if the 'hospitalRequestID' parameter is set in the URL
 if (isset($_GET['reqid'])) {
@@ -130,6 +130,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
            } else {
             echo "ID not found in the URL.";
         }     
+    } else{
+        header('Location: ../../index.php');
+    }
         ?>
     </body>
 </html>

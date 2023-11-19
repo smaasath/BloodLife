@@ -5,10 +5,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 -->
 <?php
 
-$token = "12b378738a1a6be3bacea473fe9e3d2fbfce8e678d514e1d943";
+
 require_once '../classes/Donor.php';
+require '../classes/district.php';
+
+use classes\district;
 
 use classes\Donor;
+if($token){
 ?>
 <html>
 
@@ -312,9 +316,7 @@ use classes\Donor;
                                             <select name="district" class="form-control form-control-lg" id="district" onchange="functionTest(this.value)">
                                                 <option>Select District</option>
                                                 <?php
-                                                require '../classes/district.php';
-
-                                                use classes\district;
+                                              
 
                                                 $dataArray = district::getAllDistrict(); // Retrieve district data using the "getAllDistrict()" method
 
@@ -704,7 +706,11 @@ use classes\Donor;
 
 
         <?php
-        // put your code here
+
+} else {
+    header('Location: ../../index.php');
+}
+
         ?>
 </body>
 

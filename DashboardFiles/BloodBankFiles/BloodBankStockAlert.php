@@ -5,7 +5,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 -->
 
 <?php
-$token = "12b378738a1a6be3bacea473fe9e3d2fbfce8e678d514e1d943";
+
 
 
 require_once '../classes/Bloodtable.php';
@@ -15,7 +15,7 @@ require_once '../classes/User.php';
 use classes\Bloodtable;
 
 use classes\User;
-
+if($token){
 $user = new User(null, null, null, null, $token, null, null, null, null);
 $validateToken = $user->validateToken();
 $bloodBankId = $user->getBloodBankId();
@@ -144,7 +144,9 @@ $bloodBankId = $user->getBloodBankId();
     </div>
     </div>
     <?php
-    // put your code here  
+     } else{
+        header('Location: ../../index.php');
+    }
     ?>
 
     <form action="../services/Editbloodpackets.php" method="POST" enctype="multipart/form-data">

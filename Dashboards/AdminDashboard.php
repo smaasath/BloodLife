@@ -4,6 +4,8 @@ session_start();
 if (isset($_GET['page'])) {
     $_SESSION['selectedLink'] = $_GET['page'];
 }
+if (isset($_SESSION['Token'])) {
+    $token = $_SESSION['Token'];
 ?>
 
 
@@ -198,7 +200,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
     </div>
     <?php
-// put your code here
+} else{
+    header('Location: ../index.php');
+}
     ?>
 
 

@@ -10,7 +10,7 @@ use classes\district;
 use classes\campaign;
 use classes\User;
 
-$token = "12b378738a1a6be3bacea473fe9e3d2fbfce8e678d514e1d943";
+if($token){
 ?>
 
 <!DOCTYPE html>
@@ -505,6 +505,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </div>
             </div>
             <script src="sweetalert2.all.min.js"></script>
+
+            <?php
+    } else{
+      header('Location: ../../index.php');
+  }
+    ?>
 
 
 </body>
