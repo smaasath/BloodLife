@@ -11,6 +11,8 @@ function AddCampaign(){
 }
 
 function EditCamp(campaignId){
+
+    console.log(campaignId);
     
     $.ajax({url: "../popups/EditCampaign.php",
     method: 'post',
@@ -23,8 +25,20 @@ function EditCamp(campaignId){
 }
 
 
-function ViewChamp(){
+function ViewChamp(campaignId){
+
     
-    $('#ChampView').modal('show'); 
+
+        console.log(campaignId);
         
-}
+        $.ajax({url: "../popups/ViewCampaign.php",
+        method: 'post',
+        data: {campaignId : campaignId },
+        success: function (result) {
+            console.log("success");
+            $("#ViewCampaign").html(result);
+        }});
+            
+    }
+    
+  

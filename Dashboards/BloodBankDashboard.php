@@ -111,7 +111,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         </li>
 
                         <li>
-                            <a href="BloodBankDashboard.php?page=campaign" class="nav-link navbarcolor <?php echo ($_SESSION['selectedLink'] ?? '') === 'campaign' ? 'active' : ''; ?>"  aria-current="page">
+                            <a href="BloodBankDashboard.php?page=campaign" class="nav-link navbarcolor <?php echo ($_SESSION['selectedLink'] ?? '') === 'campaign' ? 'active' : ''; ?><?php echo ($_SESSION['selectedLink'] ?? '') === 'CampaignView' ? 'active' : ''; ?>"  aria-current="page">
 
                                 <div class="row align-items-center justify-content-center">
 
@@ -227,7 +227,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         </li>
 
                         <li>
-                            <a href="BloodBankDashboard.php?page=campaign" class="nav-link navbarcolor <?php echo ($_SESSION['selectedLink'] ?? '') === 'campaign' ? 'active' : ''; ?>"  aria-current="page">
+                            <a href="BloodBankDashboard.php?page=campaign" class="nav-link navbarcolor <?php echo ($_SESSION['selectedLink'] ?? '') === 'campaign' ? 'active' : ''; ?><?php echo ($_SESSION['selectedLink'] ?? '') === 'CampaignView' ? 'active' : ''; ?>"  aria-current="page">
 
                                 <i class="fa-sharp fa-solid fa-house-chimney-medical fa-sm"></i>
 
@@ -314,6 +314,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             include '../DashboardFiles/BloodBankFiles/BloodBankProfile.php';
                         } elseif ($_SESSION['selectedLink'] == "verifydonorgmail") {
                             include '../DashboardFiles/BloodBankFiles/DonorEmailVerification.php';
+                        } elseif ($_SESSION['selectedLink'] == "CampaignView") {
+                            include '../DashboardFiles/BloodBankFiles/BBCampaignView.php';
                         }
                     } else {
                         include '../DashboardFiles/BloodBankFiles/BloodBankHospitalRequest.php';
