@@ -5,7 +5,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 -->
 <?php
 $hospitalId = 1;
-$token = "abcde1234";
+$token = "sankavi";
 
 require_once '../classes/hospital.php';
 require_once '../classes/district.php';
