@@ -8,12 +8,12 @@
 namespace classes;
 
 require '../classes/district.php';
-require '../classes/hospital.php';
+require '../classes/bloodBank.php';
 require '../classes/Validation.php';
 require_once '../classes/User.php';
 
 use classes\district;
-use classes\hospital;
+use classes\bloodBank;
 use classes\Validation;
 use classes\User;
 
@@ -21,27 +21,28 @@ $status = null;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-   
-       if (isset(
-        $_POST["name"],$_POST["address"],$_POST["contactNumber"],
-        $_POST["district"],$_POST["division"],$_POST["token"],$_POST["hospitalId"]
+
+    if (isset(
+        $_POST["bloodBankName"],$_POST["Address"],$_POST["ContactNo"],
+        $_POST["district"],$_POST["division"],$_POST["token"],$_POST["bloodBankId"]
     )) {
 
         //empty value check
         if (
-            !empty($_POST["name"]) && ($_POST["address"]) && ($_POST["contactNumber"]) &&
-            ($_POST["district"]) && ($_POST["division"]) && ($_POST["token"]) && $_POST["hospitalId"]
+            !empty($_POST["bloodBankName"]) && ($_POST["Address"]) && ($_POST["ContactNo"]) &&
+            ($_POST["district"]) && ($_POST["division"]) && ($_POST["token"]) && $_POST["bloodBankId"]
         ) {
 
 
             // sanitizing the inputs
-            $name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
-            $address = filter_var($_POST['address'], FILTER_SANITIZE_STRING);
-            $contactNumber = filter_var($_POST['contactNumber'], FILTER_SANITIZE_STRING);
+            $bloodBankName = filter_var($_POST['bloodBankName'], FILTER_SANITIZE_STRING);
+            $Address = filter_var($_POST['Address'], FILTER_SANITIZE_STRING);
+            $ContactNo = filter_var($_POST['ContactNo'], FILTER_SANITIZE_STRING);
             $token = filter_var($_POST['token'], FILTER_SANITIZE_STRING);
             $district = filter_var($_POST['district'], FILTER_SANITIZE_STRING);
             $division = filter_var($_POST['division'], FILTER_SANITIZE_STRING);
-            $hospitalId = filter_var($_POST['hospitalId'], FILTER_VALIDATE_INT);
+            $bloodBankId = filter_var($_POST['bloodBankId'], FILTER_VALIDATE_INT);
+
 
             $districtId = district::getDistrictIDDD($district, $division);
             // echo $districtId;
@@ -54,8 +55,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             //validations
 
-            
-            $validatePhoneNumber = Validation::validateContactNumber($contactNumber);
+
+            $validatePhoneNumber = Validation::validateContactNumber($ContactNo);
             $validateToken = $user->validateToken();
             $userrole = $user->getUserRole();
 
@@ -68,21 +69,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 //email,phonenumber validation check
                 if ($validatePhoneNumber) {
 
-                    //email,username exist check in db
                    
-                        //create hospital object
-                        $hospital = new hospital($hospitalId, $name, $address, $contactNumber, $districtId);
+                    //create bloodbank object
+                    $bloodbank = new bloodbank($bloodBankId, $bloodBankName, $Address, $ContactNo, $districtId);
 
-                        // if ($hospitals->editHospital($hospitalId, $email)) {
-                        //     echo 'gugu';
-                        // }
+                    
 
-                       if($hospital->editHospital()){
-                        $status =1;
-                       }else{
-                        $status =2;
-                       }
-                  
+                    if ($bloodbank->editBloodbank()) {
+                        $status = 1;
+                    } else {
+                        $status = 2;
+                    }
                 } else {
                     //check status for valitations
                     $status = !$validatePhoneNumber ? 12 : 13;

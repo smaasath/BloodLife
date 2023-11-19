@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <!--
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -16,137 +15,143 @@ use classes\Donor;
 if($token){
 ?>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title></title>
-    </head>
-    <body>
 
-        <!-- nav bar start -->
-        <div class="sticky-top bg-white shadownav" style="height: 50px;">
-            <div class="row m-0 d-flex">
-                <div class="col-8">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
 
-                </div>
+<body>
 
-
-                <div class="col-4">
-                    <div class="row align-items-center">
-                        <div class="col-2 mb-2">
-
-                        </div>
-                        <div class="col-2 mb-2">
-
-                        </div>
-                        <div class="col-2 mb-2">
-
-                        </div>
-                        <div class="col-6 mt-2 	d-none d-xl-block">
-                            <b>Jaffna Blood Bank</b>
-                            <p style="font-size: 10px;">Blood Bank</p>
-                        </div>
-                    </div>
-
-                </div>
-
+    <!-- nav bar start -->
+    <div class="sticky-top bg-white shadownav" style="height: 50px;">
+        <div class="row m-0 d-flex">
+            <div class="col-8">
 
             </div>
-        </div>
-        <!-- nav bar end -->
 
-        <!-- Navigation bar -->
-        <div class="sticky-top bg-white shadownav" style="height: 50px;">
-            <!-- Navigation content here -->
-        </div>
 
-        <!-- Page content -->
-        <div class="container p-5">
-            <!-- Search and Add Donor section -->
-            <?php
-            if (isset($_GET["status"]) && !empty($_GET["status"])) {
-                // $status = Donor::decryptedValue($_GET["status"]);
-
-                
-            }
-            ?>
-            <div class="rounded-top-4 p-0 border border-dark-subtle">
+            <div class="col-4">
                 <div class="row align-items-center">
-                    <!-- Search input -->
-                    <div class="col-3">
-                        <div class="input-group rounded p-3">
-                            <input type="search" class="form-control rounded" placeholder="DonorID" aria-label="Search" aria-describedby="search-addon">
-                        </div>
-                    </div>
+                    <div class="col-2 mb-2">
 
-                    <!-- Blood Group filter -->
-                    <div class="col-3">
-                        <select class="form-control form-control-lg" name="bloodGroup">
-                            <option selected>Select your Blood Group</option>
-                            <option value="A+">A+</option>
-                            <option value="A-">A-</option>
-                            <option value="B+">B+</option>
-                            <option value="B-">B-</option>
-                            <option value="O+">O+</option>
-                            <option value="O-">O-</option>
-                            <option value="AB+">AB+</option>
-                            <option value="AB-">AB-</option>
-                        </select>
                     </div>
+                    <div class="col-2 mb-2">
 
-                    <!-- Add Donor button -->
-                    <div class="col-4"> 
-                        <button type="button" class="btn btn-primary bgcol" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            Add Donor
-                        </button>
+                    </div>
+                    <div class="col-2 mb-2">
+
+                    </div>
+                    <div class="col-6 mt-2 	d-none d-xl-block">
+                        <b>Jaffna Blood Bank</b>
+                        <p style="font-size: 10px;">Blood Bank</p>
                     </div>
                 </div>
+
             </div>
 
-            <!-- Donor table -->
-            <div class="container bg-white mt-4 p-0" style="max-height: 373px; overflow: scroll;">
-                <table class="table table-hover p-0">
-                    <thead>
-                        <tr class="sticky-top">
-                            <th class="col-1 bg-secondary text-dark p-2">DonorID</th>
-                            <th class="col-1 bg-secondary text-dark p-2">Name</th>
-                            <th class="col-1 bg-secondary text-dark p-2">Blood Group</th>
-                            <th class="col-1 bg-secondary text-dark p-2">Location</th>
-                            <th class="col-1 bg-secondary text-dark p-2">Contact No</th>
-                            <th class="col-1 bg-secondary text-dark p-2">Available</th>
-                            <th class="col-1 bg-secondary text-dark p-2">Last Donation</th>
-                            <th class="col-1 bg-secondary text-dark p-2">Edit</th>
-                            <th class="col-1 bg-secondary text-dark p-2">View</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        $requestArray = Donor::getAllDetails();
-                        foreach ($requestArray as $donorArray) {
-                            ?>
-                            <tr>
-                                <td class="col-1"><?php echo $donorArray["donorId"]; ?></td>
-                                <td class="col-1"><?php echo $donorArray["name"]; ?></td>
-                                <td class="col-1"><?php echo $donorArray["bloodGroup"]; ?></td>
-                                <td class="col-1"><?php echo $donorArray["districtId"]; ?></td>
-                                <td class="col-1"><?php echo $donorArray["contactNumber"]; ?></td>
-                                <td class="col-1"><?php echo $donorArray["availability"]; ?></td>
-                                <td class="col-1"><?php echo $donorArray["donationLastDate"]; ?></td>
-                                <td class="col-1">
-                                    <button type="button" class="btn btn-danger" onclick="DonorEdit()" data-bs-toggle="modal" data-bs-target="#DonorEdit">
-                                        Edit
-                                    </button>
-                                </td>
+
+        </div>
+    </div>
+    <!-- body start -->
+
+    <div class="mt-5 m-3 mb-1" style="color:gray;">
+        <h5>Donor</h5>
+        <div class="row  align-items-right justify-content-center">
+                        <img class="d-none d-xl-block" src="../Images/donor1.jpg" style="height:250px;width:400px;align-items: center; " />
+                    </div>
+    </div>
+
+    <!-- Page content -->
+    <div class="container p-2">
+        <!-- Search and Add Donor section -->
+        <?php
+        if (isset($_GET["status"]) && !empty($_GET["status"])) {
+            // $status = Donor::decryptedValue($_GET["status"]);
 
 
-                                <td class="col-1">
-                                    <button type="button" class="btn btn-success" onclick="EditCamp()">
-                                        View
-                                    </button>
-                                </td>
+        }
+        ?>
+        <div class="row bg-white m-1 pt-0  align-items-center justify-content-center rounded-5" style="height: 500px;">
+            <div class="container">
+                <div class="rounded-top-4 p-0 border border-dark-subtle">
+                    <div class="row align-items-center">
+                        <!-- Search input -->
+                        <div class="col-3">
+                            <div class="input-group rounded p-3">
+                                <input type="search" class="form-control rounded" placeholder="DonorID" aria-label="Search" aria-describedby="search-addon">
+                            </div>
+                        </div>
+
+                        <!-- Blood Group filter -->
+                        <div class="col-2">
+                            <select class="form-select" aria-label="Default select example" oninput="teest(this.value)">
+                                <option selected>BloodGroup</option>
+                                <option value="A+">A+</option>
+                                <option value="B+">B+</option>
+                                <option value="O+">O+</option>
+                                <option value="AB+">AB+</option>
+                                <option value="A-">A-</option>
+                                <option value="B-">B-</option>
+                                <option value="AB-">AB-</option>
+                                <option value="O-">O-</option>
+                            </select>
+                        </div>
+
+                        <!-- Add Donor button -->
+                        <div class="col-5">
+                            <button type="button" class="btn btn-danger bgcol" style="display: flex; border-radius: 5px; gap: 5px; margin-left: 450px; width: 80px; height: 40px; justify-content: center; align-items: center;" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <i class="fa-solid fa-user-plus fa-xl" style="color: #f5f5f5;"></i>
+                            </button>
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Donor table -->
+                <div class="container bg-white m-0 p-0" style="max-height: 373px; overflow: scroll;">
+                    <table class="table table-hover p-0">
+                        <thead>
+                            <tr class="sticky-top">
+                                <th class="col-1 bg-secondary text-dark p-2" style="text-align: center;">DonorID</th>
+                                <th class="col-1 bg-secondary text-dark p-2" style="text-align: center;">Name</th>
+                                <th class="col-1 bg-secondary text-dark p-2" style="text-align: center;">Blood Group</th>
+                                <th class="col-1 bg-secondary text-dark p-2" style="text-align: center;">Location</th>
+                                <th class="col-1 bg-secondary text-dark p-2" style="text-align: center;">Contact No</th>
+                                <th class="col-1 bg-secondary text-dark p-2" style="text-align: center;">Available</th>
+                                <th class="col-1 bg-secondary text-dark p-2" style="text-align: center;">Last Donation</th>
+                                <th class="col-1 bg-secondary text-dark p-2" style="text-align: center;">Edit</th>
+                                <th class="col-1 bg-secondary text-dark p-2" style="text-align: center;">View</th>
                             </tr>
-                        <?php } ?> 
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $requestArray = Donor::getAllDetails();
+                            foreach ($requestArray as $donorArray) {
+                            ?>
+                                <tr>
+                                    <td class="col-1"><?php echo $donorArray["donorId"]; ?></td>
+                                    <td class="col-1"><?php echo $donorArray["name"]; ?></td>
+                                    <td class="col-1"><?php echo $donorArray["bloodGroup"]; ?></td>
+                                    <td class="col-1"><?php echo $donorArray["districtId"]; ?></td>
+                                    <td class="col-1"><?php echo $donorArray["contactNumber"]; ?></td>
+                                    <td class="col-1"><?php echo $donorArray["availability"]; ?></td>
+                                    <td class="col-1"><?php echo $donorArray["donationLastDate"]; ?></td>
+                                    <td class="col-1">
+                                        <i class="fas fa-edit fa-lg" style="color: #f21818;" onclick="DonorEdit()" data-bs-toggle="modal" data-bs-target="#DonorEdit"></i>
+
+                                    </td>
+
+
+                                    <td class="col-1"><i class="fa-solid fa-eye fa-xl" style="color: #afacac;" onclick="EditCamp()"></i>
+
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
@@ -198,11 +203,11 @@ if($token){
 
 
         <script>
-            document.addEventListener('DOMContentLoaded', function () {
+            document.addEventListener('DOMContentLoaded', function() {
                 const passwordInput = document.getElementById('password');
                 const generatePasswordButton = document.getElementById('generatePassword');
 
-                generatePasswordButton.addEventListener('click', function () {
+                generatePasswordButton.addEventListener('click', function() {
                     const passwordLength = 12; // Adjust the desired password length
                     const randomPassword = generateRandomPassword(passwordLength);
                     passwordInput.value = randomPassword;
@@ -249,7 +254,7 @@ if($token){
                                     <h6>Name</h6>
                                 </div>
                                 <div class="col-9">
-                                    <input type="text"  name="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    <input type="text" name="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                                 </div>
                             </div>
 
@@ -280,7 +285,7 @@ if($token){
                                     <h6>Date Of Birth</h6>
                                 </div>
                                 <div class="col-9">
-                                    <input type="date"  name="dob" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    <input type="date" name="dob" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                                 </div>
                             </div>
 
@@ -290,7 +295,7 @@ if($token){
                                     <h6>Contact No</h6>
                                 </div>
                                 <div class="col-9">
-                                    <input type="text" name="contactNumber" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"  required id="contactNumberInput" oninput="validateMobileNumber(this.value)">
+                                    <input type="text" name="contactNumber" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required id="contactNumberInput" oninput="validateMobileNumber(this.value)">
                                     <p id="validationResult"></p>
                                 </div>
                             </div>
@@ -313,23 +318,23 @@ if($token){
                                                 <?php
                                               
 
-$dataArray = district::getAllDistrict(); // Retrieve district data using the "getAllDistrict()" method
+                                                $dataArray = district::getAllDistrict(); // Retrieve district data using the "getAllDistrict()" method
 
                                                 foreach ($dataArray as $district) {
-                                                    ?>
+                                                ?>
 
-                                                    <option  value="<?php echo $district['district']; ?>"><?php echo $district['district']; ?></option>
-                                                    <?php
+                                                    <option value="<?php echo $district['district']; ?>"><?php echo $district['district']; ?></option>
+                                                <?php
                                                 }
                                                 ?>
-                                            </select> 
+                                            </select>
                                         </div>
                                         <div class="col-6">
 
                                             <select name="division" class="form-control form-control-lg" id="divisionDropDown" onchange="getBloodBank(this.value)">
 
 
-                                            </select>  
+                                            </select>
                                         </div>
 
                                     </div>
@@ -343,14 +348,14 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
                                     <h6>NIC</h6>
                                 </div>
                                 <div class="col-9">
-                                    <input type="text"  name="nic" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    <input type="text" name="nic" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                                 </div>
                             </div>
 
 
 
 
- 
+
 
 
 
@@ -374,7 +379,7 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
                                     <h6>Username</h6>
                                 </div>
                                 <div class="col-9">
-                                    <input type="text"  name="UserName" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    <input type="text" name="UserName" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                                 </div>
                             </div>
 
@@ -387,14 +392,14 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
                                         <h6>Email</h6>
                                     </div>
                                     <div class="col-9">
-                                        <input type="email"  name="email" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                        <input type="email" name="email" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                                     </div>
                                 </div>
                                 <input type="hidden" name="token" value="<?php echo $token; ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
 
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary" >Add Donor</button>
+                                    <button type="submit" class="btn btn-primary">Add Donor</button>
                                 </div>
                             </div>
 
@@ -433,7 +438,7 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
                                 <h6> Name</h6>
                             </div>
                             <div class="col-9">
-                                <input type="text"  name="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                <input type="text" name="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                             </div>
                         </div>
 
@@ -455,7 +460,7 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
                                 <h6>DateOfBirth</h6>
                             </div>
                             <div class="col-9">
-                                <input type="date"  name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                <input type="date" name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                             </div>
                         </div>
 
@@ -464,7 +469,7 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
                                 <h6>Age</h6>
                             </div>
                             <div class="col-9">
-                                <input type="text "  name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                <input type="text " name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                             </div>
                         </div>
                         <div class="row align-items-center pb-3">
@@ -472,7 +477,7 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
                                 <h6>Phone No</h6>
                             </div>
                             <div class="col-9">
-                                <input type="text"  name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                <input type="text" name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                             </div>
                         </div>
                         <div class="row align-items-center pb-3">
@@ -480,7 +485,7 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
                                 <h6>NIC</h6>
                             </div>
                             <div class="col-9">
-                                <input type="text"  name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                <input type="text" name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                             </div>
                         </div>
                         <div class="row align-items-center pb-3">
@@ -515,7 +520,7 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
                                 <h6>No Of Donation</h6>
                             </div>
                             <div class="col-9">
-                                <input type="text"  name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                <input type="text" name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                             </div>
                         </div>
 
@@ -524,7 +529,7 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
                                 <h6>coin Value</h6>
                             </div>
                             <div class="col-9">
-                                <input type="text"  name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                <input type="text" name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                             </div>
                         </div>
 
@@ -533,7 +538,7 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
                                 <h6>Donation Last Date</h6>
                             </div>
                             <div class="col-9">
-                                <input type="date"  name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                <input type="date" name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                             </div>
                         </div>
 
@@ -542,7 +547,7 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
                                 <h6>availability</h6>
                             </div>
                             <div class="col-9">
-                                <input type="text"  name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                <input type="text" name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                             </div>
                         </div>
                     </div>
@@ -552,7 +557,7 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary">delete</button>
                         <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Back</button>
-                        <button type="button" class="btn btn-secondary" >Save</button>
+                        <button type="button" class="btn btn-secondary">Save</button>
                     </div>
                 </div>
             </div>
@@ -679,11 +684,11 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
                             </thead>
                             <tbody>
 
-                            <th scope="row">1</th>
-                            <td>D004</td>
-                            <td>07/12/2022</td>
-                            <td>BloodBank</td>
-                            </tr>
+                                <th scope="row">1</th>
+                                <td>D004</td>
+                                <td>07/12/2022</td>
+                                <td>BloodBank</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -701,9 +706,12 @@ $dataArray = district::getAllDistrict(); // Retrieve district data using the "ge
 
 
         <?php
+
 } else {
     header('Location: ../../index.php');
 }
+
         ?>
-    </body>
+</body>
+
 </html>

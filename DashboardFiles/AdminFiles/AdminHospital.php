@@ -4,8 +4,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to edit this template
 -->
 <?php
-$hospitalId = 1;
-$token = "sankavi";
+
 
 require_once '../classes/hospital.php';
 require_once '../classes/district.php';
@@ -427,11 +426,8 @@ use classes\district;
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <div  id="hoapitlEdit">
-
-
-
-                    </div>
+                        <div  id="hoapitlEdit"></div>
+                        <input type="hidden" name="token" value="<?php echo $token; ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                     </div>
 
                     <div class="modal-footer">
