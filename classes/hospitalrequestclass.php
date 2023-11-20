@@ -124,11 +124,37 @@ class hospitalrequestclass {
             $dbcon = new DbConnector();
             $con = $dbcon->getConnection();
 
-            $query = "SELECT * FROM `hospitalrequest` ORDER BY `hospitalRequestID` DESC";
+            $query = "SELECT * FROM `hospitalrequest`  ORDER BY `hospitalRequestID` DESC";
 
 
 
             $stmt = $con->prepare($query);
+            
+            $stmt->execute();
+
+            $dataArray = array();
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $dataArray[] = $row;
+            }
+
+            return $dataArray;
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+
+
+    public static function getAllRequestbyHOSID($id) {
+        try {
+            $dbcon = new DbConnector();
+            $con = $dbcon->getConnection();
+
+            $query = "SELECT * FROM `hospitalrequest` WHERE `hospitalId` = ?  ORDER BY `hospitalRequestID` DESC";
+
+
+
+            $stmt = $con->prepare($query);
+            $stmt->bindValue(1, $id);
             $stmt->execute();
 
             $dataArray = array();
@@ -173,7 +199,11 @@ class hospitalrequestclass {
         $con = $dbcon->getConnection();
 
         // Define the SQL query with a placeholder for hospitalRequestID
-        $query = "SELECT * FROM `hospitalrequest` WHERE hospitalRequestID=? ";
+        $query = "SELECT hospitalrequest.*, hospital.districtId, hospital.name, district.district
+        FROM hospitalrequest
+        INNER JOIN hospital ON hospitalrequest.hospitalId = hospital.hospitalId
+        INNER JOIN district ON hospital.districtId = district.districtId
+        WHERE hospitalrequest.hospitalRequestID = ?";
         
         // Prepare the SQL statement
         $stmt = $con->prepare($query);

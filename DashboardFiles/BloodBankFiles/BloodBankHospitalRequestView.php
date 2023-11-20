@@ -15,7 +15,7 @@ $bankid = $user->getBloodBankId();
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     if (isset($_GET["bhreqid"])) {
-        $BReqId = Validation::decryptedValue($_GET["bhreqid"]);
+        $BReqId =$_GET["bhreqid"];
      
 
 
