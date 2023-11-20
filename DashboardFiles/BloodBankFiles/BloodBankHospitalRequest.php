@@ -74,12 +74,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                 <div class="col-4">
 
-                    <div class="bg-white p-3  m-2" style="width: 270px; height: 200px;   border-radius:10px;box-shadow: rgba(0, 0, 0, 0.16) 0px 8px 8px; background: <?php echo hospitalrequestclass::getHospitalStatusGradient($datAarray["requestStatus"]); ?>; ">
+                    <div class="bg-white p-2  m-2" style="width: 270px; height: 230px;   border-radius:10px;box-shadow: rgba(0, 0, 0, 0.16) 0px 8px 8px; background: <?php echo hospitalrequestclass::getHospitalStatusGradient($datAarray["requestStatus"]); ?>; ">
                         <a href="../Dashboards/BloodBankDashboard.php?page=bbhrv&&bhreqid=<?php echo Validation::encryptedValue($datAarray["hospitalRequestID"]); ?>" style="text-decoration: none;">
 
                             <div class="row">
                                 <div class="col">
-                                    <p class="m-b-0 text-white"  style="margin-top: 5px"><strong><?php echo $datAarray["hospitalRequestID"]; ?></strong><span class="f-right" style="margin-left:140px;font-weight: bold"><?php echo $datAarray["bloodGroup"]; ?></span></p>
+                                    <p class="m-b-0 text-black"  style="margin-top: 5px"><strong>HR <?php echo $datAarray["hospitalRequestID"]; ?></strong><span class="f-right" style="margin-left:100px;font-weight: bold;font-size: ;"><?php echo $datAarray["bloodGroup"]; ?></span></p>
                                 </div>
                             </div>
                             <div class="row text-white" >
@@ -92,14 +92,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             </div>
                             <div class="row text-white">
                                 <div class="col">
-                                    <?php echo $datAarray["bloodQuantity"]; ?>
+                                    <?php echo $datAarray["bloodQuantity"]; ?>ml
                                 </div>
                                
                             </div><br>                        
 
                             <div class="row">
                                 <div class="col">
-                                    <p class="m-b-0 text-white"><?php echo $datAarray["createdDate"]; ?><span class="f-right" style="margin-left:30px;font-weight: bold"><?php echo $datAarray["requestStatus"]; ?></span></p> 
+                                    <p class="m-b-0 text-white"><?php echo $datAarray["createdDate"]; ?><span class="f-right" style="margin-left:70px;font-weight: bold"><?php echo $datAarray["requestStatus"]; ?></span></p> 
                                 </div>       
                             </div>
                         </a>
