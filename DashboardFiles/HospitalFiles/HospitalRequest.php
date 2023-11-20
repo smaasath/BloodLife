@@ -165,7 +165,7 @@ use classes\hospitalrequestclass;
         </div>
         <div class="row bg-white m-3 pt-0 align-items-center p-3 justify-content-start rounded-3 d-flex">
             <?php
-            $requestArray = hospitalrequestclass::getAllRequest();
+            $requestArray = hospitalrequestclass::getAllRequestbyHOSID($user->getHospitalId());
 
             foreach ($requestArray as $datAarray) {
             ?>
