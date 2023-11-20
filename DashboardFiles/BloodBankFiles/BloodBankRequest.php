@@ -89,6 +89,7 @@ $bankid = $user->getBloodBankId();
         <?php
         $detailsArray = bloodbankhsrequest::getAllBloodBankReqByBankID($bankid);
         $test = bloodbankhsrequest::getBloodBankReqByBankID($bankid, "O+");
+        
 
         ?>
 
