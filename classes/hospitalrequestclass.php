@@ -218,27 +218,12 @@ class hospitalrequestclass {
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
         // Handle the result as needed
-        if ($result) {
-            // Create a new hospitalrequestclass object using the retrieved data
-            $newReq = new hospitalrequestclass(
-                $hospitalRequestID,
-                $result["createdDate"],
-                $result["bloodQuantity"],
-                $result["bloodGroup"],
-                $result["requestStatus"],
-                $result["hospitalId"]
-            );
-            
-            return $newReq;
-        } else {
-            // Return null or handle the case where no records are found
-            return false;
-        }
-
+         return $result;
+     
     } catch (PDOException $e) {
         // Handle the error or log it as needed
         echo "Error: " . $e->getMessage();
-        return null;
+        return false;
     }
 }
 
