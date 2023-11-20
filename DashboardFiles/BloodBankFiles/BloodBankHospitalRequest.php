@@ -107,6 +107,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         }
                     }
 
+
                     let array = <?php echo json_encode($requestArray) ?>;
                     let filterArray;
                     showall(array);
@@ -130,6 +131,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                 </div>
                                 <div class="col">
                                     <p class="m-b-0 text-white"  style="margin-top: 5px"><strong>${item.bloodQuantity}</strong><span class="f-right" style="margin-left:140px;font-weight: bold"></span></p>
+
                                 </div>
                             </div>
                             <div class="row text-white" >
@@ -142,14 +144,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             </div>
                             <div class="row text-white">
                                 <div class="col">
+
                                 <div class="col-6" style="height: 30px">${item.requestStatus}</div>
+
                                 </div>
                                 <div class="col-6" style="height: 30px">${item.	createdDate}</div>
                             </div><br>                        
 
                             <div class="row">
                                 <div class="col">
+
                                     <p class="m-b-0 text-white"><span class="f-right" style="margin-left:30px;font-weight: bold"></span></p> 
+
                                 </div>       
                             </div>
                         </a>
