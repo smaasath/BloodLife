@@ -199,7 +199,11 @@ class hospitalrequestclass {
         $con = $dbcon->getConnection();
 
         // Define the SQL query with a placeholder for hospitalRequestID
-        $query = "SELECT * FROM `hospitalrequest` WHERE hospitalRequestID=? ";
+        $query = "SELECT hospitalrequest.*, hospital.districtId, hospital.name, district.district
+        FROM hospitalrequest
+        INNER JOIN hospital ON hospitalrequest.hospitalId = hospital.hospitalId
+        INNER JOIN district ON hospital.districtId = district.districtId
+        WHERE hospitalrequest.hospitalRequestID = ?";
         
         // Prepare the SQL statement
         $stmt = $con->prepare($query);
