@@ -112,7 +112,7 @@ $bloodBankId = $user->getBloodBankId();
 
             <!-- table -->
             <br>
-            <div class="row bg-white m-3 pt-0  align-items-center justify-content-center rounded-5" style="height: 500px;">
+            <div class="row bg-white m-3 pt-0  align-items-center justify-content-center rounded-5" style="height: 300px;">
 
 
                 <div class="rounded-top-4 p-0 border border-dark-subtle">
