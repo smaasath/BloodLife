@@ -14,30 +14,7 @@ $status=null;
 
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // echo "aasadh";
-    
-    // if (isset(
-    //     $_POST["uname"],$_POST["opsw"],$_POST["psw"],
-    //     $_POST["cpsw"], $_POST["token"]
-    // )) {
-    //     $username = $_POST['uname'];
-    //     $oldPassword = $_POST['opsw'];
-    //     $newPassword = $_POST['psw'];
-    //     $confirmNewPassword = $_POST['cpsw'];
-    //     $token = $_POST["token"];  
-
-    //     echo $token;
-    //     echo $username;
-    //     echo $oldPassword;
-    //     echo $newPassword;
-    //     echo $confirmNewPassword;
-        
-    // } else {
-    //     //status for isset value
-    //     $status = 17;
-    // }
-
-
+   
     $user = new User(null, null, null, null, $token, null, null, null, null);
 
 
@@ -79,11 +56,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 echo $status;
 
-
-// }else{
-//     $status=1;
-// }
-// echo $status;
 
 
  
