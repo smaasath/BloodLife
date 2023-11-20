@@ -72,7 +72,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         </div>
 
         <?php
-        $hospitalrequesteditobj = hospitalrequestclass::getRequestwithHospitalusingID($id);
+        $datAarray = hospitalrequestclass::getRequestwithHospitalusingID($id);
 
 
         ?>
@@ -83,7 +83,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <form action="../services/editrequest.php"  method="POST">
                     <label for="BloodGroup">BloodGroup:</label>
                     <select class="form-select" name="bloodGroup" aria-laquantitybel="Default select example" required>
-                        <option value="<?php echo $hospitalrequesteditobj->getBloodGroup() ?>" selected><?php echo $hospitalrequesteditobj->getBloodGroup() ?></option>
+                        <option value="<?php echo $datAarray["bloodGroup"]; ?>" selected><?php echo $datAarray["bloodGroup"]; ?></option>
                         <option value="A+">A+</option>
                         <option value="A-">A-</option>
                         <option value="B+">B+</option>
@@ -95,14 +95,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     </select>
 
                     <label for="Quantity">Date:</label>
-                    <input type="date" class="form-control" name="expiryDate" value="<?php echo  $hospitalrequesteditobj->getCreateDate(); ?>" required>
+                    <input type="date" class="form-control" name="expiryDate" value="<?php echo $datAarray["createdDate"]; ?>" required>
                     <label for="ExpiryDate"> Blood Quantity:</label>
-                    <input type="number" class="form-control" name="bloodQuantity" value="<?php echo  $hospitalrequesteditobj->getBloodQuantity(); ?>" maxlength="3" required>
+                    <input type="number" class="form-control" name="bloodQuantity" value="<?php echo $datAarray["bloodQuantity"]; ?>" maxlength="3" required>
                     <label for="status">Status:</label>
 
                     <select class="form-select" name="requestStatus" aria-laquantitybel="Default select example" required>
                         <option value="" selected></option>
-                        <option value="<?php echo $hospitalrequesteditobj->getRequestStatus() ?>" selected><?php echo $hospitalrequesteditobj->getRequestStatus() ?></option>
+                        <option value="<?php echo $datAarray["requestStatus"]; ?>" selected><?php echo $datAarray["requestStatus"]; ?></option>
                         <option value="Available">Normal</option>
                         <option value="Given">Emergency</option>
                         <option value="Expired">Urgent</option>
