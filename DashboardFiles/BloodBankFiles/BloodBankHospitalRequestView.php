@@ -1,7 +1,7 @@
 <?php
 require_once "../classes/hospitalrequestclass.php";
 require_once "../classes/Validation.php";
-require_once "../phpqrcode/qrlib.php";
+
 
 use classes\hospitalrequestclass;
 use classes\Validation;
