@@ -101,20 +101,20 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                     <div class="col m-2">
                                         <div class="form-group">
                                             <label for="blood-group">Blood Group</label>
-                                            <input type="text" name="bloodGroup" value="<?php echo $requestObj["hospitalRequestID"]; ?>" readonly>
+                                            <input type="text" name="bloodGroup" value="<?php echo $requestObj["bloodGroup"]; ?>" readonly>
                                         </div>
                                         <div class="form-group">
                                             <label for="quantity">Quantity</label>
-                                            <input type="number" name="bloodQuantity" value="<?php ?>" readonly>
+                                            <input type="number" name="bloodQuantity" value="<?php echo $requestObj["bloodQuantity"] ?>" readonly>
                                         </div>
 
                                         <div class="form-group">
                                             <label for="status">Status</label>
-                                            <input type="text" name="requestStatus" value="<?php  ?>" readonly>
+                                            <input type="text" name="requestStatus" value="<?php echo $requestObj["requestStatus"]  ?>" readonly>
                                         </div>
                                         <div class="form-group">
                                             <label for="hospital-id">HospitalRequest ID</label>
-                                            <input type="text" name="hospitalRequestId" value="<?php  ?>" readonly>
+                                            <input type="text" name="hospitalRequestId" value="<?php echo $requestObj["hospitalRequestID"]; ?>" readonly>
                                         </div>
 
                                         <div class="form-group">
