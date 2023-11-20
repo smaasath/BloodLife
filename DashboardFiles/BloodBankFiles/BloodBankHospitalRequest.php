@@ -79,7 +79,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                             <div class="row">
                                 <div class="col">
-                                    <p class="m-b-0 text-black"  style="margin-top: 5px"><strong>HR <?php echo $datAarray["hospitalRequestID"]; ?></strong><span class="f-right" style="margin-left:100px;font-weight: bold;font-size: ;"><?php echo $datAarray["bloodGroup"]; ?></span></p>
+                                    <p class="m-b-0 text-black"  style="margin-top: 5px"><strong>HR <?php echo $datAarray["hospitalRequestID"]; ?></strong><span class="f-right" style="margin-left:140px;font-weight: bold;font-size:25px ;"><?php echo $datAarray["bloodGroup"]; ?></span></p>
                                 </div>
                             </div>
                             <div class="row text-white" >
@@ -92,7 +92,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             </div>
                             <div class="row text-white">
                                 <div class="col">
-                                    <?php echo $datAarray["bloodQuantity"]; ?>ml
+                                   <p style="font-weight: bold; color-"><?php echo $datAarray["bloodQuantity"]; ?>ml</p> 
                                 </div>
                                
                             </div><br>                        
