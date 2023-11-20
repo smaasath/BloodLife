@@ -94,7 +94,7 @@ if (isset($_COOKIE["remember_me"])) {
         $status = 03;
     }
 } else {
-    $status = 105;
+    header('Location: ../index.php');
 }
 
 echo $status;
