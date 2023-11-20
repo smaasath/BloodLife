@@ -338,4 +338,67 @@ class User
             return false;
         }
     }
+
+    public function verifyPassword($email, $password)
+{
+    try {
+        $dbcon = new DbConnector;
+        $conn = $dbcon->getConnection();
+
+        // Use prepared statements to prevent SQL injection
+        $query = "SELECT * FROM `user` WHERE `email` = ?";
+        $pstmt = $conn->prepare($query);
+        $pstmt->bindValue(1, $email);
+
+        // Execute the query
+        $pstmt->execute();
+
+        // Get the result
+        $result = $pstmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($result) {
+            // Verify the password using password_verify
+            if (password_verify($password, $result['password'])) {
+                // Username and password match
+                return true;
+            }
+        }
+
+        // Username and password do not match
+        return false;
+    } catch (PDOException $e) {
+        // Handle the exception (e.g., log the error)
+        // You may want to customize this part based on your error handling strategy
+        error_log("Error: " . $e->getMessage());
+        return false;
+    } finally {
+        // Close the connection in a finally block to ensure it always happens
+        if ($conn) {
+            $conn = null;
+        }
+    }
+}
+
+
+    public function changePassword($email, $newPassword)
+    {
+        $dbcon = new DbConnector;
+        $conn = $dbcon->getConnection();
+        $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+
+        // Update the user's password in the database
+        $query = "UPDATE `user` SET `password` =? WHERE `email` = ?";
+        $pstmt = $conn->prepare($query);
+        $pstmt->bindParam(1, $hashedPassword, PDO::PARAM_STR);
+        $pstmt->bindParam(2, $email, PDO::PARAM_STR);
+        if ($pstmt->execute()) {
+            $conn = null; // Close the connection
+            return true;
+        } else {
+            $conn = null; // Close the connection
+        return false;
+        }
+
+        
+    }
 }
