@@ -55,13 +55,13 @@ $bankid = $user->getBloodBankId();
 
     <!-- body start -->
     <div class="mt-5 m-3 mb-1" style="color:gray;">
-            <h5>Bloodbank Request </h5>
-</div>
+        <h5>Bloodbank Request </h5>
+    </div>
     <div class="text-center">
         <a href="../Dashboards/BloodBankDashboard.php?page=bbhra"><button type="button" class="btn btn-primary">Add Request</button></a>
     </div>
 
-   
+
 
 
 
@@ -72,7 +72,7 @@ $bankid = $user->getBloodBankId();
     <div class="container">
         <div class="row p-3">
             <div class="col-6">
-            <input type="search" id="search" class="form-control rounded" placeholder="Search Name" aria-label="Search" aria-describedby="search-addon" oninput="teeest(this.value)">
+                <input type="search" id="search" class="form-control rounded" placeholder="Search Name" aria-label="Search" aria-describedby="search-addon" oninput="teeest(this.value)">
             </div>
             <div class="col-6">
                 <select class="form-select" aria-label="Default select example" oninput="teest(this.value)">
@@ -88,8 +88,12 @@ $bankid = $user->getBloodBankId();
         </div>
         <?php
         $detailsArray = bloodbankhsrequest::getAllBloodBankReqByBankID($bankid);
+<<<<<<< HEAD
         $test = bloodbankhsrequest::getBloodBankReqByBankID($bankid, "O+");
         
+=======
+       
+>>>>>>> a84efb5989feca705fee75787ad07abba452fe40
 
         ?>
 
@@ -145,10 +149,10 @@ $bankid = $user->getBloodBankId();
                                         </div>
 
                                         <div class="row mt-1 p-1 justify-content-end">
-                                        <div class="col-6 d-flex justify-content-around">
+                                         <div class="col-6 d-flex justify-content-around">
                                             <div style="width: 25px"> <a href="../Dashboards/BloodBankDashboard.php?page=bbre&&hreqedit=${item.bloodBankRequestId}"><img src="../Images/icons8-edit-24.png" style="width: 20px;" /></a></div>
                                             <div style="width: 25px"><a href="../Dashboards/BloodBankDashboard.php?page=bbrv&&breqId=${item.bloodBankRequestId}"><img style="width: 20px;" src="../Images/icons8-view-90.png" /></a></div>
-                                        </div>
+                                         </div>
                                         </div>
                                     </div>`;
 
@@ -191,8 +195,7 @@ $bankid = $user->getBloodBankId();
 
                         var id = parseInt(test, 10);
 
-
-                        filterArray = array.filter((item) => item.bloodBankRequestId === id);
+                        filterArray = array.filter((item) => item.bloodBankRequestId.toString().includes(id.toString()));
 
 
 
@@ -231,9 +234,9 @@ $bankid = $user->getBloodBankId();
                                         </div>
                                     </div>`;
 
+                                var divElement = document.createElement("div");
 
-
-                                var divElement = document.createElement("tr");
+                                divElement.style = "width:300px";
 
 
                                 divElement.innerHTML = htmlCode;
@@ -276,7 +279,7 @@ $bankid = $user->getBloodBankId();
 
 
     <?php
-      
+
     ?>
 </body>
 
