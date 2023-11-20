@@ -124,11 +124,37 @@ class hospitalrequestclass {
             $dbcon = new DbConnector();
             $con = $dbcon->getConnection();
 
-            $query = "SELECT * FROM `hospitalrequest` ORDER BY `hospitalRequestID` DESC";
+            $query = "SELECT * FROM `hospitalrequest`  ORDER BY `hospitalRequestID` DESC";
 
 
 
             $stmt = $con->prepare($query);
+            
+            $stmt->execute();
+
+            $dataArray = array();
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $dataArray[] = $row;
+            }
+
+            return $dataArray;
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+
+
+    public static function getAllRequestbyHOSID($id) {
+        try {
+            $dbcon = new DbConnector();
+            $con = $dbcon->getConnection();
+
+            $query = "SELECT * FROM `hospitalrequest` WHERE `hospitalId` = ?  ORDER BY `hospitalRequestID` DESC";
+
+
+
+            $stmt = $con->prepare($query);
+            $stmt->bindValue(1, $id);
             $stmt->execute();
 
             $dataArray = array();

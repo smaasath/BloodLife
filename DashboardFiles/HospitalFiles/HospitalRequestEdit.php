@@ -1,5 +1,5 @@
 <?php
-$userId = 1;
+
 
 require_once '../classes/hospitalrequestclass.php';
 require_once '../classes/Validation.php';
