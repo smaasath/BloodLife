@@ -30,7 +30,7 @@
                                      <h6>DonorID</h6>
                                  </div>
                                  <div class="col-7 pl-4 justify-content-center">
-                                 <?php echo $Donor->getname(); ?>
+                                 <?php echo $Donor->getDonorId(); ?>
                                  </div>
                              </div>
 
