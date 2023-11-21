@@ -61,12 +61,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
 
     $districtId = district::getDistrictIDDD($district, $division);
-    // echo $districtId;
+   
     
-
-    // bloodBank::AddBloodBank($bloodBankName, $Address, $ContactNo, $districtId, $email, $UserName, $password);
-    // echo "success";
-
      //create user object with token
    $user = new User(null, null, null, null, $token, null, null, null, null);
     

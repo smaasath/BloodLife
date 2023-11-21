@@ -258,69 +258,7 @@ use classes\district;
         <br>
     </div>
 
-    <!-- </div> -->
-
-
-
-
-    <!--Save Popup editbloodbank-->
-    <!-- Modal -->
-    <!-- <div class="modal fade" id="savePopup3" tabindex="-1" aria-labelledby="savePopup3Label" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="savePopup3Label1"></h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-
-                <div class="modal-body">
-
-                    <h1>Do you want to save the changes?</h1>
-
-                </div>
-                <div class="modal-footer">
-
-                    <button type="button" class="btn btn-primary">Save </button>
-                    <button type="button" class="btn btn-danger">Don't Save </button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="EditBloodbankDetails()">cancel</button>
-
-                </div>
-            </div>
-        </div>
-    </div>
-    </div> -->
-
-    <!--Delete Popup editbloodbank-->
-    <!-- Modal -->
-    <!-- <div class="modal fade" id="deletePopup3" tabindex="-1" aria-labelledby="deletePopup3Label" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="deletePopup3Label1"></h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="modal-body">
-
-                        <h1>Do you want to delete the changes?</h1>
-
-                    </div>
-                    <div class="modal-footer">
-
-                        <button type="button" class="btn btn-primary">No </button>
-                        <button type="button" class="btn btn-danger">Yes </button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="AddBloodbank()">cancel</button>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-
-
-
-
-
+   
 
     <!--add blood bank-->
     <!-- Modal -->
@@ -477,9 +415,9 @@ use classes\district;
 
 
 
-    <!--Save Popup viewbloodbank-->
+    <!-- Save Popup viewbloodbank -->
     <!-- Modal -->
-    <div class="modal fade" id="savePopup2" tabindex="-1" aria-labelledby="savePopup2Label" aria-hidden="true">
+    <!-- <div class="modal fade" id="savePopup2" tabindex="-1" aria-labelledby="savePopup2Label" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -502,11 +440,11 @@ use classes\district;
             </div>
         </div>
     </div>
-    </div>
+    </div> -->
 
     <!--Delete Popup viewbloodbank-->
     <!-- Modal -->
-    <div class="modal fade" id="deletePopup2" tabindex="-1" aria-labelledby="deletePopup2Label" aria-hidden="true">
+    <!-- <div class="modal fade" id="deletePopup2" tabindex="-1" aria-labelledby="deletePopup2Label" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -530,7 +468,7 @@ use classes\district;
             </div>
         </div>
     </div>
-    </div>
+    </div> -->
 
 
 

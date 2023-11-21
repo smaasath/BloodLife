@@ -84,7 +84,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </select>
             </div>
         </div>
-        <div class="row bg-white m-3 pt-0 align-items-center p-3 justify-content-start rounded-3 d-flex" id="output">
+        <div class="row bg-white m-3 pt-0 align-items-center p-3 d-flex justify-content-around rounded-3" id="output">
 
             <?php
             $requestArray = hospitalrequestclass::getAllRequestwithHospitalDetails();
@@ -92,76 +92,179 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
             ?>
 
-           
-                <script>
-                    function getHospitalStatusGradient(status) {
-                        switch (status) {
-                            case "Normal":
-                                return "linear-gradient(45deg,#4099ff,#73b4ff)";
-                            case "Urgent":
-                                return "linear-gradient(45deg,#FF5370,#ff869a)";
-                            case "Emergency":
-                                return "linear-gradient(45deg,#FFB64D,#ffcb80)";
-                            default:
-                                return "linear-gradient(45deg,#4099ff,#73b4ff)";
-                        }
+
+            <script>
+                function getHospitalStatusGradient(status) {
+                    switch (status) {
+                        case "Normal":
+                            return "linear-gradient(45deg,#4099ff,#73b4ff)";
+                        case "Urgent":
+                            return "linear-gradient(45deg,#FF5370,#ff869a)";
+                        case "Emergency":
+                            return "linear-gradient(45deg,#FFB64D,#ffcb80)";
+                        default:
+                            return "linear-gradient(45deg,#4099ff,#73b4ff)";
+                    }
+                }
+
+
+                let array = <?php echo json_encode($requestArray) ?>;
+                let filterArray;
+                showall(array);
+
+                function showall(array) {
+                    const detailsList = document.getElementById("output");
+                    detailsList.innerHTML = "";
+                    if (array === null || array.length === 0) {
+                        var htmlCode = `<h4 colspan="12" style="text-align: center;color: red;" >No Results Found</h4>`;
+                        detailsList.innerHTML = htmlCode;
+                    } else {
+                        array.forEach((item) => {
+                            var htmlCode = `    
+    <div class="col-3 rounded-4 m-2" style="width: 270px; height: 160px;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; ">
+        <a href="../Dashboards/BloodBankDashboard.php?page=bbhrv&&bhreqid=${item.hospitalRequestID}" style="text-decoration: none;">
+            <div class="row">
+                <div class="col-1 rounded-right-0" style="background: ${getHospitalStatusGradient(item.requestStatus)};width: 10px; height:160px; border-top-left-radius: 10px; border-bottom-left-radius: 10px;">
+
+                </div>
+                <div class="col-10 bg-white p-2 pt-3 mb-1" style="width:240px">
+
+
+                    <div class="row">
+
+                        <div class="row">
+                            <div class="col-5" style="height: 40px;">
+                                <h4 style="background: ${getHospitalStatusGradient(item.requestStatus)}; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                                    <b>${item.bloodGroup}</b>
+                                </h4>
+
+                            </div>
+                            <div class="col-5 text-end" style="height: 40px;">
+                                <h4 style="background: ${getHospitalStatusGradient(item.requestStatus)}; -webkit-background-clip: text; -webkit-text-fill-color: transparent;"><b>HR-${item.hospitalRequestID}</b></h4>
+                            </div>
+                        </div>
+
+                        <div class="row" style="height: 30px;">
+                            <h6 style="color:black;">${item.name}</h6>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-5" style="height: 25px;">
+                                <h6 style="background: ${getHospitalStatusGradient(item.requestStatus)}; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">${item.requestStatus}</h6>
+                            </div>
+                            <div class="col-5 text-end" style="height: 25px;">
+                                <h6 style="color:black;">${item.bloodQuantity}</h6>
+                            </div>
+                        </div>
+                        <div class="row pt-3" style="height: 25px;">
+
+                            <h6 style="color:black;">${item.createdDate}</h6>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </a>
+    </div>`;
+
+
+                            var divElement = document.createElement("div");
+
+                            divElement.style = "width:300px";
+
+
+                            divElement.innerHTML = htmlCode;
+
+
+                            detailsList.appendChild(divElement);
+                        });
+                    };
+
+                }
+
+                function status(test) {
+                    if (test === "") {
+                        array = <?php echo json_encode($requestArray) ?>;
+                        showall(array);
+                    } else {
+                        array = <?php echo json_encode($requestArray) ?>;
+                        var testValue = test.toLowerCase();
+                        array = array.filter((item) => item.requestStatus.toLowerCase().includes(testValue));
+                        showall(array);
                     }
 
+                }
 
-                    let array = <?php echo json_encode($requestArray) ?>;
-                    let filterArray;
-                    showall(array);
 
-                    function showall(array) {
+
+
+                function Search(test) {
+                    if (test === "") {
+                        array = <?php echo json_encode($requestArray) ?>;
+                        showall(array);
+                    } else {
+
+                        var id = parseInt(test, 10);
+
+                        filterArray = array.filter((item) => item.hospitalRequestID.toString().includes(id.toString()));
+
+
+
                         const detailsList = document.getElementById("output");
                         detailsList.innerHTML = "";
-                        if (array === null || array.length === 0) {
-                            var htmlCode = `<h4 colspan="12" style="text-align: center;color: red;" >No Results Found</h4>`;
+                        if (filterArray === null || filterArray.length === 0) {
+                            var htmlCode = `<tr><td colspan="12" style="text-align: center;color: red;">No Results Found</td></tr>`;
                             detailsList.innerHTML = htmlCode;
                         } else {
-                            array.forEach((item) => {
+                            filterArray.forEach((item) => {
                                 var htmlCode = ` 
-                                <div class="col-4" >    
-                                <div class="bg-white p-3  m-2" style="width: 270px; height: 200px; border-radius:10px;box-shadow: rgba(0, 0, 0, 0.16) 0px 8px 8px; background: ${getHospitalStatusGradient(item.requestStatus)}; ">
-                        <a href="../Dashboards/BloodBankDashboard.php?page=bbhrv&&bhreqid=${item.hospitalRequestID}" style="text-decoration: none;">
+                                <div class="col-4 rounded-4 m-2" style="width: 270px; height: 160px;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; ">
+        <a href="../Dashboards/BloodBankDashboard.php?page=bbhrv&&bhreqid=${item.hospitalRequestID}" style="text-decoration: none;">
+            <div class="row">
+                <div class="col-1 rounded-right-0" style="background: ${getHospitalStatusGradient(item.requestStatus)};width: 10px; height:160px; border-top-left-radius: 10px; border-bottom-left-radius: 10px;">
 
-                            <div class="row">
-                                <div class="col">
-                                    <p class="m-b-0 text-white"  style="margin-top: 5px"><strong>${item.hospitalRequestID}</strong><span class="f-right" style="margin-left:140px;font-weight: bold"></span></p>
-                                </div>
-                                <div class="col">
-                                    <p class="m-b-0 text-white"  style="margin-top: 5px"><strong>${item.bloodQuantity}</strong><span class="f-right" style="margin-left:140px;font-weight: bold"></span></p>
+                </div>
+                <div class="col-10 bg-white p-2 pt-3 mb-1" style="width:240px">
 
-                                </div>
+
+                    <div class="row">
+
+                        <div class="row">
+                            <div class="col-5" style="height: 40px;">
+                                <h4 style="background: ${getHospitalStatusGradient(item.requestStatus)}; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                                    <b>${item.bloodGroup}</b>
+                                </h4>
+
                             </div>
-                            <div class="row text-white" >
-                                <div class="col">
-                                <div class="col-6" style="height: 30px">${item.bloodGroup}</div>
-                                </div>
-                                 <div class="col">
-                                    <img class="w-50" src="../Images/icons8-blood-100.png"/>
-                                </div>
+                            <div class="col-5 text-end" style="height: 40px;">
+                                <h4 style="background: ${getHospitalStatusGradient(item.requestStatus)}; -webkit-background-clip: text; -webkit-text-fill-color: transparent;"><b>HR-${item.hospitalRequestID}</b></h4>
                             </div>
-                            <div class="row text-white">
-                                <div class="col">
+                        </div>
 
-                                <div class="col-6" style="height: 30px">${item.requestStatus}</div>
+                        <div class="row" style="height: 30px;">
+                            <h6 style="color:black;">${item.name}</h6>
 
-                                </div>
-                                <div class="col-6" style="height: 30px">${item.	createdDate}</div>
-                            </div><br>                        
-
-                            <div class="row">
-                                <div class="col">
-
-                                    <p class="m-b-0 text-white"><span class="f-right" style="margin-left:30px;font-weight: bold"></span></p> 
-
-                                </div>       
+                        </div>
+                        <div class="row">
+                            <div class="col-5" style="height: 25px;">
+                                <h6 style="background: ${getHospitalStatusGradient(item.requestStatus)}; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">${item.requestStatus}</h6>
                             </div>
-                        </a>
+                            <div class="col-5 text-end" style="height: 25px;">
+                                <h6 style="color:black;">${item.bloodQuantity}</h6>
+                            </div>
+                        </div>
+                        <div class="row pt-3" style="height: 25px;">
+
+                            <h6 style="color:black;">${item.createdDate}</h6>
+                        </div>
                     </div>
-                    </div>`;
 
+                </div>
+
+            </div>
+        </a>
+    </div>`;
 
                                 var divElement = document.createElement("div");
 
@@ -172,117 +275,33 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
                                 detailsList.appendChild(divElement);
+
                             });
-                        };
-
-                    }
-
-                    function status(test) {
-                        if (test === "") {
-                            array = <?php echo json_encode($requestArray) ?>;
-                            showall(array);
-                        } else {
-                            array = <?php echo json_encode($requestArray) ?>;
-                            var testValue = test.toLowerCase();
-                            array = array.filter((item) => item.requestStatus.toLowerCase().includes(testValue));
-                            showall(array);
                         }
-
                     }
 
-
-
-
-                    function Search(test) {
-                        if (test === "") {
-                            array = <?php echo json_encode($requestArray) ?>;
-                            showall(array);
-                        } else {
-
-                            var id = parseInt(test, 10);
-
-                            filterArray = array.filter((item) => item.hospitalRequestID.toString().includes(id.toString()));
-
-
-
-                            const detailsList = document.getElementById("output");
-                            detailsList.innerHTML = "";
-                            if (filterArray === null || filterArray.length === 0) {
-                                var htmlCode = `<tr><td colspan="12" style="text-align: center;color: red;">No Results Found</td></tr>`;
-                                detailsList.innerHTML = htmlCode;
-                            } else {
-                                filterArray.forEach((item) => {
-                                    var htmlCode = ` 
-                                <div class="col-4" >    
-                                <div class="bg-white p-3  m-2" style="width: 270px; height: 200px; border-radius:10px;box-shadow: rgba(0, 0, 0, 0.16) 0px 8px 8px; background: ${getHospitalStatusGradient(item.requestStatus)}; ">
-                        <a href="../Dashboards/BloodBankDashboard.php?page=bbhrv&&bhreqid=${item.hospitalRequestID}" style="text-decoration: none;">
-
-                            <div class="row">
-                                <div class="col">
-                                    <p class="m-b-0 text-white"  style="margin-top: 5px"><strong>${item.hospitalRequestID}</strong><span class="f-right" style="margin-left:140px;font-weight: bold"></span></p>
-                                </div>
-                                <div class="col">
-                                    <p class="m-b-0 text-white"  style="margin-top: 5px"><strong>${item.bloodQuantity}</strong><span class="f-right" style="margin-left:140px;font-weight: bold"></span></p>
-                                </div>
-                            </div>
-                            <div class="row text-white" >
-                                <div class="col">
-                                <div class="col-6" style="height: 30px">${item.bloodGroup}</div>
-                                </div>
-                                 <div class="col">
-                                    <img class="w-50" src="../Images/icons8-blood-100.png"/>
-                                </div>
-                            </div>
-                            <div class="row text-white">
-                                <div class="col">
-                                <div class="col-6" style="height: 30px">${item.requestStatus}</div>
-                                </div>
-                                <div class="col-6" style="height: 30px">${item.	createdDate}</div>
-                            </div><br>                        
-
-                            <div class="row">
-                                <div class="col">
-                                    <p class="m-b-0 text-white"><span class="f-right" style="margin-left:30px;font-weight: bold"></span></p> 
-                                </div>       
-                            </div>
-                        </a>
-                    </div>
-                    </div>`;
-
-                                    var divElement = document.createElement("div");
-
-                                    divElement.style = "width:300px";
-
-
-                                    divElement.innerHTML = htmlCode;
-
-
-                                    detailsList.appendChild(divElement);
-
-                                });
-                            }
-                        }
-
-                    }
-                </script>
-
-
-            </div>
-
-
-
-
-
-
-
-
+                }
+            </script>
 
 
         </div>
+
+
+
+
+
+
+
+
+
+
+    </div>
     </div>
     <?php
 
     ?>
+
+    </div>
 </body>
 
 </html>
