@@ -104,15 +104,16 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                     <hr class="dashboardhr">
                     <div class="dropdown">
-                        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a href="../services/Logout.php" class="d-flex align-items-center text-white text-decoration-none " id="dropdownUser1"  aria-expanded="false">
                             <i class="fa-solid fa-power-off fa-lg loggedicon"></i>
-                            <strong class="loggedout">Log Out</strong>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1" style="">
+                                <strong class="loggedout">Log Out</strong>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1" style="">
 
-                            <li><a class="dropdown-item" href="../services/Logout.php">Log out</a></li>
-                        </ul>
-                    </div>
+                                <li><a class="dropdown-item" href="../services/Logout.php">Log out</a></li>
+                            </ul>
+                        </div>
+
                     <hr class="dashboardhr">
                 </div>
 
