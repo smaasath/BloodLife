@@ -124,7 +124,7 @@ $bankid = $user->getBloodBankId();
                         array.forEach((item) => {
 
                             var htmlCode = `     
-                            <div class="bg-white p-4 mt-4 rounded-4" style="height: 180px; width: 300px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; background: ${getHospitalStatusGradient(item.requestStatus)}">
+                            <div class="bg-white p-4 mt-4 rounded-4" style="height: 200px; width: 200px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; background: ${getHospitalStatusGradient(item.requestStatus)}">
                                        
                                             <div class="row p-1">
                                                 <div class="col-6" style="height: 30px;">B${item.bloodBankRequestId}</div>

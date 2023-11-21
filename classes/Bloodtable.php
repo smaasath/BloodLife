@@ -256,7 +256,7 @@ class Bloodtable
             FROM `bloodtable`
             WHERE expiryDate <= DATE_ADD(NOW(), INTERVAL 14 DAY)
                 AND expiryDate > NOW()
-                AND bloodBankId = ?
+                AND bloodBankId = ? AND status ='Available'
             ORDER BY expiryDate ASC;
             
             ";
