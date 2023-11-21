@@ -44,24 +44,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     if ($request->addHosRequest()) {
                         $status = 1;
                     } else {
-                        $status = 2;
+                        $status = "Bloodbank Request did not Added! Try Again..";
                     }
                 } else {
-                    $status = !$validatebloodgroup ? 4 : (!$validatequantity ? 5 : 6);
+                    $status = !$validatebloodgroup ? "Blood Group type Error!" : (!$validatequantity ? "Quantity must have 3 digits!" : "Quantity must have 3 digits!");
                 }
             } else {
-                $status = 7;
+                $status = "Unauthorzied Activity! ";
             }
         } else {
-            $status = 8;
+            $status = "All Fields need to be Filled!";
         }
     } else {
-        $status = 9;
+        $status = "All Fields need to be Filled!";
     }
 
-    // header("Location: ../Dashboards/BloodBankDashboard.php?status=$status");
 } else {
-    $status = 10;
+    $status = "Invalid Request Method!";
 }
 
-echo $status;
+$encrptedmessage=validation::encryptedValue($status);
+header("Location: ../Dashboards/HospitalDashboard.php?status=$encrptedmessage");

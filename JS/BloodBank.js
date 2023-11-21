@@ -118,3 +118,17 @@ function ViewDon(donorId){
     }});
         
 }
+
+function EditBBProfile(bloodBankId){
+
+    console.log(bloodBankId);
+    
+    $.ajax({url: "../popups/EditBBprofileEdit.php",
+    method: 'post',
+    data: {bloodBankId : bloodBankId },
+    success: function (result) {
+
+        $("#EditProfile").html(result);
+    }});
+        
+}

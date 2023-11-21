@@ -66,6 +66,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <h5>Hospital Request View</h5>
     </div>
 
+
+    
+
     <?php
    if (hospitalrequestclass::getRequestwithHospitalusingID( $id) != false) {
     $datAarray= hospitalrequestclass::getRequestwithHospitalusingID( $id);

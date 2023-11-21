@@ -230,6 +230,7 @@ class User
             $this->userRole = $rs->userRole;
             $this->hospitalId = $rs->hospitalId;
             $this->expire = $rs->expire;
+            $this->email  = $rs->email ;
             return true;
         } else {
             return false;

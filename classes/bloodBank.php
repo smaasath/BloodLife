@@ -185,7 +185,7 @@ public function GetBloodbankByName() {
             $query = "SELECT * FROM  `bloodbank` WHERE `bloodBankName` = ?";
     
             $pstmt = $con->prepare($query);
-            $pstmt->bindValue(1, $this->bloodBankName);
+            $pstmt->bindValue(1, $this->bloodBankName, PDO::PARAM_INT);
     
             $pstmt->execute();
     

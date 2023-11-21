@@ -62,16 +62,54 @@ use classes\hospitalrequestclass;
     <!-- Hospital Request start -->
 
     <div class="container">
-        <?php
-        if (isset($_GET['addreq']) && $_GET['addreq'] === 'Success') {
-            echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-        <strong>Success!</strong> Request Created Successfully!!
-      <a href="../Dashboards/HospitalDashboard.php?page=hospital">  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></a>
-    </div>';
-        } else {
-            // Handle other cases here or leave it empty.
-        }
+    <?php
+        if ($_SERVER["REQUEST_METHOD"] == "GET") {
+            if (isset($_GET["status"])) {
+                $status = Validation::decryptedValue($_GET["status"]);
+                if ($status == 1) {
         ?>
+                   
+                    <div class="alert alert-success d-flex align-items-center m-3" role="alert">
+                       <div class="col-1 align-items-center justify-content-center" >
+                       <img width="30" height="30" src="https://img.icons8.com/color/48/ok--v1.png" alt="ok--v1"/>
+                       </div>
+                       <div class="col-10 d-flex">
+                       Request Successfully Added
+                       </div>
+                      
+                       <div class="col-1 d-flex align-items-end justify-content-center">
+                       <a href="../Dashboards/BloodBankDashboard.php?"> <img width="30" height="30" src="https://img.icons8.com/hatch/64/delete-sign.png" alt="delete-sign"/></a>
+                    </div>
+                      
+                    </div>
+                <?php
+                } else {
+
+
+                ?>
+
+                    <div class="alert alert-danger d-flex align-items-center m-3" role="alert">
+                    <div class="col-1 align-items-center justify-content-center" >
+                    <img width="30" height="30" src="https://img.icons8.com/cute-clipart/64/high-priority.png" alt="high-priority"/>
+                       </div>
+                       <div class="col-10 d-flex">
+                       <?php
+                            echo $status;
+                            ?>
+                       </div>
+                      
+                       <div class="col-1 d-flex align-items-end justify-content-center">
+                      <a href="../Dashboards/BloodBankDashboard.php?"> <img width="30" height="30" src="https://img.icons8.com/hatch/64/delete-sign.png" alt="delete-sign"/></a>
+                    </div>
+                        
+                    </div>
+
+        <?php
+                }
+            }
+        }
+        ?>    
+
         <div class="mt-5 m-4 mb-2" style="color:gray;">
             <h5>Create Request</h5>
         </div>
@@ -104,7 +142,7 @@ use classes\hospitalrequestclass;
                         <input type="number"  class="form-control" name="bloodQuantity" id="bloodQuantityInput" required>
                         <p id="bloodQuantityError" style="color: red;"></p>
 
-                        <script>
+                        <!-- <script>
                             document.addEventListener("DOMContentLoaded", function() {
                                 const bloodQuantityInput = document.getElementById("bloodQuantityInput");
                                 const bloodQuantityError = document.getElementById("bloodQuantityError");
@@ -131,7 +169,7 @@ use classes\hospitalrequestclass;
                                 bloodgroup.value = "Select your Blood Group";
                                 status.value = "Select Status";
                             }
-                        </script>
+                        </script> -->
 
 
                         <label for="status">Status:</label>
@@ -200,6 +238,8 @@ use classes\hospitalrequestclass;
             <?php } ?>
         </div>
     </div>
+
+    
     <?php
 
     ?>

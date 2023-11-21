@@ -45,36 +45,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                     if($hospitalRequestId==null){
                         $request = new bloodbankhsrequest(null, $createdDate, $quantity,$bloodgroup, $requestStatus, null, $bloodBankId);
-                        $status = $request->addbloodbankRequest() ? 1 : 2 ;
+                        $status = $request->addbloodbankRequest() ? 1 : "Bloodbank Request did not Added! Try Again..";
 
     
                     }else{
                         $request = new bloodbankhsrequest(null, $createdDate, $quantity,$bloodgroup, $requestStatus,$hospitalRequestId, $bloodBankId);
                         if(!$request->ValidatePublishRequest()){
-                        $status = $request->addbloodbankRequest() ? 1 : 2 ;
+                        $status = $request->addbloodbankRequest() ? 1 : " Hospital Request did not Publish" ;
                         }else{
-                            $status = 3;
+                            $status = "Unauthorzied Activity! ";
                         }
                     }
 
 
                     
                 } else {
-                    $status = !$validatebloodgroup ? 4 : (!$validatequantity ? 5: 6);
+                    $status = !$validatebloodgroup ? "Blood Group type Error!" : (!$validatequantity ? "Quantity must have 3 digits!": "Quantity must have 3 digits!");
                 }
             } else {
-                $status = 7;
+                $status = "Unauthorzied Activity! ";
             }
         } else {
-            $status = 8;
+            $status = "All Fields need to be Filled!";
         }
     } else {
-        $status = 9;
+        $status = "All Fields need to be Filled!";
     }
 
-    // header("Location: ../Dashboards/BloodBankDashboard.php?status=$status");
+    
 } else {
-    $status = 10;
+    $status = "Invalid Request Method!";
 }
-
-echo $status;
+$encrptedmessage=validation::encryptedValue($status);
+header("Location: ../Dashboards/BloodBankDashboard.php?status=$encrptedmessage");
