@@ -1,5 +1,28 @@
 <?php
 
+require_once "../classes/hospitalrequestclass.php";
+require_once "../classes/Validation.php";
+require_once "../classes/Bloodtable.php";
+
+
+use classes\hospitalrequestclass;
+use classes\Validation;
+use classes\Bloodtable;
+
+
+
+$bankid = $user->getBloodBankId();
+
+
+
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
+    if (isset($_GET["bloodGroup"])) {
+        $bloodgroup =Validation::decryptedValue($_GET["bloodGroup"]);
+       
+     
+
+
+
 ?>
 <!DOCTYPE html>
 <!--
@@ -55,6 +78,7 @@ and open the template in the editor.
   <div class="container">
   
     <div class="container bg-white m-0 p-0" style=" height: 500px; overflow: scroll;">
+    <form action="../services/bbhrblpacketaccept.php" method="POST">
       <table class="table table-hover p-0">
 
         <!-- Table row -->
@@ -66,6 +90,7 @@ and open the template in the editor.
           <th class="p-2 mb-1 bg-dark text-white" style="text-align: center;">ID</th>
           <th class="p-2 mb-1 bg-dark text-white" style="text-align: center;">Blood Group</th>
           <th class="p-2 mb-1 bg-dark text-white" style="text-align: center;">Quantity</th>
+          <th class="p-2 mb-1 bg-dark text-white" style="text-align: center;">Expiry Date</th>
 
 
 
@@ -75,71 +100,28 @@ and open the template in the editor.
        
 
         <tbody>
-       
+          
+       <?php
+$bloodpackets= Bloodtable::getBloodpacketsbyBloodgp($bloodgroup,$bankid);
+
+foreach ($bloodpackets as $packet) {
+       ?>
           <tr>
-            <th scope="row"> <input class="form-check-input mt-0" name="bloodId" type="checkbox" value="" aria-label="Checkbox for following text input"></th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            <th scope="row"> <input class="form-check-input mt-0" name="bloodId[]" type="checkbox" value="<?php echo $packet["bloodId"];?>" aria-label="Checkbox for following text input"></th>
+            <td><?php echo $packet["bloodId"];?></td>
+            <td><?php echo $packet["bloodGroup"];?></td>
+            <td><?php echo $packet["quantity"];?></td>
+            <td><?php echo $packet["expiryDate"];?></td>
           </tr>
-          <tr>
-            <th scope="row"> <input class="form-check-input mt-0" name="bloodId" type="checkbox" value="" aria-label="Checkbox for following text input"></th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row"> <input class="form-check-input mt-0" name="bloodId" type="checkbox" value="" aria-label="Checkbox for following text input"></th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row"> <input class="form-check-input mt-0" name="bloodId" type="checkbox" value="" aria-label="Checkbox for following text input"></th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row"> <input class="form-check-input mt-0" name="bloodId" type="checkbox" value="" aria-label="Checkbox for following text input"></th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row"> <input class="form-check-input mt-0" name="bloodId" type="checkbox" value="" aria-label="Checkbox for following text input"></th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row"> <input class="form-check-input mt-0" name="bloodId" type="checkbox" value="" aria-label="Checkbox for following text input"></th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row"> <input class="form-check-input mt-0" name="bloodId" type="checkbox" value="" aria-label="Checkbox for following text input"></th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row"> <input class="form-check-input mt-0" name="bloodId" type="checkbox" value="" aria-label="Checkbox for following text input"></th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row"> <input class="form-check-input mt-0" name="bloodId" type="checkbox" value="" aria-label="Checkbox for following text input"></th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
+          <?php
+}
+?>
+          
         </tbody>
       </table>
-
-      <button class="btn btn-dark " style="margin-left: 550px ">Save</button>
+      <button class="btn btn-dark" type="submit" style="margin-left: 550px ">Save</button>
+      </form>
+      
 
      
 
@@ -151,7 +133,12 @@ and open the template in the editor.
   </div>
   
   <?php
-  // put your code here
+ }else{
+echo "Cannot find bloodgroup!";
+ }
+}else{
+  echo "Ivalid access!";
+}
   ?>
 </body>
 

@@ -125,7 +125,11 @@ $bankid = $user->getBloodBankId();
 
                             var htmlCode = `     
                             <div class="col-3 rounded-4 m-2" style="width: 270px; height: 200px;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; ">
-       
+
+                            <div class="row" style="height: 30px;">
+                            <div class="col-1 rounded-right-0 rounded-top-0" style="background: ${getHospitalStatusGradient(item.requestStatus)};width: 10px; height:200px; border-top-left-radius: 10px; border-bottom-left-radius: 10px;">
+         
+                            </div>
        <div class="row">
            <div class="col-1 rounded-right-0 rounded-top-0" style="background: ${getHospitalStatusGradient(item.requestStatus)};width: 10px; height:200px; border-top-left-radius: 10px; border-bottom-left-radius: 10px;">
 

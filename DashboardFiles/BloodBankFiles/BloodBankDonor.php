@@ -22,7 +22,7 @@ use classes\Donor;
 
 <body>
 
-    <!-- nav bar start -->
+    <!-- nav bar start --
     <div class="sticky-top bg-white shadownav" style="height: 50px;">
         <div class="row m-0 d-flex">
             <div class="col-8">
@@ -52,7 +52,7 @@ use classes\Donor;
 
         </div>
     </div>
-    <!-- body start -->
+    <!-- body start --
 
     <div class="mt-5 m-3 mb-1" style="color:gray;">
         <h5>Donor</h5>
@@ -61,35 +61,53 @@ use classes\Donor;
         </div>
     </div>
 
-    <!-- Page content -->
+    <!-- Navigation Bar -->
+    <div class="sticky-top bg-white shadow-nav" style="height: 50px;">
+        <div class="row m-0 d-flex">
+            <!-- Navigation content goes here -->
+        </div>
+    </div>
+
+    <!-- Body Content -->
+    <div class="mt-5 m-3 mb-1" style="color: gray;">
+        <h5>Donor</h5>
+        <div class="row align-items-right justify-content-center">
+            <img class="d-none d-xl-block" src="../Images/donor1.jpg" style="height: 250px; width: 400px; align-items: center;" />
+        </div>
+    </div>
+
+    <!-- Page Content Container -->
     <div class="container p-2">
-        <!-- Search and Add Donor section -->
-       
-        <div class="row bg-white m-1 pt-0  align-items-center justify-content-center rounded-5" style="height: 500px;">
+
+        <!-- Search and Add Donor Section -->
+        <div class="row bg-white m-1 pt-0 align-items-center justify-content-center rounded-5" style="height: 500px;">
             <div class="container">
                 <div class="rounded-top-4 p-0 border border-dark-subtle">
                     <div class="row align-items-center">
+
+                        
                         <!-- Search input -->
                         <div class="col-3">
                             <div class="input-group rounded p-3">
-                                <input type="search" class="form-control rounded" placeholder="DonorID" aria-label="Search" aria-describedby="search-addon">
+                            <input type="search" class="form-control rounded" placeholder="DonorID" aria-label="Search" oninput="searchIdNamefilter(this.value)" aria-describedby="search-addon">
                             </div>
                         </div>
 
                         <!-- Blood Group filter -->
-                        <div class="col-2">
-                            <select class="form-select" aria-label="Default select example" oninput="teest(this.value)">
-                                <option selected>BloodGroup</option>
-                                <option value="A+">A+</option>
-                                <option value="B+">B+</option>
-                                <option value="O+">O+</option>
-                                <option value="AB+">AB+</option>
-                                <option value="A-">A-</option>
-                                <option value="B-">B-</option>
-                                <option value="AB-">AB-</option>
-                                <option value="O-">O-</option>
-                            </select>
-                        </div>
+<div class="col-2">
+    <select class="form-select" aria-label="BloodGroup" onchange="BloodGrpFilter(this.value)">
+        <option selected disabled>BloodGroup</option>
+        <option value="A+">A+</option>
+        <option value="B+">B+</option>
+        <option value="O+">O+</option>
+        <option value="AB+">AB+</option>
+        <option value="A-">A-</option>
+        <option value="B-">B-</option>
+        <option value="AB-">AB-</option>
+        <option value="O-">O-</option>
+    </select>
+</div>
+
 
                         <!-- Add Donor button -->
                        
@@ -98,7 +116,7 @@ use classes\Donor;
 
 
 
-
+                
 
 
 
@@ -120,10 +138,8 @@ use classes\Donor;
                                 <th class="col-1 bg-secondary text-dark p-2" style="text-align: center;">Name</th>
                                 <th class="col-1 bg-secondary text-dark p-2" style="text-align: center;">Blood Group</th>
                                 <th class="col-1 bg-secondary text-dark p-2" style="text-align: center;">Contact No</th>
-                                <th class="col-1 bg-secondary text-dark p-2" style="text-align: center;">nic</th>
-                                
-                                <th class="col-1 bg-secondary text-dark p-2" style="text-align: center;">Available</th>
-                                <th class="col-1 bg-secondary text-dark p-2" style="text-align: center;">Last Donation</th>
+                               <th class="col-1 bg-secondary text-dark p-2" style="text-align: center;">Available</th>
+                       
                                 <th class="col-1 bg-secondary text-dark p-2" style="text-align: center;">Edit</th>
                                 <th class="col-1 bg-secondary text-dark p-2" style="text-align: center;">View</th>
                             </tr>
@@ -138,10 +154,17 @@ use classes\Donor;
                                 <?php
                              
                                 $requestArray = Donor::getAllDonor($user->getBloodBankId());
+                                foreach ($requestArray as &$item) {
+                                    $item['medicalReport'] = base64_encode($item['medicalReport']);
+                                    $item['image'] = base64_encode($item['image']);
+                                }
+                            
                                 ?>
 
                                 <script>
-                                    let array = <?php echo json_encode($requestArray) ?>;
+                                    let array = <?php echo json_encode($requestArray); ?>;
+                                    console.log(array);
+                                    console.log("Asath");
                                     let filterArray;
                                     showall(array);
 
@@ -156,20 +179,20 @@ use classes\Donor;
 
                                                 var htmlCode = ` <tr>
                         <td class="col-1">${item.donorId}</td>
-                        <td class="col-1">${item.name}</td>
+                        <td class="col-1">${item.name}</td> 
+                        <td class="col-1">${item.bloodGroup }</td>
+                        
                          <td class="col-1">${item.contactNumber}</td>                    
                         <td class="col-1">${item.availability }</td>
-                        <td class="col-1">${item.medicalReport }</td>
+                       
                      
                        
                       
-                    
-                        <td class="col-1"><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="EditDonor(${item.donorId})" >Edit</button> </td>
-
                         
-
-                        <td class="col-1"> <a href="../Dashboards/BloodBankDashboard.php?page=CampaignView&&camid=${item.campaignId}" style="text-decoration: none;"><button type="button" class="btn btn-success"> View </button></a></td>
-
+                        <td class="col-1"><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="EditDon(${item.donorId})" >Edit</button> </td>
+                        
+                        <td class="col-1"><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#DonorView" onclick="ViewDon(${item.donorId})" >View</button> </td>
+                        
 
 
                                                 </tr>`;
@@ -189,26 +212,26 @@ use classes\Donor;
                                     }
 
 
-                                    function DistrictFilter(test) {
+                                    function BloodGrpFilter(test) {
                                         if (test === "") {
                                             array = <?php echo json_encode($requestArray) ?>;
                                             showall(array);
                                         } else {
                                             array = <?php echo json_encode($requestArray) ?>;
                                             var testValue = test.toLowerCase();
-                                            array = array.filter((item) => item.district.toLowerCase().includes(testValue));
+                                            array = array.filter((item) => item.bloodGroup.toLowerCase().includes(testValue));
                                             showall(array);
                                         }
 
                                     }
 
-                                    function searchfilter(test) {
+                                    function searchIdNamefilter(test) {
 
                                         var id = parseInt(test, 10);
 
                                         var testValue = test.toLowerCase();
 
-                                        filterArray = array.filter((item) => item.campaignId === id || item.Title.toLowerCase().includes(testValue));
+                                        filterArray = array.filter((item) => item.donorId === id || item.name.toLowerCase().includes(testValue));
 
 
                                         const detailsList = document.getElementById("output");
@@ -222,14 +245,17 @@ use classes\Donor;
                                                 var htmlCode = ` 
                             <tr>
                             <td class="col-1">${item.donorId}</td>
-                        <td class="col-1">${item.name}</td>
+                        <td class="col-1">${item.name}</td> 
+                        <td class="col-1">${item.bloodGroup }</td>
+                        
                          <td class="col-1">${item.contactNumber}</td>                    
                         <td class="col-1">${item.availability }</td>
-                        <td class="col-1">${item.medicalReport }</td>
-                        <td class="col-1"><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="EditDonor(${item.donorId})" >Edit</button> </td>
                         
-
-                        <td class="col-1"> <a href="../Dashboards/BloodBankDashboard.php?page=CampaignView&&camid=${item.campaignId}" style="text-decoration: none;"><button type="button" class="btn btn-success"> View </button></a></td>
+                        
+                        <td class="col-1"><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="EditDon(${item.donorId})" >Edit</button> </td>
+                        
+                        <td class="col-1"><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#DonorView" onclick="ViewDon(${item.donorId})" >View</button> </td>
+                        
                         </tr>`;
 
 
@@ -279,7 +305,7 @@ use classes\Donor;
 
 
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModal" aria-hidden="true">
-            <div class="modal-dialog">
+            <div class="modal-dialog" role="document">
 
                 <div class="modal-content">
                     <div class="modal-header">
@@ -287,7 +313,8 @@ use classes\Donor;
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <div id="DonorEdit"></div>
+
+                        <div id="EditDonor"></div>
                         <input type="hidden" name="token" value="<?php echo $token; ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
 
                         <div class="modal-footer">
@@ -317,84 +344,18 @@ use classes\Donor;
 
     <!-- --------------------------------------Donor View----------------------------------------------------------------------- -->
     <!-----------1st pop-up------------------------Campaign Details---------------->
-    <div class="modal fade" id="CampaignEdit">
+    <div class="modal fade" id="DonorView">
         <div class="modal-dialog">
             <div class="modal-content">
 
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="Save">View Donor Details</h1>
+                    <h1 class="modal-title fs-5" id="DonorView">View Donor Details</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
                 <div class="modal-body">
 
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="card mb-4">
-                                    <div class="card-body">
-                                        <div class="row mb-3">
-                                            <div class="col-sm-4">
-                                                <strong>Hospital ID:</strong>
-                                            </div>
-                                            <div class="col-sm-8">
-                                                <p class="text-muted mb-0">HS001</p>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-3">
-                                            <div class="col-sm-4">
-                                                <strong>Hospital Name:</strong>
-                                            </div>
-                                            <div class="col-sm-8">
-                                                <p class="text-muted mb-0">Jaffna Central Hospital</p>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-3">
-                                            <div class="col-sm-4">
-                                                <strong>Address:</strong>
-                                            </div>
-                                            <div class="col-sm-8">
-                                                <p class="text-muted mb-0">Hospital Road, Jaffna</p>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-3">
-                                            <div class="col-sm-4">
-                                                <strong>District:</strong>
-                                            </div>
-                                            <div class="col-sm-8">
-                                                <p class="text-muted mb-0">Jaffna</p>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-3">
-                                            <div class="col-sm-4">
-                                                <strong>Phone No:</strong>
-                                            </div>
-                                            <div class="col-sm-8">
-                                                <p class="text-muted mb-0">077 1028754</p>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-3">
-                                            <div class="col-sm-4">
-                                                <strong>Mobile:</strong>
-                                            </div>
-                                            <div class="col-sm-8">
-                                                <p class="text-muted mb-0">(098) 765-4321</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-4">
-                                                <strong>Email:</strong>
-                                            </div>
-                                            <div class="col-sm-8">
-                                                <p class="text-muted mb-0">CentralHospitalJaffna@gmail.com</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                <div id="ViewDonor"></div> 
                 </div>
 
 
@@ -411,50 +372,7 @@ use classes\Donor;
 
 
 
-    <!--OrganizerEdit-->
-
-    <div class="modal fade" id="OrganizerEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModal2">Organizer Details</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-
-
-                    <table class="table">
-                        <thead class="thead-light">
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">DonorID</th>
-                                <th scope="col">Last Donation Date</th>
-                                <th scope="col">Donation Type</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                            <th scope="row">1</th>
-                            <td>D004</td>
-                            <td>07/12/2022</td>
-                            <td>BloodBank</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="modal-footer">
-
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="EditCamp()">Back</button>
-
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--OrganizerEdit-->
-
-
-
-
+    
         <?php
 
 
