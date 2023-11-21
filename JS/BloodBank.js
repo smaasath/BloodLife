@@ -86,3 +86,35 @@ console.log("success");
 
     }});
 }
+
+
+function EditDon(donorId){
+
+    console.log(donorId);
+    
+    $.ajax({url: "../popups/EditDonor.php",
+    method: 'post',
+    data: {donorId : donorId },
+    success: function (result) {
+
+        $("#EditDonor").html(result);
+    }});
+        
+}
+
+
+function ViewDon(donorId){
+
+    
+
+    console.log(donorId);
+    
+    $.ajax({url: "../popups/ViewDonor.php",
+    method: 'post',
+    data: {donorId : donorId },
+    success: function (result) {
+        console.log("success");
+        $("#ViewDonor").html(result);
+    }});
+        
+}

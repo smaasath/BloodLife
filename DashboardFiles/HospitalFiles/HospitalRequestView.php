@@ -11,6 +11,7 @@ use classes\Validation;
 if (isset($_GET['hreqid'])) {
     // Retrieve and store the 'hospitalRequestID' value
     $id = Validation::decryptedValue($_GET['hreqid']);
+   
     
 ?>
 
@@ -66,7 +67,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     </div>
 
     <?php
-    $hospitalrequestobj = hospitalrequestclass::getRequestwithHospitalusingID($id);
+   if (hospitalrequestclass::getRequestwithHospitalusingID( $id) != false) {
+    $datAarray= hospitalrequestclass::getRequestwithHospitalusingID( $id);
 
 
     ?> 
@@ -83,7 +85,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             <p class="mb-0"><span class="fw-bold">BloodGroup</span></p>
                         </div>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" name="bloodGroup" value="<?php echo  $hospitalrequestobj->getBloodGroup(); ?>" readonly>
+                            <input type="text" class="form-control" name="bloodGroup" value="<?php echo $datAarray["bloodGroup"]; ?>" readonly>
                         </div>
                     </div>
                     <hr>
@@ -92,7 +94,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             <p class="mb-0"><span class="fw-bold">Date</span></p>
                         </div>
                         <div class="col-sm-7">
-                            <input type="date" class="form-control" name="date" value="<?php echo  $hospitalrequestobj->getCreateDate(); ?>" readonly>
+                            <input type="date" class="form-control" name="date" value="<?php echo $datAarray["createdDate"]; ?>" readonly>
                         </div>
                     </div>
                     <hr>
@@ -101,7 +103,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             <p class="mb-0"><span class="fw-bold">Blood Quantity</span></p>
                         </div>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" name="bloodQuantity" value="<?php echo  $hospitalrequestobj->getBloodQuantity(); ?>" readonly>
+                            <input type="text" class="form-control" name="bloodQuantity" value="<?php echo $datAarray["bloodQuantity"]; ?>" readonly>
                         </div>
                     </div>
                     <hr>
@@ -110,7 +112,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             <p class="mb-0"><span class="fw-bold">Status</span></p>
                         </div>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" name="requestStatus" value="<?php echo  $hospitalrequestobj->getRequestStatus(); ?>" readonly>
+                            <input type="text" class="form-control" name="requestStatus" value="<?php echo $datAarray["requestStatus"]; ?>" readonly>
                         </div>
                     </div>
                     <hr>
@@ -171,7 +173,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
     <?php
       // Now, you can use the $id variable in your code
-    
+   }else{
+    echo "Detail Not Found";
+   }  
 } else {
     echo "ID not found in the URL.";
 }

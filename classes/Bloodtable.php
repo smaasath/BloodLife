@@ -98,31 +98,7 @@ class Bloodtable
         $this->status = $status;
     }
 
-    public static function getAllbloodpackets($bloodBankId)
-    {
-        try {
-            $dbcon = new DbConnector();
-            $con = $dbcon->getConnection();
-            $query = "SELECT * FROM `bloodtable` WHERE bloodBankId=?";
 
-            $stmt = $con->prepare($query);
-            $stmt->bindValue(1, $bloodBankId); // Make sure $blID is defined.
-            $stmt->execute();
-
-            $dataArray = array();
-            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $dataArray[] = $row;
-            }
-
-            if (empty($dataArray)) {
-                echo "No results found.";
-            }
-
-            return $dataArray;
-        } catch (PDOException $exc) {
-            echo $exc->getMessage();
-        }
-    }
 
     public static function showBloodPackets($bloodBankId)
     {
@@ -256,7 +232,7 @@ class Bloodtable
             FROM `bloodtable`
             WHERE expiryDate <= DATE_ADD(NOW(), INTERVAL 14 DAY)
                 AND expiryDate > NOW()
-                AND bloodBankId = ?
+                AND bloodBankId = ? AND status ='Available'
             ORDER BY expiryDate ASC;
             
             ";
@@ -272,6 +248,27 @@ class Bloodtable
             echo "Error: " . $e->getMessage();
         }
     }
+
+    public static function getBloodpacketsbyBloodgp($bloodGroup,$bloodBankId){
+        try {
+            $dbcon = new DbConnector();
+            $con = $dbcon->getConnection();
+            $query = "SELECT * FROM `bloodtable` WHERE bloodGroup=? && bloodBankId=? && status = 'Available'  ORDER BY expiryDate ASC";
+            $stmt = $con->prepare($query);
+            $stmt->bindValue(1, $bloodGroup);
+            $stmt->bindValue(2, $bloodBankId);
+            $stmt->execute();
+            $dataArray = array();
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $dataArray[] = $row;
+            }
+            return $dataArray;
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+
+    }
+
 
     
 }

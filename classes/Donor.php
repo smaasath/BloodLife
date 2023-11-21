@@ -413,7 +413,7 @@ public function getDonorDetails() {
             $this->name = $rs->name;
             $this->bloodGroup = $rs->bloodGroup;
             $this->dob = $rs->dob;
-            $this->contactNumber = $rs->eontactNumber;
+            $this->contactNumber = $rs->contactNumber;
             $this->nic = $rs->nic;
             $this->noOfDonation= $rs->noOfDonation;
             $this->coinValue = $rs->coinValue;

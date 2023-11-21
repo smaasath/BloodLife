@@ -123,7 +123,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </div>
 
                 
+                <div class="col-2">
+                    <button type="button" class="btn btn-primary" onclick="AddCampaign()">Add Campaign</button>
 
+
+
+
+
+                </div><br>
 
 
                 
@@ -414,6 +421,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             <form action="../services/CampaignEditService.php" method="POST" enctype="multipart/form-data">
                 <div class="modal fade" id="EditCampaignDetailsModal" tabindex="-1" role="dialog" aria-labelledby="EditCampaignDetailsLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
+                        
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="EditCampaignDetailsModal">Edit Campaign Details</h5>
