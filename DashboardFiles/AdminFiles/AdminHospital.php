@@ -19,7 +19,7 @@ use classes\district;
 
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>Admin Hospital</title>
     <style>
         /* CSS to set a consistent width for input elements */
         input[type="text"],
@@ -78,32 +78,29 @@ use classes\district;
 
     <!-- body start -->
     <div class="mt-5 m-3 mb-1" style="color:gray;">
-    <h5>Bloodbank Profile</h5>
-  </div>
+
+        <h5>Admin Hospital - Management</h5>
+        </div>
+
     <!-- Table -->
 
 
-    <div class="p-5">
+    <div class="p-5 pt-3">
 
 
         <div class="rounded-top-4 p-0 border border-dark-subtle">
             <div class="row align-items-center">
 
 
-                <div class="col-3">
+                <div class="col-4">
                     <div class="input-group rounded p-3">
-                        <input type="search" id="search" class="form-control rounded" placeholder="Search Name" aria-label="Search" aria-describedby="search-addon" oninput="teeest(this.value)">
-
-
-
-
-
+                        <input type="search" id="search" class="form-control rounded" placeholder="Search Name" aria-label="Search" aria-describedby="search-addon" oninput="searchname(this.value)">
                     </div>
                 </div>
 
 
-                <div class="col-2">
-                    <select class="form-select" aria-label="Default select example" oninput="teest(this.value)">
+                <div class="col-4">
+                    <select class="form-select" aria-label="Default select example" oninput="seaechdistrict(this.value)">
                         <option selected value="">District</option>
                         <?php
                         $dataArray = district::getAllDistrict(); // Retrieve district data using the "getAllDistrict()" method
@@ -118,16 +115,12 @@ use classes\district;
                     </select>
                 </div>
 
+
                 <div class="col-5 d-flex justify-content-end">
                 <button type="button" class="btn btn-outline-danger"  onclick="AddHospital()"> <strong>Add Hospital</strong></button>
                     
+
                 </div>
-
-                <!-- <div class="col-3">
-                    <button type="button" class="btn btn-primary bgcol" onclick="EditHospital()" data-bs-toggle="modal" data-bs-target="#editHospital">Edit Hospital</button>
-
-
-                </div> -->
 
             </div>
 
@@ -196,7 +189,7 @@ use classes\district;
 
                         }
 
-                        function teest(test) {
+                        function seaechdistrict(test) {
                             if (test === "") {
                                 array = <?php echo json_encode($detailsArray) ?>;
                                 showall(array);
@@ -209,7 +202,7 @@ use classes\district;
 
                         }
 
-                        function teeest(test) {
+                        function searchname(test) {
 
                             var id = parseInt(test, 10);
 

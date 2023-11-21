@@ -91,7 +91,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
            $_SESSION["bloodbank"] = $bloodbank;
            $_SESSION["email"] = $email;
            $_SESSION['timestamp'] = time();
-           $status = $user->SendMail( $_SESSION["VerificationCode"], $email, $name,$type) ? header("Location: newEmptyPHPWebPage.php?type=bloodbank") : 7;
+           $status = User::SendVerificationCode($_SESSION["VerificationCode"],$email) ? header("Location: newEmptyPHPWebPage.php?type=bloodbank") : 7;
+           
 
        } else {
            //check status for exist values

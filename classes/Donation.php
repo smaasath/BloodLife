@@ -20,7 +20,8 @@ use PDOException;
 use classes\DbConnector;
 use classes\Validation;
 
-class Donation {
+class Donation
+{
 
     private $donationId;
     private $donorId;
@@ -29,7 +30,8 @@ class Donation {
     private $certificate;
     private $bloodBankRequestId;
 
-    public function __construct($donationId, $donorId, $bloodBankId, $campaignId, $certificate, $bloodBankRequestId) {
+    public function __construct($donationId, $donorId, $bloodBankId, $campaignId, $certificate, $bloodBankRequestId)
+    {
         $this->donationId = $donationId;
         $this->donorId = $donorId;
         $this->bloodBankId = $bloodBankId;
@@ -38,55 +40,68 @@ class Donation {
         $this->bloodBankRequestId = $bloodBankRequestId;
     }
 
-    public function getDonationId() {
+    public function getDonationId()
+    {
         return $this->donationId;
     }
 
-    public function getDonorId() {
+    public function getDonorId()
+    {
         return $this->donorId;
     }
 
-    public function getBloodBankId() {
+    public function getBloodBankId()
+    {
         return $this->bloodBankId;
     }
 
-    public function getCampaignId() {
+    public function getCampaignId()
+    {
         return $this->campaignId;
     }
 
-    public function getCertificate() {
+    public function getCertificate()
+    {
         return $this->certificate;
     }
 
-    public function getBloodBankRequestId() {
+    public function getBloodBankRequestId()
+    {
         return $this->bloodBankRequestId;
     }
 
-    public function setDonationId($donationId): void {
+    public function setDonationId($donationId): void
+    {
         $this->donationId = $donationId;
     }
 
-    public function setDonorId($donorId): void {
+    public function setDonorId($donorId): void
+    {
         $this->donorId = $donorId;
     }
 
-    public function setBloodBankId($bloodBankId): void {
+    public function setBloodBankId($bloodBankId): void
+    {
         $this->bloodBankId = $bloodBankId;
     }
 
-    public function setCampaignId($campaignId): void {
+    public function setCampaignId($campaignId): void
+    {
         $this->campaignId = $campaignId;
     }
 
-    public function setCertificate($certificate): void {
+    public function setCertificate($certificate): void
+    {
         $this->certificate = $certificate;
     }
 
-    public function setBloodBankRequestId($bloodBankRequestId): void {
+    public function setBloodBankRequestId($bloodBankRequestId): void
+    {
         $this->bloodBankRequestId = $bloodBankRequestId;
     }
 
-    public function AddDonation() {
+    public function AddDonation()
+    {
         try {
             $dbcon = new DbConnector();
             $con = $dbcon->getConnection();
@@ -106,7 +121,8 @@ class Donation {
         }
     }
 
-    public static function divideLetters($string) {
+    public static function divideLetters($string)
+    {
         preg_match_all('/[0-9]+|[a-zA-Z]+/', $string, $matches);
 
         $numbers = implode('', preg_grep('/[0-9]+/', $matches[0]));
@@ -115,7 +131,8 @@ class Donation {
         return array("type" => $letters, "EncryptedId" => $numbers);
     }
 
-    public static function CreateCertificates($Name, $date) {
+    public static function CreateCertificates($Name, $date)
+    {
         // Create Image From Existing File
         $jpg_image = imagecreatefromjpeg('../Images/certificate.jpg');
 
@@ -145,12 +162,24 @@ class Donation {
         }
     }
 
-    public function getCertificates() {
+    public function getCertificates()
+    {
         try {
             $dbcon = new DbConnector();
             $con = $dbcon->getConnection();
 
-            $query = "SELECT * FROM `donationtable` WHERE donorId =?;";
+            $query = "SELECT donationtable.*, 
+            CASE 
+                WHEN donationtable.campaignId IS NULL THEN NULL
+                ELSE campaigntable.Title
+            END AS Title,
+            CASE
+                WHEN donationtable.campaignId IS NULL THEN NULL
+                ELSE campaigntable.campaignId
+            END AS campaignId
+            FROM donationtable
+            LEFT JOIN campaigntable ON donationtable.campaignId = campaigntable.campaignId
+            WHERE donationtable.donorId = ?;";
 
             $stmt = $con->prepare($query);
             $stmt->bindParam(1, $this->donorId, PDO::PARAM_INT);
@@ -170,5 +199,4 @@ class Donation {
             echo "Error: " . $e->getMessage();
         }
     }
-
 }
