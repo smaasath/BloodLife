@@ -66,7 +66,7 @@ $bloodBankId = $user->getBloodBankId();
 
         <div class="container">
             <div class="row p-4 pt-2">
-                <div class="card1 col-6 p-3 m-0" style=" margin-left:50px">
+                <div class="card1 col-lg-6 p-3 m-0" style=" margin-left:50px">
                     <div class="row">
                         <?php
                         $blood = new Bloodtable(null, null, null, null, $bloodBankId, null);
@@ -100,7 +100,7 @@ $bloodBankId = $user->getBloodBankId();
                     </div>
 
                 </div>
-                <div class="col-6">
+                <div class="col-lg-6">
                     <div class="row  align-items-center justify-content-center">
                         <img class="d-none d-xl-block" src="../Images/stockalert.jpg" style="height:300px;width:300px;align-items: center; " />
                     </div>

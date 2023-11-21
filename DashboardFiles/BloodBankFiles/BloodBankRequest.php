@@ -57,9 +57,7 @@ $bankid = $user->getBloodBankId();
     <div class="mt-5 m-3 mb-1" style="color:gray;">
         <h5>Bloodbank Request </h5>
     </div>
-    <div class="text-center">
-        <a href="../Dashboards/BloodBankDashboard.php?page=bbhra"><button type="button" class="btn btn-primary">Add Request</button></a>
-    </div>
+    
 
 
 
@@ -71,10 +69,10 @@ $bankid = $user->getBloodBankId();
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     <div class="container">
         <div class="row p-3">
-            <div class="col-6">
+            <div class="col-3">
                 <input type="search" id="search" class="form-control rounded" placeholder="Search Name" aria-label="Search" aria-describedby="search-addon" oninput="teeest(this.value)">
             </div>
-            <div class="col-6">
+            <div class="col-3">
                 <select class="form-select" aria-label="Default select example" oninput="teest(this.value)">
                     <option selected value="">Status</option>
                     <option value="Normal">Normal</option>
@@ -85,7 +83,14 @@ $bankid = $user->getBloodBankId();
 
                 </select>
             </div>
+            <div class="col-2">
+           
+        <a href="../Dashboards/BloodBankDashboard.php?page=bbhra"><button type="button" class="btn btn-outline-danger"><strong> Add Request</strong> </button></a>
+    </div>
         </div>
+
+        <div class="row bg-white m-1 pt-0 align-items-center p- d-flex justify-content-around rounded-3" >
+
         <?php
         $detailsArray = bloodbankhsrequest::getAllBloodBankReqByBankID($bankid);
 
@@ -124,51 +129,51 @@ $bankid = $user->getBloodBankId();
                         array.forEach((item) => {
 
                             var htmlCode = `     
-                            <div class="col-3 rounded-4 m-2" style="width: 300px; height: 200px;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; ">
+                            <div class="col-3 rounded-4 m-3 " style="width: 250px; height: 200px;box-shadow: rgba(0, 0, 0, 0.24) 2px 3px 8px; ">
 
                   
        <div class="row">
            <div class="col-1 rounded-right-0 rounded-top-0" style="background: ${getHospitalStatusGradient(item.requestStatus)};width: 10px; height:200px; border-top-right-radius: 10px; border-bottom-left-radius: 10px;">
 
            </div>
-           <div class="col-10 bg-white   " style="width:240px">
+           <div class="col-12 bg-white " style="width:250px">
 
            <div class="row" style="height: 30px;">
-           <div class="col-1 rounded-right-0 rounded-top-0" style="background: ${getHospitalStatusGradient(item.requestStatus)};width: 300px; height:20px; ">
+           <div class="col-1 rounded-right-0 " style="background: ${getHospitalStatusGradient(item.requestStatus)};width: 290px; height:20px; border-top-right-radius: 10px; ">
 
                    </div>
                <div class="row">
 
-                   <div class="row">
+                   <div class="row pt-2">
                        <div class="col-5" style="height: 40px;">
                            <h4 style="background: ${getHospitalStatusGradient(item.requestStatus)}; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
                                <b>${item.bloodGroup}</b>
                            </h4>
 
                        </div>
-                       <div class="col-5 text-end" style="height: 40px;">
+                       <div class="col text-end" style="height: 40px;">
                            <h4 style="background: ${getHospitalStatusGradient(item.requestStatus)}; -webkit-background-clip: text; -webkit-text-fill-color: transparent;"><b> B${item.bloodBankRequestId}</b></h4>
                        </div>
                    </div>
 
                    <div class="row" style="height: 30px;">
-                            <h6 style="color:black;">${item.hospitalName}</h6>
+                            <h6 style="color:black;font-size:11px">${item.hospitalName}</h6>
 
                         </div>
                    <div class="row">
-                       <div class="col-5" style="height: 25px;">
+                       <div class="col-6" style="height: 25px;">
                            <h6 style="background: ${getHospitalStatusGradient(item.requestStatus)}; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">${item.requestStatus}</h6>
                        </div>
-                       <div class="col-5 text-end" style="height: 25px;">
-                           <h6 style="color:black;">${item.bloodQuantity}</h6>
+                       <div class="col-6 text-end" style="height: 25px;">
+                           <h6 style="color:black;"><strong>${item.bloodQuantity}ml</strong></h6>
                        </div>
                    </div>
-                   <div class="row pt-3" style="height: 25px;">
+                   <div class="row pt-2" style="height: 25px;">
 
                        <h6 style="color:black;">${item.createdDate}</h6>
                    </div><br>
-                   <div class="col-6 d-flex justify-content-around">
-                                       <div style="width: 25px"> <a href="../Dashboards/BloodBankDashboard.php?page=bbre&&hreqedit=${item.bloodBankRequestId}"><img src="../Images/icons8-edit-24.png" style="width: 20px;" /></a></div>
+                   <div class="col d-flex justify-content-around pt-2" style="height: 40px;" >
+                                       <div style="width: 25px"> <a href="../Dashboards/BloodBankDashboard.php?page=bbre&&hreqedit=${item.bloodBankRequestId}"><img src="../Images/icons8-edit-24.png" style="width: 20px; margin-left:40px" /></a></div>
                                        <div style="width: 25px"><a href="../Dashboards/BloodBankDashboard.php?page=bbrv&&breqId=${item.bloodBankRequestId}"><img style="width: 20px;" src="../Images/icons8-view-90.png" /></a></div>
                                    </div>
                </div>
@@ -230,56 +235,60 @@ $bankid = $user->getBloodBankId();
                         } else {
                             filterArray.forEach((item) => {
                                 var htmlCode = `     
-                                <div class="col-3 rounded-4 m-2" style="width: 270px; height: 200px;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; ">
-       
-            <div class="row">
-                <div class="col-1 rounded-right-0" style="background: ${getHospitalStatusGradient(item.requestStatus)};width: 10px; height:200px; border-top-left-radius: 10px; border-bottom-left-radius: 10px;">
+                                <div class="col-3 rounded-4 m-2" style="width: 300px; height: 200px;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; ">
 
-                </div>
-                <div class="col-10 bg-white p-2 pt-3 mb-1" style="width:240px">
+                  
+       <div class="row">
+           <div class="col-1 rounded-right-0 rounded-top-0" style="background: ${getHospitalStatusGradient(item.requestStatus)};width: 10px; height:200px; border-top-right-radius: 10px; border-bottom-left-radius: 10px;">
 
+           </div>
+           <div class="col-12 bg-white   " style="width:240px">
 
-                    <div class="row">
+           <div class="row" style="height: 30px;">
+           <div class="col-1 rounded-right-0 rounded-top-0" style="background: ${getHospitalStatusGradient(item.requestStatus)};width: 300px; height:20px; border-top-right-radius: 10px; ">
 
-                        <div class="row">
-                            <div class="col-5" style="height: 40px;">
-                                <h4 style="background: ${getHospitalStatusGradient(item.requestStatus)}; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-                                    <b>${item.bloodGroup}</b>
-                                </h4>
+                   </div>
+               <div class="row">
 
-                            </div>
-                            <div class="col-5 text-end" style="height: 40px;">
-                                <h4 style="background: ${getHospitalStatusGradient(item.requestStatus)}; -webkit-background-clip: text; -webkit-text-fill-color: transparent;"><b> B${item.bloodBankRequestId}</b></h4>
-                            </div>
-                        </div>
+                   <div class="row">
+                       <div class="col-5" style="height: 40px;">
+                           <h4 style="background: ${getHospitalStatusGradient(item.requestStatus)}; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                               <b>${item.bloodGroup}</b>
+                           </h4>
 
-                        <div class="row" style="height: 30px;">
+                       </div>
+                       <div class="col-5 text-end" style="height: 40px;">
+                           <h4 style="background: ${getHospitalStatusGradient(item.requestStatus)}; -webkit-background-clip: text; -webkit-text-fill-color: transparent;"><b> B${item.bloodBankRequestId}</b></h4>
+                       </div>
+                   </div>
+
+                   <div class="row" style="height: 30px;">
                             <h6 style="color:black;">${item.hospitalName}</h6>
 
                         </div>
-                        <div class="row">
-                            <div class="col-5" style="height: 25px;">
-                                <h6 style="background: ${getHospitalStatusGradient(item.requestStatus)}; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">${item.requestStatus}</h6>
-                            </div>
-                            <div class="col-5 text-end" style="height: 25px;">
-                                <h6 style="color:black;">${item.bloodQuantity}</h6>
-                            </div>
-                        </div>
-                        <div class="row pt-3" style="height: 25px;">
+                   <div class="row">
+                       <div class="col-5" style="height: 25px;">
+                           <h6 style="background: ${getHospitalStatusGradient(item.requestStatus)}; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">${item.requestStatus}</h6>
+                       </div>
+                       <div class="col-5 text-end" style="height: 25px;">
+                           <h6 style="color:black;">${item.bloodQuantity}</h6>
+                       </div>
+                   </div>
+                   <div class="row pt-3" style="height: 25px;">
 
-                            <h6 style="color:black;">${item.createdDate}</h6>
-                        </div><br>
-                        <div class="col-6 d-flex justify-content-around">
-                                            <div style="width: 25px"> <a href="../Dashboards/BloodBankDashboard.php?page=bbre&&hreqedit=${item.bloodBankRequestId}"><img src="../Images/icons8-edit-24.png" style="width: 20px;" /></a></div>
-                                            <div style="width: 25px"><a href="../Dashboards/BloodBankDashboard.php?page=bbrv&&breqId=${item.bloodBankRequestId}"><img style="width: 20px;" src="../Images/icons8-view-90.png" /></a></div>
-                                        </div>
-                    </div>
+                       <h6 style="color:black;">${item.createdDate}</h6>
+                   </div><br>
+                   <div class="col-6 d-flex justify-content-around">
+                                       <div style="width: 25px"> <a href="../Dashboards/BloodBankDashboard.php?page=bbre&&hreqedit=${item.bloodBankRequestId}"><img src="../Images/icons8-edit-24.png" style="width: 20px;" /></a></div>
+                                       <div style="width: 25px"><a href="../Dashboards/BloodBankDashboard.php?page=bbrv&&breqId=${item.bloodBankRequestId}"><img style="width: 20px;" src="../Images/icons8-view-90.png" /></a></div>
+                                   </div>
+               </div>
 
-                </div>
+           </div>
 
-            </div>
-       
-    </div>`;
+       </div>
+  
+</div>`;
 
                                 var divElement = document.createElement("div");
 
@@ -299,7 +308,7 @@ $bankid = $user->getBloodBankId();
             </script>
         </div>
     </div>
-
+    </div>
 
 
     <style>

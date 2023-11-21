@@ -78,8 +78,10 @@ use classes\district;
 
     <!-- body start -->
     <div class="mt-5 m-3 mb-1" style="color:gray;">
+
         <h5>Admin Hospital - Management</h5>
         </div>
+
     <!-- Table -->
 
 
@@ -113,8 +115,11 @@ use classes\district;
                     </select>
                 </div>
 
-                <div class="col-4 ">
-                    <button type="button" class="btn btn-primary bgcol" onclick="AddHospital()">Add Hospital </button>
+
+                <div class="col-5 d-flex justify-content-end">
+                <button type="button" class="btn btn-outline-danger"  onclick="AddHospital()"> <strong>Add Hospital</strong></button>
+                    
+
                 </div>
 
             </div>
@@ -127,14 +132,14 @@ use classes\district;
                     <!-- Table row -->
                     <tr class="sticky-top">
 
-                        <th class="col-1 bgcol p-2">Hospital ID</th>
-                        <th class="col-3 bgcol p-2">Hospital Name</th>
-                        <th class="col-2 bgcol p-2">Address</th>
-                        <th class="col-3 bgcol p-2">Contact Number</th>
-                        <th class="col-1 bgcol p-2">District </th>
-                        <th class="col-1 bgcol p-2">division </th>
-                        <th class="col-1 bgcol p-2">View</th>
-                        <th class="col-1 bgcol p-2">Edit</th>
+                        <th class="col-2 bgcol p-2" style="text-align: center;">Hospital ID</th>
+                        <th class="col-2 bgcol p-2" style="text-align: center;">Hospital Name</th>
+                        <th class="col-2 bgcol p-2" style="text-align: center;">Address</th>
+                        <th class="col-2 bgcol p-2" style="text-align: center;">Contact Number</th>
+                        <th class="col-1 bgcol p-2" style="text-align: center;">District </th>
+                        <th class="col-1 bgcol p-2" style="text-align: center;">division </th>
+                        <th class="col-1 bgcol p-2" style="text-align: center;">View</th>
+                        <th class="col-1 bgcol p-2" style="text-align: center;">Edit</th>
 
                     </tr>
                 </thead>
@@ -159,16 +164,16 @@ use classes\district;
                                 array.forEach((item) => {
 
                                     var htmlCode = ` <tr>
-                        <td class="col-1">${item.hospitalId}</td>
-                        <td class="col-3">${item.name}</td>
-                        <td class="col-2">${item.address}</td>
-                        <td class="col-3">${item.contactNumber}</td>                    
-                        <td class="col-1">${item.district}</td>
-                        <td class="col-1">${item.division}</td>
-                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  data-bs-target="#veiwHospital"  onclick="VeiwHospital(${item.hospitalId})">View</button></td>
+                        <td class="col-2" style="text-align: center;">${item.hospitalId}</td>
+                        <td class="col-2" style="text-align: center;">${item.name}</td>
+                        <td class="col-2" style="text-align: center;">${item.address}</td>
+                        <td class="col-2" style="text-align: center;">${item.contactNumber}</td>                    
+                        <td class="col-1" style="text-align: center;">${item.district}</td>
+                        <td class="col-1" style="text-align: center;">${item.division}</td>
+                        <td class="col-1" style="text-align: center;"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  data-bs-target="#veiwHospital"  onclick="VeiwHospital(${item.hospitalId})">View</button></td>
 
 
-                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editHospital"   onclick="editHospital(${item.hospitalId})">Edit</button></td>
+                        <td class="col-1" style="text-align: center;"><i class="fas fa-edit fa-lg" style="color: #f21818;" data-bs-toggle="modal" data-bs-target="#editHospital"   onclick="editHospital(${item.hospitalId})"></i> </td>
                     </tr>`;
 
 
@@ -216,14 +221,14 @@ use classes\district;
 
                                     var htmlCode = ` 
                     <tr>
-                        <td class="col-1">${item.hospitalId}</td>
-                        <td class="col-3">${item.name}</td>
-                        <td class="col-2">${item.address}</td>
-                        <td class="col-1">${item.contactNumber}</td>
-                        <td class="col-1">${item.district}</td>
-                        <td class="col-1">${item.division}</td>
-                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  data-bs-target="#veiwHospital"  onclick="VeiwHospital(${item.hospitalId})">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editHospital"  onclick="editHospital(${item.hospitalId})">Edit</button></td>
+                        <td class="col-2" style="text-align: center;">${item.hospitalId}</td>
+                        <td class="col-2" style="text-align: center;">${item.name}</td>
+                        <td class="col-2" style="text-align: center;">${item.address}</td>
+                        <td class="col-2" style="text-align: center;">${item.contactNumber}</td>
+                        <td class="col-1" style="text-align: center;">${item.district}</td>
+                        <td class="col-1" style="text-align: center;">${item.division}</td>
+                        <td class="col-1" style="text-align: center;"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  data-bs-target="#veiwHospital"  onclick="VeiwHospital(${item.hospitalId})">View</button></td>
+                        <td class="col-1" style="text-align: center;"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editHospital"  onclick="editHospital(${item.hospitalId})">Edit</button></td>
                     </tr>`;
 
 

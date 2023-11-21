@@ -75,7 +75,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     <div class="col-lg-6">
       <div class="form-container" style="margin-left:100px;width: 500px">
         <div class="card-body">
-        
+
 
   <br>
 
@@ -123,6 +123,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
       <img class="d-none d-xl-block" src="../Images/bloodbankprof.jpg" />
     </div>
   </div>
+
 
 
 
