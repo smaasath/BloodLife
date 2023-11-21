@@ -16,7 +16,7 @@ use Endroid\QrCode\Writer\PngWriter;
 $bankid = $user->getBloodBankId();
 
 
-if ($_SERVER["REQUEST_METHOD"] == "GET") {
+if ($_SERVER["REQUEST_METHOD"] == "GET") { 
     if (isset($_GET["breqId"])) {
         $BReqId = $_GET["breqId"];
         $BBRequest = new bloodbankhsrequest($BReqId, null, null, null, null, null, null);
