@@ -14,7 +14,7 @@ use Endroid\QrCode\Writer\PngWriter;
 
 
 $bankid = $user->getBloodBankId();
-echo $bankid;
+
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     if (isset($_GET["breqId"])) {
@@ -70,7 +70,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <h5>Request View</h5>
             </div>
 
-            <div class="row bg-white m-2 pt-0  align-items-center justify-content-center rounded-5" style="height: 320px;">
+            <div class="row bg-white m-2 pt-0  align-items-center justify-content-center rounded-5" style="height: 550px;">
 
                 <div class="container">
                     <div class="row bg-white m-3 pt-0 align-items-center p-3 justify-content-center">

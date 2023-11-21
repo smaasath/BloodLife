@@ -66,19 +66,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     <div class="col-lg-6">
       <div class="form-container" style="margin-left:100px;width: 500px">
         <div class="card-body">
-        <center>
-    <div class="col-3 text-center">
-
-      <select class="form-select text-danger" aria-label="Default select example"> <!-- Add the 'text-danger' class to change color to red -->
-        <option selected>
-          <center>BloodBankId</center>
-        </option>
-        <option value="1">BB001</option>
-        <option value="2">BB003</option>
-        <option value="3">BB004</option>
-      </select>
-    </div>
-  </center>
+      
 
   <br>
 

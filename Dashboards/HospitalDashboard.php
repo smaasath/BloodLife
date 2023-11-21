@@ -86,16 +86,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                         
 
-                        <li>
-                            <a href="HospitalDashboard.php?page=stock" class="nav-link navbarcolor <?php echo ($_SESSION['selectedLink'] ?? '') === 'stock' ? 'active' : ''; ?>"  aria-current="page">
-                                
-                                        <i class="fa-solid fa-warehouse fa-xl icondash"></i>
-                                   
-                                        Blood Stock
-                                  
-                            </a>
-
-                        </li>
+                        
 
                        
 
@@ -158,10 +149,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     </div>
                     <!-- dashboard icon end -->
                    
-                    <div style="margin-left: -9px;">
-                        <i  href="HospitalDashboard.php?page=stock" class="fa-solid fa-warehouse fa-xl icondash nav-link navbarcolorafter <?php echo ($_SESSION['selectedLink'] ?? '') === 'stock' ? 'active' : ''; ?>"></i>
-                    </div>
-
+                   
                     <div style="margin-left: -9px;">
                         <i href="HospitalDashboard.php?page=profile" class="fa-solid fa-user fa-xl icondash nav-link navbarcolorafter <?php echo ($_SESSION['selectedLink'] ?? '') === 'profile' ? 'active' : ''; ?>"></i>
                     </div>
@@ -199,8 +187,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                       if (isset($_SESSION['selectedLink'])) {
                         if($_SESSION['selectedLink']=="hospital"){
                              include '../DashboardFiles/HospitalFiles/HospitalRequest.php';
-                        }elseif ($_SESSION['selectedLink']=="stock") {
-                             include '../DashboardFiles/HospitalFiles/HospitalBloodStock.php';
                         }elseif ($_SESSION['selectedLink']=="hospitalreqview") {
                              include '../DashboardFiles/HospitalFiles/HospitalRequestView.php';
                         }elseif ($_SESSION['selectedLink']=="hospitalreqedit") {

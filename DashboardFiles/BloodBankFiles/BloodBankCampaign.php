@@ -72,17 +72,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     <!-- nav bar end -->
 
 
-
-
-    <center>
-        <h1> BL Campaign </h1>
-    </center>
+ <!-- body start -->
+    <div class="mt-5 m-3 mb-1" style="color:gray;">
+        <h5>Camapign</h5>
+    </div>
+   
+    
 
     <div class="p-5">
 
 
 
-        -->
+       
         <div class="rounded-top-4 p-0 border border-dark-subtle">
             <div class="row align-items-center">
                 <!-- Search input -->
