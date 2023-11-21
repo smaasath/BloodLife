@@ -72,7 +72,7 @@ use classes\Donor;
     <div class="mt-5 m-3 mb-1" style="color: gray;">
         <h5>Donor</h5>
         <div class="row align-items-right justify-content-center">
-            <img class="d-none d-xl-block" src="../Images/donor1.jpg" style="height: 250px; width: 400px; align-items: center;" />
+            <img class="d-none d-xl-block" src="../Images/donor.jpg" style="height: 150px; width: 750px; align-items: center;" />
         </div>
     </div>
 
@@ -80,7 +80,7 @@ use classes\Donor;
     <div class="container p-2">
 
         <!-- Search and Add Donor Section -->
-        <div class="row bg-white m-1 pt-0 align-items-center justify-content-center rounded-5" style="height: 500px;">
+        <div class="row bg-white  align-items-center justify-content-center rounded-3" style="height: 300px;">
             <div class="container">
                 <div class="rounded-top-4 p-0 border border-dark-subtle">
                     <div class="row align-items-center">

@@ -8,10 +8,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
 require_once '../classes/Bloodtable.php';
+require_once '../classes/Validation.php';
 
 
 use classes\Bloodtable;
-
+use classes\Validation;
 $bloodBankId = $user->getBloodBankId();
 ?>
 
@@ -59,6 +60,53 @@ $bloodBankId = $user->getBloodBankId();
     <!-- nav bar end -->
 
     <!-- body start -->
+    <?php
+        if ($_SERVER["REQUEST_METHOD"] == "GET") {
+            if (isset($_GET["status"])) {
+                $status = Validation::decryptedValue($_GET["status"]);
+                if ($status == 1 || $status == 2) {
+        ?>
+                   
+                    <div class="alert alert-success d-flex align-items-center m-2" role="alert">
+                       <div class="col-1 align-items-center justify-content-center" >
+                       <img width="30" height="30" src="https://img.icons8.com/color/48/ok--v1.png" alt="ok--v1"/>
+                       </div>
+                       <div class="col-10 d-flex">
+                      <?php echo $status == 1 ? "Bloodpacket Successfully Added" : "Bloodpacket Successfully changed" ;?>
+                       </div>
+                      
+                       <div class="col-1 d-flex align-items-end justify-content-center">
+                       <a href="../Dashboards/BloodBankDashboard.php?"> <img width="30" height="30" src="https://img.icons8.com/hatch/64/delete-sign.png" alt="delete-sign"/></a>
+                    </div>
+                      
+                    </div>
+                <?php
+                } else {
+
+
+                ?>
+
+                    <div class="alert alert-danger d-flex align-items-center m-2" role="alert">
+                    <div class="col-1 align-items-center justify-content-center" >
+                    <img width="30" height="30" src="https://img.icons8.com/cute-clipart/64/high-priority.png" alt="high-priority"/>
+                       </div>
+                       <div class="col-10 d-flex">
+                       <?php
+                            echo $status;
+                            ?>
+                       </div>
+                      
+                       <div class="col-1 d-flex align-items-end justify-content-center">
+                      <a href="../Dashboards/BloodBankDashboard.php?"> <img width="30" height="30" src="https://img.icons8.com/hatch/64/delete-sign.png" alt="delete-sign"/></a>
+                    </div>
+                        
+                    </div>
+
+        <?php
+                }
+            }
+        }
+        ?>
     <div class="mt-5 m-3 mb-1" style="color:gray;">
         <h5>Blood Stock</h5>
     </div>
