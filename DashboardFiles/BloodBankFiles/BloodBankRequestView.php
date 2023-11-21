@@ -1,6 +1,7 @@
 <?php
 require_once "../classes/bloodbankhsrequest.php";
 require_once "../vendor/autoload.php";
+require_once '../classes/Validation.php';
 
 use classes\bloodbankhsrequest;
 use Endroid\QrCode\Builder\Builder;
@@ -10,11 +11,12 @@ use Endroid\QrCode\Label\LabelAlignment;
 use Endroid\QrCode\Label\Font\NotoSans;
 use Endroid\QrCode\RoundBlockSizeMode;
 use Endroid\QrCode\Writer\PngWriter;
+use classes\Validation;
 
 
 
 $bankid = $user->getBloodBankId();
-echo $bankid;
+
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     if (isset($_GET["breqId"])) {
@@ -70,6 +72,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <h5>Request View</h5>
             </div>
 
+        
             <div class="row bg-white m-2 pt-0  align-items-center justify-content-center rounded-5" style="height: 320px;">
 
                 <div class="container">
