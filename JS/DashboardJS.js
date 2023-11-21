@@ -186,7 +186,7 @@ function validateMobileNumber(contactNumber) {
     // Check if the mobile number is 10 digits long (including the prefix)
     if (contactNumber.length === 10) {
         // Check if the mobile number starts with a valid Sri Lankan prefix
-        const validPrefixes = ["071", "072", "075", "076", "077", "078", "074"];
+        const validPrefixes = ["071", "072", "075", "076", "077", "078", "074","071","070"];
         const prefix = contactNumber.substr(0, 3);
 
         if (validPrefixes.includes(prefix)) {

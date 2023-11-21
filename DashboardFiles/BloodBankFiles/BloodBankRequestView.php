@@ -1,6 +1,7 @@
 <?php
 require_once "../classes/bloodbankhsrequest.php";
 require_once "../vendor/autoload.php";
+require_once '../classes/Validation.php';
 
 use classes\bloodbankhsrequest;
 use Endroid\QrCode\Builder\Builder;
@@ -10,6 +11,7 @@ use Endroid\QrCode\Label\LabelAlignment;
 use Endroid\QrCode\Label\Font\NotoSans;
 use Endroid\QrCode\RoundBlockSizeMode;
 use Endroid\QrCode\Writer\PngWriter;
+use classes\Validation;
 
 
 
@@ -156,83 +158,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             </div>
 
 
-            <!-- <div class="row bg-white m-2 pt-0  align-items-center justify-content-center rounded-5" style="height: 550px;">
-
-                <div class="container">
-                    <div class="row bg-white m-3 pt-0 align-items-center p-3 justify-content-center">
-                        <div class="col-sm-5 bg-white m-3 rounded-2" style="height: 450px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
-
-                            <div class="row p-2 m-1 mt-5">
-                                <div class="col-5">
-                                    <strong> Blood Bank Request ID</strong>
-                                </div>
-                                <div class="col-4 ">
-                                    <?php echo "B" . $Result->bloodBankRequestId; ?>
-                                </div>
-                            </div>
-                            <div class="row p-2 m-1">
-                                <div class="col-5">
-                                    <strong> Blood Quantity</strong>
-                                </div>
-                                <div class="col-4">
-                                    <?php echo $Result->bloodQuantity; ?>
-                                </div>
-                            </div>
-                            <div class="row p-2 m-1">
-                                <div class="col-5">
-                                    <strong> Blood Group</strong>
-                                </div>
-                                <div class="col-4">
-                                    <?php echo $Result->bloodGroup; ?>
-                                </div>
-                            </div>
-                            <div class="row p-2 m-1">
-                                <div class="col-5">
-                                    <strong>Hospital Name</strong>
-                                </div>
-                                <div class="col-4">
-                                    <?php echo $Result->hospitalName; ?>
-                                </div>
-                            </div>
-                            <div class="row p-2 m-1">
-                                <div class="col-5">
-                                    <strong>Hospital Address</strong>
-                                </div>
-                                <div class="col-4">
-                                    <?php echo $Result->hospitalAddress; ?>
-                                </div>
-                            </div>
-
-                            <div class="row p-2 m-1">
-                                <div class="col-5">
-                                    <strong> hospital Request Id</strong>
-                                </div>
-                                <div class="col-4">
-                                    <?php echo $Result->hospitalRequestId; ?>
-                                </div>
-                            </div>
-                            <div class="row p-2 m-1">
-                                <div class="col-5">
-                                    <strong> Created Date</strong>
-                                </div>
-                                <div class="col-4">
-                                    <?php echo $Result->createdDate; ?>
-                                </div>
-                            </div>
-                            <div class="row p-2 m-1">
-                                <div class="col-5">
-                                    <strong>Status:</strong>
-                                </div>
-                                <div class="col-4">
-                                    <?php echo $Result->requestStatus; ?>
-                                </div>
-                            </div>
-
-
-
-
-
-                        </div> -->
+            
 
             <div class="col-sm-6 align-items-center justify-content-center text-center p-3" style="height: 450px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
                 <?php
