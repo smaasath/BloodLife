@@ -108,9 +108,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                                                     </div>
             </div>
         
-        <div class="col-md-4">
-            <img class="d-none d-xl-block" src="../Images/Campaign.jpg" alt="Hospital Image" />
-        </div>
+        
         </div></div>
 
 
