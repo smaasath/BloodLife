@@ -26,6 +26,41 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_POST["bloodBankName"],$_POST["Address"],$_POST["ContactNo"],
         $_POST["district"],$_POST["division"],$_POST["token"],$_POST["bloodBankId"]
     )) {
+         $userChangePassword = new User(null, null, null, null, $_POST["token"], null, null, null, null);
+        $validateToken = $userChangePassword->validateToken();
+        $userrole = $userChangePassword->getUserRole();
+        
+        if (($validateToken && $userrole == 3)) {
+            if ($_POST["newpassword"] === $_POST["confirmPassword"]) {
+            if ($userChangePassword->verifyPassword($userChangePassword->getEmail(), $_POST["OldPassword"])) {
+               
+                    if(Validation::validatePassword($_POST["newpassword"])){
+                    if ($userChangePassword->changePassword($userChangePassword->getEmail(), $_POST["newpassword"])) {
+                        $status = "Password change successfully"; 
+                    }else{
+                        $status = "Password didn't change";  
+                    }
+                }else{
+                    $status = "Storng password must contain 8digits ,symbals, 1 capital letter";
+                }
+                }else{
+                    $status = "Old Password In Not Correct"; 
+                }
+            }else{
+                $status = "New Password and Confirm password is not match"; 
+            }
+        }else{
+            $status = "UnAuthorized Token";
+        }
+    } else if (isset(
+        $_POST["name"],
+        $_POST["address"],
+        $_POST["contactNumber"],
+        $_POST["district"],
+        $_POST["division"],
+        $_POST["token"],
+        $_POST["hospitalId"]
+    )) {
 
         //empty value check
         if (
@@ -47,12 +82,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $districtId = district::getDistrictIDDD($district, $division);
             // echo $districtId;
 
-
-
-
             //create user object with token
             $user = new User(null, null, null, null, $token, null, null, null, null);
-
             //validations
 
 
@@ -64,7 +95,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // echo $token;
             // echo $userrole;
             //token  checking
-            if ($validateToken && $userrole == 1) {
+            if (($validateToken && $userrole == 1) || ($validateToken && $userrole == 2)) {
+             
 
                 //email,phonenumber validation check
                 if ($validatePhoneNumber) {
