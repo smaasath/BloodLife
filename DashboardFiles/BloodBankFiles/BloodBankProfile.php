@@ -238,7 +238,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <h6>Hospital Name</h6>
               </div>
               <div class="col-9">
-                <input type="text" name="name" class="form-control" value="<?php echo $bloodBank->getBloodBankName(); ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                <input type="text" name="bloodBankName" class="form-control" value="<?php echo $bloodBank->getBloodBankName(); ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
               </div>
             </div>
             <div class="row align-items-center pb-3">
@@ -246,7 +246,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <h6>contactNumber</h6>
               </div>
               <div class="col-9">
-                <input type="text" name="contactNumber" class="form-control" value="<?php echo $bloodBank->getContactNo(); ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                <input type="text" name="ContactNo" class="form-control" value="<?php echo $bloodBank->getContactNo(); ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
               </div>
             </div>
             <div class="row align-items-center pb-3">
@@ -254,7 +254,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <h6>Address</h6>
               </div>
               <div class="col-9">
-                <input type="text" name="address" class="form-control" value="<?php echo $bloodBank->getAddress(); ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                <input type="text" name="Address" class="form-control" value="<?php echo $bloodBank->getAddress(); ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
               </div>
             </div>
 
@@ -296,7 +296,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             </div>
 
             <input type="hidden" name="token" value="<?php echo $token; ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-            <input type="hidden" name="hospitalId" value="<?php echo $hospitalId; ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+            <input type="hidden" name="bloodBankId" value="<?php echo $bloodBankId; ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
 
           </div>
           <div class="modal-footer">
