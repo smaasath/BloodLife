@@ -21,12 +21,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
             $status = 5;
         } else {
-            $status = 3;
+            $status = "All Fields need to be Filled!";
         }
     } else {
-        $status = 4;
+        $status = "All Fields need to be Filled!";
     }
 } else {
-    $status = 1;
+    $status = "Invalid Request Method!";
 }
-echo $status;
+$encrptedmessage=validation::encryptedValue($status);
+header("Location: ../Dashboards/BloodBankDashboard.php?status=$encrptedmessage");

@@ -45,6 +45,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
             <link rel="stylesheet" href="../CSS/Stock.css">
             <link rel="stylesheet" href="../CSS/StockAlert.css">
+            
 
         </head>
 
@@ -176,8 +177,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                         <hr class="dashboardhr">
                         <div class="dropdown">
-                            <a href="../services/Logout.php" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                            <li><a class="dropdown-item" href="../services/Logout.php">Log out</a></li>
+                            <a href="../services/Logout.php" class="d-flex align-items-center text-white text-decoration-none " id="dropdownUser1"  aria-expanded="false">
+                            <i class="fa-solid fa-power-off fa-lg loggedicon"></i>
                                 <strong class="loggedout">Log Out</strong>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1" style="">
@@ -185,6 +186,16 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                 <li><a class="dropdown-item" href="../services/Logout.php">Log out</a></li>
                             </ul>
                         </div>
+
+
+                        
+
+
+
+
+
+
+
                         <hr class="dashboardhr">
                     </div>
 

@@ -61,7 +61,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <!-- nav bar end -->
 
         <!-- body start -->
-    <center><h1>BloodBank Request-Edit</h1></center>
+        <div class="mt-5 m-3 mb-1" style="color:gray;">
+                <h5>Request Edit</h5>
+            </div>
 
     
 
