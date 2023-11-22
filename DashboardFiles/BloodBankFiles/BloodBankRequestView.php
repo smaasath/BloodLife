@@ -74,7 +74,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             <div class="row bg-white m-3 pt-0  " style="height: 600px;">
 
                 <div class="col-lg-5 m-2">
-                    <div class="form-container" style="margin-left:50px;width: 500px">
+                    <div class="form-container" style="margin-left:20px;width: 500px">
                         <div class="card-body">
 
                             <br>
@@ -83,7 +83,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                 <div class="col-sm-6">
                                     <strong> Blood Bank Request ID</strong>
                                 </div>
-                                <div class="col-sm-4">
+                                <div class="col-sm-3">
                                     <?php echo "B" . $Result->bloodBankRequestId; ?>
                                 </div>
                             </div>
@@ -93,7 +93,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                 <div class="col-sm-6">
                                     <strong> Blood Quantity</strong>
                                 </div>
-                                <div class="col-sm-4">
+                                <div class="col-sm-3">
                                     <?php echo $Result->bloodQuantity; ?>
                                 </div>
                             </div>
@@ -102,7 +102,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                 <div class="col-sm-6">
                                     <strong> Blood Group</strong>
                                 </div>
-                                <div class="col-sm-4">
+                                <div class="col-sm-3">
                                     <?php echo $Result->bloodGroup; ?>
                                 </div>
                             </div>
@@ -111,7 +111,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                 <div class="col-sm-6">
                                     <strong>Hospital Name</strong>
                                 </div>
-                                <div class="col-sm-4">
+                                <div class="col-sm-3">
                                     <?php echo $Result->hospitalName; ?>
                                 </div>
                             </div>
@@ -120,7 +120,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                 <div class="col-sm-6">
                                     <strong>Hospital Address</strong>
                                 </div>
-                                <div class="col-sm-4">
+                                <div class="col-sm-3">
                                     <?php echo $Result->hospitalAddress; ?>
                                 </div>
                             </div>
@@ -129,7 +129,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                 <div class="col-sm-6">
                                     <strong> hospital Request Id</strong>
                                 </div>
-                                <div class="col-sm-4">
+                                <div class="col-sm-3">
                                     <?php echo $Result->hospitalRequestId; ?>
                                 </div>
                             </div>
@@ -138,7 +138,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                 <div class="col-sm-6">
                                     <strong> Created Date</strong>
                                 </div>
-                                <div class="col-sm-4">
+                                <div class="col-sm-3">
                                     <?php echo $Result->createdDate; ?>
                                 </div>
                             </div>
@@ -147,7 +147,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                 <div class="col-sm-6">
                                     <strong>Status:</strong>
                                 </div>
-                                <div class="col-sm-4">
+                                <div class="col-sm-3">
                                     <?php echo $Result->requestStatus; ?>
                                 </div>
                             </div>
@@ -155,12 +155,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         </div>
                     </div>
                 </div>
-            </div>
-
-
-            
-
-            <div class="col-sm-5 align-items-center justify-content-center text-center p-3" style="height: 450px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+                <div class="col-sm-5 m-2 align-items-center justify-content-center text-center p-3" style="height: 450px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; margin-left:80px">
                 <?php
 
 
@@ -193,6 +188,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
             </div>
+            </div>
+
+
+            
+
+            
 
             </div>
 

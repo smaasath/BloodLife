@@ -22,7 +22,7 @@ use classes\Donor;
 
 <body>
 
-    <!-- nav bar start --
+    <!-- nav bar start -->
     <div class="sticky-top bg-white shadownav" style="height: 50px;">
         <div class="row m-0 d-flex">
             <div class="col-8">
@@ -51,28 +51,19 @@ use classes\Donor;
 
 
         </div>
-    </div>
-    <!-- body start --
-
-    <div class="mt-5 m-3 mb-1" style="color:gray;">
-        <h5>Donor</h5>
-        <div class="row  align-items-right justify-content-center">
-            <img class="d-none d-xl-block" src="../Images/donor1.jpg" style="height:250px;width:400px;align-items: center; " />
         </div>
-    </div>
+    <!-- body start -->
+
+    
 
     <!-- Navigation Bar -->
-    <div class="sticky-top bg-white shadow-nav" style="height: 50px;">
-        <div class="row m-0 d-flex">
-            <!-- Navigation content goes here -->
-        </div>
-    </div>
+   
 
     <!-- Body Content -->
     <div class="mt-5 m-3 mb-1" style="color: gray;">
         <h5>Donor</h5>
         <div class="row align-items-right justify-content-center">
-            <img class="d-none d-xl-block" src="../Images/donor.jpg" style="height: 150px; width: 750px; align-items: center;" />
+            <img class="d-none d-xl-block" src="../Images/donor.jpg" style="height: 150px; width: 700px; align-items: center;" />
         </div>
     </div>
 
@@ -137,7 +128,7 @@ use classes\Donor;
                                 <th class="col-1 bg-secondary text-dark p-2" style="text-align: center;">DonorID</th>
                                 <th class="col-1 bg-secondary text-dark p-2" style="text-align: center;">Name</th>
                                 <th class="col-1 bg-secondary text-dark p-2" style="text-align: center;">Blood Group</th>
-                                <th class="col-1 bg-secondary text-dark p-2" style="text-align: center;">Contact No</th>
+                                <th class="col-2 bg-secondary text-dark p-2" style="text-align: center;">Contact No</th>
                                <th class="col-1 bg-secondary text-dark p-2" style="text-align: center;">Available</th>
                        
                                 <th class="col-1 bg-secondary text-dark p-2" style="text-align: center;">Edit</th>
@@ -182,16 +173,16 @@ use classes\Donor;
                         <td class="col-1">${item.name}</td> 
                         <td class="col-1">${item.bloodGroup }</td>
                         
-                         <td class="col-1">${item.contactNumber}</td>                    
+                         <td class="col-2">${item.contactNumber}</td>                    
                         <td class="col-1">${item.availability }</td>
                        
                      
                        
                       
                         
-                        <td class="col-1"><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="EditDon(${item.donorId})" >Edit</button> </td>
+                        <td class="col-1"><i class="fas fa-edit fa-lg" style="color: #f21818;" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="EditDon(${item.donorId})"></i> </td>
                         
-                        <td class="col-1"><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#DonorView" onclick="ViewDon(${item.donorId})" >View</button> </td>
+                        <td class="col-1"><i class="fa-solid fa-eye fa-lg" style="color: #f00040a;" data-bs-toggle="modal" data-bs-target="#DonorView" onclick="ViewDon(${item.donorId})"></i></td>
                         
 
 
@@ -248,13 +239,13 @@ use classes\Donor;
                         <td class="col-1">${item.name}</td> 
                         <td class="col-1">${item.bloodGroup }</td>
                         
-                         <td class="col-1">${item.contactNumber}</td>                    
+                         <td class="col-2">${item.contactNumber}</td>                    
                         <td class="col-1">${item.availability }</td>
                         
                         
-                        <td class="col-1"><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="EditDon(${item.donorId})" >Edit</button> </td>
+                        <td class="col-1"><i class="fas fa-edit fa-lg" style="color: #f21818;" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="EditDon(${item.donorId})"></i> </td>
                         
-                        <td class="col-1"><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#DonorView" onclick="ViewDon(${item.donorId})" >View</button> </td>
+                        <td class="col-1"><i class="fa-solid fa-eye fa-lg" style="color: #f00040a;" data-bs-toggle="modal" data-bs-target="#DonorView" onclick="ViewDon(${item.donorId})"></i></td>
                         
                         </tr>`;
 
@@ -318,8 +309,9 @@ use classes\Donor;
                         <input type="hidden" name="token" value="<?php echo $token; ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
 
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Add Donor</button>
+                        <button type="submit" class="btn btn-outline-danger"><strong>Edit Donor</button>
+                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                            
                         </div>
                     </div>
 
