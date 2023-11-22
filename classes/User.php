@@ -7,6 +7,10 @@
 
 namespace classes;
 
+require_once '../mail/Exception.php';
+require_once '../mail/PHPMailer.php';
+require_once '../mail/SMTP.php';
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
@@ -237,9 +241,7 @@ class User
     public static function SendVerificationCode($code, $email)
     {
 
-        require '../mail/Exception.php';
-        require '../mail/PHPMailer.php';
-        require '../mail/SMTP.php';
+      
         $mail = new PHPMailer(true);
 
         //Server settings
@@ -273,11 +275,7 @@ class User
 
     public static function SendMail($password, $email, $name, $type)
     {
-        // Create an instance; passing `true` enables exceptions
-
-        require '../mail/Exception.php';
-        require '../mail/PHPMailer.php';
-        require '../mail/SMTP.php';
+  
         $mail = new PHPMailer(true);
 
         //Server settings

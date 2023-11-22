@@ -30,4 +30,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $status = "Invalid Request Method!";
 }
 $encrptedmessage=validation::encryptedValue($status);
-header("Location: ../Dashboards/BloodBankDashboard.php?status=$encrptedmessage");
+header("Location: ../Dashboards/BloodBankDashboard.php?page=bloodBankHospital&status=$encrptedmessage");

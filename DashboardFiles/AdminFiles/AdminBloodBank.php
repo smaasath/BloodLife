@@ -82,16 +82,18 @@ use classes\district;
     <!-- nav bar end -->
 
     <!-- body start -->
-    <center>
-        <h1>Admin - Blood Bank Management</h1>
-    </center>
+    <div class="mt-5 m-3 mb-1" style="color:gray;">
+
+        <h5>Admin - Blood Bank Management</h5>
+    </div>
+
 
     <!-- Table -->
 
-    <div class="p-5">
+    <div class="p-5 pt-3">
 
 
-        <div class="rounded-top-4 p-0 border border-dark-subtle">
+        <div class="rounded-top-4 p-0 ">
             <div class="row align-items-center">
                 <div class="col-3">
                     <div class="input-group rounded p-3">
@@ -103,7 +105,7 @@ use classes\district;
                 </div>
 
 
-                <div class="col-2">
+                <div class="col-3">
                     <select class="form-select" aria-label="Default select example" oninput="teest(this.value)">
                         <option selected>District</option>
                         <?php
@@ -120,7 +122,10 @@ use classes\district;
                 </div>
 
                 <div class="col-3">
-                    <button type="button" class="btn btn-primary bgcol" onclick="AddBloodbank()">Add Blood Bank</button>
+                </div>
+                <div class="col-3">
+                    <button type="button" class="btn btn-outline-primary " onclick="AddBloodbank()"><strong>Add Blood Bank</strong></button>
+
                 </div>
 
 
@@ -134,14 +139,16 @@ use classes\district;
                     <!-- Table row -->
                     <tr class="sticky-top">
 
-                        <th class="col-1 bgcol p-2">Blood Bank ID</th>
-                        <th class="col-3 bgcol p-2">Blood Bank Name</th>
-                        <th class="col-2 bgcol p-2">Address</th>
-                        <th class="col-1 bgcol p-2">Contact Number</th>
-                        <th class="col-3 bgcol p-2">District</th>
-                        <th class="col-1 bgcol p-2">DS Division</th>
-                        <th class="col-1 bgcol p-2">View</th>
-                        <th class="col-1 bgcol p-2">Edit</th>
+
+                        <th class="col-2 bgcol p-2" style="text-align: center;">BloodBank ID</th>
+                        <th class="col-2 bgcol p-2" style="text-align: center;">BloodBank Name</th>
+                        <th class="col-2 bgcol p-2" style="text-align: center;">Address</th>
+                        <th class="col-2 bgcol p-2" style="text-align: center;">Contact Number</th>
+                        <th class="col-1 bgcol p-2" style="text-align: center;">District</th>
+                        <th class="col-1 bgcol p-2" style="text-align: center;">Division</th>
+
+                        <th class="col-1 bgcol p-2" style="text-align: center;">View</th>
+                        <th class="col-1 bgcol p-2" style="text-align: center;">Edit</th>
 
                     </tr>
                 </thead>
@@ -169,15 +176,17 @@ use classes\district;
                                 array.forEach((item) => {
 
                                     var htmlCode = ` <tr>
-                        <td class="col-1">${item.bloodBankId}</td>
-                        <td class="col-3">${item.bloodBankName}</td>
-                        <td class="col-2">${item.Address}</td>
-                        <td class="col-3">${item.ContactNo}</td>                    
-                        <td class="col-1">${item.district}</td>
-                        <td class="col-1">${item.division}</td>
-                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#veiwBloodbank" onclick="VeiwBloodbank(${item.bloodBankId})">View</button></td>
 
-                        <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editBloodbank" onclick="editBloodbank(${item.bloodBankId})">Edit</button></td>
+                        <td class="col-2" style="text-align: center;">${item.bloodBankId}</td>
+                        <td class="col-2" style="text-align: center;">${item.bloodBankName}</td>
+                        <td class="col-2" style="text-align: center;">${item.Address}</td>
+                        <td class="col-2" style="text-align: center;">${item.ContactNo}</td>                    
+                        <td class="col-1" style="text-align: center;">${item.district}</td>
+                        <td class="col-1" style="text-align: center;">${item.division}</td>
+                        <td class="col-1" style="text-align: center;"><i class="fas fa-eye fa-lg" style="color: #007BFF;" data-bs-toggle="modal" data-bs-target="#veiwBloodbank" onclick="VeiwBloodbank(${item.bloodBankId})"></i></td>
+
+                        <td class="col-1" style="text-align: center;"><i class="fas fa-edit fa-lg" style="color: #007BFF;" data-bs-toggle="modal" data-bs-target="#editBloodbank" onclick="editBloodbank(${item.bloodBankId})"></i></td>
+
                     </tr>`;
 
 
@@ -225,14 +234,16 @@ use classes\district;
 
                                     var htmlCode = ` 
                             <tr>
-                                <td class="col-1">${item.bloodBankId}</td>
-                                <td class="col-3">${item.bloodBankName}</td>
-                                <td class="col-2">${item.Address}</td>
-                                <td class="col-1">${item.ContactNo}</td>
-                                <td class="col-1">${item.district}</td>
-                                <td class="col-1">${item.division}</td>
-                                <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#veiwBloodbank" onclick="VeiwBloodbank(${item.bloodBankId})">View</button></td>
-                                <td class="col-1"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editBloodbank" onclick="editBloodbank(${item.bloodBankId})">Edit</button></td>
+
+                                <td class="col-2" style="text-align: center;">${item.bloodBankId}</td>
+                                <td class="col-2" style="text-align: center;">${item.bloodBankName}</td>
+                                <td class="col-2" style="text-align: center;">${item.Address}</td>
+                                <td class="col-2" style="text-align: center;">${item.ContactNo}</td>
+                                <td class="col-1" style="text-align: center;">${item.district}</td>
+                                <td class="col-1" style="text-align: center;">${item.division}</td>
+                                <td class="col-1" style="text-align: center;"><i class="fas fa-eye fa-lg" style="color: #007BFF;" data-bs-toggle="modal" data-bs-target="#veiwBloodbank" onclick="VeiwBloodbank(${item.bloodBankId})"></i></td>
+                                <td class="col-1" style="text-align: center;"><i class="fas fa-edit fa-lg" style="color: #007BFF;" data-bs-toggle="modal" data-bs-target="#editBloodbank" onclick="editBloodbank(${item.bloodBankId})"></i></td>
+
                     </tr>`;
 
 
@@ -344,9 +355,8 @@ use classes\district;
 
                         <div class="modal-footer">
 
-                            <button type="submit" class="btn btn-primary">Save </button>
-                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletePopup1">Delete</button>
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-outline-primary"><strong>Save</strong> </button>
+                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"><strong>Cancel</strong></button>
 
                         </div>
                     </div>
@@ -378,9 +388,9 @@ use classes\district;
                 <div class="modal-footer">
 
 
-                    <button type="submit" class="btn btn-primary">Save </button>
-                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletePopup3">Delete</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-outline-primary"><strong>Save </strong></button>
+                    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deletePopup3"><strong>Delete</strong></button>
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"><strong>Cancel</strong></button>
                 </div>
             </div>
         </div>
@@ -403,73 +413,12 @@ use classes\district;
                 </div>
 
                 <div class="modal-footer">
-                    <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#savePopup2">Save </button>
-                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletePopup2">Delete</button> -->
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                   <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"><strong>Cancel</strong></button>
 
                 </div>
             </div>
         </div>
     </div>
-
-
-
-
-    <!-- Save Popup viewbloodbank -->
-    <!-- Modal -->
-    <!-- <div class="modal fade" id="savePopup2" tabindex="-1" aria-labelledby="savePopup2Label" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="savePopup2Label1"></h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-
-                <div class="modal-body">
-
-                    <h1>Do you want to save the changes?</h1>
-
-                </div>
-                <div class="modal-footer">
-
-                    <button type="button" class="btn btn-primary">No </button>
-                    <button type="button" class="btn btn-danger">Yes </button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="OpenBloodbankDetails()">Cancel</button>
-
-                </div>
-            </div>
-        </div>
-    </div>
-    </div> -->
-
-    <!--Delete Popup viewbloodbank-->
-    <!-- Modal -->
-    <!-- <div class="modal fade" id="deletePopup2" tabindex="-1" aria-labelledby="deletePopup2Label" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="deletePopup2Label1"></h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-
-                <div class="modal-body">
-
-                    <h1>Do you want to delete the changes?</h1>
-
-                </div>
-                <div class="modal-footer">
-
-                    <button type="button" class="btn btn-primary">No </button>
-                    <button type="button" class="btn btn-danger">Yes </button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="OpenBloodbankDetails()">cancel</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="OpenBloodbankDetails()">Back</button>
-
-                </div>
-            </div>
-        </div>
-    </div>
-    </div> -->
-
 
 
 

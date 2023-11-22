@@ -120,9 +120,10 @@ use classes\User;
     </div>
     <!-- nav bar end -->
 
-    <center>
-        <h2>Super Profile Manage Page</h2>
-    </center>
+    <div class="mt-5 m-3 mb-1" style="color:gray; text-align: center;">
+
+        <h5>Super Profile Manage Page</h5>
+    </div>
 
     <form action="../services/adminProfileEdit.php" method="POST">
         <div class="imgcontainer">
@@ -147,7 +148,7 @@ use classes\User;
             <input type="hidden" name="token" value="<?php echo $token; ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" >
 
 
-            <button type="submit">Save</button>
+            <button type="submit" class="btn btn-outline-primary "><strong>Save</strong></button>
 
         </div>
 

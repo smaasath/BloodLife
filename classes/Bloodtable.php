@@ -207,7 +207,7 @@ class Bloodtable
             $con = $dbcon->getConnection();
             $query = "SELECT bloodGroup, SUM(quantity) AS totalQuantity
             FROM `bloodtable`
-            WHERE bloodBankId = ?
+            WHERE bloodBankId = ? && status = 'Available'
             GROUP BY bloodGroup;
             ";
             $stmt = $con->prepare($query);
