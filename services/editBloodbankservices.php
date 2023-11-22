@@ -53,13 +53,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $status = "UnAuthorized Token";
         }
     } else if (isset(
-        $_POST["name"],
-        $_POST["address"],
-        $_POST["contactNumber"],
+        $_POST["bloodBankName"],
+        $_POST["Address"],
+        $_POST["ContactNo"],
         $_POST["district"],
         $_POST["division"],
         $_POST["token"],
-        $_POST["hospitalId"]
+        $_POST["bloodBankId"]
     )) {
 
         //empty value check
