@@ -119,7 +119,7 @@ foreach ($bloodpackets as $packet) {
           
         </tbody>
       </table>
-      <button class="btn btn-dark" type="submit" style="margin-left: 550px ">Save</button>
+      <button class="btn btn-dark" type="submit" style="margin-left: 970px ">Save</button>
       </form>
       
 

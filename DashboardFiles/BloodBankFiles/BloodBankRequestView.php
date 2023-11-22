@@ -73,8 +73,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             </div>
             <div class="row bg-white m-3 pt-0  " style="height: 600px;">
 
-                <div class="col-lg-6 m-2">
-                    <div class="form-container" style="margin-left:100px;width: 500px">
+                <div class="col-lg-5 m-2">
+                    <div class="form-container" style="margin-left:20px;width: 500px">
                         <div class="card-body">
 
                             <br>
@@ -155,12 +155,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         </div>
                     </div>
                 </div>
-            </div>
-
-
-            
-
-            <div class="col-sm-6 align-items-center justify-content-center text-center p-3" style="height: 450px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+                
+            <div class="col-sm-5 m-2  align-items-center justify-content-center text-center p-3" style="height: 450px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; margin-left:100px;">
                 <?php
 
 
@@ -193,6 +189,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
             </div>
+            </div>
+
+
+            
+
 
             </div>
 
