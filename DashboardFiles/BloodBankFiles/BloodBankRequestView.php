@@ -2,6 +2,7 @@
 require_once "../classes/bloodbankhsrequest.php";
 require_once "../vendor/autoload.php";
 require_once '../classes/Validation.php';
+require_once '../classes/bloodBank.php';
 
 use classes\bloodbankhsrequest;
 use Endroid\QrCode\Builder\Builder;
@@ -12,10 +13,13 @@ use Endroid\QrCode\Label\Font\NotoSans;
 use Endroid\QrCode\RoundBlockSizeMode;
 use Endroid\QrCode\Writer\PngWriter;
 use classes\Validation;
+use classes\bloodBank;
 
 
 
 $bankid = $user->getBloodBankId();
+$bloodBank = new bloodBank($bankid, null, null, null, null);
+$bloodBank->GetBloodbankData($bankid);
 
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") { 
@@ -43,21 +47,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             <!-- nav bar start -->
             <div class="sticky-top bg-white shadownav" style="height: 50px;">
                 <div class="row m-0 d-flex">
-                    <div class="col-8">
+                    <div class="col-6">
                     </div>
-                    <div class="col-4">
-                        <div class="row align-items-center">
-                            <div class="col-2 mb-2">
-                                <i class="fa-solid fa-bell fa-xl"></i>
-                            </div>
-                            <div class="col-2 mb-2">
-                                <i class="fa-solid fa-gear fa-xl"></i>
-                            </div>
-                            <div class="col-2 mb-2">
-                                <i class="fa-solid fa-user fa-xl"></i>
-                            </div>
-                            <div class="col-6 mt-2 	d-none d-xl-block">
-                                <b>Jaffna Blood Bank</b>
+                    <div class="col-6">
+                        <div class="row align-items-center justify-content-end">
+                         
+                            <div class="col-6 mt-2 	d-none d-xl-block ">
+                                <b><?php echo $bloodBank->getBloodBankName();  ?></b>
                                 <p style="font-size: 10px;">Blood Bank</p>
                             </div>
                         </div>
@@ -155,7 +151,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-5 m-2 align-items-center justify-content-center text-center p-3" style="height: 450px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; margin-left:80px">
+                <div class="col-sm-5 m-2 p-3 align-items-center justify-content-center text-center p-4" style="height: 480px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; margin-left:80px">
                 <?php
 
 

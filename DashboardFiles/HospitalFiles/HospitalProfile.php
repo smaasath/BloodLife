@@ -3,9 +3,16 @@
 
 require_once '../classes/hospitalrequestclass.php';
 require_once '../classes/Validation.php';
+require_once '../classes/hospital.php';
 
 use classes\Validation;
 use classes\hospitalrequestclass;
+use classes\hospital;
+
+
+$hospitalid = $user->getHospitalId();
+$hospital = new hospital($hospitalid, null, null, null, null);
+$hospital->GetHospitalData($hospitalid);
 
 ?>
 <!DOCTYPE html>
@@ -25,37 +32,23 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 <body>
 
-  <!-- nav bar start -->
-  <div class="sticky-top bg-white shadownav" style="height: 50px;">
-    <div class="row m-0 d-flex">
-      <div class="col-8">
-
-      </div>
-
-
-      <div class="col-4">
-        <div class="row align-items-center">
-          <div class="col-2 mb-2">
-
-          </div>
-          <div class="col-2 mb-2">
-
-          </div>
-          <div class="col-2 mb-2">
-
-          </div>
-          <div class="col-6 mt-2 	d-none d-xl-block">
-            <b>Jaffna Blood Bank</b>
-            <p style="font-size: 10px;">Blood Bank</p>
-          </div>
-        </div>
-
-      </div>
-
-
-    </div>
-  </div>
-  <!-- nav bar end -->
+   <!-- nav bar start -->
+   <div class="sticky-top bg-white shadownav" style="height: 50px;">
+                <div class="row m-0 d-flex">
+                    <div class="col-6">
+                    </div>
+                    <div class="col-6">
+                        <div class="row align-items-center justify-content-end">
+                         
+                            <div class="col-6 mt-2 	d-none d-xl-block ">
+                                <b><?php echo $hospital->getName();  ?></b>
+                                <p style="font-size: 10px;">Hospital</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- nav bar end -->
 
 
 
@@ -137,7 +130,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
               </div>
               <hr><!-- comment -->
               <div class="text-end">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>
+                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"><strong>Edit</strong></button>
               </div>
 
 

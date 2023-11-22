@@ -3,9 +3,16 @@
 
 require_once '../classes/bloodbankhsrequest.php';
 require_once '../classes/Validation.php';
+require_once '../classes/bloodBank.php';
 
 use classes\bloodbankhsrequest;
 use classes\Validation;
+use classes\bloodBank;
+
+
+$bankid = $user->getBloodBankId();
+$bloodBank = new bloodBank($bankid, null, null, null, null);
+$bloodBank->GetBloodbankData($bankid);
 
 if (isset($_GET['hreqedit'])) {
    
@@ -30,35 +37,21 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
         <!-- nav bar start -->
         <div class="sticky-top bg-white shadownav" style="height: 50px;">
-            <div class="row m-0 d-flex">
-                <div class="col-8">
-
-                </div>
-
-
-                <div class="col-4">
-                    <div class="row align-items-center">
-                        <div class="col-2 mb-2">
-
-                        </div>
-                        <div class="col-2 mb-2">
-
-                        </div>
-                        <div class="col-2 mb-2">
-
-                        </div>
-                        <div class="col-6 mt-2 	d-none d-xl-block">
-                            <b>Jaffna Blood Bank</b>
-                            <p style="font-size: 10px;">Blood Bank</p>
+                <div class="row m-0 d-flex">
+                    <div class="col-6">
+                    </div>
+                    <div class="col-6">
+                        <div class="row align-items-center justify-content-end">
+                         
+                            <div class="col-6 mt-2 	d-none d-xl-block ">
+                                <b><?php echo $bloodBank->getBloodBankName();  ?></b>
+                                <p style="font-size: 10px;">Blood Bank</p>
+                            </div>
                         </div>
                     </div>
-
                 </div>
-
-
             </div>
-        </div>
-        <!-- nav bar end -->
+            <!-- nav bar end -->
 
         <!-- body start -->
         <div class="mt-5 m-3 mb-1" style="color:gray;">
@@ -110,7 +103,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <input type="hidden" name="token" value="<?php echo $token; ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                     <input type="hidden" name="bloodBankRequestId" value="<?php echo $id; ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                 <div class="buttons" >
-                      <button class="btn btn-secondary" type="submit" style=" border: none;margin-left: 480px">Save</button>
+                      <button class="btn btn-outline-secondary" type="submit" style=" margin-left: 480px"><strong>Save</strong></button>
                     
                 </div>
 

@@ -79,7 +79,7 @@ use classes\district;
     <!-- body start -->
     <div class="mt-5 m-3 mb-1" style="color:gray;">
 
-        <h5>Admin Hospital - Management</h5>
+        <h5>Admin - Hospital Management</h5>
         </div>
 
     <!-- Table -->
@@ -114,12 +114,9 @@ use classes\district;
                         ?>
                     </select>
                 </div>
-                <div class="col-3">
-                </div>
-
-
+                
                 <div class="col-5 d-flex justify-content-end">
-                <button type="button" class="btn btn-outline-danger"  onclick="AddHospital()"> <strong>Add Hospital</strong></button>
+                <button type="button" class="btn btn-outline-primary"  onclick="AddHospital()"> <strong>Add Hospital</strong></button>
                     
 
                 </div>
