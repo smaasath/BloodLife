@@ -1,6 +1,6 @@
 <?php
-require_once '../../classes/Validation.php';
-require_once '../../classes/User.php';
+require_once '../classes/Validation.php';
+require_once '../classes/User.php';
 
 use classes\Validation;
 use classes\User;

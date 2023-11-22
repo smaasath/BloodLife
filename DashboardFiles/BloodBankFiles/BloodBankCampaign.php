@@ -72,17 +72,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     <!-- nav bar end -->
 
 
-
-
-    <center>
-        <h1> BL Campaign </h1>
-    </center>
+ <!-- body start -->
+    <div class="mt-5 m-3 mb-1" style="color:gray;">
+        <h5>Campaign</h5>
+    </div>
+   
+    
 
     <div class="p-5">
 
 
 
-        -->
+       
         <div class="rounded-top-4 p-0 border border-dark-subtle">
             <div class="row align-items-center">
                 <!-- Search input -->
@@ -124,7 +125,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                 
                 <div class="col-2">
-                    <button type="button" class="btn btn-primary" onclick="AddCampaign()">Add Campaign</button>
+                    <button type="button" class="btn btn-outline-primary" onclick="AddCampaign()"><strong> Add Campaign</strong> </button>
 
 
 
@@ -145,15 +146,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                         <thead>
                             <tr class="sticky-top">
-                                <th class="col-1 bg-secondary text-dark p-2">CampaignID</th>
-                                <th class="col-1 bg-secondary text-dark p-2">Name</th>
-                                <th class="col-1 bg-secondary text-dark p-2">StartDate</th>
-                                <th class="col-1 bg-secondary text-dark p-2">EndDate</th>
-                                <th class="col-1 bg-secondary text-dark p-2">Status</th>
+                                <th class="col-1 bg-secondary text-dark p-2" style="text-align: center;">CampaignID</th>
+                                <th class="col-2 bg-secondary text-dark p-2" style="text-align: center;">Name</th>
+                                <th class="col-2 bg-secondary text-dark p-2" style="text-align: center;">StartDate</th>
+                                <th class="col-1 bg-secondary text-dark p-2" style="text-align: center;">EndDate</th>
+                                <th class="col-1 bg-secondary text-dark p-2" style="text-align: center;">Status</th>
 
-                                <th class="col-1 bg-secondary text-dark p-2">Edit</th>
-                                <th class="col-1 bg-secondary text-dark p-2">Review</th>
-                                <th class="col-1 bg-secondary text-dark p-2">View</th>
+                                <th class="col-1 bg-secondary text-dark p-2" style="text-align: center;">Edit</th>
+                                <th class="col-1 bg-secondary text-dark p-2" style="text-align: center;">Review</th>
+                                <th class="col-1 bg-secondary text-dark p-2" style="text-align: center;">View</th>
                             </tr>
                         </thead>
 
@@ -183,20 +184,20 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                             array.forEach((item) => {
 
                                                 var htmlCode = ` <tr>
-                        <td class="col-1">${item.campaignId}</td>
-                        <td class="col-1">${item.Title}</td>
-                         <td class="col-1">${item.startDate}</td>                    
-                        <td class="col-1">${item.endDate }</td>
-                        <td class="col-1">${item.status }</td>
+                        <td class="col-1" style="text-align: center;">${item.campaignId}</td>
+                        <td class="col-2" style="text-align: center;">${item.Title}</td>
+                         <td class="col-2" style="text-align: center;">${item.startDate}</td>                    
+                        <td class="col-1" style="text-align: center;">${item.endDate }</td>
+                        <td class="col-1" style="text-align: center;">${item.status }</td>
                      
                        
                       
                     
-                        <td class="col-1"><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#EditCampaignDetailsModal" onclick="EditCamp(${item.campaignId})" >Edit</button> </td>
+                        <td class="col-1" style="text-align: center;"><i class="fas fa-edit fa-lg" style="color: #f21818;" data-bs-toggle="modal" data-bs-target="#EditCampaignDetailsModal" onclick="EditCamp(${item.campaignId})"></i></td>
 
-                        <td class="col-1"><button type="button" class="btn btn-success" onclick="ReviewChamp()">Review</button></td>
+                        <td class="col-1" style="text-align: center;"><i class="fa-solid fa-magnifying-glass fa-lg" onclick="ReviewChamp()"></i></td>
 
-                        <td class="col-1"> <a href="../Dashboards/BloodBankDashboard.php?page=CampaignView&&camid=${item.campaignId}" style="text-decoration: none;"><button type="button" class="btn btn-success"> View </button></a></td>
+                        <td class="col-1" style="text-align: center;"> <a href="../Dashboards/BloodBankDashboard.php?page=CampaignView&&camid=${item.campaignId}" style="text-decoration: none;"><i class="fa-solid fa-eye fa-lg"></i></a></td>
 
 
 
@@ -247,19 +248,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                                                 var htmlCode = ` 
                             <tr>
-                            <td class="col-1">${item.campaignId}</td>
-                        <td class="col-1">${item.Title}</td>
+                            <td class="col-1" style="text-align: center;">${item.campaignId}</td>
+                        <td class="col-2" style="text-align: center;">${item.Title}</td>
                         
-                        <td class="col-1">${item.startDate}</td>                    
-                        <td class="col-1">${item.endDate }</td>
-                        <td class="col-1">${item.review}</td>
-                        <td class="col-1">${item.status }</td>
-                        <td class="col-1">${item.districtId}</td>
-                        <td class="col-1"><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#EditCampaignDetailsModal" onclick="EditCamp(${item.campaignId})" >Edit</button> </td>
+                        <td class="col-2" style="text-align: center;">${item.startDate}</td>                    
+                        <td class="col-" style="text-align: center;">${item.endDate }</td>
+                        <td class="col-1" style="text-align: center;">${item.review}</td>
+                        <td class="col-1" style="text-align: center;">${item.status }</td>
+                        <td class="col-1" style="text-align: center;">${item.districtId}</td>
+                        <td class="col-1" style="text-align: center;"><i class="fas fa-edit fa-lg" style="color: #f21818;" data-bs-toggle="modal" data-bs-target="#EditCampaignDetailsModal" onclick="EditCamp(${item.campaignId})"></i></td>
 
-                        <td class="col-1"><button type="button" class="btn btn-success" onclick="ReviewChamp()">Review</button></td>
+                        <td class="col-1" style="text-align: center;"><i class="fa-solid fa-magnifying-glass fa-lg" onclick="ReviewChamp()"></i></td>
 
-                        <td class="col-1"> <a href="../Dashboards/BloodBankDashboard.php?page=CampaignView&&camid=${item.campaignId}" style="text-decoration: none;"><button type="button" class="btn btn-success"> View </button></a></td>
+                        <td class="col-1" style="text-align: center;"> <a href="../Dashboards/BloodBankDashboard.php?page=CampaignView&&camid=${item.campaignId}" style="text-decoration: none;"><i class="fa-solid fa-eye fa-lg"></i></a></td>
                         </tr>`;
 
 
@@ -394,8 +395,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <button type="submit" class="btn btn-primary">Add</button>
+                        <button type="submit" class="btn btn-outline-primary"><strong>Add</strong></button>
+                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"><strong>Cancel</strong></button>
+                            
                         </div>
                     </div>
                 </div>
@@ -437,8 +439,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                            
 
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary">Save</button>
+                            <button type="submit" class="btn btn-outline-danger"><strong>Save</strong></button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><strong>Cancel</strong></button>
+                                
                             </div>
                         </div>
                     </div>

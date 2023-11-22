@@ -69,6 +69,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
       <div class="form-container" style="margin-left:100px;width: 500px">
         <div class="card-body">
 
+
           <div class="row">
             <div class="col-sm-4">
               <p class="mb-0"><span class="fw-bold">BloodBank Name</span></p>
@@ -213,6 +214,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
       </div>
     </div>
   </form>
+
 
   
 

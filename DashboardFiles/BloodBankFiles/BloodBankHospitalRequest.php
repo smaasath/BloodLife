@@ -69,10 +69,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     </div>
     <div class="container">
         <div class="row p-3">
-            <div class="col-6">
+            <div class="col-3">
                 <input type="search" id="search" class="form-control rounded" placeholder="Search Name" aria-label="Search" aria-describedby="search-addon" oninput="Search(this.value)">
             </div>
-            <div class="col-6">
+            <div class="col-3">
                 <select class="form-select" aria-label="Default select example" oninput="status(this.value)">
                     <option selected value="">Status</option>
                     <option value="Normal">Normal</option>
@@ -88,12 +88,16 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
             <?php
             $requestArray = hospitalrequestclass::getAllRequestwithHospitalDetails();
-            print_r($requestArray);
+
 
             ?>
 
 
             <script>
+             
+
+
+
                 function getHospitalStatusGradient(status) {
                     switch (status) {
                         case "Normal":
@@ -122,7 +126,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         array.forEach((item) => {
                             var htmlCode = `    
     <div class="col-3 rounded-4 m-2" style="width: 270px; height: 160px;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; ">
-        <a href="../Dashboards/BloodBankDashboard.php?page=bbhrv&&bhreqid=${item.hospitalRequestID}" style="text-decoration: none;">
+        <a href="../Dashboards/BloodBankDashboard.php?page=bbhrv&bhreqid=${item.hospitalRequestID}" style="text-decoration: none;">
             <div class="row">
                 <div class="col-1 rounded-right-0" style="background: ${getHospitalStatusGradient(item.requestStatus)};width: 10px; height:160px; border-top-left-radius: 10px; border-bottom-left-radius: 10px;">
 
@@ -219,7 +223,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         } else {
                             filterArray.forEach((item) => {
                                 var htmlCode = ` 
-                                <div class="col-4 rounded-4 m-2" style="width: 270px; height: 160px;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; ">
+                               <div class="col-3 rounded-4 m-2" style="width: 270px; height: 160px;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; ">
         <a href="../Dashboards/BloodBankDashboard.php?page=bbhrv&&bhreqid=${item.hospitalRequestID}" style="text-decoration: none;">
             <div class="row">
                 <div class="col-1 rounded-right-0" style="background: ${getHospitalStatusGradient(item.requestStatus)};width: 10px; height:160px; border-top-left-radius: 10px; border-bottom-left-radius: 10px;">

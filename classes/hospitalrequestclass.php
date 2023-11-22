@@ -284,7 +284,7 @@ public function totalQuantityarrayByBloodGroup($bloodBankId)
         $con = $dbcon->getConnection();
         $query = "SELECT bloodGroup, SUM(quantity) AS totalQuantity
         FROM `bloodtable`
-        WHERE bloodBankId = ? && bloodGroup = ?;
+        WHERE bloodBankId = ? && bloodGroup = ? && status = 'Available';
         ";
         $stmt = $con->prepare($query);
         $stmt->bindValue(1, $bloodBankId);
