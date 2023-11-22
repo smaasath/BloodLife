@@ -92,14 +92,14 @@ use classes\district;
             <div class="row align-items-center">
 
 
-                <div class="col-4">
+                <div class="col-3">
                     <div class="input-group rounded p-3">
                         <input type="search" id="search" class="form-control rounded" placeholder="Search Name" aria-label="Search" aria-describedby="search-addon" oninput="searchname(this.value)">
                     </div>
                 </div>
 
 
-                <div class="col-4">
+                <div class="col-3">
                     <select class="form-select" aria-label="Default select example" oninput="seaechdistrict(this.value)">
                         <option selected value="">District</option>
                         <?php
@@ -170,8 +170,8 @@ use classes\district;
                         <td class="col-2" style="text-align: center;">${item.contactNumber}</td>                    
                         <td class="col-1" style="text-align: center;">${item.district}</td>
                         <td class="col-1" style="text-align: center;">${item.division}</td>
-                        <td class="col-1" style="text-align: center;"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  data-bs-target="#veiwHospital"  onclick="VeiwHospital(${item.hospitalId})">View</button></td>
-
+                        
+                        <td class="col-1" style="text-align: center;"> <i class="fa-solid fa-eye fa-lg" data-bs-toggle="modal"  data-bs-target="#veiwHospital"  onclick="VeiwHospital(${item.hospitalId})" ></i></td>
 
                         <td class="col-1" style="text-align: center;"><i class="fas fa-edit fa-lg" style="color: #f21818;" data-bs-toggle="modal" data-bs-target="#editHospital"   onclick="editHospital(${item.hospitalId})"></i> </td>
                     </tr>`;
@@ -227,8 +227,8 @@ use classes\district;
                         <td class="col-2" style="text-align: center;">${item.contactNumber}</td>
                         <td class="col-1" style="text-align: center;">${item.district}</td>
                         <td class="col-1" style="text-align: center;">${item.division}</td>
-                        <td class="col-1" style="text-align: center;"><button type="button" class="btn btn-primary" data-bs-toggle="modal"  data-bs-target="#veiwHospital"  onclick="VeiwHospital(${item.hospitalId})">View</button></td>
-                        <td class="col-1" style="text-align: center;"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editHospital"  onclick="editHospital(${item.hospitalId})">Edit</button></td>
+                        <td class="col-1" style="text-align: center;"> <i class="fa-solid fa-eye fa-lg" data-bs-toggle="modal"  data-bs-target="#veiwHospital"  onclick="VeiwHospital(${item.hospitalId})" ></i></td>
+                        <td class="col-1" style="text-align: center;"><i class="fas fa-edit fa-lg" style="color: #f21818;" data-bs-toggle="modal" data-bs-target="#editHospital"   onclick="editHospital(${item.hospitalId})"></i></td>
                     </tr>`;
 
 
@@ -340,9 +340,9 @@ use classes\district;
 
                     <div class="modal-footer">
 
-                        <button type="submit" class="btn btn-primary">Save </button>
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletePopup1">Delete</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-outline-primary"><strong>Save</strong> </button>
+                        <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deletePopup1"><strong>Delete</strong></button>
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"><strong>Cancel</strong></button>
 
                     </div>
                 </div>
@@ -372,10 +372,9 @@ use classes\district;
 
                     <div class="modal-footer">
 
-                        <button type="submit" class="btn btn-primary">Save </button>
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletePopup1">Delete</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-
+                    <button type="submit" class="btn btn-outline-primary"><strong>Save</strong> </button>
+                        <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deletePopup1"><strong>Delete</strong></button>
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"><strong>Cancel</strong></button>
                     </div>
                 </div>
             </div>
@@ -461,7 +460,7 @@ use classes\district;
                 <div class="modal-footer">
                     <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#savePopup2">Save </button>
                     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletePopup2">Delete</button> -->
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"><strong>Cancel</strong></button>
 
                 </div>
             </div>
