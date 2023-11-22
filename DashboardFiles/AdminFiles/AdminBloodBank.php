@@ -83,8 +83,10 @@ use classes\district;
 
     <!-- body start -->
     <div class="mt-5 m-3 mb-1" style="color:gray;">
+
         <h5>Admin - Blood Bank Management</h5>
     </div>
+
 
     <!-- Table -->
 
@@ -118,10 +120,12 @@ use classes\district;
                         ?>
                     </select>
                 </div>
+
                 <div class="col-3">
                 </div>
                 <div class="col-3">
                     <button type="button" class="btn btn-outline-primary " onclick="AddBloodbank()"><strong>Add Blood Bank</strong></button>
+
                 </div>
 
 
@@ -135,12 +139,14 @@ use classes\district;
                     <!-- Table row -->
                     <tr class="sticky-top">
 
+
                         <th class="col-2 bgcol p-2" style="text-align: center;">BloodBank ID</th>
                         <th class="col-2 bgcol p-2" style="text-align: center;">BloodBank Name</th>
                         <th class="col-2 bgcol p-2" style="text-align: center;">Address</th>
                         <th class="col-2 bgcol p-2" style="text-align: center;">Contact Number</th>
                         <th class="col-1 bgcol p-2" style="text-align: center;">District</th>
                         <th class="col-1 bgcol p-2" style="text-align: center;">Division</th>
+
                         <th class="col-1 bgcol p-2" style="text-align: center;">View</th>
                         <th class="col-1 bgcol p-2" style="text-align: center;">Edit</th>
 
@@ -170,6 +176,7 @@ use classes\district;
                                 array.forEach((item) => {
 
                                     var htmlCode = ` <tr>
+
                         <td class="col-2" style="text-align: center;">${item.bloodBankId}</td>
                         <td class="col-2" style="text-align: center;">${item.bloodBankName}</td>
                         <td class="col-2" style="text-align: center;">${item.Address}</td>
@@ -179,6 +186,7 @@ use classes\district;
                         <td class="col-1" style="text-align: center;"><i class="fas fa-eye fa-lg" style="color: #007BFF;" data-bs-toggle="modal" data-bs-target="#veiwBloodbank" onclick="VeiwBloodbank(${item.bloodBankId})"></i></td>
 
                         <td class="col-1" style="text-align: center;"><i class="fas fa-edit fa-lg" style="color: #007BFF;" data-bs-toggle="modal" data-bs-target="#editBloodbank" onclick="editBloodbank(${item.bloodBankId})"></i></td>
+
                     </tr>`;
 
 
@@ -226,6 +234,7 @@ use classes\district;
 
                                     var htmlCode = ` 
                             <tr>
+
                                 <td class="col-2" style="text-align: center;">${item.bloodBankId}</td>
                                 <td class="col-2" style="text-align: center;">${item.bloodBankName}</td>
                                 <td class="col-2" style="text-align: center;">${item.Address}</td>
@@ -234,6 +243,7 @@ use classes\district;
                                 <td class="col-1" style="text-align: center;">${item.division}</td>
                                 <td class="col-1" style="text-align: center;"><i class="fas fa-eye fa-lg" style="color: #007BFF;" data-bs-toggle="modal" data-bs-target="#veiwBloodbank" onclick="VeiwBloodbank(${item.bloodBankId})"></i></td>
                                 <td class="col-1" style="text-align: center;"><i class="fas fa-edit fa-lg" style="color: #007BFF;" data-bs-toggle="modal" data-bs-target="#editBloodbank" onclick="editBloodbank(${item.bloodBankId})"></i></td>
+
                     </tr>`;
 
 

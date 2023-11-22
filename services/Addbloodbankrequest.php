@@ -52,8 +52,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $request = new bloodbankhsrequest(null, $createdDate, $quantity,$bloodgroup, $requestStatus,$hospitalRequestId, $bloodBankId);
                         if(!$request->ValidatePublishRequest()){
                         $status = $request->addbloodbankRequest() ? 1 : " Hospital Request did not Publish" ;
+                        
                         }else{
-                            $status = "Unauthorzied Activity! ";
+                            $status = "Request Already Published! ";
                         }
                     }
 
@@ -76,5 +77,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 } else {
     $status = "Invalid Request Method!";
 }
+
 $encrptedmessage=validation::encryptedValue($status);
-header("Location: ../Dashboards/BloodBankDashboard.php?status=$encrptedmessage");
+header("Location: ../Dashboards/BloodBankDashboard.php?bhreqid=$hospitalRequestId&status=$encrptedmessage");

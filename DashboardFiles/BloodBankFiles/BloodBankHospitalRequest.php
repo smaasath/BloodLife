@@ -88,12 +88,16 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
             <?php
             $requestArray = hospitalrequestclass::getAllRequestwithHospitalDetails();
-            print_r($requestArray);
+
 
             ?>
 
 
             <script>
+             
+
+
+
                 function getHospitalStatusGradient(status) {
                     switch (status) {
                         case "Normal":
@@ -122,7 +126,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         array.forEach((item) => {
                             var htmlCode = `    
     <div class="col-3 rounded-4 m-2" style="width: 270px; height: 160px;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; ">
-        <a href="../Dashboards/BloodBankDashboard.php?page=bbhrv&&bhreqid=${item.hospitalRequestID}" style="text-decoration: none;">
+        <a href="../Dashboards/BloodBankDashboard.php?page=bbhrv&bhreqid=${item.hospitalRequestID}" style="text-decoration: none;">
             <div class="row">
                 <div class="col-1 rounded-right-0" style="background: ${getHospitalStatusGradient(item.requestStatus)};width: 10px; height:160px; border-top-left-radius: 10px; border-bottom-left-radius: 10px;">
 
