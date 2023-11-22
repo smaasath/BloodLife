@@ -14,16 +14,11 @@ $bankid = $user->getBloodBankId();
 
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
-    if (isset($_GET["bhreqid"])) {
-        $BReqId =$_GET["bhreqid"];
-     
+    if (isset($_GET["bhreqid"]) || isset($_GET["status"])) {
+        $BReqId = $_GET["bhreqid"];
+      
 
-
-?>
-
-
-
-
+        ?>
         <!DOCTYPE html>
         <!--
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -72,6 +67,52 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             <!-- nav bar end -->
 
             <!-- body start -->
+            <?php
+        if (!empty($_GET["status"])) {
+            $status = Validation::decryptedValue($_GET["status"]);
+            if ($status == 1) {
+?>
+
+                <div class="alert alert-success d-flex align-items-center m-3" role="alert">
+                    <div class="col-1 align-items-center justify-content-center">
+                        <img width="30" height="30" src="https://img.icons8.com/color/48/ok--v1.png" alt="ok--v1" />
+                    </div>
+                    <div class="col-10 d-flex">
+                        Request Successfully Added
+                    </div>
+
+                    <div class="col-1 d-flex align-items-end justify-content-center">
+                        <a href="../Dashboards/BloodBankDashboard.php?bhreqid=<?php echo $BReqId?>"> <img width="30" height="30" src="https://img.icons8.com/hatch/64/delete-sign.png" alt="delete-sign" /></a>
+                    </div>
+
+                </div>
+            <?php
+            } else {
+
+
+            ?>
+
+                <div class="alert alert-danger d-flex align-items-center m-3" role="alert">
+                    <div class="col-1 align-items-center justify-content-center">
+                        <img width="30" height="30" src="https://img.icons8.com/cute-clipart/64/high-priority.png" alt="high-priority" />
+                    </div>
+                    <div class="col-10 d-flex">
+                        <?php
+                        echo $status;
+                        ?>
+                    </div>
+
+                    <div class="col-1 d-flex align-items-end justify-content-center">
+                        <a href="../Dashboards/BloodBankDashboard.php?bhreqid=<?php echo $BReqId?>"> <img width="30" height="30" src="https://img.icons8.com/hatch/64/delete-sign.png" alt="delete-sign" /></a>
+                    </div>
+
+                </div>
+
+        <?php
+            }
+        }
+
+        ?>
             <div class="mt-5 m-3 mb-1" style="color:gray;">
                 <h5>Hospital Request View</h5>
             </div>
@@ -119,17 +160,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                                         <div class="form-group">
                                             <label for="available-quantity">Available Quantity</label>
-                                            <?php $hRequest = new hospitalrequestclass(null, null, null, $requestObj["bloodGroup"], null, null);?>
-                                           
+                                            <?php $hRequest = new hospitalrequestclass(null, null, null, $requestObj["bloodGroup"], null, null); ?>
+
                                             <input type="number" value="<?php echo $hRequest->totalQuantityarrayByBloodGroup($bankid) ?>" name="available quantity" id="available-quantity" readonly>
                                         </div>
-                                        
+
                                         <input type="hidden" name="token" value="<?php echo $token; ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                                         <div class="text-end"><br>
                                             <div class="buttons">
-                                                <a href="../Dashboards/BloodBankDashboard.php?page=bbraa&&bloodGroup=<?php echo validation::encryptedValue($requestObj["bloodGroup"]); ?>"> <button type="button" class="btn btn-outline-secondary"><strong> Accept </strong></button></a>
-                                                <button  type="sumbit" class="btn btn-outline-danger"><strong>Publish </strong></button>
-                                               
+                                                <a href="../Dashboards/BloodBankDashboard.php?page=bbraa&bloodGroup=<?php echo validation::encryptedValue($requestObj["bloodGroup"]); ?>"> <button type="button" class="btn btn-outline-secondary"><strong> Accept </strong></button></a>
+                                                <button type="sumbit" class="btn btn-outline-danger"><strong>Publish </strong></button>
+
                                             </div><br>
                                         </div>
                                     </div>
