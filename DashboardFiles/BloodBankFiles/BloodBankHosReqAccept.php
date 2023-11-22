@@ -16,8 +16,9 @@ $bankid = $user->getBloodBankId();
 
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
-    if (isset($_GET["bloodGroup"])) {
+    if (isset($_GET["bloodGroup"],$_GET["HosReq"])) {
         $bloodgroup =Validation::decryptedValue($_GET["bloodGroup"]);
+        $hosReqId = Validation::decryptedValue($_GET["HosReq"]);
        
      
 
@@ -119,6 +120,8 @@ foreach ($bloodpackets as $packet) {
           
         </tbody>
       </table>
+      <input type="hidden" name="token" value="<?php echo $token; ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+      <input type="hidden" name="HosReqId" value="<?php echo $hosReqId; ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
       <button class="btn btn-dark" type="submit" style="margin-left: 970px ">Save</button>
       </form>
       
