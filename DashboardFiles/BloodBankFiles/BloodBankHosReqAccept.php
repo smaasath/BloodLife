@@ -3,21 +3,26 @@
 require_once "../classes/hospitalrequestclass.php";
 require_once "../classes/Validation.php";
 require_once "../classes/Bloodtable.php";
+require_once '../classes/bloodBank.php';
 
 
 use classes\hospitalrequestclass;
 use classes\Validation;
 use classes\Bloodtable;
-
+use classes\bloodBank;
 
 
 $bankid = $user->getBloodBankId();
+$bloodBank = new bloodBank($bankid, null, null, null, null);
+$bloodBank->GetBloodbankData($bankid);
+
 
 
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
-    if (isset($_GET["bloodGroup"])) {
+    if (isset($_GET["bloodGroup"],$_GET["HosReq"])) {
         $bloodgroup =Validation::decryptedValue($_GET["bloodGroup"]);
+        $hosReqId = Validation::decryptedValue($_GET["HosReq"]);
        
      
 
@@ -39,38 +44,22 @@ and open the template in the editor.
 
 <body>
 
-  <!-- nav bar start -->
-  <div class="sticky-top bg-white shadownav" style="height: 50px;">
-    <div class="row m-0 d-flex">
-      <div class="col-8">
-
-      </div>
-
-
-      <div class="col-4">
-        <div class="row align-items-center">
-          <div class="col-2 mb-2">
-            <i class="fa-solid fa-bell fa-xl"></i>
-          </div>
-          <div class="col-2 mb-2">
-            <i class="fa-solid fa-gear fa-xl"></i>
-          </div>
-          <div class="col-2 mb-2">
-            <i class="fa-solid fa-user fa-xl"></i>
-          </div>
-          <div class="col-6 mt-2 	d-none d-xl-block">
-            <b>Jaffna Blood Bank</b>
-            <p style="font-size: 10px;">Blood Bank</p>
-          </div>
-        </div>
-
-
-      </div>
-
-
-    </div>
-  </div>
-  <!-- nav bar end -->
+<div class="sticky-top bg-white shadownav" style="height: 50px;">
+                <div class="row m-0 d-flex">
+                    <div class="col-6">
+                    </div>
+                    <div class="col-6">
+                        <div class="row align-items-center justify-content-end">
+                         
+                            <div class="col-6 mt-2 	d-none d-xl-block ">
+                                <b><?php echo $bloodBank->getBloodBankName();  ?></b>
+                                <p style="font-size: 10px;">Blood Bank</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- nav bar end -->
   <div class="mt-5 m-3 mb-1" style="color:gray;">
     <h5>Hospital Request Accept </h5>
   
@@ -119,7 +108,9 @@ foreach ($bloodpackets as $packet) {
           
         </tbody>
       </table>
-      <button class="btn btn-dark" type="submit" style="margin-left: 550px ">Save</button>
+      <input type="hidden" name="token" value="<?php echo $token; ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+      <input type="hidden" name="HosReqId" value="<?php echo $hosReqId; ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+      <button class="btn btn-dark" type="submit" style="margin-left: 970px ">Save</button>
       </form>
       
 

@@ -28,29 +28,23 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 <body>
 
-  <!-- nav bar start -->
-  <div class="sticky-top bg-white shadownav" style="height: 50px;">
-    <div class="row m-0 d-flex">
-      <div class="col-9">
+<div class="sticky-top bg-white shadownav" style="height: 50px;">
+                <div class="row m-0 d-flex">
+                    <div class="col-6">
+                    </div>
+                    <div class="col-6">
+                        <div class="row align-items-center justify-content-end">
+                         
+                            <div class="col-6 mt-2 	d-none d-xl-block ">
+                                <b><?php echo $bloodBank->getBloodBankName();  ?></b>
+                                <p style="font-size: 10px;">Blood Bank</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- nav bar end -->
 
-      </div>
-
-
-      <div class="col-3">
-        <div class="row align-items-center">
-
-          <div class=" mt-2 	d-none d-xl-block">
-            <b><?php echo $bloodBank->getBloodBankName() ?></b>
-            <p style="font-size: 10px;">Hospital</p>
-          </div>
-        </div>
-
-      </div>
-
-
-    </div>
-  </div>
-  <!-- nav bar end -->
 
 
 

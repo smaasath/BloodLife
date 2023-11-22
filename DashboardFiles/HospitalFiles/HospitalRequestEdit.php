@@ -3,10 +3,15 @@
 
 require_once '../classes/hospitalrequestclass.php';
 require_once '../classes/Validation.php';
+require_once '../classes/hospital.php';
 
 use classes\hospitalrequestclass;
 use classes\Validation;
+use classes\hospital;
 
+$hospitalid = $user->getHospitalId();
+$hospital = new hospital($hospitalid, null, null, null, null);
+$hospital->GetHospitalData($hospitalid);
 
 // Check if the 'hospitalRequestID' parameter is set in the URL
 if (isset($_GET['hreqid'])) {
@@ -35,36 +40,22 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
     <body>
         <!-- nav bar start -->
-        <div class="sticky-top bg-white shadownav" style="height: 50px;">
-            <div class="row m-0 d-flex">
-                <div class="col-8">
-
-                </div>
-
-
-                <div class="col-4">
-                    <div class="row align-items-center">
-                        <div class="col-2 mb-2">
-                            <i class="fa-solid fa-bell fa-xl"></i>
-                        </div>
-                        <div class="col-2 mb-2">
-                            <i class="fa-solid fa-gear fa-xl"></i>
-                        </div>
-                        <div class="col-2 mb-2">
-                            <i class="fa-solid fa-user fa-xl"></i>
-                        </div>
-                        <div class="col-6 mt-2 	d-none d-xl-block">
-                            <b>Jaffna Blood Bank</b>
-                            <p style="font-size: 10px;">Blood Bank</p>
+     <div class="sticky-top bg-white shadownav" style="height: 50px;">
+                <div class="row m-0 d-flex">
+                    <div class="col-6">
+                    </div>
+                    <div class="col-6">
+                        <div class="row align-items-center justify-content-end">
+                         
+                            <div class="col-6 mt-2 	d-none d-xl-block ">
+                                <b><?php echo $hospital->getName();  ?></b>
+                                <p style="font-size: 10px;">Hospital</p>
+                            </div>
                         </div>
                     </div>
-
                 </div>
-
-
             </div>
-        </div>
-        <!-- nav bar end -->
+            <!-- nav bar end -->
 
         <!-- body start -->
         <div class="mt-5 m-4 mb-2" style="color:gray;">
@@ -94,9 +85,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <option value="AB-">AB-</option>
                     </select>
 
-                    <label for="Quantity">Date:</label>
+                    <label for="ExpiryDat">Date:</label>
                     <input type="date" class="form-control" name="expiryDate" value="<?php echo $datAarray["createdDate"]; ?>" required>
-                    <label for="ExpiryDate"> Blood Quantity:</label>
+                    <label for="Quantity"> Blood Quantity:</label>
                     <input type="number" class="form-control" name="bloodQuantity" value="<?php echo $datAarray["bloodQuantity"]; ?>" maxlength="3" required>
                     <label for="status">Status:</label>
 
@@ -111,7 +102,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <input type="hidden" name="token" value="<?php echo $token; ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                     <input type="hidden" name="hospitalRequestID" value="<?php echo $id; ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                     <div class="text-end">
-                        <button class="edit-button" type="submit">Save</button>
+                    <button class="btn btn-outline-danger"><strong>Save</strong></button>
                     </div>
 
                 </form>

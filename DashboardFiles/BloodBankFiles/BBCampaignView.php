@@ -14,6 +14,9 @@ use Endroid\QrCode\Label\Font\NotoSans;
 use Endroid\QrCode\RoundBlockSizeMode;
 use Endroid\QrCode\Writer\PngWriter;
 
+$bankid = $user->getBloodBankId();
+$bloodBank = new bloodBank($bankid, null, null, null, null);
+$bloodBank->GetBloodbankData($bankid);
 
 
 
@@ -200,15 +203,14 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                     <div class="col-2 mb-2">
 
                     </div>
-                    <div class="col-2 mb-2">
-
-                    </div>
-                    <div class="col-2 mb-2">
-
-                    </div>
-                    <div class="col-6 mt-2 	d-none d-xl-block">
-                        <b>Jaffna Blood Bank</b>
-                        <p style="font-size: 10px;">Blood Bank</p>
+                    <div class="col-6">
+                        <div class="row align-items-center justify-content-end">
+                         
+                            <div class="col-6 mt-2 	d-none d-xl-block ">
+                                <b><?php echo $bloodBank->getBloodBankName();  ?></b>
+                                <p style="font-size: 10px;">Blood Bank</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 

@@ -9,11 +9,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 require_once '../classes/Bloodtable.php';
 require_once '../classes/Validation.php';
+require_once '../classes/bloodBank.php';
 
 
 use classes\Bloodtable;
 use classes\Validation;
+use classes\bloodBank;
 $bloodBankId = $user->getBloodBankId();
+
+
+$bankid = $user->getBloodBankId();
+$bloodBank = new bloodBank($bankid, null, null, null, null);
+$bloodBank->GetBloodbankData($bankid);
 ?>
 
 
@@ -29,35 +36,21 @@ $bloodBankId = $user->getBloodBankId();
 
     <!-- nav bar start -->
     <div class="sticky-top bg-white shadownav" style="height: 50px;">
-        <div class="row m-0 d-flex">
-            <div class="col-8">
-
-            </div>
-
-
-            <div class="col-4">
-                <div class="row align-items-center">
-                    <div class="col-2 mb-2">
-
+                <div class="row m-0 d-flex">
+                    <div class="col-6">
                     </div>
-                    <div class="col-2 mb-2">
-
-                    </div>
-                    <div class="col-2 mb-2">
-
-                    </div>
-                    <div class="col-6 mt-2 	d-none d-xl-block">
-                        <b>General Hospital</b>
-                        <p style="font-size: 10px;">Hospital</p>
+                    <div class="col-6">
+                        <div class="row align-items-center justify-content-end">
+                         
+                            <div class="col-6 mt-2 	d-none d-xl-block ">
+                                <b><?php echo $bloodBank->getBloodBankName();  ?></b>
+                                <p style="font-size: 10px;">Blood Bank</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
             </div>
-
-
-        </div>
-    </div>
-    <!-- nav bar end -->
+            <!-- nav bar end -->
 
     <!-- body start -->
     <?php
@@ -368,8 +361,8 @@ $bloodBankId = $user->getBloodBankId();
 
                             </div>
                             <div class="modal-footer">
-                                <button type="submit" class="savebtn">Save</button>
-                                <button type="button" class="editbtn" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-outline-danger"><strong>Save</strong></button>
+                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"><strong>Cancel</strong></button>
 
                             </div>
                         </div>
@@ -416,9 +409,9 @@ $bloodBankId = $user->getBloodBankId();
                             </div>
                             <div class="modal-footer">
 
-                                <button type="submit" class="btn btn-primary">Save </button>
-                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletePopup1">Delete</button>
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-outline-danger"><strong>Save</strong></button>
+                                <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#deletePopup1"><strong>Delete</strong></button>
+                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"><strong>Cancel</strong></button>
 
                             </div>
                         </div>
