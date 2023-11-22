@@ -20,10 +20,12 @@ use classes\User;
 $status = null;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
     if (isset($_POST["OldPassword"], $_POST["newpassword"], $_POST["confirmPassword"], $_POST["token"])) {
         $userChangePassword = new User(null, null, null, null, $_POST["token"], null, null, null, null);
         $validateToken = $userChangePassword->validateToken();
         $userrole = $userChangePassword->getUserRole();
+        
         if (($validateToken && $userrole == 3)) {
             if ($_POST["newpassword"] === $_POST["confirmPassword"]) {
             if ($userChangePassword->verifyPassword($userChangePassword->getEmail(), $_POST["OldPassword"])) {

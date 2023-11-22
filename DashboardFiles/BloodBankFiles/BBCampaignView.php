@@ -71,7 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
                                                         <div class="row mb-3">
                                                         <div class="col-sm-4">
-                                                            <strong>District</strong>
+                                                            <strong>lol</strong>
                                                         </div>
                                                         <div class="col-sm-8">
                                                              <p class="text-muted mb-0" name="startDate" ><?php echo $rs['district']; ?></p>

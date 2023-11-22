@@ -133,7 +133,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
       </div>
     </div>
     <div class="col-6 align-items-center justify-content-center">
-      <img class="d-none d-xl-block" src="../Images/hospitalProfile.png" />
+      <img class="d-none d-xl-block" src="../Images/hospitalprof.jpg" />
     </div>
   </div>
 

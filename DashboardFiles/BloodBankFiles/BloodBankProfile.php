@@ -120,6 +120,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
           </div>
 
           
+          <div class="text-center">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#changePassword">Change Password</button>
+          </div>
+
 
         </div>
 
@@ -132,10 +136,88 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
   </div>
 
+  <script>
+    // Change the type of input to password or text
+    function Toggle() {
+      let x = document.getElementById("typepass");
+      let y = document.getElementById("changePass");
+      let z = document.getElementById("oldpass");
+
+
+      if (x.type === "password") {
+        x.type = "text";
+        y.type = "text";
+        z.type = "text";
+      } else {
+        x.type = "password";
+        y.type = "password";
+        z.type = "password";
+      }
+    }
+  </script>
+  <form action="../services/editBloodbankservices.php" method="POST" enctype="multipart/form-data">
+
+    <div class="modal fade" id="changePassword" tabindex="-1" aria-labelledby="changePasswordLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="changePasswordl">Hospital Details</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+
+
+
+            <div class="row align-items-center pb-3">
+              <div class="col-4">
+                <h6>Old Password</h6>
+              </div>
+              <div class="col-8">
+                <input type="password" name="OldPassword" id="oldpass" class="form-control"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+              </div>
+            </div>
+            <div class="row align-items-center pb-3">
+              <div class="col-4">
+                <h6>New Password</h6>
+              </div>
+              <div class="col-8">
+                <input type="password" name="newpassword" id="typepass" class="form-control"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+              </div>
+            </div>
+            <div class="row align-items-center pb-3">
+              <div class="col-4">
+                <h6>Confirm Password</h6>
+              </div>
+              <div class="col-8">
+                <input type="password" name="confirmPassword" id="changePass" class="form-control"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+              </div>
+            </div>
+
+          
+              <input type="checkbox" onclick="Toggle()">
+            <label>Show password</label>
+        
+       
+           
+
+            <input type="hidden" name="token" value="<?php echo $token; ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+
+        
+
+            </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
   
 
   <!-- Modal -->
-  <form action="../services/editHospitalservices.php" method="POST" enctype="multipart/form-data">
+  <form action="../services/editBloodbankservices.php" method="POST" enctype="multipart/form-data">
 
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
