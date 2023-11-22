@@ -2,6 +2,7 @@
 
 require_once '../classes/hospital.php';
 require_once '../classes/Validation.php';
+
 require_once '../classes/district.php';
 
 use classes\Validation;
@@ -13,6 +14,7 @@ $hospitalId = $user->getHospitalId();
 $hospital  = new hospital($hospitalId, null, null, null, null);
 $hospital->GetHospitalData($hospitalId);
 $Location = district::getDistrictDivisionById($hospital->getHospitalId());
+
 
 ?>
 <!DOCTYPE html>
@@ -32,29 +34,25 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 <body>
 
-  <!-- nav bar start -->
-  <div class="sticky-top bg-white shadownav" style="height: 50px;">
-    <div class="row m-0 d-flex">
-      <div class="col-9">
 
-      </div>
+   <!-- nav bar start -->
+   <div class="sticky-top bg-white shadownav" style="height: 50px;">
+                <div class="row m-0 d-flex">
+                    <div class="col-6">
+                    </div>
+                    <div class="col-6">
+                        <div class="row align-items-center justify-content-end">
+                         
+                            <div class="col-6 mt-2 	d-none d-xl-block ">
+                                <b><?php echo $hospital->getName();  ?></b>
+                                <p style="font-size: 10px;">Hospital</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- nav bar end -->
 
-
-      <div class="col-3">
-        <div class="row align-items-center">
-
-          <div class=" mt-2 	d-none d-xl-block">
-            <b><?php echo $hospital->getName() ?></b>
-            <p style="font-size: 10px;">Hospital</p>
-          </div>
-        </div>
-
-      </div>
-
-
-    </div>
-  </div>
-  <!-- nav bar end -->
 
 
 
@@ -198,8 +196,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
               <div class="col-4">
                 <h6>Confirm Password</h6>
               </div>
+
               <div class="col-8">
                 <input type="password" name="confirmPassword" id="changePass" class="form-control"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+
               </div>
             </div>
 
