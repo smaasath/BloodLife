@@ -99,7 +99,7 @@ if (isset($_COOKIE["remember_me"])) {
                     <span class="text-checkbox">Remember me</span>
                 </label>
                 
-                <label class="forgot">
+                <label class="forgot" style="margin-left:15px;">
                     <input type="checkbox" name="forgot" checked/>
                     <span class="text-checkbox">Forgot password</span>
                 </label>
@@ -109,7 +109,9 @@ if (isset($_COOKIE["remember_me"])) {
             <br>
             <button type="submit">Login</button>
         </form>
-
+<div class="col-6">
+    Already have an account? <a href="">Sign In</a>
+</div>
 
     </div>
 </div>
