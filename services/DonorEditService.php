@@ -34,11 +34,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // sanitizing the inputs
             $name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
             $bloodGroup = filter_var($_POST['bloodGroup'], FILTER_SANITIZE_STRING);
-            $bloodGroup = filter_var($_POST['bloodGroup'], FILTER_SANITIZE_STRING);
+            $available = filter_var($_POST['availability'], FILTER_SANITIZE_STRING);
             $contactNumber = filter_var($_POST['contactNumber'], FILTER_SANITIZE_STRING);
             $nic = filter_var($_POST['nic'], FILTER_SANITIZE_STRING);
             $medicalReport = file_get_contents($_FILES['medicalReport']['tmp_name']);
             $token = filter_var($_POST['token'], FILTER_SANITIZE_STRING);
+            $donorID = filter_var($_POST['donorId'], FILTER_SANITIZE_STRING);
 
 
             //create user object with token
@@ -65,15 +66,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
                     //create donor object
-                    $donor = new Donor($user->getDonorId(), null, null, null, null, null, null, null, null, null, null, null, null, null);
+                    $donor = new Donor($donorID, null, null, null, null, null, null, null, null, null, null, null, null, null);
                     $donor->getDonorDetails();
 
                     $donor->setName($name);
-                    $donor->setAvailability($Available);
+                    $donor->setAvailability($available);
                     $donor->setMedicalReport($medicalReport);
                     $donor->setContactNumber($contactNumber);
                     $donor->setNic($nic);
-                    $donor->setDistrictId($districtId);
+                  
 
 
                     if ($donor->EditDonor()) {
