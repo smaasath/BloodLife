@@ -2,6 +2,7 @@
 require_once '../classes/Campaign.php';
 require_once  '../classes/district.php';
 require_once "../vendor/autoload.php";
+require_once '../classes/Validation.php';
 
 use classes\district;
 use classes\campaign;
@@ -13,6 +14,7 @@ use Endroid\QrCode\Label\LabelAlignment;
 use Endroid\QrCode\Label\Font\NotoSans;
 use Endroid\QrCode\RoundBlockSizeMode;
 use Endroid\QrCode\Writer\PngWriter;
+use classes\validation;
 
 
 
@@ -164,12 +166,12 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
                         <div class="col-md-4">
                             <?php
-
+$data = \classes\Validation::encryptedValue("campaign" . $campaignId);
 
                             $result = Builder::create()
                                 ->writer(new PngWriter())
                                 ->writerOptions([])
-                                ->data("campaign" . $campaignId)
+                                ->data($data)
                                 ->encoding(new Encoding('UTF-8'))
                                 ->errorCorrectionLevel(ErrorCorrectionLevel::High)
                                 ->size(300)
