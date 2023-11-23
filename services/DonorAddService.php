@@ -97,27 +97,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                     } else {
                         //check status for exist values
-                        $status = $nicExist ? 8 : ($emailExist ? 9 : ($userNameExist ? 10 : 11));
+                        $status = $nicExist ? "NIC already exists" : ($emailExist ? "Email already exists" : ($userNameExist ? "UserName already Exists":"Another validation failed after passing individual validations" ));
                     }
                 } else {
                     //check status for valitations
-                    $status = !$validateEmail ? 12 : (!$validatePhoneNumber ? 13 : (!$validateNic ? 14 : (!$validateDob ? 15 : (!$validateBloodGroup ? 16 : 17))));
+                    $status = !$validateEmail ? "Invalid email format" : (!$validatePhoneNumber ? "Invalid phone number format" : (!$validateNic ? "Invalid Sri Lankan NIC" : (!$validateDob ? "Invalid date of birth" : (!$validateBloodGroup ? "Invalid blood group" : "Another validation failed after passing individual validations"))));
                 }
             } else {
                 //status for not valid token
-                $status = 18;
+                $status = "Invalid token or missing blood bank ID";
             }
         } else {
             //status for empty value
-            $status = 19;
+            $status = "Empty values submitted";
         }
     } else {
         //status for isset value
-        $status = 20;
+        $status = "Form not submitted";
     }
 } else {
 
     echo"Invalid request method";
 }
 
-echo $status;
+$encrptedmessage=validation::encryptedValue($status);
+header("Location: ../Dashboards/BloodBankDashboard.php?status=$encrptedmessage");

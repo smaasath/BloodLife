@@ -117,13 +117,20 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             </div>
           </div>
 
-          <div class="text-end">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>
+          <br>
+<br>
+          
+          <div class="row justify-content-end">
+            <div class="col-auto">
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>
+            </div>
+            <div class="col-auto">
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#changePassword">Change Password</button>
+            </div>
           </div>
 
-          <div class="text-center">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#changePassword">Change Password</button>
-          </div>
+
+
 
 
         </div>

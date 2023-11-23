@@ -53,6 +53,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
   <!-- body start -->
+
+  
   <div class="mt-5 m-4 mb-2" style="color:gray;">
     <h5>BloodBank Profile</h5>
   </div>
@@ -110,15 +112,21 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             </div>
           </div>
 
-          <div class="text-end">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>
+<br>
+<br>
+          
+          <div class="row justify-content-end">
+            <div class="col-auto">
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>
+            </div>
+            <div class="col-auto">
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#changePassword">Change Password</button>
+            </div>
           </div>
+
+
 
           
-          <div class="text-center">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#changePassword">Change Password</button>
-          </div>
-
 
         </div>
 
@@ -212,7 +220,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
   
 
-  <!-- Modal -->
+  <!-- Edit popup-->
   <form action="../services/editBloodbankservices.php" method="POST" enctype="multipart/form-data">
 
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

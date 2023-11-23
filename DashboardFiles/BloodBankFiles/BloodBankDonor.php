@@ -9,10 +9,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 require_once '../classes/Donor.php';
 require '../classes/district.php';
 require_once '../classes/bloodBank.php';
+require_once '../classes/Validation.php';
 
 use classes\district;
 use classes\bloodBank;
 use classes\Donor;
+use classes\Validation;
 
 
 $bankid = $user->getBloodBankId();
@@ -47,7 +49,13 @@ $bloodBank->GetBloodbankData($bankid);
             <!-- nav bar end -->
     <!-- body start -->
 
-    
+     
+
+
+
+
+
+
 
     <!-- Navigation Bar -->
    
