@@ -30,13 +30,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         if ($bloodpackets->Editbloodpacket()) {
                             $status = 1;
                         } else {
-                            $status = 2;
+                            $status ="Blood Packets did not Add! Try Again..";
                         }
                     }
                 }
                 $status = 5;
             } else {
-                $status = 6;
+                $status = "Unauthorzied Activity! ";
             }
         } else {
             $status = "All Fields need to be Filled!";

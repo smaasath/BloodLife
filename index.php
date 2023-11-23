@@ -107,6 +107,7 @@ if (isset($_COOKIE["remember_me"])) {
                 
                 <label class="forgot" style="margin-left: px;">
                 <a href="HomePages/Enteryouremail.php">Forgot password?</a>
+
                 </label>
                 
             </div>
@@ -114,7 +115,9 @@ if (isset($_COOKIE["remember_me"])) {
             <br>
             <button type="submit">Login</button>
         </form>
-
+<div class="col-6">
+    Already have an account? <a href="">Sign In</a>
+</div>
 
     </div>
 </div>
