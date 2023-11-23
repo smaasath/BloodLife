@@ -11,9 +11,9 @@
         <h2>Enter OTP</h2>
         <?php
         session_start();
-        echo $_POST["Verificationcode"];
+       
         ?>
-        <form action="OTPprocess.php" method="POST">
+        <form action="Enteryouremailprocess.php" method="POST">
             <p>An OTP has been sent to your email. Please enter it below:</p>
             <label for="otp">OTP:</label>
             <input type="number"  name="VerificationCode" required>

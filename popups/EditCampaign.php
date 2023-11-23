@@ -9,9 +9,11 @@
                         if (!empty($_POST["campaignId"])) {
                             $campaignId = filter_var($_POST["campaignId"], FILTER_SANITIZE_NUMBER_INT);
                             $campaign = new campaign($campaignId, null, null, null, null, null, null, null, null);
-                            if ($campaign->getCampaignDetails()) {
-                                $districtId = $campaign->getDistrictId();
-                                $rs = district::getDistrictDivisionById($districtId);
+                            //$Location = district::getDistrictDivisionById($campaign-> getCampaignId());
+                            if ($campaign->getCampaignDetails($campaignId)) {
+                                //$districtId = $campaign->getCampaignId();
+//$rs = district::getDistrictDivisionById($districtId);
+$Location = district::getDistrictDivisionById($campaign-> getCampaignId());
                                 // Rest of your code
                             
 
@@ -54,41 +56,50 @@
                                  </div>
                              </div>
 
-                             <div class="row align-items-center pb-3">
-                                <div class="col-3">
-                                    <h6>Location</h6>
-                                </div>
-                                <div class="col-9">
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <select name="district" class="form-control form-control-lg" id="district" onchange="functionTest(this.value)">
-                                                <option><?php echo $rs['district']; ?></option>
-                                                <?php
-
-
-                                                $dataArray = district::getAllDistrict(); // Retrieve district data using the "getAllDistrict()" method
-
-                                                foreach ($dataArray as $district) {
-                                                ?>
-
-                                                    <option value="<?php echo $district['district']; ?>"><?php echo $district['district']; ?></option>
-                                                <?php
-                                                }
-                                                ?>
-                                            </select>
-                                        </div>
-                                        <div class="col-6">
-
-                                            <select name="division" class="form-control form-control-lg" id="divisionDropDown" onchange="getBloodBank(this.value)">
-                                                <option><?php echo $rs['division']; ?></option>
-
-                                            </select>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
                             
+                             
+
+
+
+
+
+                            
+            <div class="row align-items-center pb-3">
+              <div class="col-3">
+                <h6>District</h6>
+              </div>
+              <div class="col-9">
+                <select name="district" class="form-control form-control-lg" id="district" onchange="functionTest(this.value)">
+                  <option><?php echo $Location['district']; ?></option>
+                  <?php
+
+
+                  $dataArray = district::getAllDistrict(); // Retrieve district data using the "getAllDistrict()" method
+
+                  foreach ($dataArray as $district) {
+                  ?>
+
+                    <option value="<?php echo $district['district']; ?>"><?php echo $district['district']; ?></option>
+                  <?php
+                  }
+                  ?>
+                </select>
+              </div>
+            </div>
+
+            <div class="row align-items-center pb-3">
+              <div class="col-3">
+                <h6>Division</h6>
+              </div>
+              <div class="col-9">
+
+
+                <select name="division" class="form-control form-control-lg" id="divisionDropDown" onchange="getBloodbank(this.value)">
+                  <option><?php echo $Location['division']; ?></option>
+
+                </select>
+              </div>
+            </div>
 
                              </div>
                              <div class="row align-items-center pb-3">
@@ -105,7 +116,7 @@
 
                              </div>
  <input type="hidden" name="campaignId" value="<?php echo $campaign->getCampaignId(); ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-
+ <input type="hidden" name="token" value="<?php echo $token; ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                             
                  <?php
                             } else {

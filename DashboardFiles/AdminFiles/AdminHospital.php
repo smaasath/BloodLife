@@ -79,7 +79,7 @@ use classes\district;
     <!-- body start -->
     <div class="mt-5 m-3 mb-1" style="color:gray;">
 
-        <h5>Admin Hospital - Management</h5>
+        <h5>Admin - Hospital Management</h5>
         </div>
 
     <!-- Table -->
@@ -114,11 +114,9 @@ use classes\district;
                         ?>
                     </select>
                 </div>
-                <div class="col-3">
-                </div>
-
-                <div class="col-3 ">
-                <button type="button" class="btn btn-outline-primary "  onclick="AddHospital()"> <strong>Add Hospital</strong></button>
+                
+                <div class="col-5 d-flex justify-content-end">
+                <button type="button" class="btn btn-outline-primary"  onclick="AddHospital()"> <strong>Add Hospital</strong></button>
                     
 
                 </div>
@@ -171,10 +169,8 @@ use classes\district;
                         <td class="col-2" style="text-align: center;">${item.contactNumber}</td>                    
                         <td class="col-1" style="text-align: center;">${item.district}</td>
                         <td class="col-1" style="text-align: center;">${item.division}</td>
-
-                        <td class="col-1" style="text-align: center;"><i class="fas fa-eye fa-lg" style="color: #007BFF;" data-bs-toggle="modal"  data-bs-target="#veiwHospital"  onclick="VeiwHospital(${item.hospitalId})"></i></td>
-
-
+                        
+                        <td class="col-1" style="text-align: center;"> <i class="fa-solid fa-eye fa-lg" data-bs-toggle="modal"  data-bs-target="#veiwHospital"  onclick="VeiwHospital(${item.hospitalId})" ></i></td>
 
                         <td class="col-1" style="text-align: center;"><i class="fas fa-edit fa-lg" style="color: #007BFF;" data-bs-toggle="modal" data-bs-target="#editHospital"   onclick="editHospital(${item.hospitalId})"></i> </td>
                     </tr>`;
@@ -230,11 +226,8 @@ use classes\district;
                         <td class="col-2" style="text-align: center;">${item.contactNumber}</td>
                         <td class="col-1" style="text-align: center;">${item.district}</td>
                         <td class="col-1" style="text-align: center;">${item.division}</td>
-
-                        <td class="col-1" style="text-align: center;"><i class="fas fa-eye fa-lg" style="color: #007BFF;" data-bs-toggle="modal"  data-bs-target="#veiwHospital"  onclick="VeiwHospital(${item.hospitalId})"></i></td>
-
-                        <td class="col-1" style="text-align: center;"><i class="fas fa-edit fa-lg" style="color: #007BFF;" data-bs-toggle="modal" data-bs-target="#editHospital"   onclick="editHospital(${item.hospitalId})"></i> </td>
-
+                        <td class="col-1" style="text-align: center;"> <i class="fa-solid fa-eye fa-lg" data-bs-toggle="modal"  data-bs-target="#veiwHospital"  onclick="VeiwHospital(${item.hospitalId})" ></i></td>
+                        <td class="col-1" style="text-align: center;"><i class="fas fa-edit fa-lg" style="color: #f21818;" data-bs-toggle="modal" data-bs-target="#editHospital"   onclick="editHospital(${item.hospitalId})"></i></td>
                     </tr>`;
 
 

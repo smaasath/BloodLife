@@ -28,29 +28,23 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 <body>
 
-  <!-- nav bar start -->
-  <div class="sticky-top bg-white shadownav" style="height: 50px;">
-    <div class="row m-0 d-flex">
-      <div class="col-9">
+<div class="sticky-top bg-white shadownav" style="height: 50px;">
+                <div class="row m-0 d-flex">
+                    <div class="col-6">
+                    </div>
+                    <div class="col-6">
+                        <div class="row align-items-center justify-content-end">
+                         
+                            <div class="col-6 mt-2 	d-none d-xl-block ">
+                                <b><?php echo $bloodBank->getBloodBankName();  ?></b>
+                                <p style="font-size: 10px;">Blood Bank</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- nav bar end -->
 
-      </div>
-
-
-      <div class="col-3">
-        <div class="row align-items-center">
-
-          <div class=" mt-2 	d-none d-xl-block">
-            <b><?php echo $bloodBank->getBloodBankName() ?></b>
-            <p style="font-size: 10px;">Hospital</p>
-          </div>
-        </div>
-
-      </div>
-
-
-    </div>
-  </div>
-  <!-- nav bar end -->
 
 
 
@@ -59,6 +53,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
   <!-- body start -->
+
+  
   <div class="mt-5 m-4 mb-2" style="color:gray;">
     <h5>BloodBank Profile</h5>
   </div>
@@ -116,15 +112,21 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             </div>
           </div>
 
-          <div class="text-end">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>
+<br>
+<br>
+          
+          <div class="row justify-content-end">
+            <div class="col-auto">
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>
+            </div>
+            <div class="col-auto">
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#changePassword">Change Password</button>
+            </div>
           </div>
+
+
 
           
-          <div class="text-center">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#changePassword">Change Password</button>
-          </div>
-
 
         </div>
 
@@ -218,7 +220,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
   
 
-  <!-- Modal -->
+  <!-- Edit popup-->
   <form action="../services/editBloodbankservices.php" method="POST" enctype="multipart/form-data">
 
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
