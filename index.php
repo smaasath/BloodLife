@@ -104,9 +104,10 @@ if (isset($_COOKIE["remember_me"])) {
                     <input type="checkbox" name="remember"/>
                     <span class="text-checkbox">Remember me</span>
                 </label>
-                
+
                 <label class="forgot">
                 <a href="HomePages/Enteryouremail.php">Forgot password?</a>
+
                 </label>
                 
             </div>
@@ -114,7 +115,9 @@ if (isset($_COOKIE["remember_me"])) {
             <br>
             <button type="submit">Login</button>
         </form>
-
+<div class="col-6">
+    Already have an account? <a href="">Sign In</a>
+</div>
 
     </div>
 </div>
