@@ -77,6 +77,7 @@ if (isset($_COOKIE["remember_me"])) {
             <h1>Blood Life</h1>
             
         </div>
+        
         <!-- <div class="lines">
         <p>Hello bloods, we welcome you to our blood stock managing platform.</p>
         </div> -->
@@ -95,8 +96,6 @@ if (isset($_COOKIE["remember_me"])) {
                 <img src="" alt="">
             </div> -->
 
-
-            
             <br><br>
 
             <div class="remember-me--forget-password">
