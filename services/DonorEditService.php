@@ -84,23 +84,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     }
                 } else {
                     //check status for valitations
-                    $status = !$validateEmail ? 12 : (!$validatePhoneNumber ? 13 : (!$validateNic ? 14 : (!$validateDob ? 15 : (!$validateBloodGroup ? 16 : 17))));
+                    $status = !$validatePhoneNumber ? "Phone Number Not Valid" : (!$validateNic ? "Nic Not Valid" : (!$validateBloodGroup ? "Blood Group Not Valid" : 17));
                 }
             } else {
                 //status for not valid token
-                $status = 18;
+                $status = "UnAuthorized Activity";
             }
         } else {
             //status for empty value
-            $status = 19;
+            $status = "Need To fill All Data";
         }
     } else {
         //status for isset value
-        $status = 20;
+        $status = "Need To fill All Data";
     }
 } else {
 
     echo "Invalid request method";
 }
 
-echo $status;
+$encrptedmessage=validation::encryptedValue($status);
+header("Location: ../Dashboards/BloodBankDashboard.php?status=$encrptedmessage");
