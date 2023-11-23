@@ -220,7 +220,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
   
 
-  <!-- Modal -->
+  <!-- Edit popup-->
   <form action="../services/editBloodbankservices.php" method="POST" enctype="multipart/form-data">
 
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
