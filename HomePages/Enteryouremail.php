@@ -7,11 +7,14 @@
     <link rel="stylesheet" href="forgot.css">
     <title>Forgot Password - Enter Email</title>
 </head>
+<?php
+session_start();
+?>
 
 <body>
     <div class="container">
         <h2>Enter Your Email</h2>
-        <form action="HomePages/Enteryouremailprocess.php" method="POST">
+        <form action="Enteryouremailprocess.php" method="POST">
             <label for="email">Email:</label>
             <input type="email" id="email" name="email">
             <button type="submit">Next</button>
