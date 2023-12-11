@@ -82,7 +82,7 @@ class Hospitalrequestbloodbank
             $pstmt->bindValue(1, $this->HRBId); // Use different placeholders for each parameter
             $pstmt->bindValue(2, $this->hospitalRequestId);
             $pstmt->bindValue(3, $this->bloodBankId);
-            $pstmt->bindValue(4, $this->bloodId ,PDO::PARAM_INT);
+            $pstmt->bindValue(4, $this->bloodId);
             $pstmt->execute();
             return $pstmt->rowCount() > 0;
         } catch (PDOException $e) {

@@ -1,11 +1,3 @@
-<?php 
-
-if (isset($_COOKIE["remember_me"])) {
-   header('Location:services/loginprocess.php');
-
-}else{  
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +5,7 @@ if (isset($_COOKIE["remember_me"])) {
     <title>Login Page in HTML with CSS</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <link rel="stylesheet" href="./CSS/login.css">
+    <link rel="stylesheet" href="./css/login.css">
     <style>
         body {
             margin: 0;
@@ -75,49 +67,36 @@ if (isset($_COOKIE["remember_me"])) {
     <div class="left col-5">
         <div class="overlay">
             <h1>Blood Life</h1>
-            
+            <p>Hello bloods, we welcome you to our blood stock managing platform.</p>
+            <q>As all of us are relations by blood; let's strengthen the bond with red flag</q>
         </div>
-        
-        <!-- <div class="lines">
-        <p>Hello bloods, we welcome you to our blood stock managing platform.</p>
-        </div> -->
     </div>
 
     <div class="right">
         <h5>Login</h5>
       
-        <form method="post" action="services/loginprocess.php">
+        <form method="post" action="../../services/loginprocess.php">
             <div class="inputs">
-                <input type="text" name="email"  placeholder="email">
+                <input type="text" name="UserName" placeholder="user name">
                 <br>
-                <input type="password" name="password"   placeholder="password">
+                <input type="password" name="password" placeholder="password">
             </div>
-            <!-- <div class="image">
-                <img src="" alt="">
-            </div> -->
 
             <br><br>
 
             <div class="remember-me--forget-password">
                 
-                <label class="remember">
-                    <input type="checkbox" name="remember"/>
+                <label class="">
+                    <input type="checkbox" name="remember" checked/>
                     <span class="text-checkbox">Remember me</span>
                 </label>
-                
-                <label class="forgot" style="margin-left: px;">
-                <a href="HomePages/Enteryouremail.php">Forgot password?</a>
-
-                </label>
-                
+                <p class="text-forgot">forget password?</p>
             </div>
 
             <br>
             <button type="submit">Login</button>
         </form>
-<div class="col-6">
-    Already have an account? <a href="">Sign In</a>
-</div>
+
 
     </div>
 </div>
@@ -128,7 +107,3 @@ if (isset($_COOKIE["remember_me"])) {
 </body>
 </html>
 
-<?php 
-
-    }
-?>
