@@ -104,8 +104,8 @@ if (isset($_COOKIE["remember_me"])) {
                     <input type="checkbox" name="remember"/>
                     <span class="text-checkbox">Remember me</span>
                 </label>
-
-                <label class="forgot">
+                
+                <label class="forgot" style="margin-left: px;">
                 <a href="HomePages/Enteryouremail.php">Forgot password?</a>
 
                 </label>
