@@ -5,38 +5,41 @@ require_once '../classes/Validation.php';
 use classes\User;
 use classes\Validation;
 
-header('Content-Type: application/json');
+session_start();
+
 $method = $_SERVER["REQUEST_METHOD"];
+$status = '';
 
 if ($method === "POST") {
-    $data = json_decode(file_get_contents("php://input"), true);
-    if (isset($data["new-password"]) && isset($data["confirm-password"])) {
-        $newPassword = $data["new-password"];
-        $confirmPassword = $data["confirm-password"];
+    if (isset($_POST["new-password"], $_POST["confirm-password"])) {
+        $newPassword = $_POST["new-password"];
+        $confirmPassword = $_POST["confirm-password"];
 
         if ($newPassword === $confirmPassword) {
-            // Assuming you have a function to update the user's password in your User class
-            // Also, validate the password based on your requirements using your Validation class
             if (Validation::validatePassword($newPassword)) {
-                // Assuming you have a function to update the user's password in your User class
-                // Replace User::updatePassword with the appropriate function
-                if (User::updatePassword($newPassword)) {
-                    // Redirect to Resetsuccess.html
-                    header("Location: Resetsuccess.html");
+                // Assuming $_SESSION["email"] contains the user's email
+
+                $user = new User(null, null, null, null, null, null, null, null, null);
+                if ($user->changePassword($_SESSION["email"], $newPassword)) {
+                    header("Location: ../index.php");
                     exit();
                 } else {
-                    echo json_encode(array("message" => "Failed to update password"));
+                    $status = "Password Change Failed";
                 }
             } else {
-                echo json_encode(array("message" => "Invalid password format"));
+                $status = "The password you entered is invalid";
             }
         } else {
-            echo json_encode(array("message" => "Passwords do not match"));
+            $status = "The passwords you entered are not matching";
         }
     } else {
-        echo json_encode(array("message" => "New password and confirm password not provided"));
+        $status = "You need to fill all the blanks";
     }
 } else {
-    echo json_encode(array("message" => "Invalid request method."));
+    $status = "Invalid Request";
 }
+
+// Redirect based on status
+header("Location: ResetPassword.php");
+exit();
 ?>

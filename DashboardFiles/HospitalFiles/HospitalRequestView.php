@@ -3,11 +3,21 @@
 
 require_once '../classes/hospitalrequestclass.php';
 require_once '../classes/Validation.php';
+
+require_once '../classes/hospital.php';
+
 require_once '../classes/hospitalrequestbloodbank.php';
 
+
+use classes\hospital;
 use classes\hospitalrequestclass;
 use classes\Validation;
 use classes\Hospitalrequestbloodbank;
+
+
+$hospitalid = $user->getHospitalId();
+$hospital = new hospital($hospitalid, null, null, null, null);
+$hospital->GetHospitalData($hospitalid);
 
 // Check if the 'hospitalRequestID' parameter is set in the URL
 if (isset($_GET['hreqid'])) {
@@ -33,42 +43,25 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
     <body>
 
-        <!-- nav bar start -->
-        <div class="sticky-top bg-white shadownav" style="height: 50px;">
-            <div class="row m-0 d-flex">
-                <div class="col-8">
 
-                </div>
-
-
-                <div class="col-4">
-                    <div class="row align-items-center">
-                        <div class="col-2 mb-2">
-
-                        </div>
-                        <div class="col-2 mb-2">
-
-                        </div>
-                        <div class="col-2 mb-2">
-
-                        </div>
-                        <div class="col-6 mt-2 	d-none d-xl-block">
-                            <b>Jaffna Blood Bank</b>
-                            <p style="font-size: 10px;">Blood Bank</p>
+     <!-- nav bar start -->
+     <div class="sticky-top bg-white shadownav" style="height: 50px;">
+                <div class="row m-0 d-flex">
+                    <div class="col-6">
+                    </div>
+                    <div class="col-6">
+                        <div class="row align-items-center justify-content-end">
+                         
+                            <div class="col-6 mt-2 	d-none d-xl-block ">
+                                <b><?php echo $hospital->getName();  ?></b>
+                                <p style="font-size: 10px;">Hospital</p>
+                            </div>
                         </div>
                     </div>
-
                 </div>
-
-
             </div>
-        </div>
-        <!-- nav bar end -->
+            <!-- nav bar end -->
 
-        <!-- body start -->
-        <div class="mt-5 m-4 mb-2" style="color:gray;">
-            <h5>Hospital Request View</h5>
-        </div>
 
 
 
@@ -79,6 +72,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
         ?>
+
 
             <div class="row bg-white m-3 pt-0  align-items-center justify-content-center rounded-5" style="height: 900px;">
             <div class="row">
@@ -91,6 +85,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             <?php echo $HospitalReqAccept->GetCountOfAcceptBloodBnk() == 0 ?
                                 '<img width="30" height="30" src="https://img.icons8.com/external-others-inmotus-design/67/external-Accept-round-icons-others-inmotus-design-4.png" alt="external-Accept-round-icons-others-inmotus-design-4"/>' :
                                 '<img width="30" height="30" src="https://img.icons8.com/fluency/48/checked.png" alt="checked"/>'; ?>
+
                         </div>
                         <div class="col-7 text-start">
                             <h6 style="font-weight: bold;font-size: 14px;">Count Of accepted Blood Packets</h6>
@@ -163,9 +158,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             <table class="table table-hover p-0">
                                 <tr class="sticky-top">
 
+
                                     <th class="col-5 bgcol p-2 " style="text-align: center;">Blood Bank Name</th>
                                     <th class="col-3 bgcol p-2" style="text-align: center; ">Phone Number</th>
                                     <th class="col-2 bgcol p-2" style="text-align: center; ">Address</th>
+
 
 
 

@@ -105,25 +105,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     
 
                     if ($bloodbank->editBloodbank()) {
-                        $status = 1;
+                        $status =  "Successful blood bank edit";
                     } else {
-                        $status = 2;
+                        $status = "Unsuccessful blood bank edit";
                     }
                 } else {
                     //check status for valitations
-                    $status = !$validatePhoneNumber ? 12 : 13;
+                    $status = !$validatePhoneNumber ? "Invalid phone number format": 13;
                 }
             } else {
                 //status for not valid token
-                $status = 14;
+                $status = "Invalid token or missing blood bank ID";
             }
         } else {
             //status for empty value
-            $status = 15;
+            $status ="Invalid request method";
         }
     } else {
         //status for isset value
-        $status = 17;
+        $status ="Invalid request method";
     }
 } else {
 

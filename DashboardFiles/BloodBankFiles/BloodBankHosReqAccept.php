@@ -3,15 +3,19 @@
 require_once "../classes/hospitalrequestclass.php";
 require_once "../classes/Validation.php";
 require_once "../classes/Bloodtable.php";
+require_once '../classes/bloodBank.php';
 
 
 use classes\hospitalrequestclass;
 use classes\Validation;
 use classes\Bloodtable;
-
+use classes\bloodBank;
 
 
 $bankid = $user->getBloodBankId();
+$bloodBank = new bloodBank($bankid, null, null, null, null);
+$bloodBank->GetBloodbankData($bankid);
+
 
 
 
@@ -39,6 +43,7 @@ and open the template in the editor.
 </head>
 
 <body>
+
 
   <!-- nav bar start -->
   <div class="sticky-top bg-white shadownav" style="height: 50px;">
@@ -119,6 +124,7 @@ and open the template in the editor.
             }
         }
         ?> 
+
   <div class="mt-5 m-3 mb-1" style="color:gray;">
     <h5>Hospital Request Accept </h5>
   

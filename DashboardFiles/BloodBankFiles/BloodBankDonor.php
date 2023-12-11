@@ -8,10 +8,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 require_once '../classes/Donor.php';
 require '../classes/district.php';
+require_once '../classes/bloodBank.php';
+require_once '../classes/Validation.php';
 
 use classes\district;
-
+use classes\bloodBank;
 use classes\Donor;
+use classes\Validation;
+
+
+$bankid = $user->getBloodBankId();
+$bloodBank = new bloodBank($bankid, null, null, null, null);
+$bloodBank->GetBloodbankData($bankid);
+
 ?>
 <html>
 
@@ -22,42 +31,80 @@ use classes\Donor;
 
 <body>
 
-    <!-- nav bar start -->
     <div class="sticky-top bg-white shadownav" style="height: 50px;">
         <div class="row m-0 d-flex">
-            <div class="col-8">
-
+            <div class="col-6">
             </div>
+            <div class="col-6">
+                <div class="row align-items-center justify-content-end">
 
-
-            <div class="col-4">
-                <div class="row align-items-center">
-                    <div class="col-2 mb-2">
-
-                    </div>
-                    <div class="col-2 mb-2">
-
-                    </div>
-                    <div class="col-2 mb-2">
-
-                    </div>
-                    <div class="col-6 mt-2 	d-none d-xl-block">
-                        <b>Jaffna Blood Bank</b>
+                    <div class="col-6 mt-2 	d-none d-xl-block ">
+                        <b><?php echo $bloodBank->getBloodBankName();  ?></b>
                         <p style="font-size: 10px;">Blood Bank</p>
                     </div>
                 </div>
-
             </div>
-
-
         </div>
-        </div>
+    </div>
+    <!-- nav bar end -->
     <!-- body start -->
 
-    
+
+
+
+
+
+
+
 
     <!-- Navigation Bar -->
-   
+    <?php
+    if ($_SERVER["REQUEST_METHOD"] == "GET") {
+        if (isset($_GET["status"])) {
+            $status = Validation::decryptedValue($_GET["status"]);
+            if ($status == 1) {
+    ?>
+
+                <div class="alert alert-success d-flex align-items-center m-2" role="alert">
+                    <div class="col-1 align-items-center justify-content-center">
+                        <img width="30" height="30" src="https://img.icons8.com/color/48/ok--v1.png" alt="ok--v1" />
+                    </div>
+                    <div class="col-10 d-flex">
+                        <?php echo "Donor Edited Succesfuuly"; ?>
+                    </div>
+
+                    <div class="col-1 d-flex align-items-end justify-content-center">
+                        <a href="../Dashboards/BloodBankDashboard.php?"> <img width="30" height="30" src="https://img.icons8.com/hatch/64/delete-sign.png" alt="delete-sign" /></a>
+                    </div>
+
+                </div>
+            <?php
+            } else {
+
+
+            ?>
+
+                <div class="alert alert-danger d-flex align-items-center m-2" role="alert">
+                    <div class="col-1 align-items-center justify-content-center">
+                        <img width="30" height="30" src="https://img.icons8.com/cute-clipart/64/high-priority.png" alt="high-priority" />
+                    </div>
+                    <div class="col-10 d-flex">
+                        <?php
+                        echo $status;
+                        ?>
+                    </div>
+
+                    <div class="col-1 d-flex align-items-end justify-content-center">
+                        <a href="../Dashboards/BloodBankDashboard.php?"> <img width="30" height="30" src="https://img.icons8.com/hatch/64/delete-sign.png" alt="delete-sign" /></a>
+                    </div>
+
+                </div>
+
+    <?php
+            }
+        }
+    }
+    ?>
 
     <!-- Body Content -->
     <div class="mt-5 m-3 mb-1" style="color: gray;">
@@ -76,99 +123,99 @@ use classes\Donor;
                 <div class="rounded-top-4 p-0 border border-dark-subtle">
                     <div class="row align-items-center">
 
-                        
+
                         <!-- Search input -->
                         <div class="col-3">
                             <div class="input-group rounded p-3">
-                            <input type="search" class="form-control rounded" placeholder="DonorID" aria-label="Search" oninput="searchIdNamefilter(this.value)" aria-describedby="search-addon">
+                                <input type="search" class="form-control rounded" placeholder="DonorID" aria-label="Search" oninput="searchIdNamefilter(this.value)" aria-describedby="search-addon">
                             </div>
                         </div>
 
                         <!-- Blood Group filter -->
-<div class="col-2">
-    <select class="form-select" aria-label="BloodGroup" onchange="BloodGrpFilter(this.value)">
-        <option selected disabled>BloodGroup</option>
-        <option value="A+">A+</option>
-        <option value="B+">B+</option>
-        <option value="O+">O+</option>
-        <option value="AB+">AB+</option>
-        <option value="A-">A-</option>
-        <option value="B-">B-</option>
-        <option value="AB-">AB-</option>
-        <option value="O-">O-</option>
-    </select>
-</div>
+                        <div class="col-2">
+                            <select class="form-select" aria-label="BloodGroup" onchange="BloodGrpFilter(this.value)">
+                                <option selected disabled>BloodGroup</option>
+                                <option value="A+">A+</option>
+                                <option value="B+">B+</option>
+                                <option value="O+">O+</option>
+                                <option value="AB+">AB+</option>
+                                <option value="A-">A-</option>
+                                <option value="B-">B-</option>
+                                <option value="AB-">AB-</option>
+                                <option value="O-">O-</option>
+                            </select>
+                        </div>
 
 
                         <!-- Add Donor button -->
-                       
-
-                <!-- Donor table -->
 
 
-
-                
+                        <!-- Donor table -->
 
 
 
 
 
 
-                <!-- Table body -->
-                <div class="container bg-white m-0 p-0" style=" max-height: 373px; overflow: scroll;">
-                    <table class="table table-hover p-0">
-
-                        <!-- Table row ----->
 
 
-                        <!-- Campaign table Heading-->
-
-                        <thead>
-                            <tr class="sticky-top">
-                                <th class="col-1 bg-secondary text-dark p-2" style="text-align: center;">DonorID</th>
-                                <th class="col-1 bg-secondary text-dark p-2" style="text-align: center;">Name</th>
-                                <th class="col-1 bg-secondary text-dark p-2" style="text-align: center;">Blood Group</th>
-                                <th class="col-2 bg-secondary text-dark p-2" style="text-align: center;">Contact No</th>
-                               <th class="col-1 bg-secondary text-dark p-2" style="text-align: center;">Available</th>
-                       
-                                <th class="col-1 bg-secondary text-dark p-2" style="text-align: center;">Edit</th>
-                                <th class="col-1 bg-secondary text-dark p-2" style="text-align: center;">View</th>
-                            </tr>
-                        </thead>
-
-                        <!---Table body Details----------->
 
 
-                        <table class="table">
+                        <!-- Table body -->
+                        <div class="container bg-white m-0 p-0" style=" max-height: 373px; overflow: scroll;">
+                            <table class="table table-hover p-0">
 
-                            <tbody id="output">
-                                <?php
-                             
-                                $requestArray = Donor::getAllDonor($user->getBloodBankId());
-                                foreach ($requestArray as &$item) {
-                                    $item['medicalReport'] = base64_encode($item['medicalReport']);
-                                    $item['image'] = base64_encode($item['image']);
-                                }
-                            
-                                ?>
+                                <!-- Table row ----->
 
-                                <script>
-                                    let array = <?php echo json_encode($requestArray); ?>;
-                                    console.log(array);
-                                    console.log("Asath");
-                                    let filterArray;
-                                    showall(array);
 
-                                    function showall(array) {
-                                        const detailsList = document.getElementById("output");
-                                        detailsList.innerHTML = "";
-                                        if (array === null || array.length === 0) {
-                                            var htmlCode = `<tr><td colspan="12" style="text-align: center;color: red;" >No Results Found</td></tr>`;
-                                            detailsList.innerHTML = htmlCode;
-                                        } else {
-                                            array.forEach((item) => {
+                                <!-- Campaign table Heading-->
 
-                                                var htmlCode = ` <tr>
+                                <thead>
+                                    <tr class="sticky-top">
+                                        <th class="col-1 bg-secondary text-dark p-2" style="text-align: center;">DonorID</th>
+                                        <th class="col-1 bg-secondary text-dark p-2" style="text-align: center;">Name</th>
+                                        <th class="col-1 bg-secondary text-dark p-2" style="text-align: center;">Blood Group</th>
+                                        <th class="col-2 bg-secondary text-dark p-2" style="text-align: center;">Contact No</th>
+                                        <th class="col-1 bg-secondary text-dark p-2" style="text-align: center;">Available</th>
+
+                                        <th class="col-1 bg-secondary text-dark p-2" style="text-align: center;">Edit</th>
+                                        <th class="col-1 bg-secondary text-dark p-2" style="text-align: center;">View</th>
+                                    </tr>
+                                </thead>
+
+                                <!---Table body Details----------->
+
+
+                                <table class="table">
+
+                                    <tbody id="output">
+                                        <?php
+
+                                        $requestArray = Donor::getAllDonor($user->getBloodBankId());
+                                        foreach ($requestArray as &$item) {
+                                            $item['medicalReport'] = base64_encode($item['medicalReport']);
+                                            $item['image'] = base64_encode($item['image']);
+                                        }
+
+                                        ?>
+
+                                        <script>
+                                            let array = <?php echo json_encode($requestArray); ?>;
+                                            console.log(array);
+                                            console.log("Asath");
+                                            let filterArray;
+                                            showall(array);
+
+                                            function showall(array) {
+                                                const detailsList = document.getElementById("output");
+                                                detailsList.innerHTML = "";
+                                                if (array === null || array.length === 0) {
+                                                    var htmlCode = `<tr><td colspan="12" style="text-align: center;color: red;" >No Results Found</td></tr>`;
+                                                    detailsList.innerHTML = htmlCode;
+                                                } else {
+                                                    array.forEach((item) => {
+
+                                                        var htmlCode = ` <tr>
                         <td class="col-1">${item.donorId}</td>
                         <td class="col-1">${item.name}</td> 
                         <td class="col-1">${item.bloodGroup }</td>
@@ -189,51 +236,51 @@ use classes\Donor;
                                                 </tr>`;
 
 
-                                                var divElement = document.createElement("tr");
+                                                        var divElement = document.createElement("tr");
 
 
-                                                divElement.innerHTML = htmlCode;
+                                                        divElement.innerHTML = htmlCode;
 
 
-                                                detailsList.appendChild(divElement);
-                                            });
-                                        };
+                                                        detailsList.appendChild(divElement);
+                                                    });
+                                                };
 
 
-                                    }
+                                            }
 
 
-                                    function BloodGrpFilter(test) {
-                                        if (test === "") {
-                                            array = <?php echo json_encode($requestArray) ?>;
-                                            showall(array);
-                                        } else {
-                                            array = <?php echo json_encode($requestArray) ?>;
-                                            var testValue = test.toLowerCase();
-                                            array = array.filter((item) => item.bloodGroup.toLowerCase().includes(testValue));
-                                            showall(array);
-                                        }
+                                            function BloodGrpFilter(test) {
+                                                if (test === "") {
+                                                    array = <?php echo json_encode($requestArray) ?>;
+                                                    showall(array);
+                                                } else {
+                                                    array = <?php echo json_encode($requestArray) ?>;
+                                                    var testValue = test.toLowerCase();
+                                                    array = array.filter((item) => item.bloodGroup.toLowerCase().includes(testValue));
+                                                    showall(array);
+                                                }
 
-                                    }
+                                            }
 
-                                    function searchIdNamefilter(test) {
+                                            function searchIdNamefilter(test) {
 
-                                        var id = parseInt(test, 10);
+                                                var id = parseInt(test, 10);
 
-                                        var testValue = test.toLowerCase();
+                                                var testValue = test.toLowerCase();
 
-                                        filterArray = array.filter((item) => item.donorId === id || item.name.toLowerCase().includes(testValue));
+                                                filterArray = array.filter((item) => item.donorId === id || item.name.toLowerCase().includes(testValue));
 
 
-                                        const detailsList = document.getElementById("output");
-                                        detailsList.innerHTML = "";
-                                        if (filterArray === null || filterArray.length === 0) {
-                                            var htmlCode = `<tr><td colspan="12" style="text-align: center;color: red;">No Results Found</td></tr>`;
-                                            detailsList.innerHTML = htmlCode;
-                                        } else {
-                                            filterArray.forEach((item) => {
+                                                const detailsList = document.getElementById("output");
+                                                detailsList.innerHTML = "";
+                                                if (filterArray === null || filterArray.length === 0) {
+                                                    var htmlCode = `<tr><td colspan="12" style="text-align: center;color: red;">No Results Found</td></tr>`;
+                                                    detailsList.innerHTML = htmlCode;
+                                                } else {
+                                                    filterArray.forEach((item) => {
 
-                                                var htmlCode = ` 
+                                                        var htmlCode = ` 
                             <tr>
                             <td class="col-1">${item.donorId}</td>
                         <td class="col-1">${item.name}</td> 
@@ -250,31 +297,31 @@ use classes\Donor;
                         </tr>`;
 
 
-                                                var divElement = document.createElement("tr");
+                                                        var divElement = document.createElement("tr");
 
 
-                                                divElement.innerHTML = htmlCode;
+                                                        divElement.innerHTML = htmlCode;
 
 
-                                                detailsList.appendChild(divElement);
+                                                        detailsList.appendChild(divElement);
 
-                                            });
-                                        }
-
-
-                                    }
-                                </script>
+                                                    });
+                                                }
 
 
-                            </tbody>
+                                            }
+                                        </script>
+
+
+                                    </tbody>
+                                </table>
+                        </div>
+
                         </table>
+                    </div>
                 </div>
-
-                </table>
             </div>
         </div>
-    </div>
-    </div>
 
 
 
@@ -287,38 +334,39 @@ use classes\Donor;
 
 
 
-    <!----------------------------EditDonorDtails------------------------------------------------------------------------------->
-    <!-- Modal -->
-    <form action="../services/DonorEditService.php" method="POST" enctype="multipart/form-data">
-        <!--<form name="donorForm" action="../services/DonorAddService.php" method="POST" enctype="multipart/form-data" onsubmit="return validateForm();">
+        <!----------------------------EditDonorDtails------------------------------------------------------------------------------->
+        <!-- Modal -->
+        <form action="../services/DonorEditService.php" method="POST" enctype="multipart/form-data">
+            <!--<form name="donorForm" action="../services/DonorAddService.php" method="POST" enctype="multipart/form-data" onsubmit="return validateForm();">
             <!-- Your form content here -->
 
 
 
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModal" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModal" aria-hidden="true">
+                <div class="modal-dialog" role="document">
 
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModal">Donor Details</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-
-                        <div id="EditDonor"></div>
-                        <input type="hidden" name="token" value="<?php echo $token; ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-
-                        <div class="modal-footer">
-                        <button type="submit" class="btn btn-outline-danger"><strong>Edit Donor</button>
-                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-                            
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModal">Donor Details</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                    </div>
+                        <div class="modal-body">
 
+                            <div id="EditDonor"></div>
+
+                            <input type="hidden" name="token" value="<?php echo $token; ?>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-outline-danger"><strong>Edit Donor</button>
+                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
-        </div>
-        </div>
+    </div>
     </form>
     <!--AddDonorDetails---------------------------------------------------------->
 
@@ -347,7 +395,7 @@ use classes\Donor;
 
                 <div class="modal-body">
 
-                <div id="ViewDonor"></div> 
+                    <div id="ViewDonor"></div>
                 </div>
 
 
@@ -355,7 +403,7 @@ use classes\Donor;
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    
+
                 </div>
             </div>
         </div>
@@ -364,12 +412,12 @@ use classes\Donor;
 
 
 
-    
-        <?php
+
+    <?php
 
 
 
-        ?>
+    ?>
 
 </body>
 
